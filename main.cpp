@@ -6,6 +6,11 @@ class Sound
 {
 
 public:
+
+    bool soundb;
+    bool musicb;
+
+    unsigned long sBlank;
     unsigned long sWin;
     unsigned long sLose;
     unsigned long sError;
@@ -22,6 +27,8 @@ public:
 
 void Sound::initsound()
 {
+    soundb = true;
+    musicb = true;
     sWin = loadaudio("./wav/Win.wav");
     sLose = loadaudio("./wav/Lose.wav");
     sError = loadaudio("./wav/Error.wav");
@@ -35,8 +42,6 @@ void Sound::initsound()
 void Sound::playsound(long id)
 {
     setaudiopos(id,0);
-    pauseaudio(id);
-    resumeaudio(id);
 }
 
 class MineBd
@@ -1182,10 +1187,10 @@ int main()
                 w.bd.checkline();
             }
         }
-else
-{
-        delay(1);
-}
+        else
+        {
+            delay(1);
+        }
         if (gettimer() > time + 1 / frame)
         {
             while (gettimer() > time + 1 / frame)
