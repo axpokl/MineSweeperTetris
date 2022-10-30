@@ -1,0 +1,34 @@
+
+
+[2022-10-30 01:36:51] [AppID 7] Starting sync (init,)
+[2022-10-30 01:36:51] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-10-30 01:36:51] [AppID 7] Not running AutoCloud. No config data found
+[2022-10-30 01:36:51] [U:1:214053662] [AppID 7] Init cache request complete
+[2022-10-30 01:36:51] [AppID 7] YldWriteCacheDirectoryToFile - empty vector, deleting 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-10-30 01:36:57] [AppID 7] Starting sync (down,)
+[2022-10-30 01:36:57] [AppID 7] Attempting to sync from local change number '0' to global change number '14789939437379977127'
+[2022-10-30 01:36:57] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2022-10-30 01:36:57] [AppID 7] Need to download file sharedconfig.vdf
+[2022-10-30 01:36:58] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-sgp.oss-accelerate.aliyuncs.com', path /1E/33/C2/0C/7/033_0_18684C10_A4AED_917.dat?OSSAccessKeyId=LTAI4GGKSrY9rm6UigoBmqjd&Expires=1667068620&Signature=0Hz0edUjTbSa1bpLaCf7yo4by6U%3D, beginning. . .
+[2022-10-30 01:36:58] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-singapore.storage.googleapis.com', path /1E/33/C2/0C/7/01D_6_1358EF96_CDCE8_185.dat?GoogleAccessId=519723424899-j6o48knii6crh59hb86rnun8sbl7ph2a@developer.gserviceaccount.com&Expires=1667068620&Signature=ZtFw5J%2Fo40QNGyshnqbUapdsFY6tAWYEb4lv1bFrxmrB%2B3RN4xzd4PSEK8w9nL9y4iOIkP4PYqN4O02LQzIn2R5TJYcVLMhal7bqqmZc3ojH5ip3LVor3kiNHC6J8HK8BZbD9UDi3hyx%2BXsi8vQk%2B3pm9PRLjrMjm9Qn4q49cJY%3D, beginning. . .
+[2022-10-30 01:36:58] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-sgp.oss-accelerate.aliyuncs.com' - Success.
+[2022-10-30 01:36:58] [AppID 7] Download OK for file serverbrowser_hist.vdf
+[2022-10-30 01:36:59] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-singapore.storage.googleapis.com' - Success.
+[2022-10-30 01:36:59] [AppID 7] Download OK for file sharedconfig.vdf
+[2022-10-30 01:36:59] [AppID 7] Download complete, result OK
+[2022-10-30 01:36:59] [AppID 7] Successfully synced to ChangeNumber 14789939437379977127
+[2022-10-30 01:36:59] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2022-10-30 01:36:59] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-10-30 01:37:51] [Roaming Config] PerformSyncCloud - all sync'd up
+[2022-10-30 01:45:08] [AppID 7] Starting sync (down,)
+[2022-10-30 01:45:08] [AppID 7] Currently already synced to global change number '14789939437379977127', should be nothing to download
+[2022-10-30 01:45:08] [AppID 7] Download complete in build list
+[2022-10-30 01:45:08] [AppID 7] Successfully synced to ChangeNumber 0
+[2022-10-30 01:45:08] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2022-10-30 01:45:08] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-10-30 01:49:45] [AppID 7] Starting sync (down,)
+[2022-10-30 01:49:45] [AppID 7] Currently already synced to global change number '14789939437379977127', should be nothing to download
+[2022-10-30 01:49:45] [AppID 7] Download complete in build list
+[2022-10-30 01:49:45] [AppID 7] Successfully synced to ChangeNumber 0
+[2022-10-30 01:49:45] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2022-10-30 01:49:45] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'

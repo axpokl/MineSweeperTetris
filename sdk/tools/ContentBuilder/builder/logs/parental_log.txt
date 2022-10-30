@@ -1,0 +1,25 @@
+
+
+[2022-10-30 01:36:51] Failed to get ParentalSettings\Settings from config file for account ID 214053662
+[2022-10-30 01:36:51] Got parental settings for account ID 214053662
+[2022-10-30 01:45:08] Validating parental settings
+[2022-10-30 01:45:08] Settings dump:
+[2022-10-30 01:45:08] 	Account ID: 214053662
+[2022-10-30 01:45:08] 	Enabled: false
+[2022-10-30 01:45:08] 	Base list: 0 ()
+[2022-10-30 01:45:08] 	No custom list
+[2022-10-30 01:45:08] 	No enabled features
+[2022-10-30 01:49:42] Validating parental settings
+[2022-10-30 01:49:42] Settings dump:
+[2022-10-30 01:49:42] 	Account ID: 214053662
+[2022-10-30 01:49:42] 	Enabled: false
+[2022-10-30 01:49:42] 	Base list: 0 ()
+[2022-10-30 01:49:42] 	No custom list
+[2022-10-30 01:49:42] 	No enabled features
+[2022-10-30 01:49:45] Validating parental settings
+[2022-10-30 01:49:45] Settings dump:
+[2022-10-30 01:49:45] 	Account ID: 214053662
+[2022-10-30 01:49:45] 	Enabled: false
+[2022-10-30 01:49:45] 	Base list: 0 ()
+[2022-10-30 01:49:45] 	No custom list
+[2022-10-30 01:49:45] 	No enabled features

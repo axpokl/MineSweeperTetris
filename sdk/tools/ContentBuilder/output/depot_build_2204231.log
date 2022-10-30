@@ -1,0 +1,5 @@
+[2022-10-30 01:58:15]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-10-30 01:58:15]: Building file listing for depot 2204231 ...
+[2022-10-30 01:58:15]: Found 15 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-10-30 01:58:15]: Found 15 files (0 MB) for depot 2204231
+[2022-10-30 01:58:16]: ERROR! Failed to initialize build on server (Invalid Parameter) 

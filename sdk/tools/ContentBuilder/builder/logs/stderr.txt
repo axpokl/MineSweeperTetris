@@ -1,0 +1,12 @@
+src\tier1\fileio.cpp (5315) : m_vecRegisteredWriters.Count() == 0
+src\tier0\threadtools.cpp (3628) : Assertion Failed: Illegal termination of worker thread 'CFileWriterThread'
+src\tier0\threadtools.cpp (3628) : Assertion Failed: Illegal termination of worker thread 'Thread(0x52110158/0x00000644/0x'
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier1\fileio.cpp (5377) : CFileWriterThread already exited
+src\tier0\threadtools.cpp (3628) : Assertion Failed: Illegal termination of worker thread 'Thread(0x52C99BA0/0x000006F4/0x'

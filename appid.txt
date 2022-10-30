@@ -1,0 +1,7 @@
+Created package "MineSweeper Tetris Developer Comp" with ID 789409
+Created package "MineSweeper Tetris for Beta Testing" with ID 789410
+Created package "MineSweeper Tetris" with ID 789411
+Created package "MineSweeper Tetris" with ID 789412
+Added auto-grant to publisher MR. WANG ZHENG
+Created store item '509254'
+Created store package for store item '509254'
