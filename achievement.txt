@@ -1,5 +1,6 @@
 普通
 玩所有模式（3种）
+自定义模式
 暂停游戏（眼瞎）
 
 常规（123级别）
@@ -11,8 +12,8 @@
 总消行
 
 隐藏
-发现调试模式（there's a bug in the game)
-游戏天花板（任意模式9999行）
-盘面标记满问号
-只用左键玩死亡
-险象环生（棋盘满后消行）
+发现调试模式（There's a bug in the game)
+任意模式9999行（Reach the celling of lines）
+盘面标记满问号（My mind is full of question）
+只用左键玩死亡（The right mouse button is broken）
+棋盘满后消行（Come back to live）

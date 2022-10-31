@@ -1,3 +1,6 @@
+#pragma once
+#ifndef DISP
+#define DISP
 #define __STDC_WANT_LIB_EXT1__ 1
 #include<string.h> 
 #include<windows.h>
@@ -1027,3 +1030,4 @@ mystring getpara(){return GetPara332();}
 mystring getpara(unsigned long n){return GetPara333(n);}
 const short int* getparaw(){return GetParaW334();}
 const short int* getparaw(unsigned long n){return GetParaW335(n);}
+#endif 

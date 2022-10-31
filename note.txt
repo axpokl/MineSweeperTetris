@@ -9,6 +9,7 @@ steam highscore
 
 
 memory leak?
+windows xp test!
 
 菜单
 
@@ -22,16 +23,19 @@ memory leak?
 新游戏
 暂停
 
-8
-9
-0
-S
-D
-F
-
 上下左右
 page上下
 +-雷数
+
+8	+line
+9	-line
+0	+UP
+空	solve1
+S	solve2
+D	solve1
+F	solveb
+
+
 
 
 ---------------------------------
