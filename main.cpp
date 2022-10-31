@@ -41,7 +41,7 @@ void Sound::initsound()
 
 void Sound::playsound(long id)
 {
-    setaudiopos(id,0);
+    setaudiopos(id, 0);
 }
 
 class MineBd
@@ -56,6 +56,7 @@ public:
     long maskj;
     long maski;
     double time;
+    long mode;
     long sit;
     long line;
     long level;
@@ -78,6 +79,7 @@ public:
 
     void initbd();
     void initbd(long w, long h, long maskj, long n);
+    void initbd(long mode);
     bool isok(long k, long x, long y, long &tx, long &ty);
     void resetbd(long x, long y);
     void solveblank();
@@ -92,6 +94,8 @@ public:
     void clickright(long x, long y, bool sb);
     void addline();
     void delline(long l);
+    void addmask();
+    void checkdie();
     void pause();
 
     struct rule
@@ -124,9 +128,9 @@ void MineBd::initbd()
     n = max(1, min(n, w - 1));
     maskj = min(h - 4, maskj0);
     maski = 0;
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
-        for (j = 0; j < h; j++)
+        for (j = 0; j < h; j++ )
         {
             mine[i][j] = (i < n);
             flag[i][j] = false;
@@ -146,6 +150,23 @@ void MineBd::initbd(long w, long h, long maskj, long n)
     this->n = n;
     this->maskj0 = maskj;
     initbd();
+}
+
+void MineBd::initbd(long mode)
+{
+    this->mode = mode;
+    switch (mode)
+    {
+    case 1:
+        initbd(12, 20, 8, 2);
+        break;
+    case 2:
+        initbd(16, 24, 8, 3);
+        break;
+    case 3:
+        initbd(32, 32, 8, 6);
+        break;
+    }
 }
 
 bool MineBd::isok(long k, long x, long y, long &tx, long &ty)
@@ -199,9 +220,9 @@ void MineBd::resetbd(long x, long y)
 {
     srand((unsigned)clock());
     delay(1);
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
-        for (j = 0; j < h; j++)
+        for (j = 0; j < h; j++ )
         {
             rx = rand() % w;
             ry = j;
@@ -214,7 +235,7 @@ void MineBd::resetbd(long x, long y)
     ry = y;
     if (mine[x][y])
     {
-        for (i = 0; i < w; i++)
+        for (i = 0; i < w; i++ )
         {
             j = y;
             if (!mine[i][j])
@@ -226,23 +247,24 @@ void MineBd::resetbd(long x, long y)
         mine[rx][ry] = true;
         mine[x][y] = false;
     }
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
-        for (j = 0; j < h; j++)
+        for (j = 0; j < h; j++ )
         {
             numb[i][j] = 0;
-            for (k = 0; k < 8; k++)
+            for (k = 0; k < 8; k++ )
             {
                 if (isok(k, i, j, tx, ty))
                 {
                     if (mine[tx][ty])
                     {
-                        numb[i][j]++;
+                        numb[i][j]++ ;
                     }
                 }
             }
         }
     }
+    time = gettimer();
     sit = 1;
 }
 
@@ -251,14 +273,13 @@ void MineBd::solveblank()
     solveb = false;
     if (sit < 4)
     {
-        for (long i = 0; i < w; i++)
+        for (long i = 0; i < w; i++ )
         {
-            for (long j = 0; j < h; j++)
+            for (long j = 0; j < h; j++ )
             {
                 if (!mask[i][j] && !mine[i][j] && (numb[i][j] == 0))
                 {
                     clickleft(i, j);
-                    //clickright(i, j, false);
                 }
             }
         }
@@ -269,7 +290,6 @@ void MineBd::solveblank()
                 if (!mask[i][j] && !mine[i][j] && (numb[i][j] == 0))
                 {
                     clickleft(i, j);
-                    //clickright(i, j, false);
                 }
             }
         }
@@ -281,9 +301,9 @@ void MineBd::solve0()
     solveb = false;
     if (sit < 4)
     {
-        for (long i = 0; i < w; i++)
+        for (long i = 0; i < w; i++ )
         {
-            for (long j = 0; j < h; j++)
+            for (long j = 0; j < h; j++ )
             {
                 if (blck[i][j] && (numb[i][j] == 0))
                 {
@@ -309,9 +329,9 @@ void MineBd::solve1()
     solveb = false;
     if (sit < 4)
     {
-        for (long i = 0; i < w; i++)
+        for (long i = 0; i < w; i++ )
         {
-            for (long j = 0; j < h; j++)
+            for (long j = 0; j < h; j++ )
             {
                 if (blck[i][j] && (numb[i][j] >= 0))
                 {
@@ -335,9 +355,9 @@ void MineBd::solve1()
 
 void MineBd::createrule()
 {
-    for (long i = 0; i < w; i++)
+    for (long i = 0; i < w; i++ )
     {
-        for (long j = 0; j < h; j++)
+        for (long j = 0; j < h; j++ )
         {
             blckrule[i][j] = -1;
             if (blck[i][j])
@@ -346,7 +366,7 @@ void MineBd::createrule()
                 ruletemp.y = j;
                 ruletemp.numbc = numb[i][j];
                 ruletemp.blckc = 0;
-                for (k = 0; k < 8; k++)
+                for (k = 0; k < 8; k++ )
                 {
                     if (isok(k, i, j, tx, ty))
                     {
@@ -358,8 +378,7 @@ void MineBd::createrule()
                         {
                             ruletemp.blckx[ruletemp.blckc] = tx;
                             ruletemp.blcky[ruletemp.blckc] = ty;
-                            ruletemp.blckc++;
-                            //qstn[tx][ty] = true;
+                            ruletemp.blckc++ ;
                         }
                     }
                 }
@@ -367,10 +386,7 @@ void MineBd::createrule()
                 {
                     blckrule[i][j] = rulemainc;
                     rulemain[rulemainc] = ruletemp;
-                    rulemainc++;
-                    //printf("%d	%d %d	%d %d %d	",rulemainc,i,j,numb[i][j],ruletemp.numbc,ruletemp.blckc);
-                    //for (k = 0; k < ruletemp.blckc; k++)printf("%d %d  ",ruletemp.blckx[k],ruletemp.blcky[k]);
-                    //printf("\n");
+                    rulemainc++ ;
                 }
             }
         }
@@ -381,9 +397,9 @@ void MineBd::comparerule2(long rule1c, long rule2c)
 {
     rule rule1 = rulemain[rule1c];
     rule rule2 = rulemain[rule2c];
-    for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
+    for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++ )
     {
-        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
+        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++ )
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0) &&
                     (rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0) &&
@@ -401,14 +417,14 @@ void MineBd::comparerule2(long rule1c, long rule2c)
     }
     if (rule1.blckc == (rule1.numbc - rule2.numbc))
     {
-        for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
+        for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++ )
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
             {
                 clickright(rule1.blckx[rule1k], rule1.blcky[rule1k], false);
             }
         }
-        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
+        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++ )
         {
             if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
             {
@@ -418,14 +434,14 @@ void MineBd::comparerule2(long rule1c, long rule2c)
     }
     if (rule2.blckc == (rule2.numbc - rule1.numbc))
     {
-        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
+        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++ )
         {
             if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
             {
                 clickright(rule2.blckx[rule2k], rule2.blcky[rule2k], false);
             }
         }
-        for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
+        for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++ )
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
             {
@@ -433,19 +449,17 @@ void MineBd::comparerule2(long rule1c, long rule2c)
             }
         }
     }
-    //printf("%d %d %d	%d %d %d	",rule1c,rule1.x,rule1.y,rule2c,rule2.x,rule2.y);
-    //printf("%d %d %d %d 	%d %d\n",rulemain[rule1c].blckc,rulemain[rule2c].blckc,rule1.blckc,rule2.blckc,rule1.numbc,rule2.numbc);
 }
 
 void MineBd::comparerule()
 {
     long i = 0;
     long j = 0;
-    for (int rulemaini = 0; rulemaini < rulemainc; rulemaini++)
+    for (int rulemaini = 0; rulemaini < rulemainc; rulemaini++ )
     {
         i = rulemain[rulemaini].x;
         j = rulemain[rulemaini].y;
-        for (k = 0; k < 8; k++)
+        for (k = 0; k < 8; k++ )
         {
             if (isok(k, i, j, tx, ty))
             {
@@ -472,9 +486,9 @@ void MineBd::solve2()
 bool MineBd::checkerror()
 {
     bool result = false;
-    for (long i = 0; i < w; i++)
+    for (long i = 0; i < w; i++ )
     {
-        for (long j = 0; j < h; j++)
+        for (long j = 0; j < h; j++ )
         {
             if (blck[i][j] && mine[i][j])
             {
@@ -494,68 +508,103 @@ bool MineBd::checkerror()
 
 void MineBd::checkline()
 {
-    bool result = false;
-    long blckc;
-    long flagc;
-    j = h - 1;
-    while (j >= maskj)
+    if (checkb)
     {
-        blckc = 0;
-        flagc = 0;
-        for (i = 0; i < w; i++)
+        bool result = false;
+        long blckc;
+        long flagc;
+        j = h - 1;
+        while (j >= maskj)
         {
-            if (!blck[i][j])
+            blckc = 0;
+            flagc = 0;
+            for (i = 0; i < w; i++ )
             {
-                blckc++;
+                if (!blck[i][j])
+                {
+                    blckc++ ;
+                }
+                if (flag[i][j])
+                {
+                    flagc++ ;
+                }
             }
-            if (flag[i][j])
+            if (blckc == n || flagc == n)
             {
-                flagc++;
+                result = true;
+                delline(j);
+            }
+            else
+            {
+                j--;
             }
         }
-        if (blckc == n || flagc == n)
+        if (result)
         {
-            result = true;
-            delline(j);
+            sd.playsound(sd.sSolve);
         }
-        else
-        {
-            j--;
-        }
+        checkb = false;
     }
-    if (result)
-    {
-        sd.playsound(sd.sSolve);
-    }
-    checkb = false;
 }
 
 void MineBd::addline()
 {
     maskj--;
     j = maskj;
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
         mask[i][j] = false;
     }
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
         for (j = maskj + 1; j >= maskj; j--)
         {
             numb[i][j] = 0;
-            for (k = 0; k < 8; k++)
+            for (k = 0; k < 8; k++ )
             {
                 if (isok(k, i, j, tx, ty))
                 {
                     if (mine[tx][ty])
                     {
-                        numb[i][j]++;
+                        numb[i][j]++ ;
                     }
                 }
             }
         }
     }
-    if (maskj == 0)
+    checkb = true;
+    checkline();
+    checkdie();
+}
+
+void MineBd::addmask()
+{
+    if (gettimer() > time + 5.0 / (level + 5.0))
+    {
+        time += 5.0 / (level + 5.0);
+        if ((sit > 0) && (sit < 4))
+        {
+            maski++ ;
+            if (maski == w)
+            {
+                maski = 0;
+                addline();
+                solveb = true;
+                while (solveb)
+                {
+                    solve0();
+                }
+            }
+        }
+        checkb = true;
+        checkline();
+        checkdie();
+    }
+}
+
+void MineBd::checkdie()
+{
+    if (maskj == 0 && maski > 0)
     {
         sit = 4;
         sd.playsound(sd.sLose);
@@ -564,8 +613,8 @@ void MineBd::addline()
 
 void MineBd::delline(long l)
 {
-    maskj++;
-    for (i = 0; i < w; i++)
+    maskj++ ;
+    for (i = 0; i < w; i++ )
     {
         for (j = l; j >= 0; j--)
         {
@@ -591,7 +640,7 @@ void MineBd::delline(long l)
     }
     srand((unsigned)clock());
     delay(1);
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
         rx = rand() % w;
         ry = 0;
@@ -600,39 +649,39 @@ void MineBd::delline(long l)
         mine[rx][ry] = mine[i][j];
         mine[i][j] = mb;
     }
-    for (i = 0; i < w; i++)
+    for (i = 0; i < w; i++ )
     {
         for (j = l + 1; j >= l; j--)
         {
             numb[i][j] = 0;
-            for (k = 0; k < 8; k++)
+            for (k = 0; k < 8; k++ )
             {
                 if (isok(k, i, j, tx, ty))
                 {
                     if (mine[tx][ty])
                     {
-                        numb[i][j]++;
+                        numb[i][j]++ ;
                     }
                 }
             }
         }
     }
-    line++;
+    line++ ;
     line = min(line, 9999);
     if (maskj > h - 4)
     {
-        for (long k = 0; k < 4; k++)
+        for (long k = 0; k < 4; k++ )
         {
-            line++;
+            line++ ;
             line = min(line, 9999);
             addline();
             sit = 3;
         }
         sd.playsound(sd.sNew);
     }
-    while ((level + 1)*(level + 1) <= line)
+    while ((level + 1) * (level + 1) <= line)
     {
-        level++;
+        level++ ;
         sd.playsound(sd.sWin);
     }
 }
@@ -675,19 +724,19 @@ bool MineBd::setflag(long x, long y, bool sb)
 {
     long qc = 0;
     bool sc = false;
-    for (k = 0; k < 8; k++)
+    for (k = 0; k < 8; k++ )
     {
         if (isok(k, x, y, tx, ty))
         {
             if (!blck[tx][ty])
             {
-                qc++;
+                qc++ ;
             }
         }
     }
     if (qc == numb[x][y])
     {
-        for (k = 0; k < 8; k++)
+        for (k = 0; k < 8; k++ )
         {
             if (isok(k, x, y, tx, ty))
             {
@@ -711,23 +760,23 @@ bool MineBd::setblock(long x, long y, bool sb)
     long qn = 0;
     long qq = 0;
     bool sr = false;
-    for (k = 0; k < 8; k++)
+    for (k = 0; k < 8; k++ )
     {
         if (isok(k, x, y, tx, ty))
         {
             if (flag[tx][ty])
             {
-                qn++;
+                qn++ ;
             }
             if (qstn[tx][ty])
             {
-                qq++;
+                qq++ ;
             }
         }
     }
     if ((qn == numb[x][y]) || ((qn + qq) == numb[x][y]))
     {
-        for (k = 0; k < 8; k++)
+        for (k = 0; k < 8; k++ )
         {
             if (isok(k, x, y, tx, ty))
             {
@@ -801,10 +850,26 @@ void MineBd::pause()
     }
 }
 
+
+
 class MainWindow
 {
 public:
+
+    long menuw;
+    long menuh;
+    long facew;
+    long faceh;
+    long iconw;
+    long iconh;
+    long digtw;
+    long digth;
+
     MineBd bd;
+    HICON hicon;
+
+    pbitmap pmenu0;
+    pbitmap pmenu[9];
     pbitmap pface0;
     pbitmap pface[5];
     pbitmap picon0;
@@ -827,62 +892,80 @@ public:
     void paintEvent();
     void mousePressEvent(long x, long y, long key);
     void keyPressEvent(long key);
+    void doAction();
 
 };
 
 MainWindow::MainWindow()
 {
-    createwin(200, 200, 0xAFAFAF, 0xAFAFAF, WS_OVERLAPPED | WS_CAPTION |
-              WS_SYSMENU | WS_THICKFRAME | WS_VISIBLE);
+    createwin(200, 200, 0xAFAFAF, 0xAFAFAF, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE);
+    hicon=(HICON)LoadImage(GetModuleHandle(NULL),"MINESWEEPERTETEIS_ICON",IMAGE_ICON,0,0,0);
+    SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(long)hicon);
     settitle("MineSweeperTetris");
     bd.sd.initsound();
-    bd.initbd(12, 20, 8, 2);
+    bd.initbd(1);
     initBMP();
     initWindow();
     paintEvent();
+
 }
 
 void MainWindow::initBMP()
 {
-    pface0 = loadbmp("./bmp/face.bmp");
-    for (long i = 0; i < 5; i++)
+    menuw = 24;
+    menuh = 24;
+    facew = 24;
+    faceh = 24;
+    iconw = 16;
+    iconh = 16;
+    digtw = 13;
+    digth = 23;
+
+    pmenu0 = loadbmp("./bmp/menu.bmp");
+    for (long i = 0; i < 9; i++ )
     {
-        pface[i] = createbmp(24, 24);
-        drawbmp(pface0, pface[i], 0, i * 24, 24, 24, 0, 0, 24, 24);
+        pmenu[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu0, pmenu[i], 0, i * menuh, menuw, menuh, 0, 0, menuw, menuh);
+    }
+    pface0 = loadbmp("./bmp/face.bmp");
+    for (long i = 0; i < 5; i++ )
+    {
+        pface[i] = createbmp(facew, faceh);
+        drawbmp(pface0, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
     }
     picon0 = loadbmp("./bmp/icon.bmp");
-    for (long i = 0; i < 9; i++)
+    for (long i = 0; i < 9; i++ )
     {
-        picon[i] = createbmp(16, 16);
-        drawbmp(picon0, picon[i], 0, (15 - i) * 16, 16, 16, 0, 0, 16, 16);
+        picon[i] = createbmp(iconw, iconh);
+        drawbmp(picon0, picon[i], 0, (iconw - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
     }
-    piconc = createbmp(16, 16);
-    drawbmp(picon0, piconc, 0, 0, 16, 16, 0, 0, 16, 16);
-    piconf = createbmp(16, 16);
-    drawbmp(picon0, piconf, 0, 16, 16, 16, 0, 0, 16, 16);
-    piconq = createbmp(16, 16);
-    drawbmp(picon0, piconq, 0, 32, 16, 16, 0, 0, 16, 16);
-    piconm = createbmp(16, 16);
-    drawbmp(picon0, piconm, 0, 48, 16, 16, 0, 0, 16, 16);
-    picone = createbmp(16, 16);
-    drawbmp(picon0, picone, 0, 64, 16, 16, 0, 0, 16, 16);
-    piconn = createbmp(16, 16);
-    drawbmp(picon0, piconn, 0, 80, 16, 16, 0, 0, 16, 16);
-    pdigit0 = loadbmp("./bmp/numb.bmp");
-    for (long i = 0; i < 10; i++)
+    piconc = createbmp(iconw, iconh);
+    drawbmp(picon0, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
+    piconf = createbmp(iconw, iconh);
+    drawbmp(picon0, piconf, 0, iconh * 1, iconw, iconh, 0, 0, iconw, iconh);
+    piconq = createbmp(iconw, iconh);
+    drawbmp(picon0, piconq, 0, iconh * 2, iconw, iconh, 0, 0, iconw, iconh);
+    piconm = createbmp(iconw, iconh);
+    drawbmp(picon0, piconm, 0, iconh * 3, iconw, iconh, 0, 0, iconw, iconh);
+    picone = createbmp(iconw, iconh);
+    drawbmp(picon0, picone, 0, iconh * 4, iconw, iconh, 0, 0, iconw, iconh);
+    piconn = createbmp(iconw, iconh);
+    drawbmp(picon0, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
+    pdigit0 = loadbmp("./bmp/digt.bmp");
+    for (long i = 0; i < 10; i++ )
     {
-        pdigit[i] = createbmp(13, 23);
-        drawbmp(pdigit0, pdigit[i], 0, (11 - i) * 23, 13, 23, 0, 0, 13, 23);
+        pdigit[i] = createbmp(digtw, digth);
+        drawbmp(pdigit0, pdigit[i], 0, (11-i) * digth, digtw, digth, 0, 0, digtw, digth);
     }
-    pdigit1 = createbmp(13, 23);
-    drawbmp(pdigit0, pdigit1, 0, 0, 13, 23, 0, 0, 13, 23);
-    pdigit2 = createbmp(13, 23);
-    drawbmp(pdigit0, pdigit2, 0, 23, 13, 23, 0, 0, 13, 23);
+    pdigit1 = createbmp(digtw, digth);
+    drawbmp(pdigit0, pdigit1, 0, 0, digtw, digth, 0, 0, digtw, digth);
+    pdigit2 = createbmp(digtw, digth);
+    drawbmp(pdigit0, pdigit2, 0, digth, digtw, digth, 0, 0, digtw, digth);
 }
 
 void MainWindow::initWindow0()
 {
-    setsize(bd.w * 16, bd.h * 16 + 24);
+    setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
     paintEvent();
 }
 
@@ -900,34 +983,40 @@ void MainWindow::initWindow()
 void MainWindow::paintEvent()
 {
     clear();
+    drawbmp(pmenu[3], 0 * menuw, 0, menuw, menuh);
+    drawbmp(pmenu[4], 1 * menuw, 0, menuw, menuh);
+    drawbmp(pmenu[5], 2 * menuw, 0, menuw, menuh);
+    if (bd.mode > 0) drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
+    drawbmp(pmenu[6], (bd.w * iconw - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenu[7], (bd.w * iconw - 1 * menuw), 0, menuw, menuh);
     switch (bd.sit)
     {
     case 0:
-        drawbmp(pface[4], (bd.w * 16 - 24) / 2, 0, 24, 24);
+        drawbmp(pface[4], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     case 1:
-        drawbmp(pface[4], (bd.w * 16 - 24) / 2, 0, 24, 24);
+        drawbmp(pface[4], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     case 2:
-        drawbmp(pface[3], (bd.w * 16 - 24) / 2, 0, 24, 24);
+        drawbmp(pface[3], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     case 3:
-        drawbmp(pface[1], (bd.w * 16 - 24) / 2, 0, 24, 24);
+        drawbmp(pface[1], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     case 4:
-        drawbmp(pface[2], (bd.w * 16 - 24) / 2, 0, 24, 24);
+        drawbmp(pface[2], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     case 5:
-        drawbmp(pface[0], (bd.w * 16 - 24) / 2, 0, 24, 24);
+        drawbmp(pface[0], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     }
-    for (long i = 0; i < bd.w; i++)
+    for (long i = 0; i < bd.w; i++ )
     {
-        for (long j = 0; j < bd.h; j++)
+        for (long j = 0; j < bd.h; j++ )
         {
             if (bd.sit == 5)
             {
-                drawbmp(picone, i * 16, j * 16 + 24, 16, 16);
+                drawbmp(picone, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
             }
             else if (bd.mask[i][j] && (i >= bd.maski || j < bd.maskj - 1))
             {
@@ -937,32 +1026,32 @@ void MainWindow::paintEvent()
             {
                 if (bd.mine[i][j])
                 {
-                    drawbmp(piconm, i * 16, j * 16 + 24, 16, 16);
+                    drawbmp(piconm, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
                 }
                 else
                 {
-                    drawbmp(picon[bd.numb[i][j]], i * 16, j * 16 + 24, 16, 16);
+                    drawbmp(picon[bd.numb[i][j]], i * iconw, j * iconh + faceh + menuh, iconw, iconh);
                 }
             }
             else if (bd.flag[i][j])
             {
-                drawbmp(piconf, i * 16, j * 16 + 24, 16, 16);
+                drawbmp(piconf, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
             }
             else if (bd.qstn[i][j])
             {
-                drawbmp(piconq, i * 16, j * 16 + 24, 16, 16);
+                drawbmp(piconq, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
             }
             else if ((bd.sit == 4) && bd.mine[i][j])
             {
-                drawbmp(piconn, i * 16, j * 16 + 24, 16, 16);
+                drawbmp(piconn, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
             }
             else if (bd.mask[i][j])
             {
-                drawbmp(picone, i * 16, j * 16 + 24, 16, 16);
+                drawbmp(picone, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
             }
             else
             {
-                drawbmp(piconc, i * 16, j * 16 + 24, 16, 16);
+                drawbmp(piconc, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
             }
         }
     }
@@ -986,17 +1075,17 @@ void MainWindow::paintEvent()
     {
         d = 3;
     }
-    for (dr = 0; dr < d; dr++)
+    for (dr = 0; dr < d; dr++ )
     {
-        drawbmp(pdigit2, dr * 13, 0, 13, 24);
+        drawbmp(pdigit2, dr * digtw, menuh, digtw, faceh);
     }
-    for (dr = d; dr < 4; dr++)
+    for (dr = d; dr < 4; dr++ )
     {
-        drawbmp(pdigit[digit[3 - dr]], dr * 13, 0, 13, 24);
+        drawbmp(pdigit[digit[3-dr]], dr * digtw, menuh, digtw, faceh);
     }
     if (mr < 0)
     {
-        drawbmp(pdigit1, (d - 1) * 13, 0, 13, 24);
+        drawbmp(pdigit1, (d - 1) * digtw, menuh, digtw, faceh);
     }
     mr = bd.level;
     digit[0] = abs(mr) % 10;
@@ -1016,13 +1105,13 @@ void MainWindow::paintEvent()
     {
         d = 3;
     }
-    for (dr = 2; dr < d; dr++)
+    for (dr = 2; dr < d; dr++ )
     {
-        drawbmp(pdigit2, bd.w * 16 - (4 - dr) * 13, 0, 13, 24);
+        drawbmp(pdigit2, bd.w * iconw - (4 - dr) * digtw, menuh, digtw, faceh);
     }
-    for (dr = d; dr < 4; dr++)
+    for (dr = d; dr < 4; dr++ )
     {
-        drawbmp(pdigit[digit[3 - dr]], bd.w * 16 - (4 - dr) * 13, 0, 13, 24);
+        drawbmp(pdigit[digit[3-dr]], bd.w * iconw - (4 - dr) * digtw, menuh, digtw, faceh);
     }
     freshwin();
 }
@@ -1031,9 +1120,17 @@ void MainWindow::mousePressEvent(long ex, long ey, long eb)
 {
     long x;
     long y;
-    if (ey < 24)
+    if (ey < menuh)
     {
-        if ((ex > ((bd.w * 16 - 24) / 2)) && (ex < ((bd.w * 16 + 24) / 2)))
+        if (ex < (3 * menuw))
+        {
+            bd.initbd(ex / menuw + 1);
+            initWindow();
+        }
+    }
+    else if (ey - menuh < faceh)
+    {
+        if ((ex > ((bd.w * iconw - facew) / 2)) && (ex < ((bd.w * iconw + facew) / 2)))
         {
             if (eb == k_lmouse)
             {
@@ -1047,11 +1144,11 @@ void MainWindow::mousePressEvent(long ex, long ey, long eb)
     }
     else if (bd.sit < 4)
     {
-        x = ex / 16;
-        y = (ey - 24) / 16;
+        x = ex / iconw;
+        y = (ey - faceh-menuh) / iconh;
         if (eb == k_lmouse)
         {
-            if (bd.sit == 0)
+            if (bd.sit == 0 && y >= bd.maskj)
             {
                 bd.resetbd(x, y);
             }
@@ -1082,7 +1179,7 @@ void MainWindow::keyPressEvent(long key)
         initWindow();
         break;
     case k_right:
-        bd.w++;
+        bd.w++ ;
         initWindow();
         break;
     case k_up:
@@ -1090,7 +1187,7 @@ void MainWindow::keyPressEvent(long key)
         initWindow();
         break;
     case k_down:
-        bd.h++;
+        bd.h++ ;
         initWindow();
         break;
     case k_sub:
@@ -1098,7 +1195,7 @@ void MainWindow::keyPressEvent(long key)
         initWindow();
         break;
     case k_add:
-        bd.n++;
+        bd.n++ ;
         initWindow();
         break;
     case k_pgup:
@@ -1108,7 +1205,7 @@ void MainWindow::keyPressEvent(long key)
         initWindow();
         break;
     case k_pgdn:
-        bd.maskj0++;
+        bd.maskj0++ ;
         bd.maskj0 = min(bd.h - 4, bd.maskj0);
         initWindow();
         break;
@@ -1133,15 +1230,15 @@ void MainWindow::keyPressEvent(long key)
         }
         break;
     case k_1:
-        bd.initbd(12, 20, 8, 2);
+        bd.initbd(1);
         initWindow();
         break;
     case k_2:
-        bd.initbd(16, 24, 8, 3);
+        bd.initbd(2);
         initWindow();
         break;
     case k_3:
-        bd.initbd(32, 32, 8, 6);
+        bd.initbd(3);
         initWindow();
         break;
     case k_8:
@@ -1151,13 +1248,37 @@ void MainWindow::keyPressEvent(long key)
         bd.delline(bd.h - 1);
         break;
     case k_0:
-        bd.level++;
+        bd.level++ ;
         break;
     case k_space:
         bd.solve1();
         break;
     }
     paintEvent();
+}
+
+void MainWindow::doAction()
+{
+    if (isnextmsg())
+    {
+        if (ismouseleft())
+        {
+            mousePressEvent(getmouseposx(), getmouseposy(), k_lmouse);
+        }
+        if (ismouseright())
+        {
+            mousePressEvent(getmouseposx(), getmouseposy(), k_rmouse);
+        }
+        if (iskey())
+        {
+            keyPressEvent(getkey());
+        }
+
+    }
+    else
+    {
+        delay(1);
+    }
 }
 
 int main()
@@ -1168,29 +1289,11 @@ int main()
     time = gettimer();
     while (iswin())
     {
-        if (isnextmsg())
-        {
-            if (ismouseleft())
-            {
-                w.mousePressEvent(getmouseposx(), getmouseposy(), k_lmouse);
-            }
-            if (ismouseright())
-            {
-                w.mousePressEvent(getmouseposx(), getmouseposy(), k_rmouse);
-            }
-            if (iskey())
-            {
-                w.keyPressEvent(getkey());
-            }
-            if (w.bd.checkb)
-            {
-                w.bd.checkline();
-            }
-        }
-        else
-        {
-            delay(1);
-        }
+
+        w.doAction();
+        w.bd.checkline();
+        w.bd.addmask();
+
         if (gettimer() > time + 1 / frame)
         {
             while (gettimer() > time + 1 / frame)
@@ -1199,25 +1302,8 @@ int main()
             }
             w.paintEvent();
         }
-        if (gettimer() > w.bd.time + 5.0 / (w.bd.level + 5.0))
-        {
-            w.bd.time += 5.0 / (w.bd.level + 5.0);
-            if ((w.bd.sit > 0) && (w.bd.sit < 4))
-            {
-                w.bd.maski++;
-                if (w.bd.maski == w.bd.w)
-                {
-                    w.bd.maski = 0;
-                    w.bd.addline();
-                    w.bd.solveb = true;
-                    while (w.bd.solveb)
-                    {
-                        w.bd.solve0();
-                    }
-                }
-            }
-        }
-        if ((getwidth() != w.bd.w *16) || (getheight() != w.bd.h *16+24))
+
+        if ((getwidth() != w.bd.w * w.iconw) || (getheight() != w.bd.h * w.iconh + w.facew))
         {
             w.initWindow0();
         }

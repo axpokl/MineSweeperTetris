@@ -23,3 +23,147 @@
 [2022-10-30 01:49:45] 	Base list: 0 ()
 [2022-10-30 01:49:45] 	No custom list
 [2022-10-30 01:49:45] 	No enabled features
+
+
+[2022-10-31 12:45:05] Validating parental settings
+[2022-10-31 12:45:05] Settings dump:
+[2022-10-31 12:45:05] 	Account ID: 214053662
+[2022-10-31 12:45:05] 	Enabled: false
+[2022-10-31 12:45:05] 	Base list: 0 ()
+[2022-10-31 12:45:05] 	No custom list
+[2022-10-31 12:45:05] 	No enabled features
+
+
+[2022-10-31 12:46:03] Validating parental settings
+[2022-10-31 12:46:03] Settings dump:
+[2022-10-31 12:46:03] 	Account ID: 214053662
+[2022-10-31 12:46:03] 	Enabled: false
+[2022-10-31 12:46:03] 	Base list: 0 ()
+[2022-10-31 12:46:03] 	No custom list
+[2022-10-31 12:46:03] 	No enabled features
+
+
+[2022-10-31 12:46:39] Validating parental settings
+[2022-10-31 12:46:39] Settings dump:
+[2022-10-31 12:46:39] 	Account ID: 214053662
+[2022-10-31 12:46:39] 	Enabled: false
+[2022-10-31 12:46:39] 	Base list: 0 ()
+[2022-10-31 12:46:39] 	No custom list
+[2022-10-31 12:46:39] 	No enabled features
+
+
+[2022-10-31 12:50:52] Validating parental settings
+[2022-10-31 12:50:52] Settings dump:
+[2022-10-31 12:50:52] 	Account ID: 214053662
+[2022-10-31 12:50:52] 	Enabled: false
+[2022-10-31 12:50:52] 	Base list: 0 ()
+[2022-10-31 12:50:52] 	No custom list
+[2022-10-31 12:50:52] 	No enabled features
+
+
+[2022-10-31 13:08:03] Validating parental settings
+[2022-10-31 13:08:03] Settings dump:
+[2022-10-31 13:08:03] 	Account ID: 214053662
+[2022-10-31 13:08:03] 	Enabled: false
+[2022-10-31 13:08:03] 	Base list: 0 ()
+[2022-10-31 13:08:03] 	No custom list
+[2022-10-31 13:08:03] 	No enabled features
+
+
+[2022-10-31 13:22:07] Validating parental settings
+[2022-10-31 13:22:07] Settings dump:
+[2022-10-31 13:22:07] 	Account ID: 214053662
+[2022-10-31 13:22:07] 	Enabled: false
+[2022-10-31 13:22:07] 	Base list: 0 ()
+[2022-10-31 13:22:07] 	No custom list
+[2022-10-31 13:22:07] 	No enabled features
+
+
+[2022-10-31 13:22:24] Validating parental settings
+[2022-10-31 13:22:24] Settings dump:
+[2022-10-31 13:22:24] 	Account ID: 214053662
+[2022-10-31 13:22:24] 	Enabled: false
+[2022-10-31 13:22:24] 	Base list: 0 ()
+[2022-10-31 13:22:24] 	No custom list
+[2022-10-31 13:22:24] 	No enabled features
+
+
+[2022-10-31 13:23:03] Validating parental settings
+[2022-10-31 13:23:03] Settings dump:
+[2022-10-31 13:23:03] 	Account ID: 214053662
+[2022-10-31 13:23:03] 	Enabled: false
+[2022-10-31 13:23:03] 	Base list: 0 ()
+[2022-10-31 13:23:03] 	No custom list
+[2022-10-31 13:23:03] 	No enabled features
+
+
+[2022-10-31 13:25:14] Validating parental settings
+[2022-10-31 13:25:14] Settings dump:
+[2022-10-31 13:25:14] 	Account ID: 214053662
+[2022-10-31 13:25:14] 	Enabled: false
+[2022-10-31 13:25:14] 	Base list: 0 ()
+[2022-10-31 13:25:14] 	No custom list
+[2022-10-31 13:25:14] 	No enabled features
+
+
+[2022-10-31 13:28:23] Validating parental settings
+[2022-10-31 13:28:23] Settings dump:
+[2022-10-31 13:28:23] 	Account ID: 214053662
+[2022-10-31 13:28:23] 	Enabled: false
+[2022-10-31 13:28:23] 	Base list: 0 ()
+[2022-10-31 13:28:23] 	No custom list
+[2022-10-31 13:28:23] 	No enabled features
+
+
+[2022-10-31 13:30:10] Validating parental settings
+[2022-10-31 13:30:10] Settings dump:
+[2022-10-31 13:30:10] 	Account ID: 214053662
+[2022-10-31 13:30:10] 	Enabled: false
+[2022-10-31 13:30:10] 	Base list: 0 ()
+[2022-10-31 13:30:10] 	No custom list
+[2022-10-31 13:30:10] 	No enabled features
+
+
+[2022-10-31 13:44:00] Validating parental settings
+[2022-10-31 13:44:00] Settings dump:
+[2022-10-31 13:44:00] 	Account ID: 214053662
+[2022-10-31 13:44:00] 	Enabled: false
+[2022-10-31 13:44:00] 	Base list: 0 ()
+[2022-10-31 13:44:00] 	No custom list
+[2022-10-31 13:44:00] 	No enabled features
+
+
+[2022-10-31 13:54:22] Validating parental settings
+[2022-10-31 13:54:22] Settings dump:
+[2022-10-31 13:54:22] 	Account ID: 214053662
+[2022-10-31 13:54:22] 	Enabled: false
+[2022-10-31 13:54:22] 	Base list: 0 ()
+[2022-10-31 13:54:22] 	No custom list
+[2022-10-31 13:54:22] 	No enabled features
+
+
+[2022-10-31 13:55:44] Validating parental settings
+[2022-10-31 13:55:44] Settings dump:
+[2022-10-31 13:55:44] 	Account ID: 214053662
+[2022-10-31 13:55:44] 	Enabled: false
+[2022-10-31 13:55:44] 	Base list: 0 ()
+[2022-10-31 13:55:44] 	No custom list
+[2022-10-31 13:55:44] 	No enabled features
+
+
+[2022-10-31 13:56:27] Validating parental settings
+[2022-10-31 13:56:27] Settings dump:
+[2022-10-31 13:56:27] 	Account ID: 214053662
+[2022-10-31 13:56:27] 	Enabled: false
+[2022-10-31 13:56:27] 	Base list: 0 ()
+[2022-10-31 13:56:27] 	No custom list
+[2022-10-31 13:56:27] 	No enabled features
+
+
+[2022-10-31 13:58:13] Validating parental settings
+[2022-10-31 13:58:13] Settings dump:
+[2022-10-31 13:58:13] 	Account ID: 214053662
+[2022-10-31 13:58:13] 	Enabled: false
+[2022-10-31 13:58:13] 	Base list: 0 ()
+[2022-10-31 13:58:13] 	No custom list
+[2022-10-31 13:58:13] 	No enabled features

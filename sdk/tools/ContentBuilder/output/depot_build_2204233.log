@@ -1,5 +1,10 @@
-[2022-10-30 01:40:17]: Starting build for depot 2204233, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x2
-[2022-10-30 01:40:17]: Building file listing for depot 2204233 ...
-[2022-10-30 01:40:17]: Found 15 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-10-30 01:40:17]: Found 15 files (0 MB) for depot 2204233
-[2022-10-30 01:40:18]: ERROR! Failed to initialize build on server (Invalid Parameter) 
+[2022-10-31 13:30:11]: Starting build for depot 2204233, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-10-31 13:30:11]: Building file listing for depot 2204233 ...
+[2022-10-31 13:30:11]: Found 18 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-10-31 13:30:11]: Found 18 files (0 MB) for depot 2204233
+[2022-10-31 13:30:12]: Building depot 2204233, baseline manifest 3011221955950717183 (18 files)
+[2022-10-31 13:30:12]: Found 16 chunks ( 16 used previously ) for depot 2204233, took 0 minutes, 0 seconds
+[2022-10-31 13:30:12]: Changes to baseline manifest 3011221955950717183 :
+[2022-10-31 13:30:12]: Summary: 0 files added, 0 files changed, 0 files removed
+[2022-10-31 13:30:13]: Uploading new manifest to 208.64.201.182:80 (handle 12103056202485863125, 2176 bytes).
+[2022-10-31 13:30:13]: Success! Previous manifestID 3011221955950717183 reused, no chunks uploaded.

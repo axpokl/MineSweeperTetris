@@ -1,7 +1,19 @@
+程序包
 Created package "MineSweeper Tetris Developer Comp" with ID 789409
 Created package "MineSweeper Tetris for Beta Testing" with ID 789410
-Created package "MineSweeper Tetris" with ID 789411
 Created package "MineSweeper Tetris" with ID 789412
+Created package "MineSweeper Tetris" with ID 789411
+
+商店
 Added auto-grant to publisher MR. WANG ZHENG
 Created store item '509254'
 Created store package for store item '509254'
+
+
+生成包
+MineSweeperTetris
+app_build_2204230
+depot_build_2204233
+
+应用(Steam Client)
+2204230	MineSweeper Tetris

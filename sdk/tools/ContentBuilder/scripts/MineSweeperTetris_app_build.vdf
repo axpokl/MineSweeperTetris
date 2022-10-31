@@ -1,8 +1,6 @@
 "AppBuild"
 {
-	"AppID" "9827281" // your AppID
-	"Desc" "First Build thorugh Steamwork SDK" // internal description for this build
-
+	"AppID" "2204230" // your AppID
 	"ContentRoot" "..\content\" // root content folder, relative to location of this file
 	"BuildOutput" "..\output\" // build output folder for build logs and build cache files
 
