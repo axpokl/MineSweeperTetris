@@ -2,7 +2,9 @@ class Board
 {
 
 public:
+
     Sound sd;
+
     long w;
     long h;
     long n;
@@ -31,6 +33,7 @@ public:
     long tx;
     long ty;
 
+    Board();
     void initbd();
     void initbd(long w, long h, long maskj, long n);
     void initbd(long mode);
@@ -48,7 +51,7 @@ public:
     void clickright(long x, long y, bool sb);
     void addline();
     void delline(long l);
-    void addmask();
+    bool addmask();
     void checkdie();
     void pause();
 
@@ -71,6 +74,11 @@ public:
     void solve2();
 
 };
+
+Board::Board()
+{
+    initbd(1);
+}
 
 void Board::initbd()
 {
@@ -536,10 +544,12 @@ void Board::addline()
     checkdie();
 }
 
-void Board::addmask()
+bool Board::addmask()
 {
     if (gettimer() > time + 5.0 / (level + 5.0))
     {
+        checkb = true;
+        checkline();
         time += 5.0 / (level + 5.0);
         if ((sit > 0) && (sit < 4))
         {
@@ -558,7 +568,9 @@ void Board::addmask()
         checkb = true;
         checkline();
         checkdie();
+        return true;
     }
+    return false;
 }
 
 void Board::checkdie()

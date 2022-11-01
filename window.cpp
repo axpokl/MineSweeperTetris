@@ -28,22 +28,24 @@ public:
     pbitmap pdigit1;
     pbitmap pdigit2;
 
-    Board bd;
     HICON hicon;
 
-    double time;
-    double frame;
+    //double time;
+    //double frame;
+
+    Board bd;
 
     Window();
     void initBMP();
-    void ResizeWindow();
+    void resizeWindow();
     void initWindow();
     void paintEvent();
     void mousePressEvent(long x, long y, long key);
     void keyPressEvent(long key);
     void doAction();
-    void drawWindow();
-    void checkWindow();
+    void nextBlock();
+    //void drawWindow();
+    //void checkWindow();
 
 };
 
@@ -53,8 +55,6 @@ Window::Window()
     hicon=(HICON)LoadImage(GetModuleHandle(NULL),"MINESWEEPERTETEIS_ICON",IMAGE_ICON,0,0,0);
     SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(long)hicon);
     settitle("MineSweeper Tetris");
-    bd.sd.initsound();
-    bd.initbd(1);
     initBMP();
     initWindow();
     paintEvent();
@@ -114,7 +114,7 @@ void Window::initBMP()
     drawbmp(pdigit0, pdigit2, 0, digth, digtw, digth, 0, 0, digtw, digth);
 }
 
-void Window::ResizeWindow()
+void Window::resizeWindow()
 {
     setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
     paintEvent();
@@ -123,14 +123,14 @@ void Window::ResizeWindow()
 void Window::initWindow()
 {
     bd.initbd();
-    ResizeWindow();
+    resizeWindow();
     long w = getwidth() + getborderwidth() * 2;
     long h = getheight() + getborderheight() * 2;
     long x = (getscrwidth() - w) / 2;
     long y = (getscrheight() - h) / 2;
     MoveWindow((HWND)gethwnd(), x, y, w, h + getbordertitle(), true);
-    frame = 30;
-    time = gettimer();
+    //frame = 30;
+    //time = gettimer();
 }
 
 void Window::paintEvent()
@@ -428,9 +428,17 @@ void Window::doAction()
         }
 
     }
-    delay(1);
 }
 
+void Window::nextBlock()
+{
+    if (bd.addmask())
+    {
+        paintEvent();
+    }
+}
+
+/*
 void Window::drawWindow()
 {
     if (gettimer() > time + 1 / frame)
@@ -447,7 +455,8 @@ void Window::checkWindow()
 {
     if ((getwidth() != bd.w * iconw) || (getheight() != bd.h * iconh + facew))
     {
-        ResizeWindow();
+        resizeWindow();
     }
 }
+*/
 

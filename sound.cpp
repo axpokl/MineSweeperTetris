@@ -16,10 +16,16 @@ public:
     unsigned long sNew;
     unsigned long sSolve;
 
+    Sound();
     void initsound();
     void playsound(long id);
 
 };
+
+Sound::Sound()
+{
+    initsound();
+}
 
 void Sound::initsound()
 {

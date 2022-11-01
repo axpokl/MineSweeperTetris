@@ -9,7 +9,6 @@ using namespace std;
 
 int main()
 {
-
     if (SteamAPI_RestartAppIfNecessary(2204230))
     {
         return EXIT_FAILURE;
@@ -22,10 +21,10 @@ int main()
     while (iswin())
     {
         w.doAction();
-        w.bd.checkline();
-        w.bd.addmask();
-        w.drawWindow();
-        w.checkWindow();
+        w.nextBlock();
+        //w.drawWindow();
+        //w.checkWindow();
+        delay(1);
     }
     SteamAPI_Shutdown();
     return 0;
