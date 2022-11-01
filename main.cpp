@@ -11,11 +11,11 @@ int main()
 {
     if (SteamAPI_RestartAppIfNecessary(2204230))
     {
-        return EXIT_FAILURE;
+        printf("%d\n",EXIT_FAILURE);
     }
     if (!SteamAPI_Init())
     {
-        return EXIT_FAILURE;
+        printf("%d\n",EXIT_FAILURE);
     }
     Window w;
     while (iswin())

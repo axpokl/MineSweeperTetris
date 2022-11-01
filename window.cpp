@@ -38,7 +38,7 @@ public:
     Window();
     void initBMP();
     void resizeWindow();
-    void initWindow();
+    void initWindow(bool b);
     void paintEvent();
     void mousePressEvent(long x, long y, long key);
     void keyPressEvent(long key);
@@ -56,7 +56,7 @@ Window::Window()
     SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(long)hicon);
     settitle("MineSweeper Tetris");
     initBMP();
-    initWindow();
+    initWindow(false);
     paintEvent();
 
 }
@@ -120,9 +120,12 @@ void Window::resizeWindow()
     paintEvent();
 }
 
-void Window::initWindow()
+void Window::initWindow(bool b)
 {
-    bd.initbd();
+    if (b)
+    {
+        bd.initbd();
+    }
     resizeWindow();
     long w = getwidth() + getborderwidth() * 2;
     long h = getheight() + getborderheight() * 2;
@@ -278,7 +281,7 @@ void Window::mousePressEvent(long ex, long ey, long eb)
         if (ex < (3 * menuw))
         {
             bd.initbd(ex / menuw + 1);
-            initWindow();
+            initWindow(false);
         }
     }
     else if (ey - menuh < faceh)
@@ -329,38 +332,38 @@ void Window::keyPressEvent(long key)
         break;
     case k_left:
         bd.w--;
-        initWindow();
+        initWindow(true);
         break;
     case k_right:
         bd.w++ ;
-        initWindow();
+        initWindow(true);
         break;
     case k_up:
         bd.h--;
-        initWindow();
+        initWindow(true);
         break;
     case k_down:
         bd.h++ ;
-        initWindow();
+        initWindow(true);
         break;
     case k_sub:
         bd.n--;
-        initWindow();
+        initWindow(true);
         break;
     case k_add:
         bd.n++ ;
-        initWindow();
+        initWindow(true);
         break;
     case k_pgup:
         bd.maskj0 = min(bd.h - 4, bd.maskj0);
         bd.maskj0--;
         bd.maskj0 = max(1, bd.maskj0);
-        initWindow();
+        initWindow(true);
         break;
     case k_pgdn:
         bd.maskj0++ ;
         bd.maskj0 = min(bd.h - 4, bd.maskj0);
-        initWindow();
+        initWindow(true);
         break;
     case k_p:
         bd.pause();
@@ -384,15 +387,15 @@ void Window::keyPressEvent(long key)
         break;
     case k_1:
         bd.initbd(1);
-        initWindow();
+        initWindow(false);
         break;
     case k_2:
         bd.initbd(2);
-        initWindow();
+        initWindow(false);
         break;
     case k_3:
         bd.initbd(3);
-        initWindow();
+        initWindow(false);
         break;
     case k_8:
         bd.addline();
