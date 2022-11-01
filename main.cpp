@@ -17,6 +17,9 @@ int main()
     {
         printf("%d\n",EXIT_FAILURE);
     }
+
+    SteamUserStats()->SetAchievement("ACHIEVEMENT_TEST");
+
     Window w;
     while (iswin())
     {
@@ -26,6 +29,7 @@ int main()
         //w.checkWindow();
         delay(1);
     }
+    SteamUserStats()->ClearAchievement("ACHIEVEMENT_TEST");
     SteamAPI_Shutdown();
     return 0;
 }

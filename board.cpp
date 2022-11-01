@@ -12,6 +12,7 @@ public:
     long maskj;
     long maski;
     double time;
+    double pausetime;
     long mode;
     long sit;
     long line;
@@ -552,15 +553,15 @@ void Board::addline(bool b)
 
 bool Board::addmask()
 {
-    if (gettimer() > time + 5.0 / (level + 5.0))
+    if ((sit > 0) && (sit < 4))
     {
-        checkb = true;
-        checkline();
-        while (gettimer() > time + 5.0 / (level + 5.0))
+        if (gettimer() > time + 5.0 / (level + 5.0))
         {
-            time += 5.0 / (level + 5.0);
-            if ((sit > 0) && (sit < 4))
+            checkb = true;
+            checkline();
+            while (gettimer() > time + 5.0 / (level + 5.0))
             {
+                time += 5.0 / (level + 5.0);
                 maski++ ;
                 if (maski == w)
                 {
@@ -568,11 +569,15 @@ bool Board::addmask()
                     addline(true);
                 }
             }
+            checkb = true;
+            checkline();
+            checkdie();
+            return true;
         }
-        checkb = true;
-        checkline();
-        checkdie();
-        return true;
+    }
+    else
+    {
+        time = gettimer() - pausetime;
     }
     return false;
 }
@@ -824,5 +829,9 @@ void Board::pause()
     case 5:
         sit = 1;
         break;
+    }
+    if (sit == 5)
+    {
+        pausetime = gettimer() - time;
     }
 }
