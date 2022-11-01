@@ -309,16 +309,19 @@ void Window::mousePressEvent(long ex, long ey, long eb)
                 bd.resetbd(x, y);
             }
             bd.clickleft(x, y);
+            bd.checkline();
         }
         else if (eb == k_rmouse)
         {
             bd.clickright(x, y, true);
+            bd.checkline();
         }
         bd.solveb = true;
         while (bd.solveb)
         {
             bd.solve0();
         }
+        bd.checkline();
     }
     paintEvent();
 }
@@ -398,7 +401,7 @@ void Window::keyPressEvent(long key)
         initWindow(false);
         break;
     case k_8:
-        bd.addline();
+        bd.addline(true);
         break;
     case k_9:
         bd.delline(bd.h - 1);

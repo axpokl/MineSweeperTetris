@@ -49,7 +49,7 @@ public:
     bool setflag(long x, long y, bool sb);
     bool setblock(long x, long y, bool sb);
     void clickright(long x, long y, bool sb);
-    void addline();
+    void addline(bool b);
     void delline(long l);
     bool addmask();
     void checkdie();
@@ -459,8 +459,8 @@ bool Board::checkerror()
                 qstn[i][j] = false;
                 sit = 2;
                 result = true;
-                addline();
-                addline();
+                addline(false);
+                addline(true);
                 sd.playsound(sd.sError);
             }
         }
@@ -470,8 +470,14 @@ bool Board::checkerror()
 
 void Board::checkline()
 {
+    long j;
     if (checkb)
     {
+        solveb = true;
+        while (solveb)
+        {
+            solve0();
+        }
         bool result = false;
         long blckc;
         long flagc;
@@ -506,18 +512,18 @@ void Board::checkline()
             sd.playsound(sd.sSolve);
         }
         checkb = false;
-    }
-    solveb=true;
-    while (solveb)
-    {
-        solve0();
+        solveb = true;
+        while (solveb)
+        {
+            solve0();
+        }
     }
 }
 
-void Board::addline()
+void Board::addline(bool b)
 {
     maskj--;
-    j = maskj;
+    long j = maskj;
     for (i = 0; i < w; i++ )
     {
         mask[i][j] = false;
@@ -539,7 +545,7 @@ void Board::addline()
             }
         }
     }
-    checkb = true;
+    checkb = b;
     checkline();
     checkdie();
 }
@@ -550,18 +556,16 @@ bool Board::addmask()
     {
         checkb = true;
         checkline();
-        time += 5.0 / (level + 5.0);
-        if ((sit > 0) && (sit < 4))
+        while (gettimer() > time + 5.0 / (level + 5.0))
         {
-            maski++ ;
-            if (maski == w)
+            time += 5.0 / (level + 5.0);
+            if ((sit > 0) && (sit < 4))
             {
-                maski = 0;
-                addline();
-                solveb = true;
-                while (solveb)
+                maski++ ;
+                if (maski == w)
                 {
-                    solve0();
+                    maski = 0;
+                    addline(true);
                 }
             }
         }
@@ -575,7 +579,7 @@ bool Board::addmask()
 
 void Board::checkdie()
 {
-    if (maskj == 0 && maski > 0)
+    if (maskj == 0 && maski > 0 && sit != 4)
     {
         sit = 4;
         sd.playsound(sd.sLose);
@@ -645,9 +649,11 @@ void Board::delline(long l)
         {
             line++ ;
             line = min(line, 9999);
-            addline();
+            addline(false);
             sit = 3;
         }
+        checkb = true;
+        checkline();
         sd.playsound(sd.sNew);
     }
     while ((level + 1) * (level + 1) <= line)
