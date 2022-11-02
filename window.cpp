@@ -12,11 +12,11 @@ public:
     long digth;
 
     pbitmap pmenu_;
-    pbitmap pmenu[9];
+    pbitmap pmenu[13];
     pbitmap pface_;
     pbitmap pface[5];
     pbitmap picon_;
-    pbitmap picon[13];
+    pbitmap picon[9];
     pbitmap piconc;
     pbitmap piconq;
     pbitmap piconf;
@@ -51,6 +51,7 @@ public:
     void nextBlock();
     //void drawWindow();
     //void checkWindow();
+    int getWindowWidth();
 
 };
 
@@ -78,7 +79,7 @@ void Window::initBMP()
     digth = 23;
 
     pmenu_ = loadbmp("./bmp/menu.bmp");
-    for (long i = 0; i < 9; i++ )
+    for (long i = 0; i < 13; i++ )
     {
         pmenu[i] = createbmp(menuw, menuh);
         drawbmp(pmenu_, pmenu[i], 0, i * menuh, menuw, menuh, 0, 0, menuw, menuh);
@@ -90,10 +91,10 @@ void Window::initBMP()
         drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
     }
     picon_ = loadbmp("./bmp/icon.bmp");
-    for (long i = 0; i < 13; i++ )
+    for (long i = 0; i < 9; i++ )
     {
         picon[i] = createbmp(iconw, iconh);
-        drawbmp(picon_, picon[i], 0, (iconw - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
+        drawbmp(picon_, picon[i], 0, (16 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
     }
     piconc = createbmp(iconw, iconh);
     drawbmp(picon_, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
@@ -143,12 +144,29 @@ void Window::initWindow(bool b)
 
 void Window::paintMenu()
 {
+
+    drawbmp(pmenu[6], (getWindowWidth() - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenu[7], (getWindowWidth() - 1 * menuw), 0, menuw, menuh);
+    if (bd.sd.soundb)
+    {
+        drawbmp(pmenu[8], (getWindowWidth() - 4 * menuw), 0, menuw, menuh);
+    }
+    else
+    {
+        drawbmp(pmenu[10], (getWindowWidth() - 4 * menuw), 0, menuw, menuh);
+    }
+    if (bd.sd.musicb)
+    {
+        drawbmp(pmenu[9], (getWindowWidth() - 3 * menuw), 0, menuw, menuh);
+    }
+    else
+    {
+        drawbmp(pmenu[11], (getWindowWidth() - 3 * menuw), 0, menuw, menuh);
+    }
     drawbmp(pmenu[3], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu[4], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu[5], 2 * menuw, 0, menuw, menuh);
     if (bd.mode > 0) drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
-    drawbmp(pmenu[6], (bd.w * iconw - 2 * menuw), 0, menuw, menuh);
-    drawbmp(pmenu[7], (bd.w * iconw - 1 * menuw), 0, menuw, menuh);
 }
 
 void Window::paintFace()
@@ -156,22 +174,22 @@ void Window::paintFace()
     switch (bd.sit)
     {
     case 0:
-        drawbmp(pface[4], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
+        drawbmp(pface[4], (getWindowWidth() - facew) / 2, menuh, facew, faceh);
         break;
     case 1:
-        drawbmp(pface[4], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
+        drawbmp(pface[4], (getWindowWidth() - facew) / 2, menuh, facew, faceh);
         break;
     case 2:
-        drawbmp(pface[3], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
+        drawbmp(pface[3], (getWindowWidth() - facew) / 2, menuh, facew, faceh);
         break;
     case 3:
-        drawbmp(pface[1], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
+        drawbmp(pface[1], (getWindowWidth() - facew) / 2, menuh, facew, faceh);
         break;
     case 4:
-        drawbmp(pface[2], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
+        drawbmp(pface[2], (getWindowWidth() - facew) / 2, menuh, facew, faceh);
         break;
     case 5:
-        drawbmp(pface[0], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
+        drawbmp(pface[0], (getWindowWidth() - facew) / 2, menuh, facew, faceh);
         break;
     }
 }
@@ -222,7 +240,7 @@ void Window::paintNumber(long n, long l, long x, long y)
 void Window::paintDigit()
 {
     paintNumber(bd.line, 4, 0, menuh);
-    paintNumber(bd.level, 2, bd.w * iconw - 2 * digtw, menuh);
+    paintNumber(bd.level, 2, getWindowWidth() - 2 * digtw, menuh);
 }
 
 void Window::paintBoard()
@@ -295,10 +313,26 @@ void Window::mousePressEvent(long ex, long ey, long eb)
             bd.initbd(ex / menuw + 1);
             initWindow(false);
         }
+        else if (ex > getWindowWidth() - 4 * menuw)
+        {
+            switch ((ex - (getWindowWidth() - 4 * menuw)) / menuw)
+            {
+            case 0:
+                bd.sd.soundb = !bd.sd.soundb;
+                break;
+            case 1:
+                bd.sd.switchmusic();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            }
+        }
     }
     else if (ey - menuh < faceh)
     {
-        if ((ex > ((bd.w * iconw - facew) / 2)) && (ex < ((bd.w * iconw + facew) / 2)))
+        if ((ex > ((getWindowWidth() - facew) / 2)) && (ex < ((getWindowWidth() + facew) / 2)))
         {
             if (eb == k_lmouse)
             {
@@ -478,3 +512,7 @@ void Window::checkWindow()
 }
 */
 
+int Window::getWindowWidth()
+{
+    return bd.w * iconw;
+}

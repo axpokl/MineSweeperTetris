@@ -1,6 +1,3 @@
-#pragma once
-#ifndef DISP
-#define DISP
 #define __STDC_WANT_LIB_EXT1__ 1
 #include<string.h> 
 #include<windows.h>
@@ -652,48 +649,49 @@ extern "C" long GetMouseWinX290();
 extern "C" long GetMouseWinY291();
 extern "C" long GetMousePosX292();
 extern "C" long GetMousePosY293();
-extern "C" unsigned long LoadAudio294(const char* s);
-extern "C" void PlayAudio295(unsigned long id,const char* s,bool b);
-extern "C" void PlayAudio296(unsigned long id,const char* s);
-extern "C" void PlayAudio297(unsigned long id,bool b);
-extern "C" void PlayAudio298(unsigned long id);
-extern "C" void StopAudio299(unsigned long id);
-extern "C" void PauseAudio300(unsigned long id);
-extern "C" void ResumeAudio301(unsigned long id);
-extern "C" void ReleaseAudio302(unsigned long id);
-extern "C" unsigned long GetAudioVol303(unsigned long id);
-extern "C" void SetAudioVol304(unsigned long id,unsigned long v);
-extern "C" unsigned long GetAudioPos305(unsigned long id);
-extern "C" void SetAudioPos306(unsigned long id,unsigned long pos,bool b);
-extern "C" void SetAudioPos307(unsigned long id,unsigned long pos);
-extern "C" unsigned long GetAudioLen308(unsigned long id);
-extern "C" bool IsFile309(const char* s);
-extern "C" bool IsFileW310(const short int* s);
-extern "C" bool NewFile311(const char* s);
-extern "C" bool NewDir312(const char* s);
-extern "C" bool CopyFile313(const char* src,const char* des);
-extern "C" bool MoveFile314(const char* src,const char* des);
-extern "C" bool DeleteFile315(const char* s);
-extern "C" const char* GetFileName316(const char* s);
-extern "C" const short int* GetFileNameW317(const short int* s);
-extern "C" const char* GetFileDir318(const char* s);
-extern "C" const short int* GetFileDirW319(const short int* s);
-extern "C" void OpenFile320(const char* s);
-extern "C" void OpenFileW321(const short int* s);
-extern "C" void CloseFile322();
-extern "C" unsigned long GetFileLen323();
-extern "C" unsigned long GetFilePos324();
-extern "C" void SetFilePos325(unsigned long pos);
-extern "C" unsigned char GetByte326();
-extern "C" unsigned short GetWord327();
-extern "C" unsigned long GetLongword328();
-extern "C" unsigned long GetInteger329();
-extern "C" const char* GetPchar330();
-extern "C" const char* GetString331(unsigned long len);
-extern "C" const char* GetPara332();
-extern "C" const char* GetPara333(unsigned long n);
-extern "C" const short int* GetParaW334();
-extern "C" const short int* GetParaW335(unsigned long n);
+extern "C" unsigned long LoadAudio294(const char* s1,const char* s2);
+extern "C" unsigned long LoadAudio295(const char* s);
+extern "C" void PlayAudio296(unsigned long id,const char* s,bool b);
+extern "C" void PlayAudio297(unsigned long id,const char* s);
+extern "C" void PlayAudio298(unsigned long id,bool b);
+extern "C" void PlayAudio299(unsigned long id);
+extern "C" void StopAudio300(unsigned long id);
+extern "C" void PauseAudio301(unsigned long id);
+extern "C" void ResumeAudio302(unsigned long id);
+extern "C" void ReleaseAudio303(unsigned long id);
+extern "C" unsigned long GetAudioVol304(unsigned long id);
+extern "C" void SetAudioVol305(unsigned long id,unsigned long v);
+extern "C" unsigned long GetAudioPos306(unsigned long id);
+extern "C" void SetAudioPos307(unsigned long id,unsigned long pos,bool b);
+extern "C" void SetAudioPos308(unsigned long id,unsigned long pos);
+extern "C" unsigned long GetAudioLen309(unsigned long id);
+extern "C" bool IsFile310(const char* s);
+extern "C" bool IsFileW311(const short int* s);
+extern "C" bool NewFile312(const char* s);
+extern "C" bool NewDir313(const char* s);
+extern "C" bool CopyFile314(const char* src,const char* des);
+extern "C" bool MoveFile315(const char* src,const char* des);
+extern "C" bool DeleteFile316(const char* s);
+extern "C" const char* GetFileName317(const char* s);
+extern "C" const short int* GetFileNameW318(const short int* s);
+extern "C" const char* GetFileDir319(const char* s);
+extern "C" const short int* GetFileDirW320(const short int* s);
+extern "C" void OpenFile321(const char* s);
+extern "C" void OpenFileW322(const short int* s);
+extern "C" void CloseFile323();
+extern "C" unsigned long GetFileLen324();
+extern "C" unsigned long GetFilePos325();
+extern "C" void SetFilePos326(unsigned long pos);
+extern "C" unsigned char GetByte327();
+extern "C" unsigned short GetWord328();
+extern "C" unsigned long GetLongword329();
+extern "C" unsigned long GetInteger330();
+extern "C" const char* GetPchar331();
+extern "C" const char* GetString332(unsigned long len);
+extern "C" const char* GetPara333();
+extern "C" const char* GetPara334(unsigned long n);
+extern "C" const short int* GetParaW335();
+extern "C" const short int* GetParaW336(unsigned long n);
 
 long sgn(double x){return sgn1(x);}
 double abs(double a,double b){return abs2(a,b);}
@@ -988,46 +986,46 @@ long getmousewinx(){return GetMouseWinX290();}
 long getmousewiny(){return GetMouseWinY291();}
 long getmouseposx(){return GetMousePosX292();}
 long getmouseposy(){return GetMousePosY293();}
-unsigned long loadaudio(const char* s){return LoadAudio294(s);}
-void playaudio(unsigned long id,const char* s,bool b){PlayAudio295(id,s,b);}
-void playaudio(unsigned long id,const char* s){PlayAudio296(id,s);}
-void playaudio(unsigned long id,bool b){PlayAudio297(id,b);}
-void playaudio(unsigned long id){PlayAudio298(id);}
-void stopaudio(unsigned long id){StopAudio299(id);}
-void pauseaudio(unsigned long id){PauseAudio300(id);}
-void resumeaudio(unsigned long id){ResumeAudio301(id);}
-void releaseaudio(unsigned long id){ReleaseAudio302(id);}
-unsigned long getaudiovol(unsigned long id){return GetAudioVol303(id);}
-void setaudiovol(unsigned long id,unsigned long v){SetAudioVol304(id,v);}
-unsigned long getaudiopos(unsigned long id){return GetAudioPos305(id);}
-void setaudiopos(unsigned long id,unsigned long pos,bool b){SetAudioPos306(id,pos,b);}
-void setaudiopos(unsigned long id,unsigned long pos){SetAudioPos307(id,pos);}
-unsigned long getaudiolen(unsigned long id){return GetAudioLen308(id);}
-bool isfile(const char* s){return IsFile309(s);}
-bool isfilew(const short int* s){return IsFileW310(s);}
-bool newfile(const char* s){return NewFile311(s);}
-bool newdir(const char* s){return NewDir312(s);}
-bool copyfile(const char* src,const char* des){return CopyFile313(src,des);}
-bool movefile(const char* src,const char* des){return MoveFile314(src,des);}
-bool deletefile(const char* s){return DeleteFile315(s);}
-mystring getfilename(const char* s){return GetFileName316(s);}
-const short int* getfilenamew(const short int* s){return GetFileNameW317(s);}
-mystring getfiledir(const char* s){return GetFileDir318(s);}
-const short int* getfiledirw(const short int* s){return GetFileDirW319(s);}
-void openfile(const char* s){OpenFile320(s);}
-void openfilew(const short int* s){OpenFileW321(s);}
-void closefile(){CloseFile322();}
-unsigned long getfilelen(){return GetFileLen323();}
-unsigned long getfilepos(){return GetFilePos324();}
-void setfilepos(unsigned long pos){SetFilePos325(pos);}
-unsigned char getbyte(){return GetByte326();}
-unsigned short getword(){return GetWord327();}
-unsigned long getlongword(){return GetLongword328();}
-unsigned long getinteger(){return GetInteger329();}
-const char* getpchar(){return GetPchar330();}
-mystring getstring(unsigned long len){return GetString331(len);}
-mystring getpara(){return GetPara332();}
-mystring getpara(unsigned long n){return GetPara333(n);}
-const short int* getparaw(){return GetParaW334();}
-const short int* getparaw(unsigned long n){return GetParaW335(n);}
-#endif 
+unsigned long loadaudio(const char* s1,const char* s2){return LoadAudio294(s1,s2);}
+unsigned long loadaudio(const char* s){return LoadAudio295(s);}
+void playaudio(unsigned long id,const char* s,bool b){PlayAudio296(id,s,b);}
+void playaudio(unsigned long id,const char* s){PlayAudio297(id,s);}
+void playaudio(unsigned long id,bool b){PlayAudio298(id,b);}
+void playaudio(unsigned long id){PlayAudio299(id);}
+void stopaudio(unsigned long id){StopAudio300(id);}
+void pauseaudio(unsigned long id){PauseAudio301(id);}
+void resumeaudio(unsigned long id){ResumeAudio302(id);}
+void releaseaudio(unsigned long id){ReleaseAudio303(id);}
+unsigned long getaudiovol(unsigned long id){return GetAudioVol304(id);}
+void setaudiovol(unsigned long id,unsigned long v){SetAudioVol305(id,v);}
+unsigned long getaudiopos(unsigned long id){return GetAudioPos306(id);}
+void setaudiopos(unsigned long id,unsigned long pos,bool b){SetAudioPos307(id,pos,b);}
+void setaudiopos(unsigned long id,unsigned long pos){SetAudioPos308(id,pos);}
+unsigned long getaudiolen(unsigned long id){return GetAudioLen309(id);}
+bool isfile(const char* s){return IsFile310(s);}
+bool isfilew(const short int* s){return IsFileW311(s);}
+bool newfile(const char* s){return NewFile312(s);}
+bool newdir(const char* s){return NewDir313(s);}
+bool copyfile(const char* src,const char* des){return CopyFile314(src,des);}
+bool movefile(const char* src,const char* des){return MoveFile315(src,des);}
+bool deletefile(const char* s){return DeleteFile316(s);}
+mystring getfilename(const char* s){return GetFileName317(s);}
+const short int* getfilenamew(const short int* s){return GetFileNameW318(s);}
+mystring getfiledir(const char* s){return GetFileDir319(s);}
+const short int* getfiledirw(const short int* s){return GetFileDirW320(s);}
+void openfile(const char* s){OpenFile321(s);}
+void openfilew(const short int* s){OpenFileW322(s);}
+void closefile(){CloseFile323();}
+unsigned long getfilelen(){return GetFileLen324();}
+unsigned long getfilepos(){return GetFilePos325();}
+void setfilepos(unsigned long pos){SetFilePos326(pos);}
+unsigned char getbyte(){return GetByte327();}
+unsigned short getword(){return GetWord328();}
+unsigned long getlongword(){return GetLongword329();}
+unsigned long getinteger(){return GetInteger330();}
+const char* getpchar(){return GetPchar331();}
+mystring getstring(unsigned long len){return GetString332(len);}
+mystring getpara(){return GetPara333();}
+mystring getpara(unsigned long n){return GetPara334(n);}
+const short int* getparaw(){return GetParaW335();}
+const short int* getparaw(unsigned long n){return GetParaW336(n);}

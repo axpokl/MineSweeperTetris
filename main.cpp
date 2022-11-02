@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+
     if (SteamAPI_RestartAppIfNecessary(2204230))
     {
         printf("%d\n",EXIT_FAILURE);
@@ -17,7 +18,6 @@ int main()
     {
         printf("%d\n",EXIT_FAILURE);
     }
-
     SteamUserStats()->IndicateAchievementProgress("GEN_LAUNCH_GAME", 0, 0);
     SteamUserStats()->SetAchievement("GEN_LAUNCH_GAME");
 
@@ -28,9 +28,12 @@ int main()
         w.nextBlock();
         //w.drawWindow();
         //w.checkWindow();
+        w.bd.sd.checkmusic();
         delay(1);
     }
+
     SteamUserStats()->ClearAchievement("GEN_LAUNCH_GAME");
     SteamAPI_Shutdown();
+
     return 0;
 }
