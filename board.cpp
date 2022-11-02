@@ -33,6 +33,9 @@ public:
     bool mb;
     long tx;
     long ty;
+    bool dieb;
+    long diei;
+    long diej;
 
     Board();
     void initbd();
@@ -234,7 +237,7 @@ void Board::resetbd(long x, long y)
 void Board::solveblank()
 {
     solveb = false;
-    if (sit < 4)
+    if (sit > 0 && sit < 4)
     {
         for (long i = 0; i < w; i++ )
         {
@@ -448,6 +451,7 @@ void Board::solve2()
 
 bool Board::checkerror()
 {
+    dieb = false;
     bool result = false;
     for (long i = 0; i < w; i++ )
     {
@@ -455,6 +459,9 @@ bool Board::checkerror()
         {
             if (blck[i][j] && mine[i][j])
             {
+                dieb = true;
+                diei = i;
+                diej = j;
                 blck[i][j] = false;
                 flag[i][j] = true;
                 qstn[i][j] = false;
@@ -587,6 +594,10 @@ void Board::checkdie()
     if (maskj == 0 && maski > 0 && sit != 4)
     {
         sit = 4;
+        if (dieb)
+        {
+            blck[diei][diej] = true;
+        }
         sd.playsound(sd.sLose);
     }
 }
