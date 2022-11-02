@@ -11,22 +11,22 @@ public:
     long digtw;
     long digth;
 
-    pbitmap pmenu0;
+    pbitmap pmenu_;
     pbitmap pmenu[9];
-    pbitmap pface0;
+    pbitmap pface_;
     pbitmap pface[5];
-    pbitmap picon0;
-    pbitmap picon[9];
+    pbitmap picon_;
+    pbitmap picon[13];
     pbitmap piconc;
     pbitmap piconq;
     pbitmap piconf;
     pbitmap piconm;
     pbitmap picone;
     pbitmap piconn;
-    pbitmap pdigit0;
+    pbitmap pdigit_;
     pbitmap pdigit[10];
-    pbitmap pdigit1;
-    pbitmap pdigit2;
+    pbitmap pdigitmin;
+    pbitmap pdigitnul;
 
     HICON hicon;
 
@@ -39,6 +39,11 @@ public:
     void initBMP();
     void resizeWindow();
     void initWindow(bool b);
+    void paintMenu();
+    void paintFace();
+    void paintNumber(long n, long l, long x, long y);
+    void paintDigit();
+    void paintBoard();
     void paintEvent();
     void mousePressEvent(long x, long y, long key);
     void keyPressEvent(long key);
@@ -72,46 +77,46 @@ void Window::initBMP()
     digtw = 13;
     digth = 23;
 
-    pmenu0 = loadbmp("./bmp/menu.bmp");
+    pmenu_ = loadbmp("./bmp/menu.bmp");
     for (long i = 0; i < 9; i++ )
     {
         pmenu[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu0, pmenu[i], 0, i * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        drawbmp(pmenu_, pmenu[i], 0, i * menuh, menuw, menuh, 0, 0, menuw, menuh);
     }
-    pface0 = loadbmp("./bmp/face.bmp");
+    pface_ = loadbmp("./bmp/face.bmp");
     for (long i = 0; i < 5; i++ )
     {
         pface[i] = createbmp(facew, faceh);
-        drawbmp(pface0, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
+        drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
     }
-    picon0 = loadbmp("./bmp/icon.bmp");
-    for (long i = 0; i < 9; i++ )
+    picon_ = loadbmp("./bmp/icon.bmp");
+    for (long i = 0; i < 13; i++ )
     {
         picon[i] = createbmp(iconw, iconh);
-        drawbmp(picon0, picon[i], 0, (iconw - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
+        drawbmp(picon_, picon[i], 0, (iconw - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
     }
     piconc = createbmp(iconw, iconh);
-    drawbmp(picon0, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
     piconf = createbmp(iconw, iconh);
-    drawbmp(picon0, piconf, 0, iconh * 1, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconf, 0, iconh * 1, iconw, iconh, 0, 0, iconw, iconh);
     piconq = createbmp(iconw, iconh);
-    drawbmp(picon0, piconq, 0, iconh * 2, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconq, 0, iconh * 2, iconw, iconh, 0, 0, iconw, iconh);
     piconm = createbmp(iconw, iconh);
-    drawbmp(picon0, piconm, 0, iconh * 3, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconm, 0, iconh * 3, iconw, iconh, 0, 0, iconw, iconh);
     picone = createbmp(iconw, iconh);
-    drawbmp(picon0, picone, 0, iconh * 4, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, picone, 0, iconh * 4, iconw, iconh, 0, 0, iconw, iconh);
     piconn = createbmp(iconw, iconh);
-    drawbmp(picon0, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
-    pdigit0 = loadbmp("./bmp/digt.bmp");
+    drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
+    pdigit_ = loadbmp("./bmp/digt.bmp");
     for (long i = 0; i < 10; i++ )
     {
         pdigit[i] = createbmp(digtw, digth);
-        drawbmp(pdigit0, pdigit[i], 0, (11-i) * digth, digtw, digth, 0, 0, digtw, digth);
+        drawbmp(pdigit_, pdigit[i], 0, (11-i) * digth, digtw, digth, 0, 0, digtw, digth);
     }
-    pdigit1 = createbmp(digtw, digth);
-    drawbmp(pdigit0, pdigit1, 0, 0, digtw, digth, 0, 0, digtw, digth);
-    pdigit2 = createbmp(digtw, digth);
-    drawbmp(pdigit0, pdigit2, 0, digth, digtw, digth, 0, 0, digtw, digth);
+    pdigitmin = createbmp(digtw, digth);
+    drawbmp(pdigit_, pdigitmin, 0, 0, digtw, digth, 0, 0, digtw, digth);
+    pdigitnul = createbmp(digtw, digth);
+    drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
 }
 
 void Window::resizeWindow()
@@ -136,15 +141,18 @@ void Window::initWindow(bool b)
     //time = gettimer();
 }
 
-void Window::paintEvent()
+void Window::paintMenu()
 {
-    clear();
     drawbmp(pmenu[3], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu[4], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu[5], 2 * menuw, 0, menuw, menuh);
     if (bd.mode > 0) drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
     drawbmp(pmenu[6], (bd.w * iconw - 2 * menuw), 0, menuw, menuh);
     drawbmp(pmenu[7], (bd.w * iconw - 1 * menuw), 0, menuw, menuh);
+}
+
+void Window::paintFace()
+{
     switch (bd.sit)
     {
     case 0:
@@ -166,6 +174,59 @@ void Window::paintEvent()
         drawbmp(pface[0], (bd.w * iconw - facew) / 2, menuh, facew, faceh);
         break;
     }
+}
+
+void Window::paintNumber(long n, long l, long x, long y)
+{
+    long digit[10];
+    long dl = 0;
+    long dlm;
+    bool minb = (n < 0);
+    if (minb)
+    {
+        n = -n;
+    }
+    do
+    {
+        digit[dl] = n % 10;
+        n /= 10;
+        dl++;
+    }
+    while (n != 0);
+    if (minb)
+    {
+        dlm = max(dl + 1, l);
+    }
+    else
+    {
+        dlm = max(dl, l);
+    }
+
+    for (long di = 0; di < dlm; di++)
+    {
+        if ( di < dl)
+        {
+            drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * digtw, y, digtw, faceh);
+        }
+        else if (di == dl && minb)
+        {
+            drawbmp(pdigitmin, x + (dlm - di - 1) * digtw, y, digtw, faceh);
+        }
+        else
+        {
+            drawbmp(pdigitnul, x + (dlm - di - 1) * digtw, y, digtw, faceh);
+        }
+    }
+}
+
+void Window::paintDigit()
+{
+    paintNumber(bd.line, 4, 0, menuh);
+    paintNumber(bd.level, 2, bd.w * iconw - 2 * digtw, menuh);
+}
+
+void Window::paintBoard()
+{
     for (long i = 0; i < bd.w; i++ )
     {
         for (long j = 0; j < bd.h; j++ )
@@ -211,64 +272,15 @@ void Window::paintEvent()
             }
         }
     }
-    long digit[4];
-    long mr = bd.line;
-    digit[0] = abs(mr) % 10;
-    digit[1] = abs(mr) / 10 % 10;
-    digit[2] = abs(mr) / 100 % 10;
-    digit[3] = abs(mr) / 1000 % 10;
-    long d = 0;
-    long dr = 0;
-    if (digit[3] == 0)
-    {
-        d = 1;
-    }
-    if (digit[2] == 0 && d == 1)
-    {
-        d = 2;
-    }
-    if (digit[1] == 0 && d == 2)
-    {
-        d = 3;
-    }
-    for (dr = 0; dr < d; dr++ )
-    {
-        drawbmp(pdigit2, dr * digtw, menuh, digtw, faceh);
-    }
-    for (dr = d; dr < 4; dr++ )
-    {
-        drawbmp(pdigit[digit[3-dr]], dr * digtw, menuh, digtw, faceh);
-    }
-    if (mr < 0)
-    {
-        drawbmp(pdigit1, (d - 1) * digtw, menuh, digtw, faceh);
-    }
-    mr = bd.level;
-    digit[0] = abs(mr) % 10;
-    digit[1] = abs(mr) / 10 % 10;
-    digit[2] = abs(mr) / 100 % 10;
-    digit[3] = abs(mr) / 1000 % 10;
-    d = 0;
-    if (digit[3] == 0)
-    {
-        d = 1;
-    }
-    if (digit[2] == 0 && d == 1)
-    {
-        d = 2;
-    }
-    if (digit[1] == 0 && d == 2)
-    {
-        d = 3;
-    }
-    for (dr = 2; dr < d; dr++ )
-    {
-        drawbmp(pdigit2, bd.w * iconw - (4 - dr) * digtw, menuh, digtw, faceh);
-    }
-    for (dr = d; dr < 4; dr++ )
-    {
-        drawbmp(pdigit[digit[3-dr]], bd.w * iconw - (4 - dr) * digtw, menuh, digtw, faceh);
-    }
+}
+
+void Window::paintEvent()
+{
+    clear();
+    paintMenu();
+    paintFace();
+    paintDigit();
+    paintBoard();
     freshwin();
 }
 

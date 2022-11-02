@@ -1,8 +1,10 @@
-icon
+-icon
 keyboard/function
 cheat
-language
-readme
+-language
+-readme
+sound
+music
 steam achmnt
 steam highscore
 传github URL到steam
@@ -22,7 +24,7 @@ debug
 声音
 
 教程？
-关于！
+关于！(虫子ax_pokl）
 
 新游戏
 暂停

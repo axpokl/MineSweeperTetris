@@ -18,7 +18,8 @@ int main()
         printf("%d\n",EXIT_FAILURE);
     }
 
-    SteamUserStats()->SetAchievement("ACHIEVEMENT_TEST");
+    SteamUserStats()->IndicateAchievementProgress("GEN_LAUNCH_GAME", 0, 0);
+    SteamUserStats()->SetAchievement("GEN_LAUNCH_GAME");
 
     Window w;
     while (iswin())
@@ -29,7 +30,7 @@ int main()
         //w.checkWindow();
         delay(1);
     }
-    SteamUserStats()->ClearAchievement("ACHIEVEMENT_TEST");
+    SteamUserStats()->ClearAchievement("GEN_LAUNCH_GAME");
     SteamAPI_Shutdown();
     return 0;
 }
