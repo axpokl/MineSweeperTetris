@@ -27,9 +27,6 @@ public:
     bool blck[100][100];
     bool mask[100][100];
     long numb[100][100];
-    long i;
-    long j;
-    long k;
     long rx;
     long ry;
     long tx;
@@ -48,8 +45,8 @@ public:
     void checkline();
     void clickleft(long x, long y);
     void setqstn(long x, long y, bool sb);
-    bool setflag(long x, long y, bool sb);
-    bool setblock(long x, long y, bool sb);
+    void setflag(long x, long y, bool sb);
+    void setblock(long x, long y, bool sb);
     void clickright(long x, long y, bool sb);
     void addline(bool b);
     void delline(long l);
@@ -92,9 +89,9 @@ void Board::initbd()
     n = max(1, min(n, w - 1));
     maskj = min(h - 4, maskj0);
     maski = 0;
-    for (i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++ )
     {
-        for (j = 0; j < h; j++ )
+        for (long j = 0; j < h; j++ )
         {
             mine[i][j] = (i < n);
             flag[i][j] = false;
@@ -184,9 +181,9 @@ void Board::resetbd(long x, long y)
 {
     srand((unsigned)clock());
     delay(1);
-    for (i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++ )
     {
-        for (j = 0; j < h; j++ )
+        for (long j = 0; j < h; j++ )
         {
             rx = rand() % w;
             ry = j;
@@ -199,9 +196,9 @@ void Board::resetbd(long x, long y)
     ry = y;
     if (mine[x][y])
     {
-        for (i = 0; i < w; i++ )
+        for (long i = 0; i < w; i++ )
         {
-            j = y;
+            long j = y;
             if (!mine[i][j])
             {
                 rx = i;
@@ -211,12 +208,12 @@ void Board::resetbd(long x, long y)
         mine[rx][ry] = true;
         mine[x][y] = false;
     }
-    for (i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++ )
     {
-        for (j = 0; j < h; j++ )
+        for (long j = 0; j < h; j++ )
         {
             numb[i][j] = 0;
-            for (k = 0; k < 8; k++ )
+            for (long k = 0; k < 8; k++ )
             {
                 if (isok(k, i, j, tx, ty))
                 {
@@ -330,7 +327,7 @@ void Board::createrule()
                 ruletemp.y = j;
                 ruletemp.numbc = numb[i][j];
                 ruletemp.blckc = 0;
-                for (k = 0; k < 8; k++ )
+                for (long k = 0; k < 8; k++ )
                 {
                     if (isok(k, i, j, tx, ty))
                     {
@@ -423,7 +420,7 @@ void Board::comparerule()
     {
         i = rulemain[rulemaini].x;
         j = rulemain[rulemaini].y;
-        for (k = 0; k < 8; k++ )
+        for (long k = 0; k < 8; k++ )
         {
             if (isok(k, i, j, tx, ty))
             {
@@ -476,52 +473,55 @@ bool Board::checkerror()
 
 void Board::checkline()
 {
-    long j;
-    if (checkb)
+    if (sit < 4)
     {
-        solveb = true;
-        while (solveb)
+        long j;
+        if (checkb)
         {
-            solve0();
-        }
-        bool result = false;
-        long blckc;
-        long flagc;
-        j = h - 1;
-        while (j >= maskj)
-        {
-            blckc = 0;
-            flagc = 0;
-            for (i = 0; i < w; i++ )
+            solveb = true;
+            while (solveb)
             {
-                if (!blck[i][j])
+                solve0();
+            }
+            bool result = false;
+            long blckc;
+            long flagc;
+            j = h - 1;
+            while (j >= maskj)
+            {
+                blckc = 0;
+                flagc = 0;
+                for (long i = 0; i < w; i++ )
                 {
-                    blckc++ ;
+                    if (!blck[i][j])
+                    {
+                        blckc++ ;
+                    }
+                    if (flag[i][j])
+                    {
+                        flagc++ ;
+                    }
                 }
-                if (flag[i][j])
+                if (blckc == n || flagc == n)
                 {
-                    flagc++ ;
+                    result = true;
+                    delline(j);
+                }
+                else
+                {
+                    j--;
                 }
             }
-            if (blckc == n || flagc == n)
+            if (result)
             {
-                result = true;
-                delline(j);
+                sd.playsound(sd.sSolve);
             }
-            else
+            checkb = false;
+            solveb = true;
+            while (solveb)
             {
-                j--;
+                solve0();
             }
-        }
-        if (result)
-        {
-            sd.playsound(sd.sSolve);
-        }
-        checkb = false;
-        solveb = true;
-        while (solveb)
-        {
-            solve0();
         }
     }
 }
@@ -530,16 +530,16 @@ void Board::addline(bool b)
 {
     maskj--;
     long j = maskj;
-    for (i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++ )
     {
         mask[i][j] = false;
     }
-    for (i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++ )
     {
-        for (j = maskj + 1; j >= maskj; j--)
+        for (long j = maskj + 1; j >= maskj; j--)
         {
             numb[i][j] = 0;
-            for (k = 0; k < 8; k++ )
+            for (long k = 0; k < 8; k++ )
             {
                 if (isok(k, i, j, tx, ty))
                 {
@@ -602,78 +602,81 @@ void Board::checkdie()
 
 void Board::delline(long l)
 {
-    maskj++ ;
-    for (i = 0; i < w; i++ )
+    if (sit < 4)
     {
-        for (j = l; j >= 0; j--)
+        maskj++ ;
+        for (long i = 0; i < w; i++ )
         {
-            if (j == 0)
+            for (long j = l; j >= 0; j--)
             {
-                mine[i][j] = (i < n);
-                mask[i][j] = true;
-                flag[i][j] = false;
-                qstn[i][j] = false;
-                blck[i][j] = false;
-                numb[i][j] = 0;
-            }
-            else
-            {
-                mine[i][j] = mine[i][j - 1];
-                mask[i][j] = mask[i][j - 1];
-                flag[i][j] = flag[i][j - 1];
-                qstn[i][j] = qstn[i][j - 1];
-                blck[i][j] = blck[i][j - 1];
-                numb[i][j] = numb[i][j - 1];
+                if (j == 0)
+                {
+                    mine[i][j] = (i < n);
+                    mask[i][j] = true;
+                    flag[i][j] = false;
+                    qstn[i][j] = false;
+                    blck[i][j] = false;
+                    numb[i][j] = 0;
+                }
+                else
+                {
+                    mine[i][j] = mine[i][j - 1];
+                    mask[i][j] = mask[i][j - 1];
+                    flag[i][j] = flag[i][j - 1];
+                    qstn[i][j] = qstn[i][j - 1];
+                    blck[i][j] = blck[i][j - 1];
+                    numb[i][j] = numb[i][j - 1];
+                }
             }
         }
-    }
-    srand((unsigned)clock());
-    delay(1);
-    for (i = 0; i < w; i++ )
-    {
-        rx = rand() % w;
-        ry = 0;
-        j = 0;
-        bool mb = mine[rx][ry];
-        mine[rx][ry] = mine[i][j];
-        mine[i][j] = mb;
-    }
-    for (i = 0; i < w; i++ )
-    {
-        for (j = l + 1; j >= l; j--)
+        srand((unsigned)clock());
+        delay(1);
+        for (long i = 0; i < w; i++ )
         {
-            numb[i][j] = 0;
-            for (k = 0; k < 8; k++ )
+            rx = rand() % w;
+            ry = 0;
+            long j = 0;
+            bool mb = mine[rx][ry];
+            mine[rx][ry] = mine[i][j];
+            mine[i][j] = mb;
+        }
+        for (long i = 0; i < w; i++ )
+        {
+            for (long j = l + 1; j >= l; j--)
             {
-                if (isok(k, i, j, tx, ty))
+                numb[i][j] = 0;
+                for (long k = 0; k < 8; k++ )
                 {
-                    if (mine[tx][ty])
+                    if (isok(k, i, j, tx, ty))
                     {
-                        numb[i][j]++ ;
+                        if (mine[tx][ty])
+                        {
+                            numb[i][j]++ ;
+                        }
                     }
                 }
             }
         }
-    }
-    line++ ;
-    line = min(line, 9999);
-    if (maskj > h - 4)
-    {
-        for (long k = 0; k < 4; k++ )
+        line++ ;
+        line = min(line, 9999);
+        if (maskj > h - 4)
         {
-            line++ ;
-            line = min(line, 9999);
-            addline(false);
-            sit = 3;
+            for (long k = 0; k < 4; k++ )
+            {
+                line++ ;
+                line = min(line, 9999);
+                addline(false);
+                sit = 3;
+            }
+            checkb = true;
+            checkline();
+            sd.playsound(sd.sNew);
         }
-        checkb = true;
-        checkline();
-        sd.playsound(sd.sNew);
-    }
-    while ((level + 1) * (level + 1) <= line)
-    {
-        level++ ;
-        sd.playsound(sd.sWin);
+        while ((level + 1) * (level + 1) <= line)
+        {
+            level++ ;
+            sd.playsound(sd.sWin);
+        }
     }
 }
 
@@ -697,8 +700,8 @@ void Board::clickleft(long x, long y)
             {
                 sd.playsound(sd.sLeft);
             }
+            checkb = true;
         }
-        checkb = true;
     }
 }
 
@@ -711,105 +714,112 @@ void Board::setqstn(long x, long y, bool sb)
     }
 }
 
-bool Board::setflag(long x, long y, bool sb)
+void Board::setflag(long x, long y, bool sb)
 {
-    long qc = 0;
-    bool sc = false;
-    for (k = 0; k < 8; k++ )
+    if (sit < 4)
     {
-        if (isok(k, x, y, tx, ty))
-        {
-            if (!blck[tx][ty])
-            {
-                qc++ ;
-            }
-        }
-    }
-    if (qc == numb[x][y])
-    {
-        for (k = 0; k < 8; k++ )
+        long qc = 0;
+        bool sc = false;
+        for (long k = 0; k < 8; k++ )
         {
             if (isok(k, x, y, tx, ty))
             {
-                if (!blck[tx][ty] && !mask[tx][ty])
+                if (!blck[tx][ty])
                 {
-                    flag[tx][ty] = true;
-                    sc = true;
+                    qc++ ;
                 }
             }
         }
-        if (sb && sc)
+        if (qc == numb[x][y])
         {
-            sd.playsound(sd.sFlag);
+            for (long k = 0; k < 8; k++ )
+            {
+                if (isok(k, x, y, tx, ty))
+                {
+                    if (!blck[tx][ty] && !mask[tx][ty])
+                    {
+                        flag[tx][ty] = true;
+                        qstn[tx][ty] = false;
+                        sc = true;
+                    }
+                }
+            }
+            if (sb && sc)
+            {
+                sd.playsound(sd.sFlag);
+            }
         }
     }
-    return sc;
 }
 
-bool Board::setblock(long x, long y, bool sb)
+void Board::setblock(long x, long y, bool sb)
 {
-    long qn = 0;
-    long qq = 0;
-    bool sr = false;
-    for (k = 0; k < 8; k++ )
+    if (sit < 4)
     {
-        if (isok(k, x, y, tx, ty))
-        {
-            if (flag[tx][ty])
-            {
-                qn++ ;
-            }
-            if (qstn[tx][ty])
-            {
-                qq++ ;
-            }
-        }
-    }
-    if ((qn == numb[x][y]) || ((qn + qq) == numb[x][y]))
-    {
-        for (k = 0; k < 8; k++ )
+        long qn = 0;
+        long qq = 0;
+        bool sr = false;
+        for (long k = 0; k < 8; k++ )
         {
             if (isok(k, x, y, tx, ty))
             {
-                if (!blck[tx][ty] && !flag[tx][ty] && !mask[tx][ty])
+                if (flag[tx][ty])
                 {
-                    if (!qstn[tx][ty])
-                    {
-                        blck[tx][ty] = true;
-                        sr = true;
-                        solveb = true;
-                    }
-                    else
-                    {
-                        qstn[tx][ty] = false;
-                    }
+                    qn++ ;
+                }
+                if (qstn[tx][ty])
+                {
+                    qq++ ;
                 }
             }
         }
-        if (sb && sr)
+        if ((qn == numb[x][y]) || ((qn + qq) == numb[x][y]))
         {
-            sd.playsound(sd.sRight);
+            for (long k = 0; k < 8; k++ )
+            {
+                if (isok(k, x, y, tx, ty))
+                {
+                    if (!blck[tx][ty] && !flag[tx][ty] && !mask[tx][ty])
+                    {
+                        if (!qstn[tx][ty])
+                        {
+                            blck[tx][ty] = true;
+                            qstn[tx][ty] = false;
+                            sr = true;
+                            solveb = true;
+                        }
+                        else
+                        {
+                            qstn[tx][ty] = false;
+                        }
+                    }
+                }
+            }
+            if (sb && sr)
+            {
+                sd.playsound(sd.sRight);
+            }
         }
+        checkerror();
     }
-    return checkerror();
 }
 
 void Board::clickright(long x, long y, bool sb)
 {
     if (!mask[x][y])
     {
-        if (!blck[x][y] && !mask[x][y])
+        if (!flag[x][y])
         {
-            setqstn(x, y, sb);
-        }
-        else
-        {
-            if (!setflag(x, y, sb))
+            if (!blck[x][y])
             {
-                if (!setblock(x, y, sb))
-                {
-                    setflag(x, y, sb);
-                }
+                setqstn(x, y, sb);
+            }
+            else
+            {
+                setflag(x, y, sb);
+                setblock(x, y, sb);
+                setblock(x, y, sb);
+                setflag(x, y, sb);
             }
         }
         checkb = true;

@@ -52,7 +52,7 @@ public:
 
 Window::Window()
 {
-    createwin(bd.w * iconw, bd.h * iconh + faceh + menuh, 0xAFAFAF, 0xAFAFAF, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE);
+    createwin(bd.w * iconw, bd.h * iconh + faceh + menuh, 0xAFAFAF, 0xAFAFAF, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon=(HICON)LoadImage(GetModuleHandle(NULL),"MINESWEEPERTETEIS_ICON",IMAGE_ICON,0,0,0);
     SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(long)hicon);
     settitle("MineSweeper Tetris");
