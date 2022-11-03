@@ -4,7 +4,6 @@ class Board
 public:
 
     Sound sd;
-
     long w;
     long h;
     long n;
@@ -19,6 +18,9 @@ public:
     long level;
     bool solveb;
     bool checkb;
+    bool dieb;
+    long diex;
+    long diey;
     bool flag[100][100];
     bool qstn[100][100];
     bool mine[100][100];
@@ -30,12 +32,8 @@ public:
     long k;
     long rx;
     long ry;
-    bool mb;
     long tx;
     long ty;
-    bool dieb;
-    long diei;
-    long diej;
 
     Board();
     void initbd();
@@ -192,7 +190,7 @@ void Board::resetbd(long x, long y)
         {
             rx = rand() % w;
             ry = j;
-            mb = mine[rx][ry];
+            bool mb = mine[rx][ry];
             mine[rx][ry] = mine[i][j];
             mine[i][j] = mb;
         }
@@ -460,8 +458,8 @@ bool Board::checkerror()
             if (blck[i][j] && mine[i][j])
             {
                 dieb = true;
-                diei = i;
-                diej = j;
+                diex = i;
+                diey = j;
                 blck[i][j] = false;
                 flag[i][j] = true;
                 qstn[i][j] = false;
@@ -596,7 +594,7 @@ void Board::checkdie()
         sit = 4;
         if (dieb)
         {
-            blck[diei][diej] = true;
+            blck[diex][diey] = true;
         }
         sd.playsound(sd.sLose);
     }
@@ -636,7 +634,7 @@ void Board::delline(long l)
         rx = rand() % w;
         ry = 0;
         j = 0;
-        mb = mine[rx][ry];
+        bool mb = mine[rx][ry];
         mine[rx][ry] = mine[i][j];
         mine[i][j] = mb;
     }

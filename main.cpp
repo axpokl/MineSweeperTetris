@@ -26,8 +26,6 @@ int main()
     {
         w.doAction();
         w.nextBlock();
-        //w.drawWindow();
-        //w.checkWindow();
         w.bd.sd.checkmusic();
         delay(1);
     }

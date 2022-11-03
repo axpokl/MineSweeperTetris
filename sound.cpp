@@ -3,9 +3,6 @@ class Sound
 
 public:
 
-    bool soundb;
-    bool musicb;
-
     unsigned long sBlank;
     unsigned long sWin;
     unsigned long sLose;
@@ -15,8 +12,10 @@ public:
     unsigned long sFlag;
     unsigned long sNew;
     unsigned long sSolve;
-
     unsigned long sMusic[2];
+
+    bool soundb = true;
+    bool musicb = true;
     long musici;
     double musictime;
 
@@ -39,7 +38,6 @@ Sound::Sound()
 
 void Sound::initsound()
 {
-    soundb = true;
     sWin = loadaudio("./wav/Win.wav");
     sLose = loadaudio("./wav/Lose.wav");
     sError = loadaudio("./wav/Error.wav");
@@ -52,7 +50,6 @@ void Sound::initsound()
 
 void Sound::initmusic()
 {
-    musicb = true;
     sMusic[0] = loadaudio("./wav/music1.mid"," type sequencer");
     sMusic[1] = loadaudio("./wav/music2.mid"," type sequencer");
 }
