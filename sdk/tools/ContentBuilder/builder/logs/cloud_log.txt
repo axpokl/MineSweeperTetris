@@ -527,3 +527,28 @@
 [2022-11-02 20:20:44] [AppID 7] Successfully synced to ChangeNumber 0
 [2022-11-02 20:20:44] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
 [2022-11-02 20:20:44] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2022-11-03 20:00:46] [AppID 7] Starting sync (init,)
+[2022-11-03 20:00:46] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-11-03 20:00:46] [U:1:214053662] [AppID 7] Init cache request complete
+[2022-11-03 20:00:46] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-11-03 20:00:48] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2022-11-03 20:00:48] [AppID 7] Starting sync (eval,)
+[2022-11-03 20:00:48] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-11-03 20:00:48] [AppID 7] Need to sync from local change number '9602756408131795418' to global change number '14039753814869819993', but not attempting now
+[2022-11-03 20:00:48] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2022-11-03 20:00:48] [AppID 7] File is in sync sharedconfig.vdf
+[2022-11-03 20:00:48] [AppID 7] Eval complete
+[2022-11-03 20:00:48] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2022-11-03 20:00:48] [AppID 7] Starting sync (down,)
+[2022-11-03 20:00:49] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-11-03 20:00:49] [AppID 7] Attempting to sync from local change number '9602756408131795418' to global change number '14039753814869819993'
+[2022-11-03 20:00:49] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2022-11-03 20:00:49] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-singapore.storage.googleapis.com', path /1E/33/C2/0C/7/033_0_18684C10_A4AED_920.dat?GoogleAccessId=519723424899-j6o48knii6crh59hb86rnun8sbl7ph2a@developer.gserviceaccount.com&Expires=1667480450&Signature=QpBpsDHbziz2T6tfZPVTMh%2FlvlQrIRRyTMdQTkogVyTyJc9DNi%2BpoHB7YnMiid7GVjZnqJV%2BkNMLFDNUJZrNHvkJvui7VS7lrauBZh%2Bh2wbbtDS7efoPrO3h7TG0tGHR0XV6UUQ8ZT3Jbi8kIWQY8wSZUaUA0BGcvM4n6h5GXPY%3D, beginning. . .
+[2022-11-03 20:00:50] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-singapore.storage.googleapis.com' - Success.
+[2022-11-03 20:00:50] [AppID 7] Download OK for file serverbrowser_hist.vdf
+[2022-11-03 20:00:50] [AppID 7] Download complete, result OK
+[2022-11-03 20:00:50] [AppID 7] Successfully synced to ChangeNumber 14039753814869819993
+[2022-11-03 20:00:50] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2022-11-03 20:00:50] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'

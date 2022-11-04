@@ -34,19 +34,20 @@ public:
     long helpi = 0;
 
     Window();
-    void initBMP();
-    void initWindow(bool b);
-    void paintMenu();
-    void paintFace();
-    void paintNumber(long n, long l, long x, long y);
-    void paintDigit();
-    void paintBoard();
-    void paintHelp();
-    void paintEvent();
-    void mousePressEvent(long x, long y, long key);
-    void keyPressEvent(long key);
-    void doAction();
-    void nextBlock();
+    void initbmp();
+    void initwindow(bool b);
+    void paintmenu();
+    void paintface();
+    void paintnumber(long n, long l, long x, long y);
+    void paintdigit();
+    void paintboard();
+    void painthelp();
+    void paintevent();
+    void mouseevent(long x, long y, long key);
+    void keyevent(long key);
+    void doaction();
+    void nextblock();
+    void checkaudio();
 
 };
 
@@ -56,12 +57,12 @@ Window::Window()
     hicon=(HICON)LoadImage(GetModuleHandle(NULL),"MINESWEEPERTETEIS_ICON",IMAGE_ICON,0,0,0);
     SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(long)hicon);
     settitle("MineSweeper Tetris");
-    initBMP();
-    initWindow(false);
-    paintEvent();
+    initbmp();
+    initwindow(false);
+    paintevent();
 }
 
-void Window::initBMP()
+void Window::initbmp()
 {
     pmenu_ = loadbmp("./bmp/menu.bmp");
     pface_ = loadbmp("./bmp/face.bmp");
@@ -105,7 +106,7 @@ void Window::initBMP()
     drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
 }
 
-void Window::initWindow(bool b)
+void Window::initwindow(bool b)
 {
     if (b)
     {
@@ -120,10 +121,10 @@ void Window::initWindow(bool b)
         setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
     }
     setpos(max(0, (getscrwidth() - getwidth()) / 2), max(0, (getscrheight() - getheight()) / 2));
-    paintEvent();
+    paintevent();
 }
 
-void Window::paintMenu()
+void Window::paintmenu()
 {
 
     drawbmp(pmenu[6], (getwidth() - 2 * menuw), 0, menuw, menuh);
@@ -150,7 +151,7 @@ void Window::paintMenu()
     if (bd.mode > 0) drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
 }
 
-void Window::paintFace()
+void Window::paintface()
 {
     switch (bd.sit)
     {
@@ -175,7 +176,7 @@ void Window::paintFace()
     }
 }
 
-void Window::paintNumber(long n, long l, long x, long y)
+void Window::paintnumber(long n, long l, long x, long y)
 {
     long digit[10];
     long dl = 0;
@@ -218,13 +219,13 @@ void Window::paintNumber(long n, long l, long x, long y)
     }
 }
 
-void Window::paintDigit()
+void Window::paintdigit()
 {
-    paintNumber(bd.line, 4, 0, menuh);
-    paintNumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
+    paintnumber(bd.line, 4, 0, menuh);
+    paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
 }
 
-void Window::paintBoard()
+void Window::paintboard()
 {
     for (long i = 0; i < bd.w; i++ )
     {
@@ -273,21 +274,21 @@ void Window::paintBoard()
     }
 }
 
-void Window::paintHelp()
+void Window::painthelp()
 {
 }
 
-void Window::paintEvent()
+void Window::paintevent()
 {
     clear();
-    paintMenu();
-    paintFace();
-    paintDigit();
-    paintBoard();
+    paintmenu();
+    paintface();
+    paintdigit();
+    paintboard();
     freshwin();
 }
 
-void Window::mousePressEvent(long ex, long ey, long eb)
+void Window::mouseevent(long ex, long ey, long eb)
 {
     long x;
     long y;
@@ -296,7 +297,7 @@ void Window::mousePressEvent(long ex, long ey, long eb)
         if (ex < (3 * menuw))
         {
             bd.initbd(ex / menuw + 1);
-            initWindow(false);
+            initwindow(false);
         }
         else if (ex > getwidth() - 4 * menuw)
         {
@@ -354,10 +355,10 @@ void Window::mousePressEvent(long ex, long ey, long eb)
         }
         bd.checkline();
     }
-    paintEvent();
+    paintevent();
 }
 
-void Window::keyPressEvent(long key)
+void Window::keyevent(long key)
 {
     switch (key)
     {
@@ -366,38 +367,38 @@ void Window::keyPressEvent(long key)
         break;
     case k_left:
         bd.w--;
-        initWindow(true);
+        initwindow(true);
         break;
     case k_right:
         bd.w++ ;
-        initWindow(true);
+        initwindow(true);
         break;
     case k_up:
         bd.h--;
-        initWindow(true);
+        initwindow(true);
         break;
     case k_down:
         bd.h++ ;
-        initWindow(true);
+        initwindow(true);
         break;
     case k_sub:
         bd.n--;
-        initWindow(true);
+        initwindow(true);
         break;
     case k_add:
         bd.n++ ;
-        initWindow(true);
+        initwindow(true);
         break;
     case k_pgup:
         bd.maskj0 = min(bd.h - 4, bd.maskj0);
         bd.maskj0--;
         bd.maskj0 = max(1, bd.maskj0);
-        initWindow(true);
+        initwindow(true);
         break;
     case k_pgdn:
         bd.maskj0++ ;
         bd.maskj0 = min(bd.h - 4, bd.maskj0);
-        initWindow(true);
+        initwindow(true);
         break;
     case k_p:
         bd.pause();
@@ -421,15 +422,15 @@ void Window::keyPressEvent(long key)
         break;
     case k_1:
         bd.initbd(1);
-        initWindow(false);
+        initwindow(false);
         break;
     case k_2:
         bd.initbd(2);
-        initWindow(false);
+        initwindow(false);
         break;
     case k_3:
         bd.initbd(3);
-        initWindow(false);
+        initwindow(false);
         break;
     case k_8:
         bd.addline(true);
@@ -444,33 +445,38 @@ void Window::keyPressEvent(long key)
         bd.solve1();
         break;
     }
-    paintEvent();
+    paintevent();
 }
 
-void Window::doAction()
+void Window::doaction()
 {
     while (isnextmsg())
     {
         if (ismouseleft())
         {
-            mousePressEvent(getmouseposx(), getmouseposy(), k_lmouse);
+            mouseevent(getmouseposx(), getmouseposy(), k_lmouse);
         }
         if (ismouseright())
         {
-            mousePressEvent(getmouseposx(), getmouseposy(), k_rmouse);
+            mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
         }
         if (iskey())
         {
-            keyPressEvent(getkey());
+            keyevent(getkey());
         }
 
     }
 }
 
-void Window::nextBlock()
+void Window::nextblock()
 {
     if (bd.addmask())
     {
-        paintEvent();
+        paintevent();
     }
+}
+
+void Window::checkaudio()
+{
+    bd.sd.checkmusic();
 }

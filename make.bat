@@ -5,7 +5,7 @@ g++ -static -Os main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.ex
 :: -mwindows
 mkdir release
 copy MineSweeperTetris.exe release\MineSweeperTetris.exe
-copy steam_appid.txt release\steam_appid.txt
+::copy steam_appid.txt release\steam_appid.txt
 copy steam_api.dll release\steam_api.dll
 copy disp.dll release\disp.dll
 xcopy bmp\* release\bmp\ /y /r

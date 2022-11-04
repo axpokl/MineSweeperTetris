@@ -76,6 +76,7 @@ public:
 
 Board::Board()
 {
+    randomize();
     initbd(1);
 }
 
@@ -179,7 +180,6 @@ bool Board::isok(long k, long x, long y, long &tx, long &ty)
 
 void Board::resetbd(long x, long y)
 {
-    srand((unsigned)clock());
     delay(1);
     for (long i = 0; i < w; i++ )
     {
@@ -629,7 +629,6 @@ void Board::delline(long l)
                 }
             }
         }
-        srand((unsigned)clock());
         delay(1);
         for (long i = 0; i < w; i++ )
         {

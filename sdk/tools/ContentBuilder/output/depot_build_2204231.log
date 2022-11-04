@@ -1,24 +1,13 @@
-[2022-11-02 20:20:46]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-11-02 20:20:46]: Building file listing for depot 2204231 ...
-[2022-11-02 20:20:46]: Found 22 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-11-02 20:20:46]: Found 22 files (0 MB) for depot 2204231
-[2022-11-02 20:20:47]: Building depot 2204231, baseline manifest 1002935833565600807 (20 files)
-[2022-11-02 20:20:47]: Found 20 chunks ( 18 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-11-02 20:20:47]: Changes to baseline manifest 1002935833565600807 :
-[2022-11-02 20:20:47]: Changed: "bmp\menu.bmp" 4 kB size, 4 kB changed 
-[2022-11-02 20:20:47]: Changed: "disp.dll" 113 kB size, 113 kB changed 
-[2022-11-02 20:20:47]: Changed: "MineSweeperTetris.exe" 328 kB size, 328 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Error.wav" 22 kB size, 22 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Flag.wav" 10 kB size, 10 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Left.wav" 1 kB size, 1 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Lose.wav" 20 kB size, 20 kB changed 
-[2022-11-02 20:20:47]: Added  : "wav\music1.mid" 13 kB 
-[2022-11-02 20:20:47]: Added  : "wav\music2.mid" 6 kB 
-[2022-11-02 20:20:47]: Changed: "wav\New.wav" 30 kB size, 30 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Right.wav" 1 kB size, 1 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Solve.wav" 33 kB size, 33 kB changed 
-[2022-11-02 20:20:47]: Changed: "wav\Win.wav" 63 kB size, 63 kB changed 
-[2022-11-02 20:20:47]: Summary: 2 files added, 11 files changed, 0 files removed
-[2022-11-02 20:20:48]: Uploading new manifest to 208.64.201.182:80 (handle 461778311482360967, 2604 bytes).
-[2022-11-02 20:20:48]: Uploading 13 out of 13 missing chunks.
-[2022-11-02 20:20:51]: Success! New manifestID 8410679103731906481 created and 13 new chunks uploaded.
+[2022-11-03 20:00:51]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-11-03 20:00:51]: Building file listing for depot 2204231 ...
+[2022-11-03 20:00:51]: Found 22 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-11-03 20:00:51]: Found 22 files (0 MB) for depot 2204231
+[2022-11-03 20:00:52]: Building depot 2204231, baseline manifest 8410679103731906481 (22 files)
+[2022-11-03 20:00:52]: Found 20 chunks ( 20 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-11-03 20:00:52]: Changes to baseline manifest 8410679103731906481 :
+[2022-11-03 20:00:52]: Changed: "disp.dll" 114 kB size, 114 kB changed 
+[2022-11-03 20:00:52]: Changed: "MineSweeperTetris.exe" 325 kB size, 325 kB changed 
+[2022-11-03 20:00:52]: Summary: 0 files added, 2 files changed, 0 files removed
+[2022-11-03 20:00:52]: Uploading new manifest to 208.64.201.182:80 (handle 6946598787695219262, 2599 bytes).
+[2022-11-03 20:00:53]: Uploading 2 out of 2 missing chunks.
+[2022-11-03 20:00:55]: Success! New manifestID 3011393896738903006 created and 2 new chunks uploaded.
