@@ -1,4 +1,23 @@
-class Board
+class Blocks
+{
+
+public:
+
+    long sit;
+    long maskj0;
+    long maskj;
+    long maski;
+
+    bool flag[100][100];
+    bool qstn[100][100];
+    bool mine[100][100];
+    bool blck[100][100];
+    bool mask[100][100];
+    long numb[100][100];
+
+};
+
+class Board : public Blocks
 {
 
 public:
@@ -7,13 +26,11 @@ public:
     long w;
     long h;
     long n;
-    long maskj0;
-    long maskj;
-    long maski;
+
     double time;
     double pausetime;
     long mode;
-    long sit;
+
     long line;
     long level;
     bool solveb;
@@ -21,12 +38,7 @@ public:
     bool dieb;
     long diex;
     long diey;
-    bool flag[100][100];
-    bool qstn[100][100];
-    bool mine[100][100];
-    bool blck[100][100];
-    bool mask[100][100];
-    long numb[100][100];
+
     long rx;
     long ry;
     long tx;
@@ -446,25 +458,32 @@ void Board::solve2()
 
 bool Board::checkerror()
 {
-    dieb = false;
     bool result = false;
-    for (long i = 0; i < w; i++ )
+    if (sit != 2)
     {
-        for (long j = 0; j < h; j++ )
+        dieb = false;
+        for (long i = 0; i < w; i++ )
         {
-            if (blck[i][j] && mine[i][j])
+            for (long j = 0; j < h; j++ )
             {
-                dieb = true;
-                diex = i;
-                diey = j;
-                blck[i][j] = false;
-                flag[i][j] = true;
-                qstn[i][j] = false;
-                sit = 2;
-                result = true;
-                addline(false);
-                addline(true);
-                sd.playsound(sd.sError);
+                if (blck[i][j] && mine[i][j])
+                {
+                    dieb = true;
+                    diex = i;
+                    diey = j;
+                    blck[i][j] = false;
+                    flag[i][j] = true;
+                    qstn[i][j] = false;
+                    sit = 2;
+                    result = true;
+                    addline(false);
+                    addline(true);
+                    if (sit == 2)
+                    {
+                        sit = 1;
+                    }
+                    sd.playsound(sd.sError);
+                }
             }
         }
     }

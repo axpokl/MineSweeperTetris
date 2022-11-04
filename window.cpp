@@ -40,6 +40,7 @@ public:
     void paintface();
     void paintnumber(long n, long l, long x, long y);
     void paintdigit();
+    void paintblock(Blocks & bd0, long i, long j, long x, long y, long w, long h);
     void paintboard();
     void painthelp();
     void paintevent();
@@ -55,7 +56,7 @@ Window::Window()
 {
     createwin(bd.w * iconw, bd.h * iconh + faceh + menuh, 0xAFAFAF, 0xAFAFAF, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon=(HICON)LoadImage(GetModuleHandle(NULL),"MINESWEEPERTETEIS_ICON",IMAGE_ICON,0,0,0);
-    SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(long)hicon);
+    SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(LPARAM)hicon);
     settitle("MineSweeper Tetris");
     initbmp();
     initwindow(false);
@@ -114,7 +115,7 @@ void Window::initwindow(bool b)
     }
     if (helpb)
     {
-        setsize(600, 400 + menuh);
+        setsize(640, 480 + menuh);
     }
     else
     {
@@ -225,51 +226,56 @@ void Window::paintdigit()
     paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
 }
 
+void Window::paintblock(Blocks & bl, long i, long j, long x, long y, long w, long h)
+{
+    if (bl.sit == 5)
+    {
+        drawbmp(picone, x, y, w, h);
+    }
+    else if (bl.mask[i][j])
+    {
+        if (!(i >= bl.maski || j < bl.maskj - 1))
+        {
+            drawbmp(picone, x, y, w, h);
+        }
+    }
+    else if (bl.blck[i][j])
+    {
+        if (bl.mine[i][j])
+        {
+            drawbmp(piconm, x, y, w, h);
+        }
+        else
+        {
+            drawbmp(picon[bl.numb[i][j]], x, y, w, h);
+        }
+    }
+    else if (bl.flag[i][j])
+    {
+        drawbmp(piconf, x, y, w, h);
+    }
+    else if (bl.qstn[i][j])
+    {
+        drawbmp(piconq, x, y, w, h);
+    }
+    else if ((bl.sit == 4) && bl.mine[i][j])
+    {
+        drawbmp(piconn, x, y, w, h);
+    }
+    else
+    {
+        drawbmp(piconc, x, y, w, h);
+    }
+
+}
+
 void Window::paintboard()
 {
     for (long i = 0; i < bd.w; i++ )
     {
         for (long j = 0; j < bd.h; j++ )
         {
-            if (bd.sit == 5)
-            {
-                drawbmp(picone, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-            }
-            else if (bd.mask[i][j] && (i >= bd.maski || j < bd.maskj - 1))
-            {
-                ;
-            }
-            else if (bd.blck[i][j])
-            {
-                if (bd.mine[i][j])
-                {
-                    drawbmp(piconm, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-                }
-                else
-                {
-                    drawbmp(picon[bd.numb[i][j]], i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-                }
-            }
-            else if (bd.flag[i][j])
-            {
-                drawbmp(piconf, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-            }
-            else if (bd.qstn[i][j])
-            {
-                drawbmp(piconq, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-            }
-            else if ((bd.sit == 4) && bd.mine[i][j])
-            {
-                drawbmp(piconn, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-            }
-            else if (bd.mask[i][j])
-            {
-                drawbmp(picone, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-            }
-            else
-            {
-                drawbmp(piconc, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
-            }
+            paintblock(bd, i, j, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
         }
     }
 }
