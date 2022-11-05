@@ -29,7 +29,12 @@ public:
     pbitmap pdigitnul;
 
     const long bgc = 0xAFAFAF;
+
+    pbitmap pblock;
+    bool paintb;
+
     Board bd;
+    Block bp;
     HICON hicon;
     bool helpb = false;
     long helpi = 0;
@@ -123,6 +128,9 @@ void Window::initwindow(bool b)
         setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
     }
     setpos(max(0, (getscrwidth() - getwidth()) / 2), max(0, (getscrheight() - getheight()) / 2));
+    releasebmp(pblock);
+    pblock = createbmp(bd.w * iconw, bd.h * iconh, bgc);
+    paintb = true;
     paintevent();
 }
 
@@ -231,41 +239,45 @@ void Window::paintblock(Block & bl, long i, long j, long x, long y, long w, long
 {
     if (bl.sit == 5)
     {
-        drawbmp(picone, x, y, w, h);
+        drawbmp(picone, pblock, x, y, w, h);
     }
     else if (bl.mask[i][j])
     {
         if (!(i >= bl.maski || j < bl.maskj - 1))
         {
-            drawbmp(picone, x, y, w, h);
+            drawbmp(picone, pblock, x, y, w, h);
+        }
+        else
+        {
+            bar(pblock, x, y, w, h, bgc);
         }
     }
     else if (bl.blck[i][j])
     {
         if (bl.mine[i][j])
         {
-            drawbmp(piconm, x, y, w, h);
+            drawbmp(piconm, pblock, x, y, w, h);
         }
         else
         {
-            drawbmp(picon[bl.numb[i][j]], x, y, w, h);
+            drawbmp(picon[bl.numb[i][j]], pblock, x, y, w, h);
         }
     }
     else if (bl.flag[i][j])
     {
-        drawbmp(piconf, x, y, w, h);
+        drawbmp(piconf, pblock, x, y, w, h);
     }
     else if (bl.qstn[i][j])
     {
-        drawbmp(piconq, x, y, w, h);
+        drawbmp(piconq, pblock, x, y, w, h);
     }
     else if ((bl.sit == 4) && bl.mine[i][j])
     {
-        drawbmp(piconn, x, y, w, h);
+        drawbmp(piconn, pblock, x, y, w, h);
     }
     else
     {
-        drawbmp(piconc, x, y, w, h);
+        drawbmp(piconc, pblock, x, y, w, h);
     }
 
 }
@@ -276,9 +288,40 @@ void Window::paintboard()
     {
         for (long j = 0; j < bd.h; j++ )
         {
-            paintblock(bd, i, j, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
+            long diffb = false;
+            diffb = diffb || paintb;
+            diffb = diffb || (bd.sit != bp.sit);
+            diffb = diffb || ((bd.maski != bp.maski));
+            diffb = diffb || ((bd.maskj != bp.maskj) && (j == bd.maskj));
+            diffb = diffb || (bd.flag[i][j] != bp.flag[i][j]);
+            diffb = diffb || (bd.qstn[i][j] != bp.qstn[i][j]);
+            diffb = diffb || (bd.mine[i][j] != bp.mine[i][j]);
+            diffb = diffb || (bd.blck[i][j] != bp.blck[i][j]);
+            diffb = diffb || (bd.mask[i][j] != bp.mask[i][j]);
+            diffb = diffb || (bd.numb[i][j] != bp.numb[i][j]);
+            if (diffb)
+            {
+                paintblock(bd, i, j, i * iconw, j * iconh, iconw, iconh);
+            }
         }
     }
+    bp.sit = bd.sit;
+    bp.maski = bd.maski;
+    bp.maskj = bd.maskj;
+    for (long i = 0; i < bd.w; i++ )
+    {
+        for (long j = 0; j < bd.h; j++ )
+        {
+            bp.flag[i][j] = bd.flag[i][j];
+            bp.qstn[i][j] = bd.qstn[i][j];
+            bp.mine[i][j] = bd.mine[i][j];
+            bp.blck[i][j] = bd.blck[i][j];
+            bp.mask[i][j] = bd.mask[i][j];
+            bp.numb[i][j] = bd.numb[i][j];
+        }
+    }
+    drawbmp(pblock, (unsigned long)0, faceh + menuh, bd.w * iconw, bd.h * iconh);
+    paintb = false;
 }
 
 void Window::painthelp()

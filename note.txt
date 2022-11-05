@@ -9,6 +9,7 @@ steam achmnt
 steam highscore
 传github URL到steam
 
+增量刷新
 
 memory leak?
 windows xp test!

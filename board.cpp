@@ -1,12 +1,11 @@
-class Blocks
+class Block
 {
 
 public:
 
-    long sit;
-    long maskj0;
-    long maskj;
-    long maski;
+    long sit = 0;
+    long maskj = 0;
+    long maski = 0;
 
     bool flag[100][100];
     bool qstn[100][100];
@@ -17,7 +16,7 @@ public:
 
 };
 
-class Board : public Blocks
+class Board : public Block
 {
 
 public:
@@ -31,6 +30,7 @@ public:
     double pausetime;
     long mode;
 
+    long maskj0;
     long line;
     long level;
     bool solveb;

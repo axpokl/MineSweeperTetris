@@ -5,7 +5,7 @@ using namespace std;
 #include "sound.cpp"
 #include "board.cpp"
 #include "window.cpp"
-#include "steam.cpp"
+//#include "steam.cpp"
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
         msgbox("MineSweeper Tetris is already running!", NULL, MB_ICONINFORMATION);
         return 0;
     }
-    Steam st;
+    //Steam st;
     Window w;
     while (iswin())
     {
