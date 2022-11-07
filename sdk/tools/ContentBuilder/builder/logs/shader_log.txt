@@ -82,3 +82,9 @@
 
 
 [2022-11-05 10:28:14] Shader manager disabled due to running as steamcmd
+
+
+[2022-11-07 08:12:35] Shader manager disabled due to running as steamcmd
+
+
+[2022-11-07 10:47:02] Shader manager disabled due to running as steamcmd

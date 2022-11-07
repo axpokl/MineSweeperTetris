@@ -373,10 +373,15 @@ void Window::mouseevent(long ex, long ey, long eb)
             case 2:
                 if (helpi != 1)
                 {
+                    if (helpi == 0 && bd.sit != 5)
+                    {
+                        bd.pause();
+                    }
                     helpi = 1;
                 }
                 else
                 {
+                    bd.pause();
                     helpi = 0;
                 }
                 initwindow(false);
@@ -384,10 +389,15 @@ void Window::mouseevent(long ex, long ey, long eb)
             case 3:
                 if (helpi !=  - 1)
                 {
+                    if (helpi == 0 && bd.sit != 5)
+                    {
+                        bd.pause();
+                    }
                     helpi =  - 1;
                 }
                 else
                 {
+                    bd.pause();
                     helpi = 0;
                 }
                 initwindow(false);
@@ -442,6 +452,7 @@ void Window::mouseevent(long ex, long ey, long eb)
         if (ex > (aboutw - okw) / 2 && ex < (aboutw + okw) / 2 && ey > menuh + fontth + fonth * 5 && ey < menuh + fontth + fonth * 5 + okh)
         {
             helpi = 0;
+            bd.pause();
             initwindow(false);
         }
     }
