@@ -12,6 +12,8 @@ public:
     const long digth = 23;
     const long okw = 144;
     const long okh = 36;
+    const long btnw = 36;
+    const long btnh = 36;
     const long aboutw = 320;
     const long abouth = 240;
     const long helpw = 640;
@@ -38,11 +40,19 @@ public:
     pbitmap pdigitmin;
     pbitmap pdigitnul;
     pbitmap pok_;
+    pbitmap pok;
+    pbitmap pbtn;
+    pbitmap pcursor_;
+    pbitmap pclick_;
+    pbitmap pclickl;
+    pbitmap pclickr;
 
     const long cbg = 0xAFAFAF;
     const long cfg = 0xC0C0C0;
-    Board bd;
     HICON hicon;
+    Board bd;
+    Block bl;
+    const long maxhelp = 10;
     long helpi = 0;
     long cheati = 0;
 
@@ -54,6 +64,7 @@ public:
     void paintnumber(long n, long l, long x, long y);
     void paintdigit();
     void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
+    void paintboard(Block b, long x, long y);
     void paintboard();
     void painthelp();
     void paintevent();
@@ -84,6 +95,8 @@ void Window::initbmp()
     picon_ = loadbmp("./bmp/icon.bmp");
     pdigit_ = loadbmp("./bmp/digt.bmp");
     pok_ = loadbmp("./bmp/ok.bmp");
+    pcursor_ = loadbmp("./bmp/cursor.bmp");
+    pclick_ = loadbmp("./bmp/click.bmp");
     for (long i = 0; i < 13; i++)
     {
         pmenu[i] = createbmp(menuw, menuh);
@@ -122,6 +135,10 @@ void Window::initbmp()
     drawbmp(pdigit_, pdigitmin, 0, 0, digtw, digth, 0, 0, digtw, digth);
     pdigitnul = createbmp(digtw, digth);
     drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
+    pok = createbmp(okw, okh);
+    drawbmp(pok_, pok, 0, 0, okw, okh, 0, 0, okw, okh);
+    pbtn = createbmp(btnw, btnh);
+    drawbmp(pok_, pbtn, okh, 0, btnw, btnh, 0, 0, btnw, btnh);
 }
 
 void Window::initwindow(bool b)
@@ -298,15 +315,20 @@ void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long 
 
 }
 
-void Window::paintboard()
+void Window::paintboard(Block b, long x, long y)
 {
-    for (long i = 0; i < bd.w; i++)
+    for (long i = 0; i < b.w; i++)
     {
-        for (long j = 0; j < bd.h; j++)
+        for (long j = 0; j < b.h; j++)
         {
-            paintblock(bd, i, j, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
+            paintblock(b, i, j, i * iconw + x, j * iconh + menuh + y, iconw, iconh);
         }
     }
+}
+
+void Window::paintboard()
+{
+    paintboard(bd, 0, faceh);
 }
 
 void Window::painthelp()
@@ -314,6 +336,7 @@ void Window::painthelp()
     switch (helpi)
     {
     case 1:
+        paintboard(bl, 0, 0);
         break;
     case 2:
         break;
@@ -325,7 +348,7 @@ void Window::painthelp()
         drawtextxy(getwin(),"Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
         drawtextxy(getwin(),"Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
         drawtextxy(getwin(),"Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
-        drawbmp(pok_, getwin(), (aboutw - okw) / 2, menuh + fontth + fonth * 5, okw, okh);
+        drawbmp(pok, getwin(), (aboutw - okw) / 2, menuh + fontth + fonth * 5, okw, okh);
         drawtextxy(getwin(),"OK", 0, menuh + fontth + fonth * 5, aboutw, okh, black, cfg);
         break;
     }
@@ -578,6 +601,26 @@ void Window::keyevent(long key)
             }
         }
     }
+    else
+    {
+        if (key == k_enter || key == k_space)
+        {
+            helpi = 0;
+            bd.pause();
+            initwindow(false);
+        }
+        if (helpi > 0)
+        {
+            if (key == k_left && helpi > 1)
+            {
+                helpi--;
+            }
+            if (key == k_right && helpi < maxhelp)
+            {
+                helpi++;
+            }
+        }
+    }
     paintevent();
 }
 
@@ -596,6 +639,10 @@ void Window::doaction()
         if (iskey())
         {
             keyevent(getkey());
+        }
+        if (ismsg(WM_PAINT))
+        {
+            paintevent();
         }
     }
 }
