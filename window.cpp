@@ -2,14 +2,23 @@ class Window
 {
 public:
 
-    long menuw = 24;
-    long menuh = 24;
-    long facew = 24;
-    long faceh = 24;
-    long iconw = 16;
-    long iconh = 16;
-    long digtw = 13;
-    long digth = 23;
+    const long menuw = 24;
+    const long menuh = 24;
+    const long facew = 24;
+    const long faceh = 24;
+    const long iconw = 16;
+    const long iconh = 16;
+    const long digtw = 13;
+    const long digth = 23;
+    const long okw = 144;
+    const long okh = 36;
+    const long aboutw = 320;
+    const long abouth = 240;
+    const long helpw = 640;
+    const long helph = 480;
+    const long fontth = 64;
+    const long fontfh = 32;
+    const long fonth = 24;
 
     pbitmap pmenu_;
     pbitmap pmenu[13];
@@ -23,16 +32,19 @@ public:
     pbitmap piconm;
     pbitmap picone;
     pbitmap piconn;
+    pbitmap piconp;
     pbitmap pdigit_;
     pbitmap pdigit[10];
     pbitmap pdigitmin;
     pbitmap pdigitnul;
+    pbitmap pok_;
 
-    const long bgc = 0xAFAFAF;
+    const long cbg = 0xAFAFAF;
+    const long cfg = 0xC0C0C0;
     Board bd;
     HICON hicon;
-    bool helpb = false;
     long helpi = 0;
+    long cheati = 0;
 
     Window();
     void initbmp();
@@ -41,7 +53,7 @@ public:
     void paintface();
     void paintnumber(long n, long l, long x, long y);
     void paintdigit();
-    void paintblock(Block & bd0, long i, long j, long x, long y, long w, long h);
+    void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
     void paintboard();
     void painthelp();
     void paintevent();
@@ -55,10 +67,11 @@ public:
 
 Window::Window()
 {
-    createwin(bd.w * iconw, bd.h * iconh + faceh + menuh, bgc, bgc, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
-    hicon=(HICON)LoadImage(GetModuleHandle(NULL),"MINESWEEPERTETEIS_ICON",IMAGE_ICON,0,0,0);
-    SendMessage((HWND)gethwnd(),WM_SETICON,ICON_SMALL,(LPARAM)hicon);
+    createwin(bd.w * iconw, bd.h * iconh + faceh + menuh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitle("MineSweeper Tetris");
+    setfontname("Arial");
     initbmp();
     initwindow(false);
     paintevent();
@@ -70,17 +83,18 @@ void Window::initbmp()
     pface_ = loadbmp("./bmp/face.bmp");
     picon_ = loadbmp("./bmp/icon.bmp");
     pdigit_ = loadbmp("./bmp/digt.bmp");
-    for (long i = 0; i < 13; i++ )
+    pok_ = loadbmp("./bmp/ok.bmp");
+    for (long i = 0; i < 13; i++)
     {
         pmenu[i] = createbmp(menuw, menuh);
         drawbmp(pmenu_, pmenu[i], 0, i * menuh, menuw, menuh, 0, 0, menuw, menuh);
     }
-    for (long i = 0; i < 5; i++ )
+    for (long i = 0; i < 5; i++)
     {
         pface[i] = createbmp(facew, faceh);
         drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
     }
-    for (long i = 0; i < 9; i++ )
+    for (long i = 0; i < 9; i++)
     {
         picon[i] = createbmp(iconw, iconh);
         drawbmp(picon_, picon[i], 0, (16 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
@@ -97,7 +111,9 @@ void Window::initbmp()
     drawbmp(picon_, picone, 0, iconh * 4, iconw, iconh, 0, 0, iconw, iconh);
     piconn = createbmp(iconw, iconh);
     drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
-    for (long i = 0; i < 10; i++ )
+    piconp = createbmp(iconw, iconh);
+    drawbmp(picon_, piconp, 0, iconh * 6, iconw, iconh, 0, 0, iconw, iconh);
+    for (long i = 0; i < 10; i++)
     {
         pdigit[i] = createbmp(digtw, digth);
         drawbmp(pdigit_, pdigit[i], 0, (11-i) * digth, digtw, digth, 0, 0, digtw, digth);
@@ -110,17 +126,21 @@ void Window::initbmp()
 
 void Window::initwindow(bool b)
 {
-    if (b)
+    switch (helpi)
     {
-        bd.initbd();
-    }
-    if (helpb)
-    {
-        setsize(640, 480 + menuh);
-    }
-    else
-    {
+    case -1:
+        setsize(aboutw, abouth + menuh);
+        break;
+    case 0:
         setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
+        if (b)
+        {
+            bd.initbd();
+        }
+        break;
+    default:
+        setsize(helpw, helph + menuh);
+        break;
     }
     setpos(max(0, (getscrwidth() - getwidth()) / 2), max(0, (getscrheight() - getheight()) / 2));
     paintevent();
@@ -131,6 +151,10 @@ void Window::paintmenu()
 
     drawbmp(pmenu[6], (getwidth() - 2 * menuw), 0, menuw, menuh);
     drawbmp(pmenu[7], (getwidth() - 1 * menuw), 0, menuw, menuh);
+    if (cheati == 2)
+    {
+        drawbmp(pmenu[12], (getwidth() - 5 * menuw), 0, menuw, menuh);
+    }
     if (bd.sd.soundb)
     {
         drawbmp(pmenu[8], (getwidth() - 4 * menuw), 0, menuw, menuh);
@@ -147,10 +171,14 @@ void Window::paintmenu()
     {
         drawbmp(pmenu[11], (getwidth() - 3 * menuw), 0, menuw, menuh);
     }
+
     drawbmp(pmenu[3], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu[4], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu[5], 2 * menuw, 0, menuw, menuh);
-    if (bd.mode > 0) drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
+    if (bd.mode > 0)
+    {
+        drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
+    }
 }
 
 void Window::paintface()
@@ -203,10 +231,9 @@ void Window::paintnumber(long n, long l, long x, long y)
     {
         dlm = max(dl, l);
     }
-
     for (long di = 0; di < dlm; di++)
     {
-        if ( di < dl)
+        if (di < dl)
         {
             drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * digtw, y, digtw, faceh);
         }
@@ -227,11 +254,12 @@ void Window::paintdigit()
     paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
 }
 
-void Window::paintblock(Block & bl, long i, long j, long x, long y, long w, long h)
+void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long h)
 {
     if (bl.sit == 5)
     {
-        drawbmp(picone, x, y, w, h);
+        drawbmp(piconp, x, y, w, h);
+        bar(x, y, w - 1, h - 1, cbg);
     }
     else if (bl.mask[i][j])
     {
@@ -272,9 +300,9 @@ void Window::paintblock(Block & bl, long i, long j, long x, long y, long w, long
 
 void Window::paintboard()
 {
-    for (long i = 0; i < bd.w; i++ )
+    for (long i = 0; i < bd.w; i++)
     {
-        for (long j = 0; j < bd.h; j++ )
+        for (long j = 0; j < bd.h; j++)
         {
             paintblock(bd, i, j, i * iconw, j * iconh + faceh + menuh, iconw, iconh);
         }
@@ -283,15 +311,40 @@ void Window::paintboard()
 
 void Window::painthelp()
 {
+    switch (helpi)
+    {
+    case 1:
+        break;
+    case 2:
+        break;
+    case -1:
+        setfontheight(fontfh);
+        drawtextxy(getwin(),"About", 0, menuh, aboutw, fontth, black, cbg);
+        setfontheight(fonth);
+        drawtextxy(getwin(),"MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(),"Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(),"Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(),"Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+        drawbmp(pok_, getwin(), (aboutw - okw) / 2, menuh + fontth + fonth * 5, okw, okh);
+        drawtextxy(getwin(),"OK", 0, menuh + fontth + fonth * 5, aboutw, okh, black, cfg);
+        break;
+    }
 }
 
 void Window::paintevent()
 {
     clear();
     paintmenu();
-    paintface();
-    paintdigit();
-    paintboard();
+    if (helpi != 0)
+    {
+        painthelp();
+    }
+    else
+    {
+        paintface();
+        paintdigit();
+        paintboard();
+    }
     freshwin();
 }
 
@@ -303,6 +356,7 @@ void Window::mouseevent(long ex, long ey, long eb)
     {
         if (ex < (3 * menuw))
         {
+            helpi = 0;
             bd.initbd(ex / menuw + 1);
             initwindow(false);
         }
@@ -317,140 +371,201 @@ void Window::mouseevent(long ex, long ey, long eb)
                 bd.sd.switchmusic();
                 break;
             case 2:
+                if (helpi != 1)
+                {
+                    helpi = 1;
+                }
+                else
+                {
+                    helpi = 0;
+                }
+                initwindow(false);
                 break;
             case 3:
+                if (helpi !=  - 1)
+                {
+                    helpi =  - 1;
+                }
+                else
+                {
+                    helpi = 0;
+                }
+                initwindow(false);
                 break;
             }
         }
     }
-    else if (ey - menuh < faceh)
+    else if (helpi == 0)
     {
-        if ((ex > ((getwidth() - facew) / 2)) && (ex < ((getwidth() + facew) / 2)))
+        if (ey - menuh < faceh)
         {
+            if ((ex > ((getwidth() - facew) / 2)) && (ex < ((getwidth() + facew) / 2)))
+            {
+                if (eb == k_lmouse)
+                {
+                    bd.initbd();
+                }
+                else if (eb == k_rmouse)
+                {
+                    bd.pause();
+                }
+            }
+        }
+        else if (bd.sit < 4)
+        {
+            x = ex / iconw;
+            y = (ey - faceh - menuh) / iconh;
             if (eb == k_lmouse)
             {
-                bd.initbd();
+                if (bd.sit == 0 && y >= bd.maskj)
+                {
+                    bd.resetbd(x, y);
+                }
+                bd.clickleft(x, y);
+                bd.checkline();
             }
             else if (eb == k_rmouse)
             {
-                bd.pause();
+                bd.clickright(x, y, true);
+                bd.checkline();
             }
+            bd.solveb = true;
+            while (bd.solveb)
+            {
+                bd.solve0();
+            }
+            bd.checkline();
         }
     }
-    else if (bd.sit < 4)
+    else if (helpi == -1)
     {
-        x = ex / iconw;
-        y = (ey - faceh-menuh) / iconh;
-        if (eb == k_lmouse)
+        if (ex > (aboutw - okw) / 2 && ex < (aboutw + okw) / 2 && ey > menuh + fontth + fonth * 5 && ey < menuh + fontth + fonth * 5 + okh)
         {
-            if (bd.sit == 0 && y >= bd.maskj)
-            {
-                bd.resetbd(x, y);
-            }
-            bd.clickleft(x, y);
-            bd.checkline();
+            helpi = 0;
+            initwindow(false);
         }
-        else if (eb == k_rmouse)
-        {
-            bd.clickright(x, y, true);
-            bd.checkline();
-        }
-        bd.solveb = true;
-        while (bd.solveb)
-        {
-            bd.solve0();
-        }
-        bd.checkline();
     }
     paintevent();
 }
 
 void Window::keyevent(long key)
 {
+    if (cheati == 1)
+    {
+        if (key == k_x)
+        {
+            cheati = 2;
+        }
+        else
+        {
+            cheati = 0;
+        }
+    }
     switch (key)
     {
     case k_esc:
         closewin();
         break;
-    case k_left:
-        bd.w--;
-        initwindow(true);
-        break;
-    case k_right:
-        bd.w++ ;
-        initwindow(true);
-        break;
-    case k_up:
-        bd.h--;
-        initwindow(true);
-        break;
-    case k_down:
-        bd.h++ ;
-        initwindow(true);
-        break;
-    case k_sub:
-        bd.n--;
-        initwindow(true);
-        break;
-    case k_add:
-        bd.n++ ;
-        initwindow(true);
-        break;
-    case k_pgup:
-        bd.maskj0 = min(bd.h - 4, bd.maskj0);
-        bd.maskj0--;
-        bd.maskj0 = max(1, bd.maskj0);
-        initwindow(true);
-        break;
-    case k_pgdn:
-        bd.maskj0++ ;
-        bd.maskj0 = min(bd.h - 4, bd.maskj0);
-        initwindow(true);
-        break;
-    case k_p:
-        bd.pause();
-        break;
-    case k_s:
-        bd.solve2();
-        break;
-    case k_d:
-        bd.solveb = true;
-        while (bd.solveb)
-        {
-            bd.solve1();
-        }
-        break;
-    case k_f:
-        bd.solveb = true;
-        while (bd.solveb)
-        {
-            bd.solveblank();
-        }
-        break;
     case k_1:
+        helpi = 0;
         bd.initbd(1);
         initwindow(false);
         break;
     case k_2:
+        helpi = 0;
         bd.initbd(2);
         initwindow(false);
         break;
     case k_3:
+        helpi = 0;
         bd.initbd(3);
         initwindow(false);
         break;
-    case k_8:
-        bd.addline(true);
+    case k_a:
+        if (cheati == 0)
+        {
+            cheati = 1;
+        }
         break;
-    case k_9:
-        bd.delline(bd.h - 1);
-        break;
-    case k_0:
-        bd.level++ ;
-        break;
-    case k_space:
-        bd.solve1();
-        break;
+    }
+    if (helpi == 0)
+    {
+        switch (key)
+        {
+        case k_left:
+            bd.w--;
+            initwindow(true);
+            break;
+        case k_right:
+            bd.w++ ;
+            initwindow(true);
+            break;
+        case k_up:
+            bd.h--;
+            initwindow(true);
+            break;
+        case k_down:
+            bd.h++ ;
+            initwindow(true);
+            break;
+        case k_sub:
+            bd.n--;
+            initwindow(true);
+            break;
+        case k_add:
+            bd.n++ ;
+            initwindow(true);
+            break;
+        case k_pgup:
+            bd.maskj0 = min(bd.h - 4, bd.maskj0);
+            bd.maskj0--;
+            bd.maskj0 = max(1, bd.maskj0);
+            initwindow(true);
+            break;
+        case k_pgdn:
+            bd.maskj0++ ;
+            bd.maskj0 = min(bd.h - 4, bd.maskj0);
+            initwindow(true);
+            break;
+        case k_p:
+            bd.pause();
+            break;
+        }
+        if (cheati == 2)
+        {
+            switch (key)
+            {
+            case k_s:
+                bd.solve2();
+                break;
+            case k_d:
+                bd.solveb = true;
+                while (bd.solveb)
+                {
+                    bd.solve1();
+                }
+                break;
+            case k_f:
+                bd.solveb = true;
+                while (bd.solveb)
+                {
+                    bd.solveblank();
+                }
+                break;
+            case k_8:
+                bd.addline(true);
+                break;
+            case k_9:
+                bd.delline(bd.h - 1);
+                break;
+            case k_0:
+                bd.level++ ;
+                break;
+            case k_space:
+                bd.solve1();
+                break;
+            }
+        }
     }
     paintevent();
 }

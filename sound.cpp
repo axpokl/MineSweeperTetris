@@ -89,7 +89,7 @@ void Sound::checkmusic()
             if (getaudiopos(sMusic[musici]) < getaudiolen(sMusic[musici]))
             {
 
-                musictime += 5;
+                musictime += 10;
             }
             else
             {

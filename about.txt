@@ -1,0 +1,8 @@
+About
+
+MineSwepper Tetris (32-bit)
+version 0.1
+Made by ax_pokl
+
+GPL-3.0 license
+Steam version

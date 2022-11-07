@@ -1,0 +1,75 @@
+try steam achievement
+separate cpp
++ checkdie
++ checkline
++ solve0
++ paint and others
+
+board， sound增加构造函数
+checkline移动到addmask
+addmaskbool
+移除drawWindow
+移除checkwindow
+添加nextBlock，只在addmask true情况下paintEvent
+移动delay(1)
+
+disable steam
+initWindow(b)
+
+addline bool
+solve0 before and after check
+long j
+sit != 4
+
+SetAchievement
+pausetime
+
+separate paintevent
+
+change wav and mid
+change display (add loadaudio2)
++initmusic
++playmusic
++checkmusic
+
+adjust picon
+adjust pmenu
+paintMenu
+paintBoard
++switchmusic
++getWindowWidth
+ (ex > getWindowWidth() - 4 * menuw)
+
+dieb
+diei
+diej
+blck
+piconm
+solveblank sit>0
+
+-resizewindow
+-getwindowwidth
+code optimze
+
+i,j,k --> long in function
+qstn[tx][ty] = false;
+
+setflag(x, y, sb);
+setblock(x, y, sb);
+setblock(x, y, sb);
+setflag(x, y, sb);
+
++winclass
+
+separate steam
+randomize
+checkaudio
+-steam_appid
+
++blocks
+check error sit !=2
+
+window_bl
++initbl
++calcnumb
++randmine
