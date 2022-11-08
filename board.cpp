@@ -32,7 +32,6 @@ public:
 Block::Block()
 {
     initbl();
-    calcnumb();
 }
 
 void Block::initbl()
@@ -62,6 +61,7 @@ void Block::initbl()
     blck[2][2] = true;
     blck[1][3] = true;
     blck[2][3] = true;
+    calcnumb();
 }
 
 void Block::calcnumb()

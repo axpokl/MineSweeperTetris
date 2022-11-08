@@ -65,6 +65,7 @@ public:
     void paintdigit();
     void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
     void paintboard(Block b, long x, long y);
+    void paintboard(Block b, long x, long y, long cx, long cy);
     void paintboard();
     void painthelp();
     void paintevent();
@@ -315,6 +316,7 @@ void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long 
 
 }
 
+
 void Window::paintboard(Block b, long x, long y)
 {
     for (long i = 0; i < b.w; i++)
@@ -326,6 +328,13 @@ void Window::paintboard(Block b, long x, long y)
     }
 }
 
+void Window::paintboard(Block b, long x, long y, long cx, long cy)
+{
+    paintboard(b, x, y);
+    drawbmp(pcursor_, cx * iconw + x + iconw / 2, cy * iconh + menuh + y + iconh / 2, silver);
+}
+
+
 void Window::paintboard()
 {
     paintboard(bd, 0, faceh);
@@ -336,7 +345,10 @@ void Window::painthelp()
     switch (helpi)
     {
     case 1:
-        paintboard(bl, 0, 0);
+        bl.initbl();
+        paintboard(bl, 0, 0, 1, 0);
+        bl.blck[1][0] = true;
+        paintboard(bl, 200, 0, 1, 0);
         break;
     case 2:
         break;
