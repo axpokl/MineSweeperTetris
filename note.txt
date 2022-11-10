@@ -1,9 +1,9 @@
 -icon
 keyboard/function
-cheat
+-cheat
 -language
 -readme
-sound
+-sound
 music
 steam achmnt
 steam highscore

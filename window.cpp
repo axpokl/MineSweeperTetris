@@ -21,6 +21,7 @@ public:
     const long fontth = 64;
     const long fontfh = 32;
     const long fonth = 24;
+    const long okh_ = abouth - (fontth + fonth * 4);
 
     pbitmap pmenu_;
     pbitmap pmenu[13];
@@ -69,6 +70,8 @@ public:
     void paintboard();
     void painthelp();
     void paintevent();
+    bool isin(long ex, long ey, long x, long y, long w, long h);
+    void sethelp(long helpi_);
     void mouseevent(long x, long y, long key);
     void keyevent(long key);
     void doaction();
@@ -84,6 +87,7 @@ Window::Window()
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitle("MineSweeper Tetris");
     setfontname("Arial");
+    setfontheight(fonth);
     initbmp();
     initwindow(false);
     paintevent();
@@ -137,9 +141,9 @@ void Window::initbmp()
     pdigitnul = createbmp(digtw, digth);
     drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
     pok = createbmp(okw, okh);
-    drawbmp(pok_, pok, 0, 0, okw, okh, 0, 0, okw, okh);
+    drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
     pbtn = createbmp(btnw, btnh);
-    drawbmp(pok_, pbtn, okh, 0, btnw, btnh, 0, 0, btnw, btnh);
+    drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
 }
 
 void Window::initwindow(bool b)
@@ -342,13 +346,52 @@ void Window::paintboard()
 
 void Window::painthelp()
 {
+
     switch (helpi)
     {
     case 1:
-        bl.initbl();
-        paintboard(bl, 0, 0, 1, 0);
-        bl.blck[1][0] = true;
-        paintboard(bl, 200, 0, 1, 0);
+        for (long i = 0; i < 4; i++)
+        {
+            for (long j = 0; j < 3; j++)
+            {
+                bl.initbl();
+                switch (i)
+                {
+                case 1:
+                    switch (j)
+                    {
+                    case 0:
+                        bl.blck[1][min(j, 1)] = true;
+                    case 1:
+                        bl.flag[1][min(j, 1)] = true;
+                    case 2:
+                        bl.qstn[1][min(j, 1)] = true;
+                    }
+                    break;
+                case 2:
+                    switch (j)
+                    {
+                    case 0:
+                        bl.qstn[1][min(j, 1)] = true;
+                    case 1:
+                        bl.qstn[1][min(j, 1)] = true;
+                    case 2:
+                        bl.qstn[1][min(j, 1)] = true;
+                    }
+                    break;
+                case 3:
+                    switch (j)
+                    {
+                    case 0:
+                        bl.blck[1][min(j, 1)] = true;
+                    case 1:
+                        bl.flag[1][min(j, 1)] = true;
+                    }
+                    break;
+                }
+                paintboard(bl, helpw / 8 * (i * 2 + 1) - bl.w * iconw / 2, (helph - okh_) / 6 * (j * 2 + 1) - bl.h * iconh / 2, 1, min(j, 1));
+            }
+        }
         break;
     case 2:
         break;
@@ -360,9 +403,29 @@ void Window::painthelp()
         drawtextxy(getwin(),"Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
         drawtextxy(getwin(),"Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
         drawtextxy(getwin(),"Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
-        drawbmp(pok, getwin(), (aboutw - okw) / 2, menuh + fontth + fonth * 5, okw, okh);
-        drawtextxy(getwin(),"OK", 0, menuh + fontth + fonth * 5, aboutw, okh, black, cfg);
         break;
+    }
+    if (helpi > 0)
+    {
+        setfontheight(fonth);
+        drawbmp(pok, getwin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
+        drawtextxy(getwin(),"OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+        if (helpi > 1)
+        {
+            drawbmp(pbtn, getwin(), (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
+            drawtextxy(getwin(),"<", (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
+        }
+        if (helpi < maxhelp)
+        {
+            drawbmp(pbtn, getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
+            drawtextxy(getwin(),">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
+        }
+    }
+    else if (helpi < 0)
+    {
+        setfontheight(fonth);
+        drawbmp(pok, getwin(), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh);
+        drawtextxy(getwin(),"OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
     }
 }
 
@@ -381,6 +444,29 @@ void Window::paintevent()
         paintboard();
     }
     freshwin();
+}
+
+bool Window::isin(long ex, long ey, long x, long y, long w, long h)
+{
+    return (ex > x && ey > y && ex < (x + w) && ey < (y + h));
+}
+
+void Window::sethelp(long helpi_)
+{
+    if ((helpi != helpi_) && (helpi_ != 0))
+    {
+        if (helpi == 0 && bd.sit != 5)
+        {
+            bd.pause();
+        }
+        helpi = helpi_;
+    }
+    else
+    {
+        bd.pause();
+        helpi = 0;
+    }
+    initwindow(false);
 }
 
 void Window::mouseevent(long ex, long ey, long eb)
@@ -406,36 +492,10 @@ void Window::mouseevent(long ex, long ey, long eb)
                 bd.sd.switchmusic();
                 break;
             case 2:
-                if (helpi != 1)
-                {
-                    if (helpi == 0 && bd.sit != 5)
-                    {
-                        bd.pause();
-                    }
-                    helpi = 1;
-                }
-                else
-                {
-                    bd.pause();
-                    helpi = 0;
-                }
-                initwindow(false);
+                sethelp(1);
                 break;
             case 3:
-                if (helpi !=  - 1)
-                {
-                    if (helpi == 0 && bd.sit != 5)
-                    {
-                        bd.pause();
-                    }
-                    helpi =  - 1;
-                }
-                else
-                {
-                    bd.pause();
-                    helpi = 0;
-                }
-                initwindow(false);
+                sethelp(-1);
                 break;
             }
         }
@@ -482,13 +542,32 @@ void Window::mouseevent(long ex, long ey, long eb)
             bd.checkline();
         }
     }
-    else if (helpi == -1)
+    else if (helpi > 0)
     {
-        if (ex > (aboutw - okw) / 2 && ex < (aboutw + okw) / 2 && ey > menuh + fontth + fonth * 5 && ey < menuh + fontth + fonth * 5 + okh)
+        if (isin(ex, ey, (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh))
         {
-            helpi = 0;
-            bd.pause();
-            initwindow(false);
+            sethelp(0);
+        }
+        if (helpi > 1)
+        {
+            if (isin(ex, ey, (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
+            {
+                helpi--;
+            }
+        }
+        if (helpi < maxhelp)
+        {
+            if (isin(ex, ey, (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
+            {
+                helpi++;
+            }
+        }
+    }
+    else if (helpi < 0)
+    {
+        if (isin(ex, ey, (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh))
+        {
+            sethelp(0);
         }
     }
     paintevent();
@@ -532,6 +611,12 @@ void Window::keyevent(long key)
         {
             cheati = 1;
         }
+        break;
+    case k_f1:
+        sethelp(1);
+        break;
+    case k_f12:
+        sethelp(-1);
         break;
     }
     if (helpi == 0)
