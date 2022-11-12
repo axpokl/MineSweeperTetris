@@ -3,6 +3,8 @@ class Sound
 
 public:
 
+    const long musicn = 3;
+
     unsigned long sBlank;
     unsigned long sWin;
     unsigned long sLose;
@@ -12,11 +14,11 @@ public:
     unsigned long sFlag;
     unsigned long sNew;
     unsigned long sSolve;
-    unsigned long sMusic[2];
+    unsigned long sMusic[10];
 
     bool soundb = true;
     bool musicb = true;
-    long musici;
+    long musici = -1;
     double musictime;
 
     Sound();
@@ -31,12 +33,15 @@ public:
 
 Sound::Sound()
 {
-    initsound();
+}
+
+void Sound::initsound()
+{
     initmusic();
     playmusic();
 }
 
-void Sound::initsound()
+void Sound::initmusic()
 {
     sWin = loadaudio("./wav/Win.wav");
     sLose = loadaudio("./wav/Lose.wav");
@@ -46,12 +51,9 @@ void Sound::initsound()
     sFlag = loadaudio("./wav/Flag.wav");
     sNew = loadaudio("./wav/New.wav");
     sSolve = loadaudio("./wav/Solve.wav");
-}
-
-void Sound::initmusic()
-{
     sMusic[0] = loadaudio("./wav/music1.mid"," type sequencer");
     sMusic[1] = loadaudio("./wav/music2.mid"," type sequencer");
+    sMusic[2] = loadaudio("./wav/music3.mid"," type sequencer");
 }
 
 void Sound::playsound(long id)
@@ -68,7 +70,7 @@ void Sound::playmusic()
     {
         if (iswin())
         {
-            musici = (musici + 1) % 2;
+            musici = (musici + 1) % musicn;
             musictime = gettimer();
         }
         else

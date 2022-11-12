@@ -200,7 +200,6 @@ public:
 Board::Board()
 {
     randomize();
-    initbd(1);
 }
 
 void Board::initbd()

@@ -16,6 +16,9 @@ int main()
     }
     //Steam st;
     Window w;
+    w.bd.sd.initsound();
+    w.bd.initbd(1);
+    w.initwindow(false);
     while (iswin())
     {
         w.doaction();

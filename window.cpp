@@ -2,6 +2,8 @@ class Window
 {
 public:
 
+    const long titlew = 320;
+    const long titleh = 384;
     const long menuw = 24;
     const long menuh = 24;
     const long facew = 24;
@@ -23,6 +25,7 @@ public:
     const long fonth = 24;
     const long okh_ = abouth - (fontth + fonth * 4);
 
+    pbitmap ptitle_;
     pbitmap pmenu_;
     pbitmap pmenu[13];
     pbitmap pface_;
@@ -58,6 +61,7 @@ public:
     long cheati = 0;
 
     Window();
+    void initwindow();
     void initbmp();
     void initwindow(bool b);
     void paintmenu();
@@ -69,6 +73,7 @@ public:
     void paintboard(Block b, long x, long y, long cx, long cy);
     void paintboard();
     void painthelp();
+    void painttitle();
     void paintevent();
     bool isin(long ex, long ey, long x, long y, long w, long h);
     void sethelp(long helpi_);
@@ -82,15 +87,18 @@ public:
 
 Window::Window()
 {
-    createwin(bd.w * iconw, bd.h * iconh + faceh + menuh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    initwindow();
+}
+
+void Window::initwindow()
+{
+    createwin(titlew, titleh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitle("MineSweeper Tetris");
     setfontname("Arial");
-    setfontheight(fonth);
+    painttitle();
     initbmp();
-    initwindow(false);
-    paintevent();
 }
 
 void Window::initbmp()
@@ -427,6 +435,17 @@ void Window::painthelp()
         drawbmp(pok, getwin(), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh);
         drawtextxy(getwin(),"OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
     }
+}
+
+void Window::painttitle()
+{
+    ptitle_ = loadbmp("./bmp/title.bmp");
+    drawbmp(ptitle_, getwin(), (titlew - ptitle_->width) / 2, fontth, ptitle_->width, ptitle_->height);
+    setfontheight(fontfh);
+    drawtextxy(getwin(),"MineSwepper Tetris", 0, 0, titlew, fontth, black, cbg);
+    drawtextxy(getwin(),"Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontth, black, cbg);
+    setfontheight(fonth);
+    freshwin();
 }
 
 void Window::paintevent()
