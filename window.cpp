@@ -24,6 +24,8 @@ public:
     const long fontfh = 32;
     const long fonth = 24;
     const long okh_ = abouth - (fontth + fonth * 4);
+    const long clickw = 48;
+    const long clickh = 72;
 
     pbitmap ptitle_;
     pbitmap pmenu_;
@@ -152,6 +154,10 @@ void Window::initbmp()
     drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
     pbtn = createbmp(btnw, btnh);
     drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
+    pclickl = createbmp(clickw, clickh);
+    drawbmp(pclick_, pclickl, 0, 0, clickw, clickh, 0, 0, clickw, clickh);
+    pclickr = createbmp(clickw, clickh);
+    drawbmp(pclick_, pclickr, 0, clickh, clickw, clickh, 0, 0, clickw, clickh);
 }
 
 void Window::initwindow(bool b)
@@ -400,6 +406,23 @@ void Window::painthelp()
                 paintboard(bl, helpw / 8 * (i * 2 + 1) - bl.w * iconw / 2, (helph - okh_) / 6 * (j * 2 + 1) - bl.h * iconh / 2, 1, min(j, 1));
             }
         }
+        for (long i = 0; i < 2; i++)
+        {
+            for (long j = 0; j < 3; j++)
+            {
+                if (j <= 1)
+                {
+                    drawbmp(pclickl, helpw / 4 * (i * 2 + 1) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 + menuh, cfg);
+                }
+                else
+                {
+                    drawbmp(pclickr, helpw / 4 * (i * 2 + 1) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 + menuh, cfg);
+                }
+            }
+        }
+        line(0, menuh, helpw, 0, cfg);
+        line(helpw / 2, menuh, 0, helph - okh_, cfg);
+        line(0, menuh + helph - okh_, helpw, 0, cfg);
         break;
     case 2:
         break;
@@ -440,7 +463,7 @@ void Window::painthelp()
 void Window::painttitle()
 {
     ptitle_ = loadbmp("./bmp/title.bmp");
-    drawbmp(ptitle_, getwin(), (titlew - ptitle_->width) / 2, fontth, ptitle_->width, ptitle_->height);
+    drawbmp(ptitle_, getwin(), (titlew - ptitle_->width) / 2, fontth, ptitle_->width, ptitle_->height, cfg);
     setfontheight(fontfh);
     drawtextxy(getwin(),"MineSwepper Tetris", 0, 0, titlew, fontth, black, cbg);
     drawtextxy(getwin(),"Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontth, black, cbg);

@@ -348,3 +348,28 @@
 [2022-11-10 09:22:01] Requesting 38 apps, 3 packages (full data, 1024 prev attempts)
 [2022-11-10 09:22:02] UpdatesJob: finished OK, apps updated 90 (2914 KB), packages updated 3 (0 KB)
 [2022-11-10 09:22:06] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4249026 bytes)
+
+
+[2022-11-12 12:58:08] RequestAppInfoUpdate: AppIDs 7
+[2022-11-12 12:58:08] Packages changed: force all
+[2022-11-12 12:58:08] Apps changed: force all
+[2022-11-12 12:58:08] Change number 16680871->16707625, apps: 0/0, packages: 0/0
+[2022-11-12 12:58:08] Requesting 685 apps, 374 packages (meta data, 1024 prev attempts)
+[2022-11-12 12:58:09] Requested 68 app access tokens, 59 received, 9 denied
+[2022-11-12 12:58:10] Updated SHAs with 59 new access tokens
+[2022-11-12 12:58:12] Downloaded 28 apps via HTTP, 2378 KB (593 KB compressed)
+[2022-11-12 12:58:12] Requesting 25 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-12 12:58:12] UpdatesJob: finished OK, apps updated 53 (2500 KB), packages updated 0 (0 KB)
+[2022-11-12 12:58:19] Starting async write C:\Users\shiyou_ax\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4241089 bytes)
+
+
+[2022-11-12 15:52:35] RequestAppInfoUpdate: AppIDs 7
+[2022-11-12 15:52:37] Packages changed: 
+[2022-11-12 15:52:37] Apps changed: 1530=16708172,413150=16707724,
+[2022-11-12 15:52:37] Change number 16707625->16708306, apps: 2/414, packages: 0/29
+[2022-11-12 15:52:37] Requesting 12 apps, 8 packages (meta data, 1024 prev attempts)
+[2022-11-12 15:52:39] Requested 9 app access tokens, 0 received, 9 denied
+[2022-11-12 15:52:39] Downloaded 1 apps via HTTP, 10 KB (3 KB compressed)
+[2022-11-12 15:52:39] Requesting 1 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-12 15:52:40] UpdatesJob: finished OK, apps updated 2 (15 KB), packages updated 0 (0 KB)
+[2022-11-12 15:52:48] Starting async write T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4241126 bytes)
