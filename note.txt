@@ -9,6 +9,8 @@ steam achmnt
 steam highscore
 传github URL到steam
 
+去除switch
+
 增量刷新
 
 memory leak?
