@@ -41,6 +41,7 @@ public:
     pbitmap picone;
     pbitmap piconn;
     pbitmap piconp;
+    pbitmap picona;
     pbitmap pdigit_;
     pbitmap pdigit[10];
     pbitmap pdigitmin;
@@ -140,11 +141,13 @@ void Window::initbmp()
     piconn = createbmp(iconw, iconh);
     drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
     piconp = createbmp(iconw, iconh);
-    drawbmp(picon_, piconp, 0, iconh * 6, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconp, 0, iconh * 15, iconw, iconh, 0, 0, iconw, iconh);
+    picona = createbmp(iconw, iconh);
+    drawbmp(picon_, picona, 0, iconh * 6, iconw, iconh, 0, 0, iconw, iconh);
     for (long i = 0; i < 10; i++)
     {
         pdigit[i] = createbmp(digtw, digth);
-        drawbmp(pdigit_, pdigit[i], 0, (11-i) * digth, digtw, digth, 0, 0, digtw, digth);
+        drawbmp(pdigit_, pdigit[i], 0, (11 - i) * digth, digtw, digth, 0, 0, digtw, digth);
     }
     pdigitmin = createbmp(digtw, digth);
     drawbmp(pdigit_, pdigitmin, 0, 0, digtw, digth, 0, 0, digtw, digth);
@@ -360,7 +363,6 @@ void Window::paintboard()
 
 void Window::painthelp()
 {
-
     switch (helpi)
     {
     case 1:
@@ -376,30 +378,27 @@ void Window::painthelp()
                     {
                     case 0:
                         bl.blck[1][min(j, 1)] = true;
+                        break;
                     case 1:
                         bl.flag[1][min(j, 1)] = true;
+                        break;
                     case 2:
                         bl.qstn[1][min(j, 1)] = true;
+                        break;
                     }
                     break;
                 case 2:
-                    switch (j)
-                    {
-                    case 0:
-                        bl.qstn[1][min(j, 1)] = true;
-                    case 1:
-                        bl.qstn[1][min(j, 1)] = true;
-                    case 2:
-                        bl.qstn[1][min(j, 1)] = true;
-                    }
+                    bl.qstn[1][min(j, 1)] = true;
                     break;
                 case 3:
                     switch (j)
                     {
                     case 0:
                         bl.blck[1][min(j, 1)] = true;
+                        break;
                     case 1:
                         bl.flag[1][min(j, 1)] = true;
+                        break;
                     }
                     break;
                 }
@@ -410,13 +409,18 @@ void Window::painthelp()
         {
             for (long j = 0; j < 3; j++)
             {
-                if (j <= 1)
+                pbitmap picon__[3][2][5] =
                 {
-                    drawbmp(pclickl, helpw / 4 * (i * 2 + 1) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 + menuh, cfg);
-                }
-                else
+                    {{piconc,picona,picon[3],piconp,piconp},{piconq,picona,picon[3],piconp,piconp}},
+                    {{piconc,picona,piconm,picona,piconf},{piconq,picona,piconm,picona,piconf}},
+                    {{piconc,picona,piconq,piconp,piconp},{piconq,picona,piconc,piconp,piconp}}
+                };
+                pbitmap pclick__[3] = {pclickl, pclickl, pclickr};
+                long k__[3] = {3, 5, 3};
+                drawbmp(pclick__[j], helpw / 4 * (i * 2 + 1) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 - iconh / 2 + menuh, cfg);
+                for (long k = 0; k < k__[j]; k++)
                 {
-                    drawbmp(pclickr, helpw / 4 * (i * 2 + 1) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 + menuh, cfg);
+                    drawbmp(picon__[j][i][k], helpw / 4 * (i * 2 + 1) + iconw * (k * 2 - k__[j]) / 2, (helph - okh_) / 6 * (j * 2 + 1) + clickh / 2 - iconh / 2 + menuh, cfg);
                 }
             }
         }
