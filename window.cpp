@@ -42,6 +42,7 @@ public:
     pbitmap piconn;
     pbitmap piconp;
     pbitmap picona;
+    pbitmap piconu;
     pbitmap pdigit_;
     pbitmap pdigit[10];
     pbitmap pdigitmin;
@@ -143,7 +144,9 @@ void Window::initbmp()
     piconp = createbmp(iconw, iconh);
     drawbmp(picon_, piconp, 0, iconh * 15, iconw, iconh, 0, 0, iconw, iconh);
     picona = createbmp(iconw, iconh);
-    drawbmp(picon_, picona, 0, iconh * 6, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, picona, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
+    piconu = createbmp(iconw, iconh);
+    drawbmp(picon_, piconu, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
     for (long i = 0; i < 10; i++)
     {
         pdigit[i] = createbmp(digtw, digth);
@@ -357,41 +360,42 @@ void Window::painthelp()
             for (long j = 0; j < 3; j++)
             {
                 bl.initbl();
+                long j_ = min(j, 1);
                 switch (i)
                 {
                 case 1:
                     switch (j)
                     {
                     case 0:
-                        bl.blck[1][min(j, 1)] = true;
+                        bl.blck[1][j_] = true;
                         break;
                     case 1:
-                        bl.flag[1][min(j, 1)] = true;
+                        bl.flag[1][j_] = true;
                         break;
                     case 2:
-                        bl.qstn[1][min(j, 1)] = true;
+                        bl.qstn[1][j_] = true;
                         break;
                     }
                     break;
                 case 2:
-                    bl.qstn[1][min(j, 1)] = true;
+                    bl.qstn[1][j_] = true;
                     break;
                 case 3:
                     switch (j)
                     {
                     case 0:
-                        bl.blck[1][min(j, 1)] = true;
+                        bl.blck[1][j_] = true;
                         break;
                     case 1:
-                        bl.flag[1][min(j, 1)] = true;
+                        bl.flag[1][j_] = true;
                         break;
                     }
                     break;
                 }
-                paintboard(bl, helpw / 8 * (i * 2 + 1) - bl.w * iconw / 2, (helph - okh_) / 6 * (j * 2 + 1) - bl.h * iconh / 2, 1, min(j, 1));
+                paintboard(bl, helpw / 8 * (i * 2 + 1) - bl.w * iconw / 2, (helph - okh_) / 6 * (j * 2 + 1) - bl.h * iconh / 2, 1, j_);
             }
         }
-        for (long i = 0; i < 2; i++)
+        for (long i = 0; i < 3; i++)
         {
             for (long j = 0; j < 3; j++)
             {
@@ -403,10 +407,13 @@ void Window::painthelp()
                 };
                 pbitmap pclick__[3] = {pclickl, pclickl, pclickr};
                 long k__[3] = {3, 5, 3};
-                drawbmp(pclick__[j], helpw / 4 * (i * 2 + 1) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 - iconh / 2 + menuh, cfg);
-                for (long k = 0; k < k__[j]; k++)
+                if (i == 0 || i == 2)
                 {
-                    drawbmp(picon__[j][i][k], helpw / 4 * (i * 2 + 1) + iconw * (k * 2 - k__[j]) / 2, (helph - okh_) / 6 * (j * 2 + 1) + clickh / 2 - iconh / 2 + menuh, cfg);
+                    drawbmp(pclick__[j], helpw / 8 * (i * 2 + 2) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 - iconh / 2 + menuh, cfg);
+                    for (long k = 0; k < k__[j]; k++)
+                    {
+                        drawbmp(picon__[j][i / 2][k], helpw / 8 * (i * 2 + 2) + iconw * (k * 2 - k__[j]) / 2, (helph - okh_) / 6 * (j * 2 + 1) + clickh / 2 - iconh / 2 + menuh, cfg);
+                    }
                 }
             }
         }
@@ -415,6 +422,103 @@ void Window::painthelp()
         line(0, menuh + helph - okh_, helpw, 0, cfg);
         break;
     case 2:
+        for (long j = 0; j < 3; j++)
+        {
+            for (long i = 0; i < 4; i++)
+            {
+                bl.initbl();
+                bl.blck[1][0] = true;
+                bl.flag[1][1] = true;
+                long j_ = 2;
+                switch (j)
+                {
+                case 0:
+                    if (i <= 1)
+                    {
+                        j_ = 0;
+                    }
+                    if (i == 0)
+                    {
+                        bl.qstn[0][1] = true;
+                    }
+                    if (i >= 1)
+                    {
+                        bl.flag[0][0] = true;
+                        bl.flag[0][1] = true;
+                    }
+                    if (i == 3)
+                    {
+                        bl.blck[0][2] = true;
+                        bl.blck[0][3] = true;
+                    }
+                    break;
+                case 1:
+                    bl.flag[1][1] = true;
+                    if (i == 0)
+                    {
+                        bl.qstn[0][1] = true;
+                    }
+                    if (i >= 1)
+                    {
+                        bl.blck[0][2] = true;
+                        bl.blck[0][3] = true;
+                    }
+
+                    if (i == 2)
+                    {
+                        bl.flag[0][1] = true;
+                    }
+                    break;
+                case 2:
+                    bl.flag[1][1] = true;
+                    if (i == 0)
+                    {
+                        bl.qstn[0][3] = true;
+                    }
+                    if (i >= 1)
+                    {
+                        bl.blck[0][2] = true;
+                        bl.flag[0][1] = true;
+                    }
+                    if (i == 2)
+                    {
+                        bl.blck[0][3] = true;
+                    }
+                    break;
+                }
+                if (j == 0 || i <= 2)
+                {
+                    paintboard(bl, helpw / 8 * (i * 2 + 1) - bl.w * iconw / 2, (helph - okh_) / 6 * (j * 2 + 1) - bl.h * iconh / 2, 1, j_);
+                }
+            }
+        }
+        for (long i = 0; i < 3; i++)
+        {
+            for (long j = 0; j < 3; j++)
+            {
+                pbitmap picon__[3][4][5] =
+                {
+                    {{piconc,piconq,piconf,piconu,picon[3]},{piconp,piconp,piconp,piconp,piconp},{piconf,piconu,picon[2],piconp,piconp}},
+                    {{piconq,piconf,piconu,picon[2],piconp},{piconc,piconq,piconf,piconu,picon[2]},{piconp,piconp,piconp,piconp,piconp}},
+                    {{piconq,piconf,piconu,picon[2],piconp},{piconf,piconu,picon[2],piconp,piconp},{piconp,piconp,piconp,piconp,piconp}}
+                };
+                long k__[3][3] = {{5, 0, 3}, {4, 5, 0}, {4, 3, 0}};
+                if (i == 0 || i == 2)
+                {
+                    if (i == 0 || j == 0)
+                    {
+                        drawbmp(pclickr, helpw / 8 * (i * 2 + 2) - clickw / 2, (helph - okh_) / 6 * (j * 2 + 1) - clickh / 2 - iconh / 2 + menuh, cfg);
+                    }
+                }
+                for (long k = 0; k < k__[j][i]; k++)
+                {
+                    drawbmp(picon__[j][i][k], helpw / 8 * (i * 2 + 2) + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) / 6 * (j * 2 + 1) + clickh / 2 - iconh / 2 + menuh, cfg);
+                }
+            }
+        }
+        line(0, menuh, helpw, 0, cfg);
+        line(helpw / 2, menuh, 0, helph - okh_, cfg);
+        line(0, menuh + helph - okh_, helpw, 0, cfg);
         break;
     case -1:
         setfontheight(fontfh);
