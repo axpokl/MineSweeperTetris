@@ -12,7 +12,7 @@ int main()
 {
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
     {
-        msgbox("MineSweeper Tetris is already running!", NULL, MB_ICONINFORMATION);
+        msgbox("MineSweeper Tetris is already running!", "MineSweeper Tetris", MB_ICONINFORMATION);
     }
     else
     {

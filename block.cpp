@@ -38,9 +38,9 @@ void Block::initbl()
 {
     w = 3;
     h = 5;
-    for (long i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++)
     {
-        for (long j = 0; j < h; j++ )
+        for (long j = 0; j < h; j++)
         {
             mine[i][j] = false;
             flag[i][j] = false;
@@ -66,18 +66,18 @@ void Block::initbl()
 
 void Block::calcnumb()
 {
-    for (long i = 0; i < w; i++ )
+    for (long i = 0; i < w; i++)
     {
-        for (long j = 0; j < h; j++ )
+        for (long j = 0; j < h; j++)
         {
             numb[i][j] = 0;
-            for (long k = 0; k < 8; k++ )
+            for (long k = 0; k < 8; k++)
             {
                 if (isok(k, i, j, tx, ty))
                 {
                     if (mine[tx][ty])
                     {
-                        numb[i][j]++ ;
+                        numb[i][j]++;
                     }
                 }
             }

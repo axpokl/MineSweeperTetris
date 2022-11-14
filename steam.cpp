@@ -31,7 +31,7 @@ void Steam::initsteam()
 {
     if (SteamAPI_RestartAppIfNecessary(appid))
     {
-        msgbox("Please launch MineSwepper Tetris from Steam!", NULL, MB_ICONINFORMATION);
+        msgbox("Please launch MineSwepper Tetris from Steam!", "MineSwepper Tetris", MB_ICONINFORMATION);
     }
     steamb = SteamAPI_Init();
     if (!steamb)

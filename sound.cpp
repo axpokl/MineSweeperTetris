@@ -3,7 +3,7 @@ class Sound
 
 public:
 
-    const long musicn = 3;
+    long musicn;
 
     unsigned long sBlank;
     unsigned long sWin;
@@ -33,6 +33,7 @@ public:
 
 Sound::Sound()
 {
+    musicn = 3;
 }
 
 void Sound::initsound()
@@ -51,9 +52,9 @@ void Sound::initmusic()
     sFlag = loadaudio("./wav/Flag.wav");
     sNew = loadaudio("./wav/New.wav");
     sSolve = loadaudio("./wav/Solve.wav");
-    sMusic[0] = loadaudio("./wav/music1.mid"," type sequencer");
-    sMusic[1] = loadaudio("./wav/music2.mid"," type sequencer");
-    sMusic[2] = loadaudio("./wav/music3.mid"," type sequencer");
+    sMusic[0] = loadaudio("./wav/music1.mid", " type sequencer");
+    sMusic[1] = loadaudio("./wav/music2.mid", " type sequencer");
+    sMusic[2] = loadaudio("./wav/music3.mid", " type sequencer");
 }
 
 void Sound::playsound(long id)

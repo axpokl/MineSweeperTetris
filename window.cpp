@@ -222,27 +222,13 @@ void Window::paintmenu()
 
 void Window::paintface()
 {
-    switch (bd.sit)
+    long face__[6] = {4, 4, 3, 1, 2, 0};
+    long facei = bd.sit;
+    if (facei == 1 && bd.checkr)
     {
-    case 0:
-        drawbmp(pface[4], (getwidth() - facew) / 2, menuh, facew, faceh);
-        break;
-    case 1:
-        drawbmp(pface[4], (getwidth() - facew) / 2, menuh, facew, faceh);
-        break;
-    case 2:
-        drawbmp(pface[3], (getwidth() - facew) / 2, menuh, facew, faceh);
-        break;
-    case 3:
-        drawbmp(pface[1], (getwidth() - facew) / 2, menuh, facew, faceh);
-        break;
-    case 4:
-        drawbmp(pface[2], (getwidth() - facew) / 2, menuh, facew, faceh);
-        break;
-    case 5:
-        drawbmp(pface[0], (getwidth() - facew) / 2, menuh, facew, faceh);
-        break;
+        facei++;
     }
+    drawbmp(pface[face__[facei]], (getwidth() - facew) / 2, menuh, facew, faceh);
 }
 
 void Window::paintnumber(long n, long l, long x, long y)
@@ -432,35 +418,35 @@ void Window::painthelp()
         break;
     case -1:
         setfontheight(fontfh);
-        drawtextxy(getwin(),"About", 0, menuh, aboutw, fontth, black, cbg);
+        drawtextxy(getwin(), "About", 0, menuh, aboutw, fontth, black, cbg);
         setfontheight(fonth);
-        drawtextxy(getwin(),"MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
-        drawtextxy(getwin(),"Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
-        drawtextxy(getwin(),"Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
-        drawtextxy(getwin(),"Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
         break;
     }
     if (helpi > 0)
     {
         setfontheight(fonth);
         drawbmp(pok, getwin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
-        drawtextxy(getwin(),"OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+        drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
         if (helpi > 1)
         {
             drawbmp(pbtn, getwin(), (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
-            drawtextxy(getwin(),"<", (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
+            drawtextxy(getwin(), "<", (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
         }
         if (helpi < maxhelp)
         {
             drawbmp(pbtn, getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
-            drawtextxy(getwin(),">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
+            drawtextxy(getwin(), ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
         }
     }
     else if (helpi < 0)
     {
         setfontheight(fonth);
         drawbmp(pok, getwin(), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh);
-        drawtextxy(getwin(),"OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+        drawtextxy(getwin(), "OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
     }
 }
 
@@ -469,8 +455,8 @@ void Window::painttitle()
     ptitle_ = loadbmp("./bmp/title.bmp");
     drawbmp(ptitle_, getwin(), (titlew - ptitle_->width) / 2, fontth, ptitle_->width, ptitle_->height, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(),"MineSwepper Tetris", 0, 0, titlew, fontth, black, cbg);
-    drawtextxy(getwin(),"Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontth, black, cbg);
+    drawtextxy(getwin(), "MineSwepper Tetris", 0, 0, titlew, fontth, black, cbg);
+    drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontth, black, cbg);
     setfontheight(fonth);
     freshwin();
 }
