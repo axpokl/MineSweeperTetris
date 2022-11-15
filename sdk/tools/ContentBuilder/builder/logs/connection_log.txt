@@ -1210,3 +1210,49 @@
 [2022-11-14 12:18:11] [3,3] LogOff()
 [2022-11-14 12:18:11] [2,3] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2022-11-14 12:18:11] [2,3] Log session ended
+
+
+[2022-11-15 08:51:02] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2022-11-15 08:51:02] [0,0] SetSteamID( [U:1:0] )
+[2022-11-15 08:51:02] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / 0.0.0.0:80 (0.0.0.0:80)) - TIMEOUT
+[2022-11-15 08:51:02] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net) - FAILED, no addresses resolved
+[2022-11-15 08:51:02] [0,0] SetSteamID( [U:1:214053662] )
+[2022-11-15 08:51:02] [0,0] SetSteamID( [U:1:214053662] )
+[2022-11-15 08:51:02] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2022-11-15 08:51:02] Connectivity test: OK!
+[2022-11-15 08:51:02] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2022-11-15 08:51:03] GetCMListForConnect -- got 10 Netfilter CMs and 70 WebSocket CMs
+[2022-11-15 08:51:03] GetCMListForConnect -- DC 'hkg1' count: 42
+[2022-11-15 08:51:03] GetCMListForConnect -- DC 'sgp1' count: 13
+[2022-11-15 08:51:03] GetCMListForConnect -- DC 'tyo1' count: 14
+[2022-11-15 08:51:03] GetCMListForConnect -- DC 'tyo2' count: 11
+[2022-11-15 08:51:03] [0,0] CM Directory list says 87% of connections should be websockets, we rolled 68 - using WebSockets as default.
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext2-hkg1.steamserver.net:27028) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-hkg1.steamserver.net:443) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext2-hkg1.steamserver.net:27024) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-tyo1.steamserver.net:443) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext2-hkg1.steamserver.net:27028) results: 102.7435ms + load 56.0000
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext2-hkg1.steamserver.net:27024) results: 96.4419ms + load 58.0000
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext4-sgp1.steamserver.net:27025) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-tyo1.steamserver.net:27025) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-hkg1.steamserver.net:443) results: 90.1775ms + load 76.0000
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext4-sgp1.steamserver.net:27029) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-tyo1.steamserver.net:443) results: 122.8919ms + load 39.0000
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext2-tyo1.steamserver.net:27019) starting...
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-tyo1.steamserver.net:27025) results: 115.3046ms + load 32.0000
+[2022-11-15 08:51:03] [0,0] PingWebSocketCM() (ext1-sgp1.steamserver.net:443) starting...
+[2022-11-15 08:51:04] [0,0] PingWebSocketCM() (ext4-sgp1.steamserver.net:27025) results: 313.8375ms + load 48.0000
+[2022-11-15 08:51:04] [0,0] PingWebSocketCM() (ext1-tyo2.steamserver.net:27025) starting...
+[2022-11-15 08:51:04] [0,0] PingWebSocketCM() (ext4-sgp1.steamserver.net:27029) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-15 08:51:04] [0,0] PingWebSocketCM() (ext2-tyo1.steamserver.net:27019) results: 123.3780ms + load 31.0000
+[2022-11-15 08:51:04] [0,0] PingWebSocketCM() (ext1-tyo2.steamserver.net:27025) results: 119.0677ms + load 29.0000
+[2022-11-15 08:51:04] [0,0] PingWebSocketCM() (ext1-sgp1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-15 08:51:04] [1,3] Connect() starting connection (eNetQOSLevelHigh, ext1-tyo1.steamserver.net:27025, WebSocket)
+[2022-11-15 08:51:05] [1,3] ConnectionCompleted() (155.133.245.36:27025, WebSocket) local address (192.168.3.71:55125)
+[2022-11-15 08:51:05] [1,3] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2022-11-15 08:51:05] [1,3] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2022-11-15 08:51:05] CClientJobGetClientUpdateHosts: cached version not expired
+[2022-11-15 08:51:10] [3,3] ResetVoiceRecording() (was recording: 0) (last get voice time: 1668473470 seconds ago)
+[2022-11-15 08:51:10] [3,3] LogOff()
+[2022-11-15 08:51:10] [2,3] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2022-11-15 08:51:10] [2,3] Log session ended
