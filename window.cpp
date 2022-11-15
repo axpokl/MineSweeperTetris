@@ -29,7 +29,14 @@ public:
 
     pbitmap ptitle_;
     pbitmap pmenu_;
-    pbitmap pmenu[13];
+    pbitmap pmenu1[2];
+    pbitmap pmenu2[2];
+    pbitmap pmenu3[2];
+    pbitmap pmenuq[2];
+    pbitmap pmenua[2];
+    pbitmap pmenus[2];
+    pbitmap pmenum[2];
+    pbitmap pmenud[2];
     pbitmap pface_;
     pbitmap pface[5];
     pbitmap picon_;
@@ -43,6 +50,7 @@ public:
     pbitmap piconp;
     pbitmap picona;
     pbitmap piconu;
+    pbitmap picont;
     pbitmap pdigit_;
     pbitmap pdigit[10];
     pbitmap pdigitmin;
@@ -76,6 +84,9 @@ public:
     void paintboard(Block b, long x, long y);
     void paintboard(Block b, long x, long y, long cx, long cy);
     void paintboard();
+    void paintline(pbitmap pa, long a, pbitmap pb, long b, long x, long y);
+    void paintline(pbitmap p, long n, long x, long y);
+    void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y);
     void painthelp();
     void painttitle();
     void paintevent();
@@ -114,20 +125,29 @@ void Window::initbmp()
     pok_ = loadbmp("./bmp/ok.bmp");
     pcursor_ = loadbmp("./bmp/cursor.bmp");
     pclick_ = loadbmp("./bmp/click.bmp");
-    for (long i = 0; i < 13; i++)
+    for (long i = 0; i < 2; i++)
     {
-        pmenu[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenu[i], 0, i * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenu1[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenu1[i], menuw * i, 0 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenu2[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenu2[i], menuw * i, 1 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenu3[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenu3[i], menuw * i, 2 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenuq[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenuq[i], menuw * i, 3 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenua[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenua[i], menuw * i, 4 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenus[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenus[i], menuw * i, 5 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenum[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenum[i], menuw * i, 6 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenud[i] = createbmp(menuw, menuh);
+        drawbmp(pmenu_, pmenud[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
     }
     for (long i = 0; i < 5; i++)
     {
         pface[i] = createbmp(facew, faceh);
         drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
-    }
-    for (long i = 0; i < 9; i++)
-    {
-        picon[i] = createbmp(iconw, iconh);
-        drawbmp(picon_, picon[i], 0, (16 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
     }
     piconc = createbmp(iconw, iconh);
     drawbmp(picon_, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
@@ -142,11 +162,18 @@ void Window::initbmp()
     piconn = createbmp(iconw, iconh);
     drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
     piconp = createbmp(iconw, iconh);
+    for (long i = 0; i < 9; i++)
+    {
+        picon[i] = createbmp(iconw, iconh);
+        drawbmp(picon_, picon[i], 0, (16 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
+    }
     drawbmp(picon_, piconp, 0, iconh * 15, iconw, iconh, 0, 0, iconw, iconh);
     picona = createbmp(iconw, iconh);
     drawbmp(picon_, picona, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
     piconu = createbmp(iconw, iconh);
     drawbmp(picon_, piconu, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
+    picont = createbmp(iconw, iconh);
+    drawbmp(picon_, picont, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
     for (long i = 0; i < 10; i++)
     {
         pdigit[i] = createbmp(digtw, digth);
@@ -174,11 +201,12 @@ void Window::initwindow(bool b)
         setsize(aboutw, abouth + menuh);
         break;
     case 0:
-        setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
         if (b)
         {
+            bd.mode = 0;
             bd.initbd();
         }
+        setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
         break;
     default:
         setsize(helpw, helph + menuh);
@@ -191,36 +219,17 @@ void Window::initwindow(bool b)
 void Window::paintmenu()
 {
 
-    drawbmp(pmenu[6], (getwidth() - 2 * menuw), 0, menuw, menuh);
-    drawbmp(pmenu[7], (getwidth() - 1 * menuw), 0, menuw, menuh);
+    drawbmp(pmenuq[(helpi > 0)], (getwidth() - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenua[(helpi < 0)], (getwidth() - 1 * menuw), 0, menuw, menuh);
     if (cheati == 2)
     {
-        drawbmp(pmenu[12], (getwidth() - 5 * menuw), 0, menuw, menuh);
+        drawbmp(pmenud[(cheati == 2)], (getwidth() - 5 * menuw), 0, menuw, menuh);
     }
-    if (bd.sd.soundb)
-    {
-        drawbmp(pmenu[8], (getwidth() - 4 * menuw), 0, menuw, menuh);
-    }
-    else
-    {
-        drawbmp(pmenu[10], (getwidth() - 4 * menuw), 0, menuw, menuh);
-    }
-    if (bd.sd.musicb)
-    {
-        drawbmp(pmenu[9], (getwidth() - 3 * menuw), 0, menuw, menuh);
-    }
-    else
-    {
-        drawbmp(pmenu[11], (getwidth() - 3 * menuw), 0, menuw, menuh);
-    }
-
-    drawbmp(pmenu[3], 0 * menuw, 0, menuw, menuh);
-    drawbmp(pmenu[4], 1 * menuw, 0, menuw, menuh);
-    drawbmp(pmenu[5], 2 * menuw, 0, menuw, menuh);
-    if (bd.mode > 0)
-    {
-        drawbmp(pmenu[bd.mode - 1], (bd.mode - 1) * menuw, 0, menuw, menuh);
-    }
+    drawbmp(pmenus[bd.sd.soundb], (getwidth() - 4 * menuw), 0, menuw, menuh);
+    drawbmp(pmenum[bd.sd.musicb], (getwidth() - 3 * menuw), 0, menuw, menuh);
+    drawbmp(pmenu1[(bd.mode == 1)], 0 * menuw, 0, menuw, menuh);
+    drawbmp(pmenu2[(bd.mode == 2)], 1 * menuw, 0, menuw, menuh);
+    drawbmp(pmenu3[(bd.mode == 3)], 2 * menuw, 0, menuw, menuh);
 }
 
 void Window::paintface()
@@ -348,6 +357,23 @@ void Window::paintboard(Block b, long x, long y, long cx, long cy)
 void Window::paintboard()
 {
     paintboard(bd, 0, faceh);
+}
+
+
+void Window::paintline(pbitmap p, long n, long x, long y)
+{
+    for (long k = 0; k < n; k++)
+    {
+        drawbmp(p, x + k * iconw, y, iconw, iconh);
+    }
+}
+
+void Window::paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y)
+{
+    paintline(pa, a, x, y);
+    paintline(pb, b, x + iconw * a, y);
+    paintline(pc, c, x + iconw * a + iconw * b, y);
+    paintline(pd, d, x + iconw * a + iconw * b + iconw * c, y);
 }
 
 void Window::painthelp()
@@ -523,6 +549,26 @@ void Window::painthelp()
         {
             line(0, menuh + (helph - okh_) * k / 3, helpw, 0, cfg);
         }
+        break;
+    case 3:
+        paintline(picone, 2, iconw * 15, iconh * 2 + menuh);
+        paintline(piconc, 12, iconw * 15, iconh * 3 + menuh);
+        paintline(piconc, 12, iconw * 15, iconh * 4 + menuh);
+        paintline(picone, 2, iconw * 0, iconh * 4 + menuh);
+        paintline(piconc, piconm, picon[1], piconp, 5, 1, 1, 5, iconw * 0, iconh * 5 + menuh);
+        paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * 15, iconh * 5 + menuh);
+        for (long k = 0; k <= 2; k++)
+        {
+            paintline(picone, 2, iconw * 0, iconh * (k * 3 + 8) + menuh);
+            paintline(picone, k + 3, iconw * 15, iconh * (k * 3 + 8) + menuh);
+            paintline(piconc, 12, iconw * 0, iconh * (k * 3 + 9) + menuh);
+            paintline(piconc, 12, iconw * 15, iconh * (k * 3 + 9) + menuh);
+            paintnumber(k * 5, 2, iconw * 28, iconh * (k * 3 + 8) + menuh + iconh * 2 - faceh);
+        }
+        paintline(picone, 12, iconw * 0, iconh * 18 + menuh);
+        paintline(piconc, 12, iconw * 15, iconh * 18 + menuh);
+        paintline(piconc, 12, iconw * 0, iconh * 19 + menuh);
+        paintline(piconc, 12, iconw * 15, iconh * 19 + menuh);
         break;
     case -1:
         setfontheight(fontfh);
@@ -801,13 +847,19 @@ void Window::keyevent(long key)
         case k_p:
             bd.pause();
             break;
+        case k_space:
+            bd.pause();
+            break;
         }
         if (cheati == 2)
         {
             switch (key)
             {
-            case k_s:
+            case k_a:
                 bd.solve2();
+                break;
+            case k_s:
+                bd.solve1();
                 break;
             case k_d:
                 bd.solveb = true;
@@ -831,9 +883,6 @@ void Window::keyevent(long key)
                 break;
             case k_0:
                 bd.level++ ;
-                break;
-            case k_space:
-                bd.solve1();
                 break;
             }
         }
