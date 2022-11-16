@@ -11,7 +11,7 @@ public:
     const long iconw = 16;
     const long iconh = 16;
     const long digtw = 13;
-    const long digth = 23;
+    const long digth = 24;
     const long okw = 144;
     const long okh = 36;
     const long btnw = 36;
@@ -80,7 +80,7 @@ public:
     void paintmenu();
     void paintface();
     void paintnumber(long n, long l, long x, long y);
-    void paintdigit();
+    void paintlevel();
     void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
     void paintboard(Block b, long x, long y);
     void paintboard(Block b, long x, long y, long cx, long cy);
@@ -275,20 +275,20 @@ void Window::paintnumber(long n, long l, long x, long y)
     {
         if (di < dl)
         {
-            drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * digtw, y, digtw, faceh);
+            drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * digtw, y, digtw, digth);
         }
         else if (di == dl && minb)
         {
-            drawbmp(pdigitmin, x + (dlm - di - 1) * digtw, y, digtw, faceh);
+            drawbmp(pdigitmin, x + (dlm - di - 1) * digtw, y, digtw, digth);
         }
         else
         {
-            drawbmp(pdigitnul, x + (dlm - di - 1) * digtw, y, digtw, faceh);
+            drawbmp(pdigitnul, x + (dlm - di - 1) * digtw, y, digtw, digth);
         }
     }
 }
 
-void Window::paintdigit()
+void Window::paintlevel()
 {
     paintnumber(bd.line, 4, 0, menuh);
     paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
@@ -599,7 +599,7 @@ void Window::painthelp()
             paintline(picone, k + 3, iconw * iconwr, iconh * (k * 3 + (iconh2 + 0)) + menuh);
             paintline(piconc, 12, iconw * iconwl, iconh * (k * 3 + (iconh2 + 1)) + menuh);
             paintline(piconc, 12, iconw * iconwr, iconh * (k * 3 + (iconh2 + 1)) + menuh);
-            paintnumber(k * 5, 2, iconw * iconwn, iconh * (k * 3 + (iconh2 + 1)) + menuh - faceh / 2);
+            paintnumber(k * 5, 2, iconw * iconwn, iconh * (k * 3 + (iconh2 + 1)) + menuh - digth / 2);
             drawbmp(picona, iconw * iconwm, iconh * (k * 3 + (iconh2 + 1)) + menuh, cfg);
         }
         paintline(picone, 12, iconw * iconwl, iconh * (iconh3 + 0) + menuh);
@@ -630,7 +630,7 @@ void Window::painthelp()
         drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) + menuh, cfg);
         drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) + menuh, cfg);
         drawbmp(picon[2], iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cfg);
-        paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - faceh / 2);
+        paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - digth / 2);
         paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh2 + 0) + menuh);
         paintline(picon[1],  picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
         paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh2 + 2) + menuh);
@@ -640,7 +640,7 @@ void Window::painthelp()
         drawbmp(piconc, iconw * (iconwm + 0), iconh * (iconh2 + 2) + menuh, cfg);
         drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh2 + 2) + menuh, cfg);
         drawbmp(picon[2], iconw * (iconwm + 2), iconh * (iconh2 + 2) + menuh, cfg);
-        paintnumber(2, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - faceh / 2);
+        paintnumber(2, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth / 2);
 //消4
 //line level *3
     }
@@ -698,7 +698,7 @@ void Window::paintevent()
     else
     {
         paintface();
-        paintdigit();
+        paintlevel();
         paintboard();
     }
     freshwin();

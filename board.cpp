@@ -8,6 +8,7 @@ public:
     double time;
     double pausetime;
     long mode;
+    bool sb;
 
     long maskj0;
     long line;
@@ -24,8 +25,8 @@ public:
 
     Board();
     void initbd();
-    void initbd(long w, long h, long maskj, long n);
-    void initbd(long mode);
+    void initbd(long w_, long h_, long maskj_, long n_);
+    void initbd(long mode_);
     void randmine(long x, long y);
     void resetbd(long x, long y);
     void solveblank();
@@ -34,10 +35,10 @@ public:
     bool checkerror();
     void checkline();
     void clickleft(long x, long y);
-    void setqstn(long x, long y, bool sb);
-    void setflag(long x, long y, bool sb);
-    void setblock(long x, long y, bool sb);
-    void clickright(long x, long y, bool sb);
+    void setqstn(long x, long y);
+    void setflag(long x, long y);
+    void setblock(long x, long y);
+    void clickright(long x, long y, bool sb_);
     void addline(bool b);
     void delline(long l);
     bool addmask();
@@ -94,18 +95,18 @@ void Board::initbd()
     sd.playsound(sd.sNew);
 }
 
-void Board::initbd(long w, long h, long maskj, long n)
+void Board::initbd(long w_, long h_, long maskj_, long n_)
 {
-    this->w = w;
-    this->h = h;
-    this->n = n;
-    this->maskj0 = maskj;
+    w = w_;
+    h = h_;
+    n = n_;
+    maskj0 = maskj_;
     initbd();
 }
 
-void Board::initbd(long mode)
+void Board::initbd(long mode_)
 {
-    this->mode = mode;
+    mode = mode_;
     switch (mode)
     {
     case 1:
@@ -402,6 +403,7 @@ bool Board::checkerror()
                         sit = 1;
                     }
                     sd.playsound(sd.sError);
+                    sb = false;
                 }
             }
         }
@@ -644,16 +646,17 @@ void Board::clickleft(long x, long y)
     }
 }
 
-void Board::setqstn(long x, long y, bool sb)
+void Board::setqstn(long x, long y)
 {
     qstn[x][y] = !qstn[x][y];
     if (sb)
     {
         sd.playsound(sd.sFlag);
+        sb = true;
     }
 }
 
-void Board::setflag(long x, long y, bool sb)
+void Board::setflag(long x, long y)
 {
     if (sit < 4)
     {
@@ -686,12 +689,13 @@ void Board::setflag(long x, long y, bool sb)
             if (sb && sc)
             {
                 sd.playsound(sd.sFlag);
+                sb = false;
             }
         }
     }
 }
 
-void Board::setblock(long x, long y, bool sb)
+void Board::setblock(long x, long y)
 {
     if (sit < 4)
     {
@@ -737,28 +741,30 @@ void Board::setblock(long x, long y, bool sb)
             if (sb && sr)
             {
                 sd.playsound(sd.sRight);
+                sb = false;
             }
         }
         checkerror();
     }
 }
 
-void Board::clickright(long x, long y, bool sb)
+void Board::clickright(long x, long y, bool sb_)
 {
+    sb = sb_;
     if (!mask[x][y])
     {
         if (!flag[x][y])
         {
             if (!blck[x][y])
             {
-                setqstn(x, y, sb);
+                setqstn(x, y);
             }
             else
             {
-                setflag(x, y, sb);
-                setblock(x, y, sb);
-                setblock(x, y, sb);
-                setflag(x, y, sb);
+                setflag(x, y);
+                setblock(x, y);
+                setblock(x, y);
+                setflag(x, y);
             }
         }
         checkb = true;
