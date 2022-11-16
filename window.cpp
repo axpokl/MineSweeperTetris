@@ -744,7 +744,7 @@ void Window::mouseevent(long ex, long ey, long eb)
             switch ((ex - (getwidth() - 4 * menuw)) / menuw)
             {
             case 0:
-                bd.sd.soundb = !bd.sd.soundb;
+                bd.sd.switchsound();
                 break;
             case 1:
                 bd.sd.switchmusic();

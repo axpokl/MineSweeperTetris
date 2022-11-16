@@ -25,6 +25,7 @@ public:
     void initsound();
     void initmusic();
     void playsound(long id);
+    void switchsound();
     void playmusic();
     void checkmusic();
     void switchmusic();
@@ -62,6 +63,15 @@ void Sound::playsound(long id)
     if (soundb)
     {
         setaudiopos(id, 0);
+    }
+}
+
+void Sound::switchsound()
+{
+    soundb = !soundb;
+    if (soundb)
+    {
+        setaudiopos(sFlag, 0);
     }
 }
 

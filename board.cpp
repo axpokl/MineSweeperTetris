@@ -528,7 +528,7 @@ bool Board::addmask()
 
 void Board::checkdie()
 {
-    if (maskj == 0 && maski > 0 && sit != 4)
+    if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
     {
         sit = 4;
         if (dieb)
