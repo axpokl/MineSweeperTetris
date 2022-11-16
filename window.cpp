@@ -74,8 +74,8 @@ public:
 
     Window();
     void initwindow();
-    void initbmp();
     void initwindow(bool b);
+    void initbmp();
     void paintmenu();
     void paintface();
     void paintnumber(long n, long l, long x, long y);
@@ -84,9 +84,11 @@ public:
     void paintboard(Block b, long x, long y);
     void paintboard(Block b, long x, long y, long cx, long cy);
     void paintboard();
-    void paintline(pbitmap pa, long a, pbitmap pb, long b, long x, long y);
     void paintline(pbitmap p, long n, long x, long y);
+    void paintline(pbitmap pa, pbitmap pb, long a, long b, long x, long y);
+    void paintline(pbitmap pa, pbitmap pb, pbitmap pc, long a, long b, long c, long x, long y);
     void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y);
+    void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, pbitmap pe, long a, long b, long c, long d, long e, long x, long y);
     void painthelp();
     void painttitle();
     void paintevent();
@@ -95,8 +97,6 @@ public:
     void mouseevent(long x, long y, long key);
     void keyevent(long key);
     void doaction();
-    void nextblock();
-    void checkaudio();
 
 };
 
@@ -114,6 +114,29 @@ void Window::initwindow()
     setfontname("Arial");
     painttitle();
     initbmp();
+}
+
+void Window::initwindow(bool b)
+{
+    switch (helpi)
+    {
+    case -1:
+        setsize(aboutw, abouth + menuh);
+        break;
+    case 0:
+        if (b)
+        {
+            bd.mode = 0;
+            bd.initbd();
+        }
+        setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
+        break;
+    default:
+        setsize(helpw, helph + menuh);
+        break;
+    }
+    setpos(max(0, (getscrwidth() - getwidth()) / 2), max(0, (getscrheight() - getheight()) / 2));
+    paintevent();
 }
 
 void Window::initbmp()
@@ -191,29 +214,6 @@ void Window::initbmp()
     drawbmp(pclick_, pclickl, 0, 0, clickw, clickh, 0, 0, clickw, clickh);
     pclickr = createbmp(clickw, clickh);
     drawbmp(pclick_, pclickr, 0, clickh, clickw, clickh, 0, 0, clickw, clickh);
-}
-
-void Window::initwindow(bool b)
-{
-    switch (helpi)
-    {
-    case -1:
-        setsize(aboutw, abouth + menuh);
-        break;
-    case 0:
-        if (b)
-        {
-            bd.mode = 0;
-            bd.initbd();
-        }
-        setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
-        break;
-    default:
-        setsize(helpw, helph + menuh);
-        break;
-    }
-    setpos(max(0, (getscrwidth() - getwidth()) / 2), max(0, (getscrheight() - getheight()) / 2));
-    paintevent();
 }
 
 void Window::paintmenu()
@@ -368,12 +368,29 @@ void Window::paintline(pbitmap p, long n, long x, long y)
     }
 }
 
-void Window::paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y)
+
+void Window::paintline(pbitmap pa, pbitmap pb, long a, long b, long x, long y)
 {
     paintline(pa, a, x, y);
     paintline(pb, b, x + iconw * a, y);
-    paintline(pc, c, x + iconw * a + iconw * b, y);
-    paintline(pd, d, x + iconw * a + iconw * b + iconw * c, y);
+}
+
+void Window::paintline(pbitmap pa, pbitmap pb, pbitmap pc, long a, long b, long c, long x, long y)
+{
+    paintline(pa, pb, a, b, x, y);
+    paintline(pc, c, x + iconw * (a + b), y);
+}
+
+void Window::paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y)
+{
+    paintline(pa, pb, pc, a, b, c, x, y);
+    paintline(pd, d, x + iconw * (a + b + c), y);
+}
+
+void Window::paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, pbitmap pe, long a, long b, long c, long d, long e, long x, long y)
+{
+    paintline(pa, pb, pc, pd, a, b, c, d, x, y);
+    paintline(pe, e, x + iconw * (a + b + c + d), y);
 }
 
 void Window::painthelp()
@@ -557,6 +574,7 @@ void Window::painthelp()
         paintline(picone, 2, iconw * 0, iconh * 4 + menuh);
         paintline(piconc, piconm, picon[1], piconp, 5, 1, 1, 5, iconw * 0, iconh * 5 + menuh);
         paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * 15, iconh * 5 + menuh);
+        drawbmp(picona, iconw * 13, iconh * 5 + menuh, cfg);
         for (long k = 0; k <= 2; k++)
         {
             paintline(picone, 2, iconw * 0, iconh * (k * 3 + 8) + menuh);
@@ -564,11 +582,29 @@ void Window::painthelp()
             paintline(piconc, 12, iconw * 0, iconh * (k * 3 + 9) + menuh);
             paintline(piconc, 12, iconw * 15, iconh * (k * 3 + 9) + menuh);
             paintnumber(k * 5, 2, iconw * 28, iconh * (k * 3 + 8) + menuh + iconh * 2 - faceh);
+            drawbmp(picona, iconw * 13, iconh * (k * 3 + 9) + menuh, cfg);
         }
         paintline(picone, 12, iconw * 0, iconh * 18 + menuh);
         paintline(piconc, 12, iconw * 15, iconh * 18 + menuh);
         paintline(piconc, 12, iconw * 0, iconh * 19 + menuh);
         paintline(piconc, 12, iconw * 15, iconh * 19 + menuh);
+        drawbmp(picona, iconw * 13, iconh * 19 + menuh, cfg);
+        break;
+    case 4:
+        paintline(piconc, picon[2], piconp, 4, 1, 7, 0, iconh * 0 + menuh);
+        paintline(piconc, piconf, picon[2], piconp, 2, 2, 1, 7, 0, iconh * 1 + menuh);
+        paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, 0, iconh * 2 + menuh);
+        paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * 15, iconh * 1 + menuh);
+        paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * 15, iconh * 2 + menuh);
+        drawbmp(picona, iconw * 13, iconh * 2 + menuh, cfg);
+        line(0, iconh * 2 - iconh / 2 + menuh, iconw * 12, 0, red);
+        paintline(piconc, picon[2], piconp, 4, 1, 7, 0, iconh * 4 + menuh);
+        paintline(picon[1],  picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, 0, iconh * 5 + menuh);
+        paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, 0, iconh * 6 + menuh);
+        paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * 15, iconh * 5 + menuh);
+        paintline(piconc, picon[3], picon[1], piconp, 3, 1, 1, 7, iconw * 15, iconh * 6 + menuh);
+        drawbmp(picona, iconw * 13, iconh * 6 + menuh, cfg);
+        line(0, iconh * 6 - iconh / 2 + menuh, iconw * 12, 0, red);
         break;
     case -1:
         setfontheight(fontfh);
@@ -933,15 +969,3 @@ void Window::doaction()
     }
 }
 
-void Window::nextblock()
-{
-    if (bd.addmask())
-    {
-        paintevent();
-    }
-}
-
-void Window::checkaudio()
-{
-    bd.sd.checkmusic();
-}

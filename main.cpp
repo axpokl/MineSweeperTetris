@@ -24,8 +24,11 @@ int main()
         while (iswin())
         {
             w.doaction();
-            w.nextblock();
-            w.checkaudio();
+            if (w.bd.addmask())
+            {
+                w.paintevent();
+            }
+            w.bd.sd.checkmusic();
             delay(1);
         }
     }
