@@ -62,13 +62,14 @@ public:
     pbitmap pclick_;
     pbitmap pclickl;
     pbitmap pclickr;
+    pbitmap pclickn;
 
     const long cbg = 0xAFAFAF;
     const long cfg = 0xC0C0C0;
     HICON hicon;
     Board bd;
     Block bl;
-    const long maxhelp = 10;
+    const long maxhelp = 7;
     long helpi = 0;
     long cheati = 0;
 
@@ -211,9 +212,11 @@ void Window::initbmp()
     pbtn = createbmp(btnw, btnh);
     drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
     pclickl = createbmp(clickw, clickh);
-    drawbmp(pclick_, pclickl, 0, 0, clickw, clickh, 0, 0, clickw, clickh);
+    drawbmp(pclick_, pclickl, 0, clickh * 0, clickw, clickh, 0, 0, clickw, clickh);
     pclickr = createbmp(clickw, clickh);
-    drawbmp(pclick_, pclickr, 0, clickh, clickw, clickh, 0, 0, clickw, clickh);
+    drawbmp(pclick_, pclickr, 0, clickh * 1, clickw, clickh, 0, 0, clickw, clickh);
+    pclickn = createbmp(clickw, clickh);
+    drawbmp(pclick_, pclickn, 0, clickh * 2, clickw, clickh, 0, 0, clickw, clickh);
 }
 
 void Window::paintmenu()
@@ -397,6 +400,15 @@ void Window::painthelp()
 {
     switch (helpi)
     {
+    case -1:
+        setfontheight(fontfh);
+        drawtextxy(getwin(), "About", 0, menuh, aboutw, fontth, black, cbg);
+        setfontheight(fonth);
+        drawtextxy(getwin(), "MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
+        drawtextxy(getwin(), "Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+        break;
     case 1:
         for (long j = 0; j < 3; j++)
         {
@@ -443,20 +455,17 @@ void Window::painthelp()
                     {{piconc,picona,piconq,piconp,piconp},{piconp,piconp,piconp,piconp,piconp},{piconq,picona,piconc,piconp,piconp}}
                 };
                 long k__[3][3] = {{3, 0, 3}, {5, 0, 5}, {3, 0, 3}};
-                if (i == 0 || i == 2)
+                if ((i == 0 || i == 2) && j != 2)
                 {
-                    if (j != 2)
-                    {
-                        drawbmp(pclickl, helpw * (i * 2 + 2) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - clickh / 2 - iconh / 2 + menuh, cfg);
-                    }
-                    else
-                    {
-                        drawbmp(pclickr, helpw * (i * 2 + 2) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - clickh / 2 - iconh / 2 + menuh, cfg);
-                    }
+                    drawbmp(pclickl, helpw * (i * 2 + 2) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + menuh, cfg);
+                }
+                else if ((i == 0 || i == 2) && j == 2)
+                {
+                    drawbmp(pclickr, helpw * (i * 2 + 2) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + menuh, cfg);
                 }
                 for (long k = 0; k < k__[j][i]; k++)
                 {
-                    drawbmp(picon__[j][i][k], helpw * (i * 2 + 2) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 + clickh / 2 - iconh / 2 + menuh, cfg);
+                    drawbmp(picon__[j][i][k], helpw * (i * 2 + 2) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh, cfg);
                 }
             }
         }
@@ -548,16 +557,17 @@ void Window::painthelp()
                     {{piconq,piconf,piconu,picon[2],piconp},{piconf,piconu,picon[2],piconp,piconp},{piconp,piconp,piconp,piconp,piconp}}
                 };
                 long k__[3][3] = {{5, 0, 3}, {4, 5, 0}, {4, 3, 0}};
-                if (i == 0 || i == 2)
+                if (i == 0 || (i == 2 && j == 0))
                 {
-                    if (j == 0 || i == 0)
-                    {
-                        drawbmp(pclickr, helpw * (i * 2 + 2 + (j != 0)) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - clickh / 2 - iconh / 2 + menuh, cfg);
-                    }
+                    drawbmp(pclickr, helpw * (i * 2 + 2 + (j != 0)) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + menuh, cfg);
+                }
+                else if (i == 1 && j != 0)
+                {
+                    drawbmp(pclickn, helpw * (i * 2 + 2 + (j != 0)) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + menuh, cfg);
                 }
                 for (long k = 0; k < k__[j][i]; k++)
                 {
-                    drawbmp(picon__[j][i][k], helpw * (i * 2 + 2 + (j != 0)) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 + clickh / 2 - iconh / 2 + menuh, cfg);
+                    drawbmp(picon__[j][i][k], helpw * (i * 2 + 2 + (j != 0)) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh, cfg);
                 }
             }
         }
@@ -568,52 +578,78 @@ void Window::painthelp()
         }
         break;
     case 3:
-        paintline(picone, 2, iconw * 15, iconh * 2 + menuh);
-        paintline(piconc, 12, iconw * 15, iconh * 3 + menuh);
-        paintline(piconc, 12, iconw * 15, iconh * 4 + menuh);
-        paintline(picone, 2, iconw * 0, iconh * 4 + menuh);
-        paintline(piconc, piconm, picon[1], piconp, 5, 1, 1, 5, iconw * 0, iconh * 5 + menuh);
-        paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * 15, iconh * 5 + menuh);
-        drawbmp(picona, iconw * 13, iconh * 5 + menuh, cfg);
+    {
+        long iconwl = 5;
+        long iconwm = iconwl + 13;
+        long iconwr = iconwl + 15;
+        long iconwn = iconwr + 14;
+        long iconh1 = 2;
+        long iconh2 = 10;
+        long iconh3 = 21;
+        paintline(picone, 2, iconw * iconwr, iconh * (iconh1 + 0) + menuh);
+        paintline(piconc, 12, iconw * iconwr, iconh * (iconh1 + 1) + menuh);
+        paintline(piconc, 12, iconw * iconwr, iconh * (iconh1 + 2) + menuh);
+        paintline(picone, 2, iconw * iconwl, iconh * (iconh1 + 2) + menuh);
+        paintline(piconc, piconm, picon[1], piconp, 5, 1, 1, 5, iconw * iconwl, iconh * (iconh1 + 3) + menuh);
+        paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * iconwr, iconh * (iconh1 + 3) + menuh);
+        drawbmp(picona, iconw * iconwm, iconh * (iconh1 + 3) + menuh, cfg);
         for (long k = 0; k <= 2; k++)
         {
-            paintline(picone, 2, iconw * 0, iconh * (k * 3 + 8) + menuh);
-            paintline(picone, k + 3, iconw * 15, iconh * (k * 3 + 8) + menuh);
-            paintline(piconc, 12, iconw * 0, iconh * (k * 3 + 9) + menuh);
-            paintline(piconc, 12, iconw * 15, iconh * (k * 3 + 9) + menuh);
-            paintnumber(k * 5, 2, iconw * 28, iconh * (k * 3 + 8) + menuh + iconh * 2 - faceh);
-            drawbmp(picona, iconw * 13, iconh * (k * 3 + 9) + menuh, cfg);
+            paintline(picone, 2, iconw * iconwl, iconh * (k * 3 + (iconh2 + 0)) + menuh);
+            paintline(picone, k + 3, iconw * iconwr, iconh * (k * 3 + (iconh2 + 0)) + menuh);
+            paintline(piconc, 12, iconw * iconwl, iconh * (k * 3 + (iconh2 + 1)) + menuh);
+            paintline(piconc, 12, iconw * iconwr, iconh * (k * 3 + (iconh2 + 1)) + menuh);
+            paintnumber(k * 5, 2, iconw * iconwn, iconh * (k * 3 + (iconh2 + 1)) + menuh - faceh / 2);
+            drawbmp(picona, iconw * iconwm, iconh * (k * 3 + (iconh2 + 1)) + menuh, cfg);
         }
-        paintline(picone, 12, iconw * 0, iconh * 18 + menuh);
-        paintline(piconc, 12, iconw * 15, iconh * 18 + menuh);
-        paintline(piconc, 12, iconw * 0, iconh * 19 + menuh);
-        paintline(piconc, 12, iconw * 15, iconh * 19 + menuh);
-        drawbmp(picona, iconw * 13, iconh * 19 + menuh, cfg);
+        paintline(picone, 12, iconw * iconwl, iconh * (iconh3 + 0) + menuh);
+        paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + 0) + menuh);
+        paintline(piconc, 12, iconw * iconwl, iconh * (iconh3 + 1) + menuh);
+        paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + 1) + menuh);
+        drawbmp(picona, iconw * iconwm, iconh * (iconh3 + 1) + menuh, cfg);
+        line(0, menuh, helpw, 0, cfg);
+        line(0, menuh + iconh * (iconh2 - 2), helpw, 0, cfg);
+        line(0, menuh + iconh * (iconh3 - 2) + iconh / 2, helpw, 0, cfg);
+        line(0, menuh + helph - okh_, helpw, 0, cfg);
         break;
+    }
     case 4:
-        paintline(piconc, picon[2], piconp, 4, 1, 7, 0, iconh * 0 + menuh);
-        paintline(piconc, piconf, picon[2], piconp, 2, 2, 1, 7, 0, iconh * 1 + menuh);
-        paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, 0, iconh * 2 + menuh);
-        paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * 15, iconh * 1 + menuh);
-        paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * 15, iconh * 2 + menuh);
-        drawbmp(picona, iconw * 13, iconh * 2 + menuh, cfg);
-        line(0, iconh * 2 - iconh / 2 + menuh, iconw * 12, 0, red);
-        paintline(piconc, picon[2], piconp, 4, 1, 7, 0, iconh * 4 + menuh);
-        paintline(picon[1],  picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, 0, iconh * 5 + menuh);
-        paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, 0, iconh * 6 + menuh);
-        paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * 15, iconh * 5 + menuh);
-        paintline(piconc, picon[3], picon[1], piconp, 3, 1, 1, 7, iconw * 15, iconh * 6 + menuh);
-        drawbmp(picona, iconw * 13, iconh * 6 + menuh, cfg);
-        line(0, iconh * 6 - iconh / 2 + menuh, iconw * 12, 0, red);
+    {
+        long iconwl = 3;
+        long iconwm = iconwl + 13;
+        long iconwr = iconwl + 17;
+        long iconwn = iconwr + 14;
+        long iconh1 = 2;
+        long iconh2 = 6;
+        paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh1 + 0) + menuh);
+        paintline(piconc, piconf, picon[2], piconp, 2, 2, 1, 7, iconw * iconwl, iconh * (iconh1 + 1) + menuh);
+        paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh1 + 2) + menuh);
+        paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh1 + 1) + menuh);
+        paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwr, iconh * (iconh1 + 2) + menuh);
+        line(iconw * iconwl, iconh * (iconh1 + 2) - iconh / 2 + menuh, iconw * 12, 0, red);
+        drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) + menuh, cfg);
+        drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) + menuh, cfg);
+        drawbmp(picon[2], iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cfg);
+        paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - faceh / 2);
+        paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh2 + 0) + menuh);
+        paintline(picon[1],  picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
+        paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh2 + 2) + menuh);
+        paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh2 + 1) + menuh);
+        paintline(piconc, picon[3], picon[1], piconp, 3, 1, 1, 7, iconw * iconwr, iconh * (iconh2 + 2) + menuh);
+        line(iconw * iconwl, iconh * (iconh2 + 2) - iconh / 2 + menuh, iconw * 12, 0, red);
+        drawbmp(piconc, iconw * (iconwm + 0), iconh * (iconh2 + 2) + menuh, cfg);
+        drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh2 + 2) + menuh, cfg);
+        drawbmp(picon[2], iconw * (iconwm + 2), iconh * (iconh2 + 2) + menuh, cfg);
+        paintnumber(2, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - faceh / 2);
+//消4
+//line level *3
+    }
+    break;
+    case 5:
+//123大小
         break;
-    case -1:
-        setfontheight(fontfh);
-        drawtextxy(getwin(), "About", 0, menuh, aboutw, fontth, black, cbg);
-        setfontheight(fonth);
-        drawtextxy(getwin(), "MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
-        drawtextxy(getwin(), "Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
-        drawtextxy(getwin(), "Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
-        drawtextxy(getwin(), "Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+    case 6:
+//按键
         break;
     }
     if (helpi > 0)

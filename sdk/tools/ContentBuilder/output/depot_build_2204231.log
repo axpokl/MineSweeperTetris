@@ -1,13 +1,14 @@
-[2022-11-16 17:25:19]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-11-16 17:25:19]: Building file listing for depot 2204231 ...
-[2022-11-16 17:25:19]: Found 24 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-11-16 17:25:19]: Found 24 files (0 MB) for depot 2204231
-[2022-11-16 17:25:35]: Building depot 2204231, baseline manifest 1424808877884042859 (24 files)
-[2022-11-16 17:25:35]: Found 22 chunks ( 22 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-11-16 17:25:35]: Changes to baseline manifest 1424808877884042859 :
-[2022-11-16 17:25:35]: Changed: "bmp\icon.bmp" 3 kB size, 3 kB changed 
-[2022-11-16 17:25:35]: Changed: "MineSweeperTetris.exe" 337 kB size, 337 kB changed 
-[2022-11-16 17:25:35]: Summary: 0 files added, 2 files changed, 0 files removed
-[2022-11-16 17:25:36]: Uploading new manifest to 208.64.201.182:80 (handle 8730711459657568338, 2775 bytes).
-[2022-11-16 17:25:37]: Uploading 2 out of 2 missing chunks.
-[2022-11-16 17:25:40]: Success! New manifestID 4128601604393651038 created and 2 new chunks uploaded.
+[2022-11-16 21:46:20]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-11-16 21:46:20]: Building file listing for depot 2204231 ...
+[2022-11-16 21:46:20]: Found 24 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-11-16 21:46:20]: Found 24 files (0 MB) for depot 2204231
+[2022-11-16 21:46:21]: Building depot 2204231, baseline manifest 1424808877884042859 (24 files)
+[2022-11-16 21:46:21]: Found 22 chunks ( 22 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-11-16 21:46:21]: Changes to baseline manifest 1424808877884042859 :
+[2022-11-16 21:46:21]: Changed: "bmp\click.bmp" 6 kB size, 6 kB changed 
+[2022-11-16 21:46:21]: Changed: "bmp\icon.bmp" 3 kB size, 3 kB changed 
+[2022-11-16 21:46:21]: Changed: "MineSweeperTetris.exe" 338 kB size, 338 kB changed 
+[2022-11-16 21:46:21]: Summary: 0 files added, 3 files changed, 0 files removed
+[2022-11-16 21:46:22]: Uploading new manifest to 208.64.201.182:80 (handle 17698317988353571731, 2777 bytes).
+[2022-11-16 21:46:22]: Uploading 2 out of 2 missing chunks.
+[2022-11-16 21:46:24]: Success! New manifestID 6480782911850554378 created and 2 new chunks uploaded.
