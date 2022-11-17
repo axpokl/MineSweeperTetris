@@ -40,7 +40,7 @@ public:
     pbitmap pface_;
     pbitmap pface[5];
     pbitmap picon_;
-    pbitmap picon[9];
+    pbitmap picon[11];
     pbitmap piconc;
     pbitmap piconq;
     pbitmap piconf;
@@ -186,18 +186,18 @@ void Window::initbmp()
     piconn = createbmp(iconw, iconh);
     drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
     piconp = createbmp(iconw, iconh);
-    for (long i = 0; i < 9; i++)
+    for (long i = 0; i <= 10; i++)
     {
         picon[i] = createbmp(iconw, iconh);
-        drawbmp(picon_, picon[i], 0, (16 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
+        drawbmp(picon_, picon[i], 0, (17 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
     }
-    drawbmp(picon_, piconp, 0, iconh * 15, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconp, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
     picona = createbmp(iconw, iconh);
-    drawbmp(picon_, picona, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, picona, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
     piconu = createbmp(iconw, iconh);
-    drawbmp(picon_, piconu, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, piconu, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
     picont = createbmp(iconw, iconh);
-    drawbmp(picon_, picont, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
+    drawbmp(picon_, picont, 0, iconh * 19, iconw, iconh, 0, 0, iconw, iconh);
     for (long i = 0; i < 10; i++)
     {
         pdigit[i] = createbmp(digtw, digth);
@@ -470,7 +470,7 @@ void Window::painthelp()
             }
         }
         line(helpw / 2, menuh, 0, helph - okh_, cfg);
-        for (long k = 0; k <= 3; k++)
+        for (long k = 1; k <= 2; k++)
         {
             line(0, menuh + (helph - okh_) * k / 3, helpw, 0, cfg);
         }
@@ -572,7 +572,7 @@ void Window::painthelp()
             }
         }
         line(helpw / 2, menuh, 0, (helph - okh_) / 3, cfg);
-        for (long k = 0; k <= 3; k++)
+        for (long k = 1; k <= 2; k++)
         {
             line(0, menuh + (helph - okh_) * k / 3, helpw, 0, cfg);
         }
@@ -607,10 +607,8 @@ void Window::painthelp()
         paintline(piconc, 12, iconw * iconwl, iconh * (iconh3 + 1) + menuh);
         paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + 1) + menuh);
         drawbmp(picona, iconw * iconwm, iconh * (iconh3 + 1) + menuh, cfg);
-        line(0, menuh, helpw, 0, cfg);
         line(0, menuh + iconh * (iconh2 - 2), helpw, 0, cfg);
         line(0, menuh + iconh * (iconh3 - 2) + iconh / 2, helpw, 0, cfg);
-        line(0, menuh + helph - okh_, helpw, 0, cfg);
         break;
     }
     case 4:
@@ -621,12 +619,14 @@ void Window::painthelp()
         long iconwn = iconwr + 14;
         long iconh1 = 2;
         long iconh2 = 6;
+        long iconh3 = 11;
+        long iconh4 = 22;
         paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh1 + 0) + menuh);
         paintline(piconc, piconf, picon[2], piconp, 2, 2, 1, 7, iconw * iconwl, iconh * (iconh1 + 1) + menuh);
         paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh1 + 2) + menuh);
         paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh1 + 1) + menuh);
         paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwr, iconh * (iconh1 + 2) + menuh);
-        line(iconw * iconwl, iconh * (iconh1 + 2) - iconh / 2 + menuh, iconw * 12, 0, red);
+        line(iconw * iconwl, iconh * (iconh1 + 1) + iconh / 2 + menuh, iconw * 12, 0, red);
         drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) + menuh, cfg);
         drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) + menuh, cfg);
         drawbmp(picon[2], iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cfg);
@@ -636,17 +636,51 @@ void Window::painthelp()
         paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh2 + 2) + menuh);
         paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh2 + 1) + menuh);
         paintline(piconc, picon[3], picon[1], piconp, 3, 1, 1, 7, iconw * iconwr, iconh * (iconh2 + 2) + menuh);
-        line(iconw * iconwl, iconh * (iconh2 + 2) - iconh / 2 + menuh, iconw * 12, 0, red);
+        line(iconw * iconwl, iconh * (iconh2 + 1) + iconh / 2 + menuh, iconw * 12, 0, red);
         drawbmp(piconc, iconw * (iconwm + 0), iconh * (iconh2 + 2) + menuh, cfg);
         drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh2 + 2) + menuh, cfg);
         drawbmp(picon[2], iconw * (iconwm + 2), iconh * (iconh2 + 2) + menuh, cfg);
-        paintnumber(2, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth / 2);
-//消4
-//line level *3
+        paintnumber(1, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth / 2);
+        paintline(piconp, 12, iconw * iconwl, iconh * (iconh3 + 4) + menuh);
+        line(iconw * iconwl, iconh * (iconh3 + 4) + iconh / 2 + menuh, iconw * 12, 0, red);
+        for (long k = 0; k < 8; k++)
+        {
+            if (k > 4)
+            {
+                paintline(piconc, 12, iconw * iconwl, iconh * (iconh3 + k) + menuh);
+            }
+            if (k > 0)
+            {
+                paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + k) + menuh);
+            }
+        }
+        drawbmp(picona, iconw * (iconwm + 1), iconh * (iconh3 + 7) + menuh, cfg);
+        paintnumber(5, 4, iconw * iconwn, iconh * (iconh3 + 7) + menuh - digth / 2);
+        for (long k = 0; k < 3; k++)
+        {
+            paintnumber((k + 2) * (k + 2), 4, helpw * (k * 2 + 1) / 6 - 4 * digtw - 1 * iconw / 2, iconh * iconh4 + menuh - digth / 2 + iconw / 2);
+            paintnumber((k + 2), 2, helpw * (k * 2 + 1) / 6 + 2 * digtw + 1 * iconw / 2, iconh * iconh4 + menuh - digth / 2 + iconw / 2);
+            drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw - iconw / 2, iconh * iconh4 + menuh, cfg);
+            line(0, menuh + iconh * (iconh3 - 1) + iconh / 2, helpw, 0, cfg);
+            line(0, menuh + iconh * (iconh4 - 2), helpw, 0, cfg);
+        }
+        line(helpw / 3 * 1, menuh + iconh * (iconh4 - 2), 0, helph - okh_ - iconh * (iconh4 - 2), cfg);
+        line(helpw / 3 * 2, menuh + iconh * (iconh4 - 2), 0, helph - okh_ - iconh * (iconh4 - 2), cfg);
     }
     break;
     case 5:
-//123大小
+        for (long j = 0; j < 24; j++)
+        {
+            drawbmp(picon[j % 10 + 1], iconw * 4, iconh / 2 + iconh * j + menuh, cfg);
+        }
+        for (long i = 0; i < 32; i++)
+        {
+            drawbmp(picon[i % 10 + 1], iconw * 4 + iconw * i, iconh / 2 + menuh, cfg);
+        }
+
+//12 20 2
+//16 24 3
+//32 32 6
         break;
     case 6:
 //按键
@@ -667,6 +701,8 @@ void Window::painthelp()
             drawbmp(pbtn, getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
             drawtextxy(getwin(), ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
         }
+        line(0, menuh, helpw, 0, cfg);
+        line(0, menuh + helph - okh_, helpw, 0, cfg);
     }
     else if (helpi < 0)
     {

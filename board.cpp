@@ -74,7 +74,7 @@ void Board::initbd()
 {
     sit = 0;
     line = 0;
-    level = 1;
+    level = 0;
     w = min(max(w, 12), 100);
     h = min(max(h, 8), 100);
     n = max(1, min(n, w - 1));

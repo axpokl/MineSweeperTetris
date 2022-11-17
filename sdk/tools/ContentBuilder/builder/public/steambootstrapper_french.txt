@@ -23,7 +23,7 @@
 "SteamBootstrapper_UpdateChecking"			"Recherche de nouvelles mises à jour..."
 "SteamBootstrapper_UpdatePrepare"				"Préparation de la mise à jour..."
 "SteamBootstrapper_UpdateDownload"			"Téléchargement de la mise à jour..."
-"SteamBootstrapper_UpdateDownloading"			"Téléchargement : (%bytes% sur %size% Ko)"
+"SteamBootstrapper_UpdateDownloading"			"Téléchargement : (%bytes% sur %size% Ko)"
 "SteamBootstrapper_UpdateExtractingPackage"	"Extraction du package..."
 "SteamBootstrapper_UpdateInstalling"			"Installation de la mise à jour..."
 "SteamBootstrapper_InstallVerify"				"Vérification de l'installation..."
