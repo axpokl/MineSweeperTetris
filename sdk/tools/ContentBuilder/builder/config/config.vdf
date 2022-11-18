@@ -34,15 +34,7 @@
 				"ipv6check_udp_state"		"good"
 				"CMWebSocket"
 				{
-					"ext1-hkg1.steamserver.net:27038"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-hkg1.steamserver.net:27021"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext3-sgp1.steamserver.net:27021"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -52,33 +44,15 @@
 						"LastPingValue"		"118"
 						"LastLoadValue"		"58"
 					}
-					"ext4-sgp1.steamserver.net:27032"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-tyo2.steamserver.net:27030"
 					{
 						"LastPingTimestamp"		"0"
-					}
-					"ext2-hkg1.steamserver.net:27020"
-					{
-						"LastPingTimestamp"		"0"
-						"LastPingValue"		"230"
-						"LastLoadValue"		"170"
 					}
 					"ext2-hkg1.steamserver.net:27033"
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-tyo1.steamserver.net:27026"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-sgp1.steamserver.net:27019"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo2.steamserver.net:27037"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -88,15 +62,7 @@
 						"LastPingValue"		"120"
 						"LastLoadValue"		"81"
 					}
-					"ext4-sgp1.steamserver.net:27035"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext4-sgp1.steamserver.net:27024"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext4-sgp1.steamserver.net:27037"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -104,15 +70,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext3-sgp1.steamserver.net:27019"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext3-sgp1.steamserver.net:27020"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext3-sgp1.steamserver.net:27022"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -120,43 +78,21 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext3-sgp1.steamserver.net:27028"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext3-sgp1.steamserver.net:27030"
 					{
 						"LastPingTimestamp"		"0"
-					}
-					"ext1-sgp1.steamserver.net:27019"
-					{
-						"LastPingTimestamp"		"1668692909"
-						"LastPingValue"		"222"
-						"LastLoadValue"		"94"
 					}
 					"ext1-sgp1.steamserver.net:27021"
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-sgp1.steamserver.net:27031"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-sgp1.steamserver.net:27029"
 					{
-						"LastPingTimestamp"		"1668692909"
+						"LastPingTimestamp"		"0"
 						"LastPingValue"		"228"
 						"LastLoadValue"		"94"
 					}
-					"ext1-sgp1.steamserver.net:27022"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-hkg1.steamserver.net:27022"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-sgp1.steamserver.net:27030"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -164,15 +100,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-sgp1.steamserver.net:27034"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext4-sgp1.steamserver.net:443"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-sgp1.steamserver.net:443"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -180,15 +108,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-sgp1.steamserver.net:27028"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-sgp1.steamserver.net:27036"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-sgp1.steamserver.net:27024"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -196,23 +116,11 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-sgp1.steamserver.net:27037"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext3-sgp1.steamserver.net:27024"
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext3-sgp1.steamserver.net:27035"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext3-sgp1.steamserver.net:27033"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext3-sgp1.steamserver.net:27031"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -222,15 +130,7 @@
 						"LastPingValue"		"100000"
 						"LastLoadValue"		"0"
 					}
-					"ext2-tyo2.steamserver.net:27036"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-tyo2.steamserver.net:27022"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-tyo2.steamserver.net:27032"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -238,15 +138,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo2.steamserver.net:27024"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:27021"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo2.steamserver.net:27024"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -254,15 +146,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo2.steamserver.net:27021"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-tyo2.steamserver.net:27029"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-tyo2.steamserver.net:27034"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -270,15 +154,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo2.steamserver.net:27038"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:27020"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-tyo2.steamserver.net:27020"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -286,15 +162,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo2.steamserver.net:27023"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-tyo2.steamserver.net:27033"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-tyo2.steamserver.net:27031"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -302,15 +170,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo2.steamserver.net:27025"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:27029"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo2.steamserver.net:27030"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -318,15 +178,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-tyo2.steamserver.net:27035"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:27022"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo2.steamserver.net:27032"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -334,15 +186,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-tyo2.steamserver.net:27034"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:27023"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo2.steamserver.net:27038"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -350,15 +194,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-tyo2.steamserver.net:27036"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:27031"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo2.steamserver.net:27025"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -366,15 +202,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-tyo1.steamserver.net:27021"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo1.steamserver.net:27022"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo1.steamserver.net:27024"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -382,15 +210,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo1.steamserver.net:27020"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo2.steamserver.net:443"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-tyo1.steamserver.net:27022"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -398,15 +218,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo1.steamserver.net:27026"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-tyo1.steamserver.net:27021"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-tyo1.steamserver.net:27019"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -414,15 +226,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-tyo1.steamserver.net:27024"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-tyo1.steamserver.net:27019"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-tyo1.steamserver.net:27025"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -430,15 +234,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-hkg1.steamserver.net:27036"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-hkg1.steamserver.net:27022"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-hkg1.steamserver.net:27025"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -446,15 +242,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-hkg1.steamserver.net:27023"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-hkg1.steamserver.net:27035"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext2-hkg1.steamserver.net:27038"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -462,15 +250,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-hkg1.steamserver.net:27031"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-hkg1.steamserver.net:27029"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-hkg1.steamserver.net:27031"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -478,15 +258,7 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-hkg1.steamserver.net:27033"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext2-hkg1.steamserver.net:27019"
-					{
-						"LastPingTimestamp"		"0"
-					}
-					"ext1-hkg1.steamserver.net:27019"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -494,15 +266,263 @@
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext1-hkg1.steamserver.net:27034"
-					{
-						"LastPingTimestamp"		"0"
-					}
 					"ext1-hkg1.steamserver.net:27030"
 					{
 						"LastPingTimestamp"		"0"
 					}
-					"ext2-hkg1.steamserver.net:27024"
+					"ext1-hkg1.steamserver.net:27020"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-hkg1.steamserver.net:27037"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-hkg1.steamserver.net:443"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27020"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27037"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27034"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27033"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27022"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27025"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27035"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27021"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27029"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27032"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27019"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27036"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27030"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27028"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27031"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext4-sgp1.steamserver.net:27023"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27037"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27019"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27023"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:443"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27028"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27038"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27034"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27022"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27025"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27029"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27036"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27021"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27035"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext3-sgp1.steamserver.net:27031"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27030"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27032"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27034"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27028"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27022"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27024"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27038"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27032"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27037"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27023"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27038"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27024"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27035"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27023"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27019"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27037"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27033"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27031"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27033"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27020"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27031"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27029"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27034"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27028"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27035"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27021"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27022"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:27025"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext2-sgp1.steamserver.net:27025"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-sgp1.steamserver.net:443"
+					{
+						"LastPingTimestamp"		"0"
+					}
+					"ext1-hkg1.steamserver.net:27021"
 					{
 						"LastPingTimestamp"		"0"
 					}
@@ -518,15 +538,15 @@
 						"SteamID"		"76561198174319390"
 					}
 				}
-				"CellIDServerOverride"		"32"
-				"CM"		"155.133.239.51:27017;155.133.239.20:27017;155.133.239.51:27018;155.133.239.20:27018;155.133.245.36:27017;155.133.245.36:27018;155.133.245.37:27018;155.133.245.37:27017;103.28.54.165:27017;103.28.54.165:27018;103.28.54.181:27018;103.28.54.181:27017;162.254.195.71:27017;162.254.195.71:27018;162.254.195.66:27018;162.254.195.66:27017;162.254.199.181:27018;162.254.199.163:27018;162.254.199.181:27017;155.133.253.50:27018;162.254.199.163:27017;155.133.253.50:27017;205.196.6.214:27018;205.196.6.215:27017;205.196.6.215:27018;162.254.193.102:27017;162.254.193.102:27018;205.196.6.214:27017;155.133.253.34:27017;155.133.253.34:27018;162.254.193.74:27018;162.254.193.74:27017;162.254.192.75:27017;162.254.192.75:27018;103.10.124.125:27018;103.10.124.125:27017;162.254.192.74:27018;103.10.124.123:27018;103.10.124.122:27017;162.254.192.74:27017;103.10.124.122:27018;103.10.124.123:27017;162.254.192.71:27018;162.254.192.87:27017;162.254.192.71:27017;162.254.192.87:27018;103.10.124.124:27017;103.10.124.124:27018;146.66.152.39:27017;146.66.152.39:27018;146.66.152.38:27017;146.66.152.44:27018;146.66.152.44:27017;146.66.152.43:27018;146.66.152.43:27017;146.66.152.38:27018;162.254.196.67:27017;162.254.196.67:27018;162.254.196.84:27018;162.254.196.84:27017;162.254.196.83:27017;162.254.196.83:27018;162.254.196.68:27018;162.254.196.68:27017;155.133.248.38:27017;155.133.248.38:27018;155.133.248.39:27017;155.133.248.39:27018;103.10.125.148:27018;103.10.125.156:27017;103.10.125.148:27017;103.10.125.156:27018;185.25.182.20:27017;185.25.182.20:27018;185.25.182.52:27018;185.25.182.52:27017;155.133.246.36:27018;155.133.246.35:27017;155.133.246.35:27018;155.133.246.36:27017"
+				"CellIDServerOverride"		"35"
+				"CM"		"103.10.124.125:27018;103.10.124.125:27017;103.10.124.124:27017;103.10.124.124:27018;103.10.124.123:27017;103.10.124.122:27018;103.10.124.123:27018;103.10.124.122:27017;103.28.54.165:27018;103.28.54.165:27017;103.28.54.181:27017;103.28.54.181:27018;155.133.245.36:27018;155.133.239.20:27018;155.133.239.20:27017;155.133.239.51:27017;155.133.239.51:27018;155.133.245.37:27017;155.133.245.36:27017;155.133.245.37:27018;162.254.195.71:27017;162.254.195.66:27017;162.254.195.66:27018;162.254.195.71:27018;162.254.199.181:27017;162.254.199.181:27018;162.254.199.163:27017;162.254.199.163:27018;155.133.253.50:27017;155.133.253.50:27018;155.133.253.34:27017;155.133.253.34:27018;205.196.6.215:27018;162.254.193.102:27018;205.196.6.214:27018;205.196.6.215:27017;162.254.193.102:27017;162.254.193.74:27017;162.254.193.74:27018;205.196.6.214:27017;103.10.125.148:27017;103.10.125.156:27017;103.10.125.156:27018;103.10.125.148:27018;162.254.192.87:27017;162.254.192.71:27017;162.254.192.71:27018;162.254.192.87:27018;162.254.192.75:27018;162.254.192.75:27017;162.254.192.74:27018;162.254.192.74:27017;162.254.196.83:27018;162.254.196.68:27018;162.254.196.68:27017;162.254.196.83:27017;162.254.196.84:27018;162.254.196.67:27017;162.254.196.67:27018;162.254.196.84:27017;155.133.248.38:27018;155.133.248.39:27018;155.133.248.39:27017;155.133.248.38:27017;162.254.197.39:27017;162.254.197.39:27018;155.133.226.78:27017;155.133.226.78:27018;185.25.182.52:27017;185.25.182.52:27018;185.25.182.20:27017;162.254.197.54:27017;162.254.197.54:27018;185.25.182.20:27018;155.133.226.75:27017;155.133.226.75:27018;155.133.252.39:27018;155.133.252.39:27017;162.254.198.44:27017;162.254.198.44:27018"
 				"PercentDefaultWebSockets"		"50"
 				"MTBF"		"2103109250"
-				"cip"		"020000002fbe870dc2e9a5330000d9c5c266"
+				"cip"		"0200000036a9870dc2e9a5330000c0d2c266"
 				"SentryFile"		"C:\\Users\\pc\\Desktop\\MineSweeperTetris\\sdk\\tools\\ContentBuilder\\builder\\ssfn3106920802247029839"
 				"ConnectCache"
 				{
-					"726fc071"		"020000000097c664a6a1c944daffad012c8919770494214cdfb33ff95364ba444c279b7e4c8f7d28d3ab45604500a6cb9bf23faf984035b72794de53d4662f2e3c2531a919d303909fa3d4b26ae2f19f6df390d35a6f1b97ac6509f428911d28c005b9d33d39bcb8e04641903e366e1bdf20fa0ac08f012e03790a39fd9afad2708414f1bb141b0ea7ef0f100ec2c67eedc0d543d73fab59ce4e247c390103279bd62faf452dda56b9d3e264754a336d831500c3635185db53847de7949969eb5f6f804bea8c7217dd5978803d967f9bfe1c8ce85804a7dc8939d56c7a0979f8ee1970fd00f2496021cfd78d1fe2d1cc862a15a71c631918105d9547cc70406e1dbc4028d01c8ec568db56945a5f5637ab464a517964b162cb19ad591e61c0f9e001247f7aea5261933a4fbbb3d3c2378891e64a17361e268bae39969287b0946d7453a6e9d1af4c531c676a22b1a41fc382be9f7077a1d9db704693b96c4fe4a540036f14e5a8f7e0f2d4e8e570a48003950af355bd7b9f8bbd82a6d296d21f1da55712fc11b60d7be0aa98efc970ef9b24dd897eb7820ac90398384a59124f3cea47740cbf2ab2add9ff5b4fb4bc0b7133e1239a8e3e61eb782a313addc8755191d2a598a846d62836b5a4e131a10584b6333d2858a015edd799407b51808f28bd00afbeb205fff3a04a5d1d97dcc93abbf0bc43510016950d9d"
+					"726fc071"		"020000000097c664a6a1c944daffad012c8919770494214cdfb33ff95364ba444c279b7e4c8f7d28d3ab45604500a6cb9bf23faf984035b72794de53d4662f2e3c2531a919d303909fa3d4b26ae2f19f6df390d35a6f1b97ac6509f428911d28c005b9d33d39bcb8e04641903e366e1bdf20fa0ac08f012e03790a39fd9afad2708414f1bb141b0ea7ef0f100ec2c67eedc0d543d73fab59ce4e247c390103279bd62faf452dda56b9d3e264754a336d831500c3635185db53847de7949971e85f6f8c4bea8c7217dd5978803d967f9bfe1c8ce85814bf908807dd267a0979f8ee1970fd00f2496021cfd78d1fe2ebca841427a51f591918105d9547cc70406e1dbc4028d01c8ec568db56945a5f5637ab7841227964bd25c8369b5d1e61c0f9e001247f7aea5261933a4fbbb3d3c23689bfc44d171802268bae39969287b0946d7453a6e9d1af4c531c676a22b1a41fc382be9f7077a1d9db704693b96c4fe4a540036f14e5a8bce3d8d4a1e677869a069501ea57a30093b0bd8ebee9a3f41225aa4802fa1298037fdeb699edda0def9b0da8857ea79a4ecb3d88294c426b060e892e5a3c8a39c581de9035568ea1317b728623ad9e296fcc263c52339bfd3252c6f889c5ae5efb0a6b8b9edf268d5d9fda27660152a30c8890ff6f5b4487eb04c863d4b5b630eac6d65d631db6e7a904a9c7d0b99cfabb6700bf415455"
 				}
 			}
 		}
