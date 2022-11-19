@@ -18,6 +18,7 @@ public:
     const long btnh = 36;
     const long aboutw = 320;
     const long abouth = 240;
+    long aboutw_ = 0;
     const long helpw = 640;
     const long helph = 480;
     const long fontth = 64;
@@ -71,7 +72,7 @@ public:
     Block bl;
     const long maxhelp = 6;
     long helpi = 0;
-    long cheati = 0;
+    long cheatb = 0;
 
     Window();
     void initwindow();
@@ -397,14 +398,19 @@ void Window::painthelp()
     switch (helpi)
     {
     case -1:
+    {
         setfontheight(fontfh);
-        drawtextxy(getwin(), "About", 0, menuh, aboutw, fontth, black, cbg);
+        drawtextxy(getwin(), "About", fontfh / 2, menuh, aboutw, fontth, black, cbg);
+        aboutw_ = getstringwidth("  About");
+        pbitmap pcheat__[2] = {piconn, piconm};
+        drawbmp(pcheat__[cheatb], (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cfg);
         setfontheight(fonth);
         drawtextxy(getwin(), "MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
         drawtextxy(getwin(), "Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
         drawtextxy(getwin(), "Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
         drawtextxy(getwin(), "Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
         break;
+    }
     case 1:
         for (long j = 0; j < 3; j++)
         {
@@ -703,12 +709,19 @@ void Window::painthelp()
         break;
     case 6:
     {
-        pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0]};
-        for (long k = 0; k < 11; k++)
+        pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
+        const char* keys[18] = {"ESC", "F12/A", "F1/H", "F2/T", "F3/S", "F4/M", "F5/N", "P/Space", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+        setfontheight(faceh);
+        for (long k = 0; k < 18; k++)
         {
-            drawbmp(pmenu__[k], helpw / 4, faceh * k + menuh, facew, faceh, cfg);
+            if (k < 11)
+            {
+                drawbmp(pmenu__[k], helpw / 4, faceh * k + menuh, facew, faceh, cfg);
+            }
+            drawtextxy(getwin(), keys[k], helpw / 6, faceh * k + menuh, facew, faceh, black, cfg);
         }
         line(helpw / 2, menuh, 0, helph - okh_, cfg);
+
 //ESC f1 f2 s/F3 m/f4
 //123n
 //p,space
@@ -720,29 +733,29 @@ void Window::painthelp()
     }
     break;
     }
-    if (helpi > 0)
+    if (helpi == -1)
+    {
+        setfontheight(fonth);
+        drawbmp(pok, getwin(), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh);
+        drawtextxy(getwin(), "OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+    }
+    else if (helpi != 0)
     {
         setfontheight(fonth);
         drawbmp(pok, getwin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
         drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
-        if (helpi > 1)
+        if (helpi > 1 && helpi <= maxhelp)
         {
             drawbmp(pbtn, getwin(), (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
             drawtextxy(getwin(), "<", (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
         }
-        if (helpi < maxhelp)
+        if (helpi >= 1 && helpi < maxhelp)
         {
             drawbmp(pbtn, getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
             drawtextxy(getwin(), ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, black, cfg);
         }
         line(0, menuh, helpw, 0, cfg);
         line(0, menuh + helph - okh_, helpw, 0, cfg);
-    }
-    else if (helpi < 0)
-    {
-        setfontheight(fonth);
-        drawbmp(pok, getwin(), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh);
-        drawtextxy(getwin(), "OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
     }
 }
 
@@ -877,7 +890,22 @@ void Window::mouseevent(long ex, long ey, long eb)
             bd.checkline();
         }
     }
-    else if (helpi > 0)
+    else if (helpi == -1)
+    {
+        if (isin(ex, ey, (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh))
+        {
+            sethelp(0);
+        }
+        if (isin(ex, ey, (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh))
+        {
+            if (!cheatb)
+            {
+                bd.sd.playsound(bd.sd.sSolve);
+                cheatb = true;
+            }
+        }
+    }
+    else if (helpi != 0)
     {
         if (isin(ex, ey, (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh))
         {
@@ -898,29 +926,11 @@ void Window::mouseevent(long ex, long ey, long eb)
             }
         }
     }
-    else if (helpi < 0)
-    {
-        if (isin(ex, ey, (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh))
-        {
-            sethelp(0);
-        }
-    }
     paintevent();
 }
 
 void Window::keyevent(long key)
 {
-    if (cheati == 1)
-    {
-        if (key == k_x)
-        {
-            cheati = 2;
-        }
-        else
-        {
-            cheati = 0;
-        }
-    }
     switch (key)
     {
     case k_esc:
@@ -929,23 +939,42 @@ void Window::keyevent(long key)
     case k_f12:
         sethelp(-1);
         break;
+    case k_a:
+        sethelp(-1);
+        break;
     case k_f1:
+        sethelp(1);
+        break;
+    case k_h:
         sethelp(1);
         break;
     case k_f2:
         sethelp(-2);
         break;
+    case k_t:
+        sethelp(-2);
+        break;
     case k_f3:
+        bd.sd.switchsound();
+        break;
+    case k_s:
         bd.sd.switchsound();
         break;
     case k_f4:
         bd.sd.switchmusic();
         break;
-    case k_s:
-        bd.sd.switchsound();
-        break;
     case k_m:
         bd.sd.switchmusic();
+        break;
+    case k_f5:
+        helpi = 0;
+        bd.initbd();
+        initwindow(false);
+        break;
+    case k_n:
+        helpi = 0;
+        bd.initbd();
+        initwindow(false);
         break;
     case k_1:
         helpi = 0;
@@ -961,17 +990,6 @@ void Window::keyevent(long key)
         helpi = 0;
         bd.initbd(3);
         initwindow(false);
-        break;
-    case k_n:
-        helpi = 0;
-        bd.initbd();
-        initwindow(false);
-        break;
-    case k_a:
-        if (cheati == 0)
-        {
-            cheati = 1;
-        }
         break;
     }
     if (helpi == 0)
@@ -1020,7 +1038,7 @@ void Window::keyevent(long key)
             bd.pause();
             break;
         }
-        if (cheati == 2)
+        if (cheatb)
         {
             switch (key)
             {

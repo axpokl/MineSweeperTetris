@@ -1,20 +1,23 @@
 -icon
-keyboard/function
+-keyboard/function
 -cheat
 -language
 -readme
 -sound
-music
+-music
 steam achmnt
 steam highscore
 传github URL到steam
 
-去除switch
+-cheat (music, icon)
 
-增量刷新
+-去除switch
+-增量刷新
 
 memory leak?
 windows xp test!
+
+------------------------
 
 菜单
 
@@ -81,6 +84,7 @@ F	solveb
 
 失败	+2行  （1左键挖开雷变旗帜，上面+2行）
 xxx	xxxx	自动增加，1+等级/5块每秒：0级1块，5级2块，10级3块
+
 消1行，+1分
 少于4行，+4分，+4行
 分数=等级*等级（左右列表）
