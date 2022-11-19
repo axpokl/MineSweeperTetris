@@ -1,8 +1,8 @@
-astyle --style=allman sound.cpp
-astyle --style=allman block.cpp
-astyle --style=allman board.cpp
-astyle --style=allman window.cpp
-astyle --style=allman main.cpp
-astyle --style=allman steam.cpp
+astyle --style=allman --indent-cases --indent-switches  sound.cpp
+astyle --style=allman --indent-cases --indent-switches  block.cpp
+astyle --style=allman --indent-cases --indent-switches  board.cpp
+astyle --style=allman --indent-cases --indent-switches window.cpp
+astyle --style=allman --indent-cases --indent-switches  main.cpp
+astyle --style=allman --indent-cases --indent-switches  steam.cpp
 del *.orig
 pause

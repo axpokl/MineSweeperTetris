@@ -89,45 +89,45 @@ bool Block::isok(long k, long x, long y, long &tx, long &ty)
 {
     switch (k)
     {
-    case 0:
-        tx = x - 1;
-        ty = y;
-        return (x > 0);
-        break;
-    case 1:
-        tx = x + 1;
-        ty = y;
-        return (x < w - 1);
-        break;
-    case 2:
-        tx = x;
-        ty = y - 1;
-        return (y > 0);
-        break;
-    case 3:
-        tx = x;
-        ty = y + 1;
-        return (y < h - 1);
-        break;
-    case 4:
-        tx = x - 1;
-        ty = y - 1;
-        return (x > 0 && y > 0);
-        break;
-    case 5:
-        tx = x - 1;
-        ty = y + 1;
-        return (x > 0 && y < h - 1);
-        break;
-    case 6:
-        tx = x + 1;
-        ty = y - 1;
-        return (x < w - 1 && y > 0);
-        break;
-    case 7:
-        tx = x + 1;
-        ty = y + 1;
-        return (x < w - 1 && y < h - 1);
-        break;
+        case 0:
+            tx = x - 1;
+            ty = y;
+            return (x > 0);
+            break;
+        case 1:
+            tx = x + 1;
+            ty = y;
+            return (x < w - 1);
+            break;
+        case 2:
+            tx = x;
+            ty = y - 1;
+            return (y > 0);
+            break;
+        case 3:
+            tx = x;
+            ty = y + 1;
+            return (y < h - 1);
+            break;
+        case 4:
+            tx = x - 1;
+            ty = y - 1;
+            return (x > 0 && y > 0);
+            break;
+        case 5:
+            tx = x - 1;
+            ty = y + 1;
+            return (x > 0 && y < h - 1);
+            break;
+        case 6:
+            tx = x + 1;
+            ty = y - 1;
+            return (x < w - 1 && y > 0);
+            break;
+        case 7:
+            tx = x + 1;
+            ty = y + 1;
+            return (x < w - 1 && y < h - 1);
+            break;
     }
 }

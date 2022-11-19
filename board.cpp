@@ -109,15 +109,15 @@ void Board::initbd(long mode_)
     mode = mode_;
     switch (mode)
     {
-    case 1:
-        initbd(12, 20, 8, 2);
-        break;
-    case 2:
-        initbd(16, 24, 8, 3);
-        break;
-    case 3:
-        initbd(32, 32, 8, 6);
-        break;
+        case 1:
+            initbd(12, 20, 8, 2);
+            break;
+        case 2:
+            initbd(16, 24, 8, 3);
+            break;
+        case 3:
+            initbd(32, 32, 8, 6);
+            break;
     }
 }
 
@@ -775,28 +775,28 @@ void Board::pause()
 {
     switch (sit)
     {
-    case 0:
-        sit = 0;
-        break;
-    case 1:
-        sit = 5;
-        sd.playsound(sd.sSolve);
-        break;
-    case 2:
-        sit = 5;
-        sd.playsound(sd.sSolve);
-        break;
-    case 3:
-        sit = 5;
-        sd.playsound(sd.sSolve);
-        break;
-    case 4:
-        sit = 4;
-        break;
-    case 5:
-        sit = 1;
-        sd.playsound(sd.sSolve);
-        break;
+        case 0:
+            sit = 0;
+            break;
+        case 1:
+            sit = 5;
+            sd.playsound(sd.sSolve);
+            break;
+        case 2:
+            sit = 5;
+            sd.playsound(sd.sSolve);
+            break;
+        case 3:
+            sit = 5;
+            sd.playsound(sd.sSolve);
+            break;
+        case 4:
+            sit = 4;
+            break;
+        case 5:
+            sit = 1;
+            sd.playsound(sd.sSolve);
+            break;
     }
     if (sit == 5)
     {
