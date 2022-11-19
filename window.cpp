@@ -750,7 +750,7 @@ void Window::painthelp()
                 pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
                 const char* keys[11] = {"Q / ESC", "A / F12", "H / F1", "T / F2", "S / F3", "M / F4", "N / F5", "P / Space", "1", "2", "3"};
                 const char * cheats[7] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level"};
-long cheatc[7] = {blue, blue, blue, blue, red, blue, red};
+                long cheatc[7] = {blue, blue, blue, blue, red, blue, red};
                 long helph__ = (helph - okh_ - faceh * 11 - iconh * 10 / 2) / 2;
                 long helpw__ = helpw / 6;
                 if (cheatb)
@@ -928,6 +928,7 @@ void Window::mouseevent(long ex, long ey, long eb)
                 else if (eb == k_rmouse)
                 {
                     bd.pause();
+                    bd.sd.playsound(bd.sd.sSolve);
                 }
             }
         }
@@ -1068,6 +1069,14 @@ void Window::keyevent(long key)
             case k_q:
                 closewin();
                 break;
+            case k_p:
+                bd.pause();
+                bd.sd.playsound(bd.sd.sSolve);
+                break;
+            case k_space:
+                bd.pause();
+                bd.sd.playsound(bd.sd.sSolve);
+                break;
             case k_left:
                 bd.w--;
                 initwindow(true);
@@ -1102,12 +1111,6 @@ void Window::keyevent(long key)
                 bd.maskj0++ ;
                 bd.maskj0 = min(bd.h - 4, bd.maskj0);
                 initwindow(true);
-                break;
-            case k_p:
-                bd.pause();
-                break;
-            case k_space:
-                bd.pause();
                 break;
         }
         if (cheatb)

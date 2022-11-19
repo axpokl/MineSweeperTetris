@@ -1451,3 +1451,61 @@
 [2022-11-18 21:54:06] [Logged On, 4, 2] [U:1:214053662] LogOff()
 [2022-11-18 21:54:06] [Logging Off, 4, 2] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2022-11-18 21:54:06] [Logging Off, 0, 2] [U:1:214053662] Log session ended
+
+
+[2022-11-19 19:37:50] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2022-11-19 19:37:50] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2022-11-19 19:37:50] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / 0.0.0.0:80 (0.0.0.0:80)) - TIMEOUT
+[2022-11-19 19:37:50] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net) - FAILED, no addresses resolved
+[2022-11-19 19:37:50] Clearing in-memory token - 1 (OK): set to null
+[2022-11-19 19:37:50] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2022-11-19 19:37:50] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2022-11-19 19:37:50] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2022-11-19 19:37:50] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2022-11-19 19:37:50] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2022-11-19 19:37:50] Connectivity test: OK!
+[2022-11-19 19:37:50] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2022-11-19 19:37:51] GetCMListForConnect -- got 11 Netfilter CMs and 61 WebSocket CMs
+[2022-11-19 19:37:51] GetCMListForConnect -- DC 'sgp1' count: 60
+[2022-11-19 19:37:51] GetCMListForConnect -- DC 'hkg1' count: 12
+[2022-11-19 19:37:51] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 84% of connections should be websockets, we rolled 10 - using WebSockets as default.
+[2022-11-19 19:37:51] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:27036) starting...
+[2022-11-19 19:37:51] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:27032) starting...
+[2022-11-19 19:37:51] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:443) starting...
+[2022-11-19 19:37:51] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-hkg1.steamserver.net:27032) starting...
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-hkg1.steamserver.net:27032) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:27032) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:27036) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:27030) starting...
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) starting...
+[2022-11-19 19:37:52] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-19 19:37:53] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:27030) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-19 19:37:53] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, ext3-sgp1.steamserver.net:27036, WebSocket)
+[2022-11-19 19:37:58] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (630683839)
+[2022-11-19 19:38:02] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (-328243175)
+[2022-11-19 19:38:14] [Connecting, 4, 0] [U:1:214053662] ConnectFailed('Connection Failed':0) (0.0.0.0:0, WebSocket)
+[2022-11-19 19:38:14] [Connecting, 4, 0] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2022-11-19 19:38:14] [Logged Off, 4, 0] [U:1:214053662] StartAutoReconnect() will start in 7.0 seconds (attempt 1)
+[2022-11-19 19:38:15] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:0:106::670a:7c5b]:80 ([2404:3fc0:0:106::670a:7c5b]:80)) - SUCCESS
+[2022-11-19 19:38:15] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:0:106::670a:7c5b]:80 ([2404:3fc0:0:106::670a:7c5b]:80)) - server indicated we are using ipv6, external address = '2404:f801:9000:18:6fec::1bc'
+[2022-11-19 19:38:15] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / [2404:3fc0:0:106::670a:7c59]:27019) - SUCCESS
+[2022-11-19 19:38:15] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2022-11-19 19:38:15] Connectivity test: OK!
+[2022-11-19 19:38:15] Connectivity test: result=Connected (since 24.8s ago), prev=Unknown, in progress=0
+[2022-11-19 19:38:21] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2022-11-19 19:38:22] GetCMListForConnect -- got 8 Netfilter CMs and 58 WebSocket CMs
+[2022-11-19 19:38:22] GetCMListForConnect -- DC 'sgp1' count: 60
+[2022-11-19 19:38:22] GetCMListForConnect -- DC 'hkg1' count: 6
+[2022-11-19 19:38:22] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 87% of connections should be websockets, we rolled 95 - using UDP as default.
+[2022-11-19 19:38:22] [Connecting, 4, 2] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, 103.10.124.123:27018, UDP)
+[2022-11-19 19:38:23] [Connecting, 4, 2] [U:1:214053662] ConnectionCompleted() (103.10.124.125:27017, UDP) local address (0.0.0.0:54567)
+[2022-11-19 19:38:23] [Connecting, 4, 2] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2022-11-19 19:38:23] [Connected, 4, 2] [U:1:214053662] Logging on [U:1:214053662]
+[2022-11-19 19:38:23] [Logging On, 4, 2] [U:1:214053662] Using credential pair
+[2022-11-19 19:38:23] [Logging On, 4, 2] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2022-11-19 19:38:23] CClientJobGetClientUpdateHosts: cached version not expired
+[2022-11-19 19:38:30] [Logged On, 4, 2] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1668857910 seconds ago)
+[2022-11-19 19:38:30] [Logged On, 4, 2] [U:1:214053662] LogOff()
+[2022-11-19 19:38:30] [Logging Off, 4, 2] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2022-11-19 19:38:30] [Logging Off, 0, 2] [U:1:214053662] Log session ended
