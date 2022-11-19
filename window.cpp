@@ -113,7 +113,7 @@ void Window::initwindow()
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitle("MineSweeper Tetris");
-    setfontname("Arial");
+    setfontname("Consolas");
     painttitle();
     initbmp();
 }
@@ -403,7 +403,7 @@ void Window::painthelp()
         drawtextxy(getwin(), "About", fontfh / 2, menuh, aboutw, fontth, black, cbg);
         aboutw_ = getstringwidth("  About");
         pbitmap pcheat__[2] = {piconn, piconm};
-        drawbmp(pcheat__[cheatb], (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cfg);
+        drawbmp(pcheat__[cheatb], (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
         setfontheight(fonth);
         drawtextxy(getwin(), "MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
         drawtextxy(getwin(), "Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
@@ -700,36 +700,51 @@ void Window::painthelp()
         paintline(piconn, 2, iconw * 4 + iconw, iconh / 2 + menuh + iconh * 12 - iconh);
         paintline(piconn, 3, iconw * 4 + iconw, iconh / 2 + menuh + iconh * 16 - iconh);
         paintline(piconn, 6, iconw * 4 + iconw, iconh / 2 + menuh + iconh * 24 - iconh);
-        line(iconw * 4, iconh / 2 + menuh + iconh * 12 - 1, iconw * 12, 0, gray);
-        line(iconw * 4, iconh / 2 + menuh + iconh * 16 - 1, iconw * 16, 0, gray);
-        line(iconw * 4, iconh / 2 + menuh + iconh * 24 - 1, iconw * 32, 0, gray);
-        line(iconw * 4 + iconw * 12 - 1, iconh / 2 + menuh, 0, iconh * 12, gray);
-        line(iconw * 4 + iconw * 16 - 1, iconh / 2 + menuh, 0, iconh * 16, gray);
-        line(iconw * 4 + iconw * 32 - 1, iconh / 2 + menuh, 0, iconh * 24, gray);
+        line(iconw * 4, iconh / 2 + menuh + iconh * 12 - 1, iconw * 12, 0, black);
+        line(iconw * 4, iconh / 2 + menuh + iconh * 16 - 1, iconw * 16, 0, black);
+        line(iconw * 4, iconh / 2 + menuh + iconh * 24 - 1, iconw * 32, 0, black);
+        line(iconw * 4, iconh / 2 + menuh + iconh * 0 - 1, iconw * 32, 0, black);
+        line(iconw * 4 + iconw * 12 - 1, iconh / 2 + menuh, 0, iconh * 12, black);
+        line(iconw * 4 + iconw * 16 - 1, iconh / 2 + menuh, 0, iconh * 16, black);
+        line(iconw * 4 + iconw * 32 - 1, iconh / 2 + menuh, 0, iconh * 24, black);
+        line(iconw * 4 + iconw * 0 - 1, iconh / 2 + menuh, 0, iconh * 24, black);
         break;
     case 6:
     {
         pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
-        const char* keys[18] = {"ESC", "F12/A", "F1/H", "F2/T", "F3/S", "F4/M", "F5/N", "P/Space", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-        setfontheight(faceh);
-        for (long k = 0; k < 18; k++)
+        const char* keys[11] = {"Q / ESC", "A / F12", "H / F1", "T / F2", "S / F3", "M / F4", "N / F5", "P / Space", "1", "2", "3"};
+        const char * cheats[7] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level"};
+
+        long helph__ = (helph - okh_ - faceh * 11 - iconh * 10 / 2) / 2;
+        long helpw__ = helpw / 6;
+        if (cheatb)
         {
-            if (k < 11)
+            helpw__ = iconw;
+        }
+        for (long k = 0; k < 11; k++)
+        {
+            drawbmp(pmenu__[k], helpw__, faceh * k + iconh * k / 2 + helph__ + menuh, facew, faceh, cfg);
+            drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, faceh * k + iconh * k / 2 + helph__ + menuh, black, cbg);
+        }
+        if (cheatb)
+        {
+            for (long k = 0; k < 7; k++)
             {
-                drawbmp(pmenu__[k], helpw / 4, faceh * k + menuh, facew, faceh, cfg);
+                drawtextxy(getwin(), cheats[k], helpw / 4 + facew, faceh * k + iconh * k / 2 + helph__ + menuh, red, cbg);
+                drawtextxy(getwin(), i2s((k + 4) % 10), helpw / 4, faceh * k + iconh * k / 2 + helph__ + menuh, red, cbg);
             }
-            drawtextxy(getwin(), keys[k], helpw / 6, faceh * k + menuh, facew, faceh, black, cfg);
         }
         line(helpw / 2, menuh, 0, helph - okh_, cfg);
-
-//ESC f1 f2 s/F3 m/f4
-//123n
-//p,space
-
-//4,5,6,7 8,9,0
-
-//上下左右
-//+-pg
+        for (long k = 0; k < 12; k++)
+        {
+            paintline(piconn, piconc, 2, 10, (helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * (k + 8));
+        }
+        line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 0 - 1, iconw * 12, 0, black);
+        line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - 1, iconw * 12, 0, black);
+        line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - 1, iconw * 12, 0, black);
+        line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 0 - 1, (helph - okh_ - iconh * 20) / 2 + menuh, 0, iconh * 20, black);
+        line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - 1, (helph - okh_ - iconh * 4) / 2 + menuh, 0, iconh * 12, black);
+        line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - 1, (helph - okh_ - iconh * 20) / 2 + menuh, 0, iconh * 20, black);
     }
     break;
     }
@@ -764,8 +779,8 @@ void Window::painttitle()
     ptitle_ = loadbmp("./bmp/title.bmp");
     drawbmp(ptitle_, getwin(), (titlew - ptitle_->width) / 2, fontth, ptitle_->width, ptitle_->height, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), "MineSwepper Tetris", 0, 0, titlew, fontth, black, cbg);
-    drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontth, black, cbg);
+    drawtextxy(getwin(), "MineSwepper Tetris", 0, fontth - fontfh, titlew, fontfh, black, cbg);
+    drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontfh, black, cbg);
     setfontheight(fonth);
     freshwin();
 }
@@ -805,11 +820,13 @@ void Window::sethelp(long helpi_)
             bd.pause();
         }
         helpi = helpi_;
+        bd.sd.playsound(bd.sd.sLeft);
     }
     else
     {
         bd.pause();
         helpi = 0;
+        bd.sd.playsound(bd.sd.sLeft);
     }
     initwindow(false);
 }
@@ -916,6 +933,7 @@ void Window::mouseevent(long ex, long ey, long eb)
             if (isin(ex, ey, (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
             {
                 helpi--;
+                bd.sd.playsound(bd.sd.sLeft);
             }
         }
         if (helpi < maxhelp)
@@ -923,6 +941,7 @@ void Window::mouseevent(long ex, long ey, long eb)
             if (isin(ex, ey, (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
             {
                 helpi++;
+                bd.sd.playsound(bd.sd.sLeft);
             }
         }
     }
@@ -933,9 +952,6 @@ void Window::keyevent(long key)
 {
     switch (key)
     {
-    case k_esc:
-        closewin();
-        break;
     case k_f12:
         sethelp(-1);
         break;
@@ -996,6 +1012,12 @@ void Window::keyevent(long key)
     {
         switch (key)
         {
+        case k_esc:
+            closewin();
+            break;
+        case k_q:
+            closewin();
+            break;
         case k_left:
             bd.w--;
             initwindow(true);
@@ -1076,21 +1098,21 @@ void Window::keyevent(long key)
     }
     else
     {
-        if (key == k_enter || key == k_space)
+        if (key == k_enter || key == k_space || key == k_esc || key == k_q)
         {
-            helpi = 0;
-            bd.pause();
-            initwindow(false);
+            sethelp(0);
         }
         if (helpi > 0)
         {
             if (key == k_left && helpi > 1)
             {
                 helpi--;
+                bd.sd.playsound(bd.sd.sLeft);
             }
             if (key == k_right && helpi < maxhelp)
             {
                 helpi++;
+                bd.sd.playsound(bd.sd.sLeft);
             }
         }
     }

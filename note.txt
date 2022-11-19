@@ -5,17 +5,20 @@
 -readme
 -sound
 -music
-steam achmnt
-steam highscore
-传github URL到steam
 
 -cheat (music, icon)
-
 -去除switch
 -增量刷新
 
 memory leak?
 windows xp test!
+
+steam achmnt
+steam highscore
+传github URL到steam
+
+去除window
+去除steamid
 
 ------------------------
 

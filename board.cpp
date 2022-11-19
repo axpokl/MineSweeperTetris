@@ -780,18 +780,22 @@ void Board::pause()
         break;
     case 1:
         sit = 5;
+        sd.playsound(sd.sSolve);
         break;
     case 2:
         sit = 5;
+        sd.playsound(sd.sSolve);
         break;
     case 3:
         sit = 5;
+        sd.playsound(sd.sSolve);
         break;
     case 4:
         sit = 4;
         break;
     case 5:
         sit = 1;
+        sd.playsound(sd.sSolve);
         break;
     }
     if (sit == 5)

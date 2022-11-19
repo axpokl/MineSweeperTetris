@@ -71,7 +71,7 @@ void Sound::switchsound()
     soundb = !soundb;
     if (soundb)
     {
-        setaudiopos(sFlag, 0);
+        setaudiopos(sLeft, 0);
     }
 }
 
@@ -123,4 +123,5 @@ void Sound::switchmusic()
     {
         stopaudio(sMusic[musici]);
     }
+    setaudiopos(sLeft, 0);
 }
