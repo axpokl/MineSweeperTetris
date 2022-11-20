@@ -749,7 +749,7 @@ void Window::painthelp()
                 setfontheight(faceh);
                 pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
                 const char* keys[11] = {"Q / ESC", "A / F12", "H / F1", "T / F2", "S / F3", "M / F4", "N / F5", "P / Space", "1", "2", "3"};
-                const char * cheats[7] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level"};
+                const char* cheats[7] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level"};
                 long cheatc[7] = {blue, blue, blue, blue, red, blue, red};
                 long helph__ = (helph - okh_ - faceh * 11 - iconh * 10 / 2) / 2;
                 long helpw__ = helpw / 6;

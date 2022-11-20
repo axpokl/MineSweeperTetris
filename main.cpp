@@ -6,7 +6,7 @@ using namespace std;
 #include "block.cpp"
 #include "board.cpp"
 #include "window.cpp"
-//#include "steam.cpp"
+#include "steam.cpp"
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
     }
     else
     {
-        //Steam st;
+        Steam st;
         Window w;
         w.bd.sd.initsound();
         w.bd.initbd(1);
