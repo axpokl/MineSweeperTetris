@@ -513,3 +513,26 @@
 [2022-11-21 09:54:30] Requesting 9 apps, 0 packages (full data, 1024 prev attempts)
 [2022-11-21 09:54:31] UpdatesJob: finished OK, apps updated 16 (238 KB), packages updated 0 (0 KB)
 [2022-11-21 09:54:35] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4234677 bytes)
+
+
+[2022-11-21 11:11:43] RequestAppInfoUpdate: AppIDs 7
+[2022-11-21 11:11:43] Packages changed: 
+[2022-11-21 11:11:43] Apps changed: 2204230=16799102,
+[2022-11-21 11:11:43] Change number 16799098->16799502, apps: 1/272, packages: 0/32
+[2022-11-21 11:11:43] Requesting 11 apps, 38 packages (meta data, 1024 prev attempts)
+[2022-11-21 11:11:44] Requested 9 app access tokens, 0 received, 9 denied
+[2022-11-21 11:11:44] Requesting 1 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-21 11:11:44] UpdatesJob: finished OK, apps updated 1 (1 KB), packages updated 0 (0 KB)
+[2022-11-21 11:11:48] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4234677 bytes)
+
+
+[2022-11-21 18:13:36] RequestAppInfoUpdate: AppIDs 7
+[2022-11-21 18:13:37] Packages changed: 
+[2022-11-21 18:13:37] Apps changed: 2204230=16802329,230290=16802311,236390=16802307,1097150=16802004,1009850=16801952,837470=16801712,233450=16801505,255710=16801373,475190=16801274,1520=16800991,17520=16800422,17525=16800422,919450=16800187,413150=16800164,
+[2022-11-21 18:13:37] Change number 16799502->16802335, apps: 14/1571, packages: 0/208
+[2022-11-21 18:13:37] Requesting 24 apps, 38 packages (meta data, 1024 prev attempts)
+[2022-11-21 18:13:37] Requested 9 app access tokens, 0 received, 9 denied
+[2022-11-21 18:13:38] Downloaded 7 apps via HTTP, 1369 KB (378 KB compressed)
+[2022-11-21 18:13:38] Requesting 7 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-21 18:13:38] UpdatesJob: finished OK, apps updated 14 (1401 KB), packages updated 0 (0 KB)
+[2022-11-21 18:13:43] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4234854 bytes)

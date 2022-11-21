@@ -14,45 +14,44 @@ public:
     long achgenmode = 2;
     long achgenpause = 3;
     long achgenhelp = 4;
-    long achcumdead1 = 5;
-    long achcumdead10 = 6;
-    long achcumdead100 = 7;
-    long achcumdead1000 = 8;
-    long achcumfour1 = 9;
-    long achcumfour10 = 10;
-    long achcumfour100 = 11;
-    long achcumfour1000 = 12;
-    long achcumline100 = 13;
-    long achcumline300 = 14;
-    long achcumline600 = 15;
-    long achcumline1000 = 16;
-    long achcumtotal10 = 17;
-    long achcumtotal100 = 18;
-    long achcumtotal1000 = 19;
-    long achcumtotal10000 = 20;
-    long achhidcheat = 21;
-    long achhidedge = 22;
-    long achhidmark = 23;
-    long achhidright = 24;
-    long achhidalive = 25;
+    long achhidcheat = 5;
+    long achhidedge = 6;
+    long achhidmark = 7;
+    long achhidright = 8;
+    long achhidalive = 9;
+    long achcumdead1 = 10;
+    long achcumdead10 = 11;
+    long achcumdead100 = 12;
+    long achcumdead1000 = 13;
+    long achcumfour1 = 14;
+    long achcumfour10 = 15;
+    long achcumfour100 = 16;
+    long achcumfour1000 = 17;
+    long achcumtotal10 = 18;
+    long achcumtotal100 = 19;
+    long achcumtotal1000 = 20;
+    long achcumtotal10000 = 21;
+    long achcumline100 = 22;
+    long achcumline300 = 23;
+    long achcumline600 = 24;
+    long achcumline1000 = 25;
     const char* achstr[100] =
     {
         "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
+        "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE"
         "CUM_DEAD_1", "CUM_DEAD_10", "CUM_DEAD_100", "CUM_DEAD_1000",
         "CUM_FOUR_1", "CUM_FOUR_10", "CUM_FOUR_100", "CUM_FOUR_1000",
-        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
         "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000",
-        "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE"
+        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
     };
     bool achb[100];
 
     long scoredead = 0;
     long scorefour = 0;
+    long scoretotal = 0;
     long scoreline1 = 0;
     long scoreline2 = 0;
     long scoreline3 = 0;
-    long scoretotal = 0;
-
 
     Steam();
     ~Steam();
