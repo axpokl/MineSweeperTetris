@@ -1711,3 +1711,40 @@
 [2022-11-21 18:13:43] [Logged On, 4, 3] [U:1:214053662] LogOff()
 [2022-11-21 18:13:43] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2022-11-21 18:13:43] [Logging Off, 0, 3] [U:1:214053662] Log session ended
+
+
+[2022-11-21 20:50:07] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2022-11-21 20:50:07] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2022-11-21 20:50:07] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / 0.0.0.0:80 (0.0.0.0:80)) - TIMEOUT
+[2022-11-21 20:50:07] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net) - FAILED, no addresses resolved
+[2022-11-21 20:50:07] Clearing in-memory token - 1 (OK): set to null
+[2022-11-21 20:50:07] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2022-11-21 20:50:07] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2022-11-21 20:50:07] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2022-11-21 20:50:07] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2022-11-21 20:50:07] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2022-11-21 20:50:08] Connectivity test: OK!
+[2022-11-21 20:50:08] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2022-11-21 20:50:08] GetCMListForConnect -- got 7 Netfilter CMs and 56 WebSocket CMs
+[2022-11-21 20:50:08] GetCMListForConnect -- DC 'sgp1' count: 60
+[2022-11-21 20:50:08] GetCMListForConnect -- DC 'hkg1' count: 3
+[2022-11-21 20:50:08] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 88% of connections should be websockets, we rolled 11 - using WebSockets as default.
+[2022-11-21 20:50:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-sgp1.steamserver.net:27024) starting...
+[2022-11-21 20:50:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-sgp1.steamserver.net:27019) starting...
+[2022-11-21 20:50:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) starting...
+[2022-11-21 20:50:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:443) starting...
+[2022-11-21 20:50:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-21 20:50:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-sgp1.steamserver.net:27019) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-21 20:50:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-sgp1.steamserver.net:27024) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-21 20:50:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2022-11-21 20:50:09] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, ext1-sgp1.steamserver.net:27024, WebSocket)
+[2022-11-21 20:50:13] [Connecting, 4, 3] [U:1:214053662] ConnectionCompleted() (103.10.124.122:27024, WebSocket) local address (192.168.3.71:51579)
+[2022-11-21 20:50:13] [Connecting, 4, 3] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2022-11-21 20:50:13] [Connected, 4, 3] [U:1:214053662] Logging on [U:1:214053662]
+[2022-11-21 20:50:13] [Logging On, 4, 3] [U:1:214053662] Using credential pair
+[2022-11-21 20:50:14] [Logging On, 4, 3] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2022-11-21 20:50:16] CClientJobGetClientUpdateHosts: cached copy new expiration: Wed Nov 23 19:11:32 2022
+[2022-11-21 20:50:36] [Logged On, 4, 3] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1669035036 seconds ago)
+[2022-11-21 20:50:36] [Logged On, 4, 3] [U:1:214053662] LogOff()
+[2022-11-21 20:50:36] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2022-11-21 20:50:36] [Logging Off, 0, 3] [U:1:214053662] Log session ended

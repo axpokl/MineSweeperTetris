@@ -2,8 +2,10 @@ class Window
 {
 public:
 
-    const long titlew = 320;
-    const long titleh = 384;
+    const long launchw = 320;
+    const long launchh = 384;
+    const long titlew = 256;
+    const long titleh = 256;
     const long menuw = 24;
     const long menuh = 24;
     const long facew = 24;
@@ -118,7 +120,7 @@ Window::Window()
 
 void Window::initwindow()
 {
-    createwin(titlew, titleh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    createwin(launchw, launchh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitle("MineSweeper Tetris");
@@ -844,11 +846,11 @@ void Window::painthelp()
 
 void Window::painttitle()
 {
-    ptitle_ = loadbmp("./bmp/title.bmp");
-    drawbmp(ptitle_, getwin(), (titlew - ptitle_->width) / 2, fontth, ptitle_->width, ptitle_->height, cfg);
+    ptitle_ = loadbmp("./bmp/title.png");
+    drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), "MineSwepper Tetris", 0, fontth - fontfh, titlew, fontfh, black, cbg);
-    drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + ptitle_->height, titlew, fontfh, black, cbg);
+    drawtextxy(getwin(), "MineSwepper Tetris", 0, fontth - fontfh, launchw, fontfh, black, cbg);
+    drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + titleh, launchw, fontfh, black, cbg);
     setfontheight(fonth);
     freshwin();
 }

@@ -428,3 +428,12 @@
 [2022-11-21 18:13:36] 	Base list: 0 ()
 [2022-11-21 18:13:36] 	No custom list
 [2022-11-21 18:13:36] 	No enabled features
+
+
+[2022-11-21 20:50:14] Validating parental settings
+[2022-11-21 20:50:14] Settings dump:
+[2022-11-21 20:50:14] 	Account ID: 214053662
+[2022-11-21 20:50:14] 	Enabled: false
+[2022-11-21 20:50:14] 	Base list: 0 ()
+[2022-11-21 20:50:14] 	No custom list
+[2022-11-21 20:50:14] 	No enabled features

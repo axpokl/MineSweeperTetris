@@ -72,7 +72,6 @@ Steam::Steam()
 
 Steam::~Steam()
 {
-    SteamUserStats()->ResetAllStats(true);
     exitsteam();
 }
 
@@ -87,17 +86,21 @@ void Steam::initsteam()
     {
         msgbox("Steam initialize failed!", "MineSwepper Tetris", MB_ICONWARNING);
     }
-    if (!SteamUserStats()->RequestCurrentStats())
+    if (steamb)
     {
-        msgbox("Steam current user status load failed!", "MineSwepper Tetris", MB_ICONWARNING);
+        if (!SteamUserStats()->RequestCurrentStats())
+        {
+            msgbox("Steam current user status load failed!", "MineSwepper Tetris", MB_ICONWARNING);
+        }
+        loadach();
     }
-    loadach();
 }
 
 void Steam::exitsteam()
 {
     if (steamb)
     {
+        SteamUserStats()->ResetAllStats(true);
         SteamAPI_Shutdown();
     }
 }
