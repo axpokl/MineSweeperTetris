@@ -11,6 +11,8 @@ public:
     long mode = 0;
     long mode_ = 0;
     bool sb;
+    bool rightb = false;
+    bool aliveb = false;
 
     long maskj0;
     long line;
@@ -105,6 +107,7 @@ void Board::initbd()
     {
         st.addach(st.achgenmode);
     }
+    rightb = false;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
@@ -543,14 +546,31 @@ bool Board::addmask()
 
 void Board::checkdie()
 {
+
     if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
     {
+        aliveb = false;
         sit = 4;
         if (dieb)
         {
             blck[diex][diey] = true;
         }
         sd.playsound(sd.sLose);
+        if (!rightb)
+        {
+            st.addach(st.achhidright);
+        }
+    }
+    if (((maskj == 0 && maski == 0)) && sit != 4)
+    {
+        aliveb = true;
+    }
+    else
+    {
+        if (aliveb)
+        {
+            st.addach(st.achhidalive);
+        }
     }
 }
 
@@ -768,6 +788,10 @@ void Board::setblock(long x, long y)
 void Board::clickright(long x, long y, bool sb_)
 {
     sb = sb_;
+    if (sb)
+    {
+        rightb = true;
+    }
     if (!mask[x][y])
     {
         if (!flag[x][y])
@@ -785,6 +809,24 @@ void Board::clickright(long x, long y, bool sb_)
             }
         }
         checkb = true;
+    }
+    if (sit == 0)
+    {
+        bool qstnb = true;
+        for (long i = 0; i < w; i++)
+        {
+            for (long j = maskj; j < h; j++)
+            {
+                if (!qstn[i][j])
+                {
+                    qstnb = false;
+                }
+            }
+        }
+        if (qstnb)
+        {
+            st.addach(st.achhidmark);
+        }
     }
 }
 
