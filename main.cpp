@@ -2,11 +2,12 @@
 #include "stdio.h"
 using namespace std;
 
+#include "steam.cpp"
 #include "sound.cpp"
 #include "block.cpp"
 #include "board.cpp"
 #include "window.cpp"
-#include "steam.cpp"
+
 
 int main()
 {
@@ -16,7 +17,6 @@ int main()
     }
     else
     {
-        Steam st;
         Window w;
         w.bd.sd.initsound();
         w.bd.initbd(1);

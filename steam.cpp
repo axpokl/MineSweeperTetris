@@ -13,36 +13,36 @@ public:
     long achgencustom = 1;
     long achgenmode = 2;
     long achgenpause = 3;
-    long achgenhelp = 25;
-    long achhidcheat = 20;
-    long achhidedge = 21;
-    long achhidmark = 22;
-    long achhidright = 23;
-    long achhidalive = 24;
-    long achcumdead1 = 4;
-    long achcumdead10 = 5;
-    long achcumdead100 = 6;
-    long achcumdead1000 = 7;
-    long achcumfour1 = 8;
-    long achcumfour10 = 9;
-    long achcumfour100 = 10;
-    long achcumfour1000 = 11;
-    long achcumline100 = 12;
-    long achcumline300 = 13;
-    long achcumline600 = 14;
-    long achcumline1000 = 15;
-    long achcumtotal10 = 16;
-    long achcumtotal100 = 17;
-    long achcumtotal1000 = 18;
-    long achcumtotal10000 = 19;
+    long achgenhelp = 4;
+    long achcumdead1 = 5;
+    long achcumdead10 = 6;
+    long achcumdead100 = 7;
+    long achcumdead1000 = 8;
+    long achcumfour1 = 9;
+    long achcumfour10 = 10;
+    long achcumfour100 = 11;
+    long achcumfour1000 = 12;
+    long achcumline100 = 13;
+    long achcumline300 = 14;
+    long achcumline600 = 15;
+    long achcumline1000 = 16;
+    long achcumtotal10 = 17;
+    long achcumtotal100 = 18;
+    long achcumtotal1000 = 19;
+    long achcumtotal10000 = 20;
+    long achhidcheat = 21;
+    long achhidedge = 22;
+    long achhidmark = 23;
+    long achhidright = 24;
+    long achhidalive = 25;
     const char* achstr[100] =
     {
-        "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "CUM_DEAD_1", "CUM_DEAD_10",
-        "CUM_DEAD_100", "CUM_DEAD_1000", "CUM_FOUR_1", "CUM_FOUR_10",
-        "CUM_FOUR_100", "CUM_FOUR_1000", "CUM_LINE_100", "CUM_LINE_300",
-        "CUM_LINE_600", "CUM_LINE_1000", "CUM_TOTAL_10", "CUM_TOTAL_100",
-        "CUM_TOTAL_1000", "CUM_TOTAL_10000", "HID_CHEAT", "HID_EDGE",
-        "HID_MARK", "HID_RIGHT", "HID_ALIVE", "GEN_HELP"
+        "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
+        "CUM_DEAD_1", "CUM_DEAD_10", "CUM_DEAD_100", "CUM_DEAD_1000",
+        "CUM_FOUR_1", "CUM_FOUR_10", "CUM_FOUR_100", "CUM_FOUR_1000",
+        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
+        "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000",
+        "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE"
     };
     bool achb[100];
 
@@ -58,9 +58,9 @@ public:
     ~Steam();
     void initsteam();
     void exitsteam();
-    void loadachievement();
-    void addachievement(long achid);
-    void delachievement(long achid);
+    void loadach();
+    void addach(long achid);
+    void delach(long achid);
     void loadscore();
     void savescore();
 
@@ -73,6 +73,7 @@ Steam::Steam()
 
 Steam::~Steam()
 {
+    SteamUserStats()->ResetAllStats(true);
     exitsteam();
 }
 
@@ -85,8 +86,13 @@ void Steam::initsteam()
     steamb = SteamAPI_Init();
     if (!steamb)
     {
-        msgbox("Steam initialize failed!", NULL, MB_ICONWARNING);
+        msgbox("Steam initialize failed!", "MineSwepper Tetris", MB_ICONWARNING);
     }
+    if (!SteamUserStats()->RequestCurrentStats())
+    {
+        msgbox("Steam current user status load failed!", "MineSwepper Tetris", MB_ICONWARNING);
+    }
+    loadach();
 }
 
 void Steam::exitsteam()
@@ -97,15 +103,18 @@ void Steam::exitsteam()
     }
 }
 
-void Steam::loadachievement()
+void Steam::loadach()
 {
-    for (long achid = 0; achid < achn; achid++)
+    if (steamb)
     {
-        achb[achid] = false;
+        for (long achid = 0; achid < achn; achid++)
+        {
+            SteamUserStats()->GetAchievement(achstr[achid], &achb[achid]);
+        }
     }
 }
 
-void Steam::addachievement(long achid)
+void Steam::addach(long achid)
 {
     if (steamb)
     {
@@ -113,17 +122,21 @@ void Steam::addachievement(long achid)
         {
             SteamUserStats()->IndicateAchievementProgress(achstr[achid], 0, 0);
             SteamUserStats()->SetAchievement(achstr[achid]);
+            SteamUserStats()->StoreStats();
+            achb[achid] = true;
         }
     }
 }
 
-void Steam::delachievement(long achid)
+void Steam::delach(long achid)
 {
     if (steamb)
     {
         if (achb[achid])
         {
             SteamUserStats()->ClearAchievement(achstr[achid]);
+            SteamUserStats()->StoreStats();
+            achb[achid] = false;
         }
     }
 }

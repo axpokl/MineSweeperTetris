@@ -488,3 +488,28 @@
 [2022-11-19 19:56:06] Requesting 10 apps, 37 packages (meta data, 1024 prev attempts)
 [2022-11-19 19:56:07] Requested 9 app access tokens, 0 received, 9 denied
 [2022-11-19 19:56:07] UpdatesJob: finished OK, apps updated 0 (0 KB), packages updated 0 (0 KB)
+
+
+[2022-11-20 20:49:46] RequestAppInfoUpdate: AppIDs 7
+[2022-11-20 20:49:46] Packages changed: force all
+[2022-11-20 20:49:46] Apps changed: force all
+[2022-11-20 20:49:46] Change number 16789485->16795391, apps: 0/0, packages: 0/0
+[2022-11-20 20:49:46] Requesting 685 apps, 374 packages (meta data, 1024 prev attempts)
+[2022-11-20 20:49:47] Requested 68 app access tokens, 59 received, 9 denied
+[2022-11-20 20:49:48] Updated SHAs with 59 new access tokens
+[2022-11-20 20:49:48] Downloaded 11 apps via HTTP, 1569 KB (411 KB compressed)
+[2022-11-20 20:49:48] Requesting 11 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-20 20:49:48] UpdatesJob: finished OK, apps updated 22 (1616 KB), packages updated 0 (0 KB)
+[2022-11-20 20:49:53] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4234731 bytes)
+
+
+[2022-11-21 09:54:29] RequestAppInfoUpdate: AppIDs 7
+[2022-11-21 09:54:29] Packages changed: 
+[2022-11-21 09:54:29] Apps changed: 1493710=16799072,443030=16799055,561770=16798987,1500=16798563,1097150=16798527,1874900=16798431,1042420=16798380,289070=16798336,1009850=16797844,17505=16797646,613900=16796939,1520=16796783,676420=16796596,17520=16796500,264710=16796150,331470=16795441,
+[2022-11-21 09:54:29] Change number 16795391->16799098, apps: 16/1999, packages: 0/416
+[2022-11-21 09:54:29] Requesting 26 apps, 38 packages (meta data, 1024 prev attempts)
+[2022-11-21 09:54:30] Requested 9 app access tokens, 0 received, 9 denied
+[2022-11-21 09:54:30] Downloaded 7 apps via HTTP, 195 KB (53 KB compressed)
+[2022-11-21 09:54:30] Requesting 9 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-21 09:54:31] UpdatesJob: finished OK, apps updated 16 (238 KB), packages updated 0 (0 KB)
+[2022-11-21 09:54:35] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4234677 bytes)

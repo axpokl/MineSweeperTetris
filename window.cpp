@@ -312,8 +312,26 @@ void Window::paintnumber(long n, long l, long x, long y)
 
 void Window::paintlevel()
 {
-    paintnumber(bd.line, 4, 0, menuh);
-    paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
+    if (bd.line < 10000)
+    {
+        paintnumber(bd.line, 4, 0, menuh);
+    }
+    else if (bd.line < 100000)
+    {
+        paintnumber(bd.line, 5, 0, menuh);
+    }
+    else
+    {
+        paintnumber(bd.line, 6, 0, menuh);
+    }
+    if (bd.level < 100)
+    {
+        paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
+    }
+    else
+    {
+        paintnumber(bd.level, 3, getwidth() - 3 * digtw, menuh);
+    }
 }
 
 void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long h)
@@ -929,6 +947,7 @@ void Window::mouseevent(long ex, long ey, long eb)
                 {
                     bd.pause();
                     bd.sd.playsound(bd.sd.sSolve);
+                    bd.st.addach(bd.st.achgenpause);
                 }
             }
         }
@@ -970,6 +989,7 @@ void Window::mouseevent(long ex, long ey, long eb)
             {
                 bd.sd.playsound(bd.sd.sSolve);
                 cheatb = true;
+                bd.st.addach(bd.st.achhidcheat);
             }
         }
     }
@@ -993,6 +1013,10 @@ void Window::mouseevent(long ex, long ey, long eb)
             {
                 helpi++;
                 bd.sd.playsound(bd.sd.sLeft);
+                if (helpi == maxhelp)
+                {
+                    bd.st.addach(bd.st.achgenhelp);
+                }
             }
         }
     }
@@ -1072,10 +1096,12 @@ void Window::keyevent(long key)
             case k_p:
                 bd.pause();
                 bd.sd.playsound(bd.sd.sSolve);
+                bd.st.addach(bd.st.achgenpause);
                 break;
             case k_space:
                 bd.pause();
                 bd.sd.playsound(bd.sd.sSolve);
+                bd.st.addach(bd.st.achgenpause);
                 break;
             case k_left:
                 bd.w--;
@@ -1166,6 +1192,10 @@ void Window::keyevent(long key)
             {
                 helpi++;
                 bd.sd.playsound(bd.sd.sLeft);
+                if (helpi == maxhelp)
+                {
+                    bd.st.addach(bd.st.achgenhelp);
+                }
             }
         }
     }

@@ -935,3 +935,47 @@
 [2022-11-19 19:56:07] [AppID 7] Download failed due to conflicts in build list
 [2022-11-19 19:56:07] [Roaming Config] OnRemoteStorageSyncedClient() - result Remote File Conflict
 [2022-11-19 19:56:07] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2022-11-20 20:49:42] [AppID 7] Starting sync (init,)
+[2022-11-20 20:49:43] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-11-20 20:49:43] [U:1:214053662] [AppID 7] Init cache request complete
+[2022-11-20 20:49:43] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-11-20 20:49:46] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2022-11-20 20:49:46] [AppID 7] Starting sync (eval,)
+[2022-11-20 20:49:46] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-11-20 20:49:46] [AppID 7] Need to sync from local change number '0' to global change number '9306615287391902957', but not attempting now
+[2022-11-20 20:49:46] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: d8368b6ba4161b909b5339c964f8c80de2e01f0b / 0fed9dff74178af63b0aeed1e61ba781b90e5ab0, Local/Remote persist state: 0 / 0
+[2022-11-20 20:49:46] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2022-11-20 20:49:46] [AppID 7] Eval complete
+[2022-11-20 20:49:46] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2022-11-20 20:49:46] [AppID 7] Starting sync (down,)
+[2022-11-20 20:49:46] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-11-20 20:49:47] [AppID 7] Attempting to sync from local change number '0' to global change number '9306615287391902957'
+[2022-11-20 20:49:47] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: d8368b6ba4161b909b5339c964f8c80de2e01f0b / 0fed9dff74178af63b0aeed1e61ba781b90e5ab0, Local/Remote persist state: 0 / 0
+[2022-11-20 20:49:47] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2022-11-20 20:49:47] [AppID 7] Download failed due to conflicts in build list
+[2022-11-20 20:49:47] [Roaming Config] OnRemoteStorageSyncedClient() - result Remote File Conflict
+[2022-11-20 20:49:47] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2022-11-21 09:54:26] [AppID 7] Starting sync (init,)
+[2022-11-21 09:54:26] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-11-21 09:54:26] [U:1:214053662] [AppID 7] Init cache request complete
+[2022-11-21 09:54:26] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-11-21 09:54:29] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2022-11-21 09:54:29] [AppID 7] Starting sync (eval,)
+[2022-11-21 09:54:29] [AppID 7] AutoCloud checking local state for user 214053662
+[2022-11-21 09:54:29] [AppID 7] Need to sync from local change number '0' to global change number '9306615287391902957', but not attempting now
+[2022-11-21 09:54:29] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: d8368b6ba4161b909b5339c964f8c80de2e01f0b / 0fed9dff74178af63b0aeed1e61ba781b90e5ab0, Local/Remote persist state: 0 / 0
+[2022-11-21 09:54:29] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2022-11-21 09:54:29] [AppID 7] Eval complete
+[2022-11-21 09:54:29] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2022-11-21 09:54:29] [AppID 7] Starting sync (down,)
+[2022-11-21 09:54:29] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2022-11-21 09:54:30] [AppID 7] Attempting to sync from local change number '0' to global change number '9306615287391902957'
+[2022-11-21 09:54:30] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: d8368b6ba4161b909b5339c964f8c80de2e01f0b / 0fed9dff74178af63b0aeed1e61ba781b90e5ab0, Local/Remote persist state: 0 / 0
+[2022-11-21 09:54:30] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2022-11-21 09:54:30] [AppID 7] Download failed due to conflicts in build list
+[2022-11-21 09:54:30] [Roaming Config] OnRemoteStorageSyncedClient() - result Remote File Conflict
+[2022-11-21 09:54:30] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'

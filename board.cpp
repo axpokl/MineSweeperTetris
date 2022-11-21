@@ -3,11 +3,13 @@ class Board: public Block
 
 public:
 
+    Steam st;
     Sound sd;
 
     double time;
     double pausetime;
-    long mode;
+    long mode = 0;
+    long mode_ = 0;
     bool sb;
 
     long maskj0;
@@ -93,6 +95,16 @@ void Board::initbd()
         }
     }
     sd.playsound(sd.sNew);
+    long mode__[4] = {0, 1, 2, 4};
+    mode_ = mode_ | mode__[mode];
+    if (mode == 0)
+    {
+        st.addach(st.achgencustom);
+    }
+    if (mode_ == 7)
+    {
+        st.addach(st.achgenmode);
+    }
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
@@ -158,6 +170,7 @@ void Board::resetbd(long x, long y)
     calcnumb();
     time = gettimer();
     sit = 1;
+    st.addach(st.achgenstart);
 }
 
 void Board::solveblank()
@@ -598,13 +611,17 @@ void Board::delline(long l)
             }
         }
         line++;
-        line = min(line, 9999);
+        if (line > 9999)
+        {
+            st.addach(st.achhidedge);
+        }
+        line = min(line, 999999);
         if (maskj > h - 4)
         {
             for (long k = 0; k < 4; k++)
             {
                 line++;
-                line = min(line, 9999);
+                line = min(line, 999999);
                 addline(false);
                 sit = 3;
             }
