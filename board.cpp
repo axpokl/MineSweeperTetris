@@ -556,11 +556,11 @@ void Board::checkdie()
             blck[diex][diey] = true;
         }
         sd.playsound(sd.sLose);
+        st.addscr(st.scrdead, 1, mode);
         if (!rightb)
         {
             st.addach(st.achhidright);
         }
-        st.addscr(st.scrdead);
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {
@@ -649,6 +649,7 @@ void Board::delline(long l)
             checkb = true;
             checkline();
             sd.playsound(sd.sNew);
+            st.addscr(st.scrfour, 1, mode);
         }
         while ((level + 1)*(level + 1) <= line)
         {

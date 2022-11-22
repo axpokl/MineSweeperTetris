@@ -69,7 +69,7 @@ public:
     void addach(long achid);
     void checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a);
     void loadscr();
-    void addscr(long scrid);
+    void addscr(long scrid, long val, long mode);
 
 };
 
@@ -136,7 +136,6 @@ void Steam::addach(long achid)
         {
             printf(achs[achid]);
             printf("%d \n",achid);
-            SteamUserStats()->IndicateAchievementProgress(achs[achid], 0, 0);
             SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;
@@ -175,14 +174,13 @@ void Steam::loadscr()
     }
 }
 
-void Steam::addscr(long scrid)
+void Steam::addscr(long scrid, long val, long mode)
 {
     if (steamb)
     {
-        if (!cheatb)
+        if (!cheatb && mode > 0)
         {
-            scr[scrid]++;
-            printf("%d %d\n",scrid, scr[scrid]);
+            scr[scrid] += val;
             SteamUserStats()->SetStat(scrs[scrid], (int)scr[scrid]);
             SteamUserStats()->StoreStats();
             if (scrid == scrdead)
