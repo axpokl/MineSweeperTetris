@@ -7,6 +7,7 @@ public:
 
     const long appid = 2204230;
     bool steamb;
+    bool cheatb = false;
 
     const long achn = 26;
     long achgenstart = 0;
@@ -35,23 +36,30 @@ public:
     long achcumline300 = 23;
     long achcumline600 = 24;
     long achcumline1000 = 25;
-    const char* achstr[100] =
+    const char* achs[100] =
     {
         "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
-        "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE"
+        "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE",
         "CUM_DEAD_1", "CUM_DEAD_10", "CUM_DEAD_100", "CUM_DEAD_1000",
         "CUM_FOUR_1", "CUM_FOUR_10", "CUM_FOUR_100", "CUM_FOUR_1000",
         "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000",
-        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
+        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000"
     };
     bool achb[100];
 
-    long scoredead = 0;
-    long scorefour = 0;
-    long scoretotal = 0;
-    long scoreline1 = 0;
-    long scoreline2 = 0;
-    long scoreline3 = 0;
+    const long scrn = 7;
+    long scrdead = 0;
+    long scrfour = 1;
+    long scrtotal = 2;
+    long scrline = 3;
+    long scrline1 = 4;
+    long scrline2 = 5;
+    long scrline3 = 6;
+    const char* scrs[10] =
+    {
+        "dead", "four", "total", "line", "line1", "line2", "line3"
+    };
+    long scr[100];
 
     Steam();
     ~Steam();
@@ -60,8 +68,10 @@ public:
     void loadach();
     void addach(long achid);
     void delach(long achid);
-    void loadscore();
-    void savescore();
+    void checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a);
+    void loadscr();
+    void savescr(long achid);
+    void addscr(long scrid);
 
 };
 
@@ -92,7 +102,11 @@ void Steam::initsteam()
         {
             msgbox("Steam current user status load failed!", "MineSwepper Tetris", MB_ICONWARNING);
         }
-        loadach();
+        else
+        {
+            loadach();
+            loadscr();
+        }
     }
 }
 
@@ -111,7 +125,7 @@ void Steam::loadach()
     {
         for (long achid = 0; achid < achn; achid++)
         {
-            SteamUserStats()->GetAchievement(achstr[achid], &achb[achid]);
+            SteamUserStats()->GetAchievement(achs[achid], &achb[achid]);
         }
     }
 }
@@ -120,10 +134,12 @@ void Steam::addach(long achid)
 {
     if (steamb)
     {
-        if (!achb[achid])
+        if (!achb[achid] && (!cheatb || achid == achhidcheat))
         {
-            SteamUserStats()->IndicateAchievementProgress(achstr[achid], 0, 0);
-            SteamUserStats()->SetAchievement(achstr[achid]);
+            printf(achs[achid]);
+            printf("%d \n",achid);
+            SteamUserStats()->IndicateAchievementProgress(achs[achid], 0, 0);
+            SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;
         }
@@ -136,29 +152,74 @@ void Steam::delach(long achid)
     {
         if (achb[achid])
         {
-            SteamUserStats()->ClearAchievement(achstr[achid]);
+            SteamUserStats()->ClearAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = false;
         }
     }
 }
 
-void Steam::loadscore()
+void Steam::checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a)
 {
-    if (steamb)
+    if (scr[scrid] >= d)
     {
-        long scoredead = 0;
-        long scorefour = 0;
-        long scoreline1 = 0;
-        long scoreline2 = 0;
-        long scoreline3 = 0;
-        long scoretotal = 0;
+        addach(a_d);
+    }
+    else if (scr[scrid] >= c)
+    {
+        addach(a_c);
+    }
+    else if (scr[scrid] >= b)
+    {
+        addach(a_b);
+    }
+    else if (scr[scrid] >= a)
+    {
+        addach(a_a);
     }
 }
 
-void Steam::savescore()
+void Steam::loadscr()
 {
     if (steamb)
     {
+        for (long scrid = 0; scrid < scrn; scrid++)
+        {
+            SteamUserStats()->GetStat(scrs[scrid], (int*)&scr[scrid]);
+        }
+    }
+}
+
+void Steam::addscr(long scrid)
+{
+    if (steamb)
+    {
+        if (!cheatb)
+        {
+            scr[scrid]++;
+            savescr(scrid);
+            if (scrid == scrdead)
+            {
+                checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);
+            }
+            else if (scrid == scrfour)
+            {
+                checkach(scrfour, 1000, 100, 10, 1, achcumdead1000, achcumfour100, achcumfour10, achcumfour1);
+            }
+            else if (scrid == scrtotal)
+            {
+                checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
+            }
+        }
+    }
+}
+
+void Steam::savescr(long scrid)
+{
+    if (steamb)
+    {
+        printf("%d %d\n",scrid, scr[scrid]);
+        SteamUserStats()->SetStat(scrs[scrid], (int)scr[scrid]);
+        SteamUserStats()->StoreStats();
     }
 }

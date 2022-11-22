@@ -83,7 +83,7 @@ public:
     Block bl;
     const long maxhelp = 6;
     long helpi = 0;
-    long cheatb = 0;
+    bool cheatb = false;
 
     Window();
     void initwindow();
@@ -991,6 +991,7 @@ void Window::mouseevent(long ex, long ey, long eb)
             {
                 bd.sd.playsound(bd.sd.sSolve);
                 cheatb = true;
+                bd.st.cheatb = true;
                 bd.st.addach(bd.st.achhidcheat);
             }
         }

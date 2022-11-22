@@ -560,6 +560,7 @@ void Board::checkdie()
         {
             st.addach(st.achhidright);
         }
+        st.addscr(st.scrdead);
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {
