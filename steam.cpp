@@ -67,10 +67,8 @@ public:
     void exitsteam();
     void loadach();
     void addach(long achid);
-    void delach(long achid);
     void checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a);
     void loadscr();
-    void savescr(long achid);
     void addscr(long scrid);
 
 };
@@ -146,19 +144,6 @@ void Steam::addach(long achid)
     }
 }
 
-void Steam::delach(long achid)
-{
-    if (steamb)
-    {
-        if (achb[achid])
-        {
-            SteamUserStats()->ClearAchievement(achs[achid]);
-            SteamUserStats()->StoreStats();
-            achb[achid] = false;
-        }
-    }
-}
-
 void Steam::checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a)
 {
     if (scr[scrid] >= d)
@@ -197,7 +182,9 @@ void Steam::addscr(long scrid)
         if (!cheatb)
         {
             scr[scrid]++;
-            savescr(scrid);
+            printf("%d %d\n",scrid, scr[scrid]);
+            SteamUserStats()->SetStat(scrs[scrid], (int)scr[scrid]);
+            SteamUserStats()->StoreStats();
             if (scrid == scrdead)
             {
                 checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);
@@ -211,15 +198,5 @@ void Steam::addscr(long scrid)
                 checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
             }
         }
-    }
-}
-
-void Steam::savescr(long scrid)
-{
-    if (steamb)
-    {
-        printf("%d %d\n",scrid, scr[scrid]);
-        SteamUserStats()->SetStat(scrs[scrid], (int)scr[scrid]);
-        SteamUserStats()->StoreStats();
     }
 }
