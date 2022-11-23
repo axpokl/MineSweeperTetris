@@ -340,13 +340,13 @@
 		}
 		"109771477"
 		{
-			"name"		"修身养性"
+			"name"		"76561198070037205"
 			"NameHistory"
 			{
-				"0"		"修身养性"
-				"1"		"76561198070037205"
+				"0"		"76561198070037205"
+				"1"		"修身养性"
 			}
-			"avatar"		"92ca454654800bee75b8f579e354df2f9c9767e2"
+			"avatar"		"0000000000000000000000000000000000000000"
 		}
 		"157737406"
 		{
@@ -440,13 +440,13 @@
 		}
 		"182736883"
 		{
-			"name"		"Black-Tiger"
+			"name"		"76561198143002611"
 			"NameHistory"
 			{
-				"0"		"Black-Tiger"
-				"1"		"76561198143002611"
+				"0"		"76561198143002611"
+				"1"		"Black-Tiger"
 			}
-			"avatar"		"f7636c770db2d7480cf63524fed186c11749409c"
+			"avatar"		"0000000000000000000000000000000000000000"
 		}
 		"161645970"
 		{
@@ -711,12 +711,19 @@
 		"PersonaStateDesired"		"1"
 		"182830488"
 		{
-			"name"		"魑鬼-好朋友"
+			"name"		"开心刀塔"
 			"NameHistory"
 			{
-				"0"		"魑鬼-好朋友"
+				"0"		"开心刀塔"
+				"1"		"魑鬼-好朋友"
 			}
 			"avatar"		"0000000000000000000000000000000000000000"
+		}
+		"103582791433666425"
+		{
+			"name"		"Steamworks Development"
+			"tag"		"SteamworksDev"
+			"avatar"		"3bdb2be55b3ffafff9f641f3a589848edc07ab1b"
 		}
 	}
 	"ParentalSettings"
@@ -726,14 +733,14 @@
 	}
 	"apptickets"
 	{
-		"7"		"32000000040000001e33c20c010010010700000077ffdca737cb406400000000ab857c632b35986301000000000000000000631033a6160c84485ab47c4d75ab1943cad8abbeccb148cd43e3f77feb4ec3aceaeb2a810d5ad139bb3567b497b6300b77525ec3bfb86ee236cfc6e7a4b0ceca7388457411037d1b10b17ab722958d97aec2c7ee4b638bf59363263b5151b77633d1fe5a10a2a464f764923bd0bcff8afbd2f406f1d8009e966cead8bb9abed5"
+		"7"		"32000000040000001e33c20c01001001070000009f1456654703a8c00000000058ff7d63d8ae9963010000000000000000002d2c32b83bcc3113795347d171679b7abc3f7e5765d8876b301e10c318a683774f1fb3812690707725e7866bb9c42153b4ee4e68296dfbe66704817fca5b5b413e18fc76450d0890a27f19e8b69191f9e07ba28292cbd0f51d14780bf23c2402a6fa23448cb53408e1b28157bd87454b047aa66144d5fecae695156f4db2d126"
 	}
 	"Offline"
 	{
-		"Ticket"		"089ee6886615ab857c63"
-		"Signature"		"21d54e16e57819ae393cc6a57ebf72cfbcb9702775b1af95d81fd14c5c1d598bc65332cd132a9158471cbf6f0e4267064a1d15d2048c8acf667c2d9d8b4bd5164e182179eb62a422e2956d06cb11f06a4da4f1a987cbe1bb7e82023e15bbf518829a68563ad17086ffb10eba3fe35af41b732b1f2418671ae9f494daa6232ce41d3981eba04dd4160883d4dc5f2702eace87cdcaec9db9c9e0b2b2458ee50e6f13bc2aae59c3e3d0df15c1672e425fc8b3a635dfb559a6b92c431b5fbecc85767127b7ad89c9fd1d375ec3314e4f16b7b3e84de4a8b1439aee706856dfdacdb5b1c77ac7a5cc17142df73ce3f8659702432d1cddb3c1397da0e70d35e6c58670"
+		"Ticket"		"089ee688661558ff7d63"
+		"Signature"		"2cde4578ae07cf1f22d1edb0d11ed5fbf23e5e6715bc81945ef8caa71e99c2171abfea7db67ab8b6b76a359c0483e17b4c2778ceea6c62bf975bad556e4b549d2c29581cd5a8dc94a50d7c5f890a8a418af77ee05de61554fe56fad4fbe6b6a1912725f637f395d9238adc9e3ecc97671dfd810156576ad0475d30f15bac89d397698918fd8fdc3b004e9650e740b6613b9d3c8de3efd373c67722600de7630717a53bc5f53f2c6bca0c66ed3f32c7fb9952785d0339763da45bf9158cb03673fe02a14d605ad1a4aa66d9d044f46bca05ac4c04164305b4b5ca17b77daa763945ad7ffa9c88f180c547ff6ac2f2507f0ab4a47d5111505db82f0493b9ccf8ee"
 	}
-	"AppInfoChangeNumber"		"16813537"
+	"AppInfoChangeNumber"		"16831628"
 	"CloudKey"		"01000000cb1a334634c7d57014fbc2344aeb177e047edc1751c9db90bc850cb1f003f018b5ce2256"
 	"CloudKeyCRC"		"-1073341850"
 	"Software"
@@ -748,7 +755,7 @@
 					{
 						"cloud"
 						{
-							"last_sync_state"		"conflictingchanges"
+							"last_sync_state"		"synchronized"
 						}
 					}
 					"10"
@@ -808,9 +815,9 @@
 					}
 					"570"
 					{
-						"LastPlayed"		"1669093622"
-						"Playtime2wks"		"1157"
-						"Playtime"		"435552"
+						"LastPlayed"		"1669120188"
+						"Playtime2wks"		"1126"
+						"Playtime"		"435736"
 					}
 					"620"
 					{
@@ -1900,12 +1907,12 @@
 					}
 					"2204230"
 					{
-						"LastPlayed"		"1669104958"
-						"Playtime2wks"		"409"
-						"Playtime"		"650"
+						"LastPlayed"		"1669201739"
+						"Playtime2wks"		"508"
+						"Playtime"		"750"
 					}
 				}
-				"LastPlayedTimesSyncTime"		"1669104958"
+				"LastPlayedTimesSyncTime"		"1669201739"
 			}
 		}
 	}

@@ -597,7 +597,7 @@
 					}
 					"205790"
 					{
-						"Hidden"		"1"
+						"hidden"		"1"
 						"tags"
 						{
 							"0"		"01策略"
@@ -2056,19 +2056,19 @@
 					}
 					"207080"
 					{
-						"Hidden"		"1"
+						"hidden"		"1"
 					}
 					"224760"
 					{
-						"Hidden"		"1"
+						"hidden"		"1"
 					}
 					"260430"
 					{
-						"Hidden"		"1"
+						"hidden"		"1"
 					}
 					"363970"
 					{
-						"Hidden"		"1"
+						"hidden"		"1"
 					}
 					"812560"
 					{
@@ -2416,7 +2416,49 @@
 						{
 							"0"		"favorite"
 						}
-						"Hidden"		"0"
+						"hidden"		"0"
+					}
+					"1720850"
+					{
+						"tags"
+						{
+							"0"		"07解谜.编程"
+						}
+					}
+					"105600"
+					{
+						"tags"
+						{
+							"0"		"05动作"
+						}
+					}
+					"1299400"
+					{
+						"tags"
+						{
+							"0"		"07解谜"
+						}
+					}
+					"1632980"
+					{
+						"tags"
+						{
+							"0"		"07解谜"
+						}
+					}
+					"1980530"
+					{
+						"tags"
+						{
+							"0"		"07解谜"
+						}
+					}
+					"207650"
+					{
+						"tags"
+						{
+							"0"		"07解谜"
+						}
 					}
 				}
 				"SteamDefaultDialog"		"#app_store"
@@ -2437,5 +2479,13 @@
 		"WebFav3_Name"		"Facebook"
 		"WebFav4_URL"		"http://www.reddit.com/"
 		"WebFav4_Name"		"Reddit"
+	}
+	"JSClientStorage"
+	{
+		"spotlight.review.2204230"
+		{
+			"rgPromptDismissals"		"2"
+			"bWasAskedToRevise"		"0"
+		}
 	}
 }

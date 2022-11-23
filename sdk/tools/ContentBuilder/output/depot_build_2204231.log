@@ -1,14 +1,13 @@
-[2022-11-22 16:17:48]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-11-22 16:17:48]: Building file listing for depot 2204231 ...
-[2022-11-22 16:17:48]: Found 25 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-11-22 16:17:48]: Found 25 files (1 MB) for depot 2204231
-[2022-11-22 16:17:50]: Building depot 2204231, baseline manifest 8876589642443880529 (25 files)
-[2022-11-22 16:17:51]: Found 23 chunks ( 23 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-11-22 16:17:51]: Changes to baseline manifest 8876589642443880529 :
-[2022-11-22 16:17:51]: Added  : "bmp\title.png" 3 kB 
-[2022-11-22 16:17:51]: Changed: "MineSweeperTetris.exe" 571 kB size, 571 kB changed 
-[2022-11-22 16:17:51]: Removed: bmp\title.bmp (33 kB)
-[2022-11-22 16:17:51]: Summary: 1 files added, 1 files changed, 1 files removed
-[2022-11-22 16:17:51]: Uploading new manifest to 208.64.201.169:80 (handle 5921168784175982099, 2879 bytes).
-[2022-11-22 16:17:51]: Uploading 1 out of 1 missing chunks.
-[2022-11-22 16:17:53]: Success! New manifestID 2088139351308082153 created and 1 new chunks uploaded.
+[2022-11-23 19:09:18]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-11-23 19:09:18]: Building file listing for depot 2204231 ...
+[2022-11-23 19:09:18]: Found 26 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-11-23 19:09:19]: Found 26 files (1 MB) for depot 2204231
+[2022-11-23 19:09:19]: Building depot 2204231, baseline manifest 2088139351308082153 (25 files)
+[2022-11-23 19:09:19]: Found 24 chunks ( 23 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-11-23 19:09:19]: Changes to baseline manifest 2088139351308082153 :
+[2022-11-23 19:09:19]: Added  : "bmp\184.jpg" 5 kB 
+[2022-11-23 19:09:19]: Changed: "MineSweeperTetris.exe" 571 kB size, 571 kB changed 
+[2022-11-23 19:09:19]: Summary: 1 files added, 1 files changed, 0 files removed
+[2022-11-23 19:09:20]: Uploading new manifest to 208.64.201.169:80 (handle 14783796758775125690, 2978 bytes).
+[2022-11-23 19:09:20]: Uploading 2 out of 2 missing chunks.
+[2022-11-23 19:09:22]: Success! New manifestID 2009838364193477682 created and 2 new chunks uploaded.

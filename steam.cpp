@@ -28,22 +28,22 @@ public:
     long achcumfour10 = 15;
     long achcumfour100 = 16;
     long achcumfour1000 = 17;
-    long achcumtotal10 = 18;
-    long achcumtotal100 = 19;
-    long achcumtotal1000 = 20;
-    long achcumtotal10000 = 21;
-    long achcumline100 = 22;
-    long achcumline300 = 23;
-    long achcumline600 = 24;
-    long achcumline1000 = 25;
+    long achcumline100 = 18;
+    long achcumline300 = 19;
+    long achcumline600 = 20;
+    long achcumline1000 = 21;
+    long achcumtotal10 = 22;
+    long achcumtotal100 = 23;
+    long achcumtotal1000 = 24;
+    long achcumtotal10000 = 25;
     const char* achs[100] =
     {
         "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
         "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE",
         "CUM_DEAD_1", "CUM_DEAD_10", "CUM_DEAD_100", "CUM_DEAD_1000",
         "CUM_FOUR_1", "CUM_FOUR_10", "CUM_FOUR_100", "CUM_FOUR_1000",
+        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
         "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000",
-        "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000"
     };
     bool achb[100];
 
