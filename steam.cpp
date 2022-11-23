@@ -69,7 +69,9 @@ public:
     void addach(long achid);
     void checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a);
     void loadscr();
+    void setscr(long scrid);
     void addscr(long scrid, long val, long mode);
+    void compscr(long val, long mode);
 
 };
 
@@ -112,6 +114,7 @@ void Steam::exitsteam()
 {
     if (steamb)
     {
+        SteamUserStats()->StoreStats();
         //SteamUserStats()->ResetAllStats(true);
         SteamAPI_Shutdown();
     }
@@ -172,6 +175,27 @@ void Steam::loadscr()
     }
 }
 
+void Steam::setscr(long scrid)
+{
+    SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+    if (scrid == scrdead)
+    {
+        checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);
+    }
+    else if (scrid == scrfour)
+    {
+        checkach(scrfour, 1000, 100, 10, 1, achcumdead1000, achcumfour100, achcumfour10, achcumfour1);
+    }
+    else if (scrid == scrtotal)
+    {
+        checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
+    }
+    else if (scrid == scrline)
+    {
+        checkach(scrline, 1000, 600, 300, 100, achcumline1000, achcumline600, achcumline300, achcumline100);
+    }
+}
+
 void Steam::addscr(long scrid, long val, long mode)
 {
     if (steamb)
@@ -179,20 +203,31 @@ void Steam::addscr(long scrid, long val, long mode)
         if (!cheatb && mode > 0)
         {
             scr[scrid] += val;
-            SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
-            SteamUserStats()->StoreStats();
-            if (scrid == scrdead)
-            {
-                checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);
-            }
-            else if (scrid == scrfour)
-            {
-                checkach(scrfour, 1000, 100, 10, 1, achcumdead1000, achcumfour100, achcumfour10, achcumfour1);
-            }
-            else if (scrid == scrtotal)
-            {
-                checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
-            }
+            setscr(scrid);
         }
+    }
+}
+
+void Steam::compscr(long line, long mode)
+{
+    long scrline_ = 0;
+    switch (mode)
+    {
+        case 1:
+            scrline_ = scrline1;
+            break;
+        case 2:
+            scrline_ = scrline2;
+            break;
+        case 3:
+            scrline_ = scrline3;
+            break;
+    }
+    if (line > scr[scrline_])
+    {
+        scr[scrline_] = line;
+        scr[scrline] = max(scr[scrline], scr[scrline_]);
+        setscr(scrline_);
+        setscr(scrline);
     }
 }

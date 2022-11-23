@@ -632,17 +632,20 @@ void Board::delline(long l)
             }
         }
         line++;
+        line = min(line, 999999);
+        st.compscr(line, mode);
+        st.addscr(st.scrtotal, 1, mode);
         if (line > 9999)
         {
             st.addach(st.achhidedge);
         }
-        line = min(line, 999999);
         if (maskj > h - 4)
         {
             for (long k = 0; k < 4; k++)
             {
                 line++;
                 line = min(line, 999999);
+                st.compscr(line, mode);
                 addline(false);
                 sit = 3;
             }
