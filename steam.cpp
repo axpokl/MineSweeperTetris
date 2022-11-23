@@ -57,9 +57,9 @@ public:
     long scrline3 = 6;
     const char* scrs[10] =
     {
-        "dead", "four", "total", "line", "line1", "line2", "line3"
+        "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE", "STAT_LINE1", "STAT_LINE2", "STAT_LINE3"
     };
-    long scr[100];
+    int scr[100];
 
     Steam();
     ~Steam();
@@ -112,7 +112,7 @@ void Steam::exitsteam()
 {
     if (steamb)
     {
-        SteamUserStats()->ResetAllStats(true);
+        //SteamUserStats()->ResetAllStats(true);
         SteamAPI_Shutdown();
     }
 }
@@ -134,8 +134,6 @@ void Steam::addach(long achid)
     {
         if (!achb[achid] && (!cheatb || achid == achhidcheat))
         {
-            printf(achs[achid]);
-            printf("%d \n",achid);
             SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;
@@ -169,7 +167,7 @@ void Steam::loadscr()
     {
         for (long scrid = 0; scrid < scrn; scrid++)
         {
-            SteamUserStats()->GetStat(scrs[scrid], (int*)&scr[scrid]);
+            SteamUserStats()->GetStat(scrs[scrid], (float*)&scr[scrid]);
         }
     }
 }
@@ -181,7 +179,7 @@ void Steam::addscr(long scrid, long val, long mode)
         if (!cheatb && mode > 0)
         {
             scr[scrid] += val;
-            SteamUserStats()->SetStat(scrs[scrid], (int)scr[scrid]);
+            SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
             SteamUserStats()->StoreStats();
             if (scrid == scrdead)
             {

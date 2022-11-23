@@ -17,6 +17,9 @@ steam achmnt
 steam highscore
 传github URL到steam
 
+提交bug给steamwork（float int）
+
+
 去除window
 去除steamid
 
