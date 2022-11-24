@@ -36,16 +36,16 @@ public:
     long achcumtotal100 = 23;
     long achcumtotal1000 = 24;
     long achcumtotal10000 = 25;
-    const char* achs[100] =
+    const char* achs[26] =
     {
         "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
         "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE",
         "CUM_DEAD_1", "CUM_DEAD_10", "CUM_DEAD_100", "CUM_DEAD_1000",
         "CUM_FOUR_1", "CUM_FOUR_10", "CUM_FOUR_100", "CUM_FOUR_1000",
         "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
-        "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000",
+        "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000"
     };
-    bool achb[100];
+    bool achb[26];
 
     const long scrn = 7;
     long scrdead = 0;
@@ -55,23 +55,41 @@ public:
     long scrline1 = 4;
     long scrline2 = 5;
     long scrline3 = 6;
-    const char* scrs[10] =
+    const char* scrs[7] =
     {
         "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE", "STAT_LINE1", "STAT_LINE2", "STAT_LINE3"
     };
-    int scr[100];
+    int scr[7];
+
+    const long leadn = 3;
+    long lead1 = 0;
+    long lead2 = 1;
+    long lead3 = 2;
+    const char* leads[3] =
+    {
+        "1_TOP", "2_TOP", "3_TOP"
+    };
+    SteamLeaderboard_t lead[3];
+    SteamLeaderboardEntries_t leadt[3];
+    SteamLeaderboardEntries_t leadu[3];
+
 
     Steam();
     ~Steam();
     void initsteam();
     void exitsteam();
+
     void loadach();
     void addach(long achid);
     void checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a);
+
     void loadscr();
     void setscr(long scrid);
     void addscr(long scrid, long val, long mode);
     void compscr(long val, long mode);
+
+    void loadlead();
+    void setlead(long mode, long val);
 
 };
 
@@ -106,6 +124,7 @@ void Steam::initsteam()
         {
             loadach();
             loadscr();
+            loadlead();
         }
     }
 }
@@ -210,24 +229,67 @@ void Steam::addscr(long scrid, long val, long mode)
 
 void Steam::compscr(long line, long mode)
 {
-    long scrline_ = 0;
-    switch (mode)
+    if (steamb)
     {
-        case 1:
-            scrline_ = scrline1;
-            break;
-        case 2:
-            scrline_ = scrline2;
-            break;
-        case 3:
-            scrline_ = scrline3;
-            break;
+        long scrline_ = -1;
+        switch (mode)
+        {
+            case 1:
+                scrline_ = scrline1;
+                break;
+            case 2:
+                scrline_ = scrline2;
+                break;
+            case 3:
+                scrline_ = scrline3;
+                break;
+        }
+        if (scrline_ > 0)
+        {
+            if (line > scr[scrline_])
+            {
+                scr[scrline_] = line;
+                scr[scrline] = max(scr[scrline], scr[scrline_]);
+                setscr(scrline_);
+                setscr(scrline);
+            }
+        }
     }
-    if (line > scr[scrline_])
+}
+
+void Steam::loadlead()
+{
+    if (steamb)
     {
-        scr[scrline_] = line;
-        scr[scrline] = max(scr[scrline], scr[scrline_]);
-        setscr(scrline_);
-        setscr(scrline);
+        for (long leadid = 0; leadid < leadn; leadid++)
+        {
+            lead[leadid] = SteamUserStats()->FindLeaderboard(leads[leadid]);
+            leadt[leadid] = SteamUserStats()->DownloadLeaderboardEntries(lead[leadid], k_ELeaderboardDataRequestGlobal, 1, 10);
+            leadu[leadid] = SteamUserStats()->DownloadLeaderboardEntries(lead[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 5);
+        }
+    }
+}
+
+void Steam::setlead(long mode, long val)
+{
+    if (steamb)
+    {
+        long leadid = -1;
+        switch (mode)
+        {
+            case 1:
+                leadid = lead1;
+                break;
+            case 2:
+                leadid = lead2;
+                break;
+            case 3:
+                leadid = lead3;
+                break;
+        }
+        if (leadid >= 0)
+        {
+            SteamUserStats()->UploadLeaderboardScore(lead[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
+        }
     }
 }

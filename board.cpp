@@ -561,6 +561,7 @@ void Board::checkdie()
         {
             st.addach(st.achhidright);
         }
+        st.setlead(mode, line);
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {

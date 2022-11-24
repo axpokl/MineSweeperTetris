@@ -10,18 +10,25 @@
 -去除switch
 -增量刷新
 
-memory leak?
+memory leak?: 不setsize试试
 windows xp test!
 
-steam achmnt
+-steam achmnt
 steam highscore
 传github URL到steam
 
 提交bug给steamwork（float int）
 
-
+检查注释
+检查printf·	
 去除window
 去除steamid
+
+图片
+视频
+指南
+
+本地化
 
 ------------------------
 

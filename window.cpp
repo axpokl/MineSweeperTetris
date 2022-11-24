@@ -450,8 +450,8 @@ void Window::painthelp()
                 pbitmap pcheat__[2] = {piconn, piconm};
                 drawbmp(pcheat__[cheatb], (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
                 setfontheight(fonth);
-                drawtextxy(getwin(), "MineSwepper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), "Version 0.1 (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), "MineSweeper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), "Version 0.1 dev (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
                 drawtextxy(getwin(), "Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
                 drawtextxy(getwin(), "Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
                 break;
@@ -740,6 +740,13 @@ void Window::painthelp()
             break;
         case 5:
             {
+                for (long i = 0; i < 32; i++)
+                {
+                    for (long j = 0; j < 24; j++)
+                    {
+                        drawbmp(piconp, iconw * (4 + i), iconh / 2 + menuh + iconh * j, cfg);
+                    }
+                }
                 for (long j = 0; j < 24; j++)
                 {
                     drawbmp(picon[j % 10 + 1], iconw * 4, iconh / 2 + iconh * j + menuh, cbg);
@@ -849,7 +856,7 @@ void Window::painttitle()
     ptitle_ = loadbmp("./bmp/title.png");
     drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), "MineSwepper Tetris", 0, fontth - fontfh, launchw, fontfh, black, cbg);
+    drawtextxy(getwin(), "MineSweeper Tetris", 0, fontth - fontfh, launchw, fontfh, black, cbg);
     drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + titleh, launchw, fontfh, black, cbg);
     setfontheight(fonth);
     freshwin();
