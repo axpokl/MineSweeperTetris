@@ -954,9 +954,12 @@ void Window::mouseevent(long ex, long ey, long eb)
                 }
                 else if (eb == k_rmouse)
                 {
-                    bd.pause();
-                    bd.sd.playsound(bd.sd.sSolve);
-                    bd.st.addach(bd.st.achgenpause);
+                    if (bd.sit > 0)
+                    {
+                        bd.pause();
+                        bd.sd.playsound(bd.sd.sSolve);
+                        bd.st.addach(bd.st.achgenpause);
+                    }
                 }
             }
         }
@@ -1104,9 +1107,12 @@ void Window::keyevent(long key)
                 closewin();
                 break;
             case k_p:
-                bd.pause();
-                bd.sd.playsound(bd.sd.sSolve);
-                bd.st.addach(bd.st.achgenpause);
+                if (bd.sit > 0)
+                {
+                    bd.pause();
+                    bd.sd.playsound(bd.sd.sSolve);
+                    bd.st.addach(bd.st.achgenpause);
+                }
                 break;
             case k_space:
                 bd.pause();

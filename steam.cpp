@@ -156,6 +156,7 @@ void Steam::addach(long achid)
     {
         if (!achb[achid] && (!cheatb || achid == achhidcheat))
         {
+            printf(achs[achid]);
             SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;

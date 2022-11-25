@@ -1,39 +1,28 @@
-扫雷2游戏说明
+[h2]Introduction[/h2]
 
-玩法
-单击鼠标左键可挖开方块。只会挖开未标记或者标记成问号的方块，不会挖开标记成旗帜的方块。
-挖开方块后，出现的数字表示在其周围共有多少颗地雷。
-单击鼠标右键可标记方块为问号，再次单击鼠标右键可去掉标记。
-如果某个数字方块周围未翻开方块数等于该数字，单击鼠标右键将标记未翻开的方块为旗帜。
-如果某个数字方块周围标记的方块数等于该数字，单击鼠标右键将挖开其周围剩下的方块。
-如果单击鼠标右键将挖开其周围剩下的方块没有地雷，则会将其余的方块标记为旗帜。
-如果单击鼠标右键将挖开其周围剩下的方块有地雷，则会将挖开的地雷标记为旗帜，然后去除周围其余方块中的问号标记。
 
-规则
-如果一行中未挖开方块的数目或者标记为旗帜的方块的数目等于一行中地雷的数目，则消去这一行并增加一分。
-如果挖开的方块为地雷，则立即增加两行。将方块标记为问号不会受到惩罚，但是因错误标记后使用右键挖开地雷会受到惩罚。
-最上面一行会自动添加方块并且不能消去或标记，整个盘面填满时游戏结束。
-如果剩余行数低于4行，则立即奖励4分并增加4行。
-如果分数超过等级的平方数，则等级增加一级。
-每块增长的时间间隔为5/(5+等级)秒。
+Minesweeper Tetris is a brand new 2D casual game that combines the best elements of two classic games, Minesweeper and Tetris. 
 
-鼠标
-左键：新局
-右键：暂停
+The difference from traditional Minesweeper is that the minefield of Minesweeper Tetris is constantly growing upwards, and the player will not die immediately after hitting the mine by mistake, but the size of the minefield grows until it reaches the edge. 
 
-按键
-1：初级（12*20，初始12行，每行2雷）
-2：中级（16*24，初始16行，每行3雷）
-3：高级（32*32，初始24行，每行6雷）
-8：顶部增加一行（调试用）
-9：底部减少一行（调试用）
-0：等级增加一级（调试用）
-空格：自动右键扫雷（调试用）
-S：自动AI逻辑运算扫雷（调试用）
-D：自动循环右键扫雷（调试用）
-F：自动打开所有无雷区（调试用）
-上下左右：调整盘面大小
-Page上下：调整初始行数
-+-：调整每行雷数
-P：暂停
-ESC：退出
+Similar to Tetris, the row is cleared when the player finds all the mines in a row. As the number of eliminated lines increases, the minefield will grow faster, making the game more hard and exciting. 
+
+There are three difficulty in the game. When the game is over, the player's score will be recorded in the high score list so that they can compete with other players. Players can also customize the size of the board and the number of mines. 
+
+
+[h2]Optimized Operation [/h2]
+
+
+Right-clicking will mark the square as a question mark instead of a flag. Only when the square is absolutely certain that there are no mines will it be marked as a flag, e.g. left click on a mine. 
+
+Right-clicking on a number flags the flag instead of pressing the left and right buttons simultaneously. 
+
+When you right-click the number, the game will automatically and intelligently mark the flag according to the situation of marked, unmarked squares and mines.
+
+
+[h2]Advanced Feature[/h2]
+
+
+The in-game help will teach you the methods, rules and techniques of minesweeping with illustrations.
+
+The hidden AI system can automatically clear mines, helping you understand and learn the process of minesweeping.

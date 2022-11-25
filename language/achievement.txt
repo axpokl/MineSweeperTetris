@@ -1,0 +1,52 @@
+Enter Minefield
+Start play the game
+Special Minefield
+Customize game board
+Standard Minefields
+Try all 3 game modes of Easy, Medium and Hard
+Mines and Peace
+Pause the game
+Minesweeper Manual
+Read all help page
+There's a red mine in the game
+Enter debug mode
+Hit the edge of number
+Reach 9999 lines in one single game
+My mind is full of question
+Mark each cell as a question mark for the entire game board
+The right mouse button is broken
+Lose the game without right click
+Come back to live
+Survive after the entire board is full
+First Blood
+Lose the game for the first time
+No fear of Death
+Lose the game for the 10 times
+Failure is the mother of success
+Lose the game for the 100 times
+To be or not to be
+Lose the game for the 1000 times
+Play Tetris
+Eliminate four lines for the first time
+All Clear
+Eliminate four lines 10 times
+Ultimate Elimination
+Eliminate four lines 100 times
+Game made of Tetris
+Eliminate four lines 1000 times
+Minesweeper Learner
+Clear 100 lines in one single game
+Minesweeper Senior
+Clear 300 lines in one single game
+Minesweeper Professor
+Clear 600 lines in one single game
+Minesweeper Master
+Clear 1000 lines in one single game
+Easy Mine
+Clear 10 lines of mines in total
+Factory of Mine
+Clear 100 lines of mines in total
+Expert of Mine
+Clear 1000 lines of mines in total
+Life without Mine
+Clear 10000 lines of mines in total

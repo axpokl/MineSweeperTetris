@@ -15,20 +15,50 @@ windows xp test!
 
 -steam achmnt
 steam highscore
-传github URL到steam
+steam overlay
 
 提交bug给steamwork（float int）
+
+
+图片：
+删除文字
+背景图片透明
+视频
+指南
+传github URL到steam
+
+本地化
+
 
 检查注释
 检查printf·	
 去除window
 去除steamid
 
-图片
-视频
-指南
 
-本地化
+At present, most of the functions of the game have been completed:
+1. The rules and basic concept
+2. Three standard mode
+3. Customization of gameboard (size, mines in row)
+4. Optimization of operation  (mouse and keyboard)
+5. Help with illustrations
+6. Sound and music
+7. Automatic AI minesweeping (with cheat)
+8. Achievements and Stats
+
+Below is the feature which hasn't been implemented yet and will be finish before relase:
+9. Leadborad of 3 standard mode 
+10. Steam overlay
+11. Language and Localization
+
+Below is the feature or item to be finish after release or in the future:
+12. Operations, logic and bug fixes
+13. Achievements adjust
+14. Add some music or sound in the future
+15. Optimize rendering and game display refresh algorithms,  reduce CPU usage
+16. Eliminate potential memory leaks, especially when switching game mode
+17. Test the game in different OS and environment, increase application compatibility
+
 
 ------------------------
 
