@@ -3,7 +3,7 @@ class Window
 public:
 
     const long launchw = 320;
-    const long launchh = 384;
+    const long launchh = 320;
     const long titlew = 256;
     const long titleh = 256;
     const long menuw = 24;
@@ -123,8 +123,8 @@ void Window::initwindow()
     createwin(launchw, launchh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
-    settitle("MineSweeper Tetris");
-    setfontname("Consolas");
+    settitle(bd.st.lan.LAN_TITLE);
+    setfontname(bd.st.lan.LAN_FONT);
     painttitle();
     initbmp();
 }
@@ -445,15 +445,15 @@ void Window::painthelp()
         case -1:
             {
                 setfontheight(fontfh);
-                drawtextxy(getwin(), "About", fontfh / 2, menuh, aboutw, fontth, black, cbg);
-                aboutw_ = getstringwidth("  About");
+                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_TITLE, fontfh / 2, menuh, aboutw, fontth, black, cbg);
+                aboutw_ = getstringwidth(bd.st.lan.LAN_ABOUT_TITLE) + getstringwidth("  ");
                 pbitmap pcheat__[2] = {piconn, piconm};
                 drawbmp(pcheat__[cheatb], (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
                 setfontheight(fonth);
-                drawtextxy(getwin(), "MineSweeper Tetris (32-bit)", 0, menuh + fontth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), "Version 0.1 dev (Steam)", 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), "Made by ax_pokl", 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), "Licensed under GPL-3.0", 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_NAME, 0, menuh + fontth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_VERSION, 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_AUTHOR, 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_LICENSE, 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
                 break;
             }
         case -2:
@@ -856,8 +856,7 @@ void Window::painttitle()
     ptitle_ = loadbmp("./bmp/title.png");
     drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), "MineSweeper Tetris", 0, fontth - fontfh, launchw, fontfh, black, cbg);
-    drawtextxy(getwin(), "Made by ax_pokl", 0, fontth + titleh, launchw, fontfh, black, cbg);
+    drawtextxy(getwin(), bd.st.lan.LAN_TITLE, 0, fontth - fontfh, launchw, fontfh, black, cbg);
     setfontheight(fonth);
     freshwin();
 }

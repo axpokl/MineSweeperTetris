@@ -5,6 +5,8 @@ class Steam
 
 public:
 
+    Lan lan;
+
     const long appid = 2204230;
     bool steamb;
     bool cheatb = false;
@@ -107,18 +109,18 @@ void Steam::initsteam()
 {
     if (SteamAPI_RestartAppIfNecessary(appid))
     {
-        msgbox("Please launch MineSwepper Tetris from Steam!", "MineSwepper Tetris", MB_ICONINFORMATION);
+        msgbox(lan.LAN_STEAM_LAUNCH, lan.LAN_TITLE, MB_ICONINFORMATION);
     }
     steamb = SteamAPI_Init();
     if (!steamb)
     {
-        msgbox("Steam initialize failed!", "MineSwepper Tetris", MB_ICONWARNING);
+        msgbox(lan.LAN_STEAM_FAIL, lan.LAN_TITLE, MB_ICONWARNING);
     }
     if (steamb)
     {
         if (!SteamUserStats()->RequestCurrentStats())
         {
-            msgbox("Steam current user status load failed!", "MineSwepper Tetris", MB_ICONWARNING);
+            msgbox(lan.LAN_STEAM_Status_FAIL, lan.LAN_TITLE, MB_ICONWARNING);
         }
         else
         {
