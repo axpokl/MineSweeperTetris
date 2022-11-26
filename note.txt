@@ -16,6 +16,8 @@ windows xp test!
 -steam achmnt
 steam highscore
 steam overlay
+本地化/Unicode
+
 
 提交bug给steamwork（float int）
 
@@ -28,6 +30,7 @@ steam overlay
 传github URL到steam
 
 本地化
+Unicode
 
 
 检查注释

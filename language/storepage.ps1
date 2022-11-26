@@ -12,9 +12,9 @@ $lan_long = cat ".\list_long.txt"
 rd "storage" -force -recurse
 md "storage"
 $i=0
+$text = cat ".\storepage.txt"
 foreach ($lan in $lan_short)
 {
-$text = cat ".\storepage.txt"
 $out = '{"language":"'+$lan_long[$i]+'","itemid":"509254","app[content][legal]":"","app[content][earlyaccess_description]":"","app[content][about]":"'
 $out = $out +'[h2]'+(translate $lan $text[0])+'[\/h2]\r\n\r\n\r\n'
 $out = $out +(translate $lan $text[1])+'\r\n\r\n'

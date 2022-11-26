@@ -20,7 +20,6 @@ public:
     const long btnh = 36;
     const long aboutw = 320;
     const long abouth = 240;
-    long aboutw_ = 0;
     const long helpw = 640;
     const long helph = 480;
     const long fontth = 64;
@@ -123,8 +122,8 @@ void Window::initwindow()
     createwin(launchw, launchh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
-    settitle(bd.st.lan.LAN_TITLE);
-    setfontname(bd.st.lan.LAN_FONT);
+    settitlew(bd.st.lan.datap[bd.st.lan.LAN_TITLE_W]);
+    setfontname("Consolas");
     painttitle();
     initbmp();
 }
@@ -445,15 +444,13 @@ void Window::painthelp()
         case -1:
             {
                 setfontheight(fontfh);
-                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_TITLE, fontfh / 2, menuh, aboutw, fontth, black, cbg);
-                aboutw_ = getstringwidth(bd.st.lan.LAN_ABOUT_TITLE) + getstringwidth("  ");
                 pbitmap pcheat__[2] = {piconn, piconm};
-                drawbmp(pcheat__[cheatb], (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
+                drawbmp(pcheat__[cheatb], (aboutw - fontfh) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
                 setfontheight(fonth);
-                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_NAME, 0, menuh + fontth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_VERSION, 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_AUTHOR, 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), bd.st.lan.LAN_ABOUT_LICENSE, 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.datap[bd.st.lan.LAN_ABOUT_NAME_W], 0, menuh + fontth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.datap[bd.st.lan.LAN_ABOUT_VERSION_W], 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.datap[bd.st.lan.LAN_ABOUT_AUTHOR_W], 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.datap[bd.st.lan.LAN_ABOUT_LICENSE_W], 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
                 break;
             }
         case -2:
@@ -856,7 +853,7 @@ void Window::painttitle()
     ptitle_ = loadbmp("./bmp/title.png");
     drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), bd.st.lan.LAN_TITLE, 0, fontth - fontfh, launchw, fontfh, black, cbg);
+    drawtextxy(getwin(), bd.st.lan.datap[bd.st.lan.LAN_TITLE_W], 0, (fontth + titleh / 8 - fontfh) / 2, launchw, fontfh, black, cbg);
     setfontheight(fonth);
     freshwin();
 }
@@ -994,7 +991,7 @@ void Window::mouseevent(long ex, long ey, long eb)
         {
             sethelp(0);
         }
-        if (isin(ex, ey, (aboutw - fontfh - aboutw_) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh))
+        if (isin(ex, ey, (aboutw - fontfh) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh))
         {
             if (!cheatb)
             {

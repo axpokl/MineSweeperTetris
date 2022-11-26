@@ -1,29 +1,31 @@
-阿拉伯语 *	العربية	arabic	ar
-保加利亚语	български език	bulgarian	bg
-简体中文	简体中文	schinese	zh-CN
-繁体中文	繁體中文	tchinese	zh-TW
-捷克语	čeština	czech	cs
-丹麦语	Dansk	danish	da
-荷兰语	Nederlands	dutch	nl
-英语	English	english	en
-芬兰语	Suomi	finnish	fi
-法语	Français	french	fr
-德语	Deutsch	german	de
-希腊语	Ελληνικά	greek	el
-匈牙利语	Magyar	hungarian	hu
-意大利语	Italiano	italian	it
-日语	日本語	japanese	ja
-韩语	한국어	koreana	ko
-挪威语	Norsk	norwegian	no
-波兰语	Polski	polish	pl
-葡萄牙语	Português	portuguese	pt
-葡萄牙语 - 巴西	Português-Brasil	brazilian	pt-BR
-罗马尼亚语	Română	romanian	ro
-俄语	Русский	russian	ru
-西班牙语 - 西班牙	Español-España	spanish	es
-西班牙语 - 拉丁美洲	Español-Latinoamérica	latam	es-419
-瑞典语	Svenska	swedish	sv
-泰语	ไทย	thai	th
-土耳其语	Türkçe	turkish	tr
-乌克兰语	Українська	ukrainian	uk
-越南语	Tiếng Việt	vietnamese	vn
+阿拉伯语 *	العربية	arabic	ar	0x0001	1	
+保加利亚语	български език	bulgarian	bg	0x0002	2	
+捷克语	čeština	czech	cs	0x0005	5	
+丹麦语	Dansk	danish	da	0x0006	6	
+德语	Deutsch	german	de	0x0007	7	
+希腊语	Ελληνικά	greek	el	0x0008	8	
+英语	English	english	en	0x0009	9	
+西班牙语 - 西班牙	Español-España	spanish	es	0x000A	10	
+西班牙语 - 拉丁美洲	Español-Latinoamérica	latam	es-419	0x580A	22538	
+芬兰语	Suomi	finnish	fi	0x000B	11	
+法语	Français	french	fr	0x000C	12	
+匈牙利语	Magyar	hungarian	hu	0x000E	14	
+意大利语	Italiano	italian	it	0x0010	16	
+日语	日本語	japanese	ja	0x0011	17	
+韩语	한국어	koreana	ko	0x0012	18	
+荷兰语	Nederlands	dutch	nl	0x0013	19	
+挪威语	Norsk	norwegian	no	0x0014	20	
+波兰语	Polski	polish	pl	0x0015	21	
+葡萄牙语	Português	portuguese	pt	0x0016	22	
+葡萄牙语 - 巴西	Português-Brasil	brazilian	pt-BR	0x0416	1046	
+罗马尼亚语	Română	romanian	ro	0x0018	24	
+俄语	Русский	russian	ru	0x0019	25	
+瑞典语	Svenska	swedish	sv	0x001D	29	
+泰语	ไทย	thai	th	0x001E	30	
+土耳其语	Türkçe	turkish	tr	0x001F	31	
+乌克兰语	Українська	ukrainian	uk	0x0022	34	
+越南语	Tiếng Việt	vietnamese	vn	0x042A	1066	
+简体中文	简体中文	schinese	zh-CN	0x0804	2052	
+繁体中文	繁體中文	tchinese	zh-TW	0x0404	1028	
+						
+						

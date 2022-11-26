@@ -11,6 +11,7 @@ copy disp.dll release\disp.dll
 xcopy bmp\* release\bmp\ /y /r
 xcopy wav\* release\wav\ /y /r
 xcopy mid\* release\mid\ /y /r
+xcopy lan\* release\lan\ /y /r
 start release\MineSweeperTetris.exe
 rmdir sdk\tools\ContentBuilder\content /s /q
 mkdir sdk\tools\ContentBuilder\content

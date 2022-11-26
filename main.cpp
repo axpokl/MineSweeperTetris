@@ -15,12 +15,11 @@ int main()
     Lan lan;
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
     {
-        msgbox(lan.LAN_RUNNING, lan.LAN_TITLE, MB_ICONINFORMATION);
+        msgboxw(lan.datap[lan.LAN_RUNNING_W], lan.datap[lan.LAN_TITLE_W], MB_ICONINFORMATION);
     }
     else
     {
         Window w;
-        w.bd.st.lan = lan;
         w.bd.sd.initsound();
         w.bd.initbd(1);
         w.initwindow(false);
