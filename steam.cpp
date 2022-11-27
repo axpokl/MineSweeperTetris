@@ -81,6 +81,7 @@ public:
     void initsteam();
     void exitsteam();
 
+    void resetach();
     void loadach();
     void addach(long achid);
     void checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a);
@@ -118,6 +119,7 @@ void Steam::initsteam()
     }
     if (steamb)
     {
+        lan.initlan(SteamUtils()->GetSteamUILanguage());
         lan.initlan(SteamApps()->GetCurrentGameLanguage());
     }
     if (steamb)
@@ -140,8 +142,15 @@ void Steam::exitsteam()
     if (steamb)
     {
         SteamUserStats()->StoreStats();
-        //SteamUserStats()->ResetAllStats(true);
         SteamAPI_Shutdown();
+    }
+}
+
+void Steam::resetach()
+{
+    if (steamb)
+    {
+        SteamUserStats()->ResetAllStats(true);
     }
 }
 
@@ -162,7 +171,7 @@ void Steam::addach(long achid)
     {
         if (!achb[achid] && (!cheatb || achid == achhidcheat))
         {
-            printf(achs[achid]);
+            printf("%s\n",achs[achid]);
             SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;
@@ -238,27 +247,30 @@ void Steam::compscr(long line, long mode)
 {
     if (steamb)
     {
-        long scrline_ = -1;
-        switch (mode)
+        if (!cheatb && mode > 0)
         {
-            case 1:
-                scrline_ = scrline1;
-                break;
-            case 2:
-                scrline_ = scrline2;
-                break;
-            case 3:
-                scrline_ = scrline3;
-                break;
-        }
-        if (scrline_ > 0)
-        {
-            if (line > scr[scrline_])
+            long scrline_ = -1;
+            switch (mode)
             {
-                scr[scrline_] = line;
-                scr[scrline] = max(scr[scrline], scr[scrline_]);
-                setscr(scrline_);
-                setscr(scrline);
+                case 1:
+                    scrline_ = scrline1;
+                    break;
+                case 2:
+                    scrline_ = scrline2;
+                    break;
+                case 3:
+                    scrline_ = scrline3;
+                    break;
+            }
+            if (scrline_ > 0)
+            {
+                if (line > scr[scrline_])
+                {
+                    scr[scrline_] = line;
+                    scr[scrline] = max(scr[scrline], scr[scrline_]);
+                    setscr(scrline_);
+                    setscr(scrline);
+                }
             }
         }
     }

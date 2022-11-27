@@ -773,8 +773,9 @@ void Window::painthelp()
                 setfontheight(faceh);
                 pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
                 const char* keys[11] = {"Q / ESC", "A / F12", "H / F1", "T / F2", "S / F3", "M / F4", "N / F5", "P / Space", "1", "2", "3"};
-                const char* cheats[7] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level"};
-                long cheatc[7] = {blue, blue, blue, blue, red, blue, red};
+                const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
+                const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
+                long cheatc[8] = {blue, blue, blue, blue, red, blue, red, red};
                 long helph__ = (helph - okh_ - faceh * 11 - iconh * 10 / 2) / 2;
                 long helpw__ = helpw / 6;
                 if (cheatb)
@@ -788,10 +789,10 @@ void Window::painthelp()
                 }
                 if (cheatb)
                 {
-                    for (long k = 0; k < 7; k++)
+                    for (long k = 0; k < 8; k++)
                     {
                         drawtextxy(getwin(), cheats[k], helpw / 4 + facew, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
-                        drawtextxy(getwin(), i2s((k + 4) % 10), helpw / 4, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
+                        drawtextxy(getwin(), cheatn[k], helpw / 4, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
                     }
                 }
                 line(helpw / 2, menuh, 0, helph - okh_, cfg);
@@ -1183,6 +1184,9 @@ void Window::keyevent(long key)
                     break;
                 case k_0:
                     bd.level++ ;
+                    break;
+                case k_c:
+                    bd.st.resetach();
                     break;
             }
         }

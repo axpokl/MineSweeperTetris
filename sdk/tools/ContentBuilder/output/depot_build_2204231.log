@@ -1,43 +1,12 @@
-[2022-11-27 14:00:59]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-11-27 14:00:59]: Building file listing for depot 2204231 ...
-[2022-11-27 14:00:59]: Found 56 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-11-27 14:00:59]: Found 56 files (1 MB) for depot 2204231
-[2022-11-27 14:01:00]: Building depot 2204231, baseline manifest 7007370150520069471 (26 files)
-[2022-11-27 14:01:00]: Found 49 chunks ( 23 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-11-27 14:01:00]: Changes to baseline manifest 7007370150520069471 :
-[2022-11-27 14:01:00]: Changed: "disp.dll" 115 kB size, 115 kB changed 
-[2022-11-27 14:01:00]: Added  : "lan" 0 kB ,Flags: 64
-[2022-11-27 14:01:00]: Added  : "lan\arabic.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\brazilian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\bulgarian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\czech.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\danish.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\dutch.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\english.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\finnish.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\french.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\german.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\greek.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\hungarian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\italian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\japanese.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\koreana.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\latam.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\norwegian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\polish.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\portuguese.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\romanian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\russian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\schinese.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\spanish.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\swedish.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\tchinese.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\thai.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\turkish.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\ukrainian.txt" 1 kB 
-[2022-11-27 14:01:00]: Added  : "lan\vietnamese.txt" 1 kB 
-[2022-11-27 14:01:00]: Changed: "MineSweeperTetris.exe" 575 kB size, 575 kB changed 
-[2022-11-27 14:01:00]: Summary: 30 files added, 2 files changed, 0 files removed
-[2022-11-27 14:01:01]: Uploading new manifest to 208.64.201.169:80 (handle 9404939965579107312, 6163 bytes).
-[2022-11-27 14:01:01]: Uploading 28 out of 28 missing chunks.
-[2022-11-27 14:01:04]: Success! New manifestID 5623005448983926348 created and 28 new chunks uploaded.
+[2022-11-27 14:44:51]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-11-27 14:44:51]: Building file listing for depot 2204231 ...
+[2022-11-27 14:44:51]: Found 56 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-11-27 14:44:52]: Found 56 files (1 MB) for depot 2204231
+[2022-11-27 14:44:52]: Building depot 2204231, baseline manifest 5623005448983926348 (56 files)
+[2022-11-27 14:44:53]: Found 49 chunks ( 49 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-11-27 14:44:53]: Changes to baseline manifest 5623005448983926348 :
+[2022-11-27 14:44:53]: Changed: "MineSweeperTetris.exe" 575 kB size, 575 kB changed 
+[2022-11-27 14:44:53]: Summary: 0 files added, 1 files changed, 0 files removed
+[2022-11-27 14:44:53]: Uploading new manifest to 208.64.201.169:80 (handle 3975440205055199950, 6161 bytes).
+[2022-11-27 14:44:54]: Uploading 1 out of 1 missing chunks.
+[2022-11-27 14:44:55]: Success! New manifestID 1148001692437766381 created and 1 new chunks uploaded.
