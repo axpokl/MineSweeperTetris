@@ -10,27 +10,26 @@
 -去除switch
 -增量刷新
 
-memory leak?: 不setsize试试
+-memory leak?: 不setsize试试
 windows xp test!
 
 -steam achmnt
 steam highscore
-steam overlay
-本地化/Unicode
-
+-steam overlay
+-本地化/Unicode
 
 提交bug给steamwork（float int）
 
 
-图片：
-删除文字
-背景图片透明
+-图片：
+-删除文字
+-背景图片透明
 视频
 指南
 传github URL到steam
 
-本地化
-Unicode
+-本地化
+-Unicode
 
 
 检查注释

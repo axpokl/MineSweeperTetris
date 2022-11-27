@@ -147,7 +147,7 @@ void Window::initwindow(bool b)
             setsize(helpw, helph + menuh);
             break;
     }
-    setpos(max(0, (getscrwidth() - getwidth()) / 2), max(0, (getscrheight() - getheight()) / 2));
+    setpos(max(0, (getscrwidth() - getwidth() - getborderwidth() * 2) / 2), max(0, (getscrheight() - getheight() - getborderheight() * 2 - getbordertitle()) / 2));
     paintevent();
 }
 
