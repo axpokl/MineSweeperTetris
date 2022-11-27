@@ -15,7 +15,7 @@ int main()
     Lan lan;
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
     {
-        msgboxw(lan.datap[lan.LAN_RUNNING_W], lan.datap[lan.LAN_TITLE_W], MB_ICONINFORMATION);
+        msgboxw(lan.getlan(lan.LAN_RUNNING_W), lan.getlan(lan.LAN_TITLE_W), MB_ICONINFORMATION);
     }
     else
     {

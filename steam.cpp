@@ -109,12 +109,12 @@ void Steam::initsteam()
 {
     if (SteamAPI_RestartAppIfNecessary(appid))
     {
-        msgboxw(lan.datap[lan.LAN_STEAM_LAUNCH_W], lan.datap[lan.LAN_TITLE_W], MB_ICONINFORMATION);
+        msgboxw(lan.getlan(lan.LAN_STEAM_LAUNCH_W), lan.getlan(lan.LAN_TITLE_W), MB_ICONINFORMATION);
     }
     steamb = SteamAPI_Init();
     if (!steamb)
     {
-        msgboxw(lan.datap[lan.LAN_STEAM_FAIL_W], lan.datap[lan.LAN_TITLE_W], MB_ICONWARNING);
+        msgboxw(lan.getlan(lan.LAN_STEAM_FAIL_W), lan.getlan(lan.LAN_TITLE_W), MB_ICONWARNING);
     }
     if (steamb)
     {
@@ -124,7 +124,7 @@ void Steam::initsteam()
     {
         if (!SteamUserStats()->RequestCurrentStats())
         {
-            msgboxw(lan.datap[lan.LAN_STEAM_Status_W], lan.datap[lan.LAN_TITLE_W], MB_ICONWARNING);
+            msgboxw(lan.getlan(lan.LAN_STEAM_Status_W), lan.getlan(lan.LAN_TITLE_W), MB_ICONWARNING);
         }
         else
         {

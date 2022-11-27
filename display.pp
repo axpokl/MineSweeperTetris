@@ -2009,8 +2009,6 @@ else
 end;
 procedure DrawTextXY(b:pbitmap;s:unicodestring;x,y:longint;w,h:longword;cfg,cbg:longword);
 var lpRect:RECT;
-type pword = ^word;
-var s_:pword;
 begin
 InitTextXY(b,s,cfg,cbg);
 lpRect.left:=x;
