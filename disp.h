@@ -473,227 +473,228 @@ extern "C" void SetFontName114(const char* s);
 extern "C" void GetStringSize115(const char* s);
 extern "C" unsigned long GetStringWidth116(const char* s);
 extern "C" unsigned long GetStringHeight117(const char* s);
-extern "C" void DrawTextXY118(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextXY119(pbitmap b,const char* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextXY120(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextXY121(pbitmap b,const char* s,long x,long y,unsigned long cfg);
-extern "C" void DrawTextXY122(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextXY123(const char* s,long x,long y,unsigned long cfg);
-extern "C" void DrawTextXY124(const char* s,unsigned long x,unsigned long y);
-extern "C" void DrawText125(const char* s,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawText126(const char* s,unsigned long cfg);
-extern "C" void DrawText127(const char* s);
-extern "C" void DrawTextlnXY128(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextlnXY129(const char* s,long x,long y,unsigned long cfg);
-extern "C" void DrawTextlnXY130(const char* s,unsigned long x,unsigned long y);
-extern "C" void DrawTextln131(const char* s,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextln132(const char* s,unsigned long cfg);
-extern "C" void DrawTextln133(const char* s);
-extern "C" void DrawTextln134();
-extern "C" void DrawTextXYw135(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextXYw136(pbitmap b,const char* s,long x,long y,unsigned long cfg);
-extern "C" void DrawTextXYw137(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextXYw138(const char* s,long x,long y,unsigned long cfg);
-extern "C" void DrawTextXYw139(const char* s,unsigned long x,unsigned long y);
-extern "C" void DrawTextw140(const char* s,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextw141(const char* s,unsigned long cfg);
-extern "C" void DrawTextw142(const char* s);
-extern "C" void DrawTextlnXYw143(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextlnXYw144(const char* s,long x,long y,unsigned long cfg);
-extern "C" void DrawTextlnXYw145(const char* s,unsigned long x,unsigned long y);
-extern "C" void DrawTextlnw146(const char* s,unsigned long cfg,unsigned long cbg);
-extern "C" void DrawTextlnw147(const char* s,unsigned long cfg);
-extern "C" void DrawTextlnw148(const char* s);
-extern "C" unsigned long GetPixel149(pbitmap b,unsigned long x,unsigned long y);
-extern "C" unsigned long GetPixel150(unsigned long x,unsigned long y);
-extern "C" void SetPixel151(pbitmap b,unsigned long x,unsigned long y,unsigned long c);
-extern "C" void SetPixel152(unsigned long x,unsigned long y,unsigned long c);
-extern "C" void SetPixel153(unsigned long x,unsigned long y);
-extern "C" unsigned long GetBBPixel154(pbitbuf bb,unsigned long x,unsigned long y);
-extern "C" void SetBBPixel155(pbitbuf bb,unsigned long x,unsigned long y,unsigned long c);
-extern "C" void Line156(pbitmap b,long x,long y,long w,long h,unsigned long c);
-extern "C" void Line157(long x,long y,long w,long h,unsigned long c);
-extern "C" void Line158(long x,long y,long w,long h);
-extern "C" void LineBB159(pbitbuf bb,long x,long y,long w,long h,unsigned long c);
-extern "C" void Bar160(pbitmap b,long x,long y,long w,long h,unsigned long cfg,unsigned long cbg);
-extern "C" void Bar161(pbitmap b,long x,long y,long w,long h,unsigned long c);
-extern "C" void Bar162(long x,long y,long w,long h,unsigned long cfg,unsigned long cbg);
-extern "C" void Bar163(long x,long y,long w,long h,unsigned long c);
-extern "C" void Bar164(long x,long y,long w,long h);
-extern "C" void Clear165(pbitmap b,unsigned long c);
-extern "C" void Clear166(pbitmap b);
-extern "C" void Clear167(unsigned long c);
-extern "C" void Clear168();
-extern "C" void Triangle169(pbitmap b,long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg);
-extern "C" void Triangle170(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg);
-extern "C" void Triangle171(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long c);
-extern "C" void Triangle172(long x1,long y1,long x2,long y2,long x3,long y3);
-extern "C" void Arc173(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
-extern "C" void Arc174(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
-extern "C" void Arc175(long x,long y,long rx,long ry,double sa,double ea,unsigned long c);
-extern "C" void Arc176(long x,long y,long rx,long ry,double sa,double ea);
-extern "C" void Pie177(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
-extern "C" void Pie178(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
-extern "C" void Pie179(long x,long y,long rx,long ry,double sa,double ea,unsigned long c);
-extern "C" void Pie180(long x,long y,long rx,long ry,double sa,double ea);
-extern "C" void Chord181(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
-extern "C" void Chord182(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
-extern "C" void Chord183(long x,long y,long rx,long ry,double sa,double ea,unsigned long c);
-extern "C" void Chord184(long x,long y,long rx,long ry,double sa,double ea);
-extern "C" void Ellipse185(pbitmap b,long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg);
-extern "C" void Ellipse186(long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg);
-extern "C" void Ellipse187(long x,long y,long rx,long ry,unsigned long c);
-extern "C" void Ellipse188(long x,long y,long rx,long ry);
-extern "C" void Circle189(pbitmap b,long x,long y,long r,unsigned long cfg,unsigned long cbg);
-extern "C" void Circle190(long x,long y,long r,unsigned long cfg,unsigned long cbg);
-extern "C" void Circle191(long x,long y,long r,unsigned long c);
-extern "C" void Circle192(long x,long y,long r);
-extern "C" pbitmap CreateBMP193(pbitmap b,unsigned long w,unsigned long h,unsigned long c);
-extern "C" pbitmap CreateBMP194(pbitmap b);
-extern "C" pbitmap CreateBMP195(unsigned long w,unsigned long h,unsigned long c);
-extern "C" pbitmap CreateBMP196(unsigned long w,unsigned long h);
-extern "C" pbitmap CreateBMP197();
-extern "C" void ReleaseBMP198(pbitmap b);
-extern "C" void ReleaseBMP199();
-extern "C" pbitmap LoadBMP200(const char* s,unsigned long c);
-extern "C" pbitmap LoadBMP201(const char* s);
-extern "C" void SaveBMP202(pbitmap b,const char* s);
-extern "C" void DrawBMP203(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
-extern "C" void DrawBMP204(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
-extern "C" void DrawBMP205(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c);
-extern "C" void DrawBMP206(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h);
-extern "C" void DrawBMP207(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
-extern "C" void DrawBMP208(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
-extern "C" void DrawBMP209(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long c);
-extern "C" void DrawBMP210(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd);
-extern "C" void DrawBMP211(pbitmap bs,pbitmap bd,unsigned long c);
-extern "C" void DrawBMP212(pbitmap bs,pbitmap bd);
-extern "C" void DrawBMP213(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
-extern "C" void DrawBMP214(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
-extern "C" void DrawBMP215(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c);
-extern "C" void DrawBMP216(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h);
-extern "C" void DrawBMP217(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
-extern "C" void DrawBMP218(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
-extern "C" void DrawBMP219(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long c);
-extern "C" void DrawBMP220(pbitmap bs,unsigned long xd,unsigned long yd);
-extern "C" void DrawBMP221(pbitmap bs,unsigned long c);
-extern "C" void DrawBMP222(pbitmap bs);
-extern "C" void DrawBMP223(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
-extern "C" void DrawBMP224(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
-extern "C" void DrawBMP225(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c);
-extern "C" void DrawBMP226(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h);
-extern "C" void DrawBMP227(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
-extern "C" void DrawBMP228(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
-extern "C" void DrawBMP229(unsigned long xd,unsigned long yd,unsigned long c);
-extern "C" void DrawBMP230(unsigned long xd,unsigned long yd);
-extern "C" void DrawBMP231(unsigned long c);
-extern "C" void DrawBMP232();
-extern "C" void MixBMP233(pbitmap b1,pbitmap b2,pbitmap b3);
-extern "C" void BlurBMPBox234(pbitmap b,unsigned long d,unsigned long n);
-extern "C" void BlurBMPBox235(pbitmap b,unsigned long d);
-extern "C" void BlurBMPGau236(pbitmap b,double d);
-extern "C" pbitbuf CreateBB237(pbitmap b);
-extern "C" void ReleaseBB238(pbitbuf bb);
-extern "C" void GetBB239(pbitbuf bb);
-extern "C" void SetBB240(pbitbuf bb);
-extern "C" void MixBB241(pbitbuf bb1,pbitbuf bb2,pbitbuf bb3);
-extern "C" void BlurBBBox242(pbitbuf bb,unsigned long d,unsigned long n);
-extern "C" void BlurBBGau243(pbitbuf bb,double d);
-extern "C" void PressKey244(unsigned char k,unsigned long t);
-extern "C" void PressKey245(unsigned char k);
-extern "C" void DownKey246(unsigned char k);
-extern "C" void UpKey247(unsigned char k);
-extern "C" void PressMouse248(unsigned char m,unsigned long t);
-extern "C" void PressMouse249(unsigned char m);
-extern "C" void DownMouse250(unsigned char m);
-extern "C" void UpMouse251(unsigned char m);
-extern "C" void WheelMouse252(long wl);
-extern "C" void MoveMouse253(long x,long y);
-extern "C" void MoveMouseAbs254(long x,long y);
-extern "C" void MoveMouseWin255(long x,long y);
-extern "C" void MoveMousePos256(long x,long y);
-extern "C" void SendMsg257();
-extern "C" bool IsNextMsg258();
-extern "C" unsigned long GetNextMsg259();
-extern "C" unsigned long WaitNextMsg260();
-extern "C" bool IsMsg261(unsigned long uM);
-extern "C" long long GetMsg262(unsigned long uM);
-extern "C" long long WaitMsg263(unsigned long uM);
-extern "C" bool IsKey264(unsigned long k);
-extern "C" bool IsKey265();
-extern "C" unsigned long GetKey266();
-extern "C" unsigned long WaitKey267(unsigned long k);
-extern "C" unsigned long WaitKey268();
-extern "C" bool IsMouse269(unsigned long m);
-extern "C" bool IsMouse270();
-extern "C" unsigned long GetMouse271();
-extern "C" unsigned long WaitMouse272(unsigned long m);
-extern "C" unsigned long WaitMouse273();
-extern "C" bool IsMouseLeft274();
-extern "C" void WaitMouseLeft275();
-extern "C" bool IsMouseMiddle276();
-extern "C" void WaitMouseMiddle277();
-extern "C" bool IsMouseRight278();
-extern "C" void WaitMouseRight279();
-extern "C" bool IsMouseWheel280();
-extern "C" long GetMouseWheel281();
-extern "C" void WaitMouseWheel282();
-extern "C" bool IsMouseMove283();
-extern "C" unsigned long GetMouseMove284();
-extern "C" unsigned long WaitMouseMove285();
-extern "C" bool IsDropFile286();
-extern "C" const char* GetDropFile287();
-extern "C" const short int* GetDropFileW288();
-extern "C" const char* WaitDropFile289();
-extern "C" long GetMouseAbsX290();
-extern "C" long GetMouseAbsY291();
-extern "C" long GetMouseWinX292();
-extern "C" long GetMouseWinY293();
-extern "C" long GetMousePosX294();
-extern "C" long GetMousePosY295();
-extern "C" unsigned long LoadAudio296(const char* s1,const char* s2);
-extern "C" unsigned long LoadAudio297(const char* s);
-extern "C" void PlayAudio298(unsigned long id,const char* s,bool b);
-extern "C" void PlayAudio299(unsigned long id,const char* s);
-extern "C" void PlayAudio300(unsigned long id,bool b);
-extern "C" void PlayAudio301(unsigned long id);
-extern "C" void StopAudio302(unsigned long id);
-extern "C" void PauseAudio303(unsigned long id);
-extern "C" void ResumeAudio304(unsigned long id);
-extern "C" void ReleaseAudio305(unsigned long id);
-extern "C" unsigned long GetAudioVol306(unsigned long id);
-extern "C" void SetAudioVol307(unsigned long id,unsigned long v);
-extern "C" unsigned long GetAudioPos308(unsigned long id);
-extern "C" void SetAudioPos309(unsigned long id,unsigned long pos,bool b);
-extern "C" void SetAudioPos310(unsigned long id,unsigned long pos);
-extern "C" unsigned long GetAudioLen311(unsigned long id);
-extern "C" bool IsFile312(const char* s);
-extern "C" bool IsFileW313(const short int* s);
-extern "C" bool NewFile314(const char* s);
-extern "C" bool NewDir315(const char* s);
-extern "C" bool CopyFile316(const char* src,const char* des);
-extern "C" bool MoveFile317(const char* src,const char* des);
-extern "C" bool DeleteFile318(const char* s);
-extern "C" const char* GetFileName319(const char* s);
-extern "C" const short int* GetFileNameW320(const short int* s);
-extern "C" const char* GetFileDir321(const char* s);
-extern "C" const short int* GetFileDirW322(const short int* s);
-extern "C" void OpenFile323(const char* s);
-extern "C" void OpenFileW324(const short int* s);
-extern "C" void CloseFile325();
-extern "C" unsigned long GetFileLen326();
-extern "C" unsigned long GetFilePos327();
-extern "C" void SetFilePos328(unsigned long pos);
-extern "C" unsigned char GetByte329();
-extern "C" unsigned short GetWord330();
-extern "C" unsigned long GetLongword331();
-extern "C" unsigned long GetInteger332();
-extern "C" const char* GetPchar333();
-extern "C" const char* GetString334(unsigned long len);
-extern "C" const char* GetPara335();
-extern "C" const char* GetPara336(unsigned long n);
-extern "C" const short int* GetParaW337();
-extern "C" const short int* GetParaW338(unsigned long n);
+extern "C" void DrawTextXY118(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg,unsigned long format);
+extern "C" void DrawTextXY119(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextXY120(pbitmap b,const char* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextXY121(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextXY122(pbitmap b,const char* s,long x,long y,unsigned long cfg);
+extern "C" void DrawTextXY123(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextXY124(const char* s,long x,long y,unsigned long cfg);
+extern "C" void DrawTextXY125(const char* s,unsigned long x,unsigned long y);
+extern "C" void DrawText126(const char* s,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawText127(const char* s,unsigned long cfg);
+extern "C" void DrawText128(const char* s);
+extern "C" void DrawTextlnXY129(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextlnXY130(const char* s,long x,long y,unsigned long cfg);
+extern "C" void DrawTextlnXY131(const char* s,unsigned long x,unsigned long y);
+extern "C" void DrawTextln132(const char* s,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextln133(const char* s,unsigned long cfg);
+extern "C" void DrawTextln134(const char* s);
+extern "C" void DrawTextln135();
+extern "C" void DrawTextXYw136(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextXYw137(pbitmap b,const char* s,long x,long y,unsigned long cfg);
+extern "C" void DrawTextXYw138(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextXYw139(const char* s,long x,long y,unsigned long cfg);
+extern "C" void DrawTextXYw140(const char* s,unsigned long x,unsigned long y);
+extern "C" void DrawTextw141(const char* s,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextw142(const char* s,unsigned long cfg);
+extern "C" void DrawTextw143(const char* s);
+extern "C" void DrawTextlnXYw144(const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextlnXYw145(const char* s,long x,long y,unsigned long cfg);
+extern "C" void DrawTextlnXYw146(const char* s,unsigned long x,unsigned long y);
+extern "C" void DrawTextlnw147(const char* s,unsigned long cfg,unsigned long cbg);
+extern "C" void DrawTextlnw148(const char* s,unsigned long cfg);
+extern "C" void DrawTextlnw149(const char* s);
+extern "C" unsigned long GetPixel150(pbitmap b,unsigned long x,unsigned long y);
+extern "C" unsigned long GetPixel151(unsigned long x,unsigned long y);
+extern "C" void SetPixel152(pbitmap b,unsigned long x,unsigned long y,unsigned long c);
+extern "C" void SetPixel153(unsigned long x,unsigned long y,unsigned long c);
+extern "C" void SetPixel154(unsigned long x,unsigned long y);
+extern "C" unsigned long GetBBPixel155(pbitbuf bb,unsigned long x,unsigned long y);
+extern "C" void SetBBPixel156(pbitbuf bb,unsigned long x,unsigned long y,unsigned long c);
+extern "C" void Line157(pbitmap b,long x,long y,long w,long h,unsigned long c);
+extern "C" void Line158(long x,long y,long w,long h,unsigned long c);
+extern "C" void Line159(long x,long y,long w,long h);
+extern "C" void LineBB160(pbitbuf bb,long x,long y,long w,long h,unsigned long c);
+extern "C" void Bar161(pbitmap b,long x,long y,long w,long h,unsigned long cfg,unsigned long cbg);
+extern "C" void Bar162(pbitmap b,long x,long y,long w,long h,unsigned long c);
+extern "C" void Bar163(long x,long y,long w,long h,unsigned long cfg,unsigned long cbg);
+extern "C" void Bar164(long x,long y,long w,long h,unsigned long c);
+extern "C" void Bar165(long x,long y,long w,long h);
+extern "C" void Clear166(pbitmap b,unsigned long c);
+extern "C" void Clear167(pbitmap b);
+extern "C" void Clear168(unsigned long c);
+extern "C" void Clear169();
+extern "C" void Triangle170(pbitmap b,long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg);
+extern "C" void Triangle171(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg);
+extern "C" void Triangle172(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long c);
+extern "C" void Triangle173(long x1,long y1,long x2,long y2,long x3,long y3);
+extern "C" void Arc174(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
+extern "C" void Arc175(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
+extern "C" void Arc176(long x,long y,long rx,long ry,double sa,double ea,unsigned long c);
+extern "C" void Arc177(long x,long y,long rx,long ry,double sa,double ea);
+extern "C" void Pie178(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
+extern "C" void Pie179(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
+extern "C" void Pie180(long x,long y,long rx,long ry,double sa,double ea,unsigned long c);
+extern "C" void Pie181(long x,long y,long rx,long ry,double sa,double ea);
+extern "C" void Chord182(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
+extern "C" void Chord183(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg);
+extern "C" void Chord184(long x,long y,long rx,long ry,double sa,double ea,unsigned long c);
+extern "C" void Chord185(long x,long y,long rx,long ry,double sa,double ea);
+extern "C" void Ellipse186(pbitmap b,long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg);
+extern "C" void Ellipse187(long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg);
+extern "C" void Ellipse188(long x,long y,long rx,long ry,unsigned long c);
+extern "C" void Ellipse189(long x,long y,long rx,long ry);
+extern "C" void Circle190(pbitmap b,long x,long y,long r,unsigned long cfg,unsigned long cbg);
+extern "C" void Circle191(long x,long y,long r,unsigned long cfg,unsigned long cbg);
+extern "C" void Circle192(long x,long y,long r,unsigned long c);
+extern "C" void Circle193(long x,long y,long r);
+extern "C" pbitmap CreateBMP194(pbitmap b,unsigned long w,unsigned long h,unsigned long c);
+extern "C" pbitmap CreateBMP195(pbitmap b);
+extern "C" pbitmap CreateBMP196(unsigned long w,unsigned long h,unsigned long c);
+extern "C" pbitmap CreateBMP197(unsigned long w,unsigned long h);
+extern "C" pbitmap CreateBMP198();
+extern "C" void ReleaseBMP199(pbitmap b);
+extern "C" void ReleaseBMP200();
+extern "C" pbitmap LoadBMP201(const char* s,unsigned long c);
+extern "C" pbitmap LoadBMP202(const char* s);
+extern "C" void SaveBMP203(pbitmap b,const char* s);
+extern "C" void DrawBMP204(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
+extern "C" void DrawBMP205(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
+extern "C" void DrawBMP206(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c);
+extern "C" void DrawBMP207(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h);
+extern "C" void DrawBMP208(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
+extern "C" void DrawBMP209(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
+extern "C" void DrawBMP210(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long c);
+extern "C" void DrawBMP211(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd);
+extern "C" void DrawBMP212(pbitmap bs,pbitmap bd,unsigned long c);
+extern "C" void DrawBMP213(pbitmap bs,pbitmap bd);
+extern "C" void DrawBMP214(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
+extern "C" void DrawBMP215(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
+extern "C" void DrawBMP216(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c);
+extern "C" void DrawBMP217(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h);
+extern "C" void DrawBMP218(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
+extern "C" void DrawBMP219(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
+extern "C" void DrawBMP220(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long c);
+extern "C" void DrawBMP221(pbitmap bs,unsigned long xd,unsigned long yd);
+extern "C" void DrawBMP222(pbitmap bs,unsigned long c);
+extern "C" void DrawBMP223(pbitmap bs);
+extern "C" void DrawBMP224(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
+extern "C" void DrawBMP225(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
+extern "C" void DrawBMP226(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c);
+extern "C" void DrawBMP227(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h);
+extern "C" void DrawBMP228(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c);
+extern "C" void DrawBMP229(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd);
+extern "C" void DrawBMP230(unsigned long xd,unsigned long yd,unsigned long c);
+extern "C" void DrawBMP231(unsigned long xd,unsigned long yd);
+extern "C" void DrawBMP232(unsigned long c);
+extern "C" void DrawBMP233();
+extern "C" void MixBMP234(pbitmap b1,pbitmap b2,pbitmap b3);
+extern "C" void BlurBMPBox235(pbitmap b,unsigned long d,unsigned long n);
+extern "C" void BlurBMPBox236(pbitmap b,unsigned long d);
+extern "C" void BlurBMPGau237(pbitmap b,double d);
+extern "C" pbitbuf CreateBB238(pbitmap b);
+extern "C" void ReleaseBB239(pbitbuf bb);
+extern "C" void GetBB240(pbitbuf bb);
+extern "C" void SetBB241(pbitbuf bb);
+extern "C" void MixBB242(pbitbuf bb1,pbitbuf bb2,pbitbuf bb3);
+extern "C" void BlurBBBox243(pbitbuf bb,unsigned long d,unsigned long n);
+extern "C" void BlurBBGau244(pbitbuf bb,double d);
+extern "C" void PressKey245(unsigned char k,unsigned long t);
+extern "C" void PressKey246(unsigned char k);
+extern "C" void DownKey247(unsigned char k);
+extern "C" void UpKey248(unsigned char k);
+extern "C" void PressMouse249(unsigned char m,unsigned long t);
+extern "C" void PressMouse250(unsigned char m);
+extern "C" void DownMouse251(unsigned char m);
+extern "C" void UpMouse252(unsigned char m);
+extern "C" void WheelMouse253(long wl);
+extern "C" void MoveMouse254(long x,long y);
+extern "C" void MoveMouseAbs255(long x,long y);
+extern "C" void MoveMouseWin256(long x,long y);
+extern "C" void MoveMousePos257(long x,long y);
+extern "C" void SendMsg258();
+extern "C" bool IsNextMsg259();
+extern "C" unsigned long GetNextMsg260();
+extern "C" unsigned long WaitNextMsg261();
+extern "C" bool IsMsg262(unsigned long uM);
+extern "C" long long GetMsg263(unsigned long uM);
+extern "C" long long WaitMsg264(unsigned long uM);
+extern "C" bool IsKey265(unsigned long k);
+extern "C" bool IsKey266();
+extern "C" unsigned long GetKey267();
+extern "C" unsigned long WaitKey268(unsigned long k);
+extern "C" unsigned long WaitKey269();
+extern "C" bool IsMouse270(unsigned long m);
+extern "C" bool IsMouse271();
+extern "C" unsigned long GetMouse272();
+extern "C" unsigned long WaitMouse273(unsigned long m);
+extern "C" unsigned long WaitMouse274();
+extern "C" bool IsMouseLeft275();
+extern "C" void WaitMouseLeft276();
+extern "C" bool IsMouseMiddle277();
+extern "C" void WaitMouseMiddle278();
+extern "C" bool IsMouseRight279();
+extern "C" void WaitMouseRight280();
+extern "C" bool IsMouseWheel281();
+extern "C" long GetMouseWheel282();
+extern "C" void WaitMouseWheel283();
+extern "C" bool IsMouseMove284();
+extern "C" unsigned long GetMouseMove285();
+extern "C" unsigned long WaitMouseMove286();
+extern "C" bool IsDropFile287();
+extern "C" const char* GetDropFile288();
+extern "C" const short int* GetDropFileW289();
+extern "C" const char* WaitDropFile290();
+extern "C" long GetMouseAbsX291();
+extern "C" long GetMouseAbsY292();
+extern "C" long GetMouseWinX293();
+extern "C" long GetMouseWinY294();
+extern "C" long GetMousePosX295();
+extern "C" long GetMousePosY296();
+extern "C" unsigned long LoadAudio297(const char* s1,const char* s2);
+extern "C" unsigned long LoadAudio298(const char* s);
+extern "C" void PlayAudio299(unsigned long id,const char* s,bool b);
+extern "C" void PlayAudio300(unsigned long id,const char* s);
+extern "C" void PlayAudio301(unsigned long id,bool b);
+extern "C" void PlayAudio302(unsigned long id);
+extern "C" void StopAudio303(unsigned long id);
+extern "C" void PauseAudio304(unsigned long id);
+extern "C" void ResumeAudio305(unsigned long id);
+extern "C" void ReleaseAudio306(unsigned long id);
+extern "C" unsigned long GetAudioVol307(unsigned long id);
+extern "C" void SetAudioVol308(unsigned long id,unsigned long v);
+extern "C" unsigned long GetAudioPos309(unsigned long id);
+extern "C" void SetAudioPos310(unsigned long id,unsigned long pos,bool b);
+extern "C" void SetAudioPos311(unsigned long id,unsigned long pos);
+extern "C" unsigned long GetAudioLen312(unsigned long id);
+extern "C" bool IsFile313(const char* s);
+extern "C" bool IsFileW314(const short int* s);
+extern "C" bool NewFile315(const char* s);
+extern "C" bool NewDir316(const char* s);
+extern "C" bool CopyFile317(const char* src,const char* des);
+extern "C" bool MoveFile318(const char* src,const char* des);
+extern "C" bool DeleteFile319(const char* s);
+extern "C" const char* GetFileName320(const char* s);
+extern "C" const short int* GetFileNameW321(const short int* s);
+extern "C" const char* GetFileDir322(const char* s);
+extern "C" const short int* GetFileDirW323(const short int* s);
+extern "C" void OpenFile324(const char* s);
+extern "C" void OpenFileW325(const short int* s);
+extern "C" void CloseFile326();
+extern "C" unsigned long GetFileLen327();
+extern "C" unsigned long GetFilePos328();
+extern "C" void SetFilePos329(unsigned long pos);
+extern "C" unsigned char GetByte330();
+extern "C" unsigned short GetWord331();
+extern "C" unsigned long GetLongword332();
+extern "C" unsigned long GetInteger333();
+extern "C" const char* GetPchar334();
+extern "C" const char* GetString335(unsigned long len);
+extern "C" const char* GetPara336();
+extern "C" const char* GetPara337(unsigned long n);
+extern "C" const short int* GetParaW338();
+extern "C" const short int* GetParaW339(unsigned long n);
 
 long sgn(double x){return sgn1(x);}
 double abs(double a,double b){return abs2(a,b);}
@@ -812,224 +813,225 @@ void setfontname(const char* s){SetFontName114(s);}
 void getstringsize(const char* s){GetStringSize115(s);}
 unsigned long getstringwidth(const char* s){return GetStringWidth116(s);}
 unsigned long getstringheight(const char* s){return GetStringHeight117(s);}
-void drawtextxy(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){DrawTextXY118(b,s,x,y,w,h,cfg,cbg);}
-void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){DrawTextXY119(b,s,x,y,w,h,cfg,cbg);}
-void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXY120(b,s,x,y,cfg,cbg);}
-void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long cfg){DrawTextXY121(b,s,x,y,cfg);}
-void drawtextxy(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXY122(s,x,y,cfg,cbg);}
-void drawtextxy(const char* s,long x,long y,unsigned long cfg){DrawTextXY123(s,x,y,cfg);}
-void drawtextxy(const char* s,unsigned long x,unsigned long y){DrawTextXY124(s,x,y);}
-void drawtext(const char* s,unsigned long cfg,unsigned long cbg){DrawText125(s,cfg,cbg);}
-void drawtext(const char* s,unsigned long cfg){DrawText126(s,cfg);}
-void drawtext(const char* s){DrawText127(s);}
-void drawtextlnxy(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextlnXY128(s,x,y,cfg,cbg);}
-void drawtextlnxy(const char* s,long x,long y,unsigned long cfg){DrawTextlnXY129(s,x,y,cfg);}
-void drawtextlnxy(const char* s,unsigned long x,unsigned long y){DrawTextlnXY130(s,x,y);}
-void drawtextln(const char* s,unsigned long cfg,unsigned long cbg){DrawTextln131(s,cfg,cbg);}
-void drawtextln(const char* s,unsigned long cfg){DrawTextln132(s,cfg);}
-void drawtextln(const char* s){DrawTextln133(s);}
-void drawtextln(){DrawTextln134();}
-void drawtextxyw(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXYw135(b,s,x,y,cfg,cbg);}
-void drawtextxyw(pbitmap b,const char* s,long x,long y,unsigned long cfg){DrawTextXYw136(b,s,x,y,cfg);}
-void drawtextxyw(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXYw137(s,x,y,cfg,cbg);}
-void drawtextxyw(const char* s,long x,long y,unsigned long cfg){DrawTextXYw138(s,x,y,cfg);}
-void drawtextxyw(const char* s,unsigned long x,unsigned long y){DrawTextXYw139(s,x,y);}
-void drawtextw(const char* s,unsigned long cfg,unsigned long cbg){DrawTextw140(s,cfg,cbg);}
-void drawtextw(const char* s,unsigned long cfg){DrawTextw141(s,cfg);}
-void drawtextw(const char* s){DrawTextw142(s);}
-void drawtextlnxyw(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextlnXYw143(s,x,y,cfg,cbg);}
-void drawtextlnxyw(const char* s,long x,long y,unsigned long cfg){DrawTextlnXYw144(s,x,y,cfg);}
-void drawtextlnxyw(const char* s,unsigned long x,unsigned long y){DrawTextlnXYw145(s,x,y);}
-void drawtextlnw(const char* s,unsigned long cfg,unsigned long cbg){DrawTextlnw146(s,cfg,cbg);}
-void drawtextlnw(const char* s,unsigned long cfg){DrawTextlnw147(s,cfg);}
-void drawtextlnw(const char* s){DrawTextlnw148(s);}
-unsigned long getpixel(pbitmap b,unsigned long x,unsigned long y){return GetPixel149(b,x,y);}
-unsigned long getpixel(unsigned long x,unsigned long y){return GetPixel150(x,y);}
-void setpixel(pbitmap b,unsigned long x,unsigned long y,unsigned long c){SetPixel151(b,x,y,c);}
-void setpixel(unsigned long x,unsigned long y,unsigned long c){SetPixel152(x,y,c);}
-void setpixel(unsigned long x,unsigned long y){SetPixel153(x,y);}
-unsigned long getbbpixel(pbitbuf bb,unsigned long x,unsigned long y){return GetBBPixel154(bb,x,y);}
-void setbbpixel(pbitbuf bb,unsigned long x,unsigned long y,unsigned long c){SetBBPixel155(bb,x,y,c);}
-void line(pbitmap b,long x,long y,long w,long h,unsigned long c){Line156(b,x,y,w,h,c);}
-void line(long x,long y,long w,long h,unsigned long c){Line157(x,y,w,h,c);}
-void line(long x,long y,long w,long h){Line158(x,y,w,h);}
-void linebb(pbitbuf bb,long x,long y,long w,long h,unsigned long c){LineBB159(bb,x,y,w,h,c);}
-void bar(pbitmap b,long x,long y,long w,long h,unsigned long cfg,unsigned long cbg){Bar160(b,x,y,w,h,cfg,cbg);}
-void bar(pbitmap b,long x,long y,long w,long h,unsigned long c){Bar161(b,x,y,w,h,c);}
-void bar(long x,long y,long w,long h,unsigned long cfg,unsigned long cbg){Bar162(x,y,w,h,cfg,cbg);}
-void bar(long x,long y,long w,long h,unsigned long c){Bar163(x,y,w,h,c);}
-void bar(long x,long y,long w,long h){Bar164(x,y,w,h);}
-void clear(pbitmap b,unsigned long c){Clear165(b,c);}
-void clear(pbitmap b){Clear166(b);}
-void clear(unsigned long c){Clear167(c);}
-void clear(){Clear168();}
-void triangle(pbitmap b,long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg){Triangle169(b,x1,y1,x2,y2,x3,y3,cfg,cbg);}
-void triangle(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg){Triangle170(x1,y1,x2,y2,x3,y3,cfg,cbg);}
-void triangle(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long c){Triangle171(x1,y1,x2,y2,x3,y3,c);}
-void triangle(long x1,long y1,long x2,long y2,long x3,long y3){Triangle172(x1,y1,x2,y2,x3,y3);}
-void arc(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Arc173(b,x,y,rx,ry,sa,ea,cfg,cbg);}
-void arc(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Arc174(x,y,rx,ry,sa,ea,cfg,cbg);}
-void arc(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Arc175(x,y,rx,ry,sa,ea,c);}
-void arc(long x,long y,long rx,long ry,double sa,double ea){Arc176(x,y,rx,ry,sa,ea);}
-void pie(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Pie177(b,x,y,rx,ry,sa,ea,cfg,cbg);}
-void pie(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Pie178(x,y,rx,ry,sa,ea,cfg,cbg);}
-void pie(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Pie179(x,y,rx,ry,sa,ea,c);}
-void pie(long x,long y,long rx,long ry,double sa,double ea){Pie180(x,y,rx,ry,sa,ea);}
-void chord(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Chord181(b,x,y,rx,ry,sa,ea,cfg,cbg);}
-void chord(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Chord182(x,y,rx,ry,sa,ea,cfg,cbg);}
-void chord(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Chord183(x,y,rx,ry,sa,ea,c);}
-void chord(long x,long y,long rx,long ry,double sa,double ea){Chord184(x,y,rx,ry,sa,ea);}
-void ellipse(pbitmap b,long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg){Ellipse185(b,x,y,rx,ry,cfg,cbg);}
-void ellipse(long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg){Ellipse186(x,y,rx,ry,cfg,cbg);}
-void ellipse(long x,long y,long rx,long ry,unsigned long c){Ellipse187(x,y,rx,ry,c);}
-void ellipse(long x,long y,long rx,long ry){Ellipse188(x,y,rx,ry);}
-void circle(pbitmap b,long x,long y,long r,unsigned long cfg,unsigned long cbg){Circle189(b,x,y,r,cfg,cbg);}
-void circle(long x,long y,long r,unsigned long cfg,unsigned long cbg){Circle190(x,y,r,cfg,cbg);}
-void circle(long x,long y,long r,unsigned long c){Circle191(x,y,r,c);}
-void circle(long x,long y,long r){Circle192(x,y,r);}
-pbitmap createbmp(pbitmap b,unsigned long w,unsigned long h,unsigned long c){return CreateBMP193(b,w,h,c);}
-pbitmap createbmp(pbitmap b){return CreateBMP194(b);}
-pbitmap createbmp(unsigned long w,unsigned long h,unsigned long c){return CreateBMP195(w,h,c);}
-pbitmap createbmp(unsigned long w,unsigned long h){return CreateBMP196(w,h);}
-pbitmap createbmp(){return CreateBMP197();}
-void releasebmp(pbitmap b){ReleaseBMP198(b);}
-void releasebmp(){ReleaseBMP199();}
-pbitmap loadbmp(const char* s,unsigned long c){return LoadBMP200(s,c);}
-pbitmap loadbmp(const char* s){return LoadBMP201(s);}
-void savebmp(pbitmap b,const char* s){SaveBMP202(b,s);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP203(bs,bd,xs,ys,ws,hs,xd,yd,wd,hd,c);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP204(bs,bd,xs,ys,ws,hs,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP205(bs,bd,xs,ys,xd,yd,w,h,c);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP206(bs,bd,xs,ys,xd,yd,w,h);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP207(bs,bd,xd,yd,wd,hd,c);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP208(bs,bd,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long c){DrawBMP209(bs,bd,xd,yd,c);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd){DrawBMP210(bs,bd,xd,yd);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long c){DrawBMP211(bs,bd,c);}
-void drawbmp(pbitmap bs,pbitmap bd){DrawBMP212(bs,bd);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP213(bs,xs,ys,ws,hs,xd,yd,wd,hd,c);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP214(bs,xs,ys,ws,hs,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP215(bs,xs,ys,xd,yd,w,h,c);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP216(bs,xs,ys,xd,yd,w,h);}
-void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP217(bs,xd,yd,wd,hd,c);}
-void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP218(bs,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long c){DrawBMP219(bs,xd,yd,c);}
-void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd){DrawBMP220(bs,xd,yd);}
-void drawbmp(pbitmap bs,unsigned long c){DrawBMP221(bs,c);}
-void drawbmp(pbitmap bs){DrawBMP222(bs);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP223(xs,ys,ws,hs,xd,yd,wd,hd,c);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP224(xs,ys,ws,hs,xd,yd,wd,hd);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP225(xs,ys,xd,yd,w,h,c);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP226(xs,ys,xd,yd,w,h);}
-void drawbmp(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP227(xd,yd,wd,hd,c);}
-void drawbmp(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP228(xd,yd,wd,hd);}
-void drawbmp(unsigned long xd,unsigned long yd,unsigned long c){DrawBMP229(xd,yd,c);}
-void drawbmp(unsigned long xd,unsigned long yd){DrawBMP230(xd,yd);}
-void drawbmp(unsigned long c){DrawBMP231(c);}
-void drawbmp(){DrawBMP232();}
-void mixbmp(pbitmap b1,pbitmap b2,pbitmap b3){MixBMP233(b1,b2,b3);}
-void blurbmpbox(pbitmap b,unsigned long d,unsigned long n){BlurBMPBox234(b,d,n);}
-void blurbmpbox(pbitmap b,unsigned long d){BlurBMPBox235(b,d);}
-void blurbmpgau(pbitmap b,double d){BlurBMPGau236(b,d);}
-pbitbuf createbb(pbitmap b){return CreateBB237(b);}
-void releasebb(pbitbuf bb){ReleaseBB238(bb);}
-void getbb(pbitbuf bb){GetBB239(bb);}
-void setbb(pbitbuf bb){SetBB240(bb);}
-void mixbb(pbitbuf bb1,pbitbuf bb2,pbitbuf bb3){MixBB241(bb1,bb2,bb3);}
-void blurbbbox(pbitbuf bb,unsigned long d,unsigned long n){BlurBBBox242(bb,d,n);}
-void blurbbgau(pbitbuf bb,double d){BlurBBGau243(bb,d);}
-void presskey(unsigned char k,unsigned long t){PressKey244(k,t);}
-void presskey(unsigned char k){PressKey245(k);}
-void downkey(unsigned char k){DownKey246(k);}
-void upkey(unsigned char k){UpKey247(k);}
-void pressmouse(unsigned char m,unsigned long t){PressMouse248(m,t);}
-void pressmouse(unsigned char m){PressMouse249(m);}
-void downmouse(unsigned char m){DownMouse250(m);}
-void upmouse(unsigned char m){UpMouse251(m);}
-void wheelmouse(long wl){WheelMouse252(wl);}
-void movemouse(long x,long y){MoveMouse253(x,y);}
-void movemouseabs(long x,long y){MoveMouseAbs254(x,y);}
-void movemousewin(long x,long y){MoveMouseWin255(x,y);}
-void movemousepos(long x,long y){MoveMousePos256(x,y);}
-void sendmsg(){SendMsg257();}
-bool isnextmsg(){return IsNextMsg258();}
-unsigned long getnextmsg(){return GetNextMsg259();}
-unsigned long waitnextmsg(){return WaitNextMsg260();}
-bool ismsg(unsigned long uM){return IsMsg261(uM);}
-long long getmsg(unsigned long uM){return GetMsg262(uM);}
-long long waitmsg(unsigned long uM){return WaitMsg263(uM);}
-bool iskey(unsigned long k){return IsKey264(k);}
-bool iskey(){return IsKey265();}
-unsigned long getkey(){return GetKey266();}
-unsigned long waitkey(unsigned long k){return WaitKey267(k);}
-unsigned long waitkey(){return WaitKey268();}
-bool ismouse(unsigned long m){return IsMouse269(m);}
-bool ismouse(){return IsMouse270();}
-unsigned long getmouse(){return GetMouse271();}
-unsigned long waitmouse(unsigned long m){return WaitMouse272(m);}
-unsigned long waitmouse(){return WaitMouse273();}
-bool ismouseleft(){return IsMouseLeft274();}
-void waitmouseleft(){WaitMouseLeft275();}
-bool ismousemiddle(){return IsMouseMiddle276();}
-void waitmousemiddle(){WaitMouseMiddle277();}
-bool ismouseright(){return IsMouseRight278();}
-void waitmouseright(){WaitMouseRight279();}
-bool ismousewheel(){return IsMouseWheel280();}
-long getmousewheel(){return GetMouseWheel281();}
-void waitmousewheel(){WaitMouseWheel282();}
-bool ismousemove(){return IsMouseMove283();}
-unsigned long getmousemove(){return GetMouseMove284();}
-unsigned long waitmousemove(){return WaitMouseMove285();}
-bool isdropfile(){return IsDropFile286();}
-mystring getdropfile(){return GetDropFile287();}
-const short int* getdropfilew(){return GetDropFileW288();}
-mystring waitdropfile(){return WaitDropFile289();}
-long getmouseabsx(){return GetMouseAbsX290();}
-long getmouseabsy(){return GetMouseAbsY291();}
-long getmousewinx(){return GetMouseWinX292();}
-long getmousewiny(){return GetMouseWinY293();}
-long getmouseposx(){return GetMousePosX294();}
-long getmouseposy(){return GetMousePosY295();}
-unsigned long loadaudio(const char* s1,const char* s2){return LoadAudio296(s1,s2);}
-unsigned long loadaudio(const char* s){return LoadAudio297(s);}
-void playaudio(unsigned long id,const char* s,bool b){PlayAudio298(id,s,b);}
-void playaudio(unsigned long id,const char* s){PlayAudio299(id,s);}
-void playaudio(unsigned long id,bool b){PlayAudio300(id,b);}
-void playaudio(unsigned long id){PlayAudio301(id);}
-void stopaudio(unsigned long id){StopAudio302(id);}
-void pauseaudio(unsigned long id){PauseAudio303(id);}
-void resumeaudio(unsigned long id){ResumeAudio304(id);}
-void releaseaudio(unsigned long id){ReleaseAudio305(id);}
-unsigned long getaudiovol(unsigned long id){return GetAudioVol306(id);}
-void setaudiovol(unsigned long id,unsigned long v){SetAudioVol307(id,v);}
-unsigned long getaudiopos(unsigned long id){return GetAudioPos308(id);}
-void setaudiopos(unsigned long id,unsigned long pos,bool b){SetAudioPos309(id,pos,b);}
-void setaudiopos(unsigned long id,unsigned long pos){SetAudioPos310(id,pos);}
-unsigned long getaudiolen(unsigned long id){return GetAudioLen311(id);}
-bool isfile(const char* s){return IsFile312(s);}
-bool isfilew(const short int* s){return IsFileW313(s);}
-bool newfile(const char* s){return NewFile314(s);}
-bool newdir(const char* s){return NewDir315(s);}
-bool copyfile(const char* src,const char* des){return CopyFile316(src,des);}
-bool movefile(const char* src,const char* des){return MoveFile317(src,des);}
-bool deletefile(const char* s){return DeleteFile318(s);}
-mystring getfilename(const char* s){return GetFileName319(s);}
-const short int* getfilenamew(const short int* s){return GetFileNameW320(s);}
-mystring getfiledir(const char* s){return GetFileDir321(s);}
-const short int* getfiledirw(const short int* s){return GetFileDirW322(s);}
-void openfile(const char* s){OpenFile323(s);}
-void openfilew(const short int* s){OpenFileW324(s);}
-void closefile(){CloseFile325();}
-unsigned long getfilelen(){return GetFileLen326();}
-unsigned long getfilepos(){return GetFilePos327();}
-void setfilepos(unsigned long pos){SetFilePos328(pos);}
-unsigned char getbyte(){return GetByte329();}
-unsigned short getword(){return GetWord330();}
-unsigned long getlongword(){return GetLongword331();}
-unsigned long getinteger(){return GetInteger332();}
-const char* getpchar(){return GetPchar333();}
-mystring getstring(unsigned long len){return GetString334(len);}
-mystring getpara(){return GetPara335();}
-mystring getpara(unsigned long n){return GetPara336(n);}
-const short int* getparaw(){return GetParaW337();}
-const short int* getparaw(unsigned long n){return GetParaW338(n);}
+void drawtextxy(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg,unsigned long format){DrawTextXY118(b,s,x,y,w,h,cfg,cbg,format);}
+void drawtextxy(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){DrawTextXY119(b,s,x,y,w,h,cfg,cbg);}
+void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){DrawTextXY120(b,s,x,y,w,h,cfg,cbg);}
+void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXY121(b,s,x,y,cfg,cbg);}
+void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long cfg){DrawTextXY122(b,s,x,y,cfg);}
+void drawtextxy(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXY123(s,x,y,cfg,cbg);}
+void drawtextxy(const char* s,long x,long y,unsigned long cfg){DrawTextXY124(s,x,y,cfg);}
+void drawtextxy(const char* s,unsigned long x,unsigned long y){DrawTextXY125(s,x,y);}
+void drawtext(const char* s,unsigned long cfg,unsigned long cbg){DrawText126(s,cfg,cbg);}
+void drawtext(const char* s,unsigned long cfg){DrawText127(s,cfg);}
+void drawtext(const char* s){DrawText128(s);}
+void drawtextlnxy(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextlnXY129(s,x,y,cfg,cbg);}
+void drawtextlnxy(const char* s,long x,long y,unsigned long cfg){DrawTextlnXY130(s,x,y,cfg);}
+void drawtextlnxy(const char* s,unsigned long x,unsigned long y){DrawTextlnXY131(s,x,y);}
+void drawtextln(const char* s,unsigned long cfg,unsigned long cbg){DrawTextln132(s,cfg,cbg);}
+void drawtextln(const char* s,unsigned long cfg){DrawTextln133(s,cfg);}
+void drawtextln(const char* s){DrawTextln134(s);}
+void drawtextln(){DrawTextln135();}
+void drawtextxyw(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXYw136(b,s,x,y,cfg,cbg);}
+void drawtextxyw(pbitmap b,const char* s,long x,long y,unsigned long cfg){DrawTextXYw137(b,s,x,y,cfg);}
+void drawtextxyw(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXYw138(s,x,y,cfg,cbg);}
+void drawtextxyw(const char* s,long x,long y,unsigned long cfg){DrawTextXYw139(s,x,y,cfg);}
+void drawtextxyw(const char* s,unsigned long x,unsigned long y){DrawTextXYw140(s,x,y);}
+void drawtextw(const char* s,unsigned long cfg,unsigned long cbg){DrawTextw141(s,cfg,cbg);}
+void drawtextw(const char* s,unsigned long cfg){DrawTextw142(s,cfg);}
+void drawtextw(const char* s){DrawTextw143(s);}
+void drawtextlnxyw(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextlnXYw144(s,x,y,cfg,cbg);}
+void drawtextlnxyw(const char* s,long x,long y,unsigned long cfg){DrawTextlnXYw145(s,x,y,cfg);}
+void drawtextlnxyw(const char* s,unsigned long x,unsigned long y){DrawTextlnXYw146(s,x,y);}
+void drawtextlnw(const char* s,unsigned long cfg,unsigned long cbg){DrawTextlnw147(s,cfg,cbg);}
+void drawtextlnw(const char* s,unsigned long cfg){DrawTextlnw148(s,cfg);}
+void drawtextlnw(const char* s){DrawTextlnw149(s);}
+unsigned long getpixel(pbitmap b,unsigned long x,unsigned long y){return GetPixel150(b,x,y);}
+unsigned long getpixel(unsigned long x,unsigned long y){return GetPixel151(x,y);}
+void setpixel(pbitmap b,unsigned long x,unsigned long y,unsigned long c){SetPixel152(b,x,y,c);}
+void setpixel(unsigned long x,unsigned long y,unsigned long c){SetPixel153(x,y,c);}
+void setpixel(unsigned long x,unsigned long y){SetPixel154(x,y);}
+unsigned long getbbpixel(pbitbuf bb,unsigned long x,unsigned long y){return GetBBPixel155(bb,x,y);}
+void setbbpixel(pbitbuf bb,unsigned long x,unsigned long y,unsigned long c){SetBBPixel156(bb,x,y,c);}
+void line(pbitmap b,long x,long y,long w,long h,unsigned long c){Line157(b,x,y,w,h,c);}
+void line(long x,long y,long w,long h,unsigned long c){Line158(x,y,w,h,c);}
+void line(long x,long y,long w,long h){Line159(x,y,w,h);}
+void linebb(pbitbuf bb,long x,long y,long w,long h,unsigned long c){LineBB160(bb,x,y,w,h,c);}
+void bar(pbitmap b,long x,long y,long w,long h,unsigned long cfg,unsigned long cbg){Bar161(b,x,y,w,h,cfg,cbg);}
+void bar(pbitmap b,long x,long y,long w,long h,unsigned long c){Bar162(b,x,y,w,h,c);}
+void bar(long x,long y,long w,long h,unsigned long cfg,unsigned long cbg){Bar163(x,y,w,h,cfg,cbg);}
+void bar(long x,long y,long w,long h,unsigned long c){Bar164(x,y,w,h,c);}
+void bar(long x,long y,long w,long h){Bar165(x,y,w,h);}
+void clear(pbitmap b,unsigned long c){Clear166(b,c);}
+void clear(pbitmap b){Clear167(b);}
+void clear(unsigned long c){Clear168(c);}
+void clear(){Clear169();}
+void triangle(pbitmap b,long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg){Triangle170(b,x1,y1,x2,y2,x3,y3,cfg,cbg);}
+void triangle(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg){Triangle171(x1,y1,x2,y2,x3,y3,cfg,cbg);}
+void triangle(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long c){Triangle172(x1,y1,x2,y2,x3,y3,c);}
+void triangle(long x1,long y1,long x2,long y2,long x3,long y3){Triangle173(x1,y1,x2,y2,x3,y3);}
+void arc(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Arc174(b,x,y,rx,ry,sa,ea,cfg,cbg);}
+void arc(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Arc175(x,y,rx,ry,sa,ea,cfg,cbg);}
+void arc(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Arc176(x,y,rx,ry,sa,ea,c);}
+void arc(long x,long y,long rx,long ry,double sa,double ea){Arc177(x,y,rx,ry,sa,ea);}
+void pie(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Pie178(b,x,y,rx,ry,sa,ea,cfg,cbg);}
+void pie(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Pie179(x,y,rx,ry,sa,ea,cfg,cbg);}
+void pie(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Pie180(x,y,rx,ry,sa,ea,c);}
+void pie(long x,long y,long rx,long ry,double sa,double ea){Pie181(x,y,rx,ry,sa,ea);}
+void chord(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Chord182(b,x,y,rx,ry,sa,ea,cfg,cbg);}
+void chord(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Chord183(x,y,rx,ry,sa,ea,cfg,cbg);}
+void chord(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Chord184(x,y,rx,ry,sa,ea,c);}
+void chord(long x,long y,long rx,long ry,double sa,double ea){Chord185(x,y,rx,ry,sa,ea);}
+void ellipse(pbitmap b,long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg){Ellipse186(b,x,y,rx,ry,cfg,cbg);}
+void ellipse(long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg){Ellipse187(x,y,rx,ry,cfg,cbg);}
+void ellipse(long x,long y,long rx,long ry,unsigned long c){Ellipse188(x,y,rx,ry,c);}
+void ellipse(long x,long y,long rx,long ry){Ellipse189(x,y,rx,ry);}
+void circle(pbitmap b,long x,long y,long r,unsigned long cfg,unsigned long cbg){Circle190(b,x,y,r,cfg,cbg);}
+void circle(long x,long y,long r,unsigned long cfg,unsigned long cbg){Circle191(x,y,r,cfg,cbg);}
+void circle(long x,long y,long r,unsigned long c){Circle192(x,y,r,c);}
+void circle(long x,long y,long r){Circle193(x,y,r);}
+pbitmap createbmp(pbitmap b,unsigned long w,unsigned long h,unsigned long c){return CreateBMP194(b,w,h,c);}
+pbitmap createbmp(pbitmap b){return CreateBMP195(b);}
+pbitmap createbmp(unsigned long w,unsigned long h,unsigned long c){return CreateBMP196(w,h,c);}
+pbitmap createbmp(unsigned long w,unsigned long h){return CreateBMP197(w,h);}
+pbitmap createbmp(){return CreateBMP198();}
+void releasebmp(pbitmap b){ReleaseBMP199(b);}
+void releasebmp(){ReleaseBMP200();}
+pbitmap loadbmp(const char* s,unsigned long c){return LoadBMP201(s,c);}
+pbitmap loadbmp(const char* s){return LoadBMP202(s);}
+void savebmp(pbitmap b,const char* s){SaveBMP203(b,s);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP204(bs,bd,xs,ys,ws,hs,xd,yd,wd,hd,c);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP205(bs,bd,xs,ys,ws,hs,xd,yd,wd,hd);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP206(bs,bd,xs,ys,xd,yd,w,h,c);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP207(bs,bd,xs,ys,xd,yd,w,h);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP208(bs,bd,xd,yd,wd,hd,c);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP209(bs,bd,xd,yd,wd,hd);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long c){DrawBMP210(bs,bd,xd,yd,c);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd){DrawBMP211(bs,bd,xd,yd);}
+void drawbmp(pbitmap bs,pbitmap bd,unsigned long c){DrawBMP212(bs,bd,c);}
+void drawbmp(pbitmap bs,pbitmap bd){DrawBMP213(bs,bd);}
+void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP214(bs,xs,ys,ws,hs,xd,yd,wd,hd,c);}
+void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP215(bs,xs,ys,ws,hs,xd,yd,wd,hd);}
+void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP216(bs,xs,ys,xd,yd,w,h,c);}
+void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP217(bs,xs,ys,xd,yd,w,h);}
+void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP218(bs,xd,yd,wd,hd,c);}
+void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP219(bs,xd,yd,wd,hd);}
+void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long c){DrawBMP220(bs,xd,yd,c);}
+void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd){DrawBMP221(bs,xd,yd);}
+void drawbmp(pbitmap bs,unsigned long c){DrawBMP222(bs,c);}
+void drawbmp(pbitmap bs){DrawBMP223(bs);}
+void drawbmp(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP224(xs,ys,ws,hs,xd,yd,wd,hd,c);}
+void drawbmp(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP225(xs,ys,ws,hs,xd,yd,wd,hd);}
+void drawbmp(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP226(xs,ys,xd,yd,w,h,c);}
+void drawbmp(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP227(xs,ys,xd,yd,w,h);}
+void drawbmp(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP228(xd,yd,wd,hd,c);}
+void drawbmp(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP229(xd,yd,wd,hd);}
+void drawbmp(unsigned long xd,unsigned long yd,unsigned long c){DrawBMP230(xd,yd,c);}
+void drawbmp(unsigned long xd,unsigned long yd){DrawBMP231(xd,yd);}
+void drawbmp(unsigned long c){DrawBMP232(c);}
+void drawbmp(){DrawBMP233();}
+void mixbmp(pbitmap b1,pbitmap b2,pbitmap b3){MixBMP234(b1,b2,b3);}
+void blurbmpbox(pbitmap b,unsigned long d,unsigned long n){BlurBMPBox235(b,d,n);}
+void blurbmpbox(pbitmap b,unsigned long d){BlurBMPBox236(b,d);}
+void blurbmpgau(pbitmap b,double d){BlurBMPGau237(b,d);}
+pbitbuf createbb(pbitmap b){return CreateBB238(b);}
+void releasebb(pbitbuf bb){ReleaseBB239(bb);}
+void getbb(pbitbuf bb){GetBB240(bb);}
+void setbb(pbitbuf bb){SetBB241(bb);}
+void mixbb(pbitbuf bb1,pbitbuf bb2,pbitbuf bb3){MixBB242(bb1,bb2,bb3);}
+void blurbbbox(pbitbuf bb,unsigned long d,unsigned long n){BlurBBBox243(bb,d,n);}
+void blurbbgau(pbitbuf bb,double d){BlurBBGau244(bb,d);}
+void presskey(unsigned char k,unsigned long t){PressKey245(k,t);}
+void presskey(unsigned char k){PressKey246(k);}
+void downkey(unsigned char k){DownKey247(k);}
+void upkey(unsigned char k){UpKey248(k);}
+void pressmouse(unsigned char m,unsigned long t){PressMouse249(m,t);}
+void pressmouse(unsigned char m){PressMouse250(m);}
+void downmouse(unsigned char m){DownMouse251(m);}
+void upmouse(unsigned char m){UpMouse252(m);}
+void wheelmouse(long wl){WheelMouse253(wl);}
+void movemouse(long x,long y){MoveMouse254(x,y);}
+void movemouseabs(long x,long y){MoveMouseAbs255(x,y);}
+void movemousewin(long x,long y){MoveMouseWin256(x,y);}
+void movemousepos(long x,long y){MoveMousePos257(x,y);}
+void sendmsg(){SendMsg258();}
+bool isnextmsg(){return IsNextMsg259();}
+unsigned long getnextmsg(){return GetNextMsg260();}
+unsigned long waitnextmsg(){return WaitNextMsg261();}
+bool ismsg(unsigned long uM){return IsMsg262(uM);}
+long long getmsg(unsigned long uM){return GetMsg263(uM);}
+long long waitmsg(unsigned long uM){return WaitMsg264(uM);}
+bool iskey(unsigned long k){return IsKey265(k);}
+bool iskey(){return IsKey266();}
+unsigned long getkey(){return GetKey267();}
+unsigned long waitkey(unsigned long k){return WaitKey268(k);}
+unsigned long waitkey(){return WaitKey269();}
+bool ismouse(unsigned long m){return IsMouse270(m);}
+bool ismouse(){return IsMouse271();}
+unsigned long getmouse(){return GetMouse272();}
+unsigned long waitmouse(unsigned long m){return WaitMouse273(m);}
+unsigned long waitmouse(){return WaitMouse274();}
+bool ismouseleft(){return IsMouseLeft275();}
+void waitmouseleft(){WaitMouseLeft276();}
+bool ismousemiddle(){return IsMouseMiddle277();}
+void waitmousemiddle(){WaitMouseMiddle278();}
+bool ismouseright(){return IsMouseRight279();}
+void waitmouseright(){WaitMouseRight280();}
+bool ismousewheel(){return IsMouseWheel281();}
+long getmousewheel(){return GetMouseWheel282();}
+void waitmousewheel(){WaitMouseWheel283();}
+bool ismousemove(){return IsMouseMove284();}
+unsigned long getmousemove(){return GetMouseMove285();}
+unsigned long waitmousemove(){return WaitMouseMove286();}
+bool isdropfile(){return IsDropFile287();}
+mystring getdropfile(){return GetDropFile288();}
+const short int* getdropfilew(){return GetDropFileW289();}
+mystring waitdropfile(){return WaitDropFile290();}
+long getmouseabsx(){return GetMouseAbsX291();}
+long getmouseabsy(){return GetMouseAbsY292();}
+long getmousewinx(){return GetMouseWinX293();}
+long getmousewiny(){return GetMouseWinY294();}
+long getmouseposx(){return GetMousePosX295();}
+long getmouseposy(){return GetMousePosY296();}
+unsigned long loadaudio(const char* s1,const char* s2){return LoadAudio297(s1,s2);}
+unsigned long loadaudio(const char* s){return LoadAudio298(s);}
+void playaudio(unsigned long id,const char* s,bool b){PlayAudio299(id,s,b);}
+void playaudio(unsigned long id,const char* s){PlayAudio300(id,s);}
+void playaudio(unsigned long id,bool b){PlayAudio301(id,b);}
+void playaudio(unsigned long id){PlayAudio302(id);}
+void stopaudio(unsigned long id){StopAudio303(id);}
+void pauseaudio(unsigned long id){PauseAudio304(id);}
+void resumeaudio(unsigned long id){ResumeAudio305(id);}
+void releaseaudio(unsigned long id){ReleaseAudio306(id);}
+unsigned long getaudiovol(unsigned long id){return GetAudioVol307(id);}
+void setaudiovol(unsigned long id,unsigned long v){SetAudioVol308(id,v);}
+unsigned long getaudiopos(unsigned long id){return GetAudioPos309(id);}
+void setaudiopos(unsigned long id,unsigned long pos,bool b){SetAudioPos310(id,pos,b);}
+void setaudiopos(unsigned long id,unsigned long pos){SetAudioPos311(id,pos);}
+unsigned long getaudiolen(unsigned long id){return GetAudioLen312(id);}
+bool isfile(const char* s){return IsFile313(s);}
+bool isfilew(const short int* s){return IsFileW314(s);}
+bool newfile(const char* s){return NewFile315(s);}
+bool newdir(const char* s){return NewDir316(s);}
+bool copyfile(const char* src,const char* des){return CopyFile317(src,des);}
+bool movefile(const char* src,const char* des){return MoveFile318(src,des);}
+bool deletefile(const char* s){return DeleteFile319(s);}
+mystring getfilename(const char* s){return GetFileName320(s);}
+const short int* getfilenamew(const short int* s){return GetFileNameW321(s);}
+mystring getfiledir(const char* s){return GetFileDir322(s);}
+const short int* getfiledirw(const short int* s){return GetFileDirW323(s);}
+void openfile(const char* s){OpenFile324(s);}
+void openfilew(const short int* s){OpenFileW325(s);}
+void closefile(){CloseFile326();}
+unsigned long getfilelen(){return GetFileLen327();}
+unsigned long getfilepos(){return GetFilePos328();}
+void setfilepos(unsigned long pos){SetFilePos329(pos);}
+unsigned char getbyte(){return GetByte330();}
+unsigned short getword(){return GetWord331();}
+unsigned long getlongword(){return GetLongword332();}
+unsigned long getinteger(){return GetInteger333();}
+const char* getpchar(){return GetPchar334();}
+mystring getstring(unsigned long len){return GetString335(len);}
+mystring getpara(){return GetPara336();}
+mystring getpara(unsigned long n){return GetPara337(n);}
+const short int* getparaw(){return GetParaW338();}
+const short int* getparaw(unsigned long n){return GetParaW339(n);}

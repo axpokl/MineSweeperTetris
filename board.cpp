@@ -562,6 +562,7 @@ void Board::checkdie()
             st.addach(st.achhidright);
         }
         st.setlead(mode, line);
+//是否和本地分数判断
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {

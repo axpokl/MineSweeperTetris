@@ -455,6 +455,38 @@ void Window::painthelp()
             }
         case -2:
             {
+                setfontheight(fonth);
+                line(helpw / 3 * 1, menuh, 0, helph - okh_, cfg);
+                line(helpw / 3 * 2, menuh, 0, helph - okh_, cfg);
+                pbitmap pmenu__[3] = {pmenu1[0], pmenu2[0], pmenu3[0]};
+                const char* usernamec;
+                short int usernames[100];
+                long usernamel;
+                for (long leadid = 0; leadid < bd.st.leadn; leadid++)
+                {
+                    drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh,cfg);
+                    for (long k = 0; k < 10; k++)
+                    {
+                        if (bd.st.leadsg[leadid][k].m_steamIDUser.GetEAccountType() > 0)
+                        {
+                            drawtextxy(getwin(), i2s(bd.st.leadsg[leadid][k].m_nGlobalRank), helpw * leadid / 3, k * fonth + faceh + menuh, black, cbg);
+                            usernamec = SteamFriends()->GetFriendPersonaName(bd.st.leadsg[leadid][k].m_steamIDUser);
+                            usernamel = strlen(usernamec);
+                            usernames[0] = -1;
+                            usernames[1] = -1;
+                            usernames[2] = usernamel;
+                            usernames[3] = 0;
+                            for (long usernamei = 0; usernamei < usernamel; usernamei++)
+                            {
+//printf("%d %d \n",usernamei, usernamec[usernamei]);
+                                usernames[4 + usernamei] = usernamec[usernamei];
+                            }
+                            usernames[4 + usernamel] = 0;
+                            drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fonth + faceh + menuh, helpw / 3 - getstringwidth("0000"), fonth, black, cbg, DT_LEFT);
+                            paintnumber(bd.st.leadsg[leadid][k].m_nScore, 4, helpw * (leadid + 1) / 3 - digtw * 4, k * fonth + faceh + menuh);
+                        }
+                    }
+                }
                 break;
             }
         case 1:
@@ -903,6 +935,11 @@ void Window::sethelp(long helpi_)
         bd.sd.playsound(bd.sd.sLeft);
     }
     initwindow(false);
+    if (helpi == -2)
+    {
+        bd.st.getlead();
+        paintevent();
+    }
 }
 
 void Window::mouseevent(long ex, long ey, long eb)
@@ -1240,4 +1277,3 @@ void Window::doaction()
         }
     }
 }
-

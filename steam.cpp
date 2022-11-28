@@ -326,13 +326,19 @@ void Steam::getlead()
             SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
             leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
             leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-            SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],10,&leadsg[leadid][0],NULL,0);
+            for (long k = 0; k < 10; k++)
+            {
+                SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
+            }
             lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 5);
             waitlead(leadid);
             SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
             leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
             leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-            SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],11,&leadsu[leadid][0],NULL,0);
+            for (long k = 0; k < 11; k++)
+            {
+                SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
+            }
         }
     }
 }
@@ -349,7 +355,6 @@ void Steam::setlead(long mode, long val)
             waitlead(leadid);
             SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
             leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
-
         }
     }
 }

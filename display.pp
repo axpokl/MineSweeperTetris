@@ -899,6 +899,7 @@ procedure GetStringSize(s:ansistring);
 function GetStringWidth(s:ansistring):longword;
 function GetStringHeight(s:ansistring):longword;
 
+procedure DrawTextXY(b:pbitmap;s:unicodestring;x,y:longint;w,h:longword;cfg,cbg:longword;format:longword);
 procedure DrawTextXY(b:pbitmap;s:unicodestring;x,y:longint;w,h:longword;cfg,cbg:longword);
 procedure DrawTextXY(b:pbitmap;s:ansistring;x,y:longint;w,h:longword;cfg,cbg:longword);
 procedure DrawTextXY(b:pbitmap;s:ansistring;x,y:longint;cfg,cbg:longword);
@@ -2006,6 +2007,17 @@ else
   SetBkColor(b^.dc,cbg);
   SetBkMode(b^.dc,Windows.OPAQUE);
   end;
+end;
+procedure DrawTextXY(b:pbitmap;s:unicodestring;x,y:longint;w,h:longword;cfg,cbg:longword;format:longword);
+var lpRect:RECT;
+begin
+InitTextXY(b,s,cfg,cbg);
+lpRect.left:=x;
+lpRect.top:=y;
+lpRect.right:=x+w;
+lpRect.bottom:=y+h;
+Windows.DrawTextW(b^.dc,PWideChar(s),length(s),lpRect,format);
+_fx:=x+w;_fy:=y;
 end;
 procedure DrawTextXY(b:pbitmap;s:unicodestring;x,y:longint;w,h:longword;cfg,cbg:longword);
 var lpRect:RECT;
