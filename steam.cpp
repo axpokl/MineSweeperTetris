@@ -64,17 +64,20 @@ public:
     int scr[7];
 
     const long leadn = 3;
-    long lead1 = 0;
-    long lead2 = 1;
-    long lead3 = 2;
     const char* leads[3] =
     {
         "1_TOP", "2_TOP", "3_TOP"
     };
-    SteamLeaderboard_t lead[3];
-    SteamLeaderboardEntries_t leadt[3];
-    SteamLeaderboardEntries_t leadu[3];
-
+    SteamAPICall_t lead[3];
+    LeaderboardFindResult_t leadr[3];
+    LeaderboardScoreUploaded_t leadu[3];
+    LeaderboardScoresDownloaded_t leadd[3];
+    SteamLeaderboard_t leadb[3];
+    SteamLeaderboardEntries_t leadeg[3];
+    SteamLeaderboardEntries_t leadeu[3];
+    bool leadfailed = true;
+    LeaderboardEntry_t leadsg[3][10];
+    LeaderboardEntry_t leadsu[3][11];
 
     Steam();
     ~Steam();
@@ -92,6 +95,8 @@ public:
     void compscr(long val, long mode);
 
     void loadlead();
+    void waitlead(long leadid);
+    void getlead();
     void setlead(long mode, long val);
 
 };
@@ -181,21 +186,24 @@ void Steam::addach(long achid)
 
 void Steam::checkach(long scrid, long d, long c, long b, long a, long a_d, long a_c, long a_b, long a_a)
 {
-    if (scr[scrid] >= d)
+    if (steamb)
     {
-        addach(a_d);
-    }
-    else if (scr[scrid] >= c)
-    {
-        addach(a_c);
-    }
-    else if (scr[scrid] >= b)
-    {
-        addach(a_b);
-    }
-    else if (scr[scrid] >= a)
-    {
-        addach(a_a);
+        if (scr[scrid] >= d)
+        {
+            addach(a_d);
+        }
+        else if (scr[scrid] >= c)
+        {
+            addach(a_c);
+        }
+        else if (scr[scrid] >= b)
+        {
+            addach(a_b);
+        }
+        else if (scr[scrid] >= a)
+        {
+            addach(a_a);
+        }
     }
 }
 
@@ -212,22 +220,25 @@ void Steam::loadscr()
 
 void Steam::setscr(long scrid)
 {
-    SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
-    if (scrid == scrdead)
+    if (steamb)
     {
-        checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);
-    }
-    else if (scrid == scrfour)
-    {
-        checkach(scrfour, 1000, 100, 10, 1, achcumdead1000, achcumfour100, achcumfour10, achcumfour1);
-    }
-    else if (scrid == scrtotal)
-    {
-        checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
-    }
-    else if (scrid == scrline)
-    {
-        checkach(scrline, 1000, 600, 300, 100, achcumline1000, achcumline600, achcumline300, achcumline100);
+        SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+        if (scrid == scrdead)
+        {
+            checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);
+        }
+        else if (scrid == scrfour)
+        {
+            checkach(scrfour, 1000, 100, 10, 1, achcumdead1000, achcumfour100, achcumfour10, achcumfour1);
+        }
+        else if (scrid == scrtotal)
+        {
+            checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
+        }
+        else if (scrid == scrline)
+        {
+            checkach(scrline, 1000, 600, 300, 100, achcumline1000, achcumline600, achcumline300, achcumline100);
+        }
     }
 }
 
@@ -276,6 +287,8 @@ void Steam::compscr(long line, long mode)
     }
 }
 
+
+
 void Steam::loadlead()
 {
     if (steamb)
@@ -283,8 +296,43 @@ void Steam::loadlead()
         for (long leadid = 0; leadid < leadn; leadid++)
         {
             lead[leadid] = SteamUserStats()->FindLeaderboard(leads[leadid]);
-            leadt[leadid] = SteamUserStats()->DownloadLeaderboardEntries(lead[leadid], k_ELeaderboardDataRequestGlobal, 1, 10);
-            leadu[leadid] = SteamUserStats()->DownloadLeaderboardEntries(lead[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 5);
+            waitlead(leadid);
+            SteamUtils()->GetAPICallResult(lead[leadid], &leadr[leadid], sizeof(leadr[leadid]), leadr[leadid].k_iCallback, &leadfailed);
+            leadb[leadid] = leadr[leadid].m_hSteamLeaderboard;
+        }
+    }
+}
+
+void Steam::waitlead(long leadid)
+{
+    if (steamb)
+    {
+        long time = gettimer();
+        while (!SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + 5.0)))
+        {
+            delay(1);
+        }
+    }
+}
+
+void Steam::getlead()
+{
+    if (steamb)
+    {
+        for (long leadid = 0; leadid < leadn; leadid++)
+        {
+            lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 10);
+            waitlead(leadid);
+            SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+            leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+            leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+            SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],10,&leadsg[leadid][0],NULL,0);
+            lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 5);
+            waitlead(leadid);
+            SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+            leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+            leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+            SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],11,&leadsu[leadid][0],NULL,0);
         }
     }
 }
@@ -293,22 +341,15 @@ void Steam::setlead(long mode, long val)
 {
     if (steamb)
     {
-        long leadid = -1;
-        switch (mode)
+        if (mode > 0)
         {
-            case 1:
-                leadid = lead1;
-                break;
-            case 2:
-                leadid = lead2;
-                break;
-            case 3:
-                leadid = lead3;
-                break;
-        }
-        if (leadid >= 0)
-        {
-            SteamUserStats()->UploadLeaderboardScore(lead[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
+            long leadid = mode - 1;
+            lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodForceUpdate, val, NULL, 0);
+//更新
+            waitlead(leadid);
+            SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
+            leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
+
         }
     }
 }
