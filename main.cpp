@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    const char* dev = "The game is currently under development. If you have any comments or suggestions, please feedback to the community or email: ax_pokl@qq.com\n";
+    const char* dev = "The game is currently under alpha test. If you have any comments or suggestions, please feedback to the community or email: ax_pokl@qq.com\n";
     msgbox(dev, "MineSweeper Tetris", MB_ICONINFORMATION);
     Lan lan;
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
