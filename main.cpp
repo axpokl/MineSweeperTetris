@@ -21,6 +21,7 @@ int main()
     else
     {
         Window w;
+        w.bd.st.loadsteam();
         w.bd.sd.initsound();
         w.bd.initbd(1);
         w.initwindow(false);
