@@ -14,17 +14,17 @@
 windows xp test!
 
 -steam achmnt
-steam highscore
+-steam highscore
 -steam overlay
 -本地化/Unicode
 
-提交bug给steamwork（float int）
+-提交bug给steamwork（float int）
 
 
 -图片：
 -删除文字
 -背景图片透明
-视频
+-视频
 指南
 传github URL到steam
 
@@ -32,10 +32,10 @@ steam highscore
 -Unicode
 
 
-检查注释
-检查printf·	
-去除window
-去除steamid
+-检查注释
+-检查printf·	
+-去除window
+-去除steamid
 
 
 At present, most of the functions of the game have been completed:

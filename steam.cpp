@@ -177,7 +177,7 @@ void Steam::addach(long achid)
     {
         if (!achb[achid] && (!cheatb || achid == achhidcheat))
         {
-            printf("%s\n",achs[achid]);
+//            printf("%s\n",achs[achid]);
             SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;
@@ -351,7 +351,7 @@ void Steam::setlead(long val, long mode)
     {
         if (mode > 0 && newrecord)
         {
-            printf("# mode:%d score:%d \n", mode, val);
+//            printf("# mode:%d score:%d \n", mode, val);
             newrecord = false;
             long leadid = mode - 1;
             lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);

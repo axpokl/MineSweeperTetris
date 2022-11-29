@@ -84,6 +84,7 @@ public:
     const long maxhelp = 6;
     long helpi = 0;
     bool cheatb = false;
+    bool waitb = false;
 
     Window();
     void initwindow();
@@ -532,8 +533,6 @@ void Window::painthelp()
                         drawbmp(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw - facew - digtw * n__[k], menuh + (fontsh * 14 + helph - okh_) / 2 + 1, facew, faceh, cfg);
                         paintnumber(bd.st.scr[scr__[k]], 4 + n__[k] * 2, helpw * (k * 2 + 1) / 6 - 2 * digtw + facew - digtw * n__[k], menuh + (fontsh * 14 + helph - okh_) / 2 + 1);
                     }
-
-
                     line(0, menuh, helpw, 0, cfg);
                     line(0, menuh + faceh, helpw, 0, cfg);
                     line(0, menuh + faceh + fontsh * 7, helpw, 0, cfg);
@@ -917,7 +916,14 @@ void Window::painthelp()
     {
         setfontheight(fonth);
         drawbmp(pok, getwin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
-        drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+        if (waitb)
+        {
+            drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, gray, cfg);
+        }
+        else
+        {
+            drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+        }
         if (helpi > 1 && helpi <= maxhelp)
         {
             drawbmp(pbtn, getwin(), (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
@@ -989,7 +995,10 @@ void Window::sethelp(long helpi_)
     initwindow(false);
     if (helpi == -2)
     {
+        waitb = true;
+        paintevent();
         bd.st.getlead();
+        waitb = false;
         paintevent();
     }
 }
