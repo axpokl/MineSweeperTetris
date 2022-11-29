@@ -25,6 +25,7 @@ public:
     const long fontth = 64;
     const long fontfh = 32;
     const long fonth = 24;
+    const long fontsh = 24;
     const long okh_ = abouth - (fontth + fonth * 4);
     const long clickw = 48;
     const long clickh = 72;
@@ -90,6 +91,7 @@ public:
     void initbmp();
     void paintmenu();
     void paintface();
+    void paintnumber(long n, long l, long x, long y, long w, long h);
     void paintnumber(long n, long l, long x, long y);
     void paintlevel();
     void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
@@ -271,7 +273,7 @@ void Window::paintface()
     drawbmp(pface[face__[facei]], (getwidth() - facew) / 2, menuh, facew, faceh);
 }
 
-void Window::paintnumber(long n, long l, long x, long y)
+void Window::paintnumber(long n, long l, long x, long y, long w, long h)
 {
     long digit[10];
     long dl = 0;
@@ -300,17 +302,22 @@ void Window::paintnumber(long n, long l, long x, long y)
     {
         if (di < dl)
         {
-            drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * digtw, y, digtw, digth);
+            drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * w, y, w, h);
         }
         else if (di == dl && minb)
         {
-            drawbmp(pdigitmin, x + (dlm - di - 1) * digtw, y, digtw, digth);
+            drawbmp(pdigitmin, x + (dlm - di - 1) * w, y, w, h);
         }
         else
         {
-            drawbmp(pdigitnul, x + (dlm - di - 1) * digtw, y, digtw, digth);
+            drawbmp(pdigitnul, x + (dlm - di - 1) * w, y, w, h);
         }
     }
+}
+
+void Window::paintnumber(long n, long l, long x, long y)
+{
+    paintnumber(n, l, x, y, digtw, digth);
 }
 
 void Window::paintlevel()
@@ -457,53 +464,80 @@ void Window::painthelp()
             }
         case -2:
             {
-                setfontheight(fonth);
-                line(helpw / 3 * 1, menuh, 0, helph - okh_, cfg);
-                line(helpw / 3 * 2, menuh, 0, helph - okh_, cfg);
-                pbitmap pmenu__[3] = {pmenu1[0], pmenu2[0], pmenu3[0]};
-                const char* usernamec;
-                short int usernames[100];
-                long usernamel;
-                for (long leadid = 0; leadid < bd.st.leadn; leadid++)
+                if (bd.st.steamb)
                 {
-                    drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh,cfg);
-                    for (long k = 0; k < 10; k++)
+                    setfontheight(fontsh);
+                    line(helpw / 3 * 1, menuh, 0, helph - okh_, cfg);
+                    line(helpw / 3 * 2, menuh, 0, helph - okh_, cfg);
+                    pbitmap pmenu__[3] = {pmenu1[0], pmenu2[0], pmenu3[0]};
+                    const char* usernamec;
+                    short int usernames[100];
+                    long usernamel;
+                    LeaderboardEntry_t leads;
+                    for (long leadid = 0; leadid < bd.st.leadn; leadid++)
                     {
-                        if (bd.st.leadsg[leadid][k].m_steamIDUser.GetEAccountType() > 0)
+                        drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh, cfg);
+                        for (long k = 0; k < 14; k++)
                         {
-                            drawtextxy(getwin(), i2s(bd.st.leadsg[leadid][k].m_nGlobalRank), helpw * leadid / 3, k * fonth + faceh + menuh, black, cbg);
-                            usernamec = SteamFriends()->GetFriendPersonaName(bd.st.leadsg[leadid][k].m_steamIDUser);
-                            uint32_t buffer;
-                            uint16_t utf16[2] = {0};
-                            long posc = 0;
-                            long lenc = 0;
-                            long poss = 0;
-                            long lens = 0;
-                            while (usernamec[posc] != 0)
+                            if (k < 7)
                             {
-                                lenc = UTF8ToUnicode((uint8_t*)&usernamec[posc], &buffer);
-                                posc += lenc;
-                                lens = UnicodeToUTF16(buffer, utf16);
-                                if (lens > 0)
-                                {
-                                    usernames[4 + poss] = utf16[0];
-                                    poss++;
-                                }
-                                if (lens > 1)
-                                {
-                                    usernames[4 + poss] = utf16[1];
-                                    poss++;
-                                }
+                                leads = bd.st.leadsg[leadid][k];
                             }
-                            usernames[0] = -1;
-                            usernames[1] = -1;
-                            usernames[2] = poss;
-                            usernames[3] = 0;
-                            usernames[4 + poss] = 0;
-                            drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fonth + faceh + menuh, helpw / 3 - getstringwidth("0000"), fonth, black, cbg, DT_LEFT);
-                            paintnumber(bd.st.leadsg[leadid][k].m_nScore, 4, helpw * (leadid + 1) / 3 - digtw * 4, k * fonth + faceh + menuh);
+                            else
+                            {
+                                leads = bd.st.leadsu[leadid][k - 7];
+                            }
+                            if (leads.m_steamIDUser.GetEAccountType() > 0)
+                            {
+                                usernamec = SteamFriends()->GetFriendPersonaName(leads.m_steamIDUser);
+                                uint32_t buffer;
+                                uint16_t utf16[2] = {0};
+                                long posc = 0;
+                                long lenc = 0;
+                                long poss = 0;
+                                long lens = 0;
+                                while (usernamec[posc] != 0)
+                                {
+                                    lenc = UTF8ToUnicode((uint8_t*)&usernamec[posc], &buffer);
+                                    posc += lenc;
+                                    lens = UnicodeToUTF16(buffer, utf16);
+                                    if (lens > 0)
+                                    {
+                                        usernames[4 + poss] = utf16[0];
+                                        poss++;
+                                    }
+                                    if (lens > 1)
+                                    {
+                                        usernames[4 + poss] = utf16[1];
+                                        poss++;
+                                    }
+                                }
+                                usernames[0] = -1;
+                                usernames[1] = -1;
+                                usernames[2] = poss;
+                                usernames[3] = 0;
+                                usernames[4 + poss] = 0;
+                                drawtextxy(getwin(), i2s(leads.m_nGlobalRank), helpw * leadid / 3, k * fontsh + faceh + menuh, black, cbg);
+                                drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fontsh + faceh + menuh, helpw / 3 - getstringwidth("0000"), fontsh, black, cbg, DT_LEFT);
+                                paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw * fontsh / digth * 4, k * fontsh + faceh + menuh, digtw * fontsh / digth, fontsh);
+                            }
                         }
                     }
+                    setfontheight(fonth);
+                    pbitmap pface__[3] = {pface[2], pface[1], piconf};
+                    long scr__[3] = {bd.st.scrdead, bd.st.scrfour, bd.st.scrtotal};
+                    long n__[3] = {0, 0, 1};
+                    for (long k = 0; k < 3; k++)
+                    {
+                        drawbmp(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw - facew - digtw * n__[k], menuh + (fontsh * 14 + helph - okh_) / 2 + 1, facew, faceh, cfg);
+                        paintnumber(bd.st.scr[scr__[k]], 4 + n__[k] * 2, helpw * (k * 2 + 1) / 6 - 2 * digtw + facew - digtw * n__[k], menuh + (fontsh * 14 + helph - okh_) / 2 + 1);
+                    }
+
+
+                    line(0, menuh, helpw, 0, cfg);
+                    line(0, menuh + faceh, helpw, 0, cfg);
+                    line(0, menuh + faceh + fontsh * 7, helpw, 0, cfg);
+                    line(0, menuh + faceh + fontsh * 14, helpw, 0, cfg);
                 }
                 break;
             }
