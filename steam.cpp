@@ -310,7 +310,7 @@ void Steam::waitlead(long leadid)
     if (steamb)
     {
         long time = gettimer();
-        while (!SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + 5.0)))
+        while (!SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + 2.0)))
         {
             delay(1);
         }
