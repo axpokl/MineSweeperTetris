@@ -35,13 +35,13 @@ Eliminate four lines 100 times
 Game made of Tetris
 Eliminate four lines 1000 times
 Minesweeper Learner
-Clear 100 lines in one single game
+Score 100 points in a single game
 Minesweeper Senior
-Clear 300 lines in one single game
+Score 300 points in a single game
 Minesweeper Professor
-Clear 600 lines in one single game
+Score 600 points in a single game
 Minesweeper Master
-Clear 1000 lines in one single game
+Score 1000 points in a single game
 Easy Mine
 Clear 10 lines of mines in total
 Factory of Mine

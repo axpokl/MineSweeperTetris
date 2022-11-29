@@ -354,7 +354,7 @@ void Steam::setlead(long val, long mode)
             printf("# mode:%d score:%d \n", mode, val);
             newrecord = false;
             long leadid = mode - 1;
-            lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodForceUpdate, val, NULL, 0);
+            lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
             waitlead(leadid);
             SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
             leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
