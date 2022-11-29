@@ -110,6 +110,8 @@ public:
     void keyevent(long key);
     void doaction();
 
+#include "utf.cpp"
+
 };
 
 Window::Window()
@@ -471,17 +473,33 @@ void Window::painthelp()
                         {
                             drawtextxy(getwin(), i2s(bd.st.leadsg[leadid][k].m_nGlobalRank), helpw * leadid / 3, k * fonth + faceh + menuh, black, cbg);
                             usernamec = SteamFriends()->GetFriendPersonaName(bd.st.leadsg[leadid][k].m_steamIDUser);
-                            usernamel = strlen(usernamec);
+                            uint32_t buffer;
+                            uint16_t utf16[2] = {0};
+                            long posc = 0;
+                            long lenc = 0;
+                            long poss = 0;
+                            long lens = 0;
+                            while (usernamec[posc] != 0)
+                            {
+                                lenc = UTF8ToUnicode((uint8_t*)&usernamec[posc], &buffer);
+                                posc += lenc;
+                                lens = UnicodeToUTF16(buffer, utf16);
+                                if (lens > 0)
+                                {
+                                    usernames[4 + poss] = utf16[0];
+                                    poss++;
+                                }
+                                if (lens > 1)
+                                {
+                                    usernames[4 + poss] = utf16[1];
+                                    poss++;
+                                }
+                            }
                             usernames[0] = -1;
                             usernames[1] = -1;
-                            usernames[2] = usernamel;
+                            usernames[2] = poss;
                             usernames[3] = 0;
-                            for (long usernamei = 0; usernamei < usernamel; usernamei++)
-                            {
-//printf("%d %d \n",usernamei, usernamec[usernamei]);
-                                usernames[4 + usernamei] = usernamec[usernamei];
-                            }
-                            usernames[4 + usernamel] = 0;
+                            usernames[4 + poss] = 0;
                             drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fonth + faceh + menuh, helpw / 3 - getstringwidth("0000"), fonth, black, cbg, DT_LEFT);
                             paintnumber(bd.st.leadsg[leadid][k].m_nScore, 4, helpw * (leadid + 1) / 3 - digtw * 4, k * fonth + faceh + menuh);
                         }

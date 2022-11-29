@@ -5,5 +5,6 @@ astyle --style=allman --indent-cases --indent-switches board.cpp
 astyle --style=allman --indent-cases --indent-switches window.cpp
 astyle --style=allman --indent-cases --indent-switches main.cpp
 astyle --style=allman --indent-cases --indent-switches steam.cpp
+astyle --style=allman --indent-cases --indent-switches utf.cpp
 del *.orig
 pause
