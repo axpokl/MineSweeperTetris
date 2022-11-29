@@ -76,6 +76,7 @@ Board::Board()
 
 void Board::initbd()
 {
+    st.setlead(line, mode);
     sit = 0;
     line = 0;
     level = 0;
@@ -121,6 +122,7 @@ void Board::initbd(long w_, long h_, long maskj_, long n_)
 
 void Board::initbd(long mode_)
 {
+    st.setlead(line, mode);
     mode = mode_;
     switch (mode)
     {
@@ -561,8 +563,7 @@ void Board::checkdie()
         {
             st.addach(st.achhidright);
         }
-        st.setlead(mode, line);
-//是否和本地分数判断
+        st.setlead(line, mode);
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {

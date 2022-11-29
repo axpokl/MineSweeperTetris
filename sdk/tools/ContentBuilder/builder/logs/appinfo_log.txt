@@ -666,3 +666,28 @@
 [2022-11-28 21:55:16] Requesting 9 apps, 0 packages (full data, 1024 prev attempts)
 [2022-11-28 21:55:16] UpdatesJob: finished OK, apps updated 26 (1421 KB), packages updated 0 (0 KB)
 [2022-11-28 21:55:21] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4266551 bytes)
+
+
+[2022-11-29 09:16:34] RequestAppInfoUpdate: AppIDs 7
+[2022-11-29 09:16:35] Packages changed: force all
+[2022-11-29 09:16:35] Apps changed: force all
+[2022-11-29 09:16:35] Change number 16883141->16889984, apps: 0/0, packages: 0/0
+[2022-11-29 09:16:35] Requesting 694 apps, 381 packages (meta data, 1024 prev attempts)
+[2022-11-29 09:16:35] Requested 69 app access tokens, 60 received, 9 denied
+[2022-11-29 09:16:36] Updated SHAs with 60 new access tokens
+[2022-11-29 09:16:36] Downloaded 13 apps via HTTP, 861 KB (174 KB compressed)
+[2022-11-29 09:16:36] Requesting 7 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-29 09:16:36] UpdatesJob: finished OK, apps updated 20 (895 KB), packages updated 0 (0 KB)
+[2022-11-29 09:16:41] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4268157 bytes)
+
+
+[2022-11-29 09:58:08] RequestAppInfoUpdate: AppIDs 7
+[2022-11-29 09:58:08] Packages changed: 
+[2022-11-29 09:58:08] Apps changed: 1874900=16890326,233450=16890120,
+[2022-11-29 09:58:08] Change number 16889984->16890335, apps: 2/282, packages: 0/15
+[2022-11-29 09:58:08] Requesting 12 apps, 3 packages (meta data, 1024 prev attempts)
+[2022-11-29 09:58:09] Requested 9 app access tokens, 0 received, 9 denied
+[2022-11-29 09:58:10] Downloaded 1 apps via HTTP, 26 KB (7 KB compressed)
+[2022-11-29 09:58:10] Requesting 1 apps, 0 packages (full data, 1024 prev attempts)
+[2022-11-29 09:58:10] UpdatesJob: finished OK, apps updated 2 (31 KB), packages updated 0 (0 KB)
+[2022-11-29 09:58:14] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4268157 bytes)

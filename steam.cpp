@@ -62,6 +62,7 @@ public:
         "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE", "STAT_LINE1", "STAT_LINE2", "STAT_LINE3"
     };
     int scr[7];
+    bool newrecord = false;
 
     const long leadn = 3;
     const char* leads[3] =
@@ -97,7 +98,7 @@ public:
     void loadlead();
     void waitlead(long leadid);
     void getlead();
-    void setlead(long mode, long val);
+    void setlead(long val, long mode);
 
 };
 
@@ -281,6 +282,7 @@ void Steam::compscr(long line, long mode)
                     scr[scrline] = max(scr[scrline], scr[scrline_]);
                     setscr(scrline_);
                     setscr(scrline);
+                    newrecord = true;
                 }
             }
         }
@@ -343,15 +345,16 @@ void Steam::getlead()
     }
 }
 
-void Steam::setlead(long mode, long val)
+void Steam::setlead(long val, long mode)
 {
     if (steamb)
     {
-        if (mode > 0)
+        if (mode > 0 && newrecord)
         {
+            printf("# mode:%d score:%d \n", mode, val);
+            newrecord = false;
             long leadid = mode - 1;
             lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodForceUpdate, val, NULL, 0);
-//更新
             waitlead(leadid);
             SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
             leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
