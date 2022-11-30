@@ -1,0 +1,70 @@
+Minesweeper Tetris Full Achievement Guide
+
+This is a full achievement guide of game Minesweeper Tetris include the hidden achievement
+
+There are three types of achievements:
+
+A. General achievements
+B. Hidden achievements
+C. Accumulated achievements
+
+All achievements are unreachable in cheat mode. If you have entered cheat mode, you will need to restart the game to disable it. 
+For Accumulated achievements, stats accumulate only for standard games (Easy, Norma, Hard). Achievements are not available in custom mode.
+
+Detailed guide:
+
+A. General achievements
+
+1. Enter Minefield
+In any mode, clicking anywhere on the board to start the game.
+
+2. Special Minefield
+Use the arrow keys or the plus and minus keys to adjust the size of the board and the number of mines.
+
+3. Standard Minefields
+Press 1,2 and 3 to switch all standmode.
+
+4. Mines and Peace
+Start the game and right click the smile button on top (or press Space or P key) to pause the game. 
+
+5. Minesweeper Manual
+Click the question mark button, then click the right arrow button until you reach the last page.
+
+B. Hidden achievements
+
+1. There's a red mine in the game
+Click the exclamation point button, then click the mine icon. At this point the mine icon turns red and the game enters cheating mode. 
+On the last page of the help a detailed cheat menu is displayed. 
+Note: You can no longer get other achievements after entering cheat mode. You need to reopen the game again to turn off cheat mode.
+
+2. Hit the edge of number
+It can be obtained by reaching 9999 points in a single game in any mode. 
+It is recommended that you press the right button to increase the size of the disk and use the minus key to reduce the number of mines on the disk, which can quickly eliminate lines.
+
+3. My mind is full of question
+It can be obtained by marking all the squares on the board as question marks in any mode.
+It is recommended to try after reducing the disk size. Note: This achievement cannot be obtained after the game has started.
+
+4. The right mouse button is broken
+It can be obtained by losing the game without clicking the right mouse button in any mode.
+You can increase the number of mines on the board and click on the board to get them quickly.
+
+5. Come back to live
+It can be obtained by eliminating lines after the board is full (no crossed squares and the game has not failed).
+This achievement is more difficult to obtain. You need to ensure at a certain point in the game that the next click on a certain square will definitely clear the row, and then wait for the board to become full and immediately click on the square to clear it.
+It is recommended to do this at the beginning of the game, because at this time the growth rate of the game grid is the slowest.
+
+C. Accumulated achievements
+
+1. Lose the game
+Need to lose the game a certain number of times. Starting a new game directly before the game ends will not count. You need to wait until fail completely.
+
+2. Eliminate four lines
+Counted when the number of rows is below 4 rows. At this time, the game will trigger a sound effect similar to "new game". 
+
+3. Score points in a single game
+You can get it when you reach a certain score in a single game. 
+Scores when there are less than 4 rows are also counted. Scores from different games are not accumulated. 
+
+4. Clear lines of mines in total
+Counts when a single row is eliminated. Only eliminated lines are counted, scores less than 4 lines will not be counted.
