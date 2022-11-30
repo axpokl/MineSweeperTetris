@@ -183,7 +183,6 @@ void Steam::addach(long achid)
     {
         if (!achb[achid] && (!cheatb || achid == achhidcheat))
         {
-            //printf("%s\n",achs[achid]);
             SteamUserStats()->SetAchievement(achs[achid]);
             SteamUserStats()->StoreStats();
             achb[achid] = true;
@@ -365,7 +364,6 @@ void Steam::setlead(long val, long mode)
     {
         if (mode > 0 && newrecord)
         {
-            //printf("# mode:%d score:%d \n", mode, val);
             newrecord = false;
             long leadid = mode - 1;
             if (leadb[leadid] == 0)
@@ -387,7 +385,7 @@ bool Steam::waitlead(long leadid, double waittime)
     if (steamb)
     {
         long time = gettimer();
-        while (!SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + waittime)))
+        while (iswin() && !SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + waittime)))
         {
             delay(1);
         }
