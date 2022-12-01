@@ -10,15 +10,15 @@ public:
     short int landata[10000];
     short int* landatap[100];
 
-    long LAN_TITLE_W = 0;
-    long LAN_RUNNING_W = 1;
-    long LAN_STEAM_LAUNCH_W = 2;
-    long LAN_STEAM_FAIL_W = 3;
-    long LAN_STEAM_Status_W = 4;
-    long LAN_ABOUT_NAME_W = 5;
-    long LAN_ABOUT_VERSION_W = 6;
-    long LAN_ABOUT_AUTHOR_W = 7;
-    long LAN_ABOUT_LICENSE_W = 8;
+    long LAN_TITLE = 0;
+    long LAN_RUNNING = 1;
+    long LAN_STEAM_LAUNCH = 2;
+    long LAN_STEAM_FAIL = 3;
+    long LAN_STEAM_Status = 4;
+    long LAN_ABOUT_NAME = 5;
+    long LAN_ABOUT_VERSION = 6;
+    long LAN_ABOUT_AUTHOR = 7;
+    long LAN_ABOUT_LICENSE = 8;
     long LAN_ABOUT_OK = 9;
     long LAN_LOAD_STEAM = 10;
     long LAN_LOAD_AUDIO = 11;

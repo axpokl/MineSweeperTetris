@@ -127,7 +127,7 @@ void Window::initwindow()
     createwin(launchw, launchh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
-    settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W));
+    settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE));
     LOGFONT lf;
     SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(LOGFONT),&lf,0);
     setfontname(lf.lfFaceName);
@@ -458,10 +458,10 @@ void Window::painthelp()
                 pbitmap pcheat__[2] = {piconn, piconm};
                 drawbmp(pcheat__[cheatb], (aboutw - fontfh) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
                 setfontheight(fonth);
-                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_NAME_W), 0, menuh + fontth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_VERSION_W), 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_AUTHOR_W), 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
-                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_LICENSE_W), 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_NAME), 0, menuh + fontth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_VERSION), 0, menuh + fontth + fonth, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_AUTHOR), 0, menuh + fontth + fonth * 2, aboutw, fonth, black, cbg);
+                drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_LICENSE), 0, menuh + fontth + fonth * 3, aboutw, fonth, black, cbg);
                 break;
             }
         case -2:
@@ -911,7 +911,7 @@ void Window::painthelp()
     {
         setfontheight(fonth);
         drawbmp(pok, getwin(), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh);
-        drawtextxy(getwin(), "OK", (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+        drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (aboutw - okw) / 2, abouth - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
     }
     else if (helpi != 0)
     {
@@ -919,11 +919,11 @@ void Window::painthelp()
         drawbmp(pok, getwin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
         if (waitb)
         {
-            drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, gray, cfg);
+            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, gray, cfg);
         }
         else
         {
-            drawtextxy(getwin(), "OK", (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
+            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, black, cfg);
         }
         if (helpi > 1 && helpi <= maxhelp)
         {
@@ -948,7 +948,7 @@ void Window::painttitle(long load)
     }
     drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W), 0, fontth - fontfh, launchw, fontfh, black, cbg);
+    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TITLE), 0, fontth - fontfh, launchw, fontfh, black, cbg);
     if (load >= 0)
     {
         drawtextxy(getwin(), bd.st.lan.getlan(load), 0, fontth + titleh - titleh / 16, launchw, fontfh, black, cbg);
