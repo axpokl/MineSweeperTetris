@@ -128,7 +128,9 @@ void Window::initwindow()
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W));
-    setfontname("Consolas");
+    LOGFONT lf;
+    SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(LOGFONT),&lf,0);
+    setfontname(lf.lfFaceName);
     painttitle(-1);
 }
 
@@ -949,7 +951,7 @@ void Window::painttitle(long load)
     drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W), 0, fontth - fontfh, launchw, fontfh, black, cbg);
     if (load >= 0)
     {
-        drawtextxy(getwin(), bd.st.lan.getlan(load), 0, fontth - fontfh + titleh, launchw, fontfh, black, cbg);
+        drawtextxy(getwin(), bd.st.lan.getlan(load), 0, fontth + titleh - titleh / 16, launchw, fontfh, black, cbg);
     }
     setfontheight(fonth);
     freshwin();
