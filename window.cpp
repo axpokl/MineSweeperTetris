@@ -43,7 +43,7 @@ public:
     pbitmap pmenum[2];
     pbitmap pmenud[2];
     pbitmap pface_;
-    pbitmap pface[6];
+    pbitmap pface[7];
     pbitmap picon_;
     pbitmap picon[11];
     pbitmap piconc;
@@ -109,9 +109,11 @@ public:
     void paintevent();
     bool isin(long ex, long ey, long x, long y, long w, long h);
     void sethelp(long helpi_);
+    void savescr();
     void mouseevent(long x, long y, long key);
     void keyevent(long key);
     void doaction();
+
 
 #include "utf.cpp"
 
@@ -186,7 +188,7 @@ void Window::initbmp()
         pmenud[i] = createbmp(menuw, menuh);
         drawbmp(pmenu_, pmenud[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
     }
-    for (long i = 0; i < 6; i++)
+    for (long i = 0; i < 7; i++)
     {
         pface[i] = createbmp(facew, faceh);
         drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
@@ -855,18 +857,18 @@ void Window::painthelp()
         case 6:
             {
                 setfontheight(faceh);
-                pbitmap pmenu__[11] = {pface[5], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
-                const char* keys[11] = {"Q / ESC", "A / F12", "H / F1", "T / F2", "S / F3", "M / F4", "N / F5", "P / Space", "1", "2", "3"};
+                pbitmap pmenu__[12] = {pface[5], pface[6], pmenua[0], pmenuq[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
+                const char* keys[12] = {"Q / ESC", "P / F12", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "N / F6", "Space", "1", "2", "3"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 long cheatc[8] = {blue, blue, blue, blue, red, blue, red, red};
-                long helph__ = (helph - okh_ - faceh * 11 - iconh * 10 / 2) / 2;
+                long helph__ = (helph - okh_ - faceh * 12 - iconh * 11 / 2) / 2;
                 long helpw__ = helpw / 6;
                 if (cheatb)
                 {
                     helpw__ = iconw;
                 }
-                for (long k = 0; k < 11; k++)
+                for (long k = 0; k < 12; k++)
                 {
                     drawbmp(pmenu__[k], helpw__, faceh * k + iconh * k / 2 + helph__ + menuh, facew, faceh, cfg);
                     drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, faceh * k + iconh * k / 2 + helph__ + menuh, black, cbg);
@@ -1011,6 +1013,23 @@ void Window::sethelp(long helpi_)
     }
 }
 
+void Window::savescr()
+{
+    char scrpath[MAX_PATH];
+    GetTempPath(MAX_PATH, scrpath);
+    strcat(scrpath, "screenshot_");
+    time_t rawtime;
+    time(&rawtime);
+    struct tm * timed;
+    timed = localtime(&rawtime);
+    char times[MAX_PATH];
+    sprintf(times, "%d%d%d%d%d%d", timed->tm_mday, timed->tm_mon + 1, timed->tm_year + 1900, timed->tm_hour, timed->tm_min, timed->tm_sec);
+    strcat(scrpath, times);
+    strcat(scrpath, ".png");
+    savebmp(getwin(), scrpath);
+    ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->width, getwin()->height);
+}
+
 void Window::mouseevent(long ex, long ey, long eb)
 {
     long x;
@@ -1144,10 +1163,10 @@ void Window::keyevent(long key)
     switch (key)
     {
         case k_f12:
-            sethelp(-1);
+            savescr();
             break;
-        case k_a:
-            sethelp(-1);
+        case k_p:
+            savescr();
             break;
         case k_f1:
             sethelp(1);
@@ -1156,24 +1175,30 @@ void Window::keyevent(long key)
             sethelp(1);
             break;
         case k_f2:
+            sethelp(-1);
+            break;
+        case k_a:
+            sethelp(-1);
+            break;
+        case k_f3:
             sethelp(-2);
             break;
         case k_t:
             sethelp(-2);
             break;
-        case k_f3:
+        case k_f4:
             bd.sd.switchsound();
             break;
         case k_s:
             bd.sd.switchsound();
             break;
-        case k_f4:
+        case k_f5:
             bd.sd.switchmusic();
             break;
         case k_m:
             bd.sd.switchmusic();
             break;
-        case k_f5:
+        case k_f6:
             helpi = 0;
             bd.initbd();
             initwindow(false);
@@ -1209,18 +1234,13 @@ void Window::keyevent(long key)
             case k_q:
                 closewin();
                 break;
-            case k_p:
+            case k_space:
                 if (bd.sit > 0)
                 {
                     bd.pause();
                     bd.sd.playsound(bd.sd.sSolve);
                     bd.st.addach(bd.st.achgenpause);
                 }
-                break;
-            case k_space:
-                bd.pause();
-                bd.sd.playsound(bd.sd.sSolve);
-                bd.st.addach(bd.st.achgenpause);
                 break;
             case k_left:
                 bd.w--;
