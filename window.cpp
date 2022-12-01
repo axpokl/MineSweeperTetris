@@ -3,7 +3,7 @@ class Window
 public:
 
     const long launchw = 320;
-    const long launchh = 320;
+    const long launchh = 352;
     const long titlew = 256;
     const long titleh = 256;
     const long menuw = 24;
@@ -105,7 +105,7 @@ public:
     void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y);
     void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, pbitmap pe, long a, long b, long c, long d, long e, long x, long y);
     void painthelp();
-    void painttitle();
+    void painttitle(long load);
     void paintevent();
     bool isin(long ex, long ey, long x, long y, long w, long h);
     void sethelp(long helpi_);
@@ -129,8 +129,7 @@ void Window::initwindow()
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W));
     setfontname("Consolas");
-    painttitle();
-    initbmp();
+    painttitle(-1);
 }
 
 void Window::initwindow(bool b)
@@ -939,12 +938,19 @@ void Window::painthelp()
     }
 }
 
-void Window::painttitle()
+void Window::painttitle(long load)
 {
-    ptitle_ = loadbmp("./bmp/title.png");
+    if (load < 0)
+    {
+        ptitle_ = loadbmp("./bmp/title.png");
+    }
     drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight(fontfh);
-    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W), 0, (fontth + titleh / 8 - fontfh) / 2, launchw, fontfh, black, cbg);
+    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TITLE_W), 0, fontth - fontfh, launchw, fontfh, black, cbg);
+    if (load >= 0)
+    {
+        drawtextxy(getwin(), bd.st.lan.getlan(load), 0, fontth - fontfh + titleh, launchw, fontfh, black, cbg);
+    }
     setfontheight(fonth);
     freshwin();
 }

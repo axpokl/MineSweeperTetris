@@ -21,9 +21,15 @@ int main()
     else
     {
         Window w;
+        w.painttitle(w.bd.st.lan.LAN_LOAD_STEAM);
         w.bd.st.loadsteam();
+        w.painttitle(w.bd.st.lan.LAN_LOAD_AUDIO);
         w.bd.sd.initsound();
+        w.painttitle(w.bd.st.lan.LAN_LOAD_BOARD);
         w.bd.initbd(1);
+        w.painttitle(w.bd.st.lan.LAN_LOAD_GRAPH);
+        w.initbmp();
+        w.painttitle(w.bd.st.lan.LAN_LOAD_WINDOW);
         w.initwindow(false);
         while (iswin())
         {

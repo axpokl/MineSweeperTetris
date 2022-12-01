@@ -125,6 +125,11 @@ void Steam::initsteam()
     {
         msgboxw(lan.getlan(lan.LAN_STEAM_FAIL_W), lan.getlan(lan.LAN_TITLE_W), MB_ICONWARNING);
     }
+    if (steamb)
+    {
+        lan.initlan(SteamUtils()->GetSteamUILanguage());
+        lan.initlan(SteamApps()->GetCurrentGameLanguage());
+    }
 }
 
 void Steam::exitsteam()
@@ -138,11 +143,6 @@ void Steam::exitsteam()
 
 void Steam::loadsteam()
 {
-    if (steamb)
-    {
-        lan.initlan(SteamUtils()->GetSteamUILanguage());
-        lan.initlan(SteamApps()->GetCurrentGameLanguage());
-    }
     if (steamb)
     {
         if (!SteamUserStats()->RequestCurrentStats())

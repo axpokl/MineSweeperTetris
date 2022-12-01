@@ -19,6 +19,12 @@ public:
     long LAN_ABOUT_VERSION_W = 6;
     long LAN_ABOUT_AUTHOR_W = 7;
     long LAN_ABOUT_LICENSE_W = 8;
+    long LAN_ABOUT_OK = 9;
+    long LAN_LOAD_STEAM = 10;
+    long LAN_LOAD_AUDIO = 11;
+    long LAN_LOAD_BOARD = 12;
+    long LAN_LOAD_GRAPH = 13;
+    long LAN_LOAD_WINDOW = 14;
 
     Lan();
     const char* getsyslan();
