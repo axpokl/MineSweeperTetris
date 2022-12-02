@@ -2467,6 +2467,13 @@
 							"0"		"VR"
 						}
 					}
+					"2240140"
+					{
+						"tags"
+						{
+							"0"		"favorite"
+						}
+					}
 				}
 				"SteamDefaultDialog"		"#app_store"
 				"ShowScreenshotManager"		"0"

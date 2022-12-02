@@ -199,3 +199,9 @@
 
 
 [2022-12-02 08:57:44] Loaded 0 apps from install folder "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+
+
+[2022-12-02 17:21:13] Loaded 0 apps from install folder "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+
+
+[2022-12-02 19:32:42] Loaded 0 apps from install folder "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".

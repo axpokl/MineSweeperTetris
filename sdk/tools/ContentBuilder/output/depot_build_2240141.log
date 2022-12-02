@@ -1,0 +1,67 @@
+[2022-12-02 17:21:25]: Starting build for depot 2240141, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-12-02 17:21:25]: Building file listing for depot 2240141 ...
+[2022-12-02 17:21:25]: Found 56 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-12-02 17:21:35]: Found 56 files (1 MB) for depot 2240141
+[2022-12-02 17:21:35]: Building depot 2240141, no baseline manifest
+[2022-12-02 17:21:35]: Found 50 chunks ( 0 used previously ) for depot 2240141, took 0 minutes, 0 seconds
+[2022-12-02 17:21:35]: Changes to baseline manifest 0 :
+[2022-12-02 17:21:35]: Added  : "bmp" 0 kB ,Flags: 64
+[2022-12-02 17:21:35]: Added  : "bmp\arrow.bmp" 2 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\click.bmp" 6 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\cursor.bmp" 1 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\digt.bmp" 3 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\face.bmp" 3 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\icon.bmp" 3 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\menu.bmp" 5 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\ok.bmp" 4 kB 
+[2022-12-02 17:21:35]: Added  : "bmp\title.png" 3 kB 
+[2022-12-02 17:21:35]: Added  : "disp.dll" 115 kB 
+[2022-12-02 17:21:35]: Added  : "lan" 0 kB ,Flags: 64
+[2022-12-02 17:21:35]: Added  : "lan\arabic.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\brazilian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\bulgarian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\czech.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\danish.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\dutch.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\english.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\finnish.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\french.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\german.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\greek.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\hungarian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\italian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\japanese.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\koreana.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\latam.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\norwegian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\polish.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\portuguese.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\romanian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\russian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\schinese.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\spanish.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\swedish.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\tchinese.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\thai.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\turkish.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\ukrainian.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "lan\vietnamese.txt" 1 kB 
+[2022-12-02 17:21:35]: Added  : "mid" 0 kB ,Flags: 64
+[2022-12-02 17:21:35]: Added  : "mid\music1.mid" 13 kB 
+[2022-12-02 17:21:35]: Added  : "mid\music2.mid" 6 kB 
+[2022-12-02 17:21:35]: Added  : "mid\music3.mid" 4 kB 
+[2022-12-02 17:21:35]: Added  : "MineSweeperTetris.exe" 582 kB 
+[2022-12-02 17:21:35]: Added  : "steam_api.dll" 260 kB 
+[2022-12-02 17:21:35]: Added  : "wav" 0 kB ,Flags: 64
+[2022-12-02 17:21:35]: Added  : "wav\Error.wav" 22 kB 
+[2022-12-02 17:21:35]: Added  : "wav\Flag.wav" 10 kB 
+[2022-12-02 17:21:35]: Added  : "wav\Left.wav" 1 kB 
+[2022-12-02 17:21:35]: Added  : "wav\Lose.wav" 20 kB 
+[2022-12-02 17:21:35]: Added  : "wav\New.wav" 30 kB 
+[2022-12-02 17:21:35]: Added  : "wav\Right.wav" 1 kB 
+[2022-12-02 17:21:35]: Added  : "wav\Solve.wav" 33 kB 
+[2022-12-02 17:21:35]: Added  : "wav\Win.wav" 63 kB 
+[2022-12-02 17:21:35]: Summary: 56 files added, 0 files changed, 0 files removed
+[2022-12-02 17:21:36]: Uploading new manifest to 208.64.201.169:80 (handle 8613297609578780385, 6177 bytes).
+[2022-12-02 17:21:37]: Uploading 50 out of 50 missing chunks.
+[2022-12-02 17:21:43]: Success! New manifestID 7465665703353917211 created and 50 new chunks uploaded.
