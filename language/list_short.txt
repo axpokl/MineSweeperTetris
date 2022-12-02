@@ -24,6 +24,6 @@ sv
 th
 tr
 uk
-vn
+vi
 zh-CN
 zh-TW
