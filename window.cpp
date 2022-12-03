@@ -85,6 +85,12 @@ public:
     long helpi = 0;
     bool cheatb = false;
     bool waitb = false;
+    pbitmap pwin;
+    const long minh = 600;
+    const long minw = 800;
+    long mult = 1;
+    long w_ = 0;
+    long h_ = 0;
 
     Window();
     void initwindow();
@@ -122,11 +128,17 @@ public:
 Window::Window()
 {
     initwindow();
+    bd.maxbdw = (getscrwidth()) / 16 - 1;
+    bd.maxbdh = (getscrheight() - menuh - faceh) / 16 - 1;
 }
 
 void Window::initwindow()
 {
-    createwin(launchw, launchh, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    mult = max(1, min(getscrwidth() / minw, getscrheight() / minh));
+    w_ = launchw;
+    h_ = launchh;
+    createwin(w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    pwin = createbmp(w_, h_);
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE));
@@ -141,7 +153,8 @@ void Window::initwindow(bool b)
     switch (helpi)
     {
         case -1:
-            setsize(aboutw, abouth + menuh);
+            w_ = aboutw;
+            h_ = abouth + menuh;
             break;
         case 0:
             if (b)
@@ -149,13 +162,20 @@ void Window::initwindow(bool b)
                 bd.mode = 0;
                 bd.initbd();
             }
-            setsize(bd.w * iconw, bd.h * iconh + faceh + menuh);
+            w_ = bd.w * iconw;
+            h_ = bd.h * iconh + faceh + menuh;
             break;
         default:
-            setsize(helpw, helph + menuh);
+
+            w_ = helpw;
+            h_ = helph + menuh;
             break;
     }
-    setpos(max(0, (getscrwidth() - getwidth() - getborderwidth() * 2) / 2), max(0, (getscrheight() - getheight() - getborderheight() * 2 - getbordertitle()) / 2));
+    mult = max(1, min(getscrwidth() / max(minw, w_), getscrheight() / max(minh, h_)));
+    setsize(w_ * mult, h_ * mult);
+    releasebmp(pwin);
+    pwin = createbmp(w_, h_);
+    setpos(max(0, (getscrwidth() - w_ * mult - getborderwidth() * 2) / 2), max(0, (getscrheight() - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2));
     paintevent();
 }
 
@@ -253,11 +273,11 @@ void Window::initbmp()
 
 void Window::paintmenu()
 {
-    drawbmp(pmenua[(helpi == -1)], (getwidth() - 1 * menuw), 0, menuw, menuh);
-    drawbmp(pmenuq[(helpi >= +1)], (getwidth() - 2 * menuw), 0, menuw, menuh);
-    drawbmp(pmenud[(helpi == -2)], (getwidth() - 3 * menuw), 0, menuw, menuh);
-    drawbmp(pmenum[bd.sd.musicb], (getwidth() - 4 * menuw), 0, menuw, menuh);
-    drawbmp(pmenus[bd.sd.soundb], (getwidth() - 5 * menuw), 0, menuw, menuh);
+    drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
+    drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenud[(helpi == -2)], (w_ - 3 * menuw), 0, menuw, menuh);
+    drawbmp(pmenum[bd.sd.musicb], (w_ - 4 * menuw), 0, menuw, menuh);
+    drawbmp(pmenus[bd.sd.soundb], (w_ - 5 * menuw), 0, menuw, menuh);
     drawbmp(pmenu1[(bd.mode == 1)], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu2[(bd.mode == 2)], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu3[(bd.mode == 3)], 2 * menuw, 0, menuw, menuh);
@@ -274,7 +294,7 @@ void Window::paintface()
     {
         facei++;
     }
-    drawbmp(pface[face__[facei]], (getwidth() - facew) / 2, menuh, facew, faceh);
+    drawbmp(pface[face__[facei]], (w_ - facew) / 2, menuh, facew, faceh);
 }
 
 void Window::paintnumber(long n, long l, long x, long y, long w, long h)
@@ -340,11 +360,11 @@ void Window::paintlevel()
     }
     if (bd.level < 100)
     {
-        paintnumber(bd.level, 2, getwidth() - 2 * digtw, menuh);
+        paintnumber(bd.level, 2, w_ - 2 * digtw, menuh);
     }
     else
     {
-        paintnumber(bd.level, 3, getwidth() - 3 * digtw, menuh);
+        paintnumber(bd.level, 3, w_ - 3 * digtw, menuh);
     }
 }
 
@@ -944,6 +964,7 @@ void Window::painthelp()
 
 void Window::painttitle(long load)
 {
+    clear();
     if (load < 0)
     {
         ptitle_ = loadbmp("./bmp/title.png");
@@ -956,6 +977,11 @@ void Window::painttitle(long load)
         drawtextxy(getwin(), bd.st.lan.getlan(load), 0, fontth + titleh - titleh / 16, launchw, fontfh, black, cbg);
     }
     setfontheight(fonth);
+    if (mult > 1)
+    {
+        drawbmp(getwin(), pwin, 0, 0, w_, h_, 0, 0, w_, h_);
+        drawbmp(pwin, getwin(), 0, 0, w_ * mult, h_ * mult);
+    }
     freshwin();
 }
 
@@ -972,6 +998,11 @@ void Window::paintevent()
         paintface();
         paintlevel();
         paintboard();
+    }
+    if (mult > 1)
+    {
+        drawbmp(getwin(), pwin, 0, 0, w_, h_, 0, 0, w_, h_);
+        drawbmp(pwin, getwin(), 0, 0, w_ * mult, h_ * mult);
     }
     freshwin();
 }
@@ -1032,6 +1063,8 @@ void Window::savescr()
 
 void Window::mouseevent(long ex, long ey, long eb)
 {
+    ex /= mult;
+    ey /= mult;
     long x;
     long y;
     if (ey < menuh)
@@ -1042,9 +1075,9 @@ void Window::mouseevent(long ex, long ey, long eb)
             bd.initbd(ex / menuw + 1);
             initwindow(false);
         }
-        else if (ex > getwidth() - 5 * menuw)
+        else if (ex > w_ - 5 * menuw)
         {
-            switch ((ex - (getwidth() - 5 * menuw)) / menuw)
+            switch ((ex - (w_ - 5 * menuw)) / menuw)
             {
                 case 0:
                     bd.sd.switchsound();
@@ -1068,7 +1101,7 @@ void Window::mouseevent(long ex, long ey, long eb)
     {
         if (ey - menuh < faceh)
         {
-            if ((ex > ((getwidth() - facew) / 2)) && (ex < ((getwidth() + facew) / 2)))
+            if ((ex > ((w_ - facew) / 2)) && (ex < ((w_ + facew) / 2)))
             {
                 if (eb == k_lmouse)
                 {

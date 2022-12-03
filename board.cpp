@@ -27,6 +27,9 @@ public:
     long rx;
     long ry;
 
+    long maxbdw;
+    long maxbdh;
+
     Board();
     void initbd();
     void initbd(long w_, long h_, long maskj_, long n_);
@@ -59,9 +62,9 @@ public:
         long blcky[8];
     };
     rule ruletemp;
-    rule rulemain[10000];
+    rule rulemain[16384];
     int rulemainc;
-    long blckrule[100][100];
+    long blckrule[128][128];
     void createrule();
     void comparerule2(long rule1, long rule2);
     void comparerule();
@@ -80,8 +83,8 @@ void Board::initbd()
     sit = 0;
     line = 0;
     level = 0;
-    w = min(max(w, 12), 100);
-    h = min(max(h, 8), 100);
+    w = min(max(w, 12), min(128, maxbdw));
+    h = min(max(h, 8), min(128, maxbdh));
     n = max(1, min(n, w - 1));
     maskj = min(h - 4, maskj0);
     maski = 0;

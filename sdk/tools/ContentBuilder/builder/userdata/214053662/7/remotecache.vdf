@@ -1,6 +1,6 @@
 "7"
 {
-	"ChangeNumber"		"-5231923997415371649"
+	"ChangeNumber"		"-4416938960095354165"
 	"ostype"		"13"
 	"serverbrowser_hist.vdf"
 	{
@@ -17,11 +17,11 @@
 	"sharedconfig.vdf"
 	{
 		"root"		"0"
-		"size"		"29605"
-		"localtime"		"1669973511"
-		"time"		"1669973511"
-		"remotetime"		"1669973511"
-		"sha"		"831d1d5d60af5d3be7c17fbdbe5e1e9ad8b902d8"
+		"size"		"29627"
+		"localtime"		"1669984879"
+		"time"		"1669984878"
+		"remotetime"		"1669984879"
+		"sha"		"20c77a6f69567e36e6306cf8d12b0779565f6a2f"
 		"syncstate"		"1"
 		"persiststate"		"0"
 		"platformstosync2"		"-1"

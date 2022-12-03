@@ -830,3 +830,19 @@
 [2022-12-02 19:32:46] Requesting 6 apps, 1 packages (full data, 1024 prev attempts)
 [2022-12-02 19:32:46] UpdatesJob: finished OK, apps updated 11 (1309 KB), packages updated 1 (0 KB)
 [2022-12-02 19:32:51] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4278392 bytes)
+
+
+[2022-12-03 08:57:39] RequestAppInfoUpdate: AppIDs 7
+[2022-12-03 08:57:39] Packages changed: 107973=16939275,136710=16939275,141097=16939275,147499=16939275,151396=16939275,
+[2022-12-03 08:57:39] Apps changed: force all
+[2022-12-03 08:57:39] Change number 16935090->16942694, apps: 0/0, packages: 5/977
+[2022-12-03 08:57:39] Requesting 695 apps, 6 packages (meta data, 1024 prev attempts)
+[2022-12-03 08:57:40] Requested 70 app access tokens, 61 received, 9 denied
+[2022-12-03 08:57:40] Updated SHAs with 61 new access tokens
+[2022-12-03 08:57:41] Downloaded 10 apps via HTTP, 261 KB (70 KB compressed)
+[2022-12-03 08:57:41] Requesting 8 apps, 1 packages (full data, 1024 prev attempts)
+[2022-12-03 08:57:41] UpdatesJob: finished OK, apps updated 18 (307 KB), packages updated 1 (0 KB)
+[2022-12-03 08:57:46] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4282231 bytes)
+
+
+[2022-12-03 08:57:49] Starting async write C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4282231 bytes)

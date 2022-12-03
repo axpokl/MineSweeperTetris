@@ -14,12 +14,12 @@ public:
     long tx;
     long ty;
 
-    bool flag[100][100];
-    bool qstn[100][100];
-    bool mine[100][100];
-    bool blck[100][100];
-    bool mask[100][100];
-    long numb[100][100];
+    bool flag[128][128];
+    bool qstn[128][128];
+    bool mine[128][128];
+    bool blck[128][128];
+    bool mask[128][128];
+    long numb[128][128];
 
     Block();
     void initbl();

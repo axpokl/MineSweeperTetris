@@ -38,6 +38,12 @@
 -去除steamid
 
 
+换皮肤
+变大
+开始菜单
+-标问号消行
+
+
 At present, most of the functions of the game have been completed:
 1. The rules and basic concept
 2. Three standard mode

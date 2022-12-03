@@ -2478,6 +2478,7 @@
 				"SteamDefaultDialog"		"#app_store"
 				"ShowScreenshotManager"		"0"
 				"CloudEnabled"		"1"
+				"SSAVersion"		"3"
 			}
 		}
 	}
