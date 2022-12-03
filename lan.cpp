@@ -25,6 +25,7 @@ public:
     long LAN_LOAD_BOARD = 12;
     long LAN_LOAD_GRAPH = 13;
     long LAN_LOAD_WINDOW = 14;
+    long LAN_HELP = 15;
 
     Lan();
     const char* getsyslan();

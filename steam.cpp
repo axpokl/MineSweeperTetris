@@ -328,30 +328,33 @@ void Steam::getlead()
             {
                 loadlead(leadid);
             }
-            lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 7);
-            if (waitlead(leadid, 3))
+            if (leadb[leadid] != 0)
             {
-                SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
-                leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
-                leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                for (long k = 0; k < 7; k++)
+                lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 7);
+                if (waitlead(leadid, 3))
                 {
-                    SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
+                    SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+                    leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+                    leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+                    for (long k = 0; k < 7; k++)
+                    {
+                        SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
+                    }
                 }
-            }
-            if (leadb[leadid] == 0)
-            {
-                loadlead(leadid);
-            }
-            lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -3, 3);
-            if (waitlead(leadid, 3))
-            {
-                SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
-                leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
-                leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                for (long k = 0; k < 7; k++)
+                if (leadb[leadid] == 0)
                 {
-                    SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
+                    loadlead(leadid);
+                }
+                lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -3, 3);
+                if (waitlead(leadid, 3))
+                {
+                    SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+                    leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+                    leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+                    for (long k = 0; k < 7; k++)
+                    {
+                        SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
+                    }
                 }
             }
         }
@@ -370,11 +373,14 @@ void Steam::setlead(long val, long mode)
             {
                 loadlead(leadid);
             }
-            lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
-            if (waitlead(leadid, 3))
+            if (leadb[leadid] != 0)
             {
-                SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
-                leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
+                lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
+                if (waitlead(leadid, 3))
+                {
+                    SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
+                    leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
+                }
             }
         }
     }

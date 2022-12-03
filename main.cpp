@@ -30,7 +30,7 @@ int main()
         w.painttitle(w.bd.st.lan.LAN_LOAD_GRAPH);
         w.initbmp();
         w.painttitle(w.bd.st.lan.LAN_LOAD_WINDOW);
-        w.initwindow(false);
+        w.sethelp(1);
         while (iswin())
         {
             w.doaction();

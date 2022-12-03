@@ -566,10 +566,67 @@ void Window::painthelp()
                     line(0, menuh + faceh, helpw, 0, cfg);
                     line(0, menuh + faceh + fontsh * 7, helpw, 0, cfg);
                     line(0, menuh + faceh + fontsh * 14, helpw, 0, cfg);
+                    break;
                 }
-                break;
             }
         case 1:
+            {
+                setfontheight(faceh);
+                pbitmap pmenu__[12] = {pface[5], pface[6], pmenuq[0], pmenua[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
+                const char* keys[12] = {"Q / ESC", "P / F12", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "N / F6", "Space", "1", "2", "3"};
+                const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
+                const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
+                long cheatc[8] = {blue, blue, blue, blue, red, blue, red, red};
+                long helph__ = (helph - okh_ - faceh * 12 - iconh * 11 / 2) / 2;
+                long helpw__ = iconw;
+                for (long k = 0; k < 12; k++)
+                {
+                    drawbmp(pmenu__[k], helpw__, faceh * k + iconh * k / 2 + helph__ + menuh, facew, faceh, cfg);
+                    drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, faceh * k + iconh * k / 2 + helph__ + menuh, black, cbg);
+                }
+                if (!cheatb)
+                {
+                    for (long k = 0; k < 12; k++)
+                    {
+                        drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + k), helpw / 4, faceh * k + iconh * k / 2 + helph__ + menuh, helpw / 4, faceh, black, cbg, DT_LEFT);
+                    }
+                }
+                else
+                {
+                    for (long k = 0; k < 8; k++)
+                    {
+                        drawtextxy(getwin(), cheatn[k], helpw / 4, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
+                        drawtextxy(getwin(), cheats[k], helpw / 4 + facew, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
+                    }
+                }
+                line(helpw / 2, menuh, 0, helph - okh_, cfg);
+                for (long k = 0; k < 12; k++)
+                {
+                    paintline(piconn, piconc, 2, 10, (helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * (k + 8));
+                }
+                drawtextxy(getwin(), "PgUp", (helpw * 3 / 2 - getstringwidth("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, red, cbg);
+                drawtextxy(getwin(), "PgDn", (helpw * 3 / 2 - getstringwidth("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, blue, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cbg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cbg);
+                drawbmp(parrowm, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowp, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowu, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
+                drawbmp(parrowd, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cfg);
+                drawbmp(parrowl, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowr, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 0 - 1, iconw * 12, 0, black);
+                line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - 1, iconw * 12, 0, black);
+                line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - 1, iconw * 12, 0, black);
+                line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 0 - 1, (helph - okh_ - iconh * 20) / 2 + menuh, 0, iconh * 20, black);
+                line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - 1, (helph - okh_ - iconh * 4) / 2 + menuh, 0, iconh * 12, black);
+                line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - 1, (helph - okh_ - iconh * 20) / 2 + menuh, 0, iconh * 20, black);
+                break;
+            }
+        case 2:
             {
                 for (long j = 0; j < 3; j++)
                 {
@@ -644,7 +701,7 @@ void Window::painthelp()
                 }
                 break;
             }
-        case 2:
+        case 3:
             {
                 for (long j = 0; j < 3; j++)
                 {
@@ -756,7 +813,7 @@ void Window::painthelp()
                 }
                 break;
             }
-        case 3:
+        case 4:
             {
                 long iconwl = 5;
                 long iconwm = iconwl + 13;
@@ -790,7 +847,7 @@ void Window::painthelp()
                 line(0, menuh + iconh * (iconh3 - 2) + iconh / 2, helpw, 0, cfg);
                 break;
             }
-        case 4:
+        case 5:
             {
                 long iconwl = 3;
                 long iconwm = iconwl + 13;
@@ -845,9 +902,9 @@ void Window::painthelp()
                 }
                 line(helpw / 3 * 1, menuh + iconh * (iconh4 - 2), 0, helph - okh_ - iconh * (iconh4 - 2), cfg);
                 line(helpw / 3 * 2, menuh + iconh * (iconh4 - 2), 0, helph - okh_ - iconh * (iconh4 - 2), cfg);
+                break;
             }
-            break;
-        case 5:
+        case 6:
             {
                 for (long i = 0; i < 32; i++)
                 {
@@ -880,60 +937,6 @@ void Window::painthelp()
                 line(iconw * 4 + iconw * 0 - 1, iconh / 2 + menuh, 0, iconh * 24, black);
                 break;
             }
-        case 6:
-            {
-                setfontheight(faceh);
-                pbitmap pmenu__[12] = {pface[5], pface[6], pmenuq[0], pmenua[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
-                const char* keys[12] = {"Q / ESC", "P / F12", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "N / F6", "Space", "1", "2", "3"};
-                const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
-                const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
-                long cheatc[8] = {blue, blue, blue, blue, red, blue, red, red};
-                long helph__ = (helph - okh_ - faceh * 12 - iconh * 11 / 2) / 2;
-                long helpw__ = helpw / 6;
-                if (cheatb)
-                {
-                    helpw__ = iconw;
-                }
-                for (long k = 0; k < 12; k++)
-                {
-                    drawbmp(pmenu__[k], helpw__, faceh * k + iconh * k / 2 + helph__ + menuh, facew, faceh, cfg);
-                    drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, faceh * k + iconh * k / 2 + helph__ + menuh, black, cbg);
-                }
-                if (cheatb)
-                {
-                    for (long k = 0; k < 8; k++)
-                    {
-                        drawtextxy(getwin(), cheats[k], helpw / 4 + facew, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
-                        drawtextxy(getwin(), cheatn[k], helpw / 4, faceh * k + iconh * k / 2 + helph__ + menuh, cheatc[k], cbg);
-                    }
-                }
-                line(helpw / 2, menuh, 0, helph - okh_, cfg);
-                for (long k = 0; k < 12; k++)
-                {
-                    paintline(piconn, piconc, 2, 10, (helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * (k + 8));
-                }
-                drawtextxy(getwin(), "PgUp", (helpw * 3 / 2 - getstringwidth("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, red, cbg);
-                drawtextxy(getwin(), "PgDn", (helpw * 3 / 2 - getstringwidth("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, blue, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cbg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cbg);
-                drawbmp(parrowm, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowp, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowu, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
-                drawbmp(parrowd, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cfg);
-                drawbmp(parrowl, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowr, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 0 - 1, iconw * 12, 0, black);
-                line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - 1, iconw * 12, 0, black);
-                line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - 1, iconw * 12, 0, black);
-                line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 0 - 1, (helph - okh_ - iconh * 20) / 2 + menuh, 0, iconh * 20, black);
-                line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - 1, (helph - okh_ - iconh * 4) / 2 + menuh, 0, iconh * 12, black);
-                line((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - 1, (helph - okh_ - iconh * 20) / 2 + menuh, 0, iconh * 20, black);
-            }
-            break;
     }
     if (helpi == -1)
     {
