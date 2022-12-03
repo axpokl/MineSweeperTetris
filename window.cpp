@@ -150,125 +150,131 @@ void Window::initwindow()
 
 void Window::initwindow(bool b)
 {
-    switch (helpi)
+    if (iswin())
     {
-        case -1:
-            w_ = aboutw;
-            h_ = abouth + menuh;
-            break;
-        case 0:
-            if (b)
-            {
-                bd.mode = 0;
-                bd.initbd();
-            }
-            w_ = bd.w * iconw;
-            h_ = bd.h * iconh + faceh + menuh;
-            break;
-        default:
+        switch (helpi)
+        {
+            case -1:
+                w_ = aboutw;
+                h_ = abouth + menuh;
+                break;
+            case 0:
+                if (b)
+                {
+                    bd.mode = 0;
+                    bd.initbd();
+                }
+                w_ = bd.w * iconw;
+                h_ = bd.h * iconh + faceh + menuh;
+                break;
+            default:
 
-            w_ = helpw;
-            h_ = helph + menuh;
-            break;
+                w_ = helpw;
+                h_ = helph + menuh;
+                break;
+        }
+        mult = max(1, min(getscrwidth() / max(minw, w_), getscrheight() / max(minh, h_)));
+        setsize(w_ * mult, h_ * mult);
+        releasebmp(pwin);
+        pwin = createbmp(w_, h_);
+        setpos(max(0, (getscrwidth() - w_ * mult - getborderwidth() * 2) / 2), max(0, (getscrheight() - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2));
+        paintevent();
     }
-    mult = max(1, min(getscrwidth() / max(minw, w_), getscrheight() / max(minh, h_)));
-    setsize(w_ * mult, h_ * mult);
-    releasebmp(pwin);
-    pwin = createbmp(w_, h_);
-    setpos(max(0, (getscrwidth() - w_ * mult - getborderwidth() * 2) / 2), max(0, (getscrheight() - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2));
-    paintevent();
 }
 
 void Window::initbmp()
 {
-    pmenu_ = loadbmp("./bmp/menu.bmp");
-    pface_ = loadbmp("./bmp/face.bmp");
-    picon_ = loadbmp("./bmp/icon.bmp");
-    pdigit_ = loadbmp("./bmp/digt.bmp");
-    pok_ = loadbmp("./bmp/ok.bmp");
-    pcursor_ = loadbmp("./bmp/cursor.bmp");
-    pclick_ = loadbmp("./bmp/click.bmp");
-    parrow_ = loadbmp("./bmp/arrow.bmp");
-    for (long i = 0; i < 2; i++)
+    if (iswin())
     {
-        pmenu1[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenu1[i], menuw * i, 0 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenu2[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenu2[i], menuw * i, 1 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenu3[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenu3[i], menuw * i, 2 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenuq[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenuq[i], menuw * i, 3 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenua[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenua[i], menuw * i, 4 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenus[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenus[i], menuw * i, 5 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenum[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenum[i], menuw * i, 6 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-        pmenud[i] = createbmp(menuw, menuh);
-        drawbmp(pmenu_, pmenud[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        pmenu_ = loadbmp("./bmp/menu.bmp");
+        pface_ = loadbmp("./bmp/face.bmp");
+        picon_ = loadbmp("./bmp/icon.bmp");
+        pdigit_ = loadbmp("./bmp/digt.bmp");
+        pok_ = loadbmp("./bmp/ok.bmp");
+        pcursor_ = loadbmp("./bmp/cursor.bmp");
+        pclick_ = loadbmp("./bmp/click.bmp");
+        parrow_ = loadbmp("./bmp/arrow.bmp");
+        for (long i = 0; i < 2; i++)
+        {
+            pmenu1[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenu1[i], menuw * i, 0 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenu2[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenu2[i], menuw * i, 1 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenu3[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenu3[i], menuw * i, 2 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenuq[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenuq[i], menuw * i, 3 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenua[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenua[i], menuw * i, 4 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenus[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenus[i], menuw * i, 5 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenum[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenum[i], menuw * i, 6 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            pmenud[i] = createbmp(menuw, menuh);
+            drawbmp(pmenu_, pmenud[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+        }
+        for (long i = 0; i < 7; i++)
+        {
+            pface[i] = createbmp(facew, faceh);
+            drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
+        }
+        piconc = createbmp(iconw, iconh);
+        drawbmp(picon_, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
+        piconf = createbmp(iconw, iconh);
+        drawbmp(picon_, piconf, 0, iconh * 1, iconw, iconh, 0, 0, iconw, iconh);
+        piconq = createbmp(iconw, iconh);
+        drawbmp(picon_, piconq, 0, iconh * 2, iconw, iconh, 0, 0, iconw, iconh);
+        piconm = createbmp(iconw, iconh);
+        drawbmp(picon_, piconm, 0, iconh * 3, iconw, iconh, 0, 0, iconw, iconh);
+        picone = createbmp(iconw, iconh);
+        drawbmp(picon_, picone, 0, iconh * 4, iconw, iconh, 0, 0, iconw, iconh);
+        piconn = createbmp(iconw, iconh);
+        drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
+        piconp = createbmp(iconw, iconh);
+        for (long i = 0; i <= 10; i++)
+        {
+            picon[i] = createbmp(iconw, iconh);
+            drawbmp(picon_, picon[i], 0, (17 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
+        }
+        drawbmp(picon_, piconp, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
+        picona = createbmp(iconw, iconh);
+        drawbmp(picon_, picona, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
+        piconu = createbmp(iconw, iconh);
+        drawbmp(picon_, piconu, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
+        picont = createbmp(iconw, iconh);
+        drawbmp(picon_, picont, 0, iconh * 19, iconw, iconh, 0, 0, iconw, iconh);
+        for (long i = 0; i < 10; i++)
+        {
+            pdigit[i] = createbmp(digtw, digth);
+            drawbmp(pdigit_, pdigit[i], 0, (11 - i) * digth, digtw, digth, 0, 0, digtw, digth);
+        }
+        pdigitmin = createbmp(digtw, digth);
+        drawbmp(pdigit_, pdigitmin, 0, 0, digtw, digth, 0, 0, digtw, digth);
+        pdigitnul = createbmp(digtw, digth);
+        drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
+        pok = createbmp(okw, okh);
+        drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
+        pbtn = createbmp(btnw, btnh);
+        drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
+        pclickl = createbmp(clickw, clickh);
+        drawbmp(pclick_, pclickl, 0, clickh * 0, clickw, clickh, 0, 0, clickw, clickh);
+        pclickr = createbmp(clickw, clickh);
+        drawbmp(pclick_, pclickr, 0, clickh * 1, clickw, clickh, 0, 0, clickw, clickh);
+        pclickn = createbmp(clickw, clickh);
+        drawbmp(pclick_, pclickn, 0, clickh * 2, clickw, clickh, 0, 0, clickw, clickh);
+        parrowl = createbmp(arroww, arrowh);
+        drawbmp(parrow_, parrowl, 0, arrowh * 0, arroww, arrowh, 0, 0, arroww, arrowh);
+        parrowr = createbmp(arroww, arrowh);
+        drawbmp(parrow_, parrowr, 0, arrowh * 1, arroww, arrowh, 0, 0, arroww, arrowh);
+        parrowu = createbmp(arroww, arrowh);
+        drawbmp(parrow_, parrowu, 0, arrowh * 2, arroww, arrowh, 0, 0, arroww, arrowh);
+        parrowd = createbmp(arroww, arrowh);
+        drawbmp(parrow_, parrowd, 0, arrowh * 3, arroww, arrowh, 0, 0, arroww, arrowh);
+        parrowm = createbmp(arroww, arrowh);
+        drawbmp(parrow_, parrowm, 0, arrowh * 4, arroww, arrowh, 0, 0, arroww, arrowh);
+        parrowp = createbmp(arroww, arrowh);
+        drawbmp(parrow_, parrowp, 0, arrowh * 5, arroww, arrowh, 0, 0, arroww, arrowh);
     }
-    for (long i = 0; i < 7; i++)
-    {
-        pface[i] = createbmp(facew, faceh);
-        drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
-    }
-    piconc = createbmp(iconw, iconh);
-    drawbmp(picon_, piconc, 0, iconh * 0, iconw, iconh, 0, 0, iconw, iconh);
-    piconf = createbmp(iconw, iconh);
-    drawbmp(picon_, piconf, 0, iconh * 1, iconw, iconh, 0, 0, iconw, iconh);
-    piconq = createbmp(iconw, iconh);
-    drawbmp(picon_, piconq, 0, iconh * 2, iconw, iconh, 0, 0, iconw, iconh);
-    piconm = createbmp(iconw, iconh);
-    drawbmp(picon_, piconm, 0, iconh * 3, iconw, iconh, 0, 0, iconw, iconh);
-    picone = createbmp(iconw, iconh);
-    drawbmp(picon_, picone, 0, iconh * 4, iconw, iconh, 0, 0, iconw, iconh);
-    piconn = createbmp(iconw, iconh);
-    drawbmp(picon_, piconn, 0, iconh * 5, iconw, iconh, 0, 0, iconw, iconh);
-    piconp = createbmp(iconw, iconh);
-    for (long i = 0; i <= 10; i++)
-    {
-        picon[i] = createbmp(iconw, iconh);
-        drawbmp(picon_, picon[i], 0, (17 - 1 - i) * iconh, iconw, iconh, 0, 0, iconw, iconh);
-    }
-    drawbmp(picon_, piconp, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
-    picona = createbmp(iconw, iconh);
-    drawbmp(picon_, picona, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
-    piconu = createbmp(iconw, iconh);
-    drawbmp(picon_, piconu, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
-    picont = createbmp(iconw, iconh);
-    drawbmp(picon_, picont, 0, iconh * 19, iconw, iconh, 0, 0, iconw, iconh);
-    for (long i = 0; i < 10; i++)
-    {
-        pdigit[i] = createbmp(digtw, digth);
-        drawbmp(pdigit_, pdigit[i], 0, (11 - i) * digth, digtw, digth, 0, 0, digtw, digth);
-    }
-    pdigitmin = createbmp(digtw, digth);
-    drawbmp(pdigit_, pdigitmin, 0, 0, digtw, digth, 0, 0, digtw, digth);
-    pdigitnul = createbmp(digtw, digth);
-    drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
-    pok = createbmp(okw, okh);
-    drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
-    pbtn = createbmp(btnw, btnh);
-    drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
-    pclickl = createbmp(clickw, clickh);
-    drawbmp(pclick_, pclickl, 0, clickh * 0, clickw, clickh, 0, 0, clickw, clickh);
-    pclickr = createbmp(clickw, clickh);
-    drawbmp(pclick_, pclickr, 0, clickh * 1, clickw, clickh, 0, 0, clickw, clickh);
-    pclickn = createbmp(clickw, clickh);
-    drawbmp(pclick_, pclickn, 0, clickh * 2, clickw, clickh, 0, 0, clickw, clickh);
-    parrowl = createbmp(arroww, arrowh);
-    drawbmp(parrow_, parrowl, 0, arrowh * 0, arroww, arrowh, 0, 0, arroww, arrowh);
-    parrowr = createbmp(arroww, arrowh);
-    drawbmp(parrow_, parrowr, 0, arrowh * 1, arroww, arrowh, 0, 0, arroww, arrowh);
-    parrowu = createbmp(arroww, arrowh);
-    drawbmp(parrow_, parrowu, 0, arrowh * 2, arroww, arrowh, 0, 0, arroww, arrowh);
-    parrowd = createbmp(arroww, arrowh);
-    drawbmp(parrow_, parrowd, 0, arrowh * 3, arroww, arrowh, 0, 0, arroww, arrowh);
-    parrowm = createbmp(arroww, arrowh);
-    drawbmp(parrow_, parrowm, 0, arrowh * 4, arroww, arrowh, 0, 0, arroww, arrowh);
-    parrowp = createbmp(arroww, arrowh);
-    drawbmp(parrow_, parrowp, 0, arrowh * 5, arroww, arrowh, 0, 0, arroww, arrowh);
 }
 
 void Window::paintmenu()
