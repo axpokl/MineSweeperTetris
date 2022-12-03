@@ -88,7 +88,7 @@ public:
     pbitmap pwin;
     const long minh = 600;
     const long minw = 800;
-    long mult = 1;
+    double mult = 1;
     long w_ = 0;
     long h_ = 0;
 
@@ -134,7 +134,8 @@ Window::Window()
 
 void Window::initwindow()
 {
-    mult = max(1, min(getscrwidth() / minw, getscrheight() / minh));
+    mult = max((double)1, min((double)getscrwidth() / (double)minw, (double)getscrheight() / (double)minh));
+    mult = (double)((int)(mult * 2) / (int)1) / (double)2;
     w_ = launchw;
     h_ = launchh;
     createwin(w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
@@ -173,7 +174,8 @@ void Window::initwindow(bool b)
                 h_ = helph + menuh;
                 break;
         }
-        mult = max(1, min(getscrwidth() / max(minw, w_), getscrheight() / max(minh, h_)));
+        mult = max(1, min((double)getscrwidth() / max((double)minw, (double)w_), (double)getscrheight() / max((double)minh, (double)h_)));
+        mult = (double)((int)(mult * 2) / (int)1) / (double)2;
         setsize(w_ * mult, h_ * mult);
         releasebmp(pwin);
         pwin = createbmp(w_, h_);

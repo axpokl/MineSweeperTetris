@@ -70,6 +70,8 @@ public:
         "1_TOP", "2_TOP", "3_TOP"
     };
     SteamAPICall_t lead[3];
+    SteamAPICall_t lead1[3];
+    SteamAPICall_t lead2[3];
     LeaderboardFindResult_t leadr[3];
     LeaderboardScoreUploaded_t leadu[3];
     LeaderboardScoresDownloaded_t leadd[3];
@@ -79,6 +81,7 @@ public:
     bool leadfailed = true;
     LeaderboardEntry_t leadsg[3][7];
     LeaderboardEntry_t leadsu[3][7];
+    double waittime = 5;
 
     Steam();
     ~Steam();
@@ -97,10 +100,11 @@ public:
     void compscr(long val, long mode);
 
     void loadlead();
-    void loadlead(long leadid);
     void getlead();
     void setlead(long val, long mode);
-    bool waitlead(long leadid, double waittime);
+    bool waitlead(long leadid);
+    bool waitlead();
+    bool waitlead_();
 
 };
 
@@ -300,20 +304,15 @@ void Steam::loadlead()
     {
         for (long leadid = 0; leadid < leadn; leadid++)
         {
-            loadlead(leadid);
+            lead[leadid] = SteamUserStats()->FindLeaderboard(leads[leadid]);
         }
-    }
-}
-
-void Steam::loadlead(long leadid)
-{
-    if (steamb)
-    {
-        lead[leadid] = SteamUserStats()->FindLeaderboard(leads[leadid]);
-        if (waitlead(leadid, 5))
+        if (waitlead())
         {
-            SteamUtils()->GetAPICallResult(lead[leadid], &leadr[leadid], sizeof(leadr[leadid]), leadr[leadid].k_iCallback, &leadfailed);
-            leadb[leadid] = leadr[leadid].m_hSteamLeaderboard;
+            for (long leadid = 0; leadid < leadn; leadid++)
+            {
+                SteamUtils()->GetAPICallResult(lead[leadid], &leadr[leadid], sizeof(leadr[leadid]), leadr[leadid].k_iCallback, &leadfailed);
+                leadb[leadid] = leadr[leadid].m_hSteamLeaderboard;
+            }
         }
     }
 }
@@ -322,39 +321,36 @@ void Steam::getlead()
 {
     if (steamb)
     {
+        if (leadb[0] == 0 || leadb[1] == 0 || leadb[2] == 0)
+        {
+            loadlead();
+        }
         for (long leadid = 0; leadid < leadn; leadid++)
         {
-            if (leadb[leadid] == 0)
-            {
-                loadlead(leadid);
-            }
             if (leadb[leadid] != 0)
             {
-                lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 7);
-                if (waitlead(leadid, 3))
+                lead1[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 7);
+                lead2[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -3, 3);
+            }
+        }
+        if (waitlead_())
+        {
+            for (long leadid = 0; leadid < leadn; leadid++)
+            {
+                SteamUtils()->GetAPICallResult(lead1[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+                leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+                leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+                for (long k = 0; k < 7; k++)
                 {
-                    SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
-                    leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
-                    leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                    for (long k = 0; k < 7; k++)
-                    {
-                        SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
-                    }
+                    SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
                 }
-                if (leadb[leadid] == 0)
+
+                SteamUtils()->GetAPICallResult(lead2[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+                leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+                leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+                for (long k = 0; k < 7; k++)
                 {
-                    loadlead(leadid);
-                }
-                lead[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -3, 3);
-                if (waitlead(leadid, 3))
-                {
-                    SteamUtils()->GetAPICallResult(lead[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
-                    leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
-                    leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                    for (long k = 0; k < 7; k++)
-                    {
-                        SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
-                    }
+                    SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
                 }
             }
         }
@@ -371,12 +367,12 @@ void Steam::setlead(long val, long mode)
             long leadid = mode - 1;
             if (leadb[leadid] == 0)
             {
-                loadlead(leadid);
+                loadlead();
             }
             if (leadb[leadid] != 0)
             {
                 lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
-                if (waitlead(leadid, 3))
+                if (waitlead(leadid))
                 {
                     SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
                     leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
@@ -386,15 +382,58 @@ void Steam::setlead(long val, long mode)
     }
 }
 
-bool Steam::waitlead(long leadid, double waittime)
+bool Steam::waitlead(long leadid)
 {
     if (steamb)
     {
+        bool waitb = true;
         long time = gettimer();
         while (iswin() && !SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + waittime)))
         {
             delay(1);
         }
-        return SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed);
+        waitb = waitb && SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed);
+        return waitb;
+    }
+}
+
+bool Steam::waitlead()
+{
+    if (steamb)
+    {
+        bool waitb = true;
+        long time = gettimer();
+        for (long leadid = 0; leadid < leadn; leadid++)
+        {
+            while (iswin() && !SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + waittime)))
+            {
+                delay(1);
+            }
+            waitb = waitb && SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed);
+        }
+        return waitb;
+    }
+}
+
+bool Steam::waitlead_()
+{
+    if (steamb)
+    {
+        bool waitb = true;
+        long time = gettimer();
+        for (long leadid = 0; leadid < leadn; leadid++)
+        {
+            while (iswin() && !SteamUtils()->IsAPICallCompleted(lead1[leadid], &leadfailed) && (gettimer() < (time + waittime)))
+            {
+                delay(1);
+            }
+            waitb = waitb && SteamUtils()->IsAPICallCompleted(lead1[leadid], &leadfailed);
+            while (iswin() && !SteamUtils()->IsAPICallCompleted(lead2[leadid], &leadfailed) && (gettimer() < (time + waittime)))
+            {
+                delay(1);
+            }
+            waitb = waitb && SteamUtils()->IsAPICallCompleted(lead2[leadid], &leadfailed);
+        }
+        return waitb;
     }
 }
