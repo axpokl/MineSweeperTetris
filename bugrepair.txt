@@ -1,75 +1,289 @@
-try steam achievement
-separate cpp
-+ checkdie
-+ checkline
-+ solve0
-+ paint and others
+first upload file
+//增加Sound类
+//移动delay(1)位置，仅在需要时delay
 
-board， sound增加构造函数
-checkline移动到addmask
-addmaskbool
-移除drawWindow
-移除checkwindow
-添加nextBlock，只在addmask true情况下paintEvent
-移动delay(1)
+second upload
+//增加sound和music开关
 
-disable steam
-initWindow(b)
+第一次steam版本
+//增加initbd,mode
+//增加addmask
+//增加checkdie
+//定义图片大小，减少硬编码
+//增加doaction
+//窗口样式
+//图标
 
-addline bool
-solve0 before and after check
-long j
-sit != 4
+new big update
+//尝试steam成就
+//拆分类cpp
+//增加checkline
+//修改solve0
+//修改paint and others
 
-SetAchievement
-pausetime
+优化
+//增加board， sound构造函数
+//checkline移动到addmask
+//addmask改成bool（paintevent）
+//移除drawWindow
+//移除checkwindow
+//添加nextBlock，只在addmask true情况下paintEvent
+//移动delay(1)
+
+adjust sound
+//initWindow改为bool（自定义盘面)
+
+checkline addline
+//addline改成bool（checkb）
+//按键后打开所有空白
+//checkline增加long j
+//checkdie检查sit != 4
+
+Achievement
+//SetAchievement
+//增加pausetime
 
 separate paintevent
+//pbitmap改名
+//分离paintevent为多个小函数
 
-change wav and mid
-change display (add loadaudio2)
-+initmusic
-+playmusic
-+checkmusic
+sound update
+//修改wav and mid
+//修改display，添加loadaudio2（midi支持）
+//增加initmusic
+//增加playmusic
+//增加checkmusic
 
-adjust picon
-adjust pmenu
-paintMenu
-paintBoard
-+switchmusic
-+getWindowWidth
- (ex > getWindowWidth() - 4 * menuw)
+//picon改名
+//pmenu改名
+//增加paintMenu
+//增加paintBoard
+//增加switchmusic
+//bd.w * iconw改为getWindowWidth
+//鼠标判定 (ex > getWindowWidth - 4 * menuw)
+
 
 dieb
-diei
-diej
-blck
-piconm
-solveblank sit>0
+//增加dieb（死亡时红雷）
+//solveblank检查sit>0
 
--resizewindow
--getwindowwidth
-code optimze
+resizewindow
+//移除resizewindow
+//移除getwindowwidth改为getwidth
+//移除无用code
 
-i,j,k --> long in function
-qstn[tx][ty] = false;
 
-setflag(x, y, sb);
-setblock(x, y, sb);
-setblock(x, y, sb);
-setflag(x, y, sb);
+board bug fix
+//移除i,j,k全局变量
+//qstn[tx][ty] = false;
+//移除setblock,setflag的bool
+//修改右键主逻辑，4次判断
 
-+winclass
+//增加winclass
 
-separate steam
-randomize
-checkaudio
--steam_appid
+code optmize
+//分离steam
+//增加randomize
+//增加checkaudio，循环播放音乐
+//steam_appid
 
-+blocks
-check error sit !=2
+blocks
+//分离blocks类
+//checkerror判断sit !=2
 
 window_bl
-+initbl
-+calcnumb
-+randmine
+//尝试增加window_bl（尽在需要时draw）
+
+initbl
+//增加initbl（初始化block）
+//增加calcnumb（计算数字）
+//增加randmine
+
+help
+//增加help菜单
+//增加cfg，cbg
+//增加cheati
+//修改music间隔
+//修改typo
+
+about pause
+//help时暂停
+
+paintboard
+//增加btn（OK按钮）
+//增加pclick
+//增加paintboard
+
+help update
+//增加isin
+//增加sethelp
+//增加painthelp，case1
+
+
+painttitle
+//增加painttitle
+//移动painttitle在sound之前
+//修改initwindow
+//增加music3
+
+click_
+//help下增加左右按钮
+//移除代码调整顺序
+
+picon__
+//增加case3
+
+-switch
+//优化paintface代码
+//优化其它代码
+//增加checkr（防止重复右键）
+
+help2
+//修改case2
+//修改case1
+//增加piconu（等号）
+
+help3
+//增加case3
+//增加pmenu系列
+//增加paintline
+//调整盘面最小大小
+
+help4
+//修改initbmp
+//移动addmask
+//调整paintline
+//移除nextblock，checkaudio
+
+//增加maxhelp
+//增加pclickn（无键）
+
+bug fix
+//增加switchsound
+//修复checkdie判断（maskj<0)
+
+digth
+//dight调整为24
+//paintdigit改名paintlevel
+//faceh改名digth
+//board函数修正参数名
+//移除sb判定
+//移除this
+
+help5
+//增加case5
+//增加picon
+//初始level改为0
+
+//picon[2]改为piconn
+//修改cbf，cfg
+//修改sethelp 
+//修改face为6
+//修改maxhelp为6
+
+
+help6
+//增加case6
+//cheati改为cheatb
+//增加case-2
+//调整keys
+
+//修改fontname
+//修改line颜色
+//修改cheat颜色
+//修改title
+//调整音效
+
+//优化code
+//增加parrow
+
+pause sound
+//增加暂停声音
+//增加cheatc
+
+steam ach
+//增加steam成就
+//增加分数统计
+
+ach gen
+//修改成就
+//修改统计
+//继续修改成就统计
+//修改开始页面
+
+scoredead
+//实现分数统计
+//移除delach
+//移动saveacr
+//修改addscr
+
+scr bug workaround
+//解决scr类型不匹配的bug
+
+
+compscr
+//增加compscr
+//增加setscr
+
+ach pic
+//增加成就图片
+//增加mid音乐
+//修改成就顺序
+
+lead
+//增加排行
+//增加截图
+
+local
+//增加本地化
+//增加initlan
+//增加getlan
+//增加msgboxw
+//移除aboutw_
+
+lan local
+//datap改为getlan
+
+ach bug fix
+//增加resetach
+//修复cheat下ach增加不正确bug
+
+adjust winpos
+//修改窗口位置跟精准对称
+
+movie and leadborad
+//增加宣传片
+//增加排行榜
+
+GetDownloadedLeaderboardEntry
+//实现case-2
+//修改GetDownloadedLeaderboardEntry
+//display增加DrawTextXY（Unicode）
+
+utf8 --> utf16
+//增加utf8转utf16
+
+setlead
+//修改setlead
+//增加newrecord
+
+achievement update
+//增加成就本地化
+//修改排行榜更新
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -344,3 +344,33 @@
 [2022-12-03 11:56:44] [Logged On, 4, 3] [U:1:214053662] LogOff()
 [2022-12-03 11:56:44] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2022-12-03 11:56:44] [Logging Off, 0, 3] [U:1:214053662] Log session ended
+
+
+[2022-12-08 19:29:47] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2022-12-08 19:29:47] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2022-12-08 19:29:47] Clearing in-memory token - 1 (OK): set to null
+[2022-12-08 19:29:47] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2022-12-08 19:29:47] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2022-12-08 19:29:47] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2022-12-08 19:29:47] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2022-12-08 19:29:47] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2022-12-08 19:29:47] Connectivity test: OK!
+[2022-12-08 19:29:47] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2022-12-08 19:29:48] GetCMListForConnect -- got 12 Netfilter CMs and 68 WebSocket CMs
+[2022-12-08 19:29:48] GetCMListForConnect -- DC 'tyo2' count: 42
+[2022-12-08 19:29:48] GetCMListForConnect -- DC 'tyo1' count: 22
+[2022-12-08 19:29:48] GetCMListForConnect -- DC 'hkg1' count: 16
+[2022-12-08 19:29:48] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 85% of connections should be websockets, we rolled 99 - using UDP as default.
+[2022-12-08 19:29:48] [Connecting, 4, 2] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, 155.133.245.37:27018, UDP)
+[2022-12-08 19:29:48] [Connecting, 4, 2] [U:1:214053662] ConnectionCompleted() (155.133.245.37:27018, UDP) local address (0.0.0.0:50607)
+[2022-12-08 19:29:48] [Connecting, 4, 2] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2022-12-08 19:29:48] [Connected, 4, 2] [U:1:214053662] Logging on [U:1:214053662]
+[2022-12-08 19:29:48] [Logging On, 4, 2] [U:1:214053662] Using credential pair
+[2022-12-08 19:29:49] [Logging On, 4, 2] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2022-12-08 19:29:49] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:100::671c:3684]:80 ([2404:3fc0:2:100::671c:3684]:80)) - TIMEOUT
+[2022-12-08 19:29:49] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / [2404:3fc0:0:106::670a:7c58]:27019) - SUCCESS
+[2022-12-08 19:29:49] CClientJobGetClientUpdateHosts: cached copy new expiration: Sat Dec 10 20:04:32 2022
+[2022-12-08 19:30:00] [Logged On, 4, 2] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1670499000 seconds ago)
+[2022-12-08 19:30:00] [Logged On, 4, 2] [U:1:214053662] LogOff()
+[2022-12-08 19:30:00] [Logging Off, 4, 2] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2022-12-08 19:30:00] [Logging Off, 0, 2] [U:1:214053662] Log session ended

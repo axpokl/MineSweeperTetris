@@ -18,7 +18,7 @@ public:
     const long okh = 36;
     const long btnw = 36;
     const long btnh = 36;
-    const long aboutw = 320;
+    const long aboutw = 360;
     const long abouth = 240;
     const long helpw = 640;
     const long helph = 480;
