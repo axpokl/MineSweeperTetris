@@ -271,13 +271,51 @@ achievement update
 //增加成就本地化
 //修改排行榜更新
 
+bmp and ach
+//修改排行榜样式数量
+//修改成就及其图片
+//修改统计
 
+-window
+//移除控制台窗口
+//移除printf
+//增加waitb（排行榜灰色按钮）
 
+loadlead
+//增加loadsteam
+//修改waitlead
 
+iswin
+//修复iswin的bug
 
+painttitle
+//main增加painttitle
+//移动language代码位置
+//修改painttitle（增加初始化文本）
+//移除initbmp
 
+font
+//修改字体为默认字体
 
+ok
+//增加OK本地化
+//优化代码（移除_W）
 
+take screenshot
+//增加截图功能
+
+mult
+//增加高分屏适配
+//修改最大棋盘
+
+window not exist while loading
+//修复窗口关闭后程序未退出bug
+
+steam lan help1
+//游戏开始前显示帮助
+
+leadboard fast
+//加快排行榜读取速度
 
 
 
