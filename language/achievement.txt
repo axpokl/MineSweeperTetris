@@ -43,10 +43,10 @@ Score 600 points in a single game
 Minesweeper Master
 Score 1000 points in a single game
 Easy Mine
-Clear 10 lines of mines in total
+Flag 100 mines in total
 Factory of Mine
-Clear 100 lines of mines in total
+Flag 1000 mines in total
 Expert of Mine
-Clear 1000 lines of mines in total
+Flag 10000 mines in total
 Life without Mine
-Clear 10000 lines of mines in total
+Flag 100000 mines in total

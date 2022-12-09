@@ -640,7 +640,8 @@ void Board::delline(long l)
         line++;
         line = min(line, 999999);
         st.compscr(line, mode);
-        st.addscr(st.scrtotal, 1, mode);
+        long scrtotal_[4] = {0, 2, 3, 6};
+        st.addscr(st.scrtotal, scrtotal_[mode], mode);
         if (line > 9999)
         {
             st.addach(st.achhidedge);
