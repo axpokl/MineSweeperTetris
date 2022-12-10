@@ -957,7 +957,7 @@ void Window::painthelp()
                 {
                     paintnumber((k + 2) * (k + 2), 4, helpw * (k * 2 + 1) / 6 - 4 * digtw - 1 * iconw / 2, iconh * iconh4 + menuh - digth / 2 + iconw / 2);
                     paintnumber((k + 2), 2, helpw * (k * 2 + 1) / 6 + 2 * digtw + 1 * iconw / 2, iconh * iconh4 + menuh - digth / 2 + iconw / 2);
-                    drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw - iconw / 2, iconh * iconh4 + menuh, cline);
+                    drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw - iconw / 2, iconh * iconh4 + menuh, cfg);
                     line(0, menuh + iconh * (iconh3 - 1) + iconh / 2, helpw, 0, cline);
                     line(0, menuh + iconh * (iconh4 - 2), helpw, 0, cline);
                 }
