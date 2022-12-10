@@ -127,6 +127,7 @@ public:
     bool isin(long ex, long ey, long x, long y, long w, long h);
     void sethelp(long helpi_);
     void savescr();
+    void switchskin();
     void mouseevent(long x, long y, long key);
     void keyevent(long key);
     void doaction();
@@ -337,11 +338,13 @@ void Window::initbmp()
 
 void Window::paintmenu()
 {
-    drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
     drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
     drawbmp(pmenud[(helpi == -2)], (w_ - 3 * menuw), 0, menuw, menuh);
-    drawbmp(pmenum[bd.sd.musicb], (w_ - 4 * menuw), 0, menuw, menuh);
     drawbmp(pmenus[bd.sd.soundb], (w_ - 5 * menuw), 0, menuw, menuh);
+    drawbmp(pmenum[bd.sd.musicb], (w_ - 4 * menuw), 0, menuw, menuh);
+    drawbmp(pface[7], (w_ - 7 * menuw), 0, menuw, menuh);
+    drawbmp(pface[6], (w_ - 6 * menuw), 0, menuw, menuh);
     drawbmp(pmenu1[(bd.mode == 1)], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu2[(bd.mode == 2)], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu3[(bd.mode == 3)], 2 * menuw, 0, menuw, menuh);
@@ -630,8 +633,8 @@ void Window::painthelp()
         case 1:
             {
                 setfontheight(faceh);
-                pbitmap pmenu__[13] = {pface[5], pface[6], pface[7], pmenuq[0], pmenua[0], pmenud[0], pmenus[0], pmenum[0], pface[4], pface[0], pmenu1[0], pmenu2[0], pmenu3[0]};
-                const char* keys[13] = {"Q / ESC", "P / F12", "K / F11", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "N / F6", "Space", "1", "2", "3"};
+                pbitmap pmenu__[13] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenus[0], pmenum[0], pface[7], pface[6], pface[5]};
+                const char* keys[13] = {"1", "2", "3", "N / F6", "Space", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[8] = {cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
@@ -1092,15 +1095,14 @@ void Window::sethelp(long helpi_)
             bd.pause();
         }
         helpi = helpi_;
-        bd.sd.playsound(bd.sd.sLeft);
     }
     else
     {
         bd.pause();
         helpi = 0;
-        bd.sd.playsound(bd.sd.sLeft);
     }
     initwindow(false);
+    bd.sd.playsound(bd.sd.sLeft);
     if (helpi == -2)
     {
         waitb = true;
@@ -1109,6 +1111,7 @@ void Window::sethelp(long helpi_)
         waitb = false;
         paintevent();
     }
+
 }
 
 void Window::savescr()
@@ -1126,6 +1129,15 @@ void Window::savescr()
     strcat(scrpath, ".png");
     savebmp(getwin(), scrpath);
     ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->width, getwin()->height);
+    bd.sd.playsound(bd.sd.sSolve);
+}
+
+void Window::switchskin()
+{
+    colori = (colori + 1 ) % 2;
+    initbmp();
+    paintevent();
+    bd.sd.playsound(bd.sd.sRight);
 }
 
 void Window::mouseevent(long ex, long ey, long eb)
@@ -1142,24 +1154,30 @@ void Window::mouseevent(long ex, long ey, long eb)
             bd.initbd(ex / menuw + 1);
             initwindow(false);
         }
-        else if (ex > w_ - 5 * menuw)
+        else if (ex > w_ - 7 * menuw)
         {
-            switch ((ex - (w_ - 5 * menuw)) / menuw)
+            switch ((ex - (w_ - 7 * menuw)) / menuw)
             {
-                case 0:
-                    bd.sd.switchsound();
-                    break;
-                case 1:
-                    bd.sd.switchmusic();
-                    break;
-                case 2:
-                    sethelp(-2);
-                    break;
-                case 3:
+                case 5:
                     sethelp(1);
                     break;
-                case 4:
+                case 6:
                     sethelp(-1);
+                    break;
+                case 4:
+                    sethelp(-2);
+                    break;
+                case 2:
+                    bd.sd.switchsound();
+                    break;
+                case 3:
+                    bd.sd.switchmusic();
+                    break;
+                case 0:
+                    switchskin();
+                    break;
+                case 1:
+                    savescr();
                     break;
             }
         }
@@ -1269,14 +1287,10 @@ void Window::keyevent(long key)
             savescr();
             break;
         case k_f11:
-            colori = (colori + 1 ) % 2;
-            initbmp();
-            paintevent();
+            switchskin();
             break;
         case k_k:
-            colori = (colori + 1 ) % 2;
-            initbmp();
-            paintevent();
+            switchskin();
             break;
         case k_f1:
             sethelp(1);
