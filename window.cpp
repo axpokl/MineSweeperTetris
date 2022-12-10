@@ -27,6 +27,8 @@ public:
     const long fonth = 24;
     const long fontsh = 24;
     const long okh_ = abouth - (fontth + fonth * 4);
+    const long cursorw = 12;
+    const long cursorh = 19;
     const long clickw = 48;
     const long clickh = 72;
     const long arroww = 24;
@@ -64,6 +66,7 @@ public:
     pbitmap pok;
     pbitmap pbtn;
     pbitmap pcursor_;
+    pbitmap pcursor;
     pbitmap pclick_;
     pbitmap pclickl;
     pbitmap pclickr;
@@ -77,7 +80,7 @@ public:
     pbitmap parrowp;
 
 
-    const long color[2][7] = {{0xC0C0C0, 0xAFAFAF, black, 0xC0C0C0, red, blue, gray}, {black, black, white, black, 0x8080FF, 0xFF8080, white}};
+    const long color[2][7] = {{silver, 0xAFAFAF, black, silver, red, blue, gray}, {black, black, white, black, 0x8080FF, 0xFF8080, white}};
     long colori = 0;
     long cfg;
     long cbg;
@@ -140,14 +143,14 @@ public:
 Window::Window()
 {
     initwindow();
-    bd.maxbdw = (getscrwidth()) / 16 - 1;
-    bd.maxbdh = (getscrheight() - menuh - faceh) / 16 - 1;
+    bd.maxbdw = (getscrwidth() - getborderwidth() * 2) / 16 - 1;
+    bd.maxbdh = (getscrheight() - menuh - faceh - getborderheight() * 2 - getbordertitle()) / 16 - 1;
 }
 
 void Window::initwindow()
 {
     initcolor();
-    mult = max((double)1, min((double)getscrwidth() / (double)minw, (double)getscrheight() / (double)minh));
+    mult = max((double)1, min((double)(getscrwidth() - getborderwidth() * 2) / (double)minw, (double)(getscrheight() - getborderheight() * 2 - getbordertitle()) / (double)minh));
     mult = (double)((int)(mult * 2) / (int)1) / (double)2;
     w_ = launchw;
     h_ = launchh;
@@ -187,12 +190,12 @@ void Window::initwindow(bool b)
                 h_ = helph + menuh;
                 break;
         }
-        mult = max(1, min((double)getscrwidth() / max((double)minw, (double)w_), (double)getscrheight() / max((double)minh, (double)h_)));
+        mult = max(1, min((double)(getscrwidth() - getborderwidth() * 2) / max((double)minw, (double)w_), (double)(getscrheight() - getborderheight() * 2 - getbordertitle()) / max((double)minh, (double)h_)));
         mult = (double)((int)(mult * 2) / (int)1) / (double)2;
         setsize(w_ * mult, h_ * mult);
         releasebmp(pwin);
         pwin = createbmp(w_, h_);
-        setpos(max(0, (getscrwidth() - w_ * mult - getborderwidth() * 2) / 2), max(0, (getscrheight() - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2));
+        setpos((getscrwidth() - w_ * mult - getborderwidth() * 2) / 2, (getscrheight() - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2);
         paintevent();
     }
 }
@@ -254,6 +257,7 @@ void Window::initbmp()
             pdigitnul = createbmp(digtw, digth);
             pok = createbmp(okw, okh);
             pbtn = createbmp(btnw, btnh);
+            pcursor = createbmp(cursorw, cursorh);
             pclickl = createbmp(clickw, clickh);
             pclickr = createbmp(clickw, clickh);
             pclickn = createbmp(clickw, clickh);
@@ -323,6 +327,7 @@ void Window::initbmp()
         drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
         drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
         drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
+        drawbmp(pcursor_, pcursor, 0, cursorh * 0, cursorw, cursorh, 0, 0, cursorw, cursorh);
         drawbmp(pclick_, pclickl, 0, clickh * 0, clickw, clickh, 0, 0, clickw, clickh);
         drawbmp(pclick_, pclickr, 0, clickh * 1, clickw, clickh, 0, 0, clickw, clickh);
         drawbmp(pclick_, pclickn, 0, clickh * 2, clickw, clickh, 0, 0, clickw, clickh);
@@ -494,7 +499,7 @@ void Window::paintboard(Block b, long x, long y)
 void Window::paintboard(Block b, long x, long y, long cx, long cy)
 {
     paintboard(b, x, y);
-    drawbmp(pcursor_, cx * iconw + x + iconw / 2, cy * iconh + menuh + y + iconh / 2, silver);
+    drawbmp(pcursor, cx * iconw + x + iconw / 2, cy * iconh + menuh + y + iconh / 2, cursorw, cursorh, silver);
 }
 
 
