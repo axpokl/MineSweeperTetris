@@ -131,6 +131,11 @@ void Steam::initsteam()
     }
     if (steamb)
     {
+        printf("%d\n",SteamUtils()->GetAppID());
+        if (SteamUtils()->GetAppID() != appid)
+        {
+            msgbox("This is the test version of MineSweeper Tetris, please download the  build version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
+        }
         lan.initlan(SteamUtils()->GetSteamUILanguage());
         lan.initlan(SteamApps()->GetCurrentGameLanguage());
     }

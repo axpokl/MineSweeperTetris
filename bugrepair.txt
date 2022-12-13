@@ -317,9 +317,17 @@ steam lan help1
 leadboard fast
 //加快排行榜读取速度
 
+skin
+//增加皮肤功能
+//调整成就
 
+border and color fix
+//修复若干边框导致的错误
+//修复高分屏适配大小错误
 
-
+final release
+//移除警告
+//增加测试版警告
 
 
 

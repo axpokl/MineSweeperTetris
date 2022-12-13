@@ -448,3 +448,28 @@
 [2022-12-10 10:19:42] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
 [2022-12-10 10:19:42] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
 [2022-12-10 10:19:42] Initialized system perf manager
+
+
+[2022-12-13 07:13:18] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
+[2022-12-13 07:13:18] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
+[2022-12-13 07:13:18] Initialized system perf manager
+
+
+[2022-12-13 07:15:49] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
+[2022-12-13 07:15:49] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
+[2022-12-13 07:15:49] Initialized system perf manager
+
+
+[2022-12-13 07:16:01] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
+[2022-12-13 07:16:01] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
+[2022-12-13 07:16:01] Initialized system perf manager
+
+
+[2022-12-13 08:06:14] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
+[2022-12-13 08:06:14] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
+[2022-12-13 08:06:14] Initialized system perf manager
+
+
+[2022-12-13 08:06:31] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
+[2022-12-13 08:06:31] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
+[2022-12-13 08:06:31] Initialized system perf manager

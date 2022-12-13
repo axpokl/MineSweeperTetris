@@ -38,14 +38,14 @@
 -去除steamid
 
 
-换皮肤
+-换皮肤
 -变大
 -开始菜单
 -标问号消行
-竞速模式
-右键拖拽
-云存档
-设置菜单（语言）
+-竞速模式
+-右键拖拽
+-云存档
+-设置菜单（语言）
 
 
 At present, most of the functions of the game have been completed:
