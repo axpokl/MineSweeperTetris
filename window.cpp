@@ -43,6 +43,7 @@ public:
     pbitmap pmenua[2];
     pbitmap pmenus[2];
     pbitmap pmenum[2];
+    pbitmap pmenut[2];
     pbitmap pmenud[2];
     pbitmap pface_;
     pbitmap pface[8];
@@ -105,6 +106,12 @@ public:
     long w_ = 0;
     long h_ = 0;
 
+    bool md = false;
+    bool ml = false;
+    bool mr = false;
+    long mx = -1;
+    long my = -1;
+
     Window();
     void initwindow();
     void initwindow(bool b);
@@ -131,7 +138,8 @@ public:
     void sethelp(long helpi_);
     void savescr();
     void switchskin();
-    void mouseevent(long x, long y, long key);
+    void mouseeventboard(long ex_, long ey_, long eb_);
+    void mouseevent(long ex_, long ey_, long eb_);
     void keyevent(long key);
     void doaction();
 
@@ -229,6 +237,7 @@ void Window::initbmp()
                 pmenua[i] = createbmp(menuw, menuh);
                 pmenus[i] = createbmp(menuw, menuh);
                 pmenum[i] = createbmp(menuw, menuh);
+                pmenut[i] = createbmp(menuw, menuh);
                 pmenud[i] = createbmp(menuw, menuh);
             }
             for (long i = 0; i < 8; i++)
@@ -299,7 +308,8 @@ void Window::initbmp()
             drawbmp(pmenu_, pmenua[i], menuw * i, 4 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenus[i], menuw * i, 5 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenum[i], menuw * i, 6 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenud[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenut[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenud[i], menuw * i, 8 * menuh, menuw, menuh, 0, 0, menuw, menuh);
         }
         for (long i = 0; i < 8; i++)
         {
@@ -343,13 +353,14 @@ void Window::initbmp()
 
 void Window::paintmenu()
 {
-    drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
     drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
-    drawbmp(pmenud[(helpi == -2)], (w_ - 3 * menuw), 0, menuw, menuh);
-    drawbmp(pmenus[bd.sd.soundb], (w_ - 5 * menuw), 0, menuw, menuh);
+    drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenut[(helpi == -2)], (w_ - 3 * menuw), 0, menuw, menuh);
     drawbmp(pmenum[bd.sd.musicb], (w_ - 4 * menuw), 0, menuw, menuh);
-    drawbmp(pface[7], (w_ - 7 * menuw), 0, menuw, menuh);
+    drawbmp(pmenus[bd.sd.soundb], (w_ - 5 * menuw), 0, menuw, menuh);
     drawbmp(pface[6], (w_ - 6 * menuw), 0, menuw, menuh);
+    drawbmp(pface[7], (w_ - 7 * menuw), 0, menuw, menuh);
+    drawbmp(pmenud[md], (w_ - 8 * menuw), 0, menuw, menuh);
     drawbmp(pmenu1[(bd.mode == 1)], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu2[(bd.mode == 2)], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu3[(bd.mode == 3)], 2 * menuw, 0, menuw, menuh);
@@ -638,21 +649,21 @@ void Window::painthelp()
         case 1:
             {
                 setfontheight(faceh);
-                pbitmap pmenu__[13] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenus[0], pmenum[0], pface[7], pface[6], pface[5]};
-                const char* keys[13] = {"1", "2", "3", "N / F6", "Space", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "K / F11", "P / F12", "Q / ESC"};
+                pbitmap pmenu__[14] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenut[0], pmenus[0], pmenum[0], pmenud[0], pface[7], pface[6], pface[5]};
+                const char* keys[14] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "D / F6", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[8] = {cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
                 long helpw__ = iconw;
-                double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)12;
-                for (long k = 0; k < 13; k++)
+                double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)13;
+                for (long k = 0; k < 14; k++)
                 {
                     drawbmp(pmenu__[k], helpw__, helph__ * k + menuh + iconh / 2, facew, faceh, cfg);
                     drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, helph__ * k + menuh + iconh / 2, ctfg, cbg);
                 }
                 if (!cheatb)
                 {
-                    for (long k = 0; k < 13; k++)
+                    for (long k = 0; k < 14; k++)
                     {
                         drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + k), helpw / 4, helph__ * k + menuh + iconh / 2, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
                     }
@@ -1145,12 +1156,49 @@ void Window::switchskin()
     bd.sd.playsound(bd.sd.sRight);
 }
 
-void Window::mouseevent(long ex, long ey, long eb)
+void Window::mouseeventboard(long ex_, long ey_, long eb_)
 {
-    ex /= mult;
-    ey /= mult;
+    long ex = ex_ / mult;
+    long ey = ey_ / mult;
     long x;
     long y;
+    if ((ey - menuh >= faceh) && (helpi == 0) && (bd.sit < 4))
+    {
+        x = ex / iconw;
+        y = (ey - faceh - menuh) / iconh;
+        if (x != mx || y != my)
+        {
+            if (eb_ == k_lmouse)
+            {
+                if (bd.sit == 0 && y >= bd.maskj)
+                {
+                    bd.resetbd(x, y);
+                }
+                bd.clickleft(x, y, true);
+                bd.checkline();
+            }
+            else if (eb_ == k_rmouse)
+            {
+                bd.clickright(x, y, true);
+                bd.checkline();
+            }
+            bd.solveb = true;
+            while (bd.solveb)
+            {
+                bd.solve0();
+            }
+            bd.checkline();
+            mx = x;
+            my = y;
+            paintevent();
+        }
+    }
+}
+
+void Window::mouseevent(long ex_, long ey_, long eb_)
+{
+    long ex = ex_ / mult;
+    long ey = ey_ / mult;
     if (ey < menuh)
     {
         if (ex < (3 * menuw))
@@ -1159,30 +1207,34 @@ void Window::mouseevent(long ex, long ey, long eb)
             bd.initbd(ex / menuw + 1);
             initwindow(false);
         }
-        else if (ex > w_ - 7 * menuw)
+        else if (ex > w_ - 8 * menuw)
         {
-            switch ((ex - (w_ - 7 * menuw)) / menuw)
+            switch ((ex - (w_ - 8 * menuw)) / menuw)
             {
-                case 5:
-                    sethelp(1);
-                    break;
-                case 6:
+                case 7:
                     sethelp(-1);
                     break;
-                case 4:
+                case 6:
+                    sethelp(1);
+                    break;
+                case 5:
                     sethelp(-2);
                     break;
-                case 2:
-                    bd.sd.switchsound();
-                    break;
-                case 3:
+                case 4:
                     bd.sd.switchmusic();
                     break;
-                case 0:
-                    switchskin();
+                case 3:
+                    bd.sd.switchsound();
+                    break;
+                case 2:
+                    savescr();
                     break;
                 case 1:
-                    savescr();
+                    switchskin();
+                    break;
+                case 0:
+                    md = !md;
+                    bd.sd.playsound(bd.sd.sLeft);
                     break;
             }
         }
@@ -1193,11 +1245,11 @@ void Window::mouseevent(long ex, long ey, long eb)
         {
             if ((ex > ((w_ - facew) / 2)) && (ex < ((w_ + facew) / 2)))
             {
-                if (eb == k_lmouse)
+                if (eb_ == k_lmouse)
                 {
                     bd.initbd();
                 }
-                else if (eb == k_rmouse)
+                else if (eb_ == k_rmouse)
                 {
                     if (bd.sit > 0)
                     {
@@ -1210,28 +1262,7 @@ void Window::mouseevent(long ex, long ey, long eb)
         }
         else if (bd.sit < 4)
         {
-            x = ex / iconw;
-            y = (ey - faceh - menuh) / iconh;
-            if (eb == k_lmouse)
-            {
-                if (bd.sit == 0 && y >= bd.maskj)
-                {
-                    bd.resetbd(x, y);
-                }
-                bd.clickleft(x, y, true);
-                bd.checkline();
-            }
-            else if (eb == k_rmouse)
-            {
-                bd.clickright(x, y, true);
-                bd.checkline();
-            }
-            bd.solveb = true;
-            while (bd.solveb)
-            {
-                bd.solve0();
-            }
-            bd.checkline();
+            mouseeventboard(ex_, ey_, eb_);
         }
     }
     else if (helpi == -1)
@@ -1328,9 +1359,12 @@ void Window::keyevent(long key)
             bd.sd.switchmusic();
             break;
         case k_f6:
-            helpi = 0;
-            bd.initbd();
-            initwindow(false);
+            md = !md;
+            bd.sd.playsound(bd.sd.sLeft);
+            break;
+        case k_d:
+            md = !md;
+            bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_n:
             helpi = 0;
@@ -1477,13 +1511,30 @@ void Window::doaction()
 {
     while (isnextmsg())
     {
+        ml = GetAsyncKeyState(VK_LBUTTON);
+        mr = GetAsyncKeyState(VK_RBUTTON);
         if (ismouseleft())
         {
+            mx = -1;
+            my = -1;
             mouseevent(getmouseposx(), getmouseposy(), k_lmouse);
         }
         if (ismouseright())
         {
+            mx = -1;
+            my = -1;
             mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
+        }
+        if (ismousemove() && md)
+        {
+            if (ml)
+            {
+                mouseeventboard(getmouseposx(), getmouseposy(), k_lmouse);
+            }
+            if (mr)
+            {
+                mouseeventboard(getmouseposx(), getmouseposy(), k_rmouse);
+            }
         }
         if (iskey())
         {

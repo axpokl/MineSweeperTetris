@@ -1,2 +1,1 @@
-src\public\tier1\interface.h (264) : m_pModule
-src\public\tier1\interface.h (264) : m_pModule
+src\steamexe\main.cpp (959) : Unable to access Steam files due to incompatible path

@@ -40,12 +40,21 @@
 
 -换皮肤
 -变大
--开始菜单
+开始菜单
 -标问号消行
 -竞速模式
--右键拖拽
--云存档
--设置菜单（语言）
+
+右键拖拽
+云存档/注册表，保存游戏状态
+设置菜单（语言）
+优化帮助（增加基本规则）
+动画效果
+
+点击后没有反应Bug
+
+
+
+
 
 
 At present, most of the functions of the game have been completed:
