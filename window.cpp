@@ -1218,7 +1218,7 @@ void Window::mouseevent(long ex, long ey, long eb)
                 {
                     bd.resetbd(x, y);
                 }
-                bd.clickleft(x, y);
+                bd.clickleft(x, y, true);
                 bd.checkline();
             }
             else if (eb == k_rmouse)
