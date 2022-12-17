@@ -667,13 +667,9 @@ void Window::painthelp()
                             {
                                 leads = bd.st.leadsu[leadid][k - 10];
                             }
-                            if (leads.m_nGlobalRank == bd.st.leadsu[leadid][5].m_nGlobalRank)
+                            if (bd.st.leadsu[leadid][5].m_nGlobalRank == leads.m_nGlobalRank && bd.st.leadsu[leadid][5].m_steamIDUser.GetEAccountType() > 0)
                             {
                                 setfontweight(700);
-                            }
-                            else
-                            {
-                                setfontweight(0);
                             }
                             if (leads.m_steamIDUser.GetEAccountType() > 0)
                             {
@@ -709,6 +705,7 @@ void Window::painthelp()
                                 drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fontsh + faceh + menuh, helpw / 3 - getstringwidth("0000"), fontsh, ctfg, cbg, DT_LEFT);
                                 paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
                             }
+                            setfontweight(0);
                         }
                     }
                     setfontheight(fonth);
