@@ -667,6 +667,14 @@ void Window::painthelp()
                             {
                                 leads = bd.st.leadsu[leadid][k - 10];
                             }
+                            if (leads.m_nGlobalRank == bd.st.leadsu[leadid][5].m_nGlobalRank)
+                            {
+                                setfontweight(700);
+                            }
+                            else
+                            {
+                                setfontweight(0);
+                            }
                             if (leads.m_steamIDUser.GetEAccountType() > 0)
                             {
                                 usernamec = SteamFriends()->GetFriendPersonaName(leads.m_steamIDUser);
