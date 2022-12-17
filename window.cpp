@@ -13,7 +13,7 @@ public:
     const long iconw = 16;
     const long iconh = 16;
     const long digtw[2] = {13, 9};
-    const long digth[2] = {24, 17};;
+    const long digth[2] = {24, 17};
     const long okw = 144;
     const long okh = 36;
     const long btnw = 36;
@@ -169,11 +169,11 @@ Window::~Window()
 
 void Window::loadsetting()
 {
-    helpb = reg.getreg("helpb");
-    colori = reg.getreg("colori");
-    md = reg.getreg("md");
-    bd.sd.soundb = reg.getreg("soundb");
-    bd.sd.musicb = reg.getreg("musicb");
+    reg.getreg("helpb", (long*)&helpb);
+    reg.getreg("colori", (long*)&colori);
+    reg.getreg("md", (long*)&md);
+    reg.getreg("soundb", (long*)&bd.sd.soundb);
+    reg.getreg("musicb", (long*)&bd.sd.musicb);
 }
 
 void Window::savesetting()
