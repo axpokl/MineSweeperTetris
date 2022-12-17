@@ -62,7 +62,6 @@ public:
         "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE", "STAT_LINE1", "STAT_LINE2", "STAT_LINE3"
     };
     int scr[7];
-    bool newrecord = false;
 
     const long leadn = 3;
     const char* leads[3] =
@@ -296,7 +295,6 @@ void Steam::compscr(long line, long mode)
                     scr[scrline] = max(scr[scrline], scr[scrline_]);
                     setscr(scrline_);
                     setscr(scrline);
-                    newrecord = true;
                 }
             }
         }
@@ -366,9 +364,8 @@ void Steam::setlead(long val, long mode)
 {
     if (steamb)
     {
-        if (mode > 0 && newrecord)
+        if (mode > 0)
         {
-            newrecord = false;
             long leadid = mode - 1;
             if (leadb[leadid] == 0)
             {

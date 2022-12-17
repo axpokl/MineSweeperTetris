@@ -44,7 +44,7 @@
 -标问号消行
 -竞速模式
 
-右键拖拽
+-右键拖拽
 云存档/注册表，保存游戏状态
 设置菜单（语言）
 优化帮助（增加基本规则）
@@ -53,8 +53,7 @@
 点击后没有反应Bug
 
 
-
-
+------------------------
 
 
 At present, most of the functions of the game have been completed:
@@ -80,6 +79,20 @@ Below is the feature or item to be finish after release or in the future:
 16. Eliminate potential memory leaks, especially when switching game mode
 17. Test the game in different OS and environment, increase application compatibility
 
+------------------------
+
+注册表：
+helpb	显示帮助
+md	拖拽模式
+soundb	音效
+musicb	音乐
+
+
+
+mode	模式	mode, mode_
+bd	盘面 	flag, qstn, mine, blck, mask, numb
+sit	状态	sit, maski, maskj, line, level
+pauseb	暂停	pausetime
 
 ------------------------
 

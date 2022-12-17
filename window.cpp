@@ -92,11 +92,13 @@ public:
     long cline;
     bool isbmp = false;
 
+    Reg reg;
     HICON hicon;
     Board bd;
     Block bl;
     const long maxhelp = 6;
     long helpi = 0;
+    bool helpb = true;
     bool cheatb = false;
     bool waitb = false;
     pbitmap pwin;

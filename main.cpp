@@ -3,6 +3,7 @@
 using namespace std;
 
 #include "lan.cpp"
+#include "reg.cpp"
 #include "steam.cpp"
 #include "sound.cpp"
 #include "block.cpp"
@@ -28,7 +29,10 @@ int main()
         w.painttitle(w.bd.st.lan.LAN_LOAD_GRAPH);
         w.initbmp();
         w.painttitle(w.bd.st.lan.LAN_LOAD_WINDOW);
-        w.sethelp(1);
+        if (w.helpb)
+        {
+            w.sethelp(1);
+        }
         while (iswin())
         {
             w.doaction();
