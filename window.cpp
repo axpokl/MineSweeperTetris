@@ -12,8 +12,8 @@ public:
     const long faceh = 24;
     const long iconw = 16;
     const long iconh = 16;
-    const long digtw = 13;
-    const long digth = 24;
+    const long digtw[2] = {13, 9};
+    const long digth[2] = {24, 17};;
     const long okw = 144;
     const long okh = 36;
     const long btnw = 36;
@@ -25,7 +25,7 @@ public:
     const long fontth = 64;
     const long fontfh = 32;
     const long fonth = 24;
-    const long fontsh = 24;
+    const long fontsh = 17;
     const long okh_ = abouth - (fontth + fonth * 4);
     const long cursorw = 12;
     const long cursorh = 19;
@@ -59,10 +59,10 @@ public:
     pbitmap picona;
     pbitmap piconu;
     pbitmap picont;
-    pbitmap pdigit_;
-    pbitmap pdigit[10];
-    pbitmap pdigitmin;
-    pbitmap pdigitnul;
+    pbitmap pdigt_[2];
+    pbitmap pdigt[10][2];
+    pbitmap pdigtmin[2];
+    pbitmap pdigtnul[2];
     pbitmap pok_;
     pbitmap pok;
     pbitmap pbtn;
@@ -72,6 +72,7 @@ public:
     pbitmap pclickl;
     pbitmap pclickr;
     pbitmap pclickn;
+    pbitmap pclicka;
     pbitmap parrow_;
     pbitmap parrowl;
     pbitmap parrowr;
@@ -115,13 +116,19 @@ public:
     long my = -1;
 
     Window();
+    ~Window();
+    void loadsetting();
+    void savesetting();
+    void loadall();
     void initwindow();
+    void releasewindow();
     void initwindow(bool b);
     void initcolor();
     void initbmp();
     void paintmenu();
     void paintface();
-    void paintnumber(long n, long l, long x, long y, long w, long h);
+    void paintnumber(long n, long l, long x, long y, long w, long h, bool b);
+    void paintnumber(long n, long l, long x, long y, bool b);
     void paintnumber(long n, long l, long x, long y);
     void paintlevel();
     void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
@@ -153,8 +160,52 @@ public:
 Window::Window()
 {
     initwindow();
-    bd.maxbdw = (getscrwidth() - getborderwidth() * 2) / 16 - 1;
-    bd.maxbdh = (getscrheight() - menuh - faceh - getborderheight() * 2 - getbordertitle()) / 16 - 1;
+}
+
+Window::~Window()
+{
+    releasewindow();
+}
+
+void Window::loadsetting()
+{
+    helpb = reg.getreg("helpb");
+    colori = reg.getreg("colori");
+    md = reg.getreg("md");
+    bd.sd.soundb = reg.getreg("soundb");
+    bd.sd.musicb = reg.getreg("musicb");
+}
+
+void Window::savesetting()
+{
+    reg.setreg("helpb", helpb);
+    reg.setreg("colori", colori);
+    reg.setreg("md", md);
+    reg.setreg("soundb", bd.sd.soundb);
+    reg.setreg("musicb", bd.sd.musicb);
+}
+
+void Window::loadall()
+{
+    loadsetting();
+    painttitle(bd.st.lan.LAN_LOAD_STEAM);
+    bd.st.loadsteam();
+    painttitle(bd.st.lan.LAN_LOAD_AUDIO);
+    bd.sd.initsound();
+    painttitle(bd.st.lan.LAN_LOAD_BOARD);
+    bd.initbd(1);
+    painttitle(bd.st.lan.LAN_LOAD_GRAPH);
+    initbmp();
+    painttitle(bd.st.lan.LAN_LOAD_WINDOW);
+    if (helpb)
+    {
+        sethelp(1);
+        helpb = false;
+    }
+    else
+    {
+        sethelp(0);
+    }
 }
 
 void Window::initwindow()
@@ -173,6 +224,13 @@ void Window::initwindow()
     SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(LOGFONT),&lf,0);
     setfontname(lf.lfFaceName);
     painttitle(-1);
+    bd.maxbdw = (getscrwidth() - getborderwidth() * 2) / 16 - 1;
+    bd.maxbdh = (getscrheight() - menuh - faceh - getborderheight() * 2 - getbordertitle()) / 16 - 1;
+}
+
+void Window::releasewindow()
+{
+    savesetting();
 }
 
 void Window::initwindow(bool b)
@@ -262,16 +320,20 @@ void Window::initbmp()
             picont = createbmp(iconw, iconh);
             for (long i = 0; i < 10; i++)
             {
-                pdigit[i] = createbmp(digtw, digth);
+                pdigt[i][0] = createbmp(digtw[0], digth[0]);
+                pdigt[i][1] = createbmp(digtw[1], digth[1]);
             }
-            pdigitmin = createbmp(digtw, digth);
-            pdigitnul = createbmp(digtw, digth);
+            pdigtmin[0] = createbmp(digtw[0], digth[0]);
+            pdigtmin[1] = createbmp(digtw[1], digth[1]);
+            pdigtnul[0] = createbmp(digtw[0], digth[0]);
+            pdigtnul[1] = createbmp(digtw[1], digth[1]);
             pok = createbmp(okw, okh);
             pbtn = createbmp(btnw, btnh);
             pcursor = createbmp(cursorw, cursorh);
             pclickl = createbmp(clickw, clickh);
             pclickr = createbmp(clickw, clickh);
             pclickn = createbmp(clickw, clickh);
+            pclicka = createbmp(clickw, clickh);
             parrowl = createbmp(arroww, arrowh);
             parrowr = createbmp(arroww, arrowh);
             parrowu = createbmp(arroww, arrowh);
@@ -285,7 +347,8 @@ void Window::initbmp()
             releasebmp(pmenu_);
             releasebmp(pface_);
             releasebmp(picon_);
-            releasebmp(pdigit_);
+            releasebmp(pdigt_[0]);
+            releasebmp(pdigt_[1]);
             releasebmp(pok_);
             releasebmp(pcursor_);
             releasebmp(pclick_);
@@ -295,7 +358,8 @@ void Window::initbmp()
         pmenu_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/menu.bmp");
         pface_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/face.bmp");
         picon_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/icon.bmp");
-        pdigit_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt.bmp");
+        pdigt_[0] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt.bmp");
+        pdigt_[1] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt2.bmp");
         pok_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/ok.bmp");
         pcursor_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/cursor.bmp");
         pclick_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/click.bmp");
@@ -333,16 +397,20 @@ void Window::initbmp()
         drawbmp(picon_, picont, 0, iconh * 19, iconw, iconh, 0, 0, iconw, iconh);
         for (long i = 0; i < 10; i++)
         {
-            drawbmp(pdigit_, pdigit[i], 0, (11 - i) * digth, digtw, digth, 0, 0, digtw, digth);
+            drawbmp(pdigt_[0], pdigt[i][0], 0, (11 - i) * digth[0], digtw[0], digth[0], 0, 0, digtw[0], digth[0]);
+            drawbmp(pdigt_[1], pdigt[i][1], 0, (11 - i) * digth[1], digtw[1], digth[1], 0, 0, digtw[1], digth[1]);
         }
-        drawbmp(pdigit_, pdigitmin, 0, 0, digtw, digth, 0, 0, digtw, digth);
-        drawbmp(pdigit_, pdigitnul, 0, digth, digtw, digth, 0, 0, digtw, digth);
+        drawbmp(pdigt_[0], pdigtmin[0], 0, 0, digtw[0], digth[0], 0, 0, digtw[0], digth[0]);
+        drawbmp(pdigt_[1], pdigtmin[1], 0, 0, digtw[1], digth[1], 0, 0, digtw[1], digth[1]);
+        drawbmp(pdigt_[0], pdigtnul[0], 0, digth[0], digtw[0], digth[0], 0, 0, digtw[0], digth[0]);
+        drawbmp(pdigt_[1], pdigtnul[1], 0, digth[1], digtw[1], digth[1], 0, 0, digtw[1], digth[1]);
         drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
         drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
         drawbmp(pcursor_, pcursor, 0, cursorh * 0, cursorw, cursorh, 0, 0, cursorw, cursorh);
         drawbmp(pclick_, pclickl, 0, clickh * 0, clickw, clickh, 0, 0, clickw, clickh);
         drawbmp(pclick_, pclickr, 0, clickh * 1, clickw, clickh, 0, 0, clickw, clickh);
         drawbmp(pclick_, pclickn, 0, clickh * 2, clickw, clickh, 0, 0, clickw, clickh);
+        drawbmp(pclick_, pclicka, 0, clickh * 3, clickw, clickh, 0, 0, clickw, clickh);
         drawbmp(parrow_, parrowl, 0, arrowh * 0, arroww, arrowh, 0, 0, arroww, arrowh);
         drawbmp(parrow_, parrowr, 0, arrowh * 1, arroww, arrowh, 0, 0, arroww, arrowh);
         drawbmp(parrow_, parrowu, 0, arrowh * 2, arroww, arrowh, 0, 0, arroww, arrowh);
@@ -382,9 +450,9 @@ void Window::paintface()
     drawbmp(pface[face__[facei]], (w_ - facew) / 2, menuh, facew, faceh);
 }
 
-void Window::paintnumber(long n, long l, long x, long y, long w, long h)
+void Window::paintnumber(long n, long l, long x, long y, long w, long h, bool b)
 {
-    long digit[10];
+    long digt[10];
     long dl = 0;
     long dlm;
     bool minb = (n < 0);
@@ -394,7 +462,7 @@ void Window::paintnumber(long n, long l, long x, long y, long w, long h)
     }
     do
     {
-        digit[dl] = n % 10;
+        digt[dl] = n % 10;
         n /= 10;
         dl++;
     }
@@ -411,45 +479,50 @@ void Window::paintnumber(long n, long l, long x, long y, long w, long h)
     {
         if (di < dl)
         {
-            drawbmp(pdigit[digit[di]], x + (dlm - di - 1) * w, y, w, h);
+            drawbmp(pdigt[digt[di]][b], x + (dlm - di - 1) * w, y, w, h);
         }
         else if (di == dl && minb)
         {
-            drawbmp(pdigitmin, x + (dlm - di - 1) * w, y, w, h);
+            drawbmp(pdigtmin[b], x + (dlm - di - 1) * w, y, w, h);
         }
         else
         {
-            drawbmp(pdigitnul, x + (dlm - di - 1) * w, y, w, h);
+            drawbmp(pdigtnul[b], x + (dlm - di - 1) * w, y, w, h);
         }
     }
 }
 
+void Window::paintnumber(long n, long l, long x, long y, bool b)
+{
+    paintnumber(n, l, x, y, digtw[b], digth[b], b);
+}
+
 void Window::paintnumber(long n, long l, long x, long y)
 {
-    paintnumber(n, l, x, y, digtw, digth);
+    paintnumber(n, l, x, y, 0);
 }
 
 void Window::paintlevel()
 {
     if (bd.line < 10000)
     {
-        paintnumber(bd.line, 4, 0, menuh);
+        paintnumber(bd.line, 4, 0, digth[0]);
     }
     else if (bd.line < 100000)
     {
-        paintnumber(bd.line, 5, 0, menuh);
+        paintnumber(bd.line, 5, 0, digth[0]);
     }
     else
     {
-        paintnumber(bd.line, 6, 0, menuh);
+        paintnumber(bd.line, 6, 0, digth[0]);
     }
     if (bd.level < 100)
     {
-        paintnumber(bd.level, 2, w_ - 2 * digtw, menuh);
+        paintnumber(bd.level, 2, w_ - 2 * digtw[0], digth[0]);
     }
     else
     {
-        paintnumber(bd.level, 3, w_ - 3 * digtw, menuh);
+        paintnumber(bd.level, 3, w_ - 3 * digtw[0], digth[0]);
     }
 }
 
@@ -584,15 +657,15 @@ void Window::painthelp()
                     for (long leadid = 0; leadid < bd.st.leadn; leadid++)
                     {
                         drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh, cfg);
-                        for (long k = 0; k < 14; k++)
+                        for (long k = 0; k < 20; k++)
                         {
-                            if (k < 7)
+                            if (k < 10)
                             {
                                 leads = bd.st.leadsg[leadid][k];
                             }
                             else
                             {
-                                leads = bd.st.leadsu[leadid][k - 7];
+                                leads = bd.st.leadsu[leadid][k - 10];
                             }
                             if (leads.m_steamIDUser.GetEAccountType() > 0)
                             {
@@ -626,7 +699,7 @@ void Window::painthelp()
                                 usernames[4 + poss] = 0;
                                 drawtextxy(getwin(), i2s(leads.m_nGlobalRank), helpw * leadid / 3, k * fontsh + faceh + menuh, ctfg, cbg);
                                 drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fontsh + faceh + menuh, helpw / 3 - getstringwidth("0000"), fontsh, ctfg, cbg, DT_LEFT);
-                                paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw * fontsh / digth * 4, k * fontsh + faceh + menuh, digtw * fontsh / digth, fontsh);
+                                paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
                             }
                         }
                     }
@@ -636,15 +709,15 @@ void Window::painthelp()
                     long n__[3] = {0, 0, 1};
                     for (long k = 0; k < 3; k++)
                     {
-                        drawbmp(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw - facew - digtw * n__[k], menuh + (fontsh * 14 + helph - okh_) / 2 + 1, facew, faceh, cfg);
-                        paintnumber(bd.st.scr[scr__[k]], 4 + n__[k] * 2, helpw * (k * 2 + 1) / 6 - 2 * digtw + facew - digtw * n__[k], menuh + (fontsh * 14 + helph - okh_) / 2 + 1);
+                        drawbmp(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw[0] - facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, facew, faceh, cfg);
+                        paintnumber(bd.st.scr[scr__[k]], 4 + n__[k] * 2, helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1);
                     }
                     line(helpw / 3 * 1, menuh, 0, helph - okh_, cline);
                     line(helpw / 3 * 2, menuh, 0, helph - okh_, cline);
                     line(0, menuh, helpw, 0, cline);
                     line(0, menuh + faceh, helpw, 0, cline);
-                    line(0, menuh + faceh + fontsh * 7, helpw, 0, cline);
-                    line(0, menuh + faceh + fontsh * 14, helpw, 0, cline);
+                    line(0, menuh + faceh + fontsh * 10, helpw, 0, cline);
+                    line(0, menuh + faceh + fontsh * 20, helpw, 0, cline);
                     break;
                 }
             }
@@ -865,7 +938,7 @@ void Window::painthelp()
                         long k__[3][3] = {{5, 0, 3}, {4, 5, 0}, {4, 3, 0}};
                         if (i == 0 || (i == 2 && j == 0))
                         {
-                            drawbmp(pclickr, helpw * (i * 2 + 2 + (j != 0)) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + menuh, cfg);
+                            drawbmp(pclicka, helpw * (i * 2 + 2 + (j != 0)) / 8 - clickw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + menuh, cfg);
                         }
                         else if (i == 1 && j != 0)
                         {
@@ -914,7 +987,7 @@ void Window::painthelp()
                     paintline(picone, k + 3, iconw * iconwr, iconh * (k * 3 + (iconh2 + 0)) + menuh);
                     paintline(piconc, 12, iconw * iconwl, iconh * (k * 3 + (iconh2 + 1)) + menuh);
                     paintline(piconc, 12, iconw * iconwr, iconh * (k * 3 + (iconh2 + 1)) + menuh);
-                    paintnumber(k * 5, 2, iconw * iconwn, iconh * (k * 3 + (iconh2 + 1)) + menuh - digth / 2);
+                    paintnumber(k * 5, 2, iconw * iconwn, iconh * (k * 3 + (iconh2 + 1)) + menuh - digth[0] / 2);
                     drawbmp(picona, iconw * iconwm, iconh * (k * 3 + (iconh2 + 1)) + menuh, cfg);
                 }
                 paintline(picone, 12, iconw * iconwl, iconh * (iconh3 + 0) + menuh);
@@ -945,7 +1018,7 @@ void Window::painthelp()
                 drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) + menuh, cbg);
                 drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) + menuh, cfg);
                 drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cbg);
-                paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - digth / 2);
+                paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - digth[0] / 2);
                 paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh2 + 0) + menuh);
                 paintline(picon[1],  picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
                 paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh2 + 2) + menuh);
@@ -955,7 +1028,7 @@ void Window::painthelp()
                 drawbmp(piconc, iconw * (iconwm + 0), iconh * (iconh2 + 2) + menuh, cbg);
                 drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh2 + 2) + menuh, cfg);
                 drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh2 + 2) + menuh, cbg);
-                paintnumber(1, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth / 2);
+                paintnumber(1, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth[0] / 2);
                 paintline(piconp, 12, iconw * iconwl, iconh * (iconh3 + 4) + menuh);
                 line(iconw * iconwl, iconh * (iconh3 + 4) + iconh / 2 + menuh, iconw * 12, 0, cred);
                 for (long k = 0; k < 8; k++)
@@ -970,12 +1043,12 @@ void Window::painthelp()
                     }
                 }
                 drawbmp(picona, iconw * (iconwm + 1), iconh * (iconh3 + 7) + menuh, cfg);
-                paintnumber(5, 4, iconw * iconwn, iconh * (iconh3 + 7) + menuh - digth / 2);
+                paintnumber(5, 4, iconw * iconwn, iconh * (iconh3 + 7) + menuh - digth[0] / 2);
                 for (long k = 0; k < 3; k++)
                 {
-                    paintnumber((k + 2) * (k + 2), 4, helpw * (k * 2 + 1) / 6 - 4 * digtw - 1 * iconw / 2, iconh * iconh4 + menuh - digth / 2 + iconw / 2);
-                    paintnumber((k + 2), 2, helpw * (k * 2 + 1) / 6 + 2 * digtw + 1 * iconw / 2, iconh * iconh4 + menuh - digth / 2 + iconw / 2);
-                    drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw - iconw / 2, iconh * iconh4 + menuh, cfg);
+                    paintnumber((k + 2) * (k + 2), 4, helpw * (k * 2 + 1) / 6 - 4 * digtw[0] - 1 * iconw / 2, iconh * iconh4 + menuh - digth[0] / 2 + iconw / 2);
+                    paintnumber((k + 2), 2, helpw * (k * 2 + 1) / 6 + 2 * digtw[0] + 1 * iconw / 2, iconh * iconh4 + menuh - digth[0] / 2 + iconw / 2);
+                    drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw[0] - iconw / 2, iconh * iconh4 + menuh, cfg);
                     line(0, menuh + iconh * (iconh3 - 1) + iconh / 2, helpw, 0, cline);
                     line(0, menuh + iconh * (iconh4 - 2), helpw, 0, cline);
                 }

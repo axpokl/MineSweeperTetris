@@ -79,8 +79,8 @@ public:
     SteamLeaderboardEntries_t leadeg[3];
     SteamLeaderboardEntries_t leadeu[3];
     bool leadfailed = true;
-    LeaderboardEntry_t leadsg[3][7];
-    LeaderboardEntry_t leadsu[3][7];
+    LeaderboardEntry_t leadsg[3][10];
+    LeaderboardEntry_t leadsu[3][10];
     double waittime = 5;
 
     Steam();
@@ -334,8 +334,8 @@ void Steam::getlead()
         {
             if (leadb[leadid] != 0)
             {
-                lead1[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 7);
-                lead2[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -3, 3);
+                lead1[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 10);
+                lead2[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 4);
             }
         }
         if (waitlead_())
@@ -345,7 +345,7 @@ void Steam::getlead()
                 SteamUtils()->GetAPICallResult(lead1[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
                 leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
                 leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                for (long k = 0; k < 7; k++)
+                for (long k = 0; k < 10; k++)
                 {
                     SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
                 }
@@ -353,7 +353,7 @@ void Steam::getlead()
                 SteamUtils()->GetAPICallResult(lead2[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
                 leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
                 leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                for (long k = 0; k < 7; k++)
+                for (long k = 0; k < 10; k++)
                 {
                     SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
                 }
