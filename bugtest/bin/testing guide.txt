@@ -1,0 +1,10 @@
+test1.cpp.exe	Window creation and closing test. You will see the window open and close twice.
+test2.cpp.exe	Base image display test. You will see a red screen followed by a blue screen.
+test3.cpp.exe	Basic graphics drawing test. You will see some colored shapes and dots on the screen.
+test4.cpp.exe	Image reading test. The pop-up window will display the size of the title.png image (256 256)
+test5.cpp.exe	Picture drawing test. You will see the title.png image drawn on the screen.
+test6.cpp.exe	Text drawing test. You will see several texts in different colors and styles on the screen.
+test7.cpp.exe	Window message reception test. Try moving the mouse in and out of the window, clicking the mouse buttons or keys. You'll see the number in the title bar change.
+test8.cpp.exe	Window message reception response test. Try moving the mouse in and out of the window, clicking the mouse buttons or keys. You'll see the number in the title bar change, and the window will pop up.
+test9.cpp.exe	Audio test. This is a simple audio player. It will automatically play display.mp3, and you can drag and drop other audio files to play. Please test whether it functions normally, including using the mouse key, left and right keys to control the playback progress.
+test10.cpp.exe	Gameplay test. This is a simplified version of Tetris. Please use up, down, left, and right to see if the game works properly.

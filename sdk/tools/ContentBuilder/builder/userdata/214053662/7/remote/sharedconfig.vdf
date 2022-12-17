@@ -2469,10 +2469,7 @@
 					}
 					"2240140"
 					{
-						"tags"
-						{
-							"0"		"favorite"
-						}
+						"hidden"		"1"
 					}
 				}
 				"SteamDefaultDialog"		"#app_store"

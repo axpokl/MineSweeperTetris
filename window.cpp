@@ -1429,6 +1429,14 @@ void Window::keyevent(long key)
                 bd.n++ ;
                 initwindow(true);
                 break;
+            case 189:
+                bd.n--;
+                initwindow(true);
+                break;
+            case 187:
+                bd.n++ ;
+                initwindow(true);
+                break;
             case k_pgup:
                 bd.maskj0 = min(bd.h - 4, bd.maskj0);
                 bd.maskj0--;
