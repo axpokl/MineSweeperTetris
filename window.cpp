@@ -46,7 +46,7 @@ public:
     pbitmap pmenut[2];
     pbitmap pmenud[2];
     pbitmap pface_;
-    pbitmap pface[8];
+    pbitmap pface[12];
     pbitmap picon_;
     pbitmap picon[11];
     pbitmap piconc;
@@ -109,7 +109,7 @@ public:
     long w_ = 0;
     long h_ = 0;
 
-    bool md = false;
+    long md = 0;
     bool ml = false;
     bool mr = false;
     long mx = -1;
@@ -147,7 +147,7 @@ public:
     void sethelp(long helpi_);
     void savescr();
     void switchskin();
-    void mouseeventboard(long ex_, long ey_, long eb_);
+    void mouseeventboard(long ex_, long ey_, long eb_, long md_);
     void mouseevent(long ex_, long ey_, long eb_);
     void keyevent(long key);
     void doaction();
@@ -300,7 +300,7 @@ void Window::initbmp()
                 pmenut[i] = createbmp(menuw, menuh);
                 pmenud[i] = createbmp(menuw, menuh);
             }
-            for (long i = 0; i < 8; i++)
+            for (long i = 0; i < 12; i++)
             {
                 pface[i] = createbmp(facew, faceh);
             }
@@ -377,7 +377,7 @@ void Window::initbmp()
             drawbmp(pmenu_, pmenut[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenud[i], menuw * i, 8 * menuh, menuw, menuh, 0, 0, menuw, menuh);
         }
-        for (long i = 0; i < 8; i++)
+        for (long i = 0; i < 12; i++)
         {
             drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
         }
@@ -426,11 +426,8 @@ void Window::paintmenu()
     drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
     drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
     drawbmp(pmenut[(helpi == -2)], (w_ - 3 * menuw), 0, menuw, menuh);
-    drawbmp(pmenum[bd.sd.musicb], (w_ - 4 * menuw), 0, menuw, menuh);
-    drawbmp(pmenus[bd.sd.soundb], (w_ - 5 * menuw), 0, menuw, menuh);
-    drawbmp(pface[6], (w_ - 6 * menuw), 0, menuw, menuh);
-    drawbmp(pface[7], (w_ - 7 * menuw), 0, menuw, menuh);
-    drawbmp(pmenud[md], (w_ - 8 * menuw), 0, menuw, menuh);
+    drawbmp(pmenud[(helpi == -3)], (w_ - 4 * menuw), 0, menuw, menuh);
+    drawbmp(pface[6], (w_ - 5 * menuw), 0, menuw, menuh);
     drawbmp(pmenu1[(bd.mode == 1)], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu2[(bd.mode == 2)], 1 * menuw, 0, menuw, menuh);
     drawbmp(pmenu3[(bd.mode == 3)], 2 * menuw, 0, menuw, menuh);
@@ -731,24 +728,27 @@ void Window::painthelp()
                     break;
                 }
             }
+        case -3:
+            {
+            }
         case 1:
             {
                 setfontheight(faceh);
-                pbitmap pmenu__[14] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenut[0], pmenus[0], pmenum[0], pmenud[0], pface[7], pface[6], pface[5]};
-                const char* keys[14] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "T / F3", "S / F4", "M / F5", "D / F6", "K / F11", "P / F12", "Q / ESC"};
+                pbitmap pmenu__[15] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenut[0], pmenud[0], pmenus[0], pmenum[0], pface[8], pface[7], pface[6], pface[5]};
+                const char* keys[15] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "T / F3", "E / F4", "S / F5", "M / F6", "D / F7", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[8] = {cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
                 long helpw__ = iconw;
-                double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)13;
-                for (long k = 0; k < 14; k++)
+                double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)(15 - 1);
+                for (long k = 0; k < 15; k++)
                 {
                     drawbmp(pmenu__[k], helpw__, helph__ * k + menuh + iconh / 2, facew, faceh, cfg);
                     drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, helph__ * k + menuh + iconh / 2, ctfg, cbg);
                 }
                 if (!cheatb)
                 {
-                    for (long k = 0; k < 14; k++)
+                    for (long k = 0; k < 15; k++)
                     {
                         drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + k), helpw / 4, helph__ * k + menuh + iconh / 2, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
                     }
@@ -768,18 +768,18 @@ void Window::painthelp()
                 }
                 drawtextxy(getwin(), "PgUp", (helpw * 3 / 2 - getstringwidth("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, cred, cbg);
                 drawtextxy(getwin(), "PgDn", (helpw * 3 / 2 - getstringwidth("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, cblue, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
                 bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cbg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cbg);
-                drawbmp(parrowm, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowp, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cbg);
+                drawbmp(parrowm, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowp, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 drawbmp(parrowu, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
                 drawbmp(parrowd, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cfg);
-                drawbmp(parrowl, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowr, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 14 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowl, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowr, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 0 - 1, iconw * 12, 0, ctfg);
                 line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - 1, iconw * 12, 0, ctfg);
                 line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - 1, iconw * 12, 0, ctfg);
@@ -1241,7 +1241,7 @@ void Window::switchskin()
     bd.sd.playsound(bd.sd.sRight);
 }
 
-void Window::mouseeventboard(long ex_, long ey_, long eb_)
+void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
 {
     long ex = ex_ / mult;
     long ey = ey_ / mult;
@@ -1259,12 +1259,12 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_)
                 {
                     bd.resetbd(x, y);
                 }
-                bd.clickleft(x, y, true);
+                bd.clickleft(x, y, true, md_);
                 bd.checkline();
             }
             else if (eb_ == k_rmouse)
             {
-                bd.clickright(x, y, true);
+                bd.clickright(x, y, true, md_);
                 bd.checkline();
             }
             bd.solveb = true;
@@ -1292,34 +1292,24 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             bd.initbd(ex / menuw + 1);
             initwindow(false);
         }
-        else if (ex > w_ - 8 * menuw)
+        else if (ex > w_ - 5 * menuw)
         {
-            switch ((ex - (w_ - 8 * menuw)) / menuw)
+            switch ((ex - (w_ - 5 * menuw)) / menuw)
             {
-                case 7:
+                case 4:
                     sethelp(-1);
                     break;
-                case 6:
+                case 3:
                     sethelp(1);
                     break;
-                case 5:
+                case 2:
                     sethelp(-2);
                     break;
-                case 4:
-                    bd.sd.switchmusic();
-                    break;
-                case 3:
-                    bd.sd.switchsound();
-                    break;
-                case 2:
-                    savescr();
-                    break;
                 case 1:
-                    switchskin();
+                    sethelp(-3);
                     break;
                 case 0:
-                    md = !md;
-                    bd.sd.playsound(bd.sd.sLeft);
+                    savescr();
                     break;
             }
         }
@@ -1347,7 +1337,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         }
         else if (bd.sit < 4)
         {
-            mouseeventboard(ex_, ey_, eb_);
+            mouseeventboard(ex_, ey_, eb_, 2);
         }
     }
     else if (helpi == -1)
@@ -1432,23 +1422,29 @@ void Window::keyevent(long key)
             sethelp(-2);
             break;
         case k_f4:
+            sethelp(-3);
+            break;
+        case k_e:
+            sethelp(-3);
+            break;
+        case k_f5:
             bd.sd.switchsound();
             break;
         case k_s:
             bd.sd.switchsound();
             break;
-        case k_f5:
+        case k_f6:
             bd.sd.switchmusic();
             break;
         case k_m:
             bd.sd.switchmusic();
             break;
-        case k_f6:
-            md = !md;
+        case k_f7:
+            md = (md + 1) % 3;
             bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_d:
-            md = !md;
+            md = (md + 1) % 3;
             bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_n:
@@ -1618,15 +1614,15 @@ void Window::doaction()
             my = -1;
             mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
         }
-        if (ismousemove() && md)
+        if (ismousemove() && (md >= 1))
         {
             if (ml)
             {
-                mouseeventboard(getmouseposx(), getmouseposy(), k_lmouse);
+                mouseeventboard(getmouseposx(), getmouseposy(), k_lmouse, md);
             }
             if (mr)
             {
-                mouseeventboard(getmouseposx(), getmouseposy(), k_rmouse);
+                mouseeventboard(getmouseposx(), getmouseposy(), k_rmouse, md);
             }
         }
         if (iskey())

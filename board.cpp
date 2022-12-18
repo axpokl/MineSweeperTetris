@@ -49,6 +49,8 @@ public:
     void clicknumb(long x, long y, bool sb_);
     void clickleft(long x, long y, bool sb_);
     void clickright(long x, long y, bool sb_);
+    void clickleft(long x, long y, bool sb_, long md_);
+    void clickright(long x, long y, bool sb_, long md_);
     void addline(bool b);
     void delline(long l);
     bool addmask();
@@ -625,7 +627,8 @@ void Board::delline(long l)
                 }
             }
         }
-        delay(1);
+        //long dl = 1000.0 / (1.0 + (double)level /5.0);
+        //delay(dl);
         for (long i = 0; i < w; i++)
         {
             rx = rand() % w;
@@ -796,7 +799,18 @@ void Board::clicknumb(long x, long y, bool sb_)
     setflag(x, y);
 }
 
+
 void Board::clickleft(long x, long y, bool sb_)
+{
+    clickleft(x, y, sb_, 2);
+}
+
+void Board::clickright(long x, long y, bool sb_)
+{
+    clickright(x, y, sb_, 2);
+}
+
+void Board::clickleft(long x, long y, bool sb_, long md_)
 {
     if (!mask[x][y])
     {
@@ -804,20 +818,23 @@ void Board::clickleft(long x, long y, bool sb_)
         {
             if (!blck[x][y])
             {
-                blck[x][y] = true;
-                qstn[x][y] = false;
-                checkr = false;
-                if (sit == 2)
+                if (md_ == 2)
                 {
-                    sit = 1;
-                }
-                if (sit == 3)
-                {
-                    sit = 1;
-                }
-                if (!checkerror())
-                {
-                    sd.playsound(sd.sLeft);
+                    blck[x][y] = true;
+                    qstn[x][y] = false;
+                    checkr = false;
+                    if (sit == 2)
+                    {
+                        sit = 1;
+                    }
+                    if (sit == 3)
+                    {
+                        sit = 1;
+                    }
+                    if (!checkerror())
+                    {
+                        sd.playsound(sd.sLeft);
+                    }
                 }
             }
             else if (sb_)
@@ -829,7 +846,7 @@ void Board::clickleft(long x, long y, bool sb_)
     }
 }
 
-void Board::clickright(long x, long y, bool sb_)
+void Board::clickright(long x, long y, bool sb_, long md_)
 {
     if (!mask[x][y])
     {
@@ -837,7 +854,10 @@ void Board::clickright(long x, long y, bool sb_)
         {
             if (!blck[x][y])
             {
-                setqstn(x, y);
+                if (md_ == 2)
+                {
+                    setqstn(x, y);
+                }
             }
             else if (sb_)
             {

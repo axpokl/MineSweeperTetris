@@ -1,12 +1,12 @@
-[2022-12-17 13:54:19]: Starting build for depot 2204231, content path is "C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-12-17 13:54:19]: Building file listing for depot 2204231 ...
-[2022-12-17 13:54:19]: Found 68 files for mapping: C:\Users\pc\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-12-17 13:54:19]: Found 68 files (1 MB) for depot 2204231
-[2022-12-17 13:54:20]: Building depot 2204231, baseline manifest 8088173812354866679 (68 files)
-[2022-12-17 13:54:20]: Found 58 chunks ( 58 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-12-17 13:54:20]: Changes to baseline manifest 8088173812354866679 :
-[2022-12-17 13:54:20]: Changed: "MineSweeperTetris.exe" 592 kB size, 592 kB changed 
-[2022-12-17 13:54:20]: Summary: 0 files added, 1 files changed, 0 files removed
-[2022-12-17 13:54:21]: Uploading new manifest to 208.64.201.169:80 (handle 3826280901345631564, 7425 bytes).
-[2022-12-17 13:54:21]: Uploading 1 out of 1 missing chunks.
-[2022-12-17 13:54:23]: Success! New manifestID 2716504151381799574 created and 1 new chunks uploaded.
+[2022-12-19 02:16:01]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-12-19 02:16:01]: Building file listing for depot 2204231 ...
+[2022-12-19 02:16:01]: Found 68 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-12-19 02:16:01]: Found 68 files (1 MB) for depot 2204231
+[2022-12-19 02:16:02]: Building depot 2204231, baseline manifest 2716504151381799574 (68 files)
+[2022-12-19 02:16:02]: Found 58 chunks ( 58 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-12-19 02:16:02]: Changes to baseline manifest 2716504151381799574 :
+[2022-12-19 02:16:02]: Changed: "MineSweeperTetris.exe" 593 kB size, 593 kB changed 
+[2022-12-19 02:16:02]: Summary: 0 files added, 1 files changed, 0 files removed
+[2022-12-19 02:16:02]: Uploading new manifest to 208.64.201.169:80 (handle 18300494040474746386, 7420 bytes).
+[2022-12-19 02:16:03]: Uploading 1 out of 1 missing chunks.
+[2022-12-19 02:16:05]: Success! New manifestID 3109482188496671718 created and 1 new chunks uploaded.
