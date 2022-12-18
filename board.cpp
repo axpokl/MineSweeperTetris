@@ -7,6 +7,7 @@ public:
     Sound sd;
 
     double time;
+    double time_;
     double pausetime;
     long mode = 0;
     long mode_ = 0;
@@ -23,6 +24,7 @@ public:
     bool dieb;
     long diex;
     long diey;
+    long tetrisi;
 
     long rx;
     long ry;
@@ -52,6 +54,7 @@ public:
     bool addmask();
     void checkdie();
     void pause();
+    bool ischeat();
 
     struct rule
     {
@@ -80,10 +83,14 @@ Board::Board()
 
 void Board::initbd()
 {
-    st.setlead(line, mode);
+    if (!ischeat())
+    {
+        st.setlead(line, mode);
+    }
     sit = 0;
     line = 0;
     level = 0;
+    tetrisi = 0;
     w = min(max(w, 12), min(128, maxbdw));
     h = min(max(h, 8), min(128, maxbdh));
     n = max(1, min(n, w - 1));
@@ -126,7 +133,10 @@ void Board::initbd(long w_, long h_, long maskj_, long n_)
 
 void Board::initbd(long mode_)
 {
-    st.setlead(line, mode);
+    if (!ischeat())
+    {
+        st.setlead(line, mode);
+    }
     mode = mode_;
     switch (mode)
     {
@@ -178,6 +188,7 @@ void Board::resetbd(long x, long y)
     randmine(x, y);
     calcnumb();
     time = gettimer();
+    time_ = time;
     sit = 1;
     st.addach(st.achgenstart);
 }
@@ -567,7 +578,10 @@ void Board::checkdie()
         {
             st.addach(st.achhidright);
         }
-        st.setlead(line, mode);
+        if (!ischeat())
+        {
+            st.setlead(line, mode);
+        }
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {
@@ -651,6 +665,7 @@ void Board::delline(long l)
         {
             for (long k = 0; k < 4; k++)
             {
+                tetrisi++;
                 line++;
                 line = min(line, 999999);
                 st.compscr(line, mode);
@@ -878,4 +893,14 @@ void Board::pause()
     {
         pausetime = gettimer() - time;
     }
+}
+
+bool Board::ischeat()
+{
+    long mines[4] = {0, 12, 16, 32};
+    long score = line - tetrisi * 4 - 8;
+    double gametime = time - time_;
+    double basetime = (double) mines[mode] / (1.0 + (double) level / 5.0);
+    double mintime = basetime * score;
+    return (gametime < mintime);
 }

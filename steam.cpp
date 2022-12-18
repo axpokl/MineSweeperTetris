@@ -79,7 +79,7 @@ public:
     SteamLeaderboardEntries_t leadeg[3];
     SteamLeaderboardEntries_t leadeu[3];
     bool leadfailed = true;
-    LeaderboardEntry_t leadsg[3][10];
+    LeaderboardEntry_t leadsg[3][20];
     LeaderboardEntry_t leadsu[3][10];
     double waittime = 5;
 
@@ -334,7 +334,7 @@ void Steam::getlead()
         {
             if (leadb[leadid] != 0)
             {
-                lead1[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 10);
+                lead1[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 20);
                 lead2[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 4);
             }
         }
@@ -345,7 +345,7 @@ void Steam::getlead()
                 SteamUtils()->GetAPICallResult(lead1[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
                 leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
                 leadeg[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
-                for (long k = 0; k < 10; k++)
+                for (long k = 0; k < 20; k++)
                 {
                     SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
                 }

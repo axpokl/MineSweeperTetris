@@ -657,11 +657,16 @@ void Window::painthelp()
                     for (long leadid = 0; leadid < bd.st.leadn; leadid++)
                     {
                         drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh, cfg);
+                        long rank_ = 0;
+                        while (bd.st.leadsg[leadid][rank_].m_nScore >= 4998)
+                        {
+                            rank_++;
+                        }
                         for (long k = 0; k < 20; k++)
                         {
                             if (k < 10)
                             {
-                                leads = bd.st.leadsg[leadid][k];
+                                leads = bd.st.leadsg[leadid][k + rank_];
                             }
                             else
                             {
@@ -701,7 +706,7 @@ void Window::painthelp()
                                 usernames[2] = poss;
                                 usernames[3] = 0;
                                 usernames[4 + poss] = 0;
-                                drawtextxy(getwin(), i2s(leads.m_nGlobalRank), helpw * leadid / 3, k * fontsh + faceh + menuh, ctfg, cbg);
+                                drawtextxy(getwin(), i2s(leads.m_nGlobalRank - rank_), helpw * leadid / 3, k * fontsh + faceh + menuh, ctfg, cbg);
                                 drawtextxy(getwin(), &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fontsh + faceh + menuh, helpw / 3 - getstringwidth("0000"), fontsh, ctfg, cbg, DT_LEFT);
                                 paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
                             }
