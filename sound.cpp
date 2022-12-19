@@ -18,7 +18,7 @@ public:
 
     bool soundb = true;
     bool musicb = true;
-    long musici = -1;
+    long musici = -256;
     double musictime;
 
     Sound();
@@ -81,17 +81,24 @@ void Sound::playmusic()
     {
         if (iswin())
         {
-            long musici_ = rand() % (musicn - 1);
-            if (musici_ >= musici)
+            if (musici == -256)
             {
-                musici_++;
+                musici = 0;
             }
-            musici = musici_;
+            else
+            {
+                long musici_ = rand() % (musicn - 1);
+                if (musici_ >= musici)
+                {
+                    musici_++;
+                }
+                musici = musici_;
+            }
             musictime = gettimer();
         }
         else
         {
-            musici = 0;
+            musici = -256;
             musictime = 0;
         }
         setaudiopos(sMusic[musici], 0);

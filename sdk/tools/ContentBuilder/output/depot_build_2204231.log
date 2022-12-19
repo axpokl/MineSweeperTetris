@@ -1,46 +1,12 @@
-[2022-12-19 19:38:36]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-12-19 19:38:36]: Building file listing for depot 2204231 ...
-[2022-12-19 19:38:36]: Found 69 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-12-19 19:38:36]: Found 69 files (1 MB) for depot 2204231
-[2022-12-19 19:38:37]: Building depot 2204231, baseline manifest 3109482188496671718 (68 files)
-[2022-12-19 19:38:37]: Found 59 chunks ( 58 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-12-19 19:38:37]: Changes to baseline manifest 3109482188496671718 :
-[2022-12-19 19:38:37]: Changed: "bmp\0\face.bmp" 4 kB size, 4 kB changed 
-[2022-12-19 19:38:37]: Changed: "bmp\0\menu.bmp" 6 kB size, 6 kB changed 
-[2022-12-19 19:38:37]: Changed: "bmp\1\face.bmp" 4 kB size, 4 kB changed 
-[2022-12-19 19:38:37]: Changed: "bmp\1\menu.bmp" 31 kB size, 31 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\arabic.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\brazilian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\bulgarian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\czech.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\danish.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\dutch.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\english.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\finnish.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\french.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\german.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\greek.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\hungarian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\italian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\japanese.txt" 1 kB size, 1 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\koreana.txt" 1 kB size, 1 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\latam.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\norwegian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\polish.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\portuguese.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\romanian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\russian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\schinese.txt" 1 kB size, 1 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\spanish.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\swedish.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\tchinese.txt" 1 kB size, 1 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\thai.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\turkish.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\ukrainian.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Changed: "lan\vietnamese.txt" 2 kB size, 2 kB changed 
-[2022-12-19 19:38:37]: Added  : "mid\music4.mid" 8 kB 
-[2022-12-19 19:38:37]: Changed: "MineSweeperTetris.exe" 596 kB size, 596 kB changed 
-[2022-12-19 19:38:37]: Summary: 1 files added, 34 files changed, 0 files removed
-[2022-12-19 19:38:37]: Uploading new manifest to 208.64.201.169:80 (handle 2560729592106087256, 7520 bytes).
-[2022-12-19 19:38:38]: Uploading 33 out of 33 missing chunks.
-[2022-12-19 19:38:42]: Success! New manifestID 851184770598691648 created and 33 new chunks uploaded.
+[2022-12-19 20:00:18]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-12-19 20:00:18]: Building file listing for depot 2204231 ...
+[2022-12-19 20:00:18]: Found 69 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-12-19 20:00:18]: Found 69 files (1 MB) for depot 2204231
+[2022-12-19 20:00:19]: Building depot 2204231, baseline manifest 851184770598691648 (69 files)
+[2022-12-19 20:00:19]: Found 59 chunks ( 59 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-12-19 20:00:19]: Changes to baseline manifest 851184770598691648 :
+[2022-12-19 20:00:19]: Changed: "MineSweeperTetris.exe" 596 kB size, 596 kB changed 
+[2022-12-19 20:00:19]: Summary: 0 files added, 1 files changed, 0 files removed
+[2022-12-19 20:00:19]: Uploading new manifest to 208.64.201.169:80 (handle 10771714722515365322, 7540 bytes).
+[2022-12-19 20:00:20]: Uploading 1 out of 1 missing chunks.
+[2022-12-19 20:00:22]: Success! New manifestID 6748231675570933919 created and 1 new chunks uploaded.
