@@ -81,7 +81,12 @@ void Sound::playmusic()
     {
         if (iswin())
         {
-            musici = (musici + 1) % musicn;
+            long musici_ = rand() % (musicn - 1);
+            if (musici_ >= musici)
+            {
+                musici_++;
+            }
+            musici = musici_;
             musictime = gettimer();
         }
         else
@@ -101,7 +106,6 @@ void Sound::checkmusic()
         {
             if (getaudiopos(sMusic[musici]) < getaudiolen(sMusic[musici]))
             {
-
                 musictime += 10;
             }
             else

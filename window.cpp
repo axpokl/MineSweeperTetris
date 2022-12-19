@@ -105,9 +105,13 @@ public:
     pbitmap pwin;
     const long minh = 600;
     const long minw = 800;
+    long mult_ = 0;
     double mult = 1;
     long w_ = 0;
     long h_ = 0;
+    RECT rect;
+    long wscr = 0;
+    long hscr = 0;
 
     long md = 0;
     bool ml = false;
@@ -174,6 +178,7 @@ void Window::loadsetting()
     reg.getreg("md", (long*)&md);
     reg.getreg("soundb", (long*)&bd.sd.soundb);
     reg.getreg("musicb", (long*)&bd.sd.musicb);
+    reg.getreg("mult", (long*)&mult_);
 }
 
 void Window::savesetting()
@@ -183,6 +188,7 @@ void Window::savesetting()
     reg.setreg("md", md);
     reg.setreg("soundb", bd.sd.soundb);
     reg.setreg("musicb", bd.sd.musicb);
+    reg.setreg("mult", mult_);
 }
 
 void Window::loadall()
@@ -211,8 +217,10 @@ void Window::loadall()
 void Window::initwindow()
 {
     initcolor();
-    mult = max((double)1, min((double)(getscrwidth() - getborderwidth() * 2) / (double)minw, (double)(getscrheight() - getborderheight() * 2 - getbordertitle()) / (double)minh));
-    mult = (double)((int)(mult * 2) / (int)1) / (double)2;
+    SystemParametersInfoA(SPI_GETWORKAREA, 0, &rect, 0);
+    wscr = rect.right - rect.left;
+    hscr = rect.bottom - rect.top;
+    mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)minw, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)minh));
     w_ = launchw;
     h_ = launchh;
     createwin(w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
@@ -224,8 +232,8 @@ void Window::initwindow()
     SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(LOGFONT),&lf,0);
     setfontname(lf.lfFaceName);
     painttitle(-1);
-    bd.maxbdw = (getscrwidth() - getborderwidth() * 2) / 16 - 1;
-    bd.maxbdh = (getscrheight() - menuh - faceh - getborderheight() * 2 - getbordertitle()) / 16 - 1;
+    bd.maxbdw = (wscr - getborderwidth() * 2) / 16 - 1;
+    bd.maxbdh = (hscr - menuh - faceh - getborderheight() * 2 - getbordertitle()) / 16 - 1;
 }
 
 void Window::releasewindow()
@@ -258,12 +266,25 @@ void Window::initwindow(bool b)
                 h_ = helph + menuh;
                 break;
         }
-        mult = max(1, min((double)(getscrwidth() - getborderwidth() * 2) / max((double)minw, (double)w_), (double)(getscrheight() - getborderheight() * 2 - getbordertitle()) / max((double)minh, (double)h_)));
-        mult = (double)((int)(mult * 2) / (int)1) / (double)2;
+        if (mult_ == 0)
+        {
+            mult = max(1, min((double)(wscr - getborderwidth() * 2) / max((double)minw, (double)w_), (double)(hscr - getborderheight() * 2 - getbordertitle()) / max((double)minh, (double)h_)));
+            mult = (double)((int)(mult * 2) / (int)1) / (double)2.0;
+        }
+        else if (mult_ == 1)
+        {
+            mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
+        }
+        else
+        {
+            mult_ = min(max(mult_, 2), 8);
+            mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
+            mult = min(mult, (double)mult_ / 2.0);
+        }
         setsize(w_ * mult, h_ * mult);
         releasebmp(pwin);
         pwin = createbmp(w_, h_);
-        setpos((getscrwidth() - w_ * mult - getborderwidth() * 2) / 2, (getscrheight() - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2);
+        setpos(rect.left + max(0, (wscr - w_ * mult - getborderwidth() * 2) / 2), rect.top + max(0, (hscr - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2));
         paintevent();
     }
 }
@@ -730,6 +751,34 @@ void Window::painthelp()
             }
         case -3:
             {
+                pbitmap psetting__[5] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pface[8 + md], pface[11], pface[7]};
+                long settinglan[5] = {9, 10, 11, 15, 12};
+                long settingj[5] = {2, 2, 3, 3, 2};
+                long settingb[5][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}};
+                pbitmap psettingicon[2] = {piconc, piconf};
+                long settinglanj[5][3] = {{16, 17, 0}, {16, 17, 0}, {18, 19, 20}, {21, 22, 25}, {23, 24, 0}};
+                long helpw__ = iconw;
+                double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
+                for (long k = 0; k < 5; k++)
+                {
+                    drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
+                    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
+                    for (long j = 0; j < settingj[k]; j++)
+                    {
+                        drawbmp(psettingicon[settingb[k][j]], helpw / 4 * (j + 1), helph__ * k + menuh + iconh, facew, faceh, cfg);
+                        if (k == 3 && j == 2)
+                        {
+                            drawbmp(parrowm, helpw / 4 * (j + 1) + facew, helph__ * k + menuh + iconh, facew, faceh, cfg);
+                            drawbmp(parrowp, helpw / 4 * (j + 1) + facew * 2, helph__ * k + menuh + iconh, facew, faceh, cfg);
+                            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglanj[k][j] + max(2, mult_) - 2), helpw / 4 * (j + 1) + facew * 3 + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
+                        }
+                        else
+                        {
+                            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglanj[k][j]), helpw / 4 * (j + 1) + facew + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
+                        }
+                    }
+                }
+                break;
             }
         case 1:
             {
@@ -744,7 +793,7 @@ void Window::painthelp()
                 for (long k = 0; k < 15; k++)
                 {
                     drawbmp(pmenu__[k], helpw__, helph__ * k + menuh + iconh / 2, facew, faceh, cfg);
-                    drawtextxy(getwin(), keys[k],  helpw__ + facew + iconw, helph__ * k + menuh + iconh / 2, ctfg, cbg);
+                    drawtextxy(getwin(), keys[k], helpw__ + facew + iconw, helph__ * k + menuh + iconh / 2, ctfg, cbg);
                 }
                 if (!cheatb)
                 {
@@ -768,18 +817,18 @@ void Window::painthelp()
                 }
                 drawtextxy(getwin(), "PgUp", (helpw * 3 / 2 - getstringwidth("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, cred, cbg);
                 drawtextxy(getwin(), "PgDn", (helpw * 3 / 2 - getstringwidth("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, cblue, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cbg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cbg);
-                drawbmp(parrowm, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowp, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowu, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
-                drawbmp(parrowd, (helpw * 3 / 2 - arroww) / 2,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cfg);
-                drawbmp(parrowl, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
-                drawbmp(parrowr, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0,  (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cbg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cbg);
+                drawbmp(parrowm, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowp, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowu, (helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
+                drawbmp(parrowd, (helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cfg);
+                drawbmp(parrowl, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                drawbmp(parrowr, (helpw * 3 / 2 - iconw * 12) / 2 + iconw * 12 - arroww * 0, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 0 - 1, iconw * 12, 0, ctfg);
                 line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - 1, iconw * 12, 0, ctfg);
                 line((helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - 1, iconw * 12, 0, ctfg);
@@ -1030,7 +1079,7 @@ void Window::painthelp()
                 drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cbg);
                 paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - digth[0] / 2);
                 paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh2 + 0) + menuh);
-                paintline(picon[1],  picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
+                paintline(picon[1], picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
                 paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh2 + 2) + menuh);
                 paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh2 + 1) + menuh);
                 paintline(piconc, picon[3], picon[1], piconp, 3, 1, 1, 7, iconw * iconwr, iconh * (iconh2 + 2) + menuh);
@@ -1371,7 +1420,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                 bd.sd.playsound(bd.sd.sLeft);
             }
         }
-        if (helpi < maxhelp)
+        if (helpi > 0 && helpi < maxhelp)
         {
             if (isin(ex, ey, (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
             {
@@ -1380,6 +1429,71 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                 if (helpi == maxhelp)
                 {
                     bd.st.addach(bd.st.achgenhelp);
+                }
+            }
+        }
+        if (helpi == -3)
+        {
+            long helpw__ = iconw;
+            double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
+            for (long k = 0; k < 5; k++)
+            {
+                for (long j = 0; j < 3; j++)
+                {
+                    if (isin(ex, ey, helpw / 4 * (j + 1), helph__ * k + menuh + iconh, facew, faceh))
+                    {
+                        switch (k)
+                        {
+                            case 0:
+                                if (j <= 1 && bd.sd.soundb == j)
+                                {
+                                    bd.sd.switchsound();
+                                }
+                                break;
+                            case 1:
+                                if (j <= 1 && bd.sd.musicb == j)
+                                {
+                                    bd.sd.switchmusic();
+                                }
+                                break;
+                            case 2:
+                                if (md != j)
+                                {
+                                    md = j;
+                                    bd.sd.playsound(bd.sd.sLeft);
+                                }
+                                break;
+                            case 3:
+                                if (mult_ != j)
+                                {
+                                    mult_ = j;
+                                    initwindow(false);
+                                    bd.sd.playsound(bd.sd.sRight);
+                                }
+                                break;
+                            case 4:
+                                if (j <= 1 && colori != j)
+                                {
+                                    switchskin();
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            if (mult_ >= 2)
+            {
+                if (isin(ex, ey, helpw / 4 * (2 + 1) + facew, helph__ * 3 + menuh + iconh, facew, faceh))
+                {
+                    mult_ = max(2, mult_ - 1);
+                    initwindow(false);
+                    bd.sd.playsound(bd.sd.sRight);
+                }
+                if (isin(ex, ey, helpw / 4 * (2 + 1) + facew * 2, helph__ * 3 + menuh + iconh, facew, faceh))
+                {
+                    mult_ = min(8, mult_ + 1);
+                    initwindow(false);
+                    bd.sd.playsound(bd.sd.sRight);
                 }
             }
         }
