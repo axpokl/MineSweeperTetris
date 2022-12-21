@@ -6,7 +6,7 @@ $tns = $res[0].SyncRoot | foreach { $_[0] }
 return $tns
 }
 
-cd "C:\Users\pc\Desktop\MineSweeperTetris\language"
+cd "T:\!temp\MineSweeperTetris\language"
 $lan_short = cat ".\list_short.txt"
 $lan_long = cat ".\list_long.txt"
 rd "achievement" -force -recurse

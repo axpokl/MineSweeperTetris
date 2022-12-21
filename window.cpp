@@ -444,10 +444,10 @@ void Window::initbmp()
 
 void Window::paintmenu()
 {
-    drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
-    drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
-    drawbmp(pmenut[(helpi == -2)], (w_ - 3 * menuw), 0, menuw, menuh);
-    drawbmp(pmenud[(helpi == -3)], (w_ - 4 * menuw), 0, menuw, menuh);
+    drawbmp(pmenuq[(helpi >= +1)], (w_ - 1 * menuw), 0, menuw, menuh);
+    drawbmp(pmenua[(helpi == -1)], (w_ - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenud[(helpi == -3)], (w_ - 3 * menuw), 0, menuw, menuh);
+    drawbmp(pmenut[(helpi == -2)], (w_ - 4 * menuw), 0, menuw, menuh);
     drawbmp(pface[6], (w_ - 5 * menuw), 0, menuw, menuh);
     drawbmp(pmenu1[(bd.mode == 1)], 0 * menuw, 0, menuw, menuh);
     drawbmp(pmenu2[(bd.mode == 2)], 1 * menuw, 0, menuw, menuh);
@@ -690,7 +690,7 @@ void Window::painthelp()
                             {
                                 leads = bd.st.leadsu[leadid][k - 10];
                             }
-                            if (bd.st.leadsu[leadid][5].m_nGlobalRank == leads.m_nGlobalRank && bd.st.leadsu[leadid][5].m_steamIDUser.GetEAccountType() > 0)
+                            if (bd.st.leadsu_[leadid][0].m_nGlobalRank == leads.m_nGlobalRank && leads.m_steamIDUser.GetEAccountType() > 0)
                             {
                                 setfontweight(700);
                             }
@@ -732,7 +732,7 @@ void Window::painthelp()
                         }
                     }
                     setfontheight(fonth);
-                    pbitmap pface__[3] = {pface[2], pface[1], piconf};
+                    pbitmap pface__[3] = {pface[3], pface[1], piconf};
                     long scr__[3] = {bd.st.scrdead, bd.st.scrfour, bd.st.scrtotal};
                     long n__[3] = {0, 0, 1};
                     for (long k = 0; k < 3; k++)
@@ -783,8 +783,8 @@ void Window::painthelp()
         case 1:
             {
                 setfontheight(faceh);
-                pbitmap pmenu__[15] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenut[0], pmenud[0], pmenus[0], pmenum[0], pface[8], pface[7], pface[6], pface[5]};
-                const char* keys[15] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "T / F3", "E / F4", "S / F5", "M / F6", "D / F7", "K / F11", "P / F12", "Q / ESC"};
+                pbitmap pmenu__[15] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pface[8], pface[7], pface[6], pface[5]};
+                const char* keys[15] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "E / F3", "T / F4", "S / F5", "M / F6", "D / F7", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[8] = {cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
@@ -1278,7 +1278,7 @@ void Window::savescr()
     strcat(scrpath, times);
     strcat(scrpath, ".png");
     savebmp(getwin(), scrpath);
-    ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->width, getwin()->height);
+    bd.st.savescr(&scrpath[0]);
     bd.sd.playsound(bd.sd.sSolve);
 }
 
@@ -1346,16 +1346,16 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             switch ((ex - (w_ - 5 * menuw)) / menuw)
             {
                 case 4:
-                    sethelp(-1);
-                    break;
-                case 3:
                     sethelp(1);
                     break;
+                case 3:
+                    sethelp(-1);
+                    break;
                 case 2:
-                    sethelp(-2);
+                    sethelp(-3);
                     break;
                 case 1:
-                    sethelp(-3);
+                    sethelp(-2);
                     break;
                 case 0:
                     savescr();
@@ -1530,16 +1530,16 @@ void Window::keyevent(long key)
             sethelp(-1);
             break;
         case k_f3:
-            sethelp(-2);
-            break;
-        case k_t:
-            sethelp(-2);
-            break;
-        case k_f4:
             sethelp(-3);
             break;
         case k_e:
             sethelp(-3);
+            break;
+        case k_f4:
+            sethelp(-2);
+            break;
+        case k_t:
+            sethelp(-2);
             break;
         case k_f5:
             bd.sd.switchsound();

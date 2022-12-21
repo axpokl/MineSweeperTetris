@@ -437,6 +437,7 @@ bool Board::checkerror()
                     {
                         sit = 1;
                     }
+                    st.addscr(st.scrdead, 1, mode);
                     sd.playsound(sd.sError);
                     sb = false;
                 }
@@ -575,7 +576,6 @@ void Board::checkdie()
             blck[diex][diey] = true;
         }
         sd.playsound(sd.sLose);
-        st.addscr(st.scrdead, 1, mode);
         if (!rightb)
         {
             st.addach(st.achhidright);

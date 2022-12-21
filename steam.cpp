@@ -72,15 +72,18 @@ public:
     SteamAPICall_t lead[3];
     SteamAPICall_t lead1[3];
     SteamAPICall_t lead2[3];
+    SteamAPICall_t lead3[3];
     LeaderboardFindResult_t leadr[3];
     LeaderboardScoreUploaded_t leadu[3];
     LeaderboardScoresDownloaded_t leadd[3];
     SteamLeaderboard_t leadb[3];
     SteamLeaderboardEntries_t leadeg[3];
     SteamLeaderboardEntries_t leadeu[3];
+    SteamLeaderboardEntries_t leadeu_[3];
     bool leadfailed = true;
     LeaderboardEntry_t leadsg[3][20];
     LeaderboardEntry_t leadsu[3][10];
+    LeaderboardEntry_t leadsu_[3][1];
     double waittime = 5;
 
     Steam();
@@ -105,6 +108,8 @@ public:
     bool waitlead(long leadid);
     bool waitlead();
     bool waitlead_();
+
+    void savescr(char* scrpath);
 
 };
 
@@ -131,7 +136,6 @@ void Steam::initsteam()
     }
     if (steamb)
     {
-        printf("%d\n",SteamUtils()->GetAppID());
         if (SteamUtils()->GetAppID() != appid)
         {
             msgbox("This is the test version of MineSweeper Tetris, please download the  build version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
@@ -336,6 +340,7 @@ void Steam::getlead()
             {
                 lead1[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobal, 1, 20);
                 lead2[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, -5, 4);
+                lead3[leadid] = SteamUserStats()->DownloadLeaderboardEntries(leadb[leadid], k_ELeaderboardDataRequestGlobalAroundUser, 0, 0);
             }
         }
         if (waitlead_())
@@ -349,13 +354,19 @@ void Steam::getlead()
                 {
                     SteamUserStats()->GetDownloadedLeaderboardEntry(leadeg[leadid],k,&leadsg[leadid][k],NULL,0);
                 }
-
                 SteamUtils()->GetAPICallResult(lead2[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
                 leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
                 leadeu[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
                 for (long k = 0; k < 10; k++)
                 {
                     SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu[leadid],k,&leadsu[leadid][k],NULL,0);
+                }
+                SteamUtils()->GetAPICallResult(lead3[leadid], &leadd[leadid], sizeof(leadd[leadid]), leadd[leadid].k_iCallback, &leadfailed);
+                leadb[leadid] = leadd[leadid].m_hSteamLeaderboard;
+                leadeu_[leadid] = leadd[leadid].m_hSteamLeaderboardEntries;
+                for (long k = 0; k < 1; k++)
+                {
+                    SteamUserStats()->GetDownloadedLeaderboardEntry(leadeu_[leadid],k,&leadsu_[leadid][k],NULL,0);
                 }
             }
         }
@@ -440,5 +451,13 @@ bool Steam::waitlead_()
             waitb = waitb && SteamUtils()->IsAPICallCompleted(lead2[leadid], &leadfailed);
         }
         return waitb;
+    }
+}
+
+void Steam::savescr(char* scrpath)
+{
+    if (steamb)
+    {
+        ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->width, getwin()->height);
     }
 }
