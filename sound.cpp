@@ -34,7 +34,7 @@ public:
 
 Sound::Sound()
 {
-    musicn = 3;
+    musicn = 4;
 }
 
 void Sound::initsound()
@@ -56,6 +56,7 @@ void Sound::initmusic()
     sMusic[0] = loadaudio("./mid/music1.mid", " type sequencer");
     sMusic[1] = loadaudio("./mid/music2.mid", " type sequencer");
     sMusic[2] = loadaudio("./mid/music3.mid", " type sequencer");
+    sMusic[3] = loadaudio("./mid/music4.mid", " type sequencer");
 }
 
 void Sound::playsound(long id)
