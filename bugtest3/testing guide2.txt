@@ -1,0 +1,6 @@
+This is a test of the mouse position system. The program test21.cpp.exe will output the posistion mouse of:
+1. The releative posistion to the drawing area
+2. The releative posistion to the game window
+3. The absolute position to the screen
+Please try move you mouse, adjust the 3 above position to (0 0) and take screenshots to me.
+
