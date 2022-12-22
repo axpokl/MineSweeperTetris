@@ -676,7 +676,7 @@ void Window::painthelp()
                     {
                         drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh, cfg);
                         long rank_ = 0;
-                        while (bd.st.leadsg[leadid][rank_].m_nScore >= 4998)
+                        while (bd.st.leadsg[leadid][rank_].m_nScore >= 9998)
                         {
                             rank_++;
                         }
