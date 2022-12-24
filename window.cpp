@@ -26,6 +26,7 @@ public:
     const long fontfh = 32;
     const long fonth = 24;
     const long fontsh = 17;
+    const long fontssh = 15;
     const long okh_ = abouth - (fontth + fonth * 4);
     const long cursorw = 12;
     const long cursorh = 19;
@@ -82,7 +83,7 @@ public:
     pbitmap parrowp;
 
 
-    const long color[2][7] = {{silver, 0xAFAFAF, black, silver, red, blue, gray}, {black, black, white, black, 0x8080FF, 0xFF8080, white}};
+    const long color[2][8] = {{silver, 0xAFAFAF, black, silver, red, blue, green, gray}, {black, black, white, black, 0x8080FF, 0xFF8080, 0x80FF80, white}};
     long colori = 0;
     long cfg;
     long cbg;
@@ -90,6 +91,7 @@ public:
     long ctbg;
     long cred;
     long cblue;
+    long cgreen;
     long cline;
     bool isbmp = false;
 
@@ -204,15 +206,8 @@ void Window::loadall()
     painttitle(bd.st.lan.LAN_LOAD_GRAPH);
     initbmp();
     painttitle(bd.st.lan.LAN_LOAD_WINDOW);
-    if (helpb)
-    {
-        sethelp(1);
-        helpb = false;
-    }
-    else
-    {
-        sethelp(0);
-    }
+    bd.tutb = helpb;
+    sethelp(0);
 }
 
 void Window::initwindow()
@@ -300,7 +295,8 @@ void Window::initcolor()
         ctbg = color[colori][3];
         cred = color[colori][4];
         cblue = color[colori][5];
-        cline = color[colori][6];
+        cgreen = color[colori][6];
+        cline = color[colori][7];
     }
 }
 
@@ -1178,6 +1174,11 @@ void Window::painthelp()
             drawbmp(pbtn, getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
             drawtextxy(getwin(), ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, ctfg, ctbg);
         }
+        if (helpi == 1)
+        {
+            drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh);
+            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh, ctfg, ctbg);
+        }
         line(0, menuh, helpw, 0, cline);
         line(0, menuh + helph - okh_, helpw, 0, cline);
     }
@@ -1188,11 +1189,39 @@ void Window::painttut()
     long i = bd.tutx[bd.tuti];
     long j = bd.tuty[bd.tuti];
     bar(i * iconw, j * iconh + menuh + faceh, iconw - 1, iconh - 1, cred, transparent);
-    setfontheight(fontsh);
+    switch (bd.tuti)
+    {
+        case 3:
+            bar(9 * iconw, 18 * iconh + menuh + faceh, iconw - 1, iconh * 2 - 1, cblue, transparent);
+            bar(9 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw + 1, iconh * 3 + 1, cgreen, transparent);
+            break;
+        case 8:
+            bar(2 * iconw, 18 * iconh + menuh + faceh, iconw - 1, iconh * 2 - 1, cblue, transparent);
+            bar(2 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw + 1, iconh * 3 + 1, cgreen, transparent);
+            break;
+        case 11:
+            bar(0 * iconw - 1, 6 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
+            break;
+        case 13:
+            bar(0 * iconw - 1, 6 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
+            bar(0 * digtw[0], menuh, digtw[0] * 4, digth[0], cred, transparent);
+            bar(w_ - 2 * digtw[0], menuh, digtw[0] * 2, digth[0], cred, transparent);
+            drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
+            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
+            break;
+        case 14:
+            bar(w_ - 2 * digtw[0], menuh, digtw[0] * 2, digth[0], cred, transparent);
+            bar(0 * iconw - 1, 7 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh + 1, cred, transparent);
+            drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
+            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
+            break;
+    }
+    setfontheight(fontssh);
     for (long k = 0; k < bd.tutlani[bd.tuti]; k++)
     {
-        drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tutlan[bd.tuti] + k), 0, fontsh * k * 2 + menuh + faceh, iconw * 12, fontsh * 2, ctfg, cbg, DT_WORDBREAK);
+        drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tutlan[bd.tuti] + k), 0, fontssh * k * 2 + menuh + faceh, iconw * 12, fontssh * 2, ctfg, cbg, DT_WORDBREAK);
     }
+    setfontheight(fonth);
 }
 
 void Window::painttitle(long load)
@@ -1348,6 +1377,26 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
                 bd.tuti++;
             }
         }
+        bool tutmb13 = (bd.tuti == 13 && isin(ex, ey, (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh));
+        bool tutmb14 = (bd.tuti == 14 && isin(ex, ey, (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh));
+        if (bd.tutb)
+        {
+            if (tutmb13)
+            {
+                bd.maski++;
+                bd.tuti++;
+                bd.sd.playsound(bd.sd.sLeft);
+            }
+            else if (tutmb14)
+            {
+                bd.tutb = false;
+                bd.time = gettimer();
+                helpb = false;
+                sethelp(1);
+            }
+        }
+
+
     }
 }
 
@@ -1440,6 +1489,15 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             {
                 helpi--;
                 bd.sd.playsound(bd.sd.sLeft);
+            }
+        }
+        else if (helpi == 1)
+        {
+            if (isin(ex, ey, (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh))
+            {
+                sethelp(0);
+                bd.initbd(1);
+                bd.tutb = true;
             }
         }
         if (helpi > 0 && helpi < maxhelp)

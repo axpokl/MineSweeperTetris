@@ -37,8 +37,8 @@ public:
     long tutx[13] = {5, 5, 4, 9, 8, 8, 9, 10, 2, 2, 3, 3, 2};
     long tuty[13] = {16, 17, 17, 17, 17, 18, 18, 18, 17, 16, 17, 19, 19};
     long tutm[13] = {1, 1, 3, 2, 3, 3, 3, 3, 1, 2, 3, 3, 3};
-    long tutlan[17] = {0, 1, 3, 5, 7, 9, 11, 13, 14, 16, 18, 19, 21, 23, 25, 27, 29};
-    long tutlani[17] = {1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 1, 2, 2, 2, 2};
+    long tutlan[15] = {0, 1, 3, 5, 7, 9, 11, 13, 14, 16, 18, 19, 21, 23, 26};
+    long tutlani[15] = {1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 1, 3, 3};
 
     Board();
     void initbd();
@@ -132,6 +132,7 @@ void Board::initbd()
     }
     rightb = false;
     tuti = 0;
+    tutb = 0;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)

@@ -1,13 +1,43 @@
-[2022-12-22 14:22:35]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2022-12-22 14:22:35]: Building file listing for depot 2204231 ...
-[2022-12-22 14:22:35]: Found 69 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2022-12-22 14:22:35]: Found 69 files (1 MB) for depot 2204231
-[2022-12-22 14:22:36]: Building depot 2204231, baseline manifest 4094967556177243113 (69 files)
-[2022-12-22 14:22:36]: Found 59 chunks ( 59 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2022-12-22 14:22:36]: Changes to baseline manifest 4094967556177243113 :
-[2022-12-22 14:22:36]: Changed: "mid\music4.mid" 7 kB size, 7 kB changed 
-[2022-12-22 14:22:36]: Changed: "MineSweeperTetris.exe" 597 kB size, 597 kB changed 
-[2022-12-22 14:22:36]: Summary: 0 files added, 2 files changed, 0 files removed
-[2022-12-22 14:22:37]: Uploading new manifest to 208.64.201.169:80 (handle 6489748770301718241, 7536 bytes).
-[2022-12-22 14:22:37]: Uploading 2 out of 2 missing chunks.
-[2022-12-22 14:22:40]: Success! New manifestID 2824453079714201304 created and 2 new chunks uploaded.
+[2022-12-24 18:40:41]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2022-12-24 18:40:41]: Building file listing for depot 2204231 ...
+[2022-12-24 18:40:41]: Found 71 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2022-12-24 18:40:41]: Found 71 files (1 MB) for depot 2204231
+[2022-12-24 18:40:42]: Building depot 2204231, baseline manifest 2824453079714201304 (69 files)
+[2022-12-24 18:40:42]: Found 61 chunks ( 59 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2022-12-24 18:40:42]: Changes to baseline manifest 2824453079714201304 :
+[2022-12-24 18:40:42]: Changed: "lan\arabic.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\brazilian.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\bulgarian.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\czech.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\danish.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\dutch.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\english.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\finnish.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\french.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\german.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\greek.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\hungarian.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\italian.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\japanese.txt" 3 kB size, 3 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\koreana.txt" 3 kB size, 3 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\latam.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\norwegian.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\polish.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\portuguese.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\romanian.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\russian.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\schinese.txt" 2 kB size, 2 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\spanish.txt" 6 kB size, 6 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\swedish.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\tchinese.txt" 2 kB size, 2 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\thai.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\turkish.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\ukrainian.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Changed: "lan\vietnamese.txt" 5 kB size, 5 kB changed 
+[2022-12-24 18:40:42]: Added  : "mid\music5.mid" 30 kB 
+[2022-12-24 18:40:42]: Added  : "mid\music6.mid" 18 kB 
+[2022-12-24 18:40:42]: Changed: "MineSweeperTetris.exe" 600 kB size, 600 kB changed 
+[2022-12-24 18:40:42]: Summary: 2 files added, 30 files changed, 0 files removed
+[2022-12-24 18:40:42]: Uploading new manifest to 208.64.201.169:80 (handle 4805410857539017957, 7743 bytes).
+[2022-12-24 18:40:43]: Uploading 30 out of 30 missing chunks.
+[2022-12-24 18:40:46]: Success! New manifestID 2510361648722853573 created and 30 new chunks uploaded.
