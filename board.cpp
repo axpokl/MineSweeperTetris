@@ -32,11 +32,20 @@ public:
     long maxbdw;
     long maxbdh;
 
+    bool tutb = true;
+    long tuti;
+    long tutx[13] = {5, 5, 4, 9, 8, 8, 9, 10, 2, 2, 3, 3, 2};
+    long tuty[13] = {16, 17, 17, 17, 17, 18, 18, 18, 17, 16, 17, 19, 19};
+    long tutm[13] = {1, 1, 3, 2, 3, 3, 3, 3, 1, 2, 3, 3, 3};
+    long tutlan[17] = {0, 1, 3, 5, 7, 9, 11, 13, 14, 16, 18, 19, 21, 23, 25, 27, 29};
+    long tutlani[17] = {1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 1, 2, 2, 2, 2};
+
     Board();
     void initbd();
     void initbd(long w_, long h_, long maskj_, long n_);
     void initbd(long mode_);
     void randmine(long x, long y);
+    void tutmine();
     void resetbd(long x, long y);
     void solveblank();
     void solve0();
@@ -122,6 +131,7 @@ void Board::initbd()
         st.addach(st.achgenmode);
     }
     rightb = false;
+    tuti = 0;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
@@ -156,9 +166,9 @@ void Board::initbd(long mode_)
 
 void Board::randmine(long x, long y)
 {
-    for (long i = 0; i < w; i++)
+    for (long j = 0; j < h; j++)
     {
-        for (long j = 0; j < h; j++)
+        for (long i = 0; i < w; i++)
         {
             rx = rand() % w;
             ry = j;
@@ -185,9 +195,53 @@ void Board::randmine(long x, long y)
     }
 }
 
+void Board::tutmine()
+{
+    long rx0_[5] = {8,10,1,0,0};
+    long rx1_[5] = {5,3,9,2,9};
+    long i;
+    bool mb;
+    for (long j = 0; j < h; j++)
+    {
+        if (j >= h - 5)
+        {
+            i = 1;
+            rx = rx1_[j - h + 5];
+            ry = j;
+            mb = mine[rx][ry];
+            mine[rx][ry] = mine[i][j];
+            mine[i][j] = mb;
+            i = 0;
+            rx = rx0_[j - h + 5];
+            ry = j;
+            mb = mine[rx][ry];
+            mine[rx][ry] = mine[i][j];
+            mine[i][j] = mb;
+        }
+        else
+        {
+            for (long i = 0; i < w; i++)
+            {
+                rx = rand() % w;
+                ry = j;
+                bool mb = mine[rx][ry];
+                mine[rx][ry] = mine[i][j];
+                mine[i][j] = mb;
+            }
+        }
+    }
+}
+
 void Board::resetbd(long x, long y)
 {
-    randmine(x, y);
+    if (tutb)
+    {
+        tutmine();
+    }
+    else
+    {
+        randmine(x, y);
+    }
     calcnumb();
     time = gettimer();
     time_ = time;
@@ -537,24 +591,27 @@ bool Board::addmask()
 {
     if ((sit > 0) && (sit < 4))
     {
-        if (gettimer() > time + 5.0 / (level + 5.0))
+        if (!tutb)
         {
-            checkb = true;
-            checkline();
-            while (gettimer() > time + 5.0 / (level + 5.0))
+            if (gettimer() > time + 5.0 / (level + 5.0))
             {
-                time += 5.0 / (level + 5.0);
-                maski++;
-                if (maski == w)
+                checkb = true;
+                checkline();
+                while (gettimer() > time + 5.0 / (level + 5.0))
                 {
-                    maski = 0;
-                    addline(true);
+                    time += 5.0 / (level + 5.0);
+                    maski++;
+                    if (maski == w)
+                    {
+                        maski = 0;
+                        addline(true);
+                    }
                 }
+                checkb = true;
+                checkline();
+                checkdie();
+                return true;
             }
-            checkb = true;
-            checkline();
-            checkdie();
-            return true;
         }
     }
     else

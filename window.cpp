@@ -145,6 +145,7 @@ public:
     void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, long a, long b, long c, long d, long x, long y);
     void paintline(pbitmap pa, pbitmap pb, pbitmap pc, pbitmap pd, pbitmap pe, long a, long b, long c, long d, long e, long x, long y);
     void painthelp();
+    void painttut();
     void painttitle(long load);
     void paintevent();
     bool isin(long ex, long ey, long x, long y, long w, long h);
@@ -756,7 +757,7 @@ void Window::painthelp()
                 long settingj[5] = {2, 2, 3, 3, 2};
                 long settingb[5][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[5][3] = {{16, 17, 0}, {16, 17, 0}, {18, 19, 20}, {21, 22, 25}, {23, 24, 0}};
+                long settinglanj[5][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 9}, {7, 8, 0}};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
                 for (long k = 0; k < 5; k++)
@@ -770,11 +771,11 @@ void Window::painthelp()
                         {
                             drawbmp(parrowm, helpw / 4 * (j + 1) + facew, helph__ * k + menuh + iconh, facew, faceh, cfg);
                             drawbmp(parrowp, helpw / 4 * (j + 1) + facew * 2, helph__ * k + menuh + iconh, facew, faceh, cfg);
-                            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglanj[k][j] + max(2, mult_) - 2), helpw / 4 * (j + 1) + facew * 3 + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
+                            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_SET + settinglanj[k][j] + max(2, mult_) - 2), helpw / 4 * (j + 1) + facew * 3 + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
                         }
                         else
                         {
-                            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglanj[k][j]), helpw / 4 * (j + 1) + facew + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
+                            drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_SET + settinglanj[k][j]), helpw / 4 * (j + 1) + facew + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
                         }
                     }
                 }
@@ -1182,6 +1183,18 @@ void Window::painthelp()
     }
 }
 
+void Window::painttut()
+{
+    long i = bd.tutx[bd.tuti];
+    long j = bd.tuty[bd.tuti];
+    bar(i * iconw, j * iconh + menuh + faceh, iconw - 1, iconh - 1, cred, transparent);
+    setfontheight(fontsh);
+    for (long k = 0; k < bd.tutlani[bd.tuti]; k++)
+    {
+        drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tutlan[bd.tuti] + k), 0, fontsh * k * 2 + menuh + faceh, iconw * 12, fontsh * 2, ctfg, cbg, DT_WORDBREAK);
+    }
+}
+
 void Window::painttitle(long load)
 {
     clear(cbg);
@@ -1218,6 +1231,10 @@ void Window::paintevent()
         paintface();
         paintlevel();
         paintboard();
+        if (bd.tutb)
+        {
+            painttut();
+        }
     }
     if (mult > 1)
     {
@@ -1300,7 +1317,8 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
     {
         x = ex / iconw;
         y = (ey - faceh - menuh) / iconh;
-        if (x != mx || y != my)
+        bool tutmb = !bd.tutb || (bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
+        if ((x != mx || y != my) && tutmb)
         {
             if (eb_ == k_lmouse)
             {
@@ -1325,6 +1343,10 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
             mx = x;
             my = y;
             paintevent();
+            if (bd.tutb)
+            {
+                bd.tuti++;
+            }
         }
     }
 }
