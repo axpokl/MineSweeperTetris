@@ -49,7 +49,7 @@ public:
     };
     bool achb[26];
 
-    const long scrn = 7;
+    const long scrn = 10;
     long scrdead = 0;
     long scrfour = 1;
     long scrtotal = 2;
@@ -57,33 +57,37 @@ public:
     long scrline1 = 4;
     long scrline2 = 5;
     long scrline3 = 6;
-    const char* scrs[7] =
+    long scrline1_ = 7;
+    long scrline2_ = 8;
+    long scrline3_ = 9;
+    const char* scrs[10] =
     {
-        "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE", "STAT_LINE1", "STAT_LINE2", "STAT_LINE3"
+        "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE", "STAT_LINE1", "STAT_LINE2", "STAT_LINE3", "STAT_LINE1_N", "STAT_LINE2_N", "STAT_LINE3_N"
     };
-    int scr[7];
+    int scr[10];
     bool newrecord = false;
+    bool mdb = false;
 
-    const long leadn = 3;
-    const char* leads[3] =
+    const long leadn = 6;
+    const char* leads[6] =
     {
-        "1_TOP", "2_TOP", "3_TOP"
+        "1_TOP", "2_TOP", "3_TOP", "1_TOP_N", "2_TOP_N", "3_TOP_N"
     };
-    SteamAPICall_t lead[3];
-    SteamAPICall_t lead1[3];
-    SteamAPICall_t lead2[3];
-    SteamAPICall_t lead3[3];
-    LeaderboardFindResult_t leadr[3];
-    LeaderboardScoreUploaded_t leadu[3];
-    LeaderboardScoresDownloaded_t leadd[3];
-    SteamLeaderboard_t leadb[3];
-    SteamLeaderboardEntries_t leadeg[3];
-    SteamLeaderboardEntries_t leadeu[3];
-    SteamLeaderboardEntries_t leadeu_[3];
+    SteamAPICall_t lead[6];
+    SteamAPICall_t lead1[6];
+    SteamAPICall_t lead2[6];
+    SteamAPICall_t lead3[6];
+    LeaderboardFindResult_t leadr[6];
+    LeaderboardScoreUploaded_t leadu[6];
+    LeaderboardScoresDownloaded_t leadd[6];
+    SteamLeaderboard_t leadb[6];
+    SteamLeaderboardEntries_t leadeg[6];
+    SteamLeaderboardEntries_t leadeu[6];
+    SteamLeaderboardEntries_t leadeu_[6];
     bool leadfailed = true;
-    LeaderboardEntry_t leadsg[3][20];
-    LeaderboardEntry_t leadsu[3][10];
-    LeaderboardEntry_t leadsu_[3][1];
+    LeaderboardEntry_t leadsg[6][20];
+    LeaderboardEntry_t leadsu[6][10];
+    LeaderboardEntry_t leadsu_[6][1];
     double waittime = 5;
 
     Steam();
@@ -302,6 +306,17 @@ void Steam::compscr(long line, long mode)
                     setscr(scrline);
                     newrecord = true;
                 }
+                if (mdb)
+                {
+                    if (line > scr[scrline_ + 3])
+                    {
+                        scr[scrline_ + 3] = line;
+                        scr[scrline] = max(scr[scrline], scr[scrline_ + 3]);
+                        setscr(scrline_ + 3);
+                        setscr(scrline);
+                        newrecord = true;
+                    }
+                }
             }
         }
     }
@@ -393,6 +408,24 @@ void Steam::setlead(long val, long mode)
                     SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
                     leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
                 }
+            }
+            if (mdb)
+            {
+                leadid = leadid + 3;
+                if (leadb[leadid] == 0)
+                {
+                    loadlead();
+                }
+                if (leadb[leadid] != 0)
+                {
+                    lead[leadid] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid], k_ELeaderboardUploadScoreMethodKeepBest, val, NULL, 0);
+                    if (waitlead(leadid))
+                    {
+                        SteamUtils()->GetAPICallResult(lead[leadid], &leadu[leadid], sizeof(leadu[leadid]), leadu[leadid].k_iCallback, &leadfailed);
+                        leadb[leadid] = leadu[leadid].m_hSteamLeaderboard;
+                    }
+                }
+
             }
         }
     }

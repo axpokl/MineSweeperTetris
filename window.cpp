@@ -26,7 +26,6 @@ public:
     const long fontfh = 32;
     const long fonth = 24;
     const long fontsh = 17;
-    const long fontssh = 15;
     const long okh_ = abouth - (fontth + fonth * 4);
     const long cursorw = 12;
     const long cursorh = 19;
@@ -120,6 +119,7 @@ public:
     bool mr = false;
     long mx = -1;
     long my = -1;
+    long mdb = 0;
 
     Window();
     ~Window();
@@ -202,7 +202,7 @@ void Window::loadall()
     painttitle(bd.st.lan.LAN_LOAD_AUDIO);
     bd.sd.initsound();
     painttitle(bd.st.lan.LAN_LOAD_BOARD);
-    bd.initbd(1);
+    bd.initbd(1, md);
     painttitle(bd.st.lan.LAN_LOAD_GRAPH);
     initbmp();
     painttitle(bd.st.lan.LAN_LOAD_WINDOW);
@@ -669,11 +669,11 @@ void Window::painthelp()
                     short int usernames[100];
                     long usernamel;
                     LeaderboardEntry_t leads;
-                    for (long leadid = 0; leadid < bd.st.leadn; leadid++)
+                    for (long leadid = 0; leadid < 3; leadid++)
                     {
                         drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh, cfg);
                         long rank_ = 0;
-                        while (bd.st.leadsg[leadid][rank_].m_nScore >= 9998)
+                        while (bd.st.leadsg[leadid + mdb * 3][rank_].m_nScore >= 9998)
                         {
                             rank_++;
                         }
@@ -681,13 +681,13 @@ void Window::painthelp()
                         {
                             if (k < 10)
                             {
-                                leads = bd.st.leadsg[leadid][k + rank_];
+                                leads = bd.st.leadsg[leadid + mdb * 3][k + rank_];
                             }
                             else
                             {
-                                leads = bd.st.leadsu[leadid][k - 10];
+                                leads = bd.st.leadsu[leadid + mdb * 3][k - 10];
                             }
-                            if (bd.st.leadsu_[leadid][0].m_nGlobalRank == leads.m_nGlobalRank && leads.m_steamIDUser.GetEAccountType() > 0)
+                            if (bd.st.leadsu_[leadid + mdb * 3][0].m_nGlobalRank == leads.m_nGlobalRank && leads.m_steamIDUser.GetEAccountType() > 0)
                             {
                                 setfontweight(700);
                             }
@@ -743,6 +743,8 @@ void Window::painthelp()
                     line(0, menuh + faceh, helpw, 0, cline);
                     line(0, menuh + faceh + fontsh * 10, helpw, 0, cline);
                     line(0, menuh + faceh + fontsh * 20, helpw, 0, cline);
+long mdb_[2] = {10, 8};
+            drawbmp(pface[mdb_[mdb]], getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
                     break;
                 }
             }
@@ -1189,38 +1191,46 @@ void Window::painttut()
     long i = bd.tutx[bd.tuti];
     long j = bd.tuty[bd.tuti];
     bar(i * iconw, j * iconh + menuh + faceh, iconw - 1, iconh - 1, cred, transparent);
+    bar(i * iconw + 1, j * iconh + menuh + faceh + 1, iconw - 3, iconh - 3, cred, transparent);
     switch (bd.tuti)
     {
         case 3:
             bar(9 * iconw, 18 * iconh + menuh + faceh, iconw - 1, iconh * 2 - 1, cblue, transparent);
+            bar(9 * iconw + 1, 18 * iconh + menuh + faceh + 1, iconw - 3, iconh * 2 - 3, cblue, transparent);
             bar(9 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw + 1, iconh * 3 + 1, cgreen, transparent);
+            bar(9 * iconw - 2, 17 * iconh + menuh + faceh - 2, iconw + 3, iconh * 3 + 3, cgreen, transparent);
             break;
         case 8:
             bar(2 * iconw, 18 * iconh + menuh + faceh, iconw - 1, iconh * 2 - 1, cblue, transparent);
+            bar(2 * iconw + 1, 18 * iconh + menuh + faceh + 1, iconw - 3, iconh * 2 - 1, cblue, transparent);
             bar(2 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw + 1, iconh * 3 + 1, cgreen, transparent);
+            bar(2 * iconw - 2, 17 * iconh + menuh + faceh - 2, iconw + 3, iconh * 3 + 3, cgreen, transparent);
             break;
         case 11:
             bar(0 * iconw - 1, 6 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
+            bar(0 * iconw - 2, 6 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh * 2 + 3, cred, transparent);
             break;
         case 13:
             bar(0 * iconw - 1, 6 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
+            bar(0 * iconw - 2, 6 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh * 2 + 3, cred, transparent);
             bar(0 * digtw[0], menuh, digtw[0] * 4, digth[0], cred, transparent);
+            bar(0 * digtw[0] + 1, menuh + 1, digtw[0] * 4 - 2, digth[0] - 2, cred, transparent);
             bar(w_ - 2 * digtw[0], menuh, digtw[0] * 2, digth[0], cred, transparent);
+            bar(w_ - 2 * digtw[0] + 1, menuh + 1, digtw[0] * 2 - 2, digth[0] - 2, cred, transparent);
             drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
             drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
             break;
         case 14:
             bar(w_ - 2 * digtw[0], menuh, digtw[0] * 2, digth[0], cred, transparent);
+            bar(w_ - 2 * digtw[0] + 1, menuh + 1, digtw[0] * 2 - 2, digth[0] - 2, cred, transparent);
             bar(0 * iconw - 1, 7 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh + 1, cred, transparent);
+            bar(0 * iconw - 2, 7 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh + 3, cred, transparent);
             drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
             drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
             break;
     }
-    setfontheight(fontssh);
-    for (long k = 0; k < bd.tutlani[bd.tuti]; k++)
-    {
-        drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tutlan[bd.tuti] + k), 0, fontssh * k * 2 + menuh + faceh, iconw * 12, fontssh * 2, ctfg, cbg, DT_WORDBREAK);
-    }
+    setfontheight(fontsh);
+    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tuti), 0, menuh + faceh, iconw * 12, fontsh * 6, ctfg, cbg, DT_WORDBREAK);
     setfontheight(fonth);
 }
 
@@ -1409,7 +1419,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         if (ex < (3 * menuw))
         {
             helpi = 0;
-            bd.initbd(ex / menuw + 1);
+            bd.initbd(ex / menuw + 1, md);
             initwindow(false);
         }
         else if (ex > w_ - 5 * menuw)
@@ -1496,7 +1506,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             if (isin(ex, ey, (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh))
             {
                 sethelp(0);
-                bd.initbd(1);
+                bd.initbd(1, md);
                 bd.tutb = true;
             }
         }
@@ -1512,6 +1522,13 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                 }
             }
         }
+if (helpi == -2)
+{
+            if (isin(ex, ey, (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
+{
+mdb = !mdb;
+}
+}
         if (helpi == -3)
         {
             long helpw__ = iconw;
@@ -1540,6 +1557,10 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 if (md != j)
                                 {
                                     md = j;
+                                    if (md != 0)
+                                    {
+                                        bd.st.mdb = false;
+                                    }
                                     bd.sd.playsound(bd.sd.sLeft);
                                 }
                                 break;
@@ -1635,10 +1656,18 @@ void Window::keyevent(long key)
             break;
         case k_f7:
             md = (md + 1) % 3;
+            if (md != 0)
+            {
+                bd.st.mdb = false;
+            }
             bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_d:
             md = (md + 1) % 3;
+            if (md != 0)
+            {
+                bd.st.mdb = false;
+            }
             bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_n:
@@ -1648,17 +1677,17 @@ void Window::keyevent(long key)
             break;
         case k_1:
             helpi = 0;
-            bd.initbd(1);
+            bd.initbd(1, md);
             initwindow(false);
             break;
         case k_2:
             helpi = 0;
-            bd.initbd(2);
+            bd.initbd(2, md);
             initwindow(false);
             break;
         case k_3:
             helpi = 0;
-            bd.initbd(3);
+            bd.initbd(3, md);
             initwindow(false);
             break;
     }

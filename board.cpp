@@ -37,13 +37,11 @@ public:
     long tutx[13] = {5, 5, 4, 9, 8, 8, 9, 10, 2, 2, 3, 3, 2};
     long tuty[13] = {16, 17, 17, 17, 17, 18, 18, 18, 17, 16, 17, 19, 19};
     long tutm[13] = {1, 1, 3, 2, 3, 3, 3, 3, 1, 2, 3, 3, 3};
-    long tutlan[15] = {0, 1, 3, 5, 7, 9, 11, 13, 14, 16, 18, 19, 21, 23, 26};
-    long tutlani[15] = {1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 1, 3, 3};
 
     Board();
     void initbd();
     void initbd(long w_, long h_, long maskj_, long n_);
-    void initbd(long mode_);
+    void initbd(long mode_, long md);
     void randmine(long x, long y);
     void tutmine();
     void resetbd(long x, long y);
@@ -144,7 +142,7 @@ void Board::initbd(long w_, long h_, long maskj_, long n_)
     initbd();
 }
 
-void Board::initbd(long mode_)
+void Board::initbd(long mode_, long md)
 {
     if (!ischeat())
     {
@@ -163,6 +161,7 @@ void Board::initbd(long mode_)
             initbd(32, 32, 8, 6);
             break;
     }
+    st.mdb = (md == 0);
 }
 
 void Board::randmine(long x, long y)
