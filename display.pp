@@ -1280,9 +1280,12 @@ GetTimeR();_tbegin:=_tcount;
 while IsWin() do
   begin
   GetMessage(_mst,0,0,0);
-  SendMsg();
-  _mswini:=(_mswini+1)mod _mswinmax;
-  _mswin[_mswini]:=_mst;
+  if _mst.message<>0 then
+    begin
+    SendMsg();
+    _mswini:=(_mswini+1)mod _mswinmax;
+    _mswin[_mswini]:=_mst;
+    end;
   end;
 end;
 
