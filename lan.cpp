@@ -29,6 +29,7 @@ public:
     long LAN_SET = 31;
     long LAN_TUT_ = 47;
     long LAN_TUT = 48;
+    long LAN_MODE = 63;
 
     Lan();
     const char* getsyslan();
@@ -102,10 +103,6 @@ void Lan::initlan(const char* lan)
     landata[i_ - 2] = j - j_;
     landatap[n] = &landata[i_];
     landata[i] = 0;
-    if (strcmp(lan,"koreana")==0)
-    {
-        msgbox("We recently discovered that there is an issue with the compatibility of the game with the Korean input method, and we are speeding up the fix. If the program freezes during the game, please try to close the game process, switch or close the Korean input method and restart the game here. Thank you for your understanding and support. Thanks!", "MineSweeper Tetris", MB_ICONINFORMATION);
-    }
 }
 
 short int* Lan::getlan(long id)

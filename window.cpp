@@ -45,8 +45,9 @@ public:
     pbitmap pmenum[2];
     pbitmap pmenut[2];
     pbitmap pmenud[2];
+    pbitmap pmenug[6][2];
     pbitmap pface_;
-    pbitmap pface[12];
+    pbitmap pface[9];
     pbitmap picon_;
     pbitmap picon[11];
     pbitmap piconc;
@@ -119,7 +120,7 @@ public:
     bool mr = false;
     long mx = -1;
     long my = -1;
-    long mdb = 0;
+    long lead_5 = 0;
 
     Window();
     ~Window();
@@ -317,8 +318,14 @@ void Window::initbmp()
                 pmenum[i] = createbmp(menuw, menuh);
                 pmenut[i] = createbmp(menuw, menuh);
                 pmenud[i] = createbmp(menuw, menuh);
+                pmenug[0][i] = createbmp(menuw, menuh);
+                pmenug[1][i] = createbmp(menuw, menuh);
+                pmenug[2][i] = createbmp(menuw, menuh);
+                pmenug[3][i] = createbmp(menuw, menuh);
+                pmenug[4][i] = createbmp(menuw, menuh);
+                pmenug[5][i] = createbmp(menuw, menuh);
             }
-            for (long i = 0; i < 12; i++)
+            for (long i = 0; i < 9; i++)
             {
                 pface[i] = createbmp(facew, faceh);
             }
@@ -394,8 +401,14 @@ void Window::initbmp()
             drawbmp(pmenu_, pmenum[i], menuw * i, 6 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenut[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenud[i], menuw * i, 8 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[0][i], menuw * i, 9 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[1][i], menuw * i, 10 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[2][i], menuw * i, 11 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[3][i], menuw * i, 12 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[4][i], menuw * i, 13 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[5][i], menuw * i, 14 * menuh, menuw, menuh, 0, 0, menuw, menuh);
         }
-        for (long i = 0; i < 12; i++)
+        for (long i = 0; i < 9; i++)
         {
             drawbmp(pface_, pface[i], 0, i * faceh, facew, faceh, 0, 0, facew, faceh);
         }
@@ -673,7 +686,7 @@ void Window::painthelp()
                     {
                         drawbmp(pmenu__[leadid], helpw * (leadid * 2 + 1) / 6 - facew / 2, menuh, facew, faceh, cfg);
                         long rank_ = 0;
-                        while (bd.st.leadsg[leadid + mdb * 3][rank_].m_nScore >= 9998)
+                        while (bd.st.leadsn[0][leadid + lead_5 * 3][rank_].m_nScore >= 9998)
                         {
                             rank_++;
                         }
@@ -681,13 +694,13 @@ void Window::painthelp()
                         {
                             if (k < 10)
                             {
-                                leads = bd.st.leadsg[leadid + mdb * 3][k + rank_];
+                                leads = bd.st.leadsn[0][leadid + lead_5 * 3][k + rank_];
                             }
                             else
                             {
-                                leads = bd.st.leadsu[leadid + mdb * 3][k - 10];
+                                leads = bd.st.leadsn[1][leadid + lead_5 * 3][k - 10];
                             }
-                            if (bd.st.leadsu_[leadid + mdb * 3][0].m_nGlobalRank == leads.m_nGlobalRank && leads.m_steamIDUser.GetEAccountType() > 0)
+                            if (bd.st.leadsn[2][leadid + lead_5 * 3][0].m_nGlobalRank == leads.m_nGlobalRank && leads.m_steamIDUser.GetEAccountType() > 0)
                             {
                                 setfontweight(700);
                             }
@@ -743,14 +756,20 @@ void Window::painthelp()
                     line(0, menuh + faceh, helpw, 0, cline);
                     line(0, menuh + faceh + fontsh * 10, helpw, 0, cline);
                     line(0, menuh + faceh + fontsh * 20, helpw, 0, cline);
-long mdb_[2] = {10, 8};
-            drawbmp(pface[mdb_[mdb]], getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
+                    long k_[5] = {2, 0, 4, 3, 5};
+                    for (long k = 0; k < 5; k++)
+                    {
+                        drawbmp(pmenug[k_[k]][lead_5 == k], getwin(), (helpw - okw) / 2 - btnw + btnw * (k - 5), helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
+                    }
+                    setfontheight(btnh);
+                    drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_MODE + lead_5), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw * 5, btnh, ctfg, cbg, DT_LEFT);
+                    setfontheight(fonth);
                     break;
                 }
             }
         case -3:
             {
-                pbitmap psetting__[5] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pface[8 + md], pface[11], pface[7]};
+                pbitmap psetting__[5] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7]};
                 long settinglan[5] = {9, 10, 11, 15, 12};
                 long settingj[5] = {2, 2, 3, 3, 2};
                 long settingb[5][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}};
@@ -782,7 +801,7 @@ long mdb_[2] = {10, 8};
         case 1:
             {
                 setfontheight(faceh);
-                pbitmap pmenu__[15] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pface[8], pface[7], pface[6], pface[5]};
+                pbitmap pmenu__[15] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pface[7], pface[6], pface[5]};
                 const char* keys[15] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "E / F3", "T / F4", "S / F5", "M / F6", "D / F7", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
@@ -1522,13 +1541,13 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                 }
             }
         }
-if (helpi == -2)
-{
-            if (isin(ex, ey, (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
-{
-mdb = !mdb;
-}
-}
+        if (helpi == -2)
+        {
+            if (isin(ex, ey, (helpw - okw) / 2 - btnw * 6, helph - (okh_ + okh) / 2 + menuh, btnw * 5, btnh))
+            {
+                lead_5 = (ex - ((helpw - okw) / 2 - btnw * 6)) / btnw;
+            }
+        }
         if (helpi == -3)
         {
             long helpw__ = iconw;
@@ -1853,6 +1872,14 @@ void Window::doaction()
             keyevent(getkey());
         }
         if (ismsg(WM_PAINT))
+        {
+            paintevent();
+        }
+        if (ismsg(WM_NCLBUTTONDOWN))
+        {
+            paintevent();
+        }
+        if (ismsg(WM_SYSCOMMAND))
         {
             paintevent();
         }

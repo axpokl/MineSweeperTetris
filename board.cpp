@@ -25,6 +25,8 @@ public:
     long diex;
     long diey;
     long tetrisi;
+    long missi;
+    long missline;
 
     long rx;
     long ry;
@@ -94,12 +96,13 @@ void Board::initbd()
 {
     if (!ischeat())
     {
-        st.setlead(line, mode);
+        st.setlead(mode);
     }
     sit = 0;
     line = 0;
     level = 0;
     tetrisi = 0;
+    missi = 0;
     w = min(max(w, 12), min(128, maxbdw));
     h = min(max(h, 8), min(128, maxbdh));
     n = max(1, min(n, w - 1));
@@ -146,7 +149,7 @@ void Board::initbd(long mode_, long md)
 {
     if (!ischeat())
     {
-        st.setlead(line, mode);
+        st.setlead(mode);
     }
     mode = mode_;
     switch (mode)
@@ -485,6 +488,13 @@ bool Board::checkerror()
                     sit = 2;
                     checkr = true;
                     result = true;
+                    if (missi == 0)
+                    {
+                        missline = line;
+                        st.compscr(missline, mode, 6);
+                    }
+                    missi++;
+                    st.compscr(missi, mode, 12);
                     addline(false);
                     addline(true);
                     if (sit == 2)
@@ -623,9 +633,13 @@ bool Board::addmask()
 
 void Board::checkdie()
 {
-
     if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
     {
+        if (missi == 0)
+        {
+            missline = line;
+            st.compscr(missline, mode, 6);
+        }
         aliveb = false;
         sit = 4;
         if (dieb)
@@ -639,7 +653,7 @@ void Board::checkdie()
         }
         if (!ischeat())
         {
-            st.setlead(line, mode);
+            st.setlead(mode);
         }
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
@@ -714,7 +728,11 @@ void Board::delline(long l)
         }
         line++;
         line = min(line, 999999);
-        st.compscr(line, mode);
+        st.compscr(line, mode, 0);
+        if (st.mdb)
+        {
+            st.compscr(line, mode, 3);
+        }
         long scrtotal_[4] = {0, 2, 3, 6};
         st.addscr(st.scrtotal, scrtotal_[mode], mode);
         if (line > 9999)
@@ -723,12 +741,17 @@ void Board::delline(long l)
         }
         if (maskj > h - 4)
         {
+            tetrisi++;
+            st.compscr(tetrisi, mode, 9);
             for (long k = 0; k < 4; k++)
             {
-                tetrisi++;
                 line++;
                 line = min(line, 999999);
-                st.compscr(line, mode);
+                st.compscr(line, mode, 0);
+                if (st.mdb)
+                {
+                    st.compscr(line, mode, 3);
+                }
                 addline(false);
                 sit = 3;
             }
@@ -975,7 +998,7 @@ void Board::pause()
 bool Board::ischeat()
 {
     long mines[4] = {0, 12, 16, 32};
-    long score = line - tetrisi * 4 - 8;
+    long score = line - tetrisi * 4 - missi * 2 - 8;
     double gametime = time - time_;
     double basetime = (double) mines[mode] / (1.0 + (double) level / 5.0);
     double mintime = basetime * score;

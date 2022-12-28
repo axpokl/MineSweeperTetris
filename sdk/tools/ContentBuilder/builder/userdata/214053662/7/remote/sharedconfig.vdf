@@ -6,7 +6,7 @@
 		{
 			"Steam"
 			{
-				"SurveyDate"		"2022-11-30"
+				"SurveyDate"		"2022-12-18"
 				"SurveyDateVersion"		"-6925544597404049260"
 				"StartMenuShortcutCheck"		"0"
 				"DesktopShortcutCheck"		"0"
@@ -16,7 +16,8 @@
 					{
 						"tags"
 						{
-							"0"		"favorite"
+							"0"		"07解谜.编程"
+							"1"		"favorite"
 						}
 					}
 					"1085660"
@@ -2470,6 +2471,20 @@
 					"2240140"
 					{
 						"hidden"		"1"
+					}
+					"1577620"
+					{
+						"tags"
+						{
+							"0"		"07解谜.编程"
+						}
+					}
+					"1127400"
+					{
+						"tags"
+						{
+							"0"		"07解谜.编程"
+						}
 					}
 				}
 				"SteamDefaultDialog"		"#app_store"
