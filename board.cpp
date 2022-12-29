@@ -103,6 +103,7 @@ void Board::initbd()
     level = 0;
     tetrisi = 0;
     missi = 0;
+    missline = 0;
     w = min(max(w, 12), min(128, maxbdw));
     h = min(max(h, 8), min(128, maxbdh));
     n = max(1, min(n, w - 1));
@@ -488,11 +489,8 @@ bool Board::checkerror()
                     sit = 2;
                     checkr = true;
                     result = true;
-                    if (missi == 0)
-                    {
+                        st.compscr(line - missline, mode, 6);
                         missline = line;
-                        st.compscr(missline, mode, 6);
-                    }
                     missi++;
                     st.compscr(missi, mode, 12);
                     addline(false);
@@ -635,11 +633,8 @@ void Board::checkdie()
 {
     if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
     {
-        if (missi == 0)
-        {
-            missline = line;
-            st.compscr(missline, mode, 6);
-        }
+                        st.compscr(line - missline, mode, 6);
+                        missline = line;
         aliveb = false;
         sit = 4;
         if (dieb)
