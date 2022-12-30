@@ -1622,3 +1622,32 @@
 [2022-12-29 08:31:39] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
 [2022-12-29 08:31:41] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
 [2022-12-29 08:31:43] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+
+
+[2022-12-30 14:12:24] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:12:24] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:12:24] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:12:24] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:12:24] Loaded store 'userlocal' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf' successfully
+[2022-12-30 14:12:24] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:12:25] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2022-12-30 14:12:26] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2022-12-30 14:12:28] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2022-12-30 14:12:28] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2022-12-30 14:12:29] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2022-12-30 14:12:31] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2022-12-30 14:12:33] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2022-12-30 14:12:34] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+
+
+[2022-12-30 14:37:59] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:37:59] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:38:00] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:38:00] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:38:00] Loaded store 'userlocal' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf' successfully
+[2022-12-30 14:38:00] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2022-12-30 14:38:00] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2022-12-30 14:38:05] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2022-12-30 14:38:05] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2022-12-30 14:38:06] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2022-12-30 14:38:07] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
