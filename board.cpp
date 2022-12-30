@@ -489,8 +489,8 @@ bool Board::checkerror()
                     sit = 2;
                     checkr = true;
                     result = true;
-                        st.compscr(line - missline, mode, 6);
-                        missline = line;
+                    st.compscr(line - missline, mode, 6);
+                    missline = line;
                     missi++;
                     st.compscr(missi, mode, 12);
                     addline(false);
@@ -633,8 +633,8 @@ void Board::checkdie()
 {
     if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
     {
-                        st.compscr(line - missline, mode, 6);
-                        missline = line;
+        st.compscr(line - missline, mode, 6);
+        missline = line;
         aliveb = false;
         sit = 4;
         if (dieb)

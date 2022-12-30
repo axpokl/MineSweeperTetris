@@ -982,3 +982,23 @@
 [2022-12-30 14:37:59] Performing checksum verification of executable files
 [2022-12-30 14:37:59] Verification complete
 [2022-12-30 14:38:12] Shutdown
+
+
+[2022-12-30 20:28:20] Startup - updater built Dec  1 2022 14:38:54
+[2022-12-30 20:28:20] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2022-12-30 20:28:20] Using the following download hosts for Public, Realm steamglobal
+[2022-12-30 20:28:20] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2022-12-30 20:28:20] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2022-12-30 20:28:20] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2022-12-30 20:28:20] Checking for update on startup
+[2022-12-30 20:28:20] 正在检查可用更新...
+[2022-12-30 20:28:20] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2022-12-30 20:28:21] Manifest download: send request
+[2022-12-30 20:28:21] Manifest download: waiting for download to finish
+[2022-12-30 20:28:22] Manifest download: finished
+[2022-12-30 20:28:22] Download skipped: /steam_cmd_win32 version 1669935972, installed version 1669935972, existing pending version 0
+[2022-12-30 20:28:22] Nothing to do
+[2022-12-30 20:28:22] 正在验证安装...
+[2022-12-30 20:28:22] Performing checksum verification of executable files
+[2022-12-30 20:28:22] Verification complete
+[2022-12-30 20:28:34] Shutdown

@@ -1526,6 +1526,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             {
                 sethelp(0);
                 bd.initbd(1, md);
+                initwindow(false);
                 bd.tutb = true;
             }
         }
