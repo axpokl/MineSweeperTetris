@@ -1869,7 +1869,7 @@ void Window::doaction()
             my = -1;
             mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
         }
-        if (ismousemove() && (md >= 1))
+        if (ismousemove() && (md >= 1) && (!bd.tutb))
         {
             if (ml)
             {

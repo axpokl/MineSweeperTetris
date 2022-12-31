@@ -1087,3 +1087,30 @@
 [2022-12-31 14:03:54] Error: CSystemManager::CSystemManager: failed to initialize battery state manager, battery state will be unavailable
 [2022-12-31 14:03:54] wifi power management: 1
 [2022-12-31 14:03:54] Fan control available: 0 current: 0
+
+
+[2022-12-31 14:16:15] Initializing System Manager
+[2022-12-31 14:16:15] Night mode active on resume 0
+[2022-12-31 14:16:15] Error: CBatteryStateManager::ThreadedComputeBestBatteryQueryMode: unable to determine a suitable battery query mode for this platform
+[2022-12-31 14:16:15] Error: CBatteryStateManager::Init: invalid query mode
+[2022-12-31 14:16:15] Error: CSystemManager::CSystemManager: failed to initialize battery state manager, battery state will be unavailable
+[2022-12-31 14:16:15] wifi power management: 1
+[2022-12-31 14:16:15] Fan control available: 0 current: 0
+
+
+[2022-12-31 15:58:25] Initializing System Manager
+[2022-12-31 15:58:25] Night mode active on resume 0
+[2022-12-31 15:58:25] Error: CBatteryStateManager::ThreadedComputeBestBatteryQueryMode: unable to determine a suitable battery query mode for this platform
+[2022-12-31 15:58:25] Error: CBatteryStateManager::Init: invalid query mode
+[2022-12-31 15:58:25] Error: CSystemManager::CSystemManager: failed to initialize battery state manager, battery state will be unavailable
+[2022-12-31 15:58:25] wifi power management: 1
+[2022-12-31 15:58:25] Fan control available: 0 current: 0
+
+
+[2022-12-31 16:01:29] Initializing System Manager
+[2022-12-31 16:01:29] Night mode active on resume 0
+[2022-12-31 16:01:29] Error: CBatteryStateManager::ThreadedComputeBestBatteryQueryMode: unable to determine a suitable battery query mode for this platform
+[2022-12-31 16:01:29] Error: CBatteryStateManager::Init: invalid query mode
+[2022-12-31 16:01:29] Error: CSystemManager::CSystemManager: failed to initialize battery state manager, battery state will be unavailable
+[2022-12-31 16:01:29] wifi power management: 1
+[2022-12-31 16:01:29] Fan control available: 0 current: 0

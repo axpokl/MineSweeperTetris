@@ -49,7 +49,7 @@ public:
     };
     bool achb[26];
 
-    const long scrn = 10;
+    const long scrn = 19;
     long scrdead = 0;
     long scrfour = 1;
     long scrtotal = 2;
