@@ -20,7 +20,6 @@ foreach ($line in $text)
 {
 $tns = translate $lan $line
 echo $tns >> ("lan\"+$lan_long[$i]+".txt")
-sleep(1);
 }
 $i=$i+1
 }

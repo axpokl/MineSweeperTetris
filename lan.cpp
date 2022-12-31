@@ -27,9 +27,9 @@ public:
     long LAN_LOAD_WINDOW = 14;
     long LAN_HELP = 15;
     long LAN_SET = 31;
-    long LAN_TUT_ = 47;
-    long LAN_TUT = 48;
-    long LAN_MODE = 63;
+    long LAN_TUT_ = 48;
+    long LAN_TUT = 49;
+    long LAN_MODE = 64;
 
     Lan();
     const char* getsyslan();

@@ -83,7 +83,12 @@ public:
     pbitmap parrowp;
 
 
-    const long color[2][8] = {{silver, 0xAFAFAF, black, silver, red, blue, green, gray}, {black, black, white, black, 0x8080FF, 0xFF8080, 0x80FF80, white}};
+    const long color[3][8] =
+    {
+        {silver, 0xAFAFAF, black, silver, red, blue, green, gray},
+        {black, black, white, black, 0x8080FF, 0xFF8080, 0x80FF80, white},
+        {0xFF7F00, 0xFFC080, black, 0xFF8000, 0x0000FF, 0xFF0000, 0x00FF00, 0x9F5000}
+    };
     long colori = 0;
     long cfg;
     long cbg;
@@ -155,6 +160,7 @@ public:
     void sethelp(long helpi_);
     void savescr();
     void switchskin();
+    void switchskin(long colori_);
     void mouseeventboard(long ex_, long ey_, long eb_, long md_);
     void mouseevent(long ex_, long ey_, long eb_);
     void keyevent(long key);
@@ -771,10 +777,10 @@ void Window::painthelp()
             {
                 pbitmap psetting__[5] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7]};
                 long settinglan[5] = {9, 10, 11, 15, 12};
-                long settingj[5] = {2, 2, 3, 3, 2};
-                long settingb[5][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}};
+                long settingj[5] = {2, 2, 3, 3, 3};
+                long settingb[5][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[5][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 9}, {7, 8, 0}};
+                long settinglanj[5][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 10}, {7, 8, 9}};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
                 for (long k = 0; k < 5; k++)
@@ -1357,9 +1363,15 @@ void Window::savescr()
     bd.sd.playsound(bd.sd.sSolve);
 }
 
+
 void Window::switchskin()
 {
-    colori = (colori + 1 ) % 2;
+    switchskin((colori + 1) % 3);
+}
+
+void Window::switchskin(long colori_)
+{
+    colori = colori_;
     initbmp();
     paintevent();
     bd.sd.playsound(bd.sd.sRight);
@@ -1593,9 +1605,9 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 }
                                 break;
                             case 4:
-                                if (j <= 1 && colori != j)
+                                if (j <= 2 && colori != j)
                                 {
-                                    switchskin();
+                                    switchskin(j);
                                 }
                                 break;
                         }
