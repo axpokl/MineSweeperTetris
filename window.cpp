@@ -114,6 +114,9 @@ public:
     const long minw = 800;
     long mult_ = 0;
     double mult = 1;
+    WINDOWPLACEMENT wn;
+    bool showmax = false;
+    bool showmax_ = false;
     long w_ = 0;
     long h_ = 0;
     RECT rect;
@@ -189,6 +192,7 @@ void Window::loadsetting()
     reg.getreg("soundb", (long*)&bd.sd.soundb);
     reg.getreg("musicb", (long*)&bd.sd.musicb);
     reg.getreg("mult", (long*)&mult_);
+    reg.getreg("delayb", (long*)&bd.delayb);
 }
 
 void Window::savesetting()
@@ -199,6 +203,7 @@ void Window::savesetting()
     reg.setreg("soundb", bd.sd.soundb);
     reg.setreg("musicb", bd.sd.musicb);
     reg.setreg("mult", mult_);
+    reg.setreg("delayb", bd.delayb);
 }
 
 void Window::loadall()
@@ -215,6 +220,7 @@ void Window::loadall()
     painttitle(bd.st.lan.LAN_LOAD_WINDOW);
     bd.tutb = helpb;
     sethelp(0);
+    SetWindowLongPtr((HWND)gethwnd(), GWL_STYLE, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE);
 }
 
 void Window::initwindow()
@@ -224,8 +230,11 @@ void Window::initwindow()
     wscr = rect.right - rect.left;
     hscr = rect.bottom - rect.top;
     mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)minw, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)minh));
+    bd.mult = mult;
     w_ = launchw;
     h_ = launchh;
+    bd.w_ = w_;
+    bd.h_ = h_;
     createwin(w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     pwin = createbmp(w_, h_);
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
@@ -284,6 +293,9 @@ void Window::initwindow(bool b)
             mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
             mult = min(mult, (double)mult_ / 2.0);
         }
+        bd.w_ = w_;
+        bd.h_ = h_;
+        bd.mult = mult;
         setsize(w_ * mult, h_ * mult);
         releasebmp(pwin);
         pwin = createbmp(w_, h_);
@@ -304,6 +316,7 @@ void Window::initcolor()
         cblue = color[colori][5];
         cgreen = color[colori][6];
         cline = color[colori][7];
+        bd.cred = cred;
     }
 }
 
@@ -775,15 +788,15 @@ void Window::painthelp()
             }
         case -3:
             {
-                pbitmap psetting__[5] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7]};
-                long settinglan[5] = {9, 10, 11, 15, 12};
-                long settingj[5] = {2, 2, 3, 3, 3};
-                long settingb[5][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}};
+                pbitmap psetting__[6] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], picon[0]};
+                long settinglan[6] = {9, 10, 11, 15, 12, 16};
+                long settingj[6] = {2, 2, 3, 3, 3, 2};
+                long settingb[6][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}, {bd.delayb, !bd.delayb, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[5][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 10}, {7, 8, 9}};
+                long settinglanj[6][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 10}, {7, 8, 9}, {0, 1, 0}};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-                for (long k = 0; k < 5; k++)
+                for (long k = 0; k < 6; k++)
                 {
                     drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
                     drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
@@ -801,6 +814,10 @@ void Window::painthelp()
                             drawtextxy(getwin(), bd.st.lan.getlan(bd.st.lan.LAN_SET + settinglanj[k][j]), helpw / 4 * (j + 1) + facew + iconw, helph__ * k + menuh + iconh, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
                         }
                     }
+                }
+                if (bd.delayb)
+                {
+                    line(helpw__, helph__ * 5 + menuh + iconh + faceh / 2, facew, 0, cred);
                 }
                 break;
             }
@@ -1565,7 +1582,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         {
             long helpw__ = iconw;
             double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-            for (long k = 0; k < 5; k++)
+            for (long k = 0; k < 6; k++)
             {
                 for (long j = 0; j < 3; j++)
                 {
@@ -1608,6 +1625,13 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 if (j <= 2 && colori != j)
                                 {
                                     switchskin(j);
+                                }
+                                break;
+                            case 5:
+                                if (j <= 1 && bd.delayb == j)
+                                {
+                                    bd.delayb = !bd.delayb;
+                                    bd.sd.playsound(bd.sd.sSolve);
                                 }
                                 break;
                         }
@@ -1884,16 +1908,17 @@ void Window::doaction()
         {
             keyevent(getkey());
         }
-        if (ismsg(WM_PAINT))
+        if (ismsg(WM_PAINT) || ismsg(WM_NCLBUTTONDOWN) || ismsg(WM_SYSCOMMAND))
         {
-            paintevent();
-        }
-        if (ismsg(WM_NCLBUTTONDOWN))
-        {
-            paintevent();
-        }
-        if (ismsg(WM_SYSCOMMAND))
-        {
+            GetWindowPlacement((HWND)gethwnd(),&wn);
+            showmax = ((wn.showCmd & SW_SHOWMAXIMIZED) == SW_SHOWMAXIMIZED);
+            if (showmax != showmax_)
+            {
+                mult_ = showmax;
+                initwindow(false);
+                bd.sd.playsound(bd.sd.sRight);
+                showmax_ = showmax;
+            }
             paintevent();
         }
     }

@@ -2857,3 +2857,35 @@
 [2022-12-31 16:01:33] [AppID 7] Successfully synced to ChangeNumber 0
 [2022-12-31 16:01:33] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
 [2022-12-31 16:01:34] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2023-01-02 16:10:56] [AppID 7] Starting sync (init,)
+[2023-01-02 16:10:56] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-01-02 16:10:56] [U:1:214053662] [AppID 7] Init cache request complete
+[2023-01-02 16:10:56] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-02 16:11:00] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2023-01-02 16:11:00] [AppID 7] Starting sync (eval,)
+[2023-01-02 16:11:00] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-01-02 16:11:00] [AppID 7] Need to sync from local change number '10693653506551309282' to global change number '13003903264688667978', but not attempting now
+[2023-01-02 16:11:00] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2023-01-02 16:11:00] [AppID 7] File is in sync sharedconfig.vdf
+[2023-01-02 16:11:00] [AppID 7] Eval complete
+[2023-01-02 16:11:00] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2023-01-02 16:11:00] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-02 16:11:00] [Roaming Config] PerformSyncCloud - syncing cloud files locally
+[2023-01-02 16:11:00] [AppID 7] Starting sync (down,)
+[2023-01-02 16:11:01] [AppID 7] Attempting to sync from local change number '10693653506551309282' to global change number '13003903264688667978'
+[2023-01-02 16:11:01] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2023-01-02 16:11:01] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-singapore.storage.googleapis.com', path /1E/33/C2/0C/7/033_0_18684C10_A4AED_957.dat?GoogleAccessId=519723424899-j6o48knii6crh59hb86rnun8sbl7ph2a@developer.gserviceaccount.com&Expires=1672650660&Signature=iRC6doyopcZiUdBGrDPgdBxWE%2FsPbDNiJey9BVeK21peoXPLlKU9Xsz6jbJy2u%2FvEoJwMdWoC2cyM6pwBkv43zfAL9eWrmxxcZS2WWG34o5BSWD3rC8kgSISdFosm03HywEZ72tOLfAoZP0D8f8Eu8apLP9FWtEya3T45WZvqsI%3D, beginning. . .
+[2023-01-02 16:11:02] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-singapore.storage.googleapis.com' - Success.
+[2023-01-02 16:11:02] [AppID 7] Download OK for file serverbrowser_hist.vdf
+[2023-01-02 16:11:02] [AppID 7] Download complete, result OK
+[2023-01-02 16:11:02] [AppID 7] Successfully synced to ChangeNumber 13003903264688667978
+[2023-01-02 16:11:02] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2023-01-02 16:11:02] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-02 16:11:03] [AppID 7] Starting sync (down,)
+[2023-01-02 16:11:04] [AppID 7] Currently already synced to global change number '13003903264688667978', should be nothing to download
+[2023-01-02 16:11:04] [AppID 7] Download complete in build list
+[2023-01-02 16:11:04] [AppID 7] Successfully synced to ChangeNumber 0
+[2023-01-02 16:11:04] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2023-01-02 16:11:04] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'

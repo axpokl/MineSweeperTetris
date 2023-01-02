@@ -34,6 +34,12 @@ public:
     long maxbdw;
     long maxbdh;
 
+    long w_;
+    long h_;
+    long cred;
+    double mult;
+    bool delayb = true;
+
     bool tutb = true;
     long tuti;
     long tutx[13] = {5, 5, 4, 9, 8, 8, 9, 10, 2, 2, 3, 3, 2};
@@ -525,6 +531,7 @@ void Board::checkline()
             long blckc;
             long flagc;
             j = h - 1;
+            long j_ = 0;
             while (j >= maskj)
             {
                 blckc = 0;
@@ -540,11 +547,15 @@ void Board::checkline()
                         flagc++;
                     }
                 }
-
                 if (blckc == n || flagc == n)
                 {
                     result = true;
                     delline(j);
+                    for (long k = 0; k < mult; k++)
+                    {
+                        Line158(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
+                    }
+                    j_++;
                 }
                 else
                 {
@@ -553,7 +564,14 @@ void Board::checkline()
             }
             if (result)
             {
+                freshwin();
                 sd.playsound(sd.sSolve);
+                if (delayb)
+                {
+                    long dl = 500.0 / (1.0 + (double)level /5.0);
+                    time += dl / 1000.0;
+                    delay(dl);
+                }
             }
             checkb = false;
             solveb = true;
@@ -693,8 +711,6 @@ void Board::delline(long l)
                 }
             }
         }
-        //long dl = 1000.0 / (1.0 + (double)level /5.0);
-        //delay(dl);
         for (long i = 0; i < w; i++)
         {
             rx = rand() % w;
