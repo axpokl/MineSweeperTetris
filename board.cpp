@@ -187,6 +187,26 @@ void Board::randmine(long x, long y)
             mine[i][j] = mb;
         }
     }
+    for (long k = 0; k < 10; k++)
+    {
+        for (long j = y - 1; j <= y + 1; j++)
+        {
+            for (long i = x - 1; i <= x + 1; i++)
+            {
+                if (j >= 0 && i >= 0 & j < h & i < w)
+                {
+                    if (mine[i][j])
+                    {
+                        rx = rand() % w;
+                        ry = j;
+                        bool mb = mine[rx][ry];
+                        mine[rx][ry] = mine[i][j];
+                        mine[i][j] = mb;
+                    }
+                }
+            }
+        }
+    }
     rx = x;
     ry = y;
     if (mine[x][y])

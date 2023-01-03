@@ -370,3 +370,6 @@
 
 
 [2023-01-02 16:10:56] Loaded 0 apps from install folder "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+
+
+[2023-01-03 09:21:39] Loaded 0 apps from install folder "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
