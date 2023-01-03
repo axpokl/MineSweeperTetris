@@ -177,6 +177,7 @@ public:
     void drawtextxy_(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg);
     void drawtextxy_(pbitmap b,const char* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg);
     void drawtextxy_(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
+    unsigned long getstringwidth_(const char* s);
 
 #include "utf.cpp"
 
@@ -765,7 +766,7 @@ void Window::painthelp()
                                 usernames[3] = 0;
                                 usernames[4 + poss] = 0;
                                 drawtextxy_(pwint, i2s(leads.m_nGlobalRank - rank_), helpw * leadid / 3, k * fontsh + faceh + menuh + 1, ctfg, cbg);
-                                drawtextxy_(pwint, &usernames[4], helpw * leadid / 3 + getstringwidth("0000"), k * fontsh + faceh + menuh + 1, helpw / 3 - getstringwidth("0000") - digtw[1] * fontsh / digth[1] * 4, fontsh, ctfg, cbg, DT_LEFT);
+                                drawtextxy_(pwint, &usernames[4], helpw * leadid / 3 + getstringwidth_("0000"), k * fontsh + faceh + menuh + 1, helpw / 3 - getstringwidth_("0000") - digtw[1] * fontsh / digth[1] * 4, fontsh, ctfg, cbg, DT_LEFT);
                                 paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
                             }
                             setfontweight_(0);
@@ -868,8 +869,8 @@ void Window::painthelp()
                 {
                     paintline(piconn, piconc, 2, 10, (helpw * 3 / 2 - iconw * 12) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * (k + 8));
                 }
-                drawtextxy_(pwint, "PgUp", (helpw * 3 / 2 - getstringwidth("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, cred, cbg);
-                drawtextxy_(pwint, "PgDn", (helpw * 3 / 2 - getstringwidth("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, cblue, cfg);
+                drawtextxy_(pwint, "PgUp", (helpw * 3 / 2 - getstringwidth_("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, cred, cbg);
+                drawtextxy_(pwint, "PgDn", (helpw * 3 / 2 - getstringwidth_("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, cblue, cfg);
                 bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 bar((helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
@@ -1975,4 +1976,9 @@ void Window::drawtextxy_(pbitmap b,const char* s,long x,long y,unsigned long w,u
 void Window::drawtextxy_(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg)
 {
     drawtextxy(b, s, x * mult, y * mult, cfg, cbg);
+}
+
+unsigned long Window::getstringwidth_(const char* s)
+{
+    return (double)getstringwidth(s) / mult;
 }

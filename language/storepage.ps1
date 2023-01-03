@@ -6,7 +6,7 @@ $tns = $res[0].SyncRoot | foreach { $_[0] }
 return $tns
 }
 
-cd "C:\Users\pc\Desktop\MineSweeperTetris\language"
+cd "T:\!temp\MineSweeperTetris\language"
 $lan_short = cat ".\list_short.txt"
 $lan_long = cat ".\list_long.txt"
 rd "storage" -force -recurse
@@ -22,8 +22,8 @@ $out = $out +(translate $lan $text[2])+'\r\n'
 $out = $out +(translate $lan $text[3])+'\r\n'
 $out = $out +(translate $lan $text[4])+'\r\n'
 $out = $out +(translate $lan $text[5])+'\r\n'
-$out = $out +'\r\n[h2]'+(translate $lan $text[6])+'[\/h2]\r\n\r\n'
-$out = $out +(translate $lan $text[7])+'\r\n'
+$out = $out +(translate $lan $text[6])+'\r\n'
+$out = $out +'\r\n[h2]'+(translate $lan $text[7])+'[\/h2]\r\n\r\n'
 $out = $out +(translate $lan $text[8])+'\r\n'
 $out = $out +(translate $lan $text[9])+'\r\n'
 $out = $out +'\r\n[h2]'+(translate $lan $text[10])+'[\/h2]\r\n\r\n'
