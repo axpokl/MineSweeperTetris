@@ -141,6 +141,7 @@ void Board::initbd()
     rightb = false;
     tuti = 0;
     tutb = 0;
+    checkr = false;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
@@ -513,8 +514,6 @@ bool Board::checkerror()
                     flag[i][j] = true;
                     qstn[i][j] = false;
                     sit = 2;
-                    checkr = true;
-                    result = true;
                     st.compscr(line - missline, mode, 6);
                     missline = line;
                     missi++;
@@ -528,6 +527,8 @@ bool Board::checkerror()
                     st.addscr(st.scrdead, 1, mode);
                     sd.playsound(sd.sError);
                     sb = false;
+                    result = true;
+                    checkr = true;
                 }
             }
         }
@@ -706,6 +707,7 @@ void Board::delline(long l)
 {
     if (sit < 4)
     {
+        checkr = false;
         maskj++;
         for (long i = 0; i < w; i++)
         {
@@ -933,7 +935,6 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
                 {
                     blck[x][y] = true;
                     qstn[x][y] = false;
-                    checkr = false;
                     if (sit == 2)
                     {
                         sit = 1;

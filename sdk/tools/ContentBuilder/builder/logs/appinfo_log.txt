@@ -1513,3 +1513,28 @@
 [2023-01-03 10:20:05] Downloaded 2 apps via HTTP, 26 KB (5 KB compressed)
 [2023-01-03 10:20:05] UpdatesJob: finished OK, apps updated 2 (26 KB), packages updated 0 (0 KB)
 [2023-01-03 10:20:10] Starting async write T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4332431 bytes)
+
+
+[2023-01-03 15:25:10] RequestAppInfoUpdate: AppIDs 7
+[2023-01-03 15:25:11] Packages changed: 
+[2023-01-03 15:25:11] Apps changed: 443030=17252814,1865060=17252774,724740=17252755,2204230=17252587,413150=17252279,1874900=17251619,
+[2023-01-03 15:25:11] Change number 17251315->17252844, apps: 6/918, packages: 0/76
+[2023-01-03 15:25:11] Requesting 16 apps, 0 packages (meta data, 1024 prev attempts)
+[2023-01-03 15:25:12] Requested 9 app access tokens, 0 received, 9 denied
+[2023-01-03 15:25:12] Downloaded 3 apps via HTTP, 36 KB (9 KB compressed)
+[2023-01-03 15:25:12] Requesting 3 apps, 0 packages (full data, 1024 prev attempts)
+[2023-01-03 15:25:12] UpdatesJob: finished OK, apps updated 6 (54 KB), packages updated 0 (0 KB)
+[2023-01-03 15:25:18] Starting async write T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4332446 bytes)
+
+
+[2023-01-04 08:38:38] RequestAppInfoUpdate: AppIDs 7
+[2023-01-04 08:38:39] Packages changed: 
+[2023-01-04 08:38:39] Apps changed: force all
+[2023-01-04 08:38:39] Change number 17252844->17259993, apps: 0/0, packages: 0/804
+[2023-01-04 08:38:39] Requesting 707 apps, 0 packages (meta data, 1024 prev attempts)
+[2023-01-04 08:38:40] Requested 68 app access tokens, 59 received, 9 denied
+[2023-01-04 08:38:40] Updated SHAs with 59 new access tokens
+[2023-01-04 08:38:41] Downloaded 11 apps via HTTP, 302 KB (81 KB compressed)
+[2023-01-04 08:38:41] Requesting 11 apps, 0 packages (full data, 1024 prev attempts)
+[2023-01-04 08:38:42] UpdatesJob: finished OK, apps updated 22 (363 KB), packages updated 0 (0 KB)
+[2023-01-04 08:38:47] Starting async write T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (4332484 bytes)

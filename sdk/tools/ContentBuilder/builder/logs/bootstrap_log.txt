@@ -1162,3 +1162,43 @@
 [2023-01-03 10:19:59] Performing checksum verification of executable files
 [2023-01-03 10:19:59] Verification complete
 [2023-01-03 10:20:10] Shutdown
+
+
+[2023-01-03 15:25:04] Startup - updater built Dec  1 2022 14:38:54
+[2023-01-03 15:25:04] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2023-01-03 15:25:04] Using the following download hosts for Public, Realm steamglobal
+[2023-01-03 15:25:04] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2023-01-03 15:25:04] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2023-01-03 15:25:04] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2023-01-03 15:25:04] Checking for update on startup
+[2023-01-03 15:25:04] 正在检查可用更新...
+[2023-01-03 15:25:04] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2023-01-03 15:25:04] Manifest download: send request
+[2023-01-03 15:25:04] Manifest download: waiting for download to finish
+[2023-01-03 15:25:06] Manifest download: finished
+[2023-01-03 15:25:06] Download skipped: /steam_cmd_win32 version 1669935972, installed version 1669935972, existing pending version 0
+[2023-01-03 15:25:06] Nothing to do
+[2023-01-03 15:25:06] 正在验证安装...
+[2023-01-03 15:25:06] Performing checksum verification of executable files
+[2023-01-03 15:25:06] Verification complete
+[2023-01-03 15:25:18] Shutdown
+
+
+[2023-01-04 08:38:33] Startup - updater built Dec  1 2022 14:38:54
+[2023-01-04 08:38:33] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2023-01-04 08:38:33] Using the following download hosts for Public, Realm steamglobal
+[2023-01-04 08:38:33] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2023-01-04 08:38:33] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2023-01-04 08:38:33] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2023-01-04 08:38:33] Checking for update on startup
+[2023-01-04 08:38:33] 正在检查可用更新...
+[2023-01-04 08:38:33] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2023-01-04 08:38:34] Manifest download: send request
+[2023-01-04 08:38:34] Manifest download: waiting for download to finish
+[2023-01-04 08:38:35] Manifest download: finished
+[2023-01-04 08:38:35] Download skipped: /steam_cmd_win32 version 1669935972, installed version 1669935972, existing pending version 0
+[2023-01-04 08:38:35] Nothing to do
+[2023-01-04 08:38:35] 正在验证安装...
+[2023-01-04 08:38:35] Performing checksum verification of executable files
+[2023-01-04 08:38:35] Verification complete
+[2023-01-04 08:38:48] Shutdown
