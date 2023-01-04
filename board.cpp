@@ -57,6 +57,7 @@ public:
     void solve0();
     void solve1();
     bool checkerror();
+    void checkline(bool checkb_);
     void checkline();
     void setqstn(long x, long y);
     void setflag(long x, long y);
@@ -536,7 +537,7 @@ bool Board::checkerror()
     return result;
 }
 
-void Board::checkline()
+void Board::checkline(bool checkb_)
 {
     if (sit < 4)
     {
@@ -572,9 +573,12 @@ void Board::checkline()
                 {
                     result = true;
                     delline(j);
-                    for (long k = 0; k < mult; k++)
+                    if (delayb & checkb_)
                     {
-                        Line158(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
+                        for (long k = 0; k < mult; k++)
+                        {
+                            Line158(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
+                        }
                     }
                     j_++;
                 }
@@ -585,10 +589,10 @@ void Board::checkline()
             }
             if (result)
             {
-                freshwin();
                 sd.playsound(sd.sSolve);
-                if (delayb)
+                if (delayb & checkb_)
                 {
+                    freshwin();
                     long dl = 500.0 / (1.0 + (double)level /5.0);
                     time += dl / 1000.0;
                     delay(dl);
@@ -602,6 +606,11 @@ void Board::checkline()
             }
         }
     }
+}
+
+void Board::checkline()
+{
+    checkline(true);
 }
 
 void Board::addline(bool b)
@@ -630,7 +639,7 @@ void Board::addline(bool b)
         }
     }
     checkb = b;
-    checkline();
+    checkline(false);
     checkdie();
 }
 
@@ -643,7 +652,7 @@ bool Board::addmask()
             if (gettimer() > time + 5.0 / (level + 5.0))
             {
                 checkb = true;
-                checkline();
+                checkline(false);
                 while (gettimer() > time + 5.0 / (level + 5.0))
                 {
                     time += 5.0 / (level + 5.0);
@@ -655,7 +664,7 @@ bool Board::addmask()
                     }
                 }
                 checkb = true;
-                checkline();
+                checkline(false);
                 checkdie();
                 return true;
             }
@@ -789,7 +798,7 @@ void Board::delline(long l)
                 sit = 3;
             }
             checkb = true;
-            checkline();
+            checkline(false);
             sd.playsound(sd.sNew);
             st.addscr(st.scrfour, 1, mode);
         }
