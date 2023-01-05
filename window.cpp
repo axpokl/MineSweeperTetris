@@ -1094,6 +1094,7 @@ void Window::painthelp()
                 paintline(piconc, piconm, picon[1], piconp, 5, 1, 1, 5, iconw * iconwl, iconh * (iconh1 + 3) + menuh);
                 paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * iconwr, iconh * (iconh1 + 3) + menuh);
                 drawbmp(picona, iconw * iconwm, iconh * (iconh1 + 3) + menuh, cfg);
+                drawbmp(pface[3], iconw * iconwm - (facew - iconw) / 2, iconh * (iconh1 + 3) + menuh - iconh - faceh / 2, cfg);
                 for (long k = 0; k <= 2; k++)
                 {
                     paintline(picone, 2, iconw * iconwl, iconh * (k * 3 + (iconh2 + 0)) + menuh);
@@ -1131,6 +1132,7 @@ void Window::painthelp()
                 drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) + menuh, cbg);
                 drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) + menuh, cfg);
                 drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cbg);
+                drawbmp(pface[4], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh1 + 2) + menuh - iconh - faceh / 2, cbg);
                 paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - digth[0] / 2);
                 paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh2 + 0) + menuh);
                 paintline(picon[1], picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
@@ -1141,6 +1143,7 @@ void Window::painthelp()
                 drawbmp(piconc, iconw * (iconwm + 0), iconh * (iconh2 + 2) + menuh, cbg);
                 drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh2 + 2) + menuh, cfg);
                 drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh2 + 2) + menuh, cbg);
+                drawbmp(pface[4], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh2 + 2) + menuh - iconh - faceh / 2, cbg);
                 paintnumber(1, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth[0] / 2);
                 paintline(piconp, 12, iconw * iconwl, iconh * (iconh3 + 4) + menuh);
                 line(iconw * iconwl, iconh * (iconh3 + 4) + iconh / 2 + menuh, iconw * 12, 0, cred);
@@ -1156,6 +1159,7 @@ void Window::painthelp()
                     }
                 }
                 drawbmp(picona, iconw * (iconwm + 1), iconh * (iconh3 + 7) + menuh, cfg);
+                drawbmp(pface[1], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh3 + 7) + menuh - iconh - faceh / 2, cfg);
                 paintnumber(5, 4, iconw * iconwn, iconh * (iconh3 + 7) + menuh - digth[0] / 2);
                 for (long k = 0; k < 3; k++)
                 {
@@ -1363,7 +1367,10 @@ void Window::sethelp(long helpi_)
     }
     else
     {
-        bd.pause();
+        if (!bd.pauseb)
+        {
+            bd.pause();
+        }
         helpi = 0;
     }
     initwindow(false);
@@ -1523,6 +1530,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                     if (bd.sit > 0)
                     {
                         bd.pause();
+                        bd.pauseb = !bd.pauseb;
                         bd.sd.playsound(bd.sd.sSolve);
                         bd.st.addach(bd.st.achgenpause);
                     }
@@ -1592,6 +1600,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             if (isin(ex, ey, (helpw - okw) / 2 - facew * 6, helph - (okh_ + okh) / 2 + menuh, facew * 5, faceh))
             {
                 lead_5 = (ex - ((helpw - okw) / 2 - facew * 6)) / facew;
+                bd.sd.playsound(bd.sd.sLeft);
             }
         }
         if (helpi == -3)
@@ -1763,6 +1772,16 @@ void Window::keyevent(long key)
             initwindow(false);
             break;
     }
+    if (helpi == -2)
+    {
+        switch (key)
+        {
+            case k_tab:
+                lead_5 = (lead_5 + 1) % 5;
+                bd.sd.playsound(bd.sd.sLeft);
+                break;
+        }
+    }
     if (helpi == 0)
     {
         switch (key)
@@ -1777,6 +1796,7 @@ void Window::keyevent(long key)
                 if (bd.sit > 0)
                 {
                     bd.pause();
+                    bd.pauseb = !bd.pauseb;
                     bd.sd.playsound(bd.sd.sSolve);
                     bd.st.addach(bd.st.achgenpause);
                 }

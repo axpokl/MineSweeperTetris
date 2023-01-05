@@ -9,6 +9,7 @@ public:
     double time;
     double time_;
     double pausetime;
+    bool pauseb;
     long mode = 0;
     long mode_ = 0;
     bool sb;
@@ -143,6 +144,7 @@ void Board::initbd()
     tuti = 0;
     tutb = 0;
     checkr = false;
+    pauseb = false;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
