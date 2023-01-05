@@ -1,24 +1,12 @@
-[2023-01-05 08:53:00]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2023-01-05 08:53:00]: Building file listing for depot 2204231 ...
-[2023-01-05 08:53:00]: Found 80 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2023-01-05 08:53:00]: Found 80 files (1 MB) for depot 2204231
-[2023-01-05 08:53:01]: Building depot 2204231, baseline manifest 7053345187913715678 (80 files)
-[2023-01-05 08:53:01]: Found 65 chunks ( 68 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2023-01-05 08:53:01]: Changes to baseline manifest 7053345187913715678 :
-[2023-01-05 08:53:01]: Changed: "bmp\0\arrow.bmp" 11 kB size, 11 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\click.bmp" 41 kB size, 41 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\cursor.bmp" 1 kB size, 0 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\digt.bmp" 12 kB size, 0 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\digt2.bmp" 6 kB size, 0 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\face.bmp" 16 kB size, 16 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\icon.bmp" 15 kB size, 15 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\menu.bmp" 51 kB size, 51 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\0\ok.bmp" 20 kB size, 20 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\1\cursor.bmp" 1 kB size, 0 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\1\digt2.bmp" 6 kB size, 0 kB changed 
-[2023-01-05 08:53:01]: Changed: "bmp\1\face.bmp" 16 kB size, 16 kB changed 
-[2023-01-05 08:53:01]: Changed: "MineSweeperTetris.exe" 605 kB size, 605 kB changed 
-[2023-01-05 08:53:01]: Summary: 0 files added, 13 files changed, 0 files removed
-[2023-01-05 08:53:01]: Uploading new manifest to 208.64.201.169:80 (handle 1100624151670448784, 8504 bytes).
-[2023-01-05 08:53:02]: Uploading 8 out of 8 missing chunks.
-[2023-01-05 08:53:05]: Success! New manifestID 8673704799456303869 created and 8 new chunks uploaded.
+[2023-01-05 09:18:34]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2023-01-05 09:18:34]: Building file listing for depot 2204231 ...
+[2023-01-05 09:18:34]: Found 80 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2023-01-05 09:18:34]: Found 80 files (1 MB) for depot 2204231
+[2023-01-05 09:18:35]: Building depot 2204231, baseline manifest 8673704799456303869 (80 files)
+[2023-01-05 09:18:35]: Found 65 chunks ( 65 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2023-01-05 09:18:35]: Changes to baseline manifest 8673704799456303869 :
+[2023-01-05 09:18:35]: Changed: "MineSweeperTetris.exe" 605 kB size, 605 kB changed 
+[2023-01-05 09:18:35]: Summary: 0 files added, 1 files changed, 0 files removed
+[2023-01-05 09:18:36]: Uploading new manifest to 208.64.201.169:80 (handle 5139088600335623827, 8499 bytes).
+[2023-01-05 09:18:36]: Uploading 1 out of 1 missing chunks.
+[2023-01-05 09:18:39]: Success! New manifestID 1809579128027241706 created and 1 new chunks uploaded.

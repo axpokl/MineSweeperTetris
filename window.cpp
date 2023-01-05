@@ -1184,6 +1184,10 @@ void Window::painthelp()
                 }
                 for (long j = 0; j < 24; j++)
                 {
+                    paintline(piconn, 2 + (j >= 12) + (j >= 16) * 3, iconw * 4 + iconw, iconh / 2 + menuh + iconh * (j + 1) - iconh);
+                }
+                for (long j = 0; j < 24; j++)
+                {
                     drawbmp(picon[j % 10 + 1], iconw * 4, iconh / 2 + iconh * j + menuh, cbg);
                 }
                 for (long i = 0; i < 32; i++)
@@ -1193,9 +1197,6 @@ void Window::painthelp()
                 drawbmp(pmenu1[0], iconw * 4 + iconw * 12 - menuw, iconh / 2 + menuh + iconh * 12 - menuh, cbg);
                 drawbmp(pmenu2[0], iconw * 4 + iconw * 16 - menuw, iconh / 2 + menuh + iconh * 16 - menuh, cbg);
                 drawbmp(pmenu3[0], iconw * 4 + iconw * 32 - menuw, iconh / 2 + menuh + iconh * 24 - menuh, cbg);
-                paintline(piconn, 2, iconw * 4 + iconw, iconh / 2 + menuh + iconh * 12 - iconh);
-                paintline(piconn, 3, iconw * 4 + iconw, iconh / 2 + menuh + iconh * 16 - iconh);
-                paintline(piconn, 6, iconw * 4 + iconw, iconh / 2 + menuh + iconh * 24 - iconh);
                 line(iconw * 4, iconh / 2 + menuh + iconh * 12 - 1, iconw * 12, 0, ctfg);
                 line(iconw * 4, iconh / 2 + menuh + iconh * 16 - 1, iconw * 16, 0, ctfg);
                 line(iconw * 4, iconh / 2 + menuh + iconh * 24 - 1, iconw * 32, 0, ctfg);
