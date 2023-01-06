@@ -805,6 +805,7 @@ function GetFPSR():double;
 function GetFPS():longword;
 function GetError():longword;
 
+procedure CreateWin(x,y,w,h:longword;cfg,cbg:longword;style:longword;winclass:ansistring);
 procedure CreateWin(w,h:longword;cfg,cbg:longword;style:longword;winclass:ansistring);
 procedure CreateWin(w,h:longword;cfg,cbg:longword;style:longword);
 procedure CreateWin(w,h:longword;cfg,cbg:longword);
@@ -822,6 +823,7 @@ procedure SetTitle(s:ansistring);
 procedure SetTitleW(s:unicodestring);
 function GetTitle():ansistring;
 function GetTitleW():unicodestring;
+procedure SetSize(x,y,w,h:longword);
 procedure SetSize(w,h:longword);
 function GetWidth():longword;
 function GetHeight():longword;
@@ -1257,8 +1259,8 @@ var rect:TRECT;
 begin
 with rect do
 begin
-left:=GetPosX;
-top:=GetPosY;
+left:=_x;
+top:=_y;
 right:=left+_w;
 bottom:=top+_h;
 AdjustWindowRect(rect,_style,false);
@@ -1627,17 +1629,14 @@ begin GetError:=Windows.GetLastError();end;
 
 // Windows and Screen Function ´°¿ÚÆÁÄ»º¯Êý
 
-procedure CreateWin(w,h:longword;cfg,cbg:longword;style:longword;winclass:ansistring);
+procedure CreateWin(x,y,w,h:longword;cfg,cbg:longword;style:longword;winclass:ansistring);
 begin
 _class:=pwidechar(unicodestring(winclass));
-if w=0 then w:=GetScrWidth() div 2;
-if h=0 then h:=GetScrHeight() div 2;
-//if cfg=0 then cfg:=$FFFFFF;
 if style=0 then style:=WS_OVERLAPPEDWINDOW or WS_VISIBLE;
 _w:=w;
 _h:=h;
-_x:=max(0,(GetScrWidth()-_w) div 2);
-_y:=max(0,(GetScrHeight()-_h) div 2);
+_x:=x;
+_y:=y;
 _cbg:=cbg;
 _cfg:=cfg;
 _style:=style;
@@ -1646,6 +1645,8 @@ while not IsWin() do Sleep(1);
 SetBkMode(_dc,TRANSPARENT);
 Clear();
 end;
+procedure CreateWin(w,h:longword;cfg,cbg:longword;style:longword;winclass:ansistring);
+begin CreateWin(max(0,(GetScrWidth()-w) div 2),max(0,(GetScrHeight()-h) div 2),w,h,cfg,cbg,style,winclass);end;
 procedure CreateWin(w,h:longword;cfg,cbg:longword;style:longword);
 begin CreateWin(w,h,cfg,cbg,style,DEFAULTCLASS);end;
 procedure CreateWin(w,h:longword;cfg,cbg:longword);
@@ -1655,9 +1656,9 @@ begin CreateWin(w,h,0,c);end;
 procedure CreateWin(w,h:longword);
 begin CreateWin(w,h,0);end;
 procedure CreateWin(cbg:longword);
-begin CreateWin(0,0,cbg);end;
+begin CreateWin(GetScrWidth() div 2,GetScrHeight() div 2,cbg);end;
 procedure CreateWin();
-begin CreateWin(0,0);end;
+begin CreateWin(GetScrWidth() div 2,GetScrHeight() div 2);end;
 procedure FreshWin();
 begin DrawBMP(_pmain,_pmscr);AddFPS();end;
 procedure CloseWin();
@@ -1683,9 +1684,11 @@ function GetTitle():ansistring;var c:array[0..MAXCHAR-1]of char;
 begin GetWindowTextA(_hw,@c,MAXCHAR);GetTitle:=copy(pchar(@c),0,length(pchar(@c)));end;
 function GetTitleW():unicodestring;var c:array[0..MAXCHAR-1]of widechar;
 begin GetWindowTextW(_hw,@c,MAXCHAR);GetTitleW:=copy(pwchar(@c),0,length(pwchar(@c)));end;
-procedure SetSize(w,h:longword);var rect:TRECT;
-begin with rect do begin left:=GetPosX;top:=GetPosY;right:=left+w;bottom:=top+h;
-AdjustWindowRect(rect,_style,false);MoveWindow(_hw,GetPosX,GetPosY,right-left,bottom-top,true);end;end;
+procedure SetSize(x,y,w,h:longword);var rect:TRECT;
+begin with rect do begin left:=x;top:=y;right:=left+w;bottom:=top+h;
+AdjustWindowRect(rect,_style,false);MoveWindow(_hw,x,y,right-left,bottom-top,true);end;end;
+procedure SetSize(w,h:longword);
+begin SetSize(GetPosX,GetPosY,w,h);end;
 function GetWidth():longword;
 begin GetWidth:=_w;end;
 function GetHeight():longword;
@@ -1711,7 +1714,7 @@ begin if not(_style and WS_THICKFRAME=WS_THICKFRAME) then GetBorderHeight:=GetSy
 function GetBorderSize():longword;
 begin GetBorderSize:=GetBorderWidth()*$10000+GetBorderHeight();end;
 procedure SetPos(x,y:longword);
-begin MoveWindow(_hw,x,y,GetWidth+GetBorderWidth*2,GetHeight+GetBorderHeight*2+GetBorderTitle,true);end;
+begin SetSize(x,y,_w,_h);end;
 function GetPosX():longint;var rt:RECT=(Left:0;Top:0;Right:0;Bottom:0);
 begin GetWindowRect(_hw,rt);GetPosX:=rt.Left;end;
 function GetPosY():longint;var rt:RECT=(Left:0;Top:0;Right:0;Bottom:0);

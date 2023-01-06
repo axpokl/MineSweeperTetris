@@ -579,7 +579,7 @@ void Board::checkline(bool checkb_)
                     {
                         for (long k = 0; k < mult; k++)
                         {
-                            Line158(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
+                            Line160(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
                         }
                     }
                     j_++;

@@ -23,7 +23,8 @@ public:
 
     Sound();
     void initsound();
-    void initmusic();
+    void loadsound();
+    void loadmusic();
     void playsound(long id);
     void switchsound();
     void playmusic();
@@ -39,30 +40,40 @@ Sound::Sound()
 
 void Sound::initsound()
 {
-    initmusic();
+    loadsound();
+    loadmusic();
     playmusic();
 }
 
-void Sound::initmusic()
+void Sound::loadsound()
 {
-    sWin = loadaudio("./wav/Win.wav");
-    sLose = loadaudio("./wav/Lose.wav");
-    sError = loadaudio("./wav/Error.wav");
-    sLeft = loadaudio("./wav/Left.wav");
-    sRight = loadaudio("./wav/Right.wav");
-    sFlag = loadaudio("./wav/Flag.wav");
-    sNew = loadaudio("./wav/New.wav");
-    sSolve = loadaudio("./wav/Solve.wav");
-    sMusic[0] = loadaudio("./mid/music1.mid", " type sequencer");
-    sMusic[1] = loadaudio("./mid/music2.mid", " type sequencer");
-    sMusic[2] = loadaudio("./mid/music3.mid", " type sequencer");
-    sMusic[3] = loadaudio("./mid/music4.mid", " type sequencer");
-    sMusic[4] = loadaudio("./mid/music5.mid", " type sequencer");
+    if (iswin())
+    {
+        sWin = loadaudio("./wav/Win.wav");
+        sLose = loadaudio("./wav/Lose.wav");
+        sError = loadaudio("./wav/Error.wav");
+        sLeft = loadaudio("./wav/Left.wav");
+        sRight = loadaudio("./wav/Right.wav");
+        sFlag = loadaudio("./wav/Flag.wav");
+        sNew = loadaudio("./wav/New.wav");
+        sSolve = loadaudio("./wav/Solve.wav");
+    }
+}
+
+void Sound::loadmusic()
+{
+    for (long k = 0; k < musicn; k++)
+    {
+        if (iswin())
+        {
+            sMusic[k] = loadaudio((mystring)"./mid/music"+i2s(k+1)+(mystring)".mid", " type sequencer");
+        }
+    }
 }
 
 void Sound::playsound(long id)
 {
-    if (soundb)
+    if (iswin() && soundb)
     {
         setaudiopos(id, 0);
     }
@@ -71,7 +82,7 @@ void Sound::playsound(long id)
 void Sound::switchsound()
 {
     soundb = !soundb;
-    if (soundb)
+    if (iswin() && soundb)
     {
         setaudiopos(sLeft, 0);
     }

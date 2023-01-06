@@ -120,6 +120,8 @@ public:
     bool showmax_ = false;
     long w_ = 0;
     long h_ = 0;
+    long x_ = 0;
+    long y_ = 0;
     RECT rect;
     long wscr = 0;
     long hscr = 0;
@@ -135,6 +137,7 @@ public:
     ~Window();
     void loadsetting();
     void savesetting();
+    void initmult();
     void loadall();
     void initwindow();
     void releasewindow();
@@ -217,19 +220,59 @@ void Window::savesetting()
 
 void Window::loadall()
 {
-    loadsetting();
+    if (iswin())
+    {
+        loadsetting();
+    }
     painttitle(bd.st.lan.LAN_LOAD_STEAM);
-    bd.st.loadsteam();
+    if (iswin())
+    {
+        bd.st.loadsteam();
+    }
     painttitle(bd.st.lan.LAN_LOAD_AUDIO);
-    bd.sd.initsound();
+    if (iswin())
+    {
+        bd.sd.initsound();
+    }
     painttitle(bd.st.lan.LAN_LOAD_BOARD);
-    bd.initbd(1, md);
+    if (iswin())
+    {
+        bd.initbd(1, md);
+    }
     painttitle(bd.st.lan.LAN_LOAD_GRAPH);
-    initbmp();
+    if (iswin())
+    {
+        initbmp();
+    }
     painttitle(bd.st.lan.LAN_LOAD_WINDOW);
-    bd.tutb = helpb;
-    sethelp(0);
-    SetWindowLongPtr((HWND)gethwnd(), GWL_STYLE, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE);
+    if (iswin())
+    {
+        bd.tutb = helpb;
+        sethelp(0);
+        SetWindowLongPtr((HWND)gethwnd(), GWL_STYLE, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE);
+    }
+}
+
+void Window::initmult()
+{
+    if (mult_ == 0)
+    {
+        mult = max(1, min((double)(wscr - getborderwidth() * 2) / max((double)minw, (double)w_), (double)(hscr - getborderheight() * 2 - getbordertitle()) / max((double)minh, (double)h_)));
+        mult = (double)((int)(mult * 2) / (int)1) / (double)2.0;
+    }
+    else if (mult_ == 1)
+    {
+        mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
+    }
+    else
+    {
+        mult_ = min(max(mult_, 2), 8);
+        mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
+        mult = min(mult, (double)mult_ / 2.0);
+    }
+    bd.w_ = w_;
+    bd.h_ = h_;
+    bd.mult = mult;
 }
 
 void Window::initwindow()
@@ -238,13 +281,13 @@ void Window::initwindow()
     SystemParametersInfoA(SPI_GETWORKAREA, 0, &rect, 0);
     wscr = rect.right - rect.left;
     hscr = rect.bottom - rect.top;
-    mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)minw, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)minh));
-    bd.mult = mult;
     w_ = launchw;
     h_ = launchh;
-    bd.w_ = w_;
-    bd.h_ = h_;
-    createwin(w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    reg.getreg("mult", (long*)&mult_);
+    initmult();
+    x_ = rect.left + max(0, (wscr - w_ * mult - getborderwidth() * 2) / 2);
+    y_ = rect.top + max(0, (hscr - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2);
+    createwin(x_, y_, w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     pwin = createbmp(w_, h_);
     pwint = createbmp(w_ * mult, h_ * mult, transparent_);
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
@@ -288,30 +331,14 @@ void Window::initwindow(bool b)
                 h_ = helph + menuh;
                 break;
         }
-        if (mult_ == 0)
-        {
-            mult = max(1, min((double)(wscr - getborderwidth() * 2) / max((double)minw, (double)w_), (double)(hscr - getborderheight() * 2 - getbordertitle()) / max((double)minh, (double)h_)));
-            mult = (double)((int)(mult * 2) / (int)1) / (double)2.0;
-        }
-        else if (mult_ == 1)
-        {
-            mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
-        }
-        else
-        {
-            mult_ = min(max(mult_, 2), 8);
-            mult = max(1, min((double)(wscr - getborderwidth() * 2) / (double)w_, (double)(hscr - getborderheight() * 2 - getbordertitle()) / (double)h_));
-            mult = min(mult, (double)mult_ / 2.0);
-        }
-        bd.w_ = w_;
-        bd.h_ = h_;
-        bd.mult = mult;
-        setsize(w_ * mult, h_ * mult);
+        initmult();
+        x_ = rect.left + max(0, (wscr - w_ * mult - getborderwidth() * 2) / 2);
+        y_ = rect.top + max(0, (hscr - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2);
+        setsize(x_, y_, w_ * mult, h_ * mult);
         releasebmp(pwin);
         releasebmp(pwint);
         pwin = createbmp(w_, h_);
         pwint = createbmp(w_ * mult, h_ * mult, transparent_);
-        setpos(rect.left + max(0, (wscr - w_ * mult - getborderwidth() * 2) / 2), rect.top + max(0, (hscr - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2));
         paintevent();
     }
 }
