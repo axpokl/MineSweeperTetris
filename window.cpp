@@ -162,6 +162,7 @@ public:
     void painthelp();
     void painttut();
     void painttitle(long load);
+    void paintevent(bool freshb);
     void paintevent();
     bool isin(long ex, long ey, long x, long y, long w, long h);
     void sethelp(long helpi_);
@@ -334,12 +335,13 @@ void Window::initwindow(bool b)
         initmult();
         x_ = rect.left + max(0, (wscr - w_ * mult - getborderwidth() * 2) / 2);
         y_ = rect.top + max(0, (hscr - h_ * mult - getborderheight() * 2 - getbordertitle()) / 2);
-        setsize(x_, y_, w_ * mult, h_ * mult);
         releasebmp(pwin);
         releasebmp(pwint);
         pwin = createbmp(w_, h_);
         pwint = createbmp(w_ * mult, h_ * mult, transparent_);
-        paintevent();
+        paintevent(false);
+        setsize(x_, y_, w_ * mult, h_ * mult);
+        freshwin();
     }
 }
 
@@ -678,6 +680,10 @@ void Window::paintboard(Block b, long x, long y, long cx, long cy)
 void Window::paintboard()
 {
     paintboard(bd, 0, faceh);
+    if (bd.mx >= 0 && bd.my >= 0)
+    {
+        bar(bd.mx * iconw, bd.my * iconh + menuh + faceh, iconw - 1, iconh - 1, ctfg, transparent);
+    }
 }
 
 
@@ -1346,7 +1352,7 @@ void Window::painttitle(long load)
     freshwin();
 }
 
-void Window::paintevent()
+void Window::paintevent(bool freshb)
 {
     clear(cbg);
     clear(pwint, transparent_);
@@ -1371,7 +1377,15 @@ void Window::paintevent()
         drawbmp(pwin, getwin(), 0, 0, w_ * mult, h_ * mult);
     }
     drawbmp(pwint, getwin(),0,0, w_ * mult, h_ * mult, transparent_);
-    freshwin();
+    if (freshb)
+    {
+        freshwin();
+    }
+}
+
+void Window::paintevent()
+{
+    paintevent(true);
 }
 
 bool Window::isin(long ex, long ey, long x, long y, long w, long h)
@@ -1411,7 +1425,6 @@ void Window::sethelp(long helpi_)
         waitb = false;
         paintevent();
     }
-
 }
 
 void Window::savescr()
@@ -1458,6 +1471,8 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
         bool tutmb = !bd.tutb || (bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
         if ((x != mx || y != my) && tutmb)
         {
+            bd.mx = x;
+            bd.my = y;
             if (eb_ == k_lmouse)
             {
                 if (bd.sit == 0 && y >= bd.maskj)
@@ -1469,6 +1484,7 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
             }
             else if (eb_ == k_rmouse)
             {
+
                 bd.clickright(x, y, true, md_);
                 bd.checkline();
             }

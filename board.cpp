@@ -41,6 +41,9 @@ public:
     double mult;
     bool delayb = true;
 
+    long mx;
+    long my;
+
     bool tutb = true;
     long tuti;
     long tutx[13] = {5, 5, 4, 9, 8, 8, 9, 10, 2, 2, 3, 3, 2};
@@ -145,6 +148,8 @@ void Board::initbd()
     tutb = 0;
     checkr = false;
     pauseb = false;
+    mx = -1;
+    my = -1;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
