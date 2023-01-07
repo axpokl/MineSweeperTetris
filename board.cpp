@@ -28,6 +28,7 @@ public:
     long tetrisi;
     long missi;
     long missline;
+    long bouns;
 
     long rx;
     long ry;
@@ -150,6 +151,7 @@ void Board::initbd()
     pauseb = false;
     mx = -1;
     my = -1;
+    bouns = 0;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
@@ -622,6 +624,7 @@ void Board::checkline()
 
 void Board::addline(bool b)
 {
+    bouns--;
     maskj--;
     long j = maskj;
     for (long i = 0; i < w; i++)
@@ -792,18 +795,19 @@ void Board::delline(long l)
         {
             tetrisi++;
             st.compscr(tetrisi, mode, 9);
+            line = line + 4 + max(0, bouns);
+            line = min(line, 999999);
+            st.compscr(line, mode, 0);
+            if (st.mdb)
+            {
+                st.compscr(line, mode, 3);
+            }
             for (long k = 0; k < 4; k++)
             {
-                line++;
-                line = min(line, 999999);
-                st.compscr(line, mode, 0);
-                if (st.mdb)
-                {
-                    st.compscr(line, mode, 3);
-                }
                 addline(false);
-                sit = 3;
             }
+            sit = 3;
+            bouns = 4;
             checkb = true;
             checkline(false);
             sd.playsound(sd.sNew);
