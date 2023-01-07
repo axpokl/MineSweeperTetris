@@ -1274,3 +1274,12 @@
 [2023-01-07 12:32:11] 	Base list: 0 ()
 [2023-01-07 12:32:11] 	No custom list
 [2023-01-07 12:32:11] 	No enabled features
+
+
+[2023-01-07 15:52:38] Validating parental settings
+[2023-01-07 15:52:38] Settings dump:
+[2023-01-07 15:52:38] 	Account ID: 214053662
+[2023-01-07 15:52:38] 	Enabled: false
+[2023-01-07 15:52:38] 	Base list: 0 ()
+[2023-01-07 15:52:38] 	No custom list
+[2023-01-07 15:52:38] 	No enabled features

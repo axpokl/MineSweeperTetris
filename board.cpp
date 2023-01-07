@@ -785,6 +785,7 @@ void Board::delline(long l)
         {
             st.compscr(line, mode, 3);
         }
+        st.compscr(line - missline, mode, 6);
         long scrtotal_[4] = {0, 2, 3, 6};
         st.addscr(st.scrtotal, scrtotal_[mode], mode);
         if (line > 9999)
@@ -802,6 +803,7 @@ void Board::delline(long l)
             {
                 st.compscr(line, mode, 3);
             }
+            st.compscr(line - missline, mode, 6);
             for (long k = 0; k < 4; k++)
             {
                 addline(false);
