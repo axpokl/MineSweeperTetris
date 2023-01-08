@@ -1,41 +1,12 @@
-[2023-01-08 15:44:08]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2023-01-08 15:44:08]: Building file listing for depot 2204231 ...
-[2023-01-08 15:44:08]: Found 80 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2023-01-08 15:44:08]: Found 80 files (1 MB) for depot 2204231
-[2023-01-08 15:44:09]: Building depot 2204231, baseline manifest 1737296667476138983 (80 files)
-[2023-01-08 15:44:10]: Found 65 chunks ( 65 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2023-01-08 15:44:10]: Changes to baseline manifest 1737296667476138983 :
-[2023-01-08 15:44:10]: Changed: "lan\arabic.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\brazilian.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\bulgarian.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\czech.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\danish.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\dutch.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\english.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\finnish.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\french.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\german.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\greek.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\hungarian.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\italian.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\japanese.txt" 3 kB size, 3 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\koreana.txt" 3 kB size, 3 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\latam.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\norwegian.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\polish.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\portuguese.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\romanian.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\russian.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\schinese.txt" 2 kB size, 2 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\spanish.txt" 6 kB size, 6 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\swedish.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\tchinese.txt" 2 kB size, 2 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\thai.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\turkish.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\ukrainian.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "lan\vietnamese.txt" 5 kB size, 5 kB changed 
-[2023-01-08 15:44:10]: Changed: "MineSweeperTetris.exe" 606 kB size, 606 kB changed 
-[2023-01-08 15:44:10]: Summary: 0 files added, 30 files changed, 0 files removed
-[2023-01-08 15:44:10]: Uploading new manifest to 208.64.201.169:80 (handle 15563601225494127583, 8508 bytes).
-[2023-01-08 15:44:11]: Uploading 28 out of 28 missing chunks.
-[2023-01-08 15:44:14]: Success! New manifestID 1375305339145750518 created and 28 new chunks uploaded.
+[2023-01-08 16:58:21]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2023-01-08 16:58:21]: Building file listing for depot 2204231 ...
+[2023-01-08 16:58:21]: Found 80 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2023-01-08 16:58:21]: Found 80 files (1 MB) for depot 2204231
+[2023-01-08 16:58:22]: Building depot 2204231, baseline manifest 8654945880559062578 (80 files)
+[2023-01-08 16:58:22]: Found 65 chunks ( 65 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2023-01-08 16:58:22]: Changes to baseline manifest 8654945880559062578 :
+[2023-01-08 16:58:22]: Changed: "MineSweeperTetris.exe" 607 kB size, 607 kB changed 
+[2023-01-08 16:58:22]: Summary: 0 files added, 1 files changed, 0 files removed
+[2023-01-08 16:58:22]: Uploading new manifest to 208.64.201.169:80 (handle 661169146216945918, 8511 bytes).
+[2023-01-08 16:58:23]: Uploading 1 out of 1 missing chunks.
+[2023-01-08 16:58:25]: Success! New manifestID 2594856414045353747 created and 1 new chunks uploaded.

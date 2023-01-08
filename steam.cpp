@@ -111,6 +111,7 @@ public:
     void loadlead();
     void getlead();
     void setlead(long mode);
+    void setlead();
     bool waitlead();
     bool waitlead_();
 
@@ -239,6 +240,7 @@ void Steam::loadscr()
         {
             SteamUserStats()->GetStat(scrs[scrid], (float*)&scr[scrid]);
         }
+        setlead();
     }
 }
 
@@ -365,6 +367,42 @@ void Steam::getlead()
                     for (long k = 0; k < leadk_[n]; k++)
                     {
                         SteamUserStats()->GetDownloadedLeaderboardEntry(leaden[n][leadid],k,&leadsn[n][leadid][k],NULL,0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Steam::setlead()
+{
+    if (steamb)
+    {
+        long leadid;
+        for (leadid = 0; leadid < 3; leadid++)
+        {
+            if (leadb[leadid] == 0)
+            {
+                loadlead();
+            }
+            if (leadb[leadid] != 0)
+            {
+                for (long k = 0; k < 5; k++)
+                {
+                    lead[leadid + k * 3] = SteamUserStats()->UploadLeaderboardScore(leadb[leadid + k * 3], k_ELeaderboardUploadScoreMethodKeepBest, scr[leadid + k * 3 + 4], NULL, 0);
+                }
+            }
+        }
+        if (waitlead())
+        {
+            for (leadid = 0; leadid < 3; leadid++)
+            {
+                if (leadb[leadid] != 0)
+                {
+                    for (long k = 0; k < 5; k++)
+                    {
+                        SteamUtils()->GetAPICallResult(lead[leadid + k * 3], &leadu, sizeof(leadu), leadu.k_iCallback, &leadfailed);
+                        leadb[leadid + k * 3] = leadu.m_hSteamLeaderboard;
                     }
                 }
             }
