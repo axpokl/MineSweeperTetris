@@ -106,10 +106,7 @@ Board::Board()
 
 void Board::initbd()
 {
-    if (!ischeat())
-    {
-        st.setlead(mode);
-    }
+    st.setlead(mode);
     sit = 0;
     line = 0;
     level = 0;
@@ -165,10 +162,7 @@ void Board::initbd(long w_, long h_, long maskj_, long n_)
 
 void Board::initbd(long mode_, long md)
 {
-    if (!ischeat())
-    {
-        st.setlead(mode);
-    }
+    st.setlead(mode);
     mode = mode_;
     switch (mode)
     {
@@ -524,10 +518,10 @@ bool Board::checkerror()
                     flag[i][j] = true;
                     qstn[i][j] = false;
                     sit = 2;
-                    st.compscr(line - missline, mode, 6);
+                    st.compscr(line - missline, mode, 6, ischeat());
                     missline = line;
                     missi++;
-                    st.compscr(missi, mode, 12);
+                    st.compscr(missi, mode, 12, ischeat());
                     addline(false);
                     addline(true);
                     if (sit == 2)
@@ -691,7 +685,7 @@ void Board::checkdie()
 {
     if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
     {
-        st.compscr(line - missline, mode, 6);
+        st.compscr(line - missline, mode, 6, ischeat());
         missline = line;
         aliveb = false;
         sit = 4;
@@ -704,10 +698,7 @@ void Board::checkdie()
         {
             st.addach(st.achhidright);
         }
-        if (!ischeat())
-        {
-            st.setlead(mode);
-        }
+        st.setlead(mode);
     }
     if (((maskj == 0 && maski == 0)) && sit != 4)
     {
@@ -780,12 +771,12 @@ void Board::delline(long l)
         }
         line++;
         line = min(line, 999999);
-        st.compscr(line, mode, 0);
+        st.compscr(line, mode, 0, ischeat());
         if (st.mdb)
         {
-            st.compscr(line, mode, 3);
+            st.compscr(line, mode, 3, ischeat());
         }
-        st.compscr(line - missline, mode, 6);
+        st.compscr(line - missline, mode, 6, ischeat());
         long scrtotal_[4] = {0, 2, 3, 6};
         st.addscr(st.scrtotal, scrtotal_[mode], mode);
         if (line > 9999)
@@ -795,15 +786,15 @@ void Board::delline(long l)
         if (maskj > h - 4)
         {
             tetrisi++;
-            st.compscr(tetrisi, mode, 9);
+            st.compscr(tetrisi, mode, 9, ischeat());
             line = line + 4 + max(0, bouns);
             line = min(line, 999999);
-            st.compscr(line, mode, 0);
+            st.compscr(line, mode, 0, ischeat());
             if (st.mdb)
             {
-                st.compscr(line, mode, 3);
+                st.compscr(line, mode, 3, ischeat());
             }
-            st.compscr(line - missline, mode, 6);
+            st.compscr(line - missline, mode, 6, ischeat());
             for (long k = 0; k < 4; k++)
             {
                 addline(false);

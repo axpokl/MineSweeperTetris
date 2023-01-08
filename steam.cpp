@@ -106,7 +106,7 @@ public:
     void setscr(long scrid);
     void addscr(long scrid, long val, long mode);
     void maxscr(long val, long scrline__);
-    void compscr(long val, long mode, long index);
+    void compscr(long val, long mode, long index, bool cheatb_);
 
     void loadlead();
     void getlead();
@@ -292,11 +292,11 @@ void Steam::maxscr(long val, long scrline__)
     }
 }
 
-void Steam::compscr(long val, long mode, long index)
+void Steam::compscr(long val, long mode, long index, bool cheatb_)
 {
     if (steamb)
     {
-        if (!cheatb && mode > 0)
+        if (!cheatb && !cheatb_ && mode > 0)
         {
             long scrline_ = -1;
             switch (mode)
