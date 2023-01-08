@@ -125,6 +125,7 @@ public:
     RECT rect;
     long wscr = 0;
     long hscr = 0;
+    bool barb = true;
 
     long md = 0;
     bool ml = false;
@@ -206,6 +207,7 @@ void Window::loadsetting()
     reg.getreg("musicb", (long*)&bd.sd.musicb);
     reg.getreg("mult", (long*)&mult_);
     reg.getreg("delayb", (long*)&bd.delayb);
+    reg.getreg("barb", (long*)&barb);
 }
 
 void Window::savesetting()
@@ -217,6 +219,7 @@ void Window::savesetting()
     reg.setreg("musicb", bd.sd.musicb);
     reg.setreg("mult", mult_);
     reg.setreg("delayb", bd.delayb);
+    reg.setreg("barb", barb);
 }
 
 void Window::loadall()
@@ -680,7 +683,7 @@ void Window::paintboard(Block b, long x, long y, long cx, long cy)
 void Window::paintboard()
 {
     paintboard(bd, 0, faceh);
-    if (bd.mx >= 0 && bd.my >= 0)
+    if (bd.mx >= 0 && bd.my >= 0 && barb)
     {
         bar(bd.mx * iconw, bd.my * iconh + menuh + faceh, iconw - 1, iconh - 1, ctfg, transparent);
     }
@@ -834,15 +837,15 @@ void Window::painthelp()
         case -3:
             {
                 setfontheight_(fonth);
-                pbitmap psetting__[6] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], picon[0]};
-                long settinglan[6] = {9, 10, 11, 15, 12, 16};
-                long settingj[6] = {2, 2, 3, 3, 3, 2};
-                long settingb[6][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}, {bd.delayb, !bd.delayb, 0}};
+                pbitmap psetting__[7] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], picon[0], picon[0]};
+                long settinglan[7] = {9, 10, 11, 15, 12, 16, 17};
+                long settingj[7] = {2, 2, 3, 3, 3, 2, 2};
+                long settingb[7][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}, {bd.delayb, !bd.delayb, 0}, {barb, !barb, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[6][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 10}, {7, 8, 9}, {0, 1, 0}};
+                long settinglanj[7][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 10}, {7, 8, 9}, {0, 1, 0}, {0, 1, 0}};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-                for (long k = 0; k < 6; k++)
+                for (long k = 0; k < 7; k++)
                 {
                     drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
                     drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4 - facew - iconw * 2, faceh, ctfg, cbg, DT_LEFT);
@@ -864,6 +867,10 @@ void Window::painthelp()
                 if (bd.delayb)
                 {
                     line(helpw__, helph__ * 5 + menuh + iconh + faceh / 2, facew, 0, cred);
+                }
+                if (barb)
+                {
+                    bar(helpw__, helph__ * 6 + menuh + iconh, facew - 1, faceh - 1, ctfg, transparent);
                 }
                 break;
             }
@@ -1651,7 +1658,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         {
             long helpw__ = iconw;
             double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-            for (long k = 0; k < 6; k++)
+            for (long k = 0; k < 7; k++)
             {
                 for (long j = 0; j < 3; j++)
                 {
@@ -1700,6 +1707,13 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 if (j <= 1 && bd.delayb == j)
                                 {
                                     bd.delayb = !bd.delayb;
+                                    bd.sd.playsound(bd.sd.sSolve);
+                                }
+                                break;
+                            case 6:
+                                if (j <= 1 && barb == j)
+                                {
+                                    barb = !barb;
                                     bd.sd.playsound(bd.sd.sSolve);
                                 }
                                 break;
