@@ -35,6 +35,7 @@ public:
     const long arrowh = 24;
 
     pbitmap ptitle_;
+    pbitmap pbg_;
     pbitmap pmenu_;
     pbitmap pmenu1[2];
     pbitmap pmenu2[2];
@@ -83,12 +84,7 @@ public:
     pbitmap parrowp;
 
     const long transparent_ = 2;
-    const long color[3][8] =
-    {
-        {silver, 0xAFAFAF, black, silver, red, blue, green, gray},
-        {black, black, white, black, 0x8080FF, 0xFF8080, 0x80FF80, white},
-        {0xFF7F00, 0xFFC080, black, 0xFF8000, 0x0000FF, 0xFF0000, 0x00FF00, 0x9F5000}
-    };
+    long color[8] = {silver, 0xAFAFAF, black, silver, red, blue, green, gray};
     long colori = 0;
     long cfg;
     long cbg;
@@ -132,6 +128,7 @@ public:
     bool mr = false;
     long mx = -1;
     long my = -1;
+    bool mi = false;
     long lead_5 = 0;
 
     Window();
@@ -350,18 +347,15 @@ void Window::initwindow(bool b)
 
 void Window::initcolor()
 {
-    for (long k = 0; k < 7; k++)
-    {
-        cfg = color[colori][0];
-        cbg = color[colori][1];
-        ctfg = color[colori][2];
-        ctbg = color[colori][3];
-        cred = color[colori][4];
-        cblue = color[colori][5];
-        cgreen = color[colori][6];
-        cline = color[colori][7];
-        bd.cred = cred;
-    }
+    cfg = color[0];
+    cbg = color[1];
+    ctfg = color[2];
+    ctbg = color[3];
+    cred = color[4];
+    cblue = color[5];
+    cgreen = color[6];
+    cline = color[7];
+    bd.cred = cred;
 }
 
 void Window::initbmp()
@@ -432,6 +426,7 @@ void Window::initbmp()
         }
         else
         {
+            releasebmp(pbg_);
             releasebmp(pmenu_);
             releasebmp(pface_);
             releasebmp(picon_);
@@ -442,7 +437,7 @@ void Window::initbmp()
             releasebmp(pclick_);
             releasebmp(parrow_);
         }
-        initcolor();
+        pbg_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/bg.bmp");
         pmenu_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/menu.bmp");
         pface_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/face.bmp");
         picon_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/icon.bmp");
@@ -452,6 +447,11 @@ void Window::initbmp()
         pcursor_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/cursor.bmp");
         pclick_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/click.bmp");
         parrow_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/arrow.bmp");
+        for (long k = 0; k < 8; k++)
+        {
+            color[k] = getpixel(pbg_, 0, k);
+        }
+        initcolor();
         for (long i = 0; i < 2; i++)
         {
 
@@ -511,7 +511,6 @@ void Window::initbmp()
         drawbmp(parrow_, parrowd, 0, arrowh * 3, arroww, arrowh, 0, 0, arroww, arrowh);
         drawbmp(parrow_, parrowm, 0, arrowh * 4, arroww, arrowh, 0, 0, arroww, arrowh);
         drawbmp(parrow_, parrowp, 0, arrowh * 5, arroww, arrowh, 0, 0, arroww, arrowh);
-
     }
 }
 
@@ -802,7 +801,7 @@ void Window::painthelp()
                                 usernames[3] = 0;
                                 usernames[4 + poss] = 0;
                                 drawtextxy_(pwint, i2s(leads.m_nGlobalRank - rank_), helpw * leadid / 3, k * fontsh + faceh + menuh + 1, ctfg, cbg);
-                                drawtextxy_(pwint, &usernames[4], helpw * leadid / 3 + getstringwidth_("0000"), k * fontsh + faceh + menuh + 1, helpw / 3 - getstringwidth_("0000") - digtw[1] * fontsh / digth[1] * 4, fontsh, ctfg, cbg, DT_LEFT);
+                                drawtextxy_(pwint, &usernames[4], helpw * leadid / 3 + getstringwidth_("00000"), k * fontsh + faceh + menuh + 1, helpw / 3 - getstringwidth_("00000") - digtw[1] * fontsh / digth[1] * 4, fontsh, ctfg, cbg, DT_LEFT);
                                 paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
                             }
                             setfontweight_(0);
@@ -837,18 +836,21 @@ void Window::painthelp()
         case -3:
             {
                 setfontheight_(fonth);
-                pbitmap psetting__[7] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], picon[0], picon[0]};
-                long settinglan[7] = {9, 10, 11, 15, 12, 16, 17};
-                long settingj[7] = {2, 2, 3, 3, 3, 2, 2};
-                long settingb[7][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}, {bd.delayb, !bd.delayb, 0}, {barb, !barb, 0}};
+                pbitmap psetting__[8] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], NULL, picon[0], picon[0]};
+                long settinglan[8] = {9, 10, 11, 15, 12, 0, 16, 17};
+                long settingj[8] = {2, 2, 3, 3, 2, 3, 2, 2};
+                long settingb[8][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}, {colori == 2, colori == 3, colori == 4}, {bd.delayb, !bd.delayb, 0}, {barb, !barb, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[7][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 10}, {7, 8, 9}, {0, 1, 0}, {0, 1, 0}};
+                long settinglanj[8][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 12}, {7, 8, 0}, {9, 10, 11}, {0, 1, 0}, {0, 1, 0}};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-                for (long k = 0; k < 7; k++)
+                for (long k = 0; k < 8; k++)
                 {
                     drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
-                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4 - facew - iconw * 2, faceh, ctfg, cbg, DT_LEFT);
+                    if (k != 5)
+                    {
+                        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4 - facew - iconw * 2, faceh, ctfg, cbg, DT_LEFT);
+                    }
                     for (long j = 0; j < settingj[k]; j++)
                     {
                         drawbmp(psettingicon[settingb[k][j]], helpw / 4 * (j + 1), helph__ * k + menuh + iconh, facew, faceh, cfg);
@@ -866,11 +868,11 @@ void Window::painthelp()
                 }
                 if (bd.delayb)
                 {
-                    line(helpw__, helph__ * 5 + menuh + iconh + faceh / 2, facew, 0, cred);
+                    line(helpw__, helph__ * 6 + menuh + iconh + faceh / 2, facew, 0, cred);
                 }
                 if (barb)
                 {
-                    bar(helpw__, helph__ * 6 + menuh + iconh, facew - 1, faceh - 1, ctfg, transparent);
+                    bar(helpw__, helph__ * 7 + menuh + iconh, facew - 1, faceh - 1, ctfg, transparent);
                 }
                 break;
             }
@@ -1402,6 +1404,7 @@ bool Window::isin(long ex, long ey, long x, long y, long w, long h)
 
 void Window::sethelp(long helpi_)
 {
+    mi = false;
     if (helpi > 0 && helpi_ > 0)
     {
         helpi_ = helpi;
@@ -1454,7 +1457,7 @@ void Window::savescr()
 
 void Window::switchskin()
 {
-    switchskin((colori + 1) % 3);
+    switchskin((colori + 1) % 5);
 }
 
 void Window::switchskin(long colori_)
@@ -1482,7 +1485,7 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
             bd.my = y;
             if (eb_ == k_lmouse)
             {
-                if (bd.sit == 0 && y >= bd.maskj)
+                if (bd.sit == 0 && y >= bd.maskj && md_ == 2)
                 {
                     bd.resetbd(x, y);
                 }
@@ -1491,7 +1494,6 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
             }
             else if (eb_ == k_rmouse)
             {
-
                 bd.clickright(x, y, true, md_);
                 bd.checkline();
             }
@@ -1527,8 +1529,6 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
                 sethelp(1);
             }
         }
-
-
     }
 }
 
@@ -1658,9 +1658,9 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         {
             long helpw__ = iconw;
             double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-            for (long k = 0; k < 7; k++)
+            for (long k = 0; k < 8; k++)
             {
-                for (long j = 0; j < 3; j++)
+                for (long j = 0; j < 8; j++)
                 {
                     if (isin(ex, ey, helpw / 4 * (j + 1), helph__ * k + menuh + iconh, facew, faceh))
                     {
@@ -1698,19 +1698,25 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 }
                                 break;
                             case 4:
-                                if (j <= 2 && colori != j)
+                                if (j <= 1 && colori != j)
                                 {
                                     switchskin(j);
                                 }
                                 break;
                             case 5:
+                                if (j <= 2 && colori != (j + 2))
+                                {
+                                    switchskin(j + 2);
+                                }
+                                break;
+                            case 6:
                                 if (j <= 1 && bd.delayb == j)
                                 {
                                     bd.delayb = !bd.delayb;
                                     bd.sd.playsound(bd.sd.sSolve);
                                 }
                                 break;
-                            case 6:
+                            case 7:
                                 if (j <= 1 && barb == j)
                                 {
                                     barb = !barb;
@@ -1977,17 +1983,19 @@ void Window::doaction()
         mr = GetAsyncKeyState(VK_RBUTTON);
         if (ismouseleft())
         {
+            mi = true;
             mx = -1;
             my = -1;
             mouseevent(getmouseposx(), getmouseposy(), k_lmouse);
         }
         if (ismouseright())
         {
+            mi = true;
             mx = -1;
             my = -1;
             mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
         }
-        if (ismousemove() && (md >= 1) && (!bd.tutb))
+        if (ismousemove() && (md >= 1) && (!bd.tutb) && mi)
         {
             if (ml)
             {
