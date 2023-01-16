@@ -454,6 +454,7 @@ bool Steam::waitlead()
         }
         return waitb;
     }
+    return false;
 }
 
 bool Steam::waitlead_()
@@ -475,6 +476,7 @@ bool Steam::waitlead_()
         }
         return waitb;
     }
+    return false;
 }
 
 void Steam::savescr(char* scrpath)

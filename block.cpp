@@ -130,4 +130,5 @@ bool Block::isok(long k, long x, long y, long &tx, long &ty)
             return (x < w - 1 && y < h - 1);
             break;
     }
+    return false;
 }
