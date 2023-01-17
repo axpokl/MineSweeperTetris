@@ -292,6 +292,10 @@ void Window::initwindow()
     pwin = createbmp(w_, h_);
     pwint = createbmp(w_ * mult, h_ * mult, transparent_);
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
+    if (hicon == 0) 
+    {
+        hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    }
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
     settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE));
     LOGFONT lf;
