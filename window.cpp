@@ -660,7 +660,6 @@ void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long 
 
 }
 
-
 void Window::paintboard(Block b, long x, long y)
 {
     for (long i = 0; i < b.w; i++)
@@ -1490,17 +1489,10 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
                     bd.resetbd(x, y);
                 }
                 bd.clickleft(x, y, true, md_);
-                bd.checkline();
             }
             else if (eb_ == k_rmouse)
             {
                 bd.clickright(x, y, true, md_);
-                bd.checkline();
-            }
-            bd.solveb = true;
-            while (bd.solveb)
-            {
-                bd.solve0();
             }
             bd.checkline();
             mx = x;

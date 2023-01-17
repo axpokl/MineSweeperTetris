@@ -61,6 +61,7 @@ public:
     void solveblank();
     void solve0();
     void solve1();
+    bool checkerror(long i, long j);
     bool checkerror();
     void checkline(bool checkb_);
     void checkline();
@@ -499,6 +500,37 @@ void Board::solve2()
     }
 }
 
+bool Board::checkerror(long i, long j)
+{
+    bool result = false;
+    if (blck[i][j] && mine[i][j])
+    {
+        dieb = true;
+        diex = i;
+        diey = j;
+        blck[i][j] = false;
+        flag[i][j] = true;
+        qstn[i][j] = false;
+        sit = 2;
+        st.compscr(line - missline, mode, 6, ischeat());
+        missline = line;
+        missi++;
+        st.compscr(missi, mode, 12, ischeat());
+        addline(false);
+        addline(true);
+        if (sit == 2)
+        {
+            sit = 1;
+        }
+        st.addscr(st.scrdead, 1, mode);
+        sd.playsound(sd.sError);
+        sb = false;
+        result = true;
+        checkr = true;
+    }
+    return result;
+}
+
 bool Board::checkerror()
 {
     bool result = false;
@@ -509,31 +541,7 @@ bool Board::checkerror()
         {
             for (long j = 0; j < h; j++)
             {
-                if (blck[i][j] && mine[i][j])
-                {
-                    dieb = true;
-                    diex = i;
-                    diey = j;
-                    blck[i][j] = false;
-                    flag[i][j] = true;
-                    qstn[i][j] = false;
-                    sit = 2;
-                    st.compscr(line - missline, mode, 6, ischeat());
-                    missline = line;
-                    missi++;
-                    st.compscr(missi, mode, 12, ischeat());
-                    addline(false);
-                    addline(true);
-                    if (sit == 2)
-                    {
-                        sit = 1;
-                    }
-                    st.addscr(st.scrdead, 1, mode);
-                    sd.playsound(sd.sError);
-                    sb = false;
-                    result = true;
-                    checkr = true;
-                }
+                result = checkerror(i, j);
             }
         }
     }
@@ -894,6 +902,7 @@ void Board::setblock(long x, long y)
                             qstn[tx][ty] = false;
                             sr = true;
                             solveb = true;
+                            checkerror(tx, ty);
                         }
                         else
                         {
@@ -908,7 +917,10 @@ void Board::setblock(long x, long y)
                 sb = false;
             }
         }
-        checkerror();
+        if (sb)
+        {
+            checkerror();
+        }
     }
 }
 
