@@ -12,8 +12,8 @@ public:
     const long faceh = 24;
     const long iconw = 16;
     const long iconh = 16;
-    const long digtw[2] = {13, 9};
-    const long digth[2] = {24, 17};
+    const long digtw[3] = {13, 9, 13};
+    const long digth[3] = {24, 17, 24};
     const long okw = 144;
     const long okh = 36;
     const long btnw = 36;
@@ -46,6 +46,7 @@ public:
     pbitmap pmenum[2];
     pbitmap pmenut[2];
     pbitmap pmenud[2];
+    pbitmap pmenun[2];
     pbitmap pmenug[6][2];
     pbitmap pface_;
     pbitmap pface[9];
@@ -61,10 +62,10 @@ public:
     pbitmap picona;
     pbitmap piconu;
     pbitmap picont;
-    pbitmap pdigt_[2];
-    pbitmap pdigt[10][2];
-    pbitmap pdigtmin[2];
-    pbitmap pdigtnul[2];
+    pbitmap pdigt_[3];
+    pbitmap pdigt[10][3];
+    pbitmap pdigtmin[3];
+    pbitmap pdigtnul[3];
     pbitmap pok_;
     pbitmap pok;
     pbitmap pbtn;
@@ -130,6 +131,7 @@ public:
     long my = -1;
     bool mi = false;
     long lead_5 = 0;
+    bool singleb = false;
 
     Window();
     ~Window();
@@ -144,8 +146,8 @@ public:
     void initbmp();
     void paintmenu();
     void paintface();
-    void paintnumber(long n, long l, long x, long y, long w, long h, bool b);
-    void paintnumber(long n, long l, long x, long y, bool b);
+    void paintnumber(long n, long l, long x, long y, long w, long h, long b);
+    void paintnumber(long n, long l, long x, long y, long b);
     void paintnumber(long n, long l, long x, long y);
     void paintlevel();
     void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
@@ -205,6 +207,7 @@ void Window::loadsetting()
     reg.getreg("mult", (long*)&mult_);
     reg.getreg("delayb", (long*)&bd.delayb);
     reg.getreg("barb", (long*)&barb);
+    reg.getreg("singleb", (long*)&singleb);
 }
 
 void Window::savesetting()
@@ -217,6 +220,7 @@ void Window::savesetting()
     reg.setreg("mult", mult_);
     reg.setreg("delayb", bd.delayb);
     reg.setreg("barb", barb);
+    reg.setreg("singleb", singleb);
 }
 
 void Window::loadall()
@@ -292,7 +296,7 @@ void Window::initwindow()
     pwin = createbmp(w_, h_);
     pwint = createbmp(w_ * mult, h_ * mult, transparent_);
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
-    if (hicon == 0) 
+    if (hicon == 0)
     {
         hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
     }
@@ -379,6 +383,7 @@ void Window::initbmp()
                 pmenum[i] = createbmp(menuw, menuh);
                 pmenut[i] = createbmp(menuw, menuh);
                 pmenud[i] = createbmp(menuw, menuh);
+                pmenun[i] = createbmp(menuw, menuh);
                 pmenug[0][i] = createbmp(menuw, menuh);
                 pmenug[1][i] = createbmp(menuw, menuh);
                 pmenug[2][i] = createbmp(menuw, menuh);
@@ -404,15 +409,15 @@ void Window::initbmp()
             picona = createbmp(iconw, iconh);
             piconu = createbmp(iconw, iconh);
             picont = createbmp(iconw, iconh);
-            for (long i = 0; i < 10; i++)
+            for (long k = 0; k < 3; k++)
             {
-                pdigt[i][0] = createbmp(digtw[0], digth[0]);
-                pdigt[i][1] = createbmp(digtw[1], digth[1]);
+                for (long i = 0; i < 10; i++)
+                {
+                    pdigt[i][k] = createbmp(digtw[k], digth[k]);
+                }
+                pdigtmin[k] = createbmp(digtw[k], digth[k]);
+                pdigtnul[k] = createbmp(digtw[k], digth[k]);
             }
-            pdigtmin[0] = createbmp(digtw[0], digth[0]);
-            pdigtmin[1] = createbmp(digtw[1], digth[1]);
-            pdigtnul[0] = createbmp(digtw[0], digth[0]);
-            pdigtnul[1] = createbmp(digtw[1], digth[1]);
             pok = createbmp(okw, okh);
             pbtn = createbmp(btnw, btnh);
             pcursor = createbmp(cursorw, cursorh);
@@ -434,8 +439,10 @@ void Window::initbmp()
             releasebmp(pmenu_);
             releasebmp(pface_);
             releasebmp(picon_);
-            releasebmp(pdigt_[0]);
-            releasebmp(pdigt_[1]);
+            for (long k = 0; k < 3; k++)
+            {
+                releasebmp(pdigt_[k]);
+            }
             releasebmp(pok_);
             releasebmp(pcursor_);
             releasebmp(pclick_);
@@ -447,6 +454,7 @@ void Window::initbmp()
         picon_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/icon.bmp");
         pdigt_[0] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt.bmp");
         pdigt_[1] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt2.bmp");
+        pdigt_[2] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt_.bmp");
         pok_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/ok.bmp");
         pcursor_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/cursor.bmp");
         pclick_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/click.bmp");
@@ -468,12 +476,13 @@ void Window::initbmp()
             drawbmp(pmenu_, pmenum[i], menuw * i, 6 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenut[i], menuw * i, 7 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenud[i], menuw * i, 8 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenug[0][i], menuw * i, 9 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenug[1][i], menuw * i, 10 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenug[2][i], menuw * i, 11 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenug[3][i], menuw * i, 12 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenug[4][i], menuw * i, 13 * menuh, menuw, menuh, 0, 0, menuw, menuh);
-            drawbmp(pmenu_, pmenug[5][i], menuw * i, 14 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenun[i], menuw * i, 9 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[0][i], menuw * i, 10 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[1][i], menuw * i, 11 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[2][i], menuw * i, 12 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[3][i], menuw * i, 13 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[4][i], menuw * i, 14 * menuh, menuw, menuh, 0, 0, menuw, menuh);
+            drawbmp(pmenu_, pmenug[5][i], menuw * i, 15 * menuh, menuw, menuh, 0, 0, menuw, menuh);
         }
         for (long i = 0; i < 9; i++)
         {
@@ -493,15 +502,15 @@ void Window::initbmp()
         drawbmp(picon_, picona, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
         drawbmp(picon_, piconu, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
         drawbmp(picon_, picont, 0, iconh * 19, iconw, iconh, 0, 0, iconw, iconh);
-        for (long i = 0; i < 10; i++)
+        for (long k = 0; k < 3; k++)
         {
-            drawbmp(pdigt_[0], pdigt[i][0], 0, (11 - i) * digth[0], digtw[0], digth[0], 0, 0, digtw[0], digth[0]);
-            drawbmp(pdigt_[1], pdigt[i][1], 0, (11 - i) * digth[1], digtw[1], digth[1], 0, 0, digtw[1], digth[1]);
+            for (long i = 0; i < 10; i++)
+            {
+                drawbmp(pdigt_[k], pdigt[i][k], 0, (11 - i) * digth[k], digtw[k], digth[k], 0, 0, digtw[k], digth[k]);
+            }
+            drawbmp(pdigt_[k], pdigtmin[k], 0, 0, digtw[k], digth[k], 0, 0, digtw[k], digth[k]);
+            drawbmp(pdigt_[k], pdigtnul[k], 0, digth[k], digtw[k], digth[k], 0, 0, digtw[k], digth[k]);
         }
-        drawbmp(pdigt_[0], pdigtmin[0], 0, 0, digtw[0], digth[0], 0, 0, digtw[0], digth[0]);
-        drawbmp(pdigt_[1], pdigtmin[1], 0, 0, digtw[1], digth[1], 0, 0, digtw[1], digth[1]);
-        drawbmp(pdigt_[0], pdigtnul[0], 0, digth[0], digtw[0], digth[0], 0, 0, digtw[0], digth[0]);
-        drawbmp(pdigt_[1], pdigtnul[1], 0, digth[1], digtw[1], digth[1], 0, 0, digtw[1], digth[1]);
         drawbmp(pok_, pok, okh * 0, 0, okw, okh, 0, 0, okw, okh);
         drawbmp(pok_, pbtn, okw, 0, btnw, btnh, 0, 0, btnw, btnh);
         drawbmp(pcursor_, pcursor, 0, cursorh * 0, cursorw, cursorh, 0, 0, cursorw, cursorh);
@@ -544,7 +553,7 @@ void Window::paintface()
     drawbmp(pface[face__[facei]], (w_ - facew) / 2, menuh, facew, faceh);
 }
 
-void Window::paintnumber(long n, long l, long x, long y, long w, long h, bool b)
+void Window::paintnumber(long n, long l, long x, long y, long w, long h, long b)
 {
     long digt[10];
     long dl = 0;
@@ -586,7 +595,7 @@ void Window::paintnumber(long n, long l, long x, long y, long w, long h, bool b)
     }
 }
 
-void Window::paintnumber(long n, long l, long x, long y, bool b)
+void Window::paintnumber(long n, long l, long x, long y, long b)
 {
     paintnumber(n, l, x, y, digtw[b], digth[b], b);
 }
@@ -598,17 +607,22 @@ void Window::paintnumber(long n, long l, long x, long y)
 
 void Window::paintlevel()
 {
-    if (bd.line < 10000)
+    long score = bd.line;
+    if (singleb && bd.mode > 0)
     {
-        paintnumber(bd.line, 4, 0, digth[0]);
+        score = bd.line - bd.missline;
     }
-    else if (bd.line < 100000)
+    if (score < 10000)
     {
-        paintnumber(bd.line, 5, 0, digth[0]);
+        paintnumber(score, 4, 0, digth[0], singleb * (bd.mode > 0) * 2);
+    }
+    else if (score < 100000)
+    {
+        paintnumber(score, 5, 0, digth[0], singleb * (bd.mode > 0) * 2);
     }
     else
     {
-        paintnumber(bd.line, 6, 0, digth[0]);
+        paintnumber(score, 6, 0, digth[0], singleb * (bd.mode > 0) * 2);
     }
     if (bd.level < 100)
     {
@@ -816,8 +830,20 @@ void Window::painthelp()
                     long n__[3] = {0, 0, 1};
                     for (long k = 0; k < 3; k++)
                     {
+                        long score = bd.st.scr[scr__[k]];
+                        if (singleb && bd.mode > 0)
+                        {
+                            if (k == 0)
+                            {
+                                score = bd.tetrisi;
+                            }
+                            if (k == 1)
+                            {
+                                score = bd.missi;
+                            }
+                        }
                         drawbmp(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw[0] - facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, facew, faceh, cfg);
-                        paintnumber(bd.st.scr[scr__[k]], 4 + n__[k] * 2 + (bd.st.scr[scr__[k]] >= 10000) * (k < 2), helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1);
+                        paintnumber(score, 4 + n__[k] * 2 + (bd.st.scr[scr__[k]] >= 10000) * (k < 2), helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, singleb * (bd.mode > 0) * (k < 2) * 2);
                     }
                     line(helpw / 3 * 1, menuh, 0, helph - okh_, cline);
                     line(helpw / 3 * 2, menuh, 0, helph - okh_, cline);
@@ -839,15 +865,15 @@ void Window::painthelp()
         case -3:
             {
                 setfontheight_(fonth);
-                pbitmap psetting__[8] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], NULL, picon[0], picon[0]};
-                long settinglan[8] = {9, 10, 11, 15, 12, 0, 16, 17};
-                long settingj[8] = {2, 2, 3, 3, 2, 3, 2, 2};
-                long settingb[8][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}, {colori == 2, colori == 3, colori == 4}, {bd.delayb, !bd.delayb, 0}, {barb, !barb, 0}};
+                pbitmap psetting__[9] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], NULL, picon[0], picon[0], pmenun[singleb]};
+                long settinglan[9] = {9, 10, 11, 16, 13, 0, 17, 18, 12};
+                long settingj[9] = {2, 2, 3, 3, 2, 3, 2, 2, 2};
+                long settingb[9][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}, {colori == 2, colori == 3, colori == 4}, {bd.delayb, !bd.delayb, 0}, {barb, !barb, 0}, {!singleb, singleb, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[8][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 12}, {7, 8, 0}, {9, 10, 11}, {0, 1, 0}, {0, 1, 0}};
+                long settinglanj[9][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 14}, {7, 8, 0}, {9, 10, 11}, {0, 1, 0}, {0, 1, 0}, {12, 13, 0}};
                 long helpw__ = iconw;
-                double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-                for (long k = 0; k < 8; k++)
+                double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(9 - 1);
+                for (long k = 0; k < 9; k++)
                 {
                     drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
                     if (k != 5)
@@ -882,21 +908,21 @@ void Window::painthelp()
         case 1:
             {
                 setfontheight_(fonth);
-                pbitmap pmenu__[15] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pface[7], pface[6], pface[5]};
-                const char* keys[15] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "E / F3", "T / F4", "S / F5", "M / F6", "D / F7", "K / F11", "P / F12", "Q / ESC"};
+                pbitmap pmenu__[16] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pmenun[singleb], pface[7], pface[6], pface[5]};
+                const char* keys[16] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "E / F3", "T / F4", "S / F5", "M / F6", "D / F7", "R / F8", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
                 const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[8] = {cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
                 long helpw__ = iconw;
-                double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)(15 - 1);
-                for (long k = 0; k < 15; k++)
+                double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)(16 - 1);
+                for (long k = 0; k < 16; k++)
                 {
                     drawbmp(pmenu__[k], helpw__, helph__ * k + menuh + iconh / 2, facew, faceh, cfg);
                     drawtextxy_(pwint, keys[k], helpw__ + facew + iconw, helph__ * k + menuh + iconh / 2, ctfg, cbg);
                 }
                 if (!cheatb)
                 {
-                    for (long k = 0; k < 15; k++)
+                    for (long k = 0; k < 16; k++)
                     {
                         drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + k), helpw / 4, helph__ * k + menuh + iconh / 2, helpw / 4, faceh, ctfg, cbg, DT_LEFT);
                     }
@@ -1653,10 +1679,10 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         if (helpi == -3)
         {
             long helpw__ = iconw;
-            double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(8 - 1);
-            for (long k = 0; k < 8; k++)
+            double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(9 - 1);
+            for (long k = 0; k < 9; k++)
             {
-                for (long j = 0; j < 8; j++)
+                for (long j = 0; j < 3; j++)
                 {
                     if (isin(ex, ey, helpw / 4 * (j + 1), helph__ * k + menuh + iconh, facew, faceh))
                     {
@@ -1709,14 +1735,21 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 if (j <= 1 && bd.delayb == j)
                                 {
                                     bd.delayb = !bd.delayb;
-                                    bd.sd.playsound(bd.sd.sSolve);
+                                    bd.sd.playsound(bd.sd.sLeft);
                                 }
                                 break;
                             case 7:
                                 if (j <= 1 && barb == j)
                                 {
                                     barb = !barb;
-                                    bd.sd.playsound(bd.sd.sSolve);
+                                    bd.sd.playsound(bd.sd.sLeft);
+                                }
+                                break;
+                            case 8:
+                                if (j <= 1 && singleb != j)
+                                {
+                                    singleb = j;
+                                    bd.sd.playsound(bd.sd.sLeft);
                                 }
                                 break;
                         }
@@ -1809,6 +1842,14 @@ void Window::keyevent(long key)
             {
                 bd.st.mdb = false;
             }
+            bd.sd.playsound(bd.sd.sLeft);
+            break;
+        case k_f8:
+            singleb = !singleb;
+            bd.sd.playsound(bd.sd.sLeft);
+            break;
+        case k_r:
+            singleb = !singleb;
             bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_n:
