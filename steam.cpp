@@ -285,9 +285,12 @@ void Steam::maxscr(long val, long scrline__)
     if (val > scr[scrline__])
     {
         scr[scrline__] = val;
-        scr[scrline] = max(scr[scrline], scr[scrline__]);
         setscr(scrline__);
-        setscr(scrline);
+        if (scrline__ < 7)
+        {
+            scr[scrline] = max(scr[scrline], scr[scrline__]);
+            setscr(scrline);
+        }
         newrecord = true;
     }
 }
