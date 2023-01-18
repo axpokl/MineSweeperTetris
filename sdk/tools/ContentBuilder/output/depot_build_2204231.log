@@ -1,12 +1,14 @@
-[2023-01-18 11:05:05]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2023-01-18 11:05:05]: Building file listing for depot 2204231 ...
-[2023-01-18 11:05:05]: Found 111 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2023-01-18 11:05:05]: Found 111 files (2 MB) for depot 2204231
-[2023-01-18 11:05:06]: Building depot 2204231, baseline manifest 5864122443720798300 (111 files)
-[2023-01-18 11:05:06]: Found 85 chunks ( 85 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2023-01-18 11:05:06]: Changes to baseline manifest 5864122443720798300 :
-[2023-01-18 11:05:06]: Changed: "MineSweeperTetris.exe" 608 kB size, 608 kB changed 
-[2023-01-18 11:05:06]: Summary: 0 files added, 1 files changed, 0 files removed
-[2023-01-18 11:05:06]: Uploading new manifest to 208.64.201.169:80 (handle 13967473188030283374, 11412 bytes).
-[2023-01-18 11:05:07]: Uploading 1 out of 1 missing chunks.
-[2023-01-18 11:05:09]: Success! New manifestID 3863889086461663653 created and 1 new chunks uploaded.
+[2023-01-18 11:15:46]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2023-01-18 11:15:47]: Building file listing for depot 2204231 ...
+[2023-01-18 11:15:47]: Found 111 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2023-01-18 11:15:47]: Found 111 files (2 MB) for depot 2204231
+[2023-01-18 11:15:48]: Building depot 2204231, baseline manifest 3863889086461663653 (111 files)
+[2023-01-18 11:15:48]: Found 85 chunks ( 85 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2023-01-18 11:15:48]: Changes to baseline manifest 3863889086461663653 :
+[2023-01-18 11:15:48]: Changed: "bmp\4\arrow.bmp" 11 kB size, 11 kB changed 
+[2023-01-18 11:15:48]: Changed: "bmp\4\click.bmp" 41 kB size, 41 kB changed 
+[2023-01-18 11:15:48]: Changed: "MineSweeperTetris.exe" 608 kB size, 608 kB changed 
+[2023-01-18 11:15:48]: Summary: 0 files added, 3 files changed, 0 files removed
+[2023-01-18 11:15:48]: Uploading new manifest to 208.64.201.169:80 (handle 5042670118878264498, 11434 bytes).
+[2023-01-18 11:15:49]: Uploading 3 out of 3 missing chunks.
+[2023-01-18 11:15:51]: Success! New manifestID 711619563597963707 created and 3 new chunks uploaded.
