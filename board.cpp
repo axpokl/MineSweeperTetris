@@ -1035,12 +1035,12 @@ void Board::pause()
 bool Board::ischeat()
 {
     /*
-        long mines[4] = {0, 12, 16, 32};
-        long score = line - tetrisi * 9 - missi * 2 - 8;
-        double gametime = time - time_;
-        double basetime = (double) mines[mode] / (1.0 + (double) level / 5.0);
-        double mintime = basetime * score;
+    long mines[4] = {0, 12, 16, 32};
+    long score = line - tetrisi * 9 - missi * 2 - 8;
+    double gametime = time - time_;
+    double basetime = (double) mines[mode] / (1.0 + (double) level / 5.0);
+    double mintime = basetime * score;
+    return (gametime < mintime);
     */
     return false;
-//    return (gametime < mintime);
 }
