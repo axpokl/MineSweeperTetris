@@ -856,14 +856,14 @@
 	}
 	"apptickets"
 	{
-		"7"		"32000000040000001e33c20c010010010700000072ffdca7f2680a0a000000006064c763e013e36301000000000000000000843c6228f97b63f369e09b6423eb60534d9211ced0b539adf5a4ecf1d889f070f54c01e236fd38e8b419897e2e6d348020b12e25a1a53ed95d90fbe22a35ea53bb0fbc4a10d9d0332fbb577a1ac1e187243fb7d4dbd878a84ca39f7f4b60861d8427c49ecbf90ff8331d8c9e3bf863e5b8544580ba4f24fcab4ebad1ecb2f459"
+		"7"		"32000000040000001e33c20c010010010700000032ffdca7f2680a0a00000000b7d7c8633787e46301000000000000000000d84e0d19b3a17b2ab9af011e83bea402f3563f0cbb4c51a96753f70e3cadc056013797342effbc404aa9ee989d5066c6ff5e47c7f2a5c81dfed7e8d9609104c06279022f38285e1c4bef45b5caff296f6afdeca6ab6829ecf9f6b5366d13740a59a3367d106e01f66a1d42fccc28055415f479c78f429070c3a09db82633b083"
 	}
 	"Offline"
 	{
-		"Ticket"		"089ee68866156064c763"
-		"Signature"		"7e1593ea090cf605df5c9293654bfd4bf4ba517a0643d31eab4cb464009d994ce46bfb2e11de604c0239434c567c0e188867750fa29b00a50ddf50500c1d9524d93e8062651f785da8212e9dfb451e52cda3fe766e909b3b36bd23b1674d947378a00ed0c57000b481902052c1fb1e186829c1ac63ce4b0e03acad02434130e9774cb30afb7876f7f2fbf18ca7b245a42ac433e23996d53bffeeca2904f499af2062ce147d5c35c8796415c6c14a39a5945668e2f1addf1040d00b238b0052140d37b722f725ae7584205af689aa5de9afa414e27d7bb44a29f045bd07279a427e452728d184fc3b908c518200bde714243ce92b47d61343a99e880d61e89d39"
+		"Ticket"		"089ee6886615b7d7c863"
+		"Signature"		"67c76431f86d4738121c2ab2fcf5769879ebed187c30ddcaec4809ab591c1210c0edc4caf5d1a64b704e899e72c509a0b5cd70a961a968007dd539a7161f262cb356ade8f9abfb029269cb773c366d557c577b06a917f203ef0c24cf507b713be16cf58a86eb0ffc8b1c902620d836cf8a2e503244603ebadf6c4b89ab9d40460ae406618673cc9e39f4bea8a81e5ff4d71a1fb2b4d26a5a7f9ab411bce042337fa6795c2475b28609dc07e5248f714e9a425e1bcd3d5293197a84903ba269fb7cd3d350db8503e489502f4e2abf76b2a99a7771538ffcd83d962a930ff592c0e5cb2125e4dbe7cb150699703329bd7f9dacdca6ef9ba65bf268cb4420b77977"
 	}
-	"AppInfoChangeNumber"		"17414750"
+	"AppInfoChangeNumber"		"17429551"
 	"CloudKey"		"01000000cb1a334634c7d57014fbc2344aeb177e047edc1751c9db90bc850cb1f003f018b5ce2256"
 	"CloudKeyCRC"		"-1073341850"
 	"Software"
@@ -1126,9 +1126,9 @@
 					}
 					"250820"
 					{
-						"LastPlayed"		"1673993319"
-						"Playtime"		"5073"
-						"Playtime2wks"		"704"
+						"LastPlayed"		"1674084854"
+						"Playtime"		"5655"
+						"Playtime2wks"		"1286"
 					}
 					"255710"
 					{
@@ -1498,9 +1498,9 @@
 					}
 					"446750"
 					{
-						"LastPlayed"		"1672929672"
-						"Playtime"		"18"
-						"Playtime2wks"		"15"
+						"LastPlayed"		"1674084829"
+						"Playtime"		"568"
+						"Playtime2wks"		"565"
 					}
 					"447240"
 					{
@@ -2036,9 +2036,9 @@
 					}
 					"2204230"
 					{
-						"LastPlayed"		"1674011739"
-						"Playtime2wks"		"1256"
-						"Playtime"		"6468"
+						"LastPlayed"		"1674106798"
+						"Playtime2wks"		"1333"
+						"Playtime"		"6577"
 					}
 					"2240140"
 					{
@@ -2102,9 +2102,9 @@
 					}
 					"469990"
 					{
-						"LastPlayed"		"1673963925"
-						"Playtime2wks"		"2"
-						"Playtime"		"2"
+						"LastPlayed"		"1674050937"
+						"Playtime2wks"		"4"
+						"Playtime"		"4"
 					}
 					"866540"
 					{
@@ -2114,18 +2114,18 @@
 					}
 					"908520"
 					{
-						"LastPlayed"		"1673993312"
-						"Playtime2wks"		"483"
-						"Playtime"		"483"
+						"LastPlayed"		"1674084843"
+						"Playtime2wks"		"1063"
+						"Playtime"		"1063"
 					}
 					"436820"
 					{
-						"LastPlayed"		"1673993311"
-						"Playtime2wks"		"478"
-						"Playtime"		"478"
+						"LastPlayed"		"1674051809"
+						"Playtime2wks"		"496"
+						"Playtime"		"496"
 					}
 				}
-				"LastPlayedTimesSyncTime"		"1674011739"
+				"LastPlayedTimesSyncTime"		"1674106798"
 			}
 		}
 	}

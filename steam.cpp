@@ -68,7 +68,6 @@ public:
     };
     int scr[19];
     bool newrecord = false;
-    bool mdb = false;
 
     const long leadn = 15;
     const char* leads[15] =

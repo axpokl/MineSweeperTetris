@@ -8,6 +8,7 @@ public:
     long n = 0;
 
     long sit = 0;
+    long pauseb = 0;
     long maskj = 0;
     long maski = 0;
 

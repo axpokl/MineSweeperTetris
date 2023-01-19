@@ -9,11 +9,10 @@ public:
     double time;
     double time_;
     double pausetime;
-    bool pauseb;
     long mode = 0;
     long mode_ = 0;
     bool sb;
-    bool rightb = false;
+    long rightb = 0;
     bool aliveb = false;
 
     long maskj0;
@@ -21,7 +20,7 @@ public:
     long level;
     bool solveb;
     bool checkb;
-    bool checkr;
+    long checkr;
     bool dieb;
     long diex;
     long diey;
@@ -40,12 +39,13 @@ public:
     long h_;
     long cred;
     double mult;
-    bool delayb = true;
+    long delayb = 1;
+    long mdb;
 
     long mx;
     long my;
 
-    bool tutb = true;
+    long tutb = 1;
     long tuti;
     long tutx[13] = {5, 5, 4, 9, 8, 8, 9, 10, 2, 2, 3, 3, 2};
     long tuty[13] = {16, 17, 17, 17, 17, 18, 18, 18, 17, 16, 17, 19, 19};
@@ -142,11 +142,11 @@ void Board::initbd()
     {
         st.addach(st.achgenmode);
     }
-    rightb = false;
+    rightb = 0;
     tuti = 0;
     tutb = 0;
-    checkr = false;
-    pauseb = false;
+    checkr = 0;
+    pauseb = 0;
     mx = -1;
     my = -1;
     bouns = 0;
@@ -177,7 +177,7 @@ void Board::initbd(long mode_, long md)
             initbd(32, 32, 8, 6);
             break;
     }
-    st.mdb = (md == 0);
+    mdb = (md == 0);
 }
 
 void Board::randmine(long x, long y)
@@ -270,7 +270,7 @@ void Board::tutmine()
 
 void Board::resetbd(long x, long y)
 {
-    if (tutb)
+    if (tutb == 1)
     {
         tutmine();
     }
@@ -288,7 +288,7 @@ void Board::resetbd(long x, long y)
 void Board::solveblank()
 {
     solveb = false;
-    if (sit > 0 && sit < 4)
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
         for (long i = 0; i < w; i++)
         {
@@ -316,7 +316,7 @@ void Board::solveblank()
 void Board::solve0()
 {
     solveb = false;
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
         for (long i = 0; i < w; i++)
         {
@@ -344,7 +344,7 @@ void Board::solve0()
 void Board::solve1()
 {
     solveb = false;
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
         for (long i = 0; i < w; i++)
         {
@@ -493,7 +493,7 @@ void Board::solve2()
 {
     solveb = false;
     rulemainc = 0;
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
         createrule();
         comparerule();
@@ -526,7 +526,7 @@ bool Board::checkerror(long i, long j)
         sd.playsound(sd.sError);
         sb = false;
         result = true;
-        checkr = true;
+        checkr = 1;
     }
     return result;
 }
@@ -550,7 +550,7 @@ bool Board::checkerror()
 
 void Board::checkline(bool checkb_)
 {
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
         long j;
         if (checkb)
@@ -657,9 +657,9 @@ void Board::addline(bool b)
 
 bool Board::addmask()
 {
-    if ((sit > 0) && (sit < 4))
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
-        if (!tutb)
+        if (tutb == 0)
         {
             if (gettimer() > time + 5.0 / (level + 5.0))
             {
@@ -691,7 +691,7 @@ bool Board::addmask()
 
 void Board::checkdie()
 {
-    if (((maskj == 0 && maski > 0) || maskj < 0) && sit != 4)
+    if (((maskj == 0 && maski > 0) || maskj < 0) && sit < 4)
     {
         st.compscr(line - missline, mode, 6, ischeat());
         missline = line;
@@ -702,13 +702,13 @@ void Board::checkdie()
             blck[diex][diey] = true;
         }
         sd.playsound(sd.sLose);
-        if (!rightb)
+        if (rightb == 0)
         {
             st.addach(st.achhidright);
         }
         st.setlead(mode);
     }
-    if (((maskj == 0 && maski == 0)) && sit != 4)
+    if (((maskj == 0 && maski == 0)) && sit < 4)
     {
         aliveb = true;
     }
@@ -723,9 +723,9 @@ void Board::checkdie()
 
 void Board::delline(long l)
 {
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
-        checkr = false;
+        checkr = 0;
         maskj++;
         for (long i = 0; i < w; i++)
         {
@@ -780,7 +780,7 @@ void Board::delline(long l)
         line++;
         line = min(line, 999999);
         st.compscr(line, mode, 0, ischeat());
-        if (st.mdb)
+        if (mdb == 1)
         {
             st.compscr(line, mode, 3, ischeat());
         }
@@ -798,7 +798,7 @@ void Board::delline(long l)
             line = line + 4 + max(0, bouns);
             line = min(line, 999999);
             st.compscr(line, mode, 0, ischeat());
-            if (st.mdb)
+            if (mdb == 1)
             {
                 st.compscr(line, mode, 3, ischeat());
             }
@@ -830,7 +830,7 @@ void Board::setqstn(long x, long y)
 
 void Board::setflag(long x, long y)
 {
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
         long qc = 0;
         bool sc = false;
@@ -869,7 +869,7 @@ void Board::setflag(long x, long y)
 
 void Board::setblock(long x, long y)
 {
-    if (sit < 4)
+    if (sit < 4 && pauseb == 0)
     {
         long qn = 0;
         long qq = 0;
@@ -929,7 +929,7 @@ void Board::clicknumb(long x, long y, bool sb_)
     sb = sb_;
     if (sb)
     {
-        rightb = true;
+        rightb = 1;
     }
     setflag(x, y);
     setblock(x, y);
@@ -1025,39 +1025,22 @@ void Board::clickright(long x, long y, bool sb_, long md_)
 
 void Board::pause()
 {
-    switch (sit)
-    {
-        case 0:
-            sit = 0;
-            break;
-        case 1:
-            sit = 5;
-            break;
-        case 2:
-            sit = 5;
-            break;
-        case 3:
-            sit = 5;
-            break;
-        case 4:
-            sit = 4;
-            break;
-        case 5:
-            sit = 1;
-            break;
-    }
-    if (sit == 5)
+    if (pauseb == 0)
     {
         pausetime = gettimer() - time;
     }
+    pauseb = (pauseb == 0);
 }
 
 bool Board::ischeat()
 {
-    long mines[4] = {0, 12, 16, 32};
-    long score = line - tetrisi * 9 - missi * 2 - 8;
-    double gametime = time - time_;
-    double basetime = (double) mines[mode] / (1.0 + (double) level / 5.0);
-    double mintime = basetime * score;
-    return (gametime < mintime);
+    /*
+        long mines[4] = {0, 12, 16, 32};
+        long score = line - tetrisi * 9 - missi * 2 - 8;
+        double gametime = time - time_;
+        double basetime = (double) mines[mode] / (1.0 + (double) level / 5.0);
+        double mintime = basetime * score;
+    */
+    return false;
+//    return (gametime < mintime);
 }
