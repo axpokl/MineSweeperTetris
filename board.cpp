@@ -850,7 +850,7 @@ void Board::setflag(long x, long y)
             {
                 if (isok(k, x, y, tx, ty))
                 {
-                    if (!blck[tx][ty] && !mask[tx][ty])
+                    if (!blck[tx][ty] && !flag[tx][ty] && !mask[tx][ty])
                     {
                         flag[tx][ty] = true;
                         qstn[tx][ty] = false;
@@ -931,7 +931,6 @@ void Board::clicknumb(long x, long y, bool sb_)
     {
         rightb = 1;
     }
-    setflag(x, y);
     setblock(x, y);
     setblock(x, y);
     setflag(x, y);
