@@ -856,14 +856,14 @@
 	}
 	"apptickets"
 	{
-		"7"		"32000000040000001e33c20c010010010700000032ffdca7f2680a0a00000000f7eecb63779ee763010000000000000000001d8784f1572a7c9a3ab1f700be973c8882f68b9e67bab48b941b8841901a1c91c1ba407b4d8c76d24b5a1e59873f8fd0a197e6292513c196194bc6205ef4004c40e3c504637d0c865794393cf293681fd0a9665eab2c4ea2b248474ec8e2b663682a01ae2ba5afe97ee62cf53fadaa8c59ba5152bccd64323edb59bc050d8314"
+		"7"		"32000000040000001e33c20c010010010700000032ffdca7f2680a0a000000005146ce63d1f5e9630100000000000000000042c4a62a51469d95e09a7ee092a884b03ad49688be55748b3ccf2f0415ffc87c9ef509f256b9c33f40108dfc4631d2512dc5636b321fe27afb0b5226a89d1581bd7dcdb8e054102bf681c7586ce9d2cd920f24fa9f3ee2ad47d81a97be6b279dc9f58efc9b0124a840f939a8675f862ee45f186d7639be31b35620f259382378"
 	}
 	"Offline"
 	{
-		"Ticket"		"089ee6886615f7eecb63"
-		"Signature"		"4d554fd2e93dc9902f7922471d4f49fc9e22bbce19c1ee3cb1d903d6bfa223c42be51bd0aa441c159f927ccc17ab8c47c0a2f64bd5d978ab3ff693832df905296916e91ecf2119117042efc04404a92550c0072a4408e76f421c387e53a3151a63a228b2c4ba229b6e59671151b3deb020d904e3be01ca9b2aa171f90ff1efba77a55e9eca2b2e1d8e0c8f89aa11417776b5543f433688eb76745afdf5dce1f44228bd139d3e1f9ebc00948be45fa5647cdb3ea55ac6070dcfafa269bfa1fc85c99091e35c1fe2a1468079610acc124a3064e0f8ed0cb31f3aa14d07047fb87fe61d32b2a39cefa336b1442deb34e48861a1bfc6d4c34a33256fc656b8e5c42e"
+		"Ticket"		"089ee68866155146ce63"
+		"Signature"		"564d42dee931527b265dc14460eb118def5757db21377b439e3aba9ce94512dda15ba559a239e0e178ae7ba5e0d7ab9b6094bd123b29a0ee4db1a634bd7e87a9dee9c8d72af53fd04a73db182bd6671f41988b45a0b21b9b84d9ba0fad8e7b1b6786ade158fed470b380dbf1292f519fbdaa8e851f5608d93290424baf898220087f9953117a3c553a30a21649997acb1eadaf828845ffe2d06bcf6de971e05afd529eb5358570de71995c4716a71a55bc5f34527cae5099a28fa3d31f46b3e90eb1e0b909d802a99d5fba2ea9d3ea35263b9a6d9274ac7032b555269f2c50d246632c07862d853bba5383662363bdef68bdbbff6739e2529e62ddd0bd180a50"
 	}
-	"AppInfoChangeNumber"		"17459203"
+	"AppInfoChangeNumber"		"17471886"
 	"CloudKey"		"01000000cb1a334634c7d57014fbc2344aeb177e047edc1751c9db90bc850cb1f003f018b5ce2256"
 	"CloudKeyCRC"		"-1073341850"
 	"Software"
@@ -878,7 +878,7 @@
 					{
 						"cloud"
 						{
-							"last_sync_state"		"conflictingchanges"
+							"last_sync_state"		"synchronized"
 						}
 					}
 					"10"
@@ -1555,8 +1555,9 @@
 					}
 					"477160"
 					{
-						"LastPlayed"		"1588983295"
-						"Playtime"		"24"
+						"LastPlayed"		"1674397278"
+						"Playtime"		"96"
+						"Playtime2wks"		"72"
 					}
 					"483980"
 					{
@@ -2012,9 +2013,9 @@
 					}
 					"1426210"
 					{
-						"LastPlayed"		"1673144884"
-						"Playtime2wks"		"751"
-						"Playtime"		"2982"
+						"LastPlayed"		"1674389185"
+						"Playtime2wks"		"203"
+						"Playtime"		"3186"
 					}
 					"428660"
 					{
@@ -2036,9 +2037,9 @@
 					}
 					"2204230"
 					{
-						"LastPlayed"		"1674309322"
-						"Playtime2wks"		"1332"
-						"Playtime"		"6656"
+						"LastPlayed"		"1674462794"
+						"Playtime2wks"		"1240"
+						"Playtime"		"6664"
 					}
 					"2240140"
 					{
@@ -2130,8 +2131,14 @@
 						"Playtime2wks"		"1"
 						"Playtime"		"1"
 					}
+					"1568590"
+					{
+						"LastPlayed"		"1674313294"
+						"Playtime2wks"		"17"
+						"Playtime"		"17"
+					}
 				}
-				"LastPlayedTimesSyncTime"		"1674309322"
+				"LastPlayedTimesSyncTime"		"1674462794"
 			}
 		}
 	}

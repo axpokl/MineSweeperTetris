@@ -3703,3 +3703,73 @@
 [2023-01-21 21:56:09] [AppID 7] Download failed due to conflicts in build list
 [2023-01-21 21:56:09] [Roaming Config] OnRemoteStorageSyncedClient() - result Remote File Conflict
 [2023-01-21 21:56:09] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2023-01-23 16:31:25] [AppID 7] Starting sync (init,)
+[2023-01-23 16:31:26] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-01-23 16:31:26] [U:1:214053662] [AppID 7] Init cache request complete
+[2023-01-23 16:31:26] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-23 16:31:30] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2023-01-23 16:31:30] [AppID 7] Starting sync (eval,)
+[2023-01-23 16:31:30] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-01-23 16:31:31] [AppID 7] Need to sync from local change number '0' to global change number '11183033448868796251', but not attempting now
+[2023-01-23 16:31:31] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: ca0b689834313be039ea49867c8fe39d580fe8dd / 218a33cdea3956d775836795496277a41bda956a, Local/Remote persist state: 0 / 0
+[2023-01-23 16:31:31] [AppID 7] sharedconfig.vdf already marked as conflicting. Local/Remote SHA: f85d0549f0441eae7ce55fc3ba924f862e17b5d3 / f5e8b1b7bd2870fd2cd0e28d96d172c227bf3dd4, Local/Remote persist state: 0 / 0
+[2023-01-23 16:31:31] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2023-01-23 16:31:31] [AppID 7] Sync conflict for file sharedconfig.vdf
+[2023-01-23 16:31:31] [AppID 7] Eval complete
+[2023-01-23 16:31:31] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2023-01-23 16:31:31] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-23 16:31:31] [Roaming Config] PerformSyncCloud - conflict detected, accepting remote files
+[2023-01-23 16:31:31] [AppID 7] Starting sync (down,resolve,)
+[2023-01-23 16:31:31] [AppID 7] Attempting to sync from local change number '0' to global change number '11183033448868796251'
+[2023-01-23 16:31:31] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: ca0b689834313be039ea49867c8fe39d580fe8dd / 218a33cdea3956d775836795496277a41bda956a, Local/Remote persist state: 0 / 0
+[2023-01-23 16:31:31] [AppID 7] sharedconfig.vdf already marked as conflicting. Local/Remote SHA: f85d0549f0441eae7ce55fc3ba924f862e17b5d3 / f5e8b1b7bd2870fd2cd0e28d96d172c227bf3dd4, Local/Remote persist state: 0 / 0
+[2023-01-23 16:31:31] [AppID 7] Resolving file serverbrowser_hist.vdf from state 4, bUseLocal = false
+[2023-01-23 16:31:31] [AppID 7] Resolving file sharedconfig.vdf from state 4, bUseLocal = false
+[2023-01-23 16:31:31] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2023-01-23 16:31:31] [AppID 7] Need to download file sharedconfig.vdf
+[2023-01-23 16:31:32] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-sg.s3.dualstack.ap-southeast-1.amazonaws.com', path /1E/33/C2/0C/7/033_0_18684C10_A4AED_968.dat?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJEYAFUFLL3GRVB5Q%2F20230123%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20230123T083131Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=232ee29c8e28e76ab20590724966b465758854f944783520ffb0e3ffef77f7bb, beginning. . .
+[2023-01-23 16:31:32] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-hkg.oss-accelerate.aliyuncs.com', path /1E/33/C2/0C/7/01D_6_1358EF96_CDCE8_204.dat?OSSAccessKeyId=LTAI4GGKSrY9rm6UigoBmqjd&Expires=1674466291&Signature=R0F%2FZLg99zPHit6tWmuMewBReRQ%3D, beginning. . .
+
+
+[2023-01-23 16:33:17] [AppID 7] Starting sync (init,)
+[2023-01-23 16:33:18] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-01-23 16:33:18] [U:1:214053662] [AppID 7] Init cache request complete
+[2023-01-23 16:33:18] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-23 16:33:22] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2023-01-23 16:33:22] [AppID 7] Starting sync (eval,)
+[2023-01-23 16:33:22] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-01-23 16:33:22] [AppID 7] Need to sync from local change number '0' to global change number '11183033448868796251', but not attempting now
+[2023-01-23 16:33:22] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: ca0b689834313be039ea49867c8fe39d580fe8dd / 218a33cdea3956d775836795496277a41bda956a, Local/Remote persist state: 0 / 0
+[2023-01-23 16:33:22] [AppID 7] sharedconfig.vdf already marked as conflicting. Local/Remote SHA: f85d0549f0441eae7ce55fc3ba924f862e17b5d3 / f5e8b1b7bd2870fd2cd0e28d96d172c227bf3dd4, Local/Remote persist state: 0 / 0
+[2023-01-23 16:33:22] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2023-01-23 16:33:22] [AppID 7] Sync conflict for file sharedconfig.vdf
+[2023-01-23 16:33:22] [AppID 7] Eval complete
+[2023-01-23 16:33:22] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2023-01-23 16:33:22] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-23 16:33:22] [Roaming Config] PerformSyncCloud - conflict detected, accepting remote files
+[2023-01-23 16:33:22] [AppID 7] Starting sync (down,resolve,)
+[2023-01-23 16:33:22] [AppID 7] Attempting to sync from local change number '0' to global change number '11183033448868796251'
+[2023-01-23 16:33:22] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: ca0b689834313be039ea49867c8fe39d580fe8dd / 218a33cdea3956d775836795496277a41bda956a, Local/Remote persist state: 0 / 0
+[2023-01-23 16:33:22] [AppID 7] sharedconfig.vdf already marked as conflicting. Local/Remote SHA: f85d0549f0441eae7ce55fc3ba924f862e17b5d3 / f5e8b1b7bd2870fd2cd0e28d96d172c227bf3dd4, Local/Remote persist state: 0 / 0
+[2023-01-23 16:33:22] [AppID 7] Resolving file serverbrowser_hist.vdf from state 4, bUseLocal = false
+[2023-01-23 16:33:22] [AppID 7] Resolving file sharedconfig.vdf from state 4, bUseLocal = false
+[2023-01-23 16:33:22] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2023-01-23 16:33:22] [AppID 7] Need to download file sharedconfig.vdf
+[2023-01-23 16:33:23] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-sg.s3.dualstack.ap-southeast-1.amazonaws.com', path /1E/33/C2/0C/7/033_0_18684C10_A4AED_968.dat?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJEYAFUFLL3GRVB5Q%2F20230123%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Date=20230123T083322Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=fa7f8a1498c6bfaac76e2d7606983367ac3ea03cf92122ebeab6339f2c89fb12, beginning. . .
+[2023-01-23 16:33:23] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-hkg.oss-accelerate.aliyuncs.com', path /1E/33/C2/0C/7/01D_6_1358EF96_CDCE8_204.dat?OSSAccessKeyId=LTAI4GGKSrY9rm6UigoBmqjd&Expires=1674466402&Signature=RuRccZu1J99o6qVdSpNqy2oDZPw%3D, beginning. . .
+[2023-01-23 16:33:25] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-sg.s3.dualstack.ap-southeast-1.amazonaws.com' - Success.
+[2023-01-23 16:33:25] [AppID 7] Download OK for file serverbrowser_hist.vdf
+[2023-01-23 16:33:25] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-hkg.oss-accelerate.aliyuncs.com' - Success.
+[2023-01-23 16:33:25] [AppID 7] Download OK for file sharedconfig.vdf
+[2023-01-23 16:33:25] [AppID 7] Download complete, result OK
+[2023-01-23 16:33:25] [Roaming Config] OnRemoteStorageConflictResolution - result OK
+[2023-01-23 16:33:25] [AppID 7] Successfully synced to ChangeNumber 11183033448868796251
+[2023-01-23 16:33:25] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-01-23 16:33:27] [AppID 7] Starting sync (down,)
+[2023-01-23 16:33:27] [AppID 7] Currently already synced to global change number '11183033448868796251', should be nothing to download
+[2023-01-23 16:33:27] [AppID 7] Download complete in build list
+[2023-01-23 16:33:27] [AppID 7] Successfully synced to ChangeNumber 0
+[2023-01-23 16:33:27] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2023-01-23 16:33:27] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'

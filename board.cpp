@@ -651,7 +651,7 @@ void Board::addline(bool b)
         }
     }
     checkb = b;
-    checkline(false);
+    checkline(true);
     checkdie();
 }
 

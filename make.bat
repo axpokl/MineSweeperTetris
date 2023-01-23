@@ -1,4 +1,5 @@
 del *.exe
+del .\sdk\tools\ContentBuilder\builder\dumps\*.dmp
 rmdir release /s /q
 windres -i icon.rc -O coff -o icon.res
 ::g++ -static -Os main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe 
