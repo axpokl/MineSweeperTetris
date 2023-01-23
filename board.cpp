@@ -16,6 +16,7 @@ public:
     bool aliveb = false;
 
     long maskj0;
+    bool maskjb;
     long line;
     long level;
     bool solveb;
@@ -119,6 +120,7 @@ void Board::initbd()
     n = max(1, min(n, w - 1));
     maskj = min(h - 4, maskj0);
     maski = 0;
+    maskjb = false;
     for (long i = 0; i < w; i++)
     {
         for (long j = 0; j < h; j++)
@@ -628,6 +630,10 @@ void Board::addline(bool b)
 {
     bouns--;
     maskj--;
+    if (maskj < 0)
+    {
+        maskjb = true;
+    }
     long j = maskj;
     for (long i = 0; i < w; i++)
     {
@@ -734,7 +740,7 @@ void Board::delline(long l)
                 if (j == 0)
                 {
                     mine[i][j] = (i < n);
-                    mask[i][j] = true;
+                    mask[i][j] = !maskjb;
                     flag[i][j] = false;
                     qstn[i][j] = false;
                     blck[i][j] = false;
@@ -751,6 +757,7 @@ void Board::delline(long l)
                 }
             }
         }
+        maskjb = false;
         for (long i = 0; i < w; i++)
         {
             rx = rand() % w;
