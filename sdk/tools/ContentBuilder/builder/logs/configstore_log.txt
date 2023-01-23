@@ -257,3 +257,17 @@
 [2023-01-24 05:58:15] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
 [2023-01-24 05:58:18] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
 [2023-01-24 05:58:19] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+
+
+[2023-01-24 06:06:54] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2023-01-24 06:06:54] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2023-01-24 06:06:54] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2023-01-24 06:06:54] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2023-01-24 06:06:54] Loaded store 'userlocal' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf' successfully
+[2023-01-24 06:06:54] Loaded store 'install' from 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2023-01-24 06:06:55] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2023-01-24 06:06:58] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2023-01-24 06:06:59] Flushed store 'install' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\config\config.vdf'
+[2023-01-24 06:06:59] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2023-01-24 06:07:00] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'
+[2023-01-24 06:07:01] Flushed store 'userlocal' to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\config\localconfig.vdf'

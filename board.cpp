@@ -630,14 +630,17 @@ void Board::addline(bool b)
 {
     bouns--;
     maskj--;
+    long j = maskj;
     if (maskj < 0)
     {
         maskjb = true;
     }
-    long j = maskj;
-    for (long i = 0; i < w; i++)
+    else
     {
-        mask[i][j] = false;
+        for (long i = 0; i < w; i++)
+        {
+            mask[i][j] = false;
+        }
     }
     for (long i = 0; i < w; i++)
     {
