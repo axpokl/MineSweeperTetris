@@ -60,27 +60,11 @@ public:
     void tutmine();
     void resetbd(long x, long y);
     void solveblank();
+    void solveblank_();
     void solve0();
+    void solve0_();
     void solve1();
-    bool checkerror(long i, long j);
-    bool checkerror();
-    void checkline(bool checkb_);
-    void checkline();
-    void setqstn(long x, long y);
-    void setflag(long x, long y);
-    void setblock(long x, long y);
-    void clicknumb(long x, long y, bool sb_);
-    void clickleft(long x, long y, bool sb_);
-    void clickright(long x, long y, bool sb_);
-    void clickleft(long x, long y, bool sb_, long md_);
-    void clickright(long x, long y, bool sb_, long md_);
-    void addline(bool b);
-    void delline(long l);
-    bool addmask();
-    void checkdie();
-    void pause();
-    bool ischeat();
-
+    void solve1_();
     struct rule
     {
         long x;
@@ -101,6 +85,25 @@ public:
     void comparerule();
     void applyrule();
     void solve2();
+    void solve2_();
+    bool checkerror(long i, long j);
+    bool checkerror();
+    void checkline(bool checkb_);
+    void checkline();
+    void setqstn(long x, long y);
+    void setflag(long x, long y);
+    void setblock(long x, long y);
+    void clicknumb(long x, long y, bool sb_);
+    void clickleft(long x, long y, bool sb_);
+    void clickright(long x, long y, bool sb_);
+    void clickleft(long x, long y, bool sb_, long md_);
+    void clickright(long x, long y, bool sb_, long md_);
+    void addline(bool b);
+    void delline(long l);
+    bool addmask();
+    void checkdie();
+    void pause();
+    bool ischeat();
 
 };
 
@@ -318,6 +321,16 @@ void Board::solveblank()
     }
 }
 
+void Board::solveblank_()
+{
+    solveb = true;
+    while (solveb)
+    {
+        solveblank();
+    }
+    solve0_();
+}
+
 void Board::solve0()
 {
     solveb = false;
@@ -343,6 +356,15 @@ void Board::solve0()
                 }
             }
         }
+    }
+}
+
+void Board::solve0_()
+{
+    solveb = true;
+    while (solveb)
+    {
+        solve0();
     }
 }
 
@@ -375,6 +397,15 @@ void Board::solve1()
     }
 }
 
+void Board::solve1_()
+{
+    solveb = true;
+    while (solveb)
+    {
+        solve1();
+    }
+    solve0_();
+}
 void Board::createrule()
 {
     for (long i = 0; i < w; i++)
@@ -502,12 +533,14 @@ void Board::applyrule()
     {
         for (long j = 0; j < h; j++)
         {
-            if (leftrule[i][j] && !blck[i][j])
+            if (leftrule[i][j] && !blck[i][j] && !mask[i][j])
             {
+                solveb = true;
                 clickleft(i, j, false);
             }
             if (rightrule[i][j] && !blck[i][j] && !qstn[i][j] && !flag[i][j] && !mask[i][j])
             {
+                solveb = true;
                 clickright(i, j, false);
             }
         }
@@ -524,6 +557,16 @@ void Board::solve2()
         comparerule();
         applyrule();
     }
+}
+
+void Board::solve2_()
+{
+    solveb = true;
+    while (solveb)
+    {
+        solve2();
+    }
+    solve0_();
 }
 
 bool Board::checkerror(long i, long j)
@@ -581,11 +624,7 @@ void Board::checkline(bool checkb_)
         long j;
         if (checkb)
         {
-            solveb = true;
-            while (solveb)
-            {
-                solve0();
-            }
+            solve0_();
             bool result = false;
             long blckc;
             long flagc;
@@ -636,11 +675,7 @@ void Board::checkline(bool checkb_)
                 }
             }
             checkb = false;
-            solveb = true;
-            while (solveb)
-            {
-                solve0();
-            }
+            solve0_();
         }
     }
 }

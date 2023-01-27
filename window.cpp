@@ -992,9 +992,9 @@ void Window::painthelp()
                 setfontheight_(fonth);
                 pbitmap pmenu__[16] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pmenun[singleb], pface[7], pface[6], pface[5]};
                 const char* keys[16] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "E / F3", "T / F4", "S / F5", "M / F6", "D / F7", "R / F8", "K / F11", "P / F12", "Q / ESC"};
-                const char* cheatn[8] = {"4", "5", "6", "7", "8", "9", "0", "C"};
-                const char* cheats[8] = {"Smart Solve", "Board Right ", "Auto Right", "Open Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
-                long cheatc[8] = {cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
+                const char* cheatn[9] = {"4", "5", "6", "7", "8", "9", "0", "U", "C"};
+                const char* cheats[9] = {"Smart Solve", "Number Board ", "Auto Smart", "Auto Number", "Auto Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
+                long cheatc[9] = {cblue, cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)(16 - 1);
                 for (long k = 0; k < 16; k++)
@@ -1011,7 +1011,7 @@ void Window::painthelp()
                 }
                 else
                 {
-                    for (long k = 0; k < 8; k++)
+                    for (long k = 0; k < 9; k++)
                     {
                         drawtextxy_(pwint, cheatn[k], helpw / 4, helph__ * k + menuh + iconh / 2, cheatc[k], cbg);
                         drawtextxy_(pwint, cheats[k], helpw / 4 + facew, helph__ * k + menuh + iconh / 2, cheatc[k], cbg);
@@ -2044,26 +2044,21 @@ void Window::keyevent(long key)
                     bd.solve1();
                     break;
                 case k_6:
-                    bd.solveb = true;
-                    while (bd.solveb)
-                    {
-                        bd.solve1();
-                    }
+                    bd.solve2_();
                     break;
                 case k_7:
-                    bd.solveb = true;
-                    while (bd.solveb)
-                    {
-                        bd.solveblank();
-                    }
+                    bd.solve1_();
                     break;
                 case k_8:
-                    bd.addline(true);
+                    bd.solveblank_();
                     break;
                 case k_9:
-                    bd.delline(bd.h - 1);
+                    bd.addline(true);
                     break;
                 case k_0:
+                    bd.delline(bd.h - 1);
+                    break;
+                case k_u:
                     bd.level++ ;
                     break;
                 case k_c:
