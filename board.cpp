@@ -94,9 +94,12 @@ public:
     rule rulemain[16384];
     int rulemainc;
     long blckrule[128][128];
+    bool leftrule[128][128];
+    bool rightrule[128][128];
     void createrule();
     void comparerule2(long rule1, long rule2);
     void comparerule();
+    void applyrule();
     void solve2();
 
 };
@@ -379,6 +382,8 @@ void Board::createrule()
         for (long j = 0; j < h; j++)
         {
             blckrule[i][j] = -1;
+            leftrule[i][j] = false;
+            rightrule[i][j] = false;
             if (blck[i][j])
             {
                 ruletemp.x = i;
@@ -401,7 +406,7 @@ void Board::createrule()
                         }
                     }
                 }
-                if (ruletemp.blckc > 0)
+                if (ruletemp.blckc >= 0)
                 {
                     blckrule[i][j] = rulemainc;
                     rulemain[rulemainc] = ruletemp;
@@ -440,14 +445,14 @@ void Board::comparerule2(long rule1c, long rule2c)
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
             {
-                clickright(rule1.blckx[rule1k], rule1.blcky[rule1k], false);
+                rightrule[rule1.blckx[rule1k]][rule1.blcky[rule1k]] = true;
             }
         }
         for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
         {
             if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
             {
-                clickleft(rule2.blckx[rule2k], rule2.blcky[rule2k], false);
+                leftrule[rule2.blckx[rule2k]][rule2.blcky[rule2k]] = true;
             }
         }
     }
@@ -457,14 +462,14 @@ void Board::comparerule2(long rule1c, long rule2c)
         {
             if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
             {
-                clickright(rule2.blckx[rule2k], rule2.blcky[rule2k], false);
+                rightrule[rule2.blckx[rule2k]][rule2.blcky[rule2k]] = true;
             }
         }
         for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
             {
-                clickleft(rule1.blckx[rule1k], rule1.blcky[rule1k], false);
+                leftrule[rule1.blckx[rule1k]][rule1.blcky[rule1k]] = true;
             }
         }
     }
@@ -491,6 +496,24 @@ void Board::comparerule()
     }
 }
 
+void Board::applyrule()
+{
+    for (long i = 0; i < w; i++)
+    {
+        for (long j = 0; j < h; j++)
+        {
+            if (leftrule[i][j] && !blck[i][j])
+            {
+                clickleft(i, j, false);
+            }
+            if (rightrule[i][j] && !blck[i][j] && !qstn[i][j] && !flag[i][j] && !mask[i][j])
+            {
+                clickright(i, j, false);
+            }
+        }
+    }
+}
+
 void Board::solve2()
 {
     solveb = false;
@@ -499,6 +522,7 @@ void Board::solve2()
     {
         createrule();
         comparerule();
+        applyrule();
     }
 }
 
