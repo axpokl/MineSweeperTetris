@@ -499,3 +499,6 @@
 
 
 [2023-01-27 19:26:36] Shader manager disabled due to running as steamcmd
+
+
+[2023-01-28 08:02:04] Shader manager disabled due to running as steamcmd

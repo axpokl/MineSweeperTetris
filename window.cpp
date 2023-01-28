@@ -152,9 +152,9 @@ public:
     void paintnumber(long n, long l, long x, long y, long b);
     void paintnumber(long n, long l, long x, long y);
     void paintlevel();
-    void paintblock(Block &bd0, long i, long j, long x, long y, long w, long h);
-    void paintboard(Block b, long x, long y);
-    void paintboard(Block b, long x, long y, long cx, long cy);
+    void paintblock(Block &b, long i, long j, long x, long y, long w, long h);
+    void paintboard(Block &b, long x, long y);
+    void paintboard(Block &b, long x, long y, long cx, long cy);
     void paintboard();
     void paintline(pbitmap p, long n, long x, long y);
     void paintline(pbitmap pa, pbitmap pb, long a, long b, long x, long y);
@@ -716,40 +716,40 @@ void Window::paintlevel()
     }
 }
 
-void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long h)
+void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h)
 {
-    if (bl.pauseb >= 1)
+    if (b.pauseb >= 1)
     {
         drawbmp(piconp, x, y, w, h);
         bar(x, y, w - 1, h - 1, cbg);
     }
-    else if (bl.mask[i][j])
+    else if (b.mask[i][j])
     {
-        if (!(i >= bl.maski || j < bl.maskj - 1))
+        if (!(i >= b.maski || j < b.maskj - 1))
         {
             drawbmp(picone, x, y, w, h);
         }
     }
-    else if (bl.blck[i][j])
+    else if (b.blck[i][j])
     {
-        if (bl.mine[i][j])
+        if (b.mine[i][j])
         {
             drawbmp(piconm, x, y, w, h);
         }
         else
         {
-            drawbmp(picon[bl.numb[i][j]], x, y, w, h);
+            drawbmp(picon[b.numb[i][j]], x, y, w, h);
         }
     }
-    else if (bl.flag[i][j])
+    else if (b.flag[i][j])
     {
         drawbmp(piconf, x, y, w, h);
     }
-    else if (bl.qstn[i][j])
+    else if (b.qstn[i][j])
     {
         drawbmp(piconq, x, y, w, h);
     }
-    else if ((bl.sit == 4) && bl.mine[i][j])
+    else if ((b.sit == 4) && b.mine[i][j])
     {
         drawbmp(piconn, x, y, w, h);
     }
@@ -757,10 +757,9 @@ void Window::paintblock(Block &bl, long i, long j, long x, long y, long w, long 
     {
         drawbmp(piconc, x, y, w, h);
     }
-
 }
 
-void Window::paintboard(Block b, long x, long y)
+void Window::paintboard(Block &b, long x, long y)
 {
     for (long i = 0; i < b.w; i++)
     {
@@ -771,7 +770,7 @@ void Window::paintboard(Block b, long x, long y)
     }
 }
 
-void Window::paintboard(Block b, long x, long y, long cx, long cy)
+void Window::paintboard(Block &b, long x, long y, long cx, long cy)
 {
     paintboard(b, x, y);
     drawbmp(pcursor, cx * iconw + x + iconw / 2, cy * iconh + menuh + y + iconh / 2, cursorw, cursorh, silver);
