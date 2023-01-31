@@ -948,10 +948,10 @@ void Window::painthelp()
                 setfontheight_(fonth);
                 pbitmap psetting__[9] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], pface[8], pface[7], NULL, picon[0], picon[0], pmenun[singleb]};
                 long settinglan[9] = {9, 10, 11, 16, 13, 0, 17, 18, 12};
-                long settingj[9] = {2, 2, 3, 3, 2, 3, 2, 2, 2};
-                long settingb[9][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, 0}, {colori == 2, colori == 3, colori == 4}, {bd.delayb == 1, bd.delayb == 0, 0}, {barb, !barb, 0}, {!singleb, singleb, 0}};
+                long settingj[9] = {2, 2, 3, 3, 3, 3, 2, 2, 2};
+                long settingb[9][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, md == 2}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}, {colori == 3, colori == 4, colori == 5}, {bd.delayb == 1, bd.delayb == 0, 0}, {barb, !barb, 0}, {!singleb, singleb, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};
-                long settinglanj[9][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 14}, {7, 8, 0}, {9, 10, 11}, {0, 1, 0}, {0, 1, 0}, {12, 13, 0}};
+                long settinglanj[9][3] = {{0, 1, 0}, {0, 1, 0}, {2, 3, 4}, {5, 6, 15}, {7, 8, 9}, {10, 11, 12}, {0, 1, 0}, {0, 1, 0}, {13, 14, 0}};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(9 - 1);
                 for (long k = 0; k < 9; k++)
@@ -1574,7 +1574,7 @@ void Window::savescr()
 
 void Window::switchskin()
 {
-    switchskin((colori + 1) % 5);
+    switchskin((colori + 1) % 6);
 }
 
 void Window::switchskin(long colori_)
@@ -1807,15 +1807,15 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                                 }
                                 break;
                             case 4:
-                                if (j <= 1 && colori != j)
+                                if (j <= 2 && colori != j)
                                 {
                                     switchskin(j);
                                 }
                                 break;
                             case 5:
-                                if (j <= 2 && colori != (j + 2))
+                                if (j <= 2 && colori != (j + 3))
                                 {
-                                    switchskin(j + 2);
+                                    switchskin(j + 3);
                                 }
                                 break;
                             case 6:

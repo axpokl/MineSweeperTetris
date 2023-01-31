@@ -1903,3 +1903,54 @@
 [2023-01-28 08:02:17] [Logged On, 4, 3] [U:1:214053662] LogOff()
 [2023-01-28 08:02:17] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2023-01-28 08:02:17] [Logging Off, 0, 3] [U:1:214053662] Log session ended
+
+
+[2023-01-31 17:05:56] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2023-01-31 17:05:56] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2023-01-31 17:05:57] Clearing in-memory token - 1 (OK): set to null
+[2023-01-31 17:05:57] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2023-01-31 17:05:57] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-01-31 17:05:57] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-01-31 17:05:57] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2023-01-31 17:05:57] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2023-01-31 17:05:57] Connectivity test: OK!
+[2023-01-31 17:05:57] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2023-01-31 17:05:58] GetCMListForConnect -- got 9 Netfilter CMs and 71 WebSocket CMs
+[2023-01-31 17:05:58] GetCMListForConnect -- DC 'sgp1' count: 24
+[2023-01-31 17:05:58] GetCMListForConnect -- DC 'hkg1' count: 24
+[2023-01-31 17:05:58] GetCMListForConnect -- DC 'tyo1' count: 11
+[2023-01-31 17:05:58] GetCMListForConnect -- DC 'tyo2' count: 21
+[2023-01-31 17:05:58] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 88% of connections should be websockets, we rolled 28 - using WebSockets as default.
+[2023-01-31 17:05:58] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-sgp1.steamserver.net:27019) starting...
+[2023-01-31 17:05:58] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:27037) starting...
+[2023-01-31 17:05:58] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:443) starting...
+[2023-01-31 17:05:58] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-hkg1.steamserver.net:27030) starting...
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-sgp1.steamserver.net:27019) results: 228.3959ms + load 53.0000
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-hkg1.steamserver.net:27036) starting...
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:27037) results: 164.7057ms + load 53.0000
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) starting...
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:443) results: 175.2825ms + load 68.0000
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27019) starting...
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-hkg1.steamserver.net:27030) results: 154.4690ms + load 77.0000
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27026) starting...
+[2023-01-31 17:05:59] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:100::671c:3684]:80 ([2404:3fc0:2:100::671c:3684]:80)) - TIMEOUT
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-hkg1.steamserver.net:27036) results: 301.2118ms + load 76.0000
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27035) starting...
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27019) results: 239.2135ms + load 44.0000
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo2.steamserver.net:27036) starting...
+[2023-01-31 17:05:59] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27026) results: 275.1260ms + load 42.0000
+[2023-01-31 17:05:59] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / [2404:3fc0:0:106::670a:7c55]:27019) - SUCCESS
+[2023-01-31 17:06:00] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2023-01-31 17:06:00] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27035) results: 237.3304ms + load 39.0000
+[2023-01-31 17:06:00] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo2.steamserver.net:27036) results: 227.0951ms + load 39.0000
+[2023-01-31 17:06:00] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, ext3-sgp1.steamserver.net:27037, WebSocket)
+[2023-01-31 17:06:00] [Connecting, 4, 3] [U:1:214053662] ConnectionCompleted() (103.10.124.124:27037, WebSocket) local address (10.10.104.242:54218)
+[2023-01-31 17:06:00] [Connecting, 4, 3] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2023-01-31 17:06:00] [Connected, 4, 3] [U:1:214053662] Logging on [U:1:214053662]
+[2023-01-31 17:06:00] [Logging On, 4, 3] [U:1:214053662] Using credential pair
+[2023-01-31 17:06:01] [Logging On, 4, 3] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2023-01-31 17:06:01] CClientJobGetClientUpdateHosts: cached copy new expiration: Wed Feb  1 23:47:33 2023
+[2023-01-31 17:06:11] [Logged On, 4, 3] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1675155971 seconds ago)
+[2023-01-31 17:06:11] [Logged On, 4, 3] [U:1:214053662] LogOff()
+[2023-01-31 17:06:11] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2023-01-31 17:06:11] [Logging Off, 0, 3] [U:1:214053662] Log session ended

@@ -2555,4 +2555,12 @@
 		"WebFav4_URL"		"http://www.reddit.com/"
 		"WebFav4_Name"		"Reddit"
 	}
+	"JSClientStorage"
+	{
+		"spotlight.review.2204230"
+		{
+			"rgPromptDismissals"		"3"
+			"bWasAskedToRevise"		"0"
+		}
+	}
 }
