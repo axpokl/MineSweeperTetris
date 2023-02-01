@@ -609,12 +609,13 @@
 		}
 		"239833399"
 		{
-			"name"		"NKC .CZJ"
+			"name"		"金朝老兵"
 			"NameHistory"
 			{
-				"0"		"NKC .CZJ"
+				"0"		"金朝老兵"
+				"1"		"NKC .CZJ"
 			}
-			"avatar"		"e9acdd3ff7124e1c27b65e2f7377fcc43c3024f0"
+			"avatar"		"8a8039c0b8d35d66ce9766ab1d55da841dbaf81a"
 		}
 		"424798557"
 		{
@@ -868,14 +869,14 @@
 	}
 	"apptickets"
 	{
-		"7"		"32000000040000001e33c20c010010010700000072ffdca7f2680a0a00000000f8d9d8637889f463010000000000000000004aee54cd5556ea5c23b02d5c8ba902db9b6ceb2817e9eb08b3d8fcc0f22477dc4aeb33318ecfada5ed384e1c72a66b6e14b3a8f55f0b49d159c02630782a2ce1807805dfa44494c301cee8df77efebfdc29a4c2a1e6239a3204219b8d9a756a441836ad933c569e9416605d99b1d0515ceb7682a70a1dd0f81cbfa5b89406e63"
+		"7"		"32000000040000001e33c20c010010010700000032ffdca7f2680a0a0000000032c3d963b272f56301000000000000000000b50dea7ddde0fe0bd8596405e092119a377f082f975f49eed033fa960bfc973bffc8110e8b419cf6ee47f832b3adadf43d1d39024285c1e0fa5f384ea42c6109616c9f746b8ad6025d12db87278a4c74877c427b5f09f344b57185812c610c3f1d99a5afb3a279ab0a2bdf864a8f5e9aaffbeb382b8a5564ec8645eb45deb758"
 	}
 	"Offline"
 	{
-		"Ticket"		"089ee6886615f8d9d863"
-		"Signature"		"2a804c83aecb5b870f5945d46a913d1f770cff045d14d1bbe48ffab940aaea75ce8e93b6c4bb49ae86b9bfba924456f2f8c56ed35bf870b278f8a13e5200841c2f3687c3c1e017f7e38b05d138205f90e9441b4506fbe084fbda344a042d545c434a3ea102009eec8bd8939037ccf30334f0d3152bf051547ef222c178b006bf64da8582bba5d37670ef216bad74afb6a027f823e9c422dc5c44d80d6cac85bff5b9e17d77e391f0ab0b74fa9528b4d28b7f8852777ee4087e8441ebf39de73d5d9f5b0d28c43cffb5fca6fa580710b1909033d4486f35af8c68038d575bfb5d6c9781b3e62d15fe894f90af75c27b08a499073dc9a9e2ee182d04945a81af5f"
+		"Ticket"		"089ee688661532c3d963"
+		"Signature"		"67a01d43ca9795596c93a72e8fad6f04b96048297782eb98907318b6ebfb659c67dc2d02a0c34330726b1f8febfd115f9765a063b785ca647b7f89489914131a53cc1680efd1a06c67d596e04ea6459311cc7eccda01c90d995e2d180a7fb6d8b68769bf400a4d0c3b2c78427022369bd4807ea2006d80675453faad03e3840445adcc3a6965adbbe39ef50ff0a0863f20dad74ba2a631fe658da195093c5f0e6fdf6907a53559a249908ddb8b158bb3f6286aea8ed776528c2d1373b0e3bd2d2c1bb07096f88b4df64e4d6400a27f5c6ecdbda66f1d3ca7239a2ed039c1617d35f475d2f5d5fb25462a374027f20fd5e9a3f15fb444e8a346ada80b97f9ee0e"
 	}
-	"AppInfoChangeNumber"		"17568149"
+	"AppInfoChangeNumber"		"17579072"
 	"CloudKey"		"01000000cb1a334634c7d57014fbc2344aeb177e047edc1751c9db90bc850cb1f003f018b5ce2256"
 	"CloudKeyCRC"		"-1073341850"
 	"Software"
@@ -951,7 +952,7 @@
 					"570"
 					{
 						"LastPlayed"		"1675086967"
-						"Playtime2wks"		"148"
+						"Playtime2wks"		"72"
 						"Playtime"		"437639"
 					}
 					"620"
@@ -1140,7 +1141,7 @@
 					{
 						"LastPlayed"		"1674084854"
 						"Playtime"		"5655"
-						"Playtime2wks"		"1096"
+						"Playtime2wks"		"581"
 					}
 					"255710"
 					{
@@ -2049,9 +2050,9 @@
 					}
 					"2204230"
 					{
-						"LastPlayed"		"1675155921"
-						"Playtime2wks"		"634"
-						"Playtime"		"7000"
+						"LastPlayed"		"1675215636"
+						"Playtime2wks"		"728"
+						"Playtime"		"7147"
 					}
 					"2240140"
 					{
@@ -2116,7 +2117,7 @@
 					"469990"
 					{
 						"LastPlayed"		"1674050937"
-						"Playtime2wks"		"4"
+						"Playtime2wks"		"1"
 						"Playtime"		"4"
 					}
 					"866540"
@@ -2128,13 +2129,13 @@
 					"908520"
 					{
 						"LastPlayed"		"1674084843"
-						"Playtime2wks"		"1063"
+						"Playtime2wks"		"580"
 						"Playtime"		"1063"
 					}
 					"436820"
 					{
 						"LastPlayed"		"1674051809"
-						"Playtime2wks"		"496"
+						"Playtime2wks"		"18"
 						"Playtime"		"496"
 					}
 					"731940"
@@ -2150,7 +2151,7 @@
 						"Playtime"		"17"
 					}
 				}
-				"LastPlayedTimesSyncTime"		"1675155921"
+				"LastPlayedTimesSyncTime"		"1675215636"
 			}
 		}
 	}

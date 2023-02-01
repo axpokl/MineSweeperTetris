@@ -133,6 +133,8 @@ void Board::initbd()
         {
             mine[i][j] = (i < n);
             flag[i][j] = false;
+            leftrule[i][j] = false;
+            rightrule[i][j] = false;
             qstn[i][j] = false;
             blck[i][j] = false;
             mask[i][j] = (j < maskj);
@@ -406,6 +408,7 @@ void Board::solve1_()
     }
     solve0_();
 }
+
 void Board::createrule()
 {
     for (long i = 0; i < w; i++)
@@ -413,8 +416,6 @@ void Board::createrule()
         for (long j = 0; j < h; j++)
         {
             blckrule[i][j] = -1;
-            leftrule[i][j] = false;
-            rightrule[i][j] = false;
             if (blck[i][j])
             {
                 ruletemp.x = i;
@@ -425,7 +426,7 @@ void Board::createrule()
                 {
                     if (isok(k, i, j, tx, ty))
                     {
-                        if (flag[tx][ty])
+                        if (flag[tx][ty] || rightrule[tx][ty])
                         {
                             ruletemp.numbc--;
                         }
@@ -444,6 +445,14 @@ void Board::createrule()
                     rulemainc++;
                 }
             }
+        }
+    }
+    for (long i = 0; i < w; i++)
+    {
+        for (long j = 0; j < h; j++)
+        {
+            leftrule[i][j] = false;
+            rightrule[i][j] = false;
         }
     }
 }
@@ -804,6 +813,8 @@ void Board::delline(long l)
                     mine[i][j] = (i < n);
                     mask[i][j] = !maskjb;
                     flag[i][j] = false;
+                    leftrule[i][j] = false;
+                    rightrule[i][j] = false;
                     qstn[i][j] = false;
                     blck[i][j] = false;
                     numb[i][j] = 0;
@@ -813,6 +824,8 @@ void Board::delline(long l)
                     mine[i][j] = mine[i][j - 1];
                     mask[i][j] = mask[i][j - 1];
                     flag[i][j] = flag[i][j - 1];
+                    leftrule[i][j] = leftrule[i][j - 1];
+                    rightrule[i][j] = rightrule[i][j - 1];
                     qstn[i][j] = qstn[i][j - 1];
                     blck[i][j] = blck[i][j - 1];
                     numb[i][j] = numb[i][j - 1];
