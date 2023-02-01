@@ -447,14 +447,6 @@ void Board::createrule()
             }
         }
     }
-    for (long i = 0; i < w; i++)
-    {
-        for (long j = 0; j < h; j++)
-        {
-            leftrule[i][j] = false;
-            rightrule[i][j] = false;
-        }
-    }
 }
 
 void Board::comparerule2(long rule1c, long rule2c)
