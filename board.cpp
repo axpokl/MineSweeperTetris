@@ -20,7 +20,6 @@ public:
     long line;
     long level;
     bool solveb;
-    bool checkb;
     long checkr;
     bool dieb;
     long diex;
@@ -88,8 +87,7 @@ public:
     void solve2_();
     bool checkerror(long i, long j);
     bool checkerror();
-    void checkline(bool checkb_);
-    void checkline();
+    void checkline(bool delayb_);
     void setqstn(long x, long y);
     void setflag(long x, long y);
     void setblock(long x, long y);
@@ -98,7 +96,7 @@ public:
     void clickright(long x, long y, bool sb_);
     void clickleft(long x, long y, bool sb_, long md_);
     void clickright(long x, long y, bool sb_, long md_);
-    void addline(bool b);
+    void addline();
     void delline(long l);
     bool addmask();
     void checkdie();
@@ -563,8 +561,10 @@ bool Board::checkerror(long i, long j)
         missline = line;
         missi++;
         st.compscr(missi, mode, 12, ischeat());
-        addline(false);
-        addline(true);
+        addline();
+        addline();
+        checkline(true);
+        checkdie();
         if (sit == 2)
         {
             sit = 1;
@@ -595,13 +595,11 @@ bool Board::checkerror()
     return result;
 }
 
-void Board::checkline(bool checkb_)
+void Board::checkline(bool delayb_)
 {
-    if (sit < 4 && pauseb == 0)
-    {
-        long j;
-        if (checkb)
+        if (sit < 4 && pauseb == 0)
         {
+            long j;
             solve0_();
             bool result = false;
             long blckc;
@@ -627,7 +625,7 @@ void Board::checkline(bool checkb_)
                 {
                     result = true;
                     delline(j);
-                    if (delayb & checkb_)
+                    if (delayb & delayb_)
                     {
                         for (long k = 0; k < mult; k++)
                         {
@@ -644,7 +642,7 @@ void Board::checkline(bool checkb_)
             if (result)
             {
                 sd.playsound(sd.sSolve);
-                if (delayb & checkb_)
+                if (delayb & delayb_)
                 {
                     freshwin();
                     long dl = 500.0 / (1.0 + (double)level /5.0);
@@ -652,18 +650,11 @@ void Board::checkline(bool checkb_)
                     delay(dl);
                 }
             }
-            checkb = false;
             solve0_();
         }
-    }
 }
 
-void Board::checkline()
-{
-    checkline(true);
-}
-
-void Board::addline(bool b)
+void Board::addline()
 {
     bouns--;
     maskj--;
@@ -696,9 +687,6 @@ void Board::addline(bool b)
             }
         }
     }
-    checkb = b;
-    checkline(true);
-    checkdie();
 }
 
 bool Board::addmask()
@@ -709,8 +697,6 @@ bool Board::addmask()
         {
             if (gettimer() > time + 5.0 / (level + 5.0))
             {
-                checkb = true;
-                checkline(false);
                 while (gettimer() > time + 5.0 / (level + 5.0))
                 {
                     time += 5.0 / (level + 5.0);
@@ -718,11 +704,10 @@ bool Board::addmask()
                     if (maski == w)
                     {
                         maski = 0;
-                        addline(true);
+                        addline();
+                        checkline(true);
                     }
                 }
-                checkb = true;
-                checkline(false);
                 checkdie();
                 return true;
             }
@@ -856,12 +841,11 @@ void Board::delline(long l)
             st.compscr(line - missline, mode, 6, ischeat());
             for (long k = 0; k < 4; k++)
             {
-                addline(false);
+                addline();
             }
+            checkline(false);
             sit = 3;
             bouns = 4;
-            checkb = true;
-            checkline(false);
             sd.playsound(sd.sNew);
             st.addscr(st.scrfour, 1, mode);
         }
@@ -1029,7 +1013,6 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
                 clicknumb(x, y, sb_);
             }
         }
-        checkb = true;
     }
 }
 
@@ -1051,7 +1034,6 @@ void Board::clickright(long x, long y, bool sb_, long md_)
                 clicknumb(x, y, sb_);
             }
         }
-        checkb = true;
     }
     if (sit == 0)
     {

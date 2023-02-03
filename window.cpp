@@ -1612,7 +1612,8 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
             {
                 bd.clickright(x, y, true, md_);
             }
-            bd.checkline();
+            paintevent();
+            bd.checkline(true);
             mx = x;
             my = y;
             paintevent();
@@ -2052,7 +2053,10 @@ void Window::keyevent(long key)
                     bd.solveblank_();
                     break;
                 case k_9:
-                    bd.addline(true);
+                    bd.addline();
+                    paintevent();
+                    bd.checkline(true);
+                    bd.checkdie();
                     break;
                 case k_0:
                     bd.delline(bd.h - 1);
@@ -2066,7 +2070,8 @@ void Window::keyevent(long key)
             }
             if (key >= k_4 || key <= k_0)
             {
-                bd.solve0_();
+                paintevent();
+                bd.checkline(true);
             }
         }
     }
