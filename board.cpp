@@ -597,61 +597,61 @@ bool Board::checkerror()
 
 void Board::checkline(bool delayb_)
 {
-        if (sit < 4 && pauseb == 0)
+    if (sit < 4 && pauseb == 0)
+    {
+        long j;
+        solve0_();
+        bool result = false;
+        long blckc;
+        long flagc;
+        j = h - 1;
+        long j_ = 0;
+        while (j >= maskj)
         {
-            long j;
-            solve0_();
-            bool result = false;
-            long blckc;
-            long flagc;
-            j = h - 1;
-            long j_ = 0;
-            while (j >= maskj)
+            blckc = 0;
+            flagc = 0;
+            for (long i = 0; i < w; i++)
             {
-                blckc = 0;
-                flagc = 0;
-                for (long i = 0; i < w; i++)
+                if (!blck[i][j])
                 {
-                    if (!blck[i][j])
-                    {
-                        blckc++;
-                    }
-                    if (flag[i][j])
-                    {
-                        flagc++;
-                    }
+                    blckc++;
                 }
-                if (blckc == n || flagc == n)
+                if (flag[i][j])
                 {
-                    result = true;
-                    delline(j);
-                    if (delayb & delayb_)
-                    {
-                        for (long k = 0; k < mult; k++)
-                        {
-                            Line160(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
-                        }
-                    }
-                    j_++;
-                }
-                else
-                {
-                    j--;
+                    flagc++;
                 }
             }
-            if (result)
+            if (blckc == n || flagc == n)
             {
-                sd.playsound(sd.sSolve);
+                result = true;
+                delline(j);
                 if (delayb & delayb_)
                 {
-                    freshwin();
-                    long dl = 500.0 / (1.0 + (double)level /5.0);
-                    time += dl / 1000.0;
-                    delay(dl);
+                    for (long k = 0; k < mult; k++)
+                    {
+                        Line160(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
+                    }
                 }
+                j_++;
             }
-            solve0_();
+            else
+            {
+                j--;
+            }
         }
+        if (result)
+        {
+            sd.playsound(sd.sSolve);
+            if (delayb & delayb_)
+            {
+                freshwin();
+                long dl = 500.0 / (1.0 + (double)level /5.0);
+                time += dl / 1000.0;
+                delay(dl);
+            }
+        }
+        solve0_();
+    }
 }
 
 void Board::addline()
