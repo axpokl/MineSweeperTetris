@@ -2064,6 +2064,10 @@ void Window::keyevent(long key)
                     bd.st.resetach();
                     break;
             }
+            if (key >= k_4 || key <= k_0)
+            {
+                bd.solve0_();
+            }
         }
     }
     else

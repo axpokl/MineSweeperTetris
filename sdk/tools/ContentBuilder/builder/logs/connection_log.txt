@@ -2057,3 +2057,55 @@
 [2023-02-01 12:36:08] [Logged On, 4, 3] [U:1:214053662] LogOff()
 [2023-02-01 12:36:08] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2023-02-01 12:36:08] [Logging Off, 0, 3] [U:1:214053662] Log session ended
+
+
+[2023-02-03 09:34:10] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2023-02-03 09:34:11] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2023-02-03 09:34:11] Clearing in-memory token - 1 (OK): set to null
+[2023-02-03 09:34:11] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2023-02-03 09:34:11] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-02-03 09:34:11] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-02-03 09:34:11] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2023-02-03 09:34:11] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2023-02-03 09:34:11] Connectivity test: OK!
+[2023-02-03 09:34:11] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2023-02-03 09:34:12] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:100::671c:3684]:80 ([2404:3fc0:2:100::671c:3684]:80)) - SUCCESS
+[2023-02-03 09:34:12] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:100::671c:3684]:80 ([2404:3fc0:2:100::671c:3684]:80)) - server indicated we are using ipv6, external address = '2404:f801:9000:18:efec::4f'
+[2023-02-03 09:34:12] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / [2404:3fc0:0:106::670a:7c59]:27019) - SUCCESS
+[2023-02-03 09:34:12] GetCMListForConnect -- got 6 Netfilter CMs and 74 WebSocket CMs
+[2023-02-03 09:34:12] GetCMListForConnect -- DC 'sgp1' count: 24
+[2023-02-03 09:34:12] GetCMListForConnect -- DC 'hkg1' count: 24
+[2023-02-03 09:34:12] GetCMListForConnect -- DC 'tyo2' count: 16
+[2023-02-03 09:34:12] GetCMListForConnect -- DC 'tyo1' count: 16
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 92% of connections should be websockets, we rolled 62 - using WebSockets as default.
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:27031) starting...
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:27025) starting...
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:443) starting...
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:27021) starting...
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:27031) results: 200.3941ms + load 47.0000
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-hkg1.steamserver.net:27034) starting...
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext4-sgp1.steamserver.net:27025) results: 211.9715ms + load 47.0000
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) starting...
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-sgp1.steamserver.net:443) results: 189.9488ms + load 56.0000
+[2023-02-03 09:34:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27020) starting...
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:27021) results: 243.5148ms + load 51.0000
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo2.steamserver.net:27024) starting...
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-hkg1.steamserver.net:27034) results: 220.7491ms + load 51.0000
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27024) starting...
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:443) results: 215.0021ms + load 69.0000
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo1.steamserver.net:27022) starting...
+[2023-02-03 09:34:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27020) results: 206.2428ms + load 29.0000
+[2023-02-03 09:34:14] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo2.steamserver.net:27024) results: 301.0535ms + load 29.0000
+[2023-02-03 09:34:14] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27024) results: 240.2604ms + load 32.0000
+[2023-02-03 09:34:14] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo1.steamserver.net:27022) results: 242.2354ms + load 32.0000
+[2023-02-03 09:34:14] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, ext1-tyo2.steamserver.net:27020, WebSocket)
+[2023-02-03 09:34:14] [Connecting, 4, 3] [U:1:214053662] ConnectionCompleted() (155.133.239.20:27020, WebSocket) local address (10.10.104.242:50274)
+[2023-02-03 09:34:14] [Connecting, 4, 3] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2023-02-03 09:34:14] [Connected, 4, 3] [U:1:214053662] Logging on [U:1:214053662]
+[2023-02-03 09:34:14] [Logging On, 4, 3] [U:1:214053662] Using credential pair
+[2023-02-03 09:34:15] [Logging On, 4, 3] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2023-02-03 09:34:15] CClientJobGetClientUpdateHosts: cached copy new expiration: Sun Feb  5 11:04:20 2023
+[2023-02-03 09:34:24] [Logged On, 4, 3] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1675388064 seconds ago)
+[2023-02-03 09:34:24] [Logged On, 4, 3] [U:1:214053662] LogOff()
+[2023-02-03 09:34:24] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2023-02-03 09:34:24] [Logging Off, 0, 3] [U:1:214053662] Log session ended

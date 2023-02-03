@@ -81,7 +81,7 @@ public:
     bool leftrule[128][128];
     bool rightrule[128][128];
     void createrule();
-    void comparerule2(long rule1, long rule2);
+    void comparerule(long rule1, long rule2);
     void comparerule();
     void applyrule();
     void solve2();
@@ -330,7 +330,6 @@ void Board::solveblank_()
     {
         solveblank();
     }
-    solve0_();
 }
 
 void Board::solve0()
@@ -406,7 +405,6 @@ void Board::solve1_()
     {
         solve1();
     }
-    solve0_();
 }
 
 void Board::createrule()
@@ -438,18 +436,15 @@ void Board::createrule()
                         }
                     }
                 }
-                if (ruletemp.blckc >= 0)
-                {
-                    blckrule[i][j] = rulemainc;
-                    rulemain[rulemainc] = ruletemp;
-                    rulemainc++;
-                }
+                blckrule[i][j] = rulemainc;
+                rulemain[rulemainc] = ruletemp;
+                rulemainc++;
             }
         }
     }
 }
 
-void Board::comparerule2(long rule1c, long rule2c)
+void Board::comparerule(long rule1c, long rule2c)
 {
     rule rule1 = rulemain[rule1c];
     rule rule2 = rulemain[rule2c];
@@ -488,40 +483,23 @@ void Board::comparerule2(long rule1c, long rule2c)
             }
         }
     }
-    if (rule2.blckc == (rule2.numbc - rule1.numbc))
-    {
-        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
-        {
-            if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
-            {
-                rightrule[rule2.blckx[rule2k]][rule2.blcky[rule2k]] = true;
-            }
-        }
-        for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
-        {
-            if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
-            {
-                leftrule[rule1.blckx[rule1k]][rule1.blcky[rule1k]] = true;
-            }
-        }
-    }
 }
 
 void Board::comparerule()
 {
-    long i = 0;
-    long j = 0;
+    long x = 0;
+    long y = 0;
     for (int rulemaini = 0; rulemaini < rulemainc; rulemaini++)
     {
-        i = rulemain[rulemaini].x;
-        j = rulemain[rulemaini].y;
+        x = rulemain[rulemaini].x;
+        y = rulemain[rulemaini].y;
         for (long k = 0; k < 8; k++)
         {
-            if (isok(k, i, j, tx, ty))
+            if (isok(k, x, y, tx, ty))
             {
                 if (blckrule[tx][ty] >= 0)
                 {
-                    comparerule2(rulemaini, blckrule[tx][ty]);
+                    comparerule(rulemaini, blckrule[tx][ty]);
                 }
             }
         }
@@ -567,7 +545,6 @@ void Board::solve2_()
     {
         solve2();
     }
-    solve0_();
 }
 
 bool Board::checkerror(long i, long j)
