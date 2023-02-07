@@ -772,11 +772,11 @@ void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h
     }
     if (cheatb)
     {
-        if (bd.leftrule[i][j])
+        if (bd.leftrule[i][j] && !bd.blck[i][j] && !bd.mask[i][j])
         {
             bar(x, y, iconw - 1, iconh - 1, cred, transparent);
         }
-        if (bd.rightrule[i][j])
+        if (bd.rightrule[i][j]&& !bd.blck[i][j] && !bd.qstn[i][j] && !bd.flag[i][j] && !bd.mask[i][j])
         {
             bar(x, y, iconw - 1, iconh - 1, cblue, transparent);
         }

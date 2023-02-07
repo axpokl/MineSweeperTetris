@@ -85,6 +85,7 @@ public:
     void applyrule(bool applyb);
     void solve2(bool applyb);
     void solve2();
+    void solve2_(bool applyb);
     void solve2_();
     bool checkerror(long i, long j);
     bool checkerror();
@@ -562,14 +563,22 @@ void Board::solve2()
     solve2(true);
 }
 
-void Board::solve2_()
+void Board::solve2_(bool applyb)
 {
     solveb = true;
-    while (solveb)
+    long solven_ = -1;
+    while (solveb && (solven_ < solven))
     {
-        solve2();
+        solven_ = solven;
+        solve2(applyb);
     }
 }
+
+void Board::solve2_()
+{
+    solve2_(true);
+}
+
 
 bool Board::checkerror(long i, long j)
 {
@@ -587,7 +596,7 @@ bool Board::checkerror(long i, long j)
         missline = line;
         missi++;
         st.compscr(missi, mode, 12, ischeat());
-        if (solven > 0)
+        if (solven > 0 || tutb > 0)
         {
             addline();
             addline();
@@ -680,7 +689,7 @@ void Board::checkline(bool delayb_)
             }
         }
         solve0_();
-        solve2(false);
+        solve2_(false);
     }
 }
 
