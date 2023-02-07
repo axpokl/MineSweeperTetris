@@ -51,6 +51,21 @@ public:
     long tuty[13] = {16, 17, 17, 17, 17, 18, 18, 18, 17, 16, 17, 19, 19};
     long tutm[13] = {1, 1, 3, 2, 3, 3, 3, 3, 1, 2, 3, 3, 3};
 
+    struct rule
+    {
+        long x;
+        long y;
+        long numbc;
+        long blckc;
+        long blckx[8];
+        long blcky[8];
+    };
+    rule ruletemp;
+    rule rulemain[16384];
+    long rulemainc;
+    long blckrule[128][128];
+    long solven;
+
     Board();
     void initbd();
     void initbd(long w_, long h_, long maskj_, long n_);
@@ -64,30 +79,17 @@ public:
     void solve0_();
     void solve1();
     void solve1_();
-    struct rule
-    {
-        long x;
-        long y;
-        long numbc;
-        long blckc;
-        long blckx[8];
-        long blcky[8];
-    };
-    rule ruletemp;
-    rule rulemain[16384];
-    int rulemainc;
-    long blckrule[128][128];
-    bool leftrule[128][128];
-    bool rightrule[128][128];
     void createrule();
     void comparerule(long rule1, long rule2);
     void comparerule();
-    void applyrule();
+    void applyrule(bool applyb);
+    void solve2(bool applyb);
     void solve2();
     void solve2_();
     bool checkerror(long i, long j);
     bool checkerror();
     void checkline(bool delayb_);
+    void setqstn(long x, long y, bool sb_);
     void setqstn(long x, long y);
     void setflag(long x, long y);
     void setblock(long x, long y);
@@ -470,14 +472,20 @@ void Board::comparerule(long rule1c, long rule2c)
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
             {
-                rightrule[rule1.blckx[rule1k]][rule1.blcky[rule1k]] = true;
+                if (!mask[rule1.blckx[rule1k]][rule1.blcky[rule1k]])
+                {
+                    rightrule[rule1.blckx[rule1k]][rule1.blcky[rule1k]] = true;
+                }
             }
         }
         for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
         {
             if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
             {
-                leftrule[rule2.blckx[rule2k]][rule2.blcky[rule2k]] = true;
+                if (!mask[rule2.blckx[rule2k]][rule2.blcky[rule2k]])
+                {
+                    leftrule[rule2.blckx[rule2k]][rule2.blcky[rule2k]] = true;
+                }
             }
         }
     }
@@ -504,7 +512,7 @@ void Board::comparerule()
     }
 }
 
-void Board::applyrule()
+void Board::applyrule(bool applyb)
 {
     for (long i = 0; i < w; i++)
     {
@@ -513,27 +521,45 @@ void Board::applyrule()
             if (leftrule[i][j] && !blck[i][j] && !mask[i][j])
             {
                 solveb = true;
-                clickleft(i, j, false);
+                solven++;
+                if (applyb)
+                {
+                    clickleft(i, j, false);
+                }
             }
             if (rightrule[i][j] && !blck[i][j] && !qstn[i][j] && !flag[i][j] && !mask[i][j])
             {
                 solveb = true;
-                clickright(i, j, false);
+                solven++;
+                if (applyb)
+                {
+                    clickright(i, j, false);
+                }
             }
+        }
+    }
+}
+
+void Board::solve2(bool applyb)
+{
+    solveb = false;
+    rulemainc = 0;
+    solven = 0;
+    if (sit < 4 && pauseb == 0)
+    {
+        createrule();
+        comparerule();
+        applyrule(applyb);
+        if (applyb)
+        {
+            sd.playsound(sd.sSolve);
         }
     }
 }
 
 void Board::solve2()
 {
-    solveb = false;
-    rulemainc = 0;
-    if (sit < 4 && pauseb == 0)
-    {
-        createrule();
-        comparerule();
-        applyrule();
-    }
+    solve2(true);
 }
 
 void Board::solve2_()
@@ -561,10 +587,13 @@ bool Board::checkerror(long i, long j)
         missline = line;
         missi++;
         st.compscr(missi, mode, 12, ischeat());
-        addline();
-        addline();
-        checkline(true);
-        checkdie();
+        if (solven > 0)
+        {
+            addline();
+            addline();
+            checkline(true);
+            checkdie();
+        }
         if (sit == 2)
         {
             sit = 1;
@@ -651,6 +680,7 @@ void Board::checkline(bool delayb_)
             }
         }
         solve0_();
+        solve2(false);
     }
 }
 
@@ -857,10 +887,18 @@ void Board::delline(long l)
     }
 }
 
-void Board::setqstn(long x, long y)
+void Board::setqstn(long x, long y, bool sb_)
 {
     qstn[x][y] = !qstn[x][y];
-    sd.playsound(sd.sFlag);
+    if (sb_)
+    {
+        sd.playsound(sd.sFlag);
+    }
+}
+
+void Board::setqstn(long x, long y)
+{
+    setqstn(x, y, true);
 }
 
 void Board::setflag(long x, long y)
@@ -1002,7 +1040,7 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
                     {
                         sit = 1;
                     }
-                    if (!checkerror())
+                    if (!checkerror() && sb_)
                     {
                         sd.playsound(sd.sLeft);
                     }
@@ -1026,7 +1064,7 @@ void Board::clickright(long x, long y, bool sb_, long md_)
             {
                 if (md_ == 2)
                 {
-                    setqstn(x, y);
+                    setqstn(x, y, sb_);
                 }
             }
             else if (sb_)

@@ -21,6 +21,8 @@ public:
     bool blck[128][128];
     bool mask[128][128];
     long numb[128][128];
+    bool leftrule[128][128];
+    bool rightrule[128][128];
 
     Block();
     void initbl();

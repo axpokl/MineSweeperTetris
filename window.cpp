@@ -706,13 +706,26 @@ void Window::paintlevel()
     {
         paintnumber(score, 6, 0, digth[0], singleb * (bd.mode > 0) * 2);
     }
-    if (bd.level < 100)
+    long score2 = bd.level;
+    if (singleb)
     {
-        paintnumber(bd.level, 2, w_ - 2 * digtw[0], digth[0]);
+        score2 = bd.solven;
+    }
+    if (score2 < 100)
+    {
+        paintnumber(score2, 2, w_ - 2 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
+    }
+    else if (score2 < 1000)
+    {
+        paintnumber(score2, 3, w_ - 3 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
+    }
+    else if (score2 < 10000)
+    {
+        paintnumber(score2, 4, w_ - 4 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
     }
     else
     {
-        paintnumber(bd.level, 3, w_ - 3 * digtw[0], digth[0]);
+        paintnumber(score2, 5, w_ - 5 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
     }
 }
 
@@ -756,6 +769,17 @@ void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h
     else
     {
         drawbmp(piconc, x, y, w, h);
+    }
+    if (cheatb)
+    {
+        if (bd.leftrule[i][j])
+        {
+            bar(x, y, iconw - 1, iconh - 1, cred, transparent);
+        }
+        if (bd.rightrule[i][j])
+        {
+            bar(x, y, iconw - 1, iconh - 1, cblue, transparent);
+        }
     }
 }
 
@@ -1550,7 +1574,6 @@ void Window::sethelp(long helpi_)
         paintevent();
         bd.st.getlead();
         waitb = false;
-        paintevent();
     }
 }
 
@@ -1616,7 +1639,6 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
             bd.checkline(true);
             mx = x;
             my = y;
-            paintevent();
             if (bd.tutb == 1)
             {
                 bd.tuti++;
