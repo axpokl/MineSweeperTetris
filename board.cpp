@@ -567,7 +567,7 @@ void Board::solve2_(bool applyb)
 {
     solveb = true;
     long solven_ = -1;
-    while (solveb && (solven_ < solven))
+    while (solveb && ((solven_ < solven) || applyb))
     {
         solven_ = solven;
         solve2(applyb);
