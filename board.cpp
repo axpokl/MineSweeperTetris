@@ -69,7 +69,7 @@ public:
     Board();
     void initbd();
     void initbd(long w_, long h_, long maskj_, long n_);
-    void initbd(long mode_, long md);
+    void initbd(long mode_, long md_);
     void randmine(long x, long y);
     void tutmine();
     void resetbd(long x, long y);
@@ -172,7 +172,7 @@ void Board::initbd(long w_, long h_, long maskj_, long n_)
     initbd();
 }
 
-void Board::initbd(long mode_, long md)
+void Board::initbd(long mode_, long md_)
 {
     st.setlead(mode);
     mode = mode_;
@@ -188,7 +188,7 @@ void Board::initbd(long mode_, long md)
             initbd(32, 32, 8, 6);
             break;
     }
-    mdb = (md == 0);
+    mdb = (md_ <= 1);
 }
 
 void Board::randmine(long x, long y)
@@ -1021,12 +1021,12 @@ void Board::clicknumb(long x, long y, bool sb_)
 
 void Board::clickleft(long x, long y, bool sb_)
 {
-    clickleft(x, y, sb_, 2);
+    clickleft(x, y, sb_, 3);
 }
 
 void Board::clickright(long x, long y, bool sb_)
 {
-    clickright(x, y, sb_, 2);
+    clickright(x, y, sb_, 3);
 }
 
 void Board::clickleft(long x, long y, bool sb_, long md_)
@@ -1037,7 +1037,7 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
         {
             if (!blck[x][y])
             {
-                if (md_ == 2)
+                if (md_ >= 3)
                 {
                     blck[x][y] = true;
                     qstn[x][y] = false;
@@ -1055,7 +1055,7 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
                     }
                 }
             }
-            else if (sb_)
+            else if (sb_ && md_ != 5)
             {
                 clicknumb(x, y, sb_);
             }
@@ -1071,12 +1071,12 @@ void Board::clickright(long x, long y, bool sb_, long md_)
         {
             if (!blck[x][y])
             {
-                if (md_ == 2)
+                if (md_ >= 3)
                 {
                     setqstn(x, y, sb_);
                 }
             }
-            else if (sb_)
+            else if (sb_ && md_ != 5)
             {
                 clicknumb(x, y, sb_);
             }

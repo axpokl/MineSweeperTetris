@@ -1,12 +1,53 @@
-[2023-02-07 12:57:11]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2023-02-07 12:57:11]: Building file listing for depot 2204231 ...
-[2023-02-07 12:57:11]: Found 123 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2023-02-07 12:57:11]: Found 123 files (2 MB) for depot 2204231
-[2023-02-07 12:57:12]: Building depot 2204231, baseline manifest 4923604496725892459 (123 files)
-[2023-02-07 12:57:12]: Found 91 chunks ( 91 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2023-02-07 12:57:12]: Changes to baseline manifest 4923604496725892459 :
-[2023-02-07 12:57:12]: Changed: "MineSweeperTetris.exe" 612 kB size, 612 kB changed 
-[2023-02-07 12:57:12]: Summary: 0 files added, 1 files changed, 0 files removed
-[2023-02-07 12:57:12]: Uploading new manifest to 208.64.201.169:80 (handle 2302394257923410146, 12470 bytes).
-[2023-02-07 12:57:13]: Uploading 1 out of 1 missing chunks.
-[2023-02-07 12:57:15]: Success! New manifestID 1100172826508103969 created and 1 new chunks uploaded.
+[2023-02-08 09:20:55]: Starting build for depot 2204231, content path is "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2023-02-08 09:20:55]: Building file listing for depot 2204231 ...
+[2023-02-08 09:20:55]: Found 123 files for mapping: T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2023-02-08 09:20:55]: Found 123 files (2 MB) for depot 2204231
+[2023-02-08 09:20:56]: Building depot 2204231, baseline manifest 1100172826508103969 (123 files)
+[2023-02-08 09:20:56]: Found 91 chunks ( 91 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2023-02-08 09:20:56]: Changes to baseline manifest 1100172826508103969 :
+[2023-02-08 09:20:56]: Changed: "bmp\0\click.bmp" 41 kB size, 41 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\0\menu.bmp" 58 kB size, 58 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\1\click.bmp" 41 kB size, 41 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\1\menu.bmp" 58 kB size, 58 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\2\click.bmp" 41 kB size, 41 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\2\menu.bmp" 58 kB size, 58 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\3\click.bmp" 41 kB size, 41 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\3\menu.bmp" 58 kB size, 58 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\4\click.bmp" 41 kB size, 41 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\4\menu.bmp" 58 kB size, 58 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\5\click.bmp" 41 kB size, 41 kB changed 
+[2023-02-08 09:20:56]: Changed: "bmp\5\menu.bmp" 58 kB size, 58 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\arabic.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\brazilian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\bulgarian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\czech.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\danish.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\dutch.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\english.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\finnish.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\french.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\german.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\greek.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\hungarian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\italian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\japanese.txt" 3 kB size, 3 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\koreana.txt" 3 kB size, 3 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\latam.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\norwegian.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\polish.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\portuguese.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\romanian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\russian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\schinese.txt" 2 kB size, 2 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\spanish.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\swedish.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\tchinese.txt" 2 kB size, 2 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\thai.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\turkish.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\ukrainian.txt" 6 kB size, 6 kB changed 
+[2023-02-08 09:20:56]: Changed: "lan\vietnamese.txt" 5 kB size, 5 kB changed 
+[2023-02-08 09:20:56]: Changed: "MineSweeperTetris.exe" 612 kB size, 612 kB changed 
+[2023-02-08 09:20:56]: Summary: 0 files added, 42 files changed, 0 files removed
+[2023-02-08 09:20:56]: Uploading new manifest to 208.64.201.169:80 (handle 12157061751940290805, 12472 bytes).
+[2023-02-08 09:20:57]: Uploading 40 out of 40 missing chunks.
+[2023-02-08 09:21:01]: Success! New manifestID 5205249776090321531 created and 40 new chunks uploaded.
