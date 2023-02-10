@@ -66,7 +66,7 @@ public:
         "STAT_LINE1_T", "STAT_LINE2_T", "STAT_LINE3_T",
         "STAT_LINE1_M", "STAT_LINE2_M", "STAT_LINE3_M"
     };
-    int scr[19];
+    long scr[19];
     bool newrecord = false;
 
     const long leadn = 15;

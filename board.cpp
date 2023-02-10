@@ -449,9 +449,9 @@ void Board::comparerule(long rule1c, long rule2c)
 {
     rule rule1 = rulemain[rule1c];
     rule rule2 = rulemain[rule2c];
-    for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
+    for (long rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
     {
-        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
+        for (long rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0) &&
                     (rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0) &&
@@ -469,7 +469,7 @@ void Board::comparerule(long rule1c, long rule2c)
     }
     if (rule1.blckc == (rule1.numbc - rule2.numbc))
     {
-        for (int rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
+        for (long rule1k = 0; rule1k < rulemain[rule1c].blckc; rule1k++)
         {
             if ((rule1.blckx[rule1k] >= 0) && (rule1.blcky[rule1k] >= 0))
             {
@@ -479,7 +479,7 @@ void Board::comparerule(long rule1c, long rule2c)
                 }
             }
         }
-        for (int rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
+        for (long rule2k = 0; rule2k < rulemain[rule2c].blckc; rule2k++)
         {
             if ((rule2.blckx[rule2k] >= 0) && (rule2.blcky[rule2k] >= 0))
             {
@@ -496,7 +496,7 @@ void Board::comparerule()
 {
     long x = 0;
     long y = 0;
-    for (int rulemaini = 0; rulemaini < rulemainc; rulemaini++)
+    for (long rulemaini = 0; rulemaini < rulemainc; rulemaini++)
     {
         x = rulemain[rulemaini].x;
         y = rulemain[rulemaini].y;
