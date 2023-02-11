@@ -1055,7 +1055,7 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
                     }
                 }
             }
-            else if (sb_ && md_ != 5)
+            else if (sb_ && (md_ != 5 || tutb == 1))
             {
                 clicknumb(x, y, sb_);
             }
