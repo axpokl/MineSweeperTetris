@@ -237,6 +237,7 @@ void Steam::loadscr()
     {
         for (long scrid = 0; scrid < scrn; scrid++)
         {
+            scr[scrid] = 0;
             SteamUserStats()->GetStat(scrs[scrid], (float*)&scr[scrid]);
         }
         setlead();
@@ -247,7 +248,10 @@ void Steam::setscr(long scrid)
 {
     if (steamb)
     {
-        SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+        if (scr[scrid] > 0)
+        {
+            SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+        }
         if (scrid == scrdead)
         {
             checkach(scrdead, 1000, 100, 10, 1, achcumdead1000, achcumdead100, achcumdead10, achcumdead1);

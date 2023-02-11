@@ -1607,3 +1607,21 @@
 [2023-02-10 15:50:20] 	Base list: 0 ()
 [2023-02-10 15:50:20] 	No custom list
 [2023-02-10 15:50:20] 	No enabled features
+
+
+[2023-02-11 09:09:35] Validating parental settings
+[2023-02-11 09:09:35] Settings dump:
+[2023-02-11 09:09:35] 	Account ID: 214053662
+[2023-02-11 09:09:35] 	Enabled: false
+[2023-02-11 09:09:35] 	Base list: 0 ()
+[2023-02-11 09:09:35] 	No custom list
+[2023-02-11 09:09:35] 	No enabled features
+
+
+[2023-02-11 09:16:03] Validating parental settings
+[2023-02-11 09:16:03] Settings dump:
+[2023-02-11 09:16:03] 	Account ID: 214053662
+[2023-02-11 09:16:03] 	Enabled: false
+[2023-02-11 09:16:03] 	Base list: 0 ()
+[2023-02-11 09:16:03] 	No custom list
+[2023-02-11 09:16:03] 	No enabled features
