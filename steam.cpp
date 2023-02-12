@@ -237,8 +237,17 @@ void Steam::loadscr()
     {
         for (long scrid = 0; scrid < scrn; scrid++)
         {
-            scr[scrid] = 0;
+            scr[scrid] = -1;
             SteamUserStats()->GetStat(scrs[scrid], (float*)&scr[scrid]);
+            if (scr[scrid] < 0)
+            {
+                SteamUserStats()->GetStat(scrs[scrid], (float*)&scr[scrid]);
+            }
+            if (scr[scrid] < 0)
+            {
+                scr[scrid] = 0;
+                steamb = false;
+            }
         }
         setlead();
     }

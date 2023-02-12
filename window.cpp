@@ -85,7 +85,7 @@ public:
     pbitmap parrowp;
 
     const long transparent_ = 2;
-    long color[8] = {silver, 0xAFAFAF, black, silver, red, blue, green, gray};
+    long color[9] = {silver, 0xAFAFAF, black, silver, red, blue, green, gray, silver};
     long colori = 0;
     long cfg;
     long cbg;
@@ -95,6 +95,7 @@ public:
     long cblue;
     long cgreen;
     long cline;
+    long cmine;
     bool isbmp = false;
 
     Reg reg;
@@ -441,6 +442,7 @@ void Window::initcolor()
     cblue = color[5];
     cgreen = color[6];
     cline = color[7];
+    cmine = color[8];
     bd.cred = cred;
 }
 
@@ -538,7 +540,7 @@ void Window::initbmp()
         pcursor_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/cursor.bmp");
         pclick_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/click.bmp");
         parrow_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/arrow.bmp");
-        for (long k = 0; k < 8; k++)
+        for (long k = 0; k < 9; k++)
         {
             color[k] = getpixel(pbg_, 0, k);
         }
@@ -1049,7 +1051,7 @@ void Window::painthelp()
                 }
                 drawtextxy_(pwint, "PgUp", (helpw * 3 / 2 - getstringwidth_("PgUp")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 1, cred, cbg);
                 drawtextxy_(pwint, "PgDn", (helpw * 3 / 2 - getstringwidth_("PgDn")) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 8 - faceh * 0, cblue, cfg);
-                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
+                bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 1, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cmine);
                 bar((helpw * 3 / 2 - iconw * 12) / 2 + iconw * 2 - arroww * 0, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 15 - arrowh / 2, arroww, arrowh, cfg);
                 bar((helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 1, arroww, arrowh, cfg);
                 bar((helpw * 3 / 2 - arroww) / 2, (helph - okh_ - iconh * 20) / 2 + menuh + iconh * 20 - arrowh * 0, arroww, arrowh, cbg);
