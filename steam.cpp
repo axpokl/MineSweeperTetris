@@ -248,6 +248,11 @@ void Steam::loadscr()
                 scr[scrid] = 0;
                 steamb = false;
             }
+            //printf("%d %s %d\n",scrid,scrs[scrid],scr[scrid]);
+        }
+        if (scr[4] > 9998)
+        {
+            resetach();
         }
         setlead();
     }

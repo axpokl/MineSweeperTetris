@@ -84,7 +84,7 @@ public:
     pbitmap parrowm;
     pbitmap parrowp;
 
-    const long transparent_ = 2;
+    long transparent_ = 0xAFAFAF;
     long color[9] = {silver, 0xAFAFAF, black, silver, red, blue, green, gray, silver};
     long colori = 0;
     long cfg;
@@ -444,6 +444,7 @@ void Window::initcolor()
     cline = color[7];
     cmine = color[8];
     bd.cred = cred;
+    transparent_ = cbg;
 }
 
 void Window::initbmp()
@@ -1470,7 +1471,7 @@ void Window::painttut()
             break;
     }
     setfontheight_(fontsh);
-    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tuti), 0, menuh + faceh, iconw * 12, fontsh * 6, ctfg, cbg, DT_WORDBREAK);
+    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tuti), 0, menuh + faceh, iconw * 12, fontsh * 8, ctfg, cbg, DT_WORDBREAK);
     setfontheight_(fonth);
 }
 
@@ -1513,7 +1514,7 @@ void Window::paintevent(bool freshb)
         paintface();
         paintlevel();
         paintboard();
-        if (bd.tutb == 1)
+        if (bd.tutb == 1 && bd.pauseb == 0)
         {
             painttut();
         }
@@ -1523,7 +1524,7 @@ void Window::paintevent(bool freshb)
         drawbmp(getwin(), pwin, 0, 0, w_, h_, 0, 0, w_, h_);
         drawbmp(pwin, getwin(), 0, 0, w_ * mult, h_ * mult);
     }
-    drawbmp(pwint, getwin(),0,0, w_ * mult, h_ * mult, transparent_);
+    drawbmp(pwint, getwin(), 0, 0, w_ * mult, h_ * mult, transparent_);
     if (freshb)
     {
         freshwin();
@@ -1991,6 +1992,13 @@ void Window::keyevent(long key)
             initwindow(false);
             break;
     }
+    if (cheatb)
+    {
+        if (key == k_c)
+        {
+            bd.st.resetach();
+        }
+    }
     if (helpi == -2)
     {
         switch (key)
@@ -2093,9 +2101,6 @@ void Window::keyevent(long key)
                     break;
                 case k_u:
                     bd.level++ ;
-                    break;
-                case k_c:
-                    bd.st.resetach();
                     break;
             }
             if (key >= k_4 || key <= k_0)
