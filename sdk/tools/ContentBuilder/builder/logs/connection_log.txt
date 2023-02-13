@@ -584,3 +584,55 @@
 [2023-02-13 18:19:08] [Logged On, 4, 3] [U:1:214053662] LogOff()
 [2023-02-13 18:19:08] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2023-02-13 18:19:08] [Logging Off, 0, 3] [U:1:214053662] Log session ended
+
+
+[2023-02-13 18:25:33] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2023-02-13 18:25:33] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2023-02-13 18:25:33] Clearing in-memory token - 1 (OK): set to null
+[2023-02-13 18:25:33] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2023-02-13 18:25:33] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-02-13 18:25:33] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-02-13 18:25:33] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2023-02-13 18:25:33] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2023-02-13 18:25:33] Connectivity test: OK!
+[2023-02-13 18:25:33] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2023-02-13 18:25:34] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:100::671c:3683]:80 ([2404:3fc0:2:100::671c:3683]:80)) - SUCCESS
+[2023-02-13 18:25:34] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:100::671c:3683]:80 ([2404:3fc0:2:100::671c:3683]:80)) - server indicated we are using ipv6, external address = '2404:f801:9000:18:efec::1e'
+[2023-02-13 18:25:34] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / [2404:3fc0:0:106::670a:7c54]:27019) - SUCCESS
+[2023-02-13 18:25:34] GetCMListForConnect -- got 7 Netfilter CMs and 73 WebSocket CMs
+[2023-02-13 18:25:34] GetCMListForConnect -- DC 'sgp1' count: 23
+[2023-02-13 18:25:34] GetCMListForConnect -- DC 'hkg1' count: 24
+[2023-02-13 18:25:34] GetCMListForConnect -- DC 'tyo1' count: 12
+[2023-02-13 18:25:34] GetCMListForConnect -- DC 'tyo2' count: 21
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 91% of connections should be websockets, we rolled 18 - using WebSockets as default.
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-sgp1.steamserver.net:27024) starting...
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-sgp1.steamserver.net:27029) starting...
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-sgp1.steamserver.net:443) starting...
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-hkg1.steamserver.net:27025) starting...
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-sgp1.steamserver.net:27029) results: 107.7170ms + load 57.0000
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:27037) starting...
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-sgp1.steamserver.net:443) results: 98.8308ms + load 67.0000
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-hkg1.steamserver.net:443) starting...
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-sgp1.steamserver.net:27024) results: 116.2031ms + load 54.0000
+[2023-02-13 18:25:34] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27020) starting...
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-hkg1.steamserver.net:27025) results: 194.3069ms + load 81.0000
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27021) starting...
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-hkg1.steamserver.net:27037) results: 178.9892ms + load 79.0000
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27019) starting...
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27020) results: 231.0278ms + load 48.0000
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27035) starting...
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext2-tyo1.steamserver.net:27021) results: 186.1815ms + load 45.0000
+[2023-02-13 18:25:35] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext3-hkg1.steamserver.net:443) failed talking to cm (timeout/neterror - Invalid)
+[2023-02-13 18:25:36] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27035) results: 166.5061ms + load 42.0000
+[2023-02-13 18:25:36] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (ext1-tyo2.steamserver.net:27019) results: 239.7487ms + load 44.0000
+[2023-02-13 18:25:36] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, ext2-sgp1.steamserver.net:27029, WebSocket)
+[2023-02-13 18:25:36] [Connecting, 4, 3] [U:1:214053662] ConnectionCompleted() (103.10.124.123:27029, WebSocket) local address (10.10.104.242:65471)
+[2023-02-13 18:25:36] [Connecting, 4, 3] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2023-02-13 18:25:36] [Connected, 4, 3] [U:1:214053662] Logging on [U:1:214053662]
+[2023-02-13 18:25:36] [Logging On, 4, 3] [U:1:214053662] Using credential pair
+[2023-02-13 18:25:36] [Logging On, 4, 3] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2023-02-13 18:25:36] CClientJobGetClientUpdateHosts: cached version not expired
+[2023-02-13 18:25:43] [Logged On, 4, 3] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1676283943 seconds ago)
+[2023-02-13 18:25:43] [Logged On, 4, 3] [U:1:214053662] LogOff()
+[2023-02-13 18:25:43] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2023-02-13 18:25:43] [Logging Off, 0, 3] [U:1:214053662] Log session ended
