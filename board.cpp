@@ -41,6 +41,7 @@ public:
     double mult;
     long delayb = 1;
     long mdb;
+    long mdb_ = false;
 
     long mx;
     long my;
@@ -986,7 +987,7 @@ void Board::setblock(long x, long y)
                             solveb = true;
                             checkerror(tx, ty);
                         }
-                        else
+                        else if (!mdb_)
                         {
                             qstn[tx][ty] = false;
                         }
@@ -1014,10 +1015,12 @@ void Board::clicknumb(long x, long y, bool sb_)
         rightb = 1;
     }
     setblock(x, y);
-    setblock(x, y);
-    setflag(x, y);
+    if (!mdb_ || tutb == 1)
+    {
+        setblock(x, y);
+        setflag(x, y);
+    }
 }
-
 
 void Board::clickleft(long x, long y, bool sb_)
 {
@@ -1055,9 +1058,11 @@ void Board::clickleft(long x, long y, bool sb_, long md_)
                     }
                 }
             }
-            else if (sb_ && (md_ != 5 || tutb == 1))
+            else if (sb_)
             {
+                mdb_ = (md_ == 5);
                 clicknumb(x, y, sb_);
+                mdb_ = false;
             }
         }
     }

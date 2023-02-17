@@ -172,6 +172,8 @@ public:
     void savescr();
     void switchskin();
     void switchskin(long colori_);
+    void tutevent(long ex, long ey, bool tutkb);
+    void mouseeventboard_(long ex_, long ey_, long eb_, long md_);
     void mouseeventboard(long ex_, long ey_, long eb_, long md_);
     void mouseevent(long ex_, long ey_, long eb_);
     void keyevent(long key);
@@ -1019,7 +1021,7 @@ void Window::painthelp()
             {
                 setfontheight_(fonth);
                 pbitmap pmenu__[16] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pmenun[singleb], pface[7], pface[6], pface[5]};
-                const char* keys[16] = {"1", "2", "3", "N", "Space", "H / F1", "A / F2", "E / F3", "T / F4", "S / F5", "M / F6", "D / F7", "R / F8", "K / F11", "P / F12", "Q / ESC"};
+                const char* keys[16] = {"1", "2", "3", "N", "Space", "H / F1", "B / F2", "E / F3", "T / F4", "S / F5", "M / F6", "G / F7", "R / F8", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[9] = {"4", "5", "6", "7", "8", "9", "0", "U", "C"};
                 const char* cheats[9] = {"Smart Solve", "Number Board ", "Auto Smart", "Auto Number", "Auto Blank", "Add Line", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[9] = {cblue, cblue, cblue, cblue, cblue, cred, cblue, cred, cred};
@@ -1613,6 +1615,57 @@ void Window::switchskin(long colori_)
     bd.sd.playsound(bd.sd.sRight);
 }
 
+void Window::tutevent(long ex, long ey, bool tutkb)
+{
+    bool tutmb = isin(ex, ey, (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
+    if (bd.tutb == 1 && (tutmb || tutkb))
+    {
+        if (bd.tuti == 13)
+        {
+            bd.maski++;
+            bd.tuti++;
+            bd.sd.playsound(bd.sd.sLeft);
+        }
+        else if (bd.tuti == 14)
+        {
+            bd.tutb = 0;
+            bd.time = gettimer();
+            helpb = false;
+            sethelp(1);
+        }
+    }
+}
+
+void Window::mouseeventboard_(long x, long y, long eb_, long md_)
+{
+    bool tutmb = (bd.tutb == 0) || (bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
+    if ((x != mx || y != my) && tutmb)
+    {
+        bd.mx = x;
+        bd.my = y;
+        if (eb_ == k_lmouse)
+        {
+            if (bd.sit == 0 && y >= bd.maskj && md_ >= 3)
+            {
+                bd.resetbd(x, y);
+            }
+            bd.clickleft(x, y, true, md_);
+        }
+        else if (eb_ == k_rmouse)
+        {
+            bd.clickright(x, y, true, md_);
+        }
+        paintevent();
+        bd.checkline(true);
+        mx = x;
+        my = y;
+        if (bd.tutb == 1)
+        {
+            bd.tuti++;
+        }
+    }
+}
+
 void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
 {
     long ex = ex_ / mult;
@@ -1623,50 +1676,8 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
     {
         x = ex / iconw;
         y = (ey - faceh - menuh) / iconh;
-        bool tutmb = (bd.tutb == 0) || (bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
-        if ((x != mx || y != my) && tutmb)
-        {
-            bd.mx = x;
-            bd.my = y;
-            if (eb_ == k_lmouse)
-            {
-                if (bd.sit == 0 && y >= bd.maskj && md_ >= 3)
-                {
-                    bd.resetbd(x, y);
-                }
-                bd.clickleft(x, y, true, md_);
-            }
-            else if (eb_ == k_rmouse)
-            {
-                bd.clickright(x, y, true, md_);
-            }
-            paintevent();
-            bd.checkline(true);
-            mx = x;
-            my = y;
-            if (bd.tutb == 1)
-            {
-                bd.tuti++;
-            }
-        }
-        bool tutmb13 = (bd.tuti == 13 && isin(ex, ey, (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh));
-        bool tutmb14 = (bd.tuti == 14 && isin(ex, ey, (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh));
-        if (bd.tutb == 1)
-        {
-            if (tutmb13)
-            {
-                bd.maski++;
-                bd.tuti++;
-                bd.sd.playsound(bd.sd.sLeft);
-            }
-            else if (tutmb14)
-            {
-                bd.tutb = 0;
-                bd.time = gettimer();
-                helpb = false;
-                sethelp(1);
-            }
-        }
+        mouseeventboard_(x, y, eb_, md_);
+        tutevent(ex, ey, false);
     }
 }
 
@@ -1920,7 +1931,7 @@ void Window::keyevent(long key)
         case k_f2:
             sethelp(-1);
             break;
-        case k_a:
+        case k_b:
             sethelp(-1);
             break;
         case k_f3:
@@ -1955,7 +1966,7 @@ void Window::keyevent(long key)
             }
             bd.sd.playsound(bd.sd.sLeft);
             break;
-        case k_d:
+        case k_g:
             md = (md + 1) % 4;
             if (md > 1)
             {
@@ -2011,6 +2022,11 @@ void Window::keyevent(long key)
     }
     if (helpi == 0)
     {
+        if (bd.mx == -1 && bd.my == -1 && (key == k_a || key == k_d || key == k_w || key == k_s || key == 188 || key == 190))
+        {
+            bd.mx = bd.w / 2;
+            bd.my = bd.h - 3;
+        }
         switch (key)
         {
             case k_esc:
@@ -2069,6 +2085,32 @@ void Window::keyevent(long key)
                 bd.maskj0++ ;
                 bd.maskj0 = min(bd.h - 4, bd.maskj0);
                 initwindow(true);
+                break;
+            case k_a:
+                bd.mx--;
+                bd.mx = max(0, bd.mx);
+                break;
+            case k_d:
+                bd.mx++;
+                bd.mx = min(bd.w - 1, bd.mx);
+                break;
+            case k_w:
+                bd.my--;
+                bd.my = max(0, bd.my);
+                break;
+            case k_s:
+                bd.my++;
+                bd.my = min(bd.h - 1, bd.my);
+                break;
+            case 188:
+                mx = -1;
+                my = -1;
+                mouseeventboard_(bd.mx, bd.my, k_lmouse, md + 4);
+                break;
+            case 190:
+                mx = -1;
+                my = -1;
+                mouseeventboard_(bd.mx, bd.my, k_rmouse, md + 4);
                 break;
         }
         if (cheatb)
