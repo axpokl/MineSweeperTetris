@@ -595,10 +595,10 @@ bool Board::checkerror(long i, long j)
         sit = 2;
         if (solven > 0 || tutb > 0)
         {
-        st.compscr(line - missline, mode, 6, ischeat());
-        missline = line;
-        missi++;
-        st.compscr(missi, mode, 12, ischeat());
+            st.compscr(line - missline, mode, 6, ischeat());
+            missline = line;
+            missi++;
+            st.compscr(missi, mode, 12, ischeat());
             addline();
             addline();
             checkline(true);
