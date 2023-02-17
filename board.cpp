@@ -987,7 +987,7 @@ void Board::setblock(long x, long y)
                             solveb = true;
                             checkerror(tx, ty);
                         }
-                        else if (!mdb_)
+                        else if (!mdb_ || tutb == 1)
                         {
                             qstn[tx][ty] = false;
                         }

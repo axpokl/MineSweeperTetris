@@ -1670,12 +1670,10 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
 {
     long ex = ex_ / mult;
     long ey = ey_ / mult;
-    long x;
-    long y;
     if ((ey - menuh >= faceh) && (helpi == 0) && (bd.sit < 4 && bd.pauseb == 0))
     {
-        x = ex / iconw;
-        y = (ey - faceh - menuh) / iconh;
+        long x = ex / iconw;
+        long y = (ey - faceh - menuh) / iconh;
         mouseeventboard_(x, y, eb_, md_);
         tutevent(ex, ey, false);
     }
@@ -2106,11 +2104,13 @@ void Window::keyevent(long key)
                 mx = -1;
                 my = -1;
                 mouseeventboard_(bd.mx, bd.my, k_lmouse, md + 4);
+                tutevent(0, 0, true);
                 break;
             case 190:
                 mx = -1;
                 my = -1;
                 mouseeventboard_(bd.mx, bd.my, k_rmouse, md + 4);
+                tutevent(0, 0, true);
                 break;
         }
         if (cheatb)
