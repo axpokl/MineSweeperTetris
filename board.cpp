@@ -593,12 +593,12 @@ bool Board::checkerror(long i, long j)
         flag[i][j] = true;
         qstn[i][j] = false;
         sit = 2;
+        if (solven > 0 || tutb > 0)
+        {
         st.compscr(line - missline, mode, 6, ischeat());
         missline = line;
         missi++;
         st.compscr(missi, mode, 12, ischeat());
-        if (solven > 0 || tutb > 0)
-        {
             addline();
             addline();
             checkline(true);

@@ -2103,14 +2103,14 @@ void Window::keyevent(long key)
             case 188:
                 mx = -1;
                 my = -1;
-                mouseeventboard_(bd.mx, bd.my, k_lmouse, md + 4);
                 tutevent(0, 0, true);
+                mouseeventboard_(bd.mx, bd.my, k_lmouse, md + 4);
                 break;
             case 190:
                 mx = -1;
                 my = -1;
-                mouseeventboard_(bd.mx, bd.my, k_rmouse, md + 4);
                 tutevent(0, 0, true);
+                mouseeventboard_(bd.mx, bd.my, k_rmouse, md + 4);
                 break;
         }
         if (cheatb)
