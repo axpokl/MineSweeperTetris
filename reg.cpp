@@ -3,6 +3,8 @@ class Reg
 
 public:
 
+    static const long maxbuf = 16384;
+
     HKEY regkey;
     HKEY regkey_;
     DWORD tp;
@@ -13,9 +15,9 @@ public:
     void openreg();
     void closereg();
     void setreg(HKEY key, const char* name, long value);
-    void getreg(HKEY key, const char* name, long *value);
-    void setreg_(HKEY key, const char* name, bool *value);
-    void getreg_(HKEY key, const char* name, bool *value);
+    void getreg(HKEY key, const char* name, long* value);
+    void setreg_(HKEY key, const char* name, char* value);
+    void getreg_(HKEY key, const char* name, char* value);
 
 };
 
@@ -31,8 +33,8 @@ Reg::~Reg()
 
 void Reg::openreg()
 {
-    RegCreateKeyEx(HKEY_CURRENT_USER,"SoftWare\\MineSweeperTetris\\20221219",0,NULL,0,KEY_ALL_ACCESS,NULL,&regkey,NULL);
-    RegCreateKeyEx(HKEY_CURRENT_USER,"SoftWare\\MineSweeperTetris\\20221219\\board",0,NULL,0,KEY_ALL_ACCESS,NULL,&regkey_,NULL);
+    RegCreateKeyEx(HKEY_CURRENT_USER, "SoftWare\\MineSweeperTetris\\20221219", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &regkey, NULL);
+    RegCreateKeyEx(HKEY_CURRENT_USER, "SoftWare\\MineSweeperTetris\\20221219\\board", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &regkey_, NULL);
 }
 
 void Reg::closereg()
@@ -43,36 +45,30 @@ void Reg::closereg()
 
 void Reg::setreg(HKEY key, const char* name, long value)
 {
-    RegSetValueEx(key,name,0,REG_DWORD,(LPBYTE)&value,sizeof(DWORD));
+    RegSetValueEx(key, name, 0, REG_DWORD, (LPBYTE) &value, sizeof(DWORD));
 }
 
-void Reg::getreg(HKEY key, const char* name, long *value)
+void Reg::getreg(HKEY key, const char* name, long* value)
 {
     long temp;
     cb = sizeof(DWORD);
-    if (RegQueryValueEx(key,name,NULL,&tp,(LPBYTE)&temp,&cb) == ERROR_SUCCESS)
+    if (RegQueryValueEx(key, name, NULL, &tp, (LPBYTE) &temp, &cb) == ERROR_SUCCESS)
     {
         *value = temp;
     }
 }
 
-void Reg::setreg_(HKEY key, const char* name, bool *value)
+void Reg::setreg_(HKEY key, const char* name, char* value)
 {
-    RegSetValueEx(key,name,0,REG_BINARY,(LPBYTE)value,128*128);
+    RegSetValueEx(key, name, 0, REG_BINARY, (LPBYTE)value, maxbuf);
 }
 
-void Reg::getreg_(HKEY key, const char* name, bool *value)
+void Reg::getreg_(HKEY key, const char* name, char* value)
 {
-    char temp[128][128];
-    DWORD cb = 128*128;
-    if (RegQueryValueEx(key,name,NULL,&tp,(LPBYTE)temp,&cb) == ERROR_SUCCESS)
+    char temp[maxbuf];
+    DWORD cb = maxbuf;
+    if (RegQueryValueEx(key, name, NULL, &tp, (LPBYTE)temp, &cb) == ERROR_SUCCESS)
     {
-        for (long j = 0; j < 128; j++)
-        {
-            for (long i = 0; i < 128; i++)
-            {
-                value[j * 128 + i] = temp[j][i];
-            }
-        }
+        memcpy(value, temp, maxbuf);
     }
 }

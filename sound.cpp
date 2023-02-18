@@ -3,22 +3,27 @@ class Sound
 
 public:
 
-    long musicn;
+    static const long musici0 = -256;
+    static const long maxsound = 8;
+    static const long maxmusic = 5;
 
-    unsigned long sBlank;
-    unsigned long sWin;
-    unsigned long sLose;
-    unsigned long sError;
-    unsigned long sLeft;
-    unsigned long sRight;
-    unsigned long sFlag;
-    unsigned long sNew;
-    unsigned long sSolve;
-    unsigned long sMusic[10];
+    unsigned long sSound[maxsound];
+    unsigned long sMusic[maxmusic];
+
+    const char* sSounds[maxsound] = {"Win", "Lose", "Error", "Left", "Right", "Flag", "New", "Solve"};
+
+    long sWin = 0;
+    long sLose = 1;
+    long sError = 2;
+    long sLeft = 3;
+    long sRight = 4;
+    long sFlag = 5;
+    long sNew = 6;
+    long sSolve = 7;
 
     bool soundb = true;
     bool musicb = true;
-    long musici = -256;
+    long musici = musici0;
     double musictime;
 
     Sound();
@@ -35,7 +40,6 @@ public:
 
 Sound::Sound()
 {
-    musicn = 5;
 }
 
 void Sound::initsound()
@@ -49,20 +53,16 @@ void Sound::loadsound()
 {
     if (iswin())
     {
-        sWin = loadaudio("./wav/Win.wav");
-        sLose = loadaudio("./wav/Lose.wav");
-        sError = loadaudio("./wav/Error.wav");
-        sLeft = loadaudio("./wav/Left.wav");
-        sRight = loadaudio("./wav/Right.wav");
-        sFlag = loadaudio("./wav/Flag.wav");
-        sNew = loadaudio("./wav/New.wav");
-        sSolve = loadaudio("./wav/Solve.wav");
+        for (long id = 0; id < maxsound; id++)
+        {
+            sSound[id] = loadaudio((mystring)"./wav/"+sSounds[id]+(mystring)".wav");
+        }
     }
 }
 
 void Sound::loadmusic()
 {
-    for (long k = 0; k < musicn; k++)
+    for (long k = 0; k < maxmusic; k++)
     {
         if (iswin())
         {
@@ -75,7 +75,7 @@ void Sound::playsound(long id)
 {
     if (iswin() && soundb)
     {
-        setaudiopos(id, 0);
+        setaudiopos(sSound[id], 0);
     }
 }
 
@@ -94,13 +94,13 @@ void Sound::playmusic()
     {
         if (iswin())
         {
-            if (musici == -256)
+            if (musici == musici0)
             {
                 musici = 0;
             }
             else
             {
-                long musici_ = rand() % (musicn - 1);
+                long musici_ = rand() % (maxmusic - 1);
                 if (musici_ >= musici)
                 {
                     musici_++;
@@ -111,7 +111,7 @@ void Sound::playmusic()
         }
         else
         {
-            musici = -256;
+            musici = musici0;
             musictime = 0;
         }
         setaudiopos(sMusic[musici], 0);

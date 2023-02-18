@@ -1,6 +1,5 @@
 #include "disp.h"
 #include "stdio.h"
-using namespace std;
 
 #include "lan.cpp"
 #include "reg.cpp"

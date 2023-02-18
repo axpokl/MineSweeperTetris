@@ -3,6 +3,9 @@ class Block
 
 public:
 
+    static const long maxw = 128;
+    static const long maxh = 128;
+
     long w = 0;
     long h = 0;
     long n = 0;
@@ -15,14 +18,14 @@ public:
     long tx;
     long ty;
 
-    bool flag[128][128];
-    bool qstn[128][128];
-    bool mine[128][128];
-    bool blck[128][128];
-    bool mask[128][128];
-    long numb[128][128];
-    bool leftrule[128][128];
-    bool rightrule[128][128];
+    bool flag[maxw][maxh];
+    bool qstn[maxw][maxh];
+    bool mine[maxw][maxh];
+    bool blck[maxw][maxh];
+    bool mask[maxw][maxh];
+    long numb[maxw][maxh];
+    bool leftrule[maxw][maxh];
+    bool rightrule[maxw][maxh];
 
     Block();
     void initbl();

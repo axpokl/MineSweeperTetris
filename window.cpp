@@ -230,11 +230,11 @@ void Window::savesetting()
 
 void Window::loadboard()
 {
-    reg.getreg_(reg.regkey_, "flag", (bool*)&bd.flag[0][0]);
-    reg.getreg_(reg.regkey_, "qstn", (bool*)&bd.qstn[0][0]);
-    reg.getreg_(reg.regkey_, "mine", (bool*)&bd.mine[0][0]);
-    reg.getreg_(reg.regkey_, "blck", (bool*)&bd.blck[0][0]);
-    reg.getreg_(reg.regkey_, "mask", (bool*)&bd.mask[0][0]);
+    reg.getreg_(reg.regkey_, "flag", (char*)&bd.flag[0][0]);
+    reg.getreg_(reg.regkey_, "qstn", (char*)&bd.qstn[0][0]);
+    reg.getreg_(reg.regkey_, "mine", (char*)&bd.mine[0][0]);
+    reg.getreg_(reg.regkey_, "blck", (char*)&bd.blck[0][0]);
+    reg.getreg_(reg.regkey_, "mask", (char*)&bd.mask[0][0]);
     reg.getreg(reg.regkey_, "mode", (long*)&bd.mode);
     reg.getreg(reg.regkey_, "w", (long*)&bd.w);
     reg.getreg(reg.regkey_, "h", (long*)&bd.h);
@@ -262,11 +262,11 @@ void Window::loadboard()
 
 void Window::saveboard()
 {
-    reg.setreg_(reg.regkey_, "flag", &bd.flag[0][0]);
-    reg.setreg_(reg.regkey_, "qstn", &bd.qstn[0][0]);
-    reg.setreg_(reg.regkey_, "mine", &bd.mine[0][0]);
-    reg.setreg_(reg.regkey_, "blck", &bd.blck[0][0]);
-    reg.setreg_(reg.regkey_, "mask", &bd.mask[0][0]);
+    reg.setreg_(reg.regkey_, "flag", (char*)&bd.flag[0][0]);
+    reg.setreg_(reg.regkey_, "qstn", (char*)&bd.qstn[0][0]);
+    reg.setreg_(reg.regkey_, "mine", (char*)&bd.mine[0][0]);
+    reg.setreg_(reg.regkey_, "blck", (char*)&bd.blck[0][0]);
+    reg.setreg_(reg.regkey_, "mask", (char*)&bd.mask[0][0]);
     reg.setreg(reg.regkey_, "mode", bd.mode);
     reg.setreg(reg.regkey_, "w", bd.w);
     reg.setreg(reg.regkey_, "h", bd.h);

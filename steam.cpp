@@ -11,7 +11,7 @@ public:
     bool steamb;
     bool cheatb = false;
 
-    const long achn = 26;
+    static const long achn = 26;
     long achgenstart = 0;
     long achgencustom = 1;
     long achgenmode = 2;
@@ -38,7 +38,7 @@ public:
     long achcumtotal1000 = 23;
     long achcumtotal10000 = 24;
     long achcumtotal100000 = 25;
-    const char* achs[26] =
+    const char* achs[achn] =
     {
         "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
         "HID_CHEAT", "HID_EDGE", "HID_MARK", "HID_RIGHT", "HID_ALIVE",
@@ -47,9 +47,9 @@ public:
         "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
         "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000", "CUM_TOTAL_100000"
     };
-    bool achb[26];
+    bool achb[achn];
 
-    const long scrn = 19;
+    static const long scrn = 19;
     long scrdead = 0;
     long scrfour = 1;
     long scrtotal = 2;
@@ -57,7 +57,7 @@ public:
     long scrline1 = 4;
     long scrline2 = 5;
     long scrline3 = 6;
-    const char* scrs[19] =
+    const char* scrs[scrn] =
     {
         "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE",
         "STAT_LINE1", "STAT_LINE2", "STAT_LINE3",
@@ -66,11 +66,11 @@ public:
         "STAT_LINE1_T", "STAT_LINE2_T", "STAT_LINE3_T",
         "STAT_LINE1_M", "STAT_LINE2_M", "STAT_LINE3_M"
     };
-    long scr[19];
+    long scr[scrn];
     bool newrecord = false;
 
-    const long leadn = 15;
-    const char* leads[15] =
+    static const long leadn = 15;
+    const char* leads[leadn] =
     {
         "1_TOP", "2_TOP", "3_TOP",
         "1_TOP_N", "2_TOP_N", "3_TOP_N",
@@ -78,21 +78,22 @@ public:
         "1_TOP_T", "2_TOP_T", "3_TOP_T",
         "1_TOP_M", "2_TOP_M", "3_TOP_M"
     };
-    long leadk_[3] = {20, 15,1};
-    SteamAPICall_t lead[15];
-    SteamAPICall_t lead_[3][15];
+    long leadk_[3] = {20, 15, 1};
+    SteamAPICall_t lead[leadn];
+    SteamAPICall_t lead_[3][leadn];
     LeaderboardFindResult_t leadr;
     LeaderboardScoreUploaded_t leadu;
     LeaderboardScoresDownloaded_t leadd;
-    SteamLeaderboard_t leadb[15];
-    SteamLeaderboardEntries_t leaden[3][15];;
+    SteamLeaderboard_t leadb[leadn];
+    SteamLeaderboardEntries_t leaden[3][leadn];;
     bool leadfailed = true;
-    LeaderboardEntry_t leadsn[3][15][20];
+    LeaderboardEntry_t leadsn[3][leadn][20];
     double waittime = 5;
 
     Steam();
     ~Steam();
     void initsteam();
+    void loadlan();
     void exitsteam();
     void loadsteam();
 
@@ -105,7 +106,7 @@ public:
     void setscr(long scrid);
     void addscr(long scrid, long val, long mode);
     void maxscr(long val, long scrline__);
-    void compscr(long val, long mode, long index, bool cheatb_);
+    void compscr(long val, long mode, long index);
 
     void loadlead();
     void getlead();
@@ -121,6 +122,7 @@ public:
 Steam::Steam()
 {
     initsteam();
+    loadlan();
 }
 
 Steam::~Steam()
@@ -143,8 +145,15 @@ void Steam::initsteam()
     {
         if (SteamUtils()->GetAppID() != appid)
         {
-            msgbox("This is the test version of MineSweeper Tetris, please download the  build version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
+            msgbox("This is the test version of MineSweeper Tetris, please download the released version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
         }
+    }
+}
+
+void Steam::loadlan()
+{
+    if (steamb)
+    {
         lan.initlan(SteamUtils()->GetSteamUILanguage());
         lan.initlan(SteamApps()->GetCurrentGameLanguage());
     }
@@ -299,24 +308,27 @@ void Steam::addscr(long scrid, long val, long mode)
 
 void Steam::maxscr(long val, long scrline__)
 {
-    if (val > scr[scrline__])
+    if (steamb)
     {
-        scr[scrline__] = val;
-        setscr(scrline__);
-        if (scrline__ < 7)
+        if (val > scr[scrline__])
         {
-            scr[scrline] = max(scr[scrline], scr[scrline__]);
-            setscr(scrline);
+            scr[scrline__] = val;
+            setscr(scrline__);
+            if (scrline__ < 7)
+            {
+                scr[scrline] = max(scr[scrline], scr[scrline__]);
+                setscr(scrline);
+            }
+            newrecord = true;
         }
-        newrecord = true;
     }
 }
 
-void Steam::compscr(long val, long mode, long index, bool cheatb_)
+void Steam::compscr(long val, long mode, long index)
 {
     if (steamb)
     {
-        if (!cheatb && !cheatb_ && mode > 0)
+        if (!cheatb && mode > 0)
         {
             long scrline_ = -1;
             switch (mode)
