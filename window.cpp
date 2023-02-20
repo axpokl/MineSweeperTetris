@@ -1663,6 +1663,7 @@ void Window::mouseeventboard_(long x, long y, long eb_, long md_)
         {
             bd.tuti++;
         }
+        paintevent();
     }
 }
 
@@ -2204,12 +2205,10 @@ void Window::doaction()
             if (ml)
             {
                 mouseeventboard(getmouseposx(), getmouseposy(), k_lmouse, md);
-                paintevent();
             }
             if (mr)
             {
                 mouseeventboard(getmouseposx(), getmouseposy(), k_rmouse, md);
-                paintevent();
             }
         }
         if (iskey())
