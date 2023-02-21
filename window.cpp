@@ -697,21 +697,21 @@ void Window::paintnumber(long n, long l, long x, long y)
 void Window::paintlevel()
 {
     long score = bd.line;
-    if (singleb && bd.mode > 0)
+    if (singleb)
     {
         score = bd.line - bd.missline;
     }
     if (score < 10000)
     {
-        paintnumber(score, 4, 0, digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score, 4, 0, digth[0], singleb * 2);
     }
     else if (score < 100000)
     {
-        paintnumber(score, 5, 0, digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score, 5, 0, digth[0], singleb * 2);
     }
     else
     {
-        paintnumber(score, 6, 0, digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score, 6, 0, digth[0], singleb * 2);
     }
     long score2 = bd.level;
     if (singleb)
@@ -720,19 +720,19 @@ void Window::paintlevel()
     }
     if (score2 < 100)
     {
-        paintnumber(score2, 2, w_ - 2 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score2, 2, w_ - 2 * digtw[0], digth[0], singleb * 2);
     }
     else if (score2 < 1000)
     {
-        paintnumber(score2, 3, w_ - 3 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score2, 3, w_ - 3 * digtw[0], digth[0], singleb * 2);
     }
     else if (score2 < 10000)
     {
-        paintnumber(score2, 4, w_ - 4 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score2, 4, w_ - 4 * digtw[0], digth[0], singleb * 2);
     }
     else
     {
-        paintnumber(score2, 5, w_ - 5 * digtw[0], digth[0], singleb * (bd.mode > 0) * 2);
+        paintnumber(score2, 5, w_ - 5 * digtw[0], digth[0], singleb * 2);
     }
 }
 
@@ -943,7 +943,7 @@ void Window::painthelp()
                     for (long k = 0; k < 3; k++)
                     {
                         long score = bd.st.scr[scr__[k]];
-                        if (singleb && bd.mode > 0)
+                        if (singleb)
                         {
                             if (k == 0)
                             {
@@ -955,7 +955,7 @@ void Window::painthelp()
                             }
                         }
                         drawbmp(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw[0] - facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, facew, faceh, cfg);
-                        paintnumber(score, 4 + n__[k] * 2 + (bd.st.scr[scr__[k]] >= 10000) * (k < 2), helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, singleb * (bd.mode > 0) * (k < 2) * 2);
+                        paintnumber(score, 4 + n__[k] * 2 + (bd.st.scr[scr__[k]] >= 10000) * (k < 2), helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, singleb * (k < 2) * 2);
                     }
                     line(helpw / 3 * 1, menuh, 0, helph - okh_, cline);
                     line(helpw / 3 * 2, menuh, 0, helph - okh_, cline);

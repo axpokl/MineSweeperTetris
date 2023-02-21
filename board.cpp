@@ -161,6 +161,7 @@ void Board::initbd()
     mx = -1;
     my = -1;
     bouns = 0;
+    solven = 0;
 }
 
 void Board::initbd(long w_, long h_, long maskj_, long n_)
