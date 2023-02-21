@@ -257,6 +257,7 @@ void Window::loadboard()
     reg.getreg(reg.regkey_, "my", (long*)&bd.my);
     reg.getreg(reg.regkey_, "bouns", (long*)&bd.bouns);
     reg.getreg(reg.regkey_, "mdb", (long*)&bd.mdb);
+    reg.getreg(reg.regkey_, "solven", (long*)&bd.solven);
     bd.calcnumb();
 }
 
@@ -289,6 +290,7 @@ void Window::saveboard()
     reg.setreg(reg.regkey_, "my", bd.my);
     reg.setreg(reg.regkey_, "bouns", bd.bouns);
     reg.setreg(reg.regkey_, "mdb", bd.mdb);
+    reg.setreg(reg.regkey_, "solven", bd.solven);
 }
 
 void Window::loadall()
