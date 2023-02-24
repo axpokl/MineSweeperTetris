@@ -373,11 +373,11 @@ void Window::initwindow()
     pwin = createbmp(w_, h_);
     pwint = createbmp(w_ * mult, h_ * mult, transparent_);
     hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
-    if (hicon == 0)
-    {
-        hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
-    }
-    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_BIG, (LPARAM)hicon);delay(10);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);delay(10);
+    hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_BIG, (LPARAM)hicon);delay(10);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);delay(10);
     settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE));
     LOGFONT lf;
     SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(LOGFONT),&lf,0);
@@ -989,7 +989,10 @@ void Window::painthelp()
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(10 - 1);
                 for (long k = 0; k < 10; k++)
                 {
+if (psetting__[k] != NULL)
+{
                     drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
+}
                     if (k != 3 && k != 6)
                     {
                         drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4 - facew - iconw * 2, faceh, ctfg, cbg, DT_LEFT);
