@@ -653,8 +653,10 @@ var _tbegin:double;                   //´°¿Ú½¨Á¢Ê±¼ä
     _draw:procedure;                  //»æÍ¼º¯Êý
 
 var _pe:longword;                     //»­±Ê
+    _pec:longword=TRANSPARENT;        //»­±Ê
     _pew:longword=1;                  //»­Ë¢
     _br:longword;                     //»­Ë¢
+    _brc:longword=TRANSPARENT;        //»­Ë¢
 
 var _fx,_fy:longint;                  //ÎÄ×ÖÊä³öÎ»ÖÃ
     _fw,_fh,_fwg:longword;            //×ÖÌå³¤¿í´ÖÏ¸
@@ -1748,17 +1750,25 @@ procedure SetPenWidth(pew:longword);
 begin _pew:=pew;end;
 procedure SetPenColor(b:pbitmap;c:longword);
 begin
+if c<>_pec then
+begin
+_pec:=c;
 DeleteObject(_pe);
 if c=TRANSPARENT then _pe:=GetStockObject(NULL_PEN)
 else _pe:=CreatePen(PS_SOLID,_pew,c);
 SelectObject(b^.dc,_pe);
 end;
+end;
 procedure SetBrushColor(b:pbitmap;c:longword);
 begin
+if c<>_brc then
+begin
+_brc:=c;
 DeleteObject(_br);
 if c=TRANSPARENT then _br:=GetStockObject(NULL_BRUSH)
 else _br:=CreateSolidBrush(c);
 SelectObject(b^.dc,_br);
+end;
 end;
 procedure SetPenColor(c:longword);
 begin SetPenColor(_pmain,c);end;
@@ -2185,10 +2195,17 @@ lpRect.left:=x;
 lpRect.top:=y;
 lpRect.right:=x+w;
 lpRect.bottom:=y+h;
-SetPenColor(b,cfg);
-SetBrushColor(b,cbg);
-if cbg<>Transparent then Windows.FillRect(b^.dc,lpRect,_br);
-if cfg<>Transparent then Windows.FrameRect(b^.dc,lpRect,_pe);
+if cbg<>Transparent then 
+  begin
+  SetBrushColor(b,cbg);
+  Windows.FillRect(b^.dc,lpRect,_br);
+  end;
+if cfg<>Transparent then
+  begin
+  SetBrushColor(b,cfg);
+  SetpenColor(b,cfg);
+  Windows.FrameRect(b^.dc,lpRect,_pe);
+  end;
 end;
 procedure Bar(b:pbitmap;x,y,w,h:longint;c:longword);
 begin Bar(b,x,y,w,h,0,c);end;
