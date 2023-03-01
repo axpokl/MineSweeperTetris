@@ -1,5 +1,6 @@
 class Window
 {
+
 public:
 
     const long launchw = 320;
@@ -141,6 +142,7 @@ public:
     void loadboard();
     void saveboard();
     void initmult();
+    void loadicon();
     void loadall();
     void initwindow();
     void releasewindow();
@@ -357,6 +359,20 @@ void Window::initmult()
     bd.mult = mult;
 }
 
+void Window::loadicon()
+{
+    hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_BIG, (LPARAM)hicon);
+    delay(10);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
+    delay(10);
+    hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_BIG, (LPARAM)hicon);
+    delay(10);
+    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
+    delay(10);
+}
+
 void Window::initwindow()
 {
     initcolor();
@@ -372,12 +388,7 @@ void Window::initwindow()
     createwin(x_, y_, w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
     pwin = createbmp(w_, h_);
     pwint = createbmp(w_ * mult, h_ * mult, transparent_);
-    hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
-    if (hicon == 0)
-    {
-        hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
-    }
-    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
+    loadicon();
     settitlew(bd.st.lan.getlan(bd.st.lan.LAN_TITLE));
     LOGFONT lf;
     SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(LOGFONT),&lf,0);
@@ -989,7 +1000,10 @@ void Window::painthelp()
                 double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(10 - 1);
                 for (long k = 0; k < 10; k++)
                 {
-                    drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
+                    if (psetting__[k] != NULL)
+                    {
+                        drawbmp(psetting__[k], helpw__, helph__ * k + menuh + iconh, facew, faceh, cfg);
+                    }
                     if (k != 3 && k != 6)
                     {
                         drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + settinglan[k]), helpw__ + facew + iconw, helph__ * k + menuh + iconh, helpw / 4 - facew - iconw * 2, faceh, ctfg, cbg, DT_LEFT);
@@ -1433,6 +1447,7 @@ void Window::painthelp()
 
 void Window::painttut()
 {
+    setfontheight_(fonth);
     long i = bd.tutx[bd.tuti];
     long j = bd.tuty[bd.tuti];
     bar(i * iconw, j * iconh + menuh + faceh, iconw - 1, iconh - 1, cred, transparent);

@@ -154,8 +154,16 @@ void Steam::loadlan()
 {
     if (steamb)
     {
-        lan.initlan(SteamUtils()->GetSteamUILanguage());
-        lan.initlan(SteamApps()->GetCurrentGameLanguage());
+        const char* lanui = SteamUtils()->GetSteamUILanguage();
+        const char* langame = SteamApps()->GetCurrentGameLanguage();
+        if (strcmp(langame, lan.lanshort[23]) == 0)
+        {
+            lan.initlan(lanui);
+        }
+        else
+        {
+            lan.initlan(langame);
+        }
     }
 }
 

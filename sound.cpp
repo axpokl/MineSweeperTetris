@@ -84,7 +84,7 @@ void Sound::switchsound()
     soundb = !soundb;
     if (iswin() && soundb)
     {
-        setaudiopos(sLeft, 0);
+        playsound(sLeft);
     }
 }
 
@@ -149,6 +149,6 @@ void Sound::switchmusic()
     }
     if (soundb)
     {
-        setaudiopos(sLeft, 0);
+        playsound(sLeft);
     }
 }
