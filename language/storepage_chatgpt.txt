@@ -1,0 +1,20 @@
+Introduction
+Minesweeper Tetris is a new 2D casual game that combines the best elements of two classic games, Minesweeper and Tetris. 
+The main difference from traditional Minesweeper is that the minefield in Minesweeper Tetris is constantly growing upwards, and the game does not end immediately when hitting a mine by mistake. Instead, a punishment occurs: the minefield instantly increases by two lines until it reaches the edge.
+Similar to Tetris, a row is cleared when all the mines in a row are found. When the game board has less than four lines, the game triggers Tetris: four lines are immediately added, and massive points are awarded. 
+As the score increases, the game levels up, and the minefield grows faster, making the game more challenging and exciting.
+There are three standard minefields in the game: Easy, Normal, and Hard. The game board can also be customized by changing the size of the board and the number of mines through shortcut keys. 
+When the game is over, the score is recorded on the high score list. There are five leaderboards in the game, allowing players to compete in various skills.
+Gameplay
+Unlike traditional Minesweeper, right-clicking marks a block with a question mark instead of a flag. A block is only marked as a flag when it is absolutely certain to be a mine, e.g., left-clicking on a mine. 
+A block can be marked as a flag by clicking on the number around it, and it is not necessary to click both left and right buttons simultaneously. The game will automatically and intelligently mark the flag according to the situation of marked, unmarked blocks, and mines. 
+The four drag modes in the game make the gameplay smoother, increase the speed of minesweeping, and result in higher scores.
+For fairness, the game has an AI system. When the AI judges that there is no solution to the block on the game board, clicking on the mines will not cause punishment.
+Features
+The in-game tutorial teaches players how to play the game. The illustrations in the help menu help players understand the gameplay, rules, and minesweeping skills. 
+The music in the game can also help players relieve nervous tension during the game, and the game's sound effects remind players of the status of minesweeping.
+The six skins of the game can help alleviate eye fatigue produced during long-term games and increase the fun of the game. 
+The size of the game window can be adjusted to accommodate changes in the game board size, ensuring that the screen and resolution are adapted accordingly.
+The hidden cheat mode will show the solvable blocks and clear mines automatically, helping players understand and learn the process of minesweeping. 
+The variety of number displays in the game can help players better understand the current status of minesweeper game.
+Minesweeper Tetris is a new 2D casual game that combines the best elements of two classic games, Minesweeper and Tetris. The minefield constantly grows upward, and row is cleared when player finds all mines in it.

@@ -1,52 +1,52 @@
 Enter Minefield
-Start play the game
-Special Minefield
-Customize game board
-Standard Minefields
-Try all 3 game modes of Easy, Medium and Hard
+Start playing the game
+Exclusive Minefield
+Customize the game board
+Classic Minefields
+Try all 3 game modes: Easy, Medium, and Hard
 Mines and Peace
 Pause the game
 Minesweeper Manual
-Read all help page
-There's a red mine in the game
+Read all help pages
+A scarlet mine awaits
 Enter debug mode
-Hit the edge of number
-Reach 9999 lines in one single game
-My mind is full of question
-Mark each cell as a question mark for the entire game board
-The right mouse button is broken
-Lose the game without right click
-Come back to live
-Survive after the entire board is full
+Reaching the pinnacle of score
+Achieve the highest score of 9999 lines in a single game
+My mind is filled with questions
+Mark each cell with a question mark across the entire game board
+I don't know what the number means
+Lose the game without clicking the number
+Struggling on the line of death
+Survive after the entire board is filled
 First Blood
-Click the mine for the first time
-No fear of making mistakes
-Click the mine for the 10 times
-Failure is the mother of success
-Click the mine for the 100 times
-To be or not to be
-Click the mine for the 1000 times
+Click on a mine for the first time
+Unafraid of errors
+Click on a mine for the 10th time
+Failures lead to success
+Click on a mine for the 100th time
+To mine or not to mine
+Click on a mine for the 1000th time
 Play Tetris
 Eliminate four lines for the first time
-All Clear
+Obstacles cleared
 Eliminate four lines 10 times
 Ultimate Elimination
 Eliminate four lines 100 times
-Game made of Tetris
+Game without Tetris is no game
 Eliminate four lines 1000 times
-Minesweeper Learner
+Minesweeper Apprentice
 Score 100 points in a single game
 Minesweeper Senior
 Score 300 points in a single game
-Minesweeper Professor
+Minesweeper Scholar
 Score 600 points in a single game
-Minesweeper Master
+Minesweeper Grandmaster
 Score 1000 points in a single game
-Easy Mine
+Easy Mines
 Flag 100 mines in total
-Factory of Mine
+Mine Hunter
 Flag 1000 mines in total
-Expert of Mine
+Mine Connoisseur
 Flag 10000 mines in total
-Life without Mine
+Life without Mines is chaos
 Flag 100000 mines in total
