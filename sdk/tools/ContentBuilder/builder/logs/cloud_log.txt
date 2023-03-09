@@ -4779,3 +4779,25 @@
 [2023-03-09 19:09:35] [AppID 7] Successfully synced to ChangeNumber 0
 [2023-03-09 19:09:35] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
 [2023-03-09 19:09:35] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2023-03-09 20:49:30] [AppID 7] Starting sync (init,)
+[2023-03-09 20:49:30] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-03-09 20:49:30] [U:1:214053662] [AppID 7] Init cache request complete
+[2023-03-09 20:49:30] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-03-09 20:49:33] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2023-03-09 20:49:33] [AppID 7] Starting sync (eval,)
+[2023-03-09 20:49:33] [AppID 7] AutoCloud checking local state for user 214053662
+[2023-03-09 20:49:34] [AppID 7] Currently already synced to global change number '16184781852349593071', should be nothing to download
+[2023-03-09 20:49:34] [AppID 7] File is in sync serverbrowser_hist.vdf
+[2023-03-09 20:49:34] [AppID 7] File is in sync sharedconfig.vdf
+[2023-03-09 20:49:34] [AppID 7] Eval complete
+[2023-03-09 20:49:34] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2023-03-09 20:49:34] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2023-03-09 20:49:34] [Roaming Config] PerformSyncCloud - all sync'd up
+[2023-03-09 20:49:34] [AppID 7] Starting sync (down,)
+[2023-03-09 20:49:34] [AppID 7] Currently already synced to global change number '16184781852349593071', should be nothing to download
+[2023-03-09 20:49:34] [AppID 7] Download complete in build list
+[2023-03-09 20:49:34] [AppID 7] Successfully synced to ChangeNumber 0
+[2023-03-09 20:49:34] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2023-03-09 20:49:34] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
