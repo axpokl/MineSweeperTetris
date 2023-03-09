@@ -636,7 +636,7 @@ bool Board::checkerror()
 
 void Board::checkline(bool delayb_)
 {
-    if (sit < 4 && pauseb == 0)
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
         long j;
         solve0_();
@@ -684,7 +684,7 @@ void Board::checkline(bool delayb_)
             if (delayb & delayb_)
             {
                 freshwin();
-                long dl = 500.0 / (1.0 + (double)level /5.0);
+                long dl = 1000.0 / (1.0 + (double)level /5.0);
                 time += dl / 1000.0;
                 delay(dl);
             }
@@ -696,32 +696,35 @@ void Board::checkline(bool delayb_)
 
 void Board::addline()
 {
-    bouns--;
-    maskj--;
-    long j = maskj;
-    if (maskj < 0)
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
-        maskjb = true;
-    }
-    else
-    {
+        bouns--;
+        maskj--;
+        long j = maskj;
+        if (maskj < 0)
+        {
+            maskjb = true;
+        }
+        else
+        {
+            for (long i = 0; i < w; i++)
+            {
+                mask[i][j] = false;
+            }
+        }
         for (long i = 0; i < w; i++)
         {
-            mask[i][j] = false;
-        }
-    }
-    for (long i = 0; i < w; i++)
-    {
-        for (long j = maskj + 1; j >= maskj; j--)
-        {
-            numb[i][j] = 0;
-            for (long k = 0; k < 8; k++)
+            for (long j = maskj + 1; j >= maskj; j--)
             {
-                if (isok(k, i, j, tx, ty))
+                numb[i][j] = 0;
+                for (long k = 0; k < 8; k++)
                 {
-                    if (mine[tx][ty])
+                    if (isok(k, i, j, tx, ty))
                     {
-                        numb[i][j]++;
+                        if (mine[tx][ty])
+                        {
+                            numb[i][j]++;
+                        }
                     }
                 }
             }
@@ -794,7 +797,7 @@ void Board::checkdie()
 
 void Board::delline(long l)
 {
-    if (sit < 4 && pauseb == 0)
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
         checkr = 0;
         maskj++;
@@ -913,7 +916,7 @@ void Board::setqstn(long x, long y)
 
 void Board::setflag(long x, long y)
 {
-    if (sit < 4 && pauseb == 0)
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
         long qc = 0;
         bool sc = false;
@@ -952,7 +955,7 @@ void Board::setflag(long x, long y)
 
 void Board::setblock(long x, long y)
 {
-    if (sit < 4 && pauseb == 0)
+    if (sit > 0 && sit < 4 && pauseb == 0)
     {
         long qn = 0;
         long qq = 0;
