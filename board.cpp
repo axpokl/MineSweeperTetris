@@ -40,6 +40,7 @@ public:
     long cred;
     double mult;
     long delayb = 1;
+    long delayb__ = 0;
     long mdb;
     long mdb_ = false;
 
@@ -687,6 +688,7 @@ void Board::checkline(bool delayb_)
                 long dl = 1000.0 / (1.0 + (double)level /5.0);
                 time += dl / 1000.0;
                 delay(dl);
+                delayb__ = 1;
             }
         }
         solve0_();

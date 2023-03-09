@@ -2132,6 +2132,7 @@ void Window::keyevent(long key)
                 break;
             case k_u:
                 bd.addline();
+                bd.sd.playsound(bd.sd.sLeft);
                 paintevent();
                 bd.checkline(true);
                 bd.checkdie();
@@ -2201,51 +2202,55 @@ void Window::doaction()
 {
     while (isnextmsg())
     {
-        ml = GetAsyncKeyState(VK_LBUTTON);
-        mr = GetAsyncKeyState(VK_RBUTTON);
-        if (ismouseleft())
+        if (bd.delayb__ == 0)
         {
-            mi = true;
-            mx = -1;
-            my = -1;
-            mouseevent(getmouseposx(), getmouseposy(), k_lmouse);
-        }
-        if (ismouseright())
-        {
-            mi = true;
-            mx = -1;
-            my = -1;
-            mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
-        }
-        if (ismousemove() && (md >= 2) && (bd.tutb == 0) && mi)
-        {
-            if (ml)
+            ml = GetAsyncKeyState(VK_LBUTTON);
+            mr = GetAsyncKeyState(VK_RBUTTON);
+            if (ismouseleft())
             {
-                mouseeventboard(getmouseposx(), getmouseposy(), k_lmouse, md);
+                mi = true;
+                mx = -1;
+                my = -1;
+                mouseevent(getmouseposx(), getmouseposy(), k_lmouse);
             }
-            if (mr)
+            if (ismouseright())
             {
-                mouseeventboard(getmouseposx(), getmouseposy(), k_rmouse, md);
+                mi = true;
+                mx = -1;
+                my = -1;
+                mouseevent(getmouseposx(), getmouseposy(), k_rmouse);
             }
-        }
-        if (iskey())
-        {
-            keyevent(getkey());
-        }
-        if (ismsg(WM_PAINT) || ismsg(WM_NCLBUTTONDOWN) || ismsg(WM_SYSCOMMAND))
-        {
-            GetWindowPlacement((HWND)gethwnd(),&wn);
-            showmax = ((wn.showCmd & SW_SHOWMAXIMIZED) == SW_SHOWMAXIMIZED);
-            if (showmax != showmax_)
+            if (ismousemove() && (md >= 2) && (bd.tutb == 0) && mi)
             {
-                mult_ = showmax;
-                initwindow(false);
-                bd.sd.playsound(bd.sd.sRight);
-                showmax_ = showmax;
+                if (ml)
+                {
+                    mouseeventboard(getmouseposx(), getmouseposy(), k_lmouse, md);
+                }
+                if (mr)
+                {
+                    mouseeventboard(getmouseposx(), getmouseposy(), k_rmouse, md);
+                }
             }
-            paintevent();
+            if (iskey())
+            {
+                keyevent(getkey());
+            }
+            if (ismsg(WM_PAINT) || ismsg(WM_NCLBUTTONDOWN) || ismsg(WM_SYSCOMMAND))
+            {
+                GetWindowPlacement((HWND)gethwnd(),&wn);
+                showmax = ((wn.showCmd & SW_SHOWMAXIMIZED) == SW_SHOWMAXIMIZED);
+                if (showmax != showmax_)
+                {
+                    mult_ = showmax;
+                    initwindow(false);
+                    bd.sd.playsound(bd.sd.sRight);
+                    showmax_ = showmax;
+                }
+                paintevent();
+            }
         }
     }
+    bd.delayb__ = 0;
 }
 
 void Window::setfontname_(const char* s)

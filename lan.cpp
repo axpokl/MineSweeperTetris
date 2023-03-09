@@ -26,8 +26,8 @@ public:
     long LAN_LOAD_GRAPH = 13;
     long LAN_LOAD_WINDOW = 14;
     long LAN_HELP = 15;
-    long LAN_SET = LAN_HELP + 19;
-    long LAN_TUT_ = LAN_SET + 24;
+    long LAN_SET = LAN_HELP + 20;
+    long LAN_TUT_ = LAN_SET + 23;
     long LAN_TUT = LAN_TUT_ + 1;
     long LAN_MODE = LAN_TUT + 15;
 
