@@ -122,10 +122,10 @@ public:
     long x_ = 0;
     long y_ = 0;
     RECT rect;
-    static long xscr;
-    static long yscr;
-    static long wscr;
-    static long hscr;
+    long xscr = 0;
+    long yscr = 0;
+    long wscr = 0;
+    long hscr = 0;
     bool barb = true;
     long md = 0;
     bool ml = false;
@@ -192,32 +192,10 @@ public:
     void drawtextxy_(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg);
     unsigned long getstringwidth_(const char* s);
 
-    static BOOL CALLBACK Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdata);
-
+#include "mon.cpp"
 #include "utf.cpp"
 
 };
-
-long Window::xscr = 0;
-long Window::yscr = 0;
-long Window::wscr = 0;
-long Window::hscr = 0;
-
-BOOL CALLBACK Window::Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdata)
-{
-    MONITORINFOEX info;
-    info.cbSize = sizeof(MONITORINFOEX);
-    GetMonitorInfo(hmon, &info);
-    RECT work = info.rcWork;
-    if (getposx() >= work.left && getposx() <= work.right && getposy() >= work.top && getposy() <= work.bottom)
-    {
-        xscr = work.left;
-        yscr = work.top;
-        wscr = work.right - work.left;
-        hscr = work.bottom - work.top;
-    }
-    return TRUE;
-}
 
 Window::Window()
 {
@@ -467,7 +445,7 @@ void Window::initwindow(bool b)
         pwin = createbmp(w_, h_);
         pwint = createbmp(w_ * mult, h_ * mult, transparent_);
         paintevent(false);
-        EnumDisplayMonitors(NULL, NULL, Monitorenumproc, 0);
+        EnumDisplayMonitors(NULL, NULL, Monitorenumproc, (LPARAM)this);
         setsize(x_ + xscr, y_ + yscr, w_ * mult, h_ * mult);
         freshwin();
     }
