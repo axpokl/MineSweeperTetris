@@ -995,7 +995,7 @@ void Window::painthelp()
             {
                 setfontheight_(fonth);
                 pbitmap psetting__[10] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], NULL, pface[8], pface[7], NULL, picon[0], picon[0], pmenun[singleb]};
-                long settinglan[10] = {9, 10, 11, 0, 16, 13, 0, 17, 18, 12};
+                long settinglan[10] = {10, 11, 12, 0, 17, 14, 0, 18, 19, 13};
                 long settingj[10] = {2, 2, 2, 2, 3, 3, 3, 2, 2, 2};
                 long settingb[10][3] = {{bd.sd.soundb, !bd.sd.soundb, 0}, {bd.sd.musicb, !bd.sd.musicb, 0}, {md == 0, md == 1, 0}, {md == 2, md == 3, 0}, {mult_ == 0, mult_ == 1, mult_ >= 2}, {colori == 0, colori == 1, colori == 2}, {colori == 3, colori == 4, colori == 5}, {bd.delayb == 1, bd.delayb == 0, 0}, {barb, !barb, 0}, {!singleb, singleb, 0}};
                 pbitmap psettingicon[2] = {piconc, piconf};

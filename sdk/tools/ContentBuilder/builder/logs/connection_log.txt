@@ -1520,3 +1520,47 @@
 [2023-03-10 08:51:08] [Logged On, 4, 3] [U:1:214053662] LogOff()
 [2023-03-10 08:51:08] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2023-03-10 08:51:08] [Logging Off, 0, 3] [U:1:214053662] Log session ended
+
+
+[2023-03-25 03:15:37] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2023-03-25 03:15:37] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2023-03-25 03:15:37] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / 0.0.0.0:80 (0.0.0.0:80)) - TIMEOUT
+[2023-03-25 03:15:37] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net) - FAILED, no addresses resolved
+[2023-03-25 03:15:37] Clearing in-memory token - 1 (OK): set to null
+[2023-03-25 03:15:37] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2023-03-25 03:15:37] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-03-25 03:15:37] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-03-25 03:15:37] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2023-03-25 03:15:37] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2023-03-25 03:15:37] Connectivity test: OK!
+[2023-03-25 03:15:37] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2023-03-25 03:15:59] GetCMListForConnect -- web API call failed (status = 0)
+[2023-03-25 03:15:59] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 55% of connections should be websockets, we rolled 71 - using UDP as default.
+[2023-03-25 03:15:59] [Connecting, 4, 2] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, 103.10.124.122:27018, UDP)
+[2023-03-25 03:16:00] [Connecting, 4, 2] [U:1:214053662] ConnectionCompleted() (103.28.54.178:27018, UDP) local address (0.0.0.0:65014)
+[2023-03-25 03:16:00] [Connecting, 4, 2] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2023-03-25 03:16:00] [Connected, 4, 2] [U:1:214053662] Logging on [U:1:214053662]
+[2023-03-25 03:16:01] Clearing in-memory token - 1 (OK): set to null
+[2023-03-25 03:16:01] [Connected, 4, 2] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-03-25 03:16:01] [Connected, 4, 2] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2023-03-25 03:16:01] [Connected, 4, 2] [U:1:214053662] LogOn() called; already connected, sending credentials.
+
+[2023-03-25 03:16:01] [Connected, 4, 2] [U:1:214053662] Logging on [U:1:214053662]
+[2023-03-25 03:16:01] [Logging On, 4, 2] [U:1:214053662] Using JWT
+[2023-03-25 03:16:01] Successfully generated token via password authentication
+[2023-03-25 03:16:01] [Logging On, 4, 2] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2023-03-25 03:16:01] CClientJobGetClientUpdateHosts: cached copy new expiration: Sat Mar 25 12:01:30 2023
+[2023-03-25 03:16:03] [Logged On, 4, 2] [U:1:214053662] RecvMsgClientLoggedOff('Session Replaced')
+[2023-03-25 03:16:03] [Logged On, 4, 2] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2023-03-25 03:16:03] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected('Disconnected By Remote Host') : 'Session Replaced' (103.28.54.178:27018, UDP)
+[2023-03-25 03:16:03] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2023-03-25 03:16:03] [Logged Off, 0, 0] [U:1:214053662] Sending SteamServersDisconnected_t because we were logged on
+[2023-03-25 03:16:03] [Logged Off, 0, 0] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1679685363 seconds ago)
+[2023-03-25 03:16:03] [Logged Off, 0, 0] [U:1:214053662] Log session ended
+
+
+[2023-03-25 03:16:11] Log session started
+[2023-03-25 03:16:11] [Logged On, 4, 3] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1679685371 seconds ago)
+[2023-03-25 03:16:11] [Logged On, 4, 3] [U:1:214053662] LogOff()
+[2023-03-25 03:16:11] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2023-03-25 03:16:11] [Logging Off, 0, 3] [U:1:214053662] Log session ended

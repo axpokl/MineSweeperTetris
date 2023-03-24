@@ -8,27 +8,36 @@
 			{
 				"SurveyDate"		"2017-12-13"
 				"SurveyDateVersion"		"-6925544597404049260"
-				"SteamDefaultDialog"		"#app_store"
-				"ShowScreenshotManager"		"0"
 				"StartMenuShortcutCheck"		"1"
-				"DesktopShortcutCheck"		"0"
-				"Tools"
-				{
-					"1493710"
-					{
-						"Registered"		"1"
-					}
-				}
+				"DesktopShortcutCheck"		"1"
 				"apps"
 				{
-					"935870"
-					{
-					}
-					"255710"
+					"709920"
 					{
 						"tags"
 						{
-							"0"		"favorite"
+							"0"		"07解谜"
+						}
+					}
+					"1444480"
+					{
+						"tags"
+						{
+							"0"		"07解谜.编程"
+						}
+					}
+					"1371720"
+					{
+						"tags"
+						{
+							"0"		"03冒险"
+						}
+					}
+					"1172380"
+					{
+						"tags"
+						{
+							"0"		"05动作.3D"
 						}
 					}
 				}
