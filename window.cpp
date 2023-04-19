@@ -771,7 +771,14 @@ void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h
     {
         if (b.mine[i][j])
         {
-            drawbmp(piconm, x, y, w, h);
+            if (j > 0)
+            {
+                drawbmp(piconm, x, y, w, h);
+            }
+            else
+            {
+                drawbmp(piconn, x, y, w, h);
+            }
         }
         else
         {

@@ -585,7 +585,7 @@ void Board::solve2_()
 bool Board::checkerror(long i, long j)
 {
     bool result = false;
-    if (blck[i][j] && mine[i][j])
+    if (blck[i][j] && mine[i][j] && sit != 2 && sit < 4)
     {
         dieb = true;
         diex = i;
@@ -621,7 +621,7 @@ bool Board::checkerror(long i, long j)
 bool Board::checkerror()
 {
     bool result = false;
-    if (sit != 2)
+    if (sit != 2 && sit < 4)
     {
         dieb = false;
         for (long i = 0; i < w; i++)
@@ -816,7 +816,7 @@ void Board::delline(long l)
                     rightrule[i][j] = false;
                     qstn[i][j] = false;
                     blck[i][j] = false;
-                    numb[i][j] = 0;
+                    numb[i][j] = numb[i][j - 1];
                 }
                 else
                 {
