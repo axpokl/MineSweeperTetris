@@ -1424,3 +1424,24 @@
 [2023-03-25 03:15:37] Verification complete
 [2023-03-25 03:16:02] Clearing cached metrics (T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
 [2023-03-25 03:16:04] Shutdown
+
+
+[2023-04-20 00:35:23] Startup - updater built Mar 24 2023 10:11:44
+[2023-04-20 00:35:23] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2023-04-20 00:35:23] Using the following download hosts for Public, Realm steamglobal
+[2023-04-20 00:35:23] 1. https://media.st.dl.eccdnx.com, /client/, Realm 'steamglobal', weight was 100000, source = 'update_hosts_cached.vdf'
+[2023-04-20 00:35:23] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2023-04-20 00:35:23] 3. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2023-04-20 00:35:23] 4. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2023-04-20 00:35:23] Checking for update on startup
+[2023-04-20 00:35:23] 正在检查可用更新...
+[2023-04-20 00:35:23] Downloading manifest: https://media.st.dl.eccdnx.com/client/steam_cmd_win32
+[2023-04-20 00:35:23] Manifest download: send request
+[2023-04-20 00:35:24] Manifest download: waiting for download to finish
+[2023-04-20 00:35:26] Manifest download: finished
+[2023-04-20 00:35:26] Download skipped: /client/steam_cmd_win32 version 1679680174, installed version 1679680174, existing pending version 0
+[2023-04-20 00:35:26] Nothing to do
+[2023-04-20 00:35:26] 正在验证安装...
+[2023-04-20 00:35:26] Performing checksum verification of executable files
+[2023-04-20 00:35:27] Verification complete
+[2023-04-20 00:35:45] Shutdown
