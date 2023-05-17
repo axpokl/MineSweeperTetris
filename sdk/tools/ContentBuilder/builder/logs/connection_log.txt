@@ -1677,3 +1677,7 @@
 [2023-05-17 16:35:14] Successfully generated token via password authentication
 [2023-05-17 16:35:15] [Logging On, 4, 3] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
 [2023-05-17 16:35:15] CClientJobGetClientUpdateHosts: cached copy new expiration: Sat May 20 10:48:43 2023
+[2023-05-17 16:35:32] [Logged On, 4, 3] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1684312532 seconds ago)
+[2023-05-17 16:35:32] [Logged On, 4, 3] [U:1:214053662] LogOff()
+[2023-05-17 16:35:32] [Logging Off, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2023-05-17 16:35:32] [Logging Off, 0, 3] [U:1:214053662] Log session ended

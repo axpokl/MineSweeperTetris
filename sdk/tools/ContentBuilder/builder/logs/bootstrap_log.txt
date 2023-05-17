@@ -1519,3 +1519,4 @@
 [2023-05-17 16:35:08] Performing checksum verification of executable files
 [2023-05-17 16:35:09] Verification complete
 [2023-05-17 16:35:16] Clearing cached metrics (T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2023-05-17 16:35:32] Shutdown
