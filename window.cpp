@@ -549,17 +549,17 @@ void Window::initbmp()
             releasebmp(pclick_);
             releasebmp(parrow_);
         }
-        pbg_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/bg.bmp");
-        pmenu_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/menu.bmp");
-        pface_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/face.bmp");
-        picon_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/icon.bmp");
-        pdigt_[0] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt.bmp");
-        pdigt_[1] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt2.bmp");
-        pdigt_[2] = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/digt_.bmp");
-        pok_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/ok.bmp");
-        pcursor_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/cursor.bmp");
-        pclick_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/click.bmp");
-        parrow_ = loadbmp((mystring)"./bmp/"+i2s(colori)+(mystring)"/arrow.bmp");
+        pbg_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/bg.png");
+        pmenu_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/menu.png");
+        pface_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/face.png");
+        picon_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/icon.png");
+        pdigt_[0] = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/digt.png");
+        pdigt_[1] = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/digt2.png");
+        pdigt_[2] = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/digt_.png");
+        pok_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/ok.png");
+        pcursor_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/cursor.png");
+        pclick_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/click.png");
+        parrow_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/arrow.png");
         for (long k = 0; k < 9; k++)
         {
             color[k] = getpixel(pbg_, 0, k);
@@ -1511,7 +1511,7 @@ void Window::painttitle(long load)
     clear(pwint, transparent_);
     if (load < 0)
     {
-        ptitle_ = loadbmp("./bmp/title.png");
+        ptitle_ = loadbmp("./png/title.png");
     }
     drawbmp(ptitle_, getwin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight_(fontfh);

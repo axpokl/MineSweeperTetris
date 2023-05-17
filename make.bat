@@ -12,7 +12,7 @@ copy MineSweeperTetris.exe release\MineSweeperTetris.exe
 copy steam_api.dll release\steam_api.dll
 copy disp.dll release\disp.dll
 copy MineSweeperTetris.ico release\MineSweeperTetris.ico
-xcopy bmp\* release\bmp\ /y /r /s
+xcopy png\* release\png\ /y /r /s
 xcopy wav\* release\wav\ /y /r /s
 xcopy mid\* release\mid\ /y /r /s
 xcopy lan\* release\lan\ /y /r /s
