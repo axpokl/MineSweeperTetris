@@ -1445,3 +1445,78 @@
 [2023-04-20 00:35:26] Performing checksum verification of executable files
 [2023-04-20 00:35:27] Verification complete
 [2023-04-20 00:35:45] Shutdown
+
+
+[2023-05-17 16:34:57] Startup - updater built Mar 24 2023 10:11:44
+[2023-05-17 16:34:57] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2023-05-17 16:34:57] Using the following download hosts for Public, Realm steamglobal
+[2023-05-17 16:34:57] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2023-05-17 16:34:57] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2023-05-17 16:34:57] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2023-05-17 16:34:57] Checking for update on startup
+[2023-05-17 16:34:57] 正在检查可用更新...
+[2023-05-17 16:34:57] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2023-05-17 16:34:58] Manifest download: send request
+[2023-05-17 16:34:58] Manifest download: waiting for download to finish
+[2023-05-17 16:34:59] Manifest download: finished
+[2023-05-17 16:34:59] Downloaded new manifest: /steam_cmd_win32 version 1682708339, installed version 1679680174, existing pending version 0
+[2023-05-17 16:34:59] Package file steamcmd_bins_win32.zip.vz.d72085f3be103b19b1f7ac3914e641ab51852749_6459441 missing or incorrect size
+[2023-05-17 16:34:59] Package file steamcmd_steamservice_win32.zip.vz.62fe003da37e89aa5a7539112c792a53d56752c5_1687530 missing or incorrect size
+[2023-05-17 16:34:59] Package file steamcmd_steamerrorreporter_win32.zip.468ce606d8c18ad610051206e106ded22e2a618a missing or incorrect size
+[2023-05-17 16:34:59] Package file steamcmd_win32.zip.vz.5f2fa26f348d52786e233054930fc99e4a78611d_1735743 missing or incorrect size
+[2023-05-17 16:34:59] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_bins_win32.zip.vz.d72085f3be103b19b1f7ac3914e641ab51852749_6459441
+[2023-05-17 16:34:59] Manifest download: send request
+[2023-05-17 16:34:59] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_steamservice_win32.zip.vz.62fe003da37e89aa5a7539112c792a53d56752c5_1687530
+[2023-05-17 16:34:59] Manifest download: send request
+[2023-05-17 16:34:59] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_steamerrorreporter_win32.zip.468ce606d8c18ad610051206e106ded22e2a618a
+[2023-05-17 16:34:59] Manifest download: send request
+[2023-05-17 16:34:59] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_win32.zip.vz.5f2fa26f348d52786e233054930fc99e4a78611d_1735743
+[2023-05-17 16:34:59] Manifest download: send request
+[2023-05-17 16:34:59] 正在下载更新 (已下载 0，共 9,831 KB)...
+[2023-05-17 16:34:59] 正在下载更新 (已下载 303，共 9,831 KB)...
+[2023-05-17 16:35:00] 正在下载更新 (已下载 880，共 9,831 KB)...
+[2023-05-17 16:35:00] 正在下载更新 (已下载 1,277，共 9,831 KB)...
+[2023-05-17 16:35:00] 正在下载更新 (已下载 2,796，共 9,831 KB)...
+[2023-05-17 16:35:00] 正在下载更新 (已下载 3,098，共 9,831 KB)...
+[2023-05-17 16:35:01] 正在下载更新 (已下载 3,838，共 9,831 KB)...
+[2023-05-17 16:35:01] 正在下载更新 (已下载 4,394，共 9,831 KB)...
+[2023-05-17 16:35:01] 正在下载更新 (已下载 6,016，共 9,831 KB)...
+[2023-05-17 16:35:02] 正在下载更新 (已下载 6,473，共 9,831 KB)...
+[2023-05-17 16:35:02] 正在下载更新 (已下载 8,183，共 9,831 KB)...
+[2023-05-17 16:35:02] 正在下载更新 (已下载 8,831，共 9,831 KB)...
+[2023-05-17 16:35:02] 正在下载更新 (已下载 9,161，共 9,831 KB)...
+[2023-05-17 16:35:03] 正在下载更新 (已下载 9,535，共 9,831 KB)...
+[2023-05-17 16:35:03] 正在下载更新 (已下载 9,831，共 9,831 KB)...
+[2023-05-17 16:35:03] 下载完成。
+[2023-05-17 16:35:03] Saving metrics to disk (T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2023-05-17 16:35:03] uninstalled manifest found in T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_win32 (1).
+[2023-05-17 16:35:03] Found pending update
+[2023-05-17 16:35:03] 正在安装更新...
+[2023-05-17 16:35:03] 正在展开安装包...
+[2023-05-17 16:35:07] 正在安装更新...
+[2023-05-17 16:35:07] Committing NTFS transaction (0 non-transactional backup files)
+[2023-05-17 16:35:07] 正在清理...
+[2023-05-17 16:35:07] 更新完成，正在启动 Steamcmd...
+[2023-05-17 16:35:07] Shutdown
+
+
+[2023-05-17 16:35:07] Startup - updater built Apr 28 2023 11:34:26
+[2023-05-17 16:35:07] Startup - Steam Client launched with: "T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamcmd.exe" +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2023-05-17 16:35:07] Loading cached metrics from disk (T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2023-05-17 16:35:07] Using the following download hosts for Public, Realm steamglobal
+[2023-05-17 16:35:07] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2023-05-17 16:35:07] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2023-05-17 16:35:07] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2023-05-17 16:35:07] Checking for update on startup
+[2023-05-17 16:35:07] 正在检查可用更新...
+[2023-05-17 16:35:07] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2023-05-17 16:35:08] Manifest download: send request
+[2023-05-17 16:35:08] Manifest download: waiting for download to finish
+[2023-05-17 16:35:08] Manifest download: finished
+[2023-05-17 16:35:08] Download skipped: /steam_cmd_win32 version 1682708339, installed version 1682708339, existing pending version 0
+[2023-05-17 16:35:08] Nothing to do
+[2023-05-17 16:35:08] 正在验证安装...
+[2023-05-17 16:35:08] Performing checksum verification of executable files
+[2023-05-17 16:35:09] Verification complete
+[2023-05-17 16:35:16] Clearing cached metrics (T:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2023-05-17 16:35:32] Shutdown
