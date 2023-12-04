@@ -271,6 +271,10 @@ void Steam::loadscr()
         {
             resetach();
         }
+        if ((scr[4] > 3000) && ((scr[13]<=98) || (scr[13]>998)))
+        {
+            resetach();			
+        }
         setlead();
     }
 }
