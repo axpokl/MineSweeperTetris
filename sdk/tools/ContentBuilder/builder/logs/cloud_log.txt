@@ -4993,3 +4993,52 @@
 [2023-12-04 14:11:39] [AppID 7] Successfully synced to ChangeNumber 0
 [2023-12-04 14:11:39] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
 [2023-12-04 14:11:39] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\zhengwan\Desktop\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+
+
+[2024-01-23 09:25:26] Client version: 1705108307
+[2024-01-23 09:25:26] [AppID 7] Starting sync (init,)
+[2024-01-23 09:25:26] [AppID 7] AutoCloud checking local state for user 214053662
+[2024-01-23 09:25:26] [AppID 7] (ValidateCache) File 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\userdata\214053662\7\remote\sharedconfig.vdf' SHA mismatch with cache - setting local changes
+[2024-01-23 09:25:26] [U:1:214053662] [AppID 7] Init cache request complete
+[2024-01-23 09:25:26] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2024-01-23 09:26:12] [AppID 7] Starting sync (init,)
+[2024-01-23 09:26:12] [AppID 7] AutoCloud checking local state for user 214053662
+[2024-01-23 09:26:12] [U:1:214053662] [AppID 7] Init cache request complete
+[2024-01-23 09:26:12] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2024-01-23 09:26:16] [AppID 7] Starting sync (init,)
+[2024-01-23 09:26:16] [AppID 7] AutoCloud checking local state for user 214053662
+[2024-01-23 09:26:16] [U:1:214053662] [AppID 7] Init cache request complete
+[2024-01-23 09:26:16] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2024-01-23 09:26:17] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2024-01-23 09:26:17] [AppID 7] Starting sync (eval,)
+[2024-01-23 09:26:17] [AppID 7] AutoCloud checking local state for user 214053662
+[2024-01-23 09:26:17] [AppID 7] Need to sync from local change number '0' to global change number '11421545821372756752', but not attempting now
+[2024-01-23 09:26:17] [AppID 7] sharedconfig.vdf has local changes but mismatch - creating a conflict. Local/Remote SHA: 9f576ec0384ba35684b42e8c3cac990071545fdf / 7ef052a1cf654e9533926afd0bac4afc6f9ca782, Timestamps: 1683936820 / 1704156067, persist state: 0 / 0
+[2024-01-23 09:26:17] [AppID 7] Sync conflict for file sharedconfig.vdf
+[2024-01-23 09:26:17] [AppID 7] Eval complete
+[2024-01-23 09:26:17] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2024-01-23 09:26:17] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2024-01-23 09:26:17] [Roaming Config] PerformSyncCloud - conflict detected, accepting remote files
+[2024-01-23 09:26:17] [AppID 7] Starting sync (down,resolve,)
+[2024-01-23 09:26:17] [AppID 7] Attempting to sync from local change number '0' to global change number '11421545821372756752'
+[2024-01-23 09:26:17] [AppID 7] sharedconfig.vdf already marked as conflicting. Local/Remote SHA: 9f576ec0384ba35684b42e8c3cac990071545fdf / 7ef052a1cf654e9533926afd0bac4afc6f9ca782, Local/Remote persist state: 0 / 0
+[2024-01-23 09:26:17] [AppID 7] Resolving file serverbrowser_hist.vdf from state 2, bUseLocal = false
+[2024-01-23 09:26:17] [AppID 7] Resolving file sharedconfig.vdf from state 4, bUseLocal = false
+[2024-01-23 09:26:17] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2024-01-23 09:26:17] [AppID 7] Need to download file sharedconfig.vdf
+[2024-01-23 09:26:18] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-taiwan.storage.googleapis.com', path /1E/33/C2/0C/7/033_0_18684C10_A4AED_1222.dat?GoogleAccessId=519723424899-j6o48knii6crh59hb86rnun8sbl7ph2a@developer.gserviceaccount.com&Expires=1705976778&Signature=GTZUUkIlM4L%2F1BXF5sdPOupJ%2FL8JWAeuT2okgJtyzUL%2BnV1I3mYBI5b3relmM4xN27YIqZfzAOHUOVr1S2zJID38o7I7nORH%2BDtn9kie9CMS%2BKiTZ%2B5f0rk30BW1dmqXkEqA9S7jm3Wt5%2BvBTzOJSHP6GI88L4vT7lgE0TZmTT0%3D, beginning. . .
+[2024-01-23 09:26:18] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-tokyo.storage.googleapis.com', path /1E/33/C2/0C/7/01D_6_1358EF96_CDCE8_294.dat?GoogleAccessId=519723424899-j6o48knii6crh59hb86rnun8sbl7ph2a@developer.gserviceaccount.com&Expires=1705976778&Signature=vjdFje1STOAYb0SVVu34EDg4sYNyJrsfSKcliUuH3NDns%2BDq%2FJsphp%2B3Sf4OWT6qKxRQ75RLNaeSBjevg%2FbTg5Pj7fAFw2HOXBInM2DswciWGd4gcwaGYCWcOP9U6PwzTXYmc%2BVQvtE%2Fu%2BtqPQpfUuarCyzClq9AO9YONMmu%2Bh4%3D, beginning. . .
+[2024-01-23 09:26:19] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-taiwan.storage.googleapis.com' - Success.
+[2024-01-23 09:26:19] [AppID 7] Download OK for file serverbrowser_hist.vdf
+[2024-01-23 09:26:19] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-tokyo.storage.googleapis.com' - Success.
+[2024-01-23 09:26:19] [AppID 7] Download OK for file sharedconfig.vdf
+[2024-01-23 09:26:19] [AppID 7] Download complete, result OK
+[2024-01-23 09:26:19] [Roaming Config] OnRemoteStorageConflictResolution - result OK
+[2024-01-23 09:26:19] [AppID 7] Successfully synced to ChangeNumber 11421545821372756752
+[2024-01-23 09:26:19] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'
+[2024-01-23 09:26:22] [AppID 7] Starting sync (down,)
+[2024-01-23 09:26:22] [AppID 7] Currently already synced to global change number '11421545821372756752', should be nothing to download
+[2024-01-23 09:26:22] [AppID 7] Download complete in build list
+[2024-01-23 09:26:22] [AppID 7] Successfully synced to ChangeNumber 0
+[2024-01-23 09:26:22] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2024-01-23 09:26:22] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/userdata/214053662/7/remotecache.vdf'

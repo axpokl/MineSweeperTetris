@@ -19,6 +19,8 @@ public:
     const long okh = 36;
     const long btnw = 36;
     const long btnh = 36;
+    const long tutw = 108;
+    const long tuth = 36;
     const long aboutw = 360;
     const long abouth = 240;
     const long helpw = 640;
@@ -631,8 +633,8 @@ void Window::initbmp()
 
 void Window::paintmenu()
 {
-    drawbmp(pmenuq[(helpi >= +1)], (w_ - 1 * menuw), 0, menuw, menuh);
-    drawbmp(pmenua[(helpi == -1)], (w_ - 2 * menuw), 0, menuw, menuh);
+    drawbmp(pmenua[(helpi == -1)], (w_ - 1 * menuw), 0, menuw, menuh);
+    drawbmp(pmenuq[(helpi >= +1)], (w_ - 2 * menuw), 0, menuw, menuh);
     drawbmp(pmenud[(helpi == -3)], (w_ - 3 * menuw), 0, menuw, menuh);
     drawbmp(pmenut[(helpi == -2)], (w_ - 4 * menuw), 0, menuw, menuh);
     drawbmp(pface[6], (w_ - 5 * menuw), 0, menuw, menuh);
@@ -990,11 +992,13 @@ void Window::painthelp()
                     long k_[5] = {3, 0, 5, 4, 6};
                     for (long k = 0; k < 5; k++)
                     {
-                        drawbmp(pmenug[k_[k]][lead_5 == k], getwin(), (helpw - okw) / 2 - facew + facew * (k - 5), helph - (okh_ + okh) / 2 + menuh, facew, faceh);
+                        drawbmp(pmenug[k_[k]][lead_5 == k], getwin(), (helpw + okw) / 2 + facew + facew * (k), helph - (okh_ + okh) / 2 + menuh, facew, faceh);
                     }
                     setfontheight_(faceh);
-                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_MODE + lead_5), (helpw + okw) / 2 + facew, helph - (okh_ + okh) / 2 + menuh, w_ - (helpw + okw) / 2 - facew * 2, faceh, ctfg, cbg, DT_LEFT);
+                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_MODE + lead_5), 0, 0, helpw, faceh, ctfg, cbg);
                     setfontheight_(fonth);
+                    drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
+                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
                     break;
                 }
             }
@@ -1042,6 +1046,8 @@ void Window::painthelp()
                 {
                     bar(helpw__, helph__ * 8 + menuh + iconh, facew - 1, faceh - 1, ctfg, transparent);
                 }
+                drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
                 break;
             }
         case 1:
@@ -1446,11 +1452,8 @@ void Window::painthelp()
             drawbmp(pbtn, getwin(), (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
             drawtextxy_(pwint, ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, ctfg, ctbg);
         }
-        if (helpi == 1)
-        {
-            drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh);
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh, ctfg, ctbg);
-        }
+        drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
+        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
         line(0, menuh, helpw, 0, cline);
         line(0, menuh + helph - okh_, helpw, 0, cline);
     }
@@ -1725,10 +1728,10 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             switch ((ex - (w_ - 5 * menuw)) / menuw)
             {
                 case 4:
-                    sethelp(1);
+                    sethelp(-1);
                     break;
                 case 3:
-                    sethelp(-1);
+                    sethelp(1);
                     break;
                 case 2:
                     sethelp(-3);
@@ -1791,22 +1794,19 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         {
             sethelp(0);
         }
+        if (isin(ex, ey, (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth))
+        {
+            sethelp(0);
+            bd.initbd(1, md);
+            initwindow(false);
+            bd.tutb = 1;
+        }
         if (helpi > 1)
         {
             if (isin(ex, ey, (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh))
             {
                 helpi--;
                 bd.sd.playsound(bd.sd.sLeft);
-            }
-        }
-        else if (helpi == 1)
-        {
-            if (isin(ex, ey, (helpw - okw) / 2 - btnw - okw, helph - (okh_ + okh) / 2 + menuh, okw, okh))
-            {
-                sethelp(0);
-                bd.initbd(1, md);
-                initwindow(false);
-                bd.tutb = 1;
             }
         }
         if (helpi > 0 && helpi < maxhelp)
@@ -1823,14 +1823,28 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         }
         if (helpi == -2)
         {
-            if (isin(ex, ey, (helpw - okw) / 2 - facew * 6, helph - (okh_ + okh) / 2 + menuh, facew * 5, faceh))
+            if (isin(ex, ey, (helpw + okw) / 2 + facew, helph - (okh_ + okh) / 2 + menuh, facew * 5, faceh))
             {
-                lead_5 = (ex - ((helpw - okw) / 2 - facew * 6)) / facew;
+                lead_5 = (ex - ((helpw + okw) / 2 + facew)) / facew;
                 bd.sd.playsound(bd.sd.sLeft);
+            }
+            if (isin(ex, ey, (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth))
+            {
+                sethelp(0);
+                bd.initbd(1, md);
+                initwindow(false);
+                bd.tutb = 1;
             }
         }
         if (helpi == -3)
         {
+            if (isin(ex, ey, (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth))
+            {
+                sethelp(0);
+                bd.initbd(1, md);
+                initwindow(false);
+                bd.tutb = 1;
+            }
             long helpw__ = iconw;
             double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(10 - 1);
             for (long k = 0; k < 10; k++)
