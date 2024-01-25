@@ -309,51 +309,53 @@ const byte k_lalt = 164;
 const byte k_rshift = 161;
 const byte k_rctrl = 163;
 const byte k_ralt = 165;
+const byte k_prd = 188;
+const byte k_dot = 190;
 
 const double pi = 3.1415926535897932384626433832795028841971694;
 
-const long maxchar = 0x100;                   //×î´ó×Ö·û´®³¤¶È
-const long buffsize = 0x1000;                 //»º³åÇø´óÐ¡
-const long delaytimekey = 20;                 //Ä¬ÈÏ°´¼üÊ±³¤      
-const long delaytimedefault = 1;              //Ä¬ÈÏµÈ´ýÊ±³¤      
-const long delaytimemin = 1;                  //Ä¬ÈÏ×î¶ÌµÈ´ýÊ±³¤
-const long fontwidthdefault = 10;             //Ä¬ÈÏ×ÖÌå¿í¶È      
-const long fontheightdefault = 20;            //Ä¬ÈÏ×ÖÌå¸ß¶È
-const long minhz = 100;                       //×îÐ¡ÆµÂÊ      
-const long maxhz = 15000;                     //×î´óÆµÂÊ
-const long _bufmax = 0x100000;                //ÎÄ¼þ»º³åÇø´óÐ¡
-const long _thmax = 0x100;                    //×î´óÏß³ÌÊýÁ¿
-const long _mswinmax = 0x10000;               //´°¿ÚÏûÏ¢ÊýÄ¿
-const long _msusrmax = 0x10000;               //ÓÃ»§ÏûÏ¢ÊýÄ¿
-const long _mscntmax = 0x10000;               //ÏûÏ¢Ê±¼äÊýÄ¿
+const long maxchar = 0x100;                   //    Ö·       
+const long buffsize = 0x1000;                 //        Ð¡
+const long delaytimekey = 20;                 //Ä¬ Ï°   Ê±        
+const long delaytimedefault = 1;              //Ä¬ ÏµÈ´ Ê±        
+const long delaytimemin = 1;                  //Ä¬    ÌµÈ´ Ê±  
+const long fontwidthdefault = 10;             //Ä¬              
+const long fontheightdefault = 20;            //Ä¬      ß¶ 
+const long minhz = 100;                       //  Ð¡Æµ        
+const long maxhz = 15000;                     //   Æµ  
+const long _bufmax = 0x100000;                // Ä¼         Ð¡
+const long _thmax = 0x100;                    //    ß³     
+const long _mswinmax = 0x10000;               //      Ï¢  Ä¿
+const long _msusrmax = 0x10000;               // Ã»   Ï¢  Ä¿
+const long _mscntmax = 0x10000;               //  Ï¢Ê±    Ä¿
 
 /*
-long _w,_h,_x,_y;                 //´°¿Ú¿í¸ß×ø±ê    
-unsigned long _cbg,_cfg;          //´°¿Ú±³Ç°¾°ÑÕÉ«    
-unsigned long _style;             //´°¿ÚÑùÊ½
-unsigned long _hw;                //´°¿Ú¾ä±ú    
-unsigned long _dc;                //»æÍ¼¾ä±ú   
-bitmap _main;                     //»º³åÎ»Í¼½á¹¹    
-pbitmap _pmain;                   //»º³åÎ»Í¼Ö¸Õë    
-bitmap _mscr;                     //ÆÁÄ»Î»Í¼½á¹¹    
-pbitmap _pmscr;                   //ÆÁÄ»Î»Í¼Ö¸Õë
-double _tbegin;                   //´°¿Ú½¨Á¢Ê±¼ä    
-bool _winb;                       //´°¿Ú×´Ì¬    
-unsigned long _pe;                //»­±Ê    
-unsigned long _br;                //»­Ë¢
-unsigned long _fx,_fy;            //ÎÄ×ÖÊä³öÎ»ÖÃ    
-unsigned long _fw,_fh,_fwg;       //×ÖÌå³¤¿í´ÖÏ¸    
-unsigned long _flt,_fud,_fsk,_fcs;//×ÖÌå¸ñÊ½  
-const char* _ffn;                 //×ÖÌåÃû³Æ    
-unsigned long _fns;               //×ÖÌå½á¹¹    
-unsigned long _fnm=256;           //ÍÏ×§ÎÄ¼þÃû³¤¶È    
-const char* _fn;                  //ÍÏ×§ÎÄ¼þÃû
-unsigned long _cid;               //È«¾ÖÒôÆµ±êÊ¶·û    
-unsigned long _cam=256;           //ÒôÆµ×Ö·û´®³¤¶È    
-const char* _ca;                  //ÒôÆµ×Ö·û´®
-unsigned long _fhdl;              //ÎÄ¼þ¾ä±ú    
-unsigned long _fpos;              //ÎÄ¼þÖ¸ÕëÎ»ÖÃ    
-unsigned long _flen;              //ÎÄ¼þ³¤¶È
+long _w,_h,_x,_y;                 //   Ú¿          
+unsigned long _cbg,_cfg;          //   Ú± Ç°    É«    
+unsigned long _style;             //      Ê½
+unsigned long _hw;                //   Ú¾      
+unsigned long _dc;                //  Í¼      
+bitmap _main;                     //    Î»Í¼ á¹¹    
+pbitmap _pmain;                   //    Î»Í¼Ö¸      
+bitmap _mscr;                     //  Ä»Î»Í¼ á¹¹    
+pbitmap _pmscr;                   //  Ä»Î»Í¼Ö¸  
+double _tbegin;                   //   Ú½   Ê±      
+bool _winb;                       //    ×´Ì¬    
+unsigned long _pe;                //        
+unsigned long _br;                //  Ë¢
+unsigned long _fx,_fy;            //       Î»      
+unsigned long _fw,_fh,_fwg;       //   å³¤   Ï¸    
+unsigned long _flt,_fud,_fsk,_fcs;//     Ê½  
+const char* _ffn;                 //            
+unsigned long _fns;               //    á¹¹    
+unsigned long _fnm=256;           //  ×§ Ä¼           
+const char* _fn;                  //  ×§ Ä¼   
+unsigned long _cid;               //È«    Æµ  Ê¶      
+unsigned long _cam=256;           //  Æµ Ö·           
+const char* _ca;                  //  Æµ Ö·   
+unsigned long _fhdl;              // Ä¼        
+unsigned long _fpos;              // Ä¼ Ö¸  Î»      
+unsigned long _flen;              // Ä¼     
 */
 
 extern "C" long sgn1(double x);

@@ -409,7 +409,10 @@ void Window::releasewindow()
     savesetting();
     if (!cheatb && bd.sit > 0  && bd.sit < 4)
     {
-        bd.pauseb = 1;
+        if (bd.tutb == 0)
+        {
+            bd.pauseb = 1;
+        }
         saveboard();
         boardb = 1;
         reg.setreg(reg.regkey, "boardb", boardb);
@@ -1518,27 +1521,41 @@ void Window::painttut()
             bar(0 * iconw - 2, 6 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh * 2 + 3, cred, transparent);
             break;
         case 13:
-            bar(0 * iconw - 1, 6 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
-            bar(0 * iconw - 2, 6 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh * 2 + 3, cred, transparent);
+            bar(0 * iconw - 1, 18 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
+            bar(0 * iconw - 2, 18 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh * 2 + 3, cred, transparent);
             bar(0 * digtw[0], menuh, digtw[0] * 4, digth[0], cred, transparent);
             bar(0 * digtw[0] + 1, menuh + 1, digtw[0] * 4 - 2, digth[0] - 2, cred, transparent);
             bar(w_ - 2 * digtw[0], menuh, digtw[0] * 2, digth[0], cred, transparent);
             bar(w_ - 2 * digtw[0] + 1, menuh + 1, digtw[0] * 2 - 2, digth[0] - 2, cred, transparent);
-            drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
+            if  (bd.tutb < 2)
+            {
+                drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
+            }
             break;
         case 14:
             bar(w_ - 2 * digtw[0], menuh, digtw[0] * 2, digth[0], cred, transparent);
             bar(w_ - 2 * digtw[0] + 1, menuh + 1, digtw[0] * 2 - 2, digth[0] - 2, cred, transparent);
             bar(0 * iconw - 1, 7 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh + 1, cred, transparent);
             bar(0 * iconw - 2, 7 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh + 3, cred, transparent);
-            drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
+            if  (bd.tutb < 2)
+            {
+                drawbmp(pok, getwin(), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh, ctfg, ctbg);
+            }
             break;
     }
     setfontheight_(fontsh);
     drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT + bd.tuti), 0, menuh + faceh, iconw * 12, fontsh * 8, ctfg, cbg, DT_WORDBREAK);
     setfontheight_(fonth);
+    if (bd.tutb == 2)
+    {
+        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_QUIT + 0), 0, menuh + faceh, iconw * 12, fontsh * 8, ctfg, cbg);
+        drawbmp(pok, getwin(), iconw * 0, 10 * iconh + menuh + faceh, iconw * 6 - 1, okh);
+        drawbmp(pok, getwin(), iconw * 6, 10 * iconh + menuh + faceh, iconw * 6 - 1, okh);
+        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_QUIT + 1), iconw * 0, 10 * iconh + menuh + faceh, iconw * 6 - 1, okh, ctfg, ctbg);
+        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_QUIT + 2), iconw * 6, 10 * iconh + menuh + faceh, iconw * 6 - 1, okh, ctfg, ctbg);
+    }
 }
 
 void Window::painttitle(long load)
@@ -1580,7 +1597,7 @@ void Window::paintevent(bool freshb)
         paintface();
         paintlevel();
         paintboard();
-        if (bd.tutb == 1 && bd.pauseb == 0)
+        if (bd.tutb >= 1 && bd.pauseb == 0)
         {
             painttut();
         }
@@ -1698,12 +1715,29 @@ void Window::tutevent(long ex, long ey, bool tutkb)
             sethelp(1);
         }
     }
+    bool tutmb_y = isin(ex, ey, iconw * 0, 10 * iconh + menuh + faceh, iconw * 6 - 1, okh);
+    bool tutmb_n = isin(ex, ey, iconw * 6, 10 * iconh + menuh + faceh, iconw * 6 - 1, okh);
+    if (bd.tutb == 2 && (tutmb_y || tutmb_n || tutkb))
+    {
+        if (tutmb_y || tutkb)
+        {
+            bd.tutb = 0;
+            bd.time = gettimer();
+            helpb = false;
+            bd.sd.playsound(bd.sd.sLeft);
+        }
+        if (tutmb_n)
+        {
+            bd.tutb = 1;
+            bd.sd.playsound(bd.sd.sLeft);
+        }
+    }
 }
 
 void Window::mouseeventboard_(long x, long y, long eb_, long md_)
 {
     bool tutmb = (bd.tutb == 0) || (bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
-    if ((x != mx || y != my) && tutmb)
+    if ((x != mx || y != my) && tutmb && (bd.tutb < 2))
     {
         bd.mx = x;
         bd.my = y;
@@ -1723,7 +1757,7 @@ void Window::mouseeventboard_(long x, long y, long eb_, long md_)
         bd.checkline(true);
         mx = x;
         my = y;
-        if (bd.tutb == 1)
+        if (bd.tutb >= 1)
         {
             bd.tuti++;
         }
@@ -1752,9 +1786,17 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
     {
         if (ex < (3 * menuw))
         {
-            helpi = 0;
-            bd.initbd(ex / menuw + 1, md);
-            initwindow(false);
+            if (bd.tutb >= 1)
+            {
+                bd.tutb = 2;
+                bd.sd.playsound(bd.sd.sRight);
+            }
+            else
+            {
+                helpi = 0;
+                bd.initbd(ex / menuw + 1, md);
+                initwindow(false);
+            }
         }
         else if (ex > w_ - 5 * menuw)
         {
@@ -1786,7 +1828,15 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             {
                 if (eb_ == k_lmouse)
                 {
-                    bd.initbd();
+                    if (bd.tutb >= 1)
+                    {
+                        bd.tutb = 2;
+                        bd.sd.playsound(bd.sd.sRight);
+                    }
+                    else
+                    {
+                        bd.initbd();
+                    }
                 }
                 else if (eb_ == k_rmouse)
                 {
@@ -2057,24 +2107,56 @@ void Window::keyevent(long key)
             bd.sd.playsound(bd.sd.sLeft);
             break;
         case k_n:
-            helpi = 0;
-            bd.initbd();
-            initwindow(false);
+            if (bd.tutb >= 1)
+            {
+                bd.tutb = 2;
+                bd.sd.playsound(bd.sd.sRight);
+            }
+            else
+            {
+                helpi = 0;
+                bd.initbd();
+                initwindow(false);
+            }
             break;
         case k_1:
-            helpi = 0;
-            bd.initbd(1, md);
-            initwindow(false);
+            if (bd.tutb >= 1)
+            {
+                bd.tutb = 2;
+                bd.sd.playsound(bd.sd.sRight);
+            }
+            else
+            {
+                helpi = 0;
+                bd.initbd(1, md);
+                initwindow(false);
+            }
             break;
         case k_2:
-            helpi = 0;
-            bd.initbd(2, md);
-            initwindow(false);
+            if (bd.tutb >= 1)
+            {
+                bd.tutb = 2;
+                bd.sd.playsound(bd.sd.sRight);
+            }
+            else
+            {
+                helpi = 0;
+                bd.initbd(2, md);
+                initwindow(false);
+            }
             break;
         case k_3:
-            helpi = 0;
-            bd.initbd(3, md);
-            initwindow(false);
+            if (bd.tutb >= 1)
+            {
+                bd.tutb = 2;
+                bd.sd.playsound(bd.sd.sRight);
+            }
+            else
+            {
+                helpi = 0;
+                bd.initbd(3, md);
+                initwindow(false);
+            }
             break;
     }
     if (cheatb)
@@ -2096,7 +2178,7 @@ void Window::keyevent(long key)
     }
     if (helpi == 0)
     {
-        if (bd.mx == -1 && bd.my == -1 && (key == k_a || key == k_d || key == k_w || key == k_s || key == 188 || key == 190))
+        if (bd.mx == -1 && bd.my == -1 && (key == k_a || key == k_d || key == k_w || key == k_s || key == k_prd || key == k_dot))
         {
             bd.mx = bd.w / 2;
             bd.my = bd.h - 3;
@@ -2176,13 +2258,13 @@ void Window::keyevent(long key)
                 bd.my++;
                 bd.my = min(bd.h - 1, bd.my);
                 break;
-            case 188:
+            case k_prd:
                 mx = -1;
                 my = -1;
                 tutevent(0, 0, true);
                 mouseeventboard_(bd.mx, bd.my, k_lmouse, md + 4);
                 break;
-            case 190:
+            case k_dot:
                 mx = -1;
                 my = -1;
                 tutevent(0, 0, true);

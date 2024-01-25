@@ -641,7 +641,7 @@ void Board::checkline(bool delayb_)
     {
         long j;
         solve0_();
-        bool result = false;
+        bool delb = false;
         long blckc;
         long flagc;
         j = h - 1;
@@ -663,9 +663,9 @@ void Board::checkline(bool delayb_)
             }
             if (blckc == n || flagc == n)
             {
-                result = true;
+                delb = true;
                 delline(j);
-                if (delayb & delayb_)
+                if ((delayb & delayb_) || (tutb == 1))
                 {
                     for (long k = 0; k < mult; k++)
                     {
@@ -679,10 +679,10 @@ void Board::checkline(bool delayb_)
                 j--;
             }
         }
-        if (result)
+        if (delb)
         {
             sd.playsound(sd.sSolve);
-            if (delayb & delayb_)
+            if ((delayb & delayb_) || (tutb == 1))
             {
                 freshwin();
                 long dl = 1000.0 / (1.0 + (double)level /5.0);
