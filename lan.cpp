@@ -8,7 +8,7 @@ public:
 
     short int data[10000];
     short int landata[10000];
-    short int* landatap[100];
+    short int* landatap[1000];
 
     long LAN_TITLE = 0;
     long LAN_RUNNING = 1;
@@ -30,6 +30,8 @@ public:
     long LAN_TUT_ = LAN_SET + 23;
     long LAN_TUT = LAN_TUT_ + 1;
     long LAN_MODE = LAN_TUT + 15;
+    long LAN_TUT_QUIT = LAN_MODE + 5;
+    long LAN_HELP_MENU = LAN_TUT_QUIT + 3;
 
     Lan();
     const char* getsyslan();

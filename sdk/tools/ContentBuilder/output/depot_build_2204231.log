@@ -1,12 +1,42 @@
-[2024-01-23 09:26:22]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2024-01-23 09:26:22]: Building file listing for depot 2204231 ...
-[2024-01-23 09:26:22]: Found 123 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2024-01-23 09:26:23]: Found 123 files (1 MB) for depot 2204231
-[2024-01-23 09:26:23]: Building depot 2204231, baseline manifest 2435585295228480593 (123 files)
-[2024-01-23 09:26:24]: Found 93 chunks ( 93 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2024-01-23 09:26:24]: Changes to baseline manifest 2435585295228480593 :
-[2024-01-23 09:26:24]: Changed: "MineSweeperTetris.exe" 614 kB size, 614 kB changed 
-[2024-01-23 09:26:24]: Summary: 0 files added, 1 files changed, 0 files removed
-[2024-01-23 09:26:24]: Uploading new manifest to 208.64.201.182:80 (handle 13050738473381941666, 12616 bytes).
-[2024-01-23 09:26:24]: Uploading 1 out of 1 missing chunks.
-[2024-01-23 09:26:26]: Success! New manifestID 1300715779861986512 created and 1 new chunks uploaded.
+[2024-01-25 13:33:12]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2024-01-25 13:33:12]: Building file listing for depot 2204231 ...
+[2024-01-25 13:33:12]: Found 123 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2024-01-25 13:33:12]: Found 123 files (1 MB) for depot 2204231
+[2024-01-25 13:33:13]: Building depot 2204231, baseline manifest 1300715779861986512 (123 files)
+[2024-01-25 13:33:13]: Found 93 chunks ( 93 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2024-01-25 13:33:13]: Changes to baseline manifest 1300715779861986512 :
+[2024-01-25 13:33:13]: Changed: "lan\arabic.txt" 7 kB size, 7 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\brazilian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\bulgarian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\czech.txt" 7 kB size, 7 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\danish.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\dutch.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\english.txt" 7 kB size, 7 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\finnish.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\french.txt" 9 kB size, 9 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\german.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\greek.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\hungarian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\italian.txt" 9 kB size, 9 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\japanese.txt" 4 kB size, 4 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\koreana.txt" 4 kB size, 4 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\latam.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\norwegian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\polish.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\portuguese.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\romanian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\russian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\schinese.txt" 3 kB size, 3 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\spanish.txt" 9 kB size, 9 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\swedish.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\tchinese.txt" 3 kB size, 3 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\thai.txt" 7 kB size, 7 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\turkish.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\ukrainian.txt" 8 kB size, 8 kB changed 
+[2024-01-25 13:33:13]: Changed: "lan\vietnamese.txt" 7 kB size, 7 kB changed 
+[2024-01-25 13:33:13]: Changed: "MineSweeperTetris.exe" 616 kB size, 616 kB changed 
+[2024-01-25 13:33:13]: Changed: "png\1\bg.png" 1 kB size, 1 kB changed 
+[2024-01-25 13:33:13]: Summary: 0 files added, 31 files changed, 0 files removed
+[2024-01-25 13:33:13]: Uploading new manifest to 208.64.201.182:80 (handle 6731671570731995187, 12622 bytes).
+[2024-01-25 13:33:14]: Uploading 31 out of 31 missing chunks.
+[2024-01-25 13:33:17]: Success! New manifestID 8725594876150337737 created and 31 new chunks uploaded.

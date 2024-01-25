@@ -19,7 +19,7 @@ public:
     const long okh = 36;
     const long btnw = 36;
     const long btnh = 36;
-    const long tutw = 108;
+    const long tutw = 120;
     const long tuth = 36;
     const long aboutw = 360;
     const long abouth = 240;
@@ -29,6 +29,7 @@ public:
     const long fontfh = 32;
     const long fonth = 24;
     const long fontsh = 17;
+    const long fontmh = 13;
     const long okh_ = abouth - (fontth + fonth * 4);
     const long cursorw = 12;
     const long cursorh = 19;
@@ -997,8 +998,6 @@ void Window::painthelp()
                     setfontheight_(faceh);
                     drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_MODE + lead_5), 0, 0, helpw, faceh, ctfg, cbg);
                     setfontheight_(fonth);
-                    drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
-                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
                     break;
                 }
             }
@@ -1046,8 +1045,6 @@ void Window::painthelp()
                 {
                     bar(helpw__, helph__ * 8 + menuh + iconh, facew - 1, faceh - 1, ctfg, transparent);
                 }
-                drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
-                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
                 break;
             }
         case 1:
@@ -1109,6 +1106,7 @@ void Window::painthelp()
             }
         case 2:
             {
+                setfontheight_(fontmh);
                 for (long j = 0; j < 3; j++)
                 {
                     for (long i = 0; i < 4; i++)
@@ -1173,6 +1171,10 @@ void Window::painthelp()
                                 drawbmp(picon__[j][i][k], helpw * (i * 2 + 2) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh, cbg);
                             }
                         }
+                        if ((i == 0 || i == 2))
+                        {
+                            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + i / 2 + j * 2), i / 2 * helpw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh + iconh, helpw / 2, (helph - okh_) / 6+ iconh * 2 - clickh, ctfg, cbg);
+                        }
                     }
                 }
                 line(helpw / 2, menuh, 0, helph - okh_, cline);
@@ -1180,10 +1182,12 @@ void Window::painthelp()
                 {
                     line(0, menuh + (helph - okh_) * k / 3, helpw, 0, cline);
                 }
+                setfontheight_(fonth);
                 break;
             }
         case 3:
             {
+                setfontheight_(fontmh);
                 for (long j = 0; j < 3; j++)
                 {
                     for (long i = 0; i < 4; i++)
@@ -1275,7 +1279,6 @@ void Window::painthelp()
                         }
                         for (long k = 0; k < k__[j][i]; k++)
                         {
-
                             if (picon__[j][i][k] == piconu)
                             {
                                 drawbmp(picon__[j][i][k], helpw * (i * 2 + 2 + (j != 0)) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh, cfg);
@@ -1285,6 +1288,14 @@ void Window::painthelp()
                                 drawbmp(picon__[j][i][k], helpw * (i * 2 + 2 + (j != 0)) / 8 + iconw * (k * 2 - k__[j][i]) / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh, cbg);
                             }
                         }
+                        if (((i == 0 || i == 2)) && (j == 0))
+                        {
+                            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + i / 2 + 6), i / 2 * helpw / 2, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh + iconh, helpw / 2, (helph - okh_) / 6+ iconh * 2 - clickh, ctfg, cbg);
+                        }
+                        if ((i == 0) && (j > 0))
+                        {
+                            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + j + 7), 0, (helph - okh_) * (j * 2 + 1) / 6 - iconh * 3 + clickh + menuh + iconh, helpw, (helph - okh_) / 6+ iconh * 2 - clickh, ctfg, cbg);
+                        }
                     }
                 }
                 line(helpw / 2, menuh, 0, (helph - okh_) / 3, cline);
@@ -1293,9 +1304,11 @@ void Window::painthelp()
                     line(0, menuh + (helph - okh_) * k / 3, helpw, 0, cline);
                 }
                 break;
+                setfontheight_(fonth);
             }
         case 4:
             {
+                setfontheight_(fontmh);
                 long iconwl = 5;
                 long iconwm = iconwl + 13;
                 long iconwr = iconwl + 15;
@@ -1311,6 +1324,7 @@ void Window::painthelp()
                 paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * iconwr, iconh * (iconh1 + 3) + menuh);
                 drawbmp(picona, iconw * iconwm, iconh * (iconh1 + 3) + menuh, cfg);
                 drawbmp(pface[3], iconw * iconwm - (facew - iconw) / 2, iconh * (iconh1 + 3) + menuh - iconh - faceh / 2, cfg);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 10), 0, iconh * (iconh1 + 4) + menuh, helpw, iconh * (iconh2 - iconh1 - 6) , ctfg, cbg);
                 for (long k = 0; k <= 2; k++)
                 {
                     paintline(picone, 2, iconw * iconwl, iconh * (k * 3 + (iconh2 + 0)) + menuh);
@@ -1320,17 +1334,21 @@ void Window::painthelp()
                     paintnumber(k * 5, 2, iconw * iconwn, iconh * (k * 3 + (iconh2 + 1)) + menuh - digth[0] / 2);
                     drawbmp(picona, iconw * iconwm, iconh * (k * 3 + (iconh2 + 1)) + menuh, cfg);
                 }
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 11), 0, iconh * (iconh2 + 8) + menuh, helpw,  iconh * (iconh3 - iconh2 - 10) + iconh / 2, ctfg, cbg);
                 paintline(picone, 12, iconw * iconwl, iconh * (iconh3 + 0) + menuh);
                 paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + 0) + menuh);
                 paintline(piconc, 12, iconw * iconwl, iconh * (iconh3 + 1) + menuh);
                 paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + 1) + menuh);
                 drawbmp(picona, iconw * iconwm, iconh * (iconh3 + 1) + menuh, cfg);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 12), 0, iconh * (iconh3 + 2) + menuh, helpw,  helph - okh_ - iconh * (iconh3 + 2), ctfg, cbg);
                 line(0, menuh + iconh * (iconh2 - 2), helpw, 0, cline);
                 line(0, menuh + iconh * (iconh3 - 2) + iconh / 2, helpw, 0, cline);
+                setfontheight_(fonth);
                 break;
             }
         case 5:
             {
+                setfontheight_(fontmh);
                 long iconwl = 3;
                 long iconwm = iconwl + 13;
                 long iconwr = iconwl + 17;
@@ -1339,17 +1357,18 @@ void Window::painthelp()
                 long iconh2 = 6;
                 long iconh3 = 11;
                 long iconh4 = 22;
-                paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh1 + 0) + menuh);
-                paintline(piconc, piconf, picon[2], piconp, 2, 2, 1, 7, iconw * iconwl, iconh * (iconh1 + 1) + menuh);
-                paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh1 + 2) + menuh);
-                paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh1 + 1) + menuh);
-                paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwr, iconh * (iconh1 + 2) + menuh);
-                line(iconw * iconwl, iconh * (iconh1 + 1) + iconh / 2 + menuh, iconw * 12, 0, cred);
-                drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) + menuh, cbg);
-                drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) + menuh, cfg);
-                drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh1 + 2) + menuh, cbg);
-                drawbmp(pface[4], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh1 + 2) + menuh - iconh - faceh / 2, cbg);
-                paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) + menuh - digth[0] / 2);
+                paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh1 + 0) - iconh / 2 + menuh);
+                paintline(piconc, piconf, picon[2], piconp, 2, 2, 1, 7, iconw * iconwl, iconh * (iconh1 + 1) - iconh / 2 + menuh);
+                paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh1 + 2) - iconh / 2 + menuh);
+                paintline(piconc, picon[1], piconp, 4, 1, 7, iconw * iconwr, iconh * (iconh1 + 1) - iconh / 2 + menuh);
+                paintline(piconc, piconf, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwr, iconh * (iconh1 + 2) - iconh / 2 + menuh);
+                line(iconw * iconwl, iconh * (iconh1 + 1) - iconh / 2 + iconh / 2 + menuh, iconw * 12, 0, cred);
+                drawbmp(piconf, iconw * (iconwm + 0), iconh * (iconh1 + 2) - iconh / 2 + menuh, cbg);
+                drawbmp(piconu, iconw * (iconwm + 1), iconh * (iconh1 + 2) - iconh / 2 + menuh, cfg);
+                drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh1 + 2) - iconh / 2 + menuh, cbg);
+                drawbmp(pface[4], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh1 + 2) - iconh / 2 + menuh - iconh - faceh / 2, cbg);
+                paintnumber(1, 4, iconw * iconwn, iconh * (iconh1 + 2) - iconh / 2 + menuh - digth[0] / 2);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 13), 0, iconh * (iconh1 + 3) - iconh / 2 + menuh, helpw,  iconh * 3 / 2, ctfg, cbg);
                 paintline(piconc, picon[2], piconp, 4, 1, 7, iconw * iconwl, iconh * (iconh2 + 0) + menuh);
                 paintline(picon[1], picon[4], piconc, picon[2], piconp, 1, 1, 2, 1, 7, iconw * iconwl, iconh * (iconh2 + 1) + menuh);
                 paintline(piconc, piconc, picon[3], picon[1], piconp, 2, 1, 1, 1, 7, iconw * iconwl, iconh * (iconh2 + 2) + menuh);
@@ -1361,36 +1380,39 @@ void Window::painthelp()
                 drawbmp(piconn, iconw * (iconwm + 2), iconh * (iconh2 + 2) + menuh, cbg);
                 drawbmp(pface[4], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh2 + 2) + menuh - iconh - faceh / 2, cbg);
                 paintnumber(1, 4, iconw * iconwn, iconh * (iconh2 + 2) + menuh - digth[0] / 2);
-                paintline(piconp, 12, iconw * iconwl, iconh * (iconh3 + 4) + menuh);
-                line(iconw * iconwl, iconh * (iconh3 + 4) + iconh / 2 + menuh, iconw * 12, 0, cred);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 14), 0, iconh * (iconh2 + 3) + menuh, helpw,  iconh * 3 / 2, ctfg, cbg);
+                paintline(piconp, 12, iconw * iconwl, iconh * (iconh3 + 4) - iconh / 2 + menuh);
+                line(iconw * iconwl, iconh * (iconh3 + 4) - iconh / 2 + iconh / 2 + menuh, iconw * 12, 0, cred);
                 for (long k = 0; k < 8; k++)
                 {
                     if (k > 4)
                     {
-                        paintline(piconc, 12, iconw * iconwl, iconh * (iconh3 + k) + menuh);
+                        paintline(piconc, 12, iconw * iconwl, iconh * (iconh3 + k) - iconh / 2 + menuh);
                     }
                     if (k > 0)
                     {
-                        paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + k) + menuh);
+                        paintline(piconc, 12, iconw * iconwr, iconh * (iconh3 + k) - iconh / 2 + menuh);
                     }
                 }
-                drawbmp(picona, iconw * (iconwm + 1), iconh * (iconh3 + 7) + menuh, cfg);
-                drawbmp(pface[1], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh3 + 7) + menuh - iconh - faceh / 2, cfg);
-                paintnumber(5, 4, iconw * iconwn, iconh * (iconh3 + 7) + menuh - digth[0] / 2);
+                drawbmp(picona, iconw * (iconwm + 1), iconh * (iconh3 + 7) - iconh / 2 + menuh, cfg);
+                drawbmp(pface[1], iconw * (iconwm + 1) - (facew - iconw) / 2, iconh * (iconh3 + 7) - iconh / 2 + menuh - iconh - faceh / 2, cfg);
+                paintnumber(5, 4, iconw * iconwn, iconh * (iconh3 + 7) - iconh / 2 + menuh - digth[0] / 2);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 15), 0, iconh * (iconh3 + 8) - iconh / 2 + menuh, helpw,  iconh * 3 / 2, ctfg, cbg);
                 for (long k = 0; k < 3; k++)
                 {
-                    paintnumber((k + 2) * (k + 2), 4, helpw * (k * 2 + 1) / 6 - 4 * digtw[0] - 1 * iconw / 2, iconh * iconh4 + menuh - digth[0] / 2 + iconw / 2);
-                    paintnumber((k + 2), 2, helpw * (k * 2 + 1) / 6 + 2 * digtw[0] + 1 * iconw / 2, iconh * iconh4 + menuh - digth[0] / 2 + iconw / 2);
-                    drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw[0] - iconw / 2, iconh * iconh4 + menuh, cfg);
-                    line(0, menuh + iconh * (iconh3 - 1) + iconh / 2, helpw, 0, cline);
-                    line(0, menuh + iconh * (iconh4 - 2), helpw, 0, cline);
+                    paintnumber((k + 2) * (k + 2), 4, helpw * (k * 2 + 1) / 6 - 4 * digtw[0] - 1 * iconw / 2, iconh * iconh4 + menuh - digth[0] / 2);
+                    paintnumber((k + 2), 2, helpw * (k * 2 + 1) / 6 + 2 * digtw[0] + 1 * iconw / 2, iconh * iconh4 + menuh - digth[0] / 2);
+                    drawbmp(picona, helpw * (k * 2 + 1) / 6 + digtw[0] - iconw / 2, iconh * iconh4 + menuh - iconh / 2, cfg);
                 }
-                line(helpw / 3 * 1, menuh + iconh * (iconh4 - 2), 0, helph - okh_ - iconh * (iconh4 - 2), cline);
-                line(helpw / 3 * 2, menuh + iconh * (iconh4 - 2), 0, helph - okh_ - iconh * (iconh4 - 2), cline);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 16), 0, iconh * iconh4 + digth[0] / 2 + menuh, helpw, helph - okh_ - (iconh * iconh4 + digth[0] / 2), ctfg, cbg);
+                line(0, iconh * (iconh3 - 1) + menuh + iconh / 2, helpw, 0, cline);
+                line(0, iconh * (iconh4 - 2) + menuh, helpw, 0, cline);
+                setfontheight_(fonth);
                 break;
             }
         case 6:
             {
+                setfontheight_(fontmh);
                 for (long i = 0; i < 32; i++)
                 {
                     for (long j = 0; j < 24; j++)
@@ -1421,6 +1443,10 @@ void Window::painthelp()
                 line(iconw * 4 + iconw * 16 - 1, iconh / 2 + menuh, 0, iconh * 16, ctfg);
                 line(iconw * 4 + iconw * 32 - 1, iconh / 2 + menuh, 0, iconh * 24, ctfg);
                 line(iconw * 4 + iconw * 0 - 1, iconh / 2 + menuh, 0, iconh * 24, ctfg);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 17), iconw * 4 + iconw * 1, iconh / 2 + menuh + iconh * 12 - fontmh - 1, iconw * 15 - menuw, fontmh, ctfg, cfg, DT_LEFT);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 18), iconw * 4 + iconw * 1, iconh / 2 + menuh + iconh * 16 - fontmh - 1, iconw * 15 - menuw, fontmh, ctfg, cfg, DT_LEFT);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 19), iconw * 4 + iconw * 1, iconh / 2 + menuh + iconh * 24 - fontmh - 1, iconw * 15 - menuw, fontmh, ctfg, cfg, DT_LEFT);
+                setfontheight_(fonth);
                 break;
             }
     }
@@ -1436,7 +1462,7 @@ void Window::painthelp()
         drawbmp(pok, getwin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
         if (waitb)
         {
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, gray, ctbg);
+            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, cline, ctbg);
         }
         else
         {
@@ -1453,7 +1479,14 @@ void Window::painthelp()
             drawtextxy_(pwint, ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, ctfg, ctbg);
         }
         drawbmp(pok, getwin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
-        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
+        if (waitb)
+        {
+            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, cline, ctbg);
+        }
+        else
+        {
+            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
+        }
         line(0, menuh, helpw, 0, cline);
         line(0, menuh + helph - okh_, helpw, 0, cline);
     }
