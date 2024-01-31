@@ -179,6 +179,8 @@ public:
     void savescr();
     void switchskin();
     void switchskin(long colori_);
+    void switchmd();
+    void switchmd(long md_);
     void tutevent(long ex, long ey, bool tutkb);
     void mouseeventboard_(long ex_, long ey_, long eb_, long md_);
     void mouseeventboard(long ex_, long ey_, long eb_, long md_);
@@ -1696,6 +1698,21 @@ void Window::switchskin(long colori_)
     bd.sd.playsound(bd.sd.sRight);
 }
 
+void Window::switchmd()
+{
+    switchmd((md + 1) % 4);
+}
+
+void Window::switchmd(long md_)
+{
+    md = md_;
+    if (md > 1)
+    {
+        bd.mdb = 0;
+    }
+    bd.sd.playsound(bd.sd.sLeft);
+}
+
 void Window::tutevent(long ex, long ey, bool tutkb)
 {
     bool tutmb = isin(ex, ey, (iconw * 12 - okw) / 2, 10 * iconh + menuh + faceh, okw, okh);
@@ -1932,6 +1949,53 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
             double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(10 - 1);
             for (long k = 0; k < 10; k++)
             {
+                long helpw__ = iconw;
+                if (isin(ex, ey, helpw__, helph__ * k + menuh + iconh, facew, faceh))
+                {
+                    switch (k)
+                    {
+                        case 0:
+                            bd.sd.switchsound();
+                            break;
+                        case 1:
+                            bd.sd.switchmusic();
+                            break;
+                        case 2:
+                            switchmd();
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            if (mult_ == 0)
+                            {
+                                mult_ = 1;
+                            }
+                            else
+                            {
+                                mult_ = 0;
+                            }
+                            initwindow(false);
+                            bd.sd.playsound(bd.sd.sRight);
+                            break;
+                        case 5:
+                            switchskin();
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            bd.delayb = !bd.delayb;
+                            bd.sd.playsound(bd.sd.sLeft);
+                            break;
+                        case 8:
+                            barb = !barb;
+                            bd.sd.playsound(bd.sd.sLeft);
+                            break;
+                        case 9:
+                            singleb = !singleb;
+                            bd.sd.playsound(bd.sd.sLeft);
+                            break;
+                    }
+                }
                 for (long j = 0; j < 3; j++)
                 {
                     if (isin(ex, ey, helpw / 4 * (j + 1), helph__ * k + menuh + iconh, facew, faceh))
@@ -1953,16 +2017,13 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                             case 2:
                                 if (j <= 2 && md != j)
                                 {
-                                    md = j;
-                                    bd.sd.playsound(bd.sd.sLeft);
+                                    switchmd(j);
                                 }
                                 break;
                             case 3:
                                 if (j <= 2 && md != (j + 2))
                                 {
-                                    md = j + 2;
-                                    bd.mdb = 0;
-                                    bd.sd.playsound(bd.sd.sLeft);
+                                    switchmd(j+2);
                                 }
                                 break;
                             case 4:
@@ -2002,7 +2063,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                             case 9:
                                 if (j <= 1 && singleb != j)
                                 {
-                                    singleb = j;
+                                    singleb = !singleb;
                                     bd.sd.playsound(bd.sd.sLeft);
                                 }
                                 break;
@@ -2083,20 +2144,10 @@ void Window::keyevent(long key)
             bd.sd.switchmusic();
             break;
         case k_f7:
-            md = (md + 1) % 4;
-            if (md > 1)
-            {
-                bd.mdb = 0;
-            }
-            bd.sd.playsound(bd.sd.sLeft);
+            switchmd();
             break;
         case k_g:
-            md = (md + 1) % 4;
-            if (md > 1)
-            {
-                bd.mdb = 0;
-            }
-            bd.sd.playsound(bd.sd.sLeft);
+            switchmd();
             break;
         case k_f8:
             singleb = !singleb;
