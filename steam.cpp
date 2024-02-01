@@ -57,6 +57,11 @@ public:
     long scrline1 = 4;
     long scrline2 = 5;
     long scrline3 = 6;
+    long scrindexline = 0;
+    long scrindexmdb = 3;
+    long scrindexnomiss = 6;
+    long scrindextetris = 9;
+    long scrindexmiss = 12;
     const char* scrs[scrn] =
     {
         "STAT_DEAD", "STAT_FOUR", "STAT_TOTAL", "STAT_LINE",
@@ -116,6 +121,8 @@ public:
     bool waitlead_();
 
     void savescr(char* scrpath);
+
+    bool ischeat(long line, long tetris);
 
 };
 
@@ -267,13 +274,9 @@ void Steam::loadscr()
             }
             //printf("%d %s %d\n",scrid,scrs[scrid],scr[scrid]);
         }
-        if (scr[4] > 9998)
+        if (ischeat(scr[4], scr[13]))
         {
             resetach();
-        }
-        if ((scr[4] > 3000) && ((scr[13]<=98) || (scr[13]>998)))
-        {
-            resetach();			
         }
         setlead();
     }
@@ -529,4 +532,17 @@ void Steam::savescr(char* scrpath)
     {
         ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->width, getwin()->height);
     }
+}
+
+bool Steam::ischeat(long line, long tetris)
+{
+    if (line > 9998)
+    {
+        return true;
+    }
+    if ((line > 3000) && ((tetris<=98) || (tetris>998)))
+    {
+        return true;
+    }
+    return false;
 }

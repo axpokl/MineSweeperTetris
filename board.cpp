@@ -28,6 +28,7 @@ public:
     long missi;
     long missline;
     long bouns;
+    long sum;
 
     long rx;
     long ry;
@@ -123,6 +124,7 @@ void Board::initbd()
     tetrisi = 0;
     missi = 0;
     missline = 0;
+    sum = 0;
     w = min(max(w, 12), min(maxw, maxbdw));
     h = min(max(h, 8), min(maxh, maxbdh));
     n = max(1, min(n, w - 1));
@@ -596,10 +598,10 @@ bool Board::checkerror(long i, long j)
         sit = 2;
         if (solven > 0 || tutb > 0)
         {
-            st.compscr(line - missline, mode, 6);
+            st.compscr(line - missline, mode, st.scrindexnomiss);
             missline = line;
             missi++;
-            st.compscr(missi, mode, 12);
+            st.compscr(missi, mode, st.scrindexmiss);
             addline();
             addline();
             checkline(true);
@@ -769,7 +771,7 @@ void Board::checkdie()
 {
     if (((maskj == 0 && maski > 0) || maskj < 0) && sit < 4)
     {
-        st.compscr(line - missline, mode, 6);
+        st.compscr(line - missline, mode, st.scrindexnomiss);
         missline = line;
         aliveb = false;
         sit = 4;
@@ -859,31 +861,40 @@ void Board::delline(long l)
             }
         }
         line++;
+        sum++;
         line = min(line, 999999);
-        st.compscr(line, mode, 0);
-        if (mdb == 1)
+        if (sum == line + tetrisi)
         {
-            st.compscr(line, mode, 3);
-        }
-        st.compscr(line - missline, mode, 6);
-        long scrtotal_[4] = {0, 2, 3, 6};
-        st.addscr(st.scrtotal, scrtotal_[mode], mode);
-        if (line > 9999)
-        {
-            st.addach(st.achhidedge);
+            st.compscr(line, mode, st.scrindexline);
+            if (mdb == 1)
+            {
+                st.compscr(line, mode, st.scrindexmdb);
+            }
+            st.compscr(line - missline, mode, st.scrindexnomiss);
+            long scrtotal_[4] = {0, 2, 3, 6};
+            st.addscr(st.scrtotal, scrtotal_[mode], mode);
+            if (line > 9999)
+            {
+                st.addach(st.achhidedge);
+            }
         }
         if (maskj > h - 4)
         {
             tetrisi++;
-            st.compscr(tetrisi, mode, 9);
+            sum++;
+            st.compscr(tetrisi, mode, st.scrindextetris);
             line = line + 4 + max(0, bouns);
+            sum = sum + 4 + max(0, bouns);
             line = min(line, 999999);
-            st.compscr(line, mode, 0);
-            if (mdb == 1)
+            if (sum == line + tetrisi)
             {
-                st.compscr(line, mode, 3);
+                st.compscr(line, mode, st.scrindexline);
+                if (mdb == 1)
+                {
+                    st.compscr(line, mode, st.scrindexmdb);
+                }
+                st.compscr(line - missline, mode, st.scrindexnomiss);
             }
-            st.compscr(line - missline, mode, 6);
             for (long k = 0; k < 4; k++)
             {
                 addline();

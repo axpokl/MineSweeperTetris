@@ -256,6 +256,7 @@ void Window::loadboard()
     reg.getreg(reg.regkey_, "tetrisi", (long*)&bd.tetrisi);
     reg.getreg(reg.regkey_, "missi", (long*)&bd.missi);
     reg.getreg(reg.regkey_, "missline", (long*)&bd.missline);
+    reg.getreg(reg.regkey_, "sum", (long*)&bd.sum);
     reg.getreg(reg.regkey_, "maskj", (long*)&bd.maskj);
     reg.getreg(reg.regkey_, "maski", (long*)&bd.maski);
     reg.getreg(reg.regkey_, "rightb", (long*)&bd.rightb);
@@ -289,6 +290,7 @@ void Window::saveboard()
     reg.setreg(reg.regkey_, "tetrisi", bd.tetrisi);
     reg.setreg(reg.regkey_, "missi", bd.missi);
     reg.setreg(reg.regkey_, "missline", bd.missline);
+    reg.setreg(reg.regkey_, "sum", bd.sum);
     reg.setreg(reg.regkey_, "maskj", bd.maskj);
     reg.setreg(reg.regkey_, "maski", bd.maski);
     reg.setreg(reg.regkey_, "rightb", bd.rightb);
