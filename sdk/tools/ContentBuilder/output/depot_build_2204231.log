@@ -1,18 +1,12 @@
-[2024-02-02 11:01:29]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2024-02-02 11:01:29]: Building file listing for depot 2204231 ...
-[2024-02-02 11:01:29]: Found 125 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2024-02-02 11:01:29]: Found 125 files (1 MB) for depot 2204231
-[2024-02-02 11:01:30]: Building depot 2204231, baseline manifest 4505302919397694539 (123 files)
-[2024-02-02 11:01:31]: Found 98 chunks ( 96 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2024-02-02 11:01:31]: Changes to baseline manifest 4505302919397694539 :
-[2024-02-02 11:01:31]: Changed: "mid\music1.mid" 13 kB size, 13 kB changed 
-[2024-02-02 11:01:31]: Added  : "mid\music6.mid" 6 kB 
-[2024-02-02 11:01:31]: Added  : "mid\music7.mid" 5 kB 
-[2024-02-02 11:01:31]: Changed: "MineSweeperTetris.exe" 618 kB size, 618 kB changed 
-[2024-02-02 11:01:31]: Changed: "wav\Flag.wav" 2 kB size, 2 kB changed 
-[2024-02-02 11:01:31]: Changed: "wav\Solve.wav" 12 kB size, 12 kB changed 
-[2024-02-02 11:01:31]: Changed: "wav\Win.wav" 46 kB size, 46 kB changed 
-[2024-02-02 11:01:31]: Summary: 2 files added, 5 files changed, 0 files removed
-[2024-02-02 11:01:31]: Uploading new manifest to 208.64.201.182:80 (handle 18298320963877823857, 12937 bytes).
-[2024-02-02 11:01:32]: Uploading 7 out of 7 missing chunks.
-[2024-02-02 11:01:34]: Success! New manifestID 6498334996109061968 created and 7 new chunks uploaded.
+[2024-02-02 11:53:23]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2024-02-02 11:53:23]: Building file listing for depot 2204231 ...
+[2024-02-02 11:53:23]: Found 125 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2024-02-02 11:53:23]: Found 125 files (1 MB) for depot 2204231
+[2024-02-02 11:53:24]: Building depot 2204231, baseline manifest 6498334996109061968 (125 files)
+[2024-02-02 11:53:24]: Found 98 chunks ( 98 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2024-02-02 11:53:24]: Changes to baseline manifest 6498334996109061968 :
+[2024-02-02 11:53:24]: Changed: "MineSweeperTetris.exe" 619 kB size, 619 kB changed 
+[2024-02-02 11:53:24]: Summary: 0 files added, 1 files changed, 0 files removed
+[2024-02-02 11:53:24]: Uploading new manifest to 208.64.201.182:80 (handle 6784628556515979392, 12948 bytes).
+[2024-02-02 11:53:25]: Uploading 1 out of 1 missing chunks.
+[2024-02-02 11:53:27]: Success! New manifestID 8689559174201836317 created and 1 new chunks uploaded.

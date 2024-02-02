@@ -1508,21 +1508,55 @@ void Window::painttut()
     bar(i * iconw + 1, j * iconh + menuh + faceh + 1, iconw - 3, iconh - 3, cred, transparent);
     switch (bd.tuti)
     {
+        case 1:
+            bar(4 * iconw - 1, 15 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 3 + 1, cblue, transparent);
+            bar(4 * iconw - 2, 15 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 3 + 3, cblue, transparent);
+            break;
+        case 2:
+            bar(3 * iconw - 1, 16 * iconh + menuh + faceh - 1, iconw * 1 + 1, iconh * 1 + 1, cblue, transparent);
+            bar(3 * iconw - 2, 16 * iconh + menuh + faceh - 2, iconw * 1 + 3, iconh * 1 + 3, cblue, transparent);
+            break;
         case 3:
             bar(9 * iconw, 18 * iconh + menuh + faceh, iconw - 1, iconh * 2 - 1, cblue, transparent);
             bar(9 * iconw + 1, 18 * iconh + menuh + faceh + 1, iconw - 3, iconh * 2 - 3, cblue, transparent);
             bar(9 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw + 1, iconh * 3 + 1, cgreen, transparent);
             bar(9 * iconw - 2, 17 * iconh + menuh + faceh - 2, iconw + 3, iconh * 3 + 3, cgreen, transparent);
             break;
+        case 4:
+            bar(7 * iconw - 1, 16 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 3 + 1, cblue, transparent);
+            bar(7 * iconw - 2, 16 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 3 + 3, cblue, transparent);
+            break;
+        case 5:
+            bar(9 * iconw - 1, 19 * iconh + menuh + faceh - 1, iconw * 1 + 1, iconh * 1 + 1, cgreen, transparent);
+            bar(9 * iconw - 2, 19 * iconh + menuh + faceh - 2, iconw * 1 + 3, iconh * 1 + 3, cgreen, transparent);
+            break;
+        case 6:
+            bar(8 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 3 + 1, cgreen, transparent);
+            bar(8 * iconw - 2, 17 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 3 + 3, cgreen, transparent);
+            break;
+        case 7:
+            bar(9 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 3 + 1, cgreen, transparent);
+            bar(9 * iconw - 2, 17 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 3 + 3, cgreen, transparent);
+            break;
         case 8:
-            bar(2 * iconw, 18 * iconh + menuh + faceh, iconw - 1, iconh * 2 - 1, cblue, transparent);
+            bar(2 * iconw + 0, 18 * iconh + menuh + faceh + 0, iconw - 1, iconh * 2 - 1, cblue, transparent);
             bar(2 * iconw + 1, 18 * iconh + menuh + faceh + 1, iconw - 3, iconh * 2 - 1, cblue, transparent);
             bar(2 * iconw - 1, 17 * iconh + menuh + faceh - 1, iconw + 1, iconh * 3 + 1, cgreen, transparent);
             bar(2 * iconw - 2, 17 * iconh + menuh + faceh - 2, iconw + 3, iconh * 3 + 3, cgreen, transparent);
             break;
+        case 10:
+            bar(2 * iconw - 1, 16 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 3 + 1, cgreen, transparent);
+            bar(2 * iconw - 2, 16 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 3 + 3, cgreen, transparent);
+            break;
         case 11:
+            bar(2 * iconw - 1, 18 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 2 + 1, cblue, transparent);
+            bar(2 * iconw - 2, 18 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 2 + 3, cblue, transparent);
             bar(0 * iconw - 1, 6 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
             bar(0 * iconw - 2, 6 * iconh + menuh + faceh - 2, iconw * 12 + 3, iconh * 2 + 3, cred, transparent);
+            break;
+        case 12:
+            bar(1 * iconw - 1, 18 * iconh + menuh + faceh - 1, iconw * 3 + 1, iconh * 2 + 1, cblue, transparent);
+            bar(1 * iconw - 2, 18 * iconh + menuh + faceh - 2, iconw * 3 + 3, iconh * 2 + 3, cblue, transparent);
             break;
         case 13:
             bar(0 * iconw - 1, 18 * iconh + menuh + faceh - 1, iconw * 12 + 1, iconh * 2 + 1, cred, transparent);
