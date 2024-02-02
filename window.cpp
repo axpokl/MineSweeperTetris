@@ -2358,12 +2358,15 @@ void Window::keyevent(long key)
                 mouseeventboard_(bd.mx, bd.my, k_rmouse, md + 4);
                 break;
             case k_u:
-                bd.addline();
-                bd.sd.playsound(bd.sd.sLeft);
-                paintevent();
-                bd.checkline(true);
-                bd.checkdie();
-                break;
+                if (bd.tutb == 0) 
+                {
+                    bd.addline();
+                    bd.sd.playsound(bd.sd.sLeft);
+                    paintevent();
+                    bd.checkline(true);
+                    bd.checkdie();
+                    break;
+                }
         }
         if (cheatb)
         {

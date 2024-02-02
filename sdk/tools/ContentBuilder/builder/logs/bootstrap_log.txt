@@ -250,3 +250,43 @@
 [2024-02-02 11:52:33] Performing checksum verification of executable files
 [2024-02-02 11:52:34] Verification complete
 [2024-02-02 11:53:27] Shutdown
+
+
+[2024-02-02 12:52:44] Startup - updater built Jan 12 2024 16:54:05
+[2024-02-02 12:52:44] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2024-02-02 12:52:45] Using the following download hosts for Public, Realm steamglobal
+[2024-02-02 12:52:45] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2024-02-02 12:52:45] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2024-02-02 12:52:45] 3. https://cdn.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2024-02-02 12:52:45] Checking for update on startup
+[2024-02-02 12:52:45] 正在检查可用更新...
+[2024-02-02 12:52:45] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2024-02-02 12:52:45] Manifest download: send request
+[2024-02-02 12:52:45] Manifest download: waiting for download to finish
+[2024-02-02 12:52:46] Manifest download: finished
+[2024-02-02 12:52:46] Download skipped by HTTP 304 Not Modified
+[2024-02-02 12:52:46] Nothing to do
+[2024-02-02 12:52:46] 正在验证安装...
+[2024-02-02 12:52:46] Performing checksum verification of executable files
+[2024-02-02 12:52:47] Verification complete
+[2024-02-02 12:53:10] Shutdown
+
+
+[2024-02-02 12:53:27] Startup - updater built Jan 12 2024 16:54:05
+[2024-02-02 12:53:27] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2024-02-02 12:53:28] Using the following download hosts for Public, Realm steamglobal
+[2024-02-02 12:53:28] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 1000, source = 'update_hosts_cached.vdf'
+[2024-02-02 12:53:28] 2. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'update_hosts_cached.vdf'
+[2024-02-02 12:53:28] 3. https://cdn.steamstatic.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2024-02-02 12:53:28] Checking for update on startup
+[2024-02-02 12:53:28] 正在检查可用更新...
+[2024-02-02 12:53:28] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2024-02-02 12:53:28] Manifest download: send request
+[2024-02-02 12:53:28] Manifest download: waiting for download to finish
+[2024-02-02 12:53:29] Manifest download: finished
+[2024-02-02 12:53:29] Download skipped by HTTP 304 Not Modified
+[2024-02-02 12:53:29] Nothing to do
+[2024-02-02 12:53:29] 正在验证安装...
+[2024-02-02 12:53:29] Performing checksum verification of executable files
+[2024-02-02 12:53:29] Verification complete
+[2024-02-02 12:53:51] Shutdown
