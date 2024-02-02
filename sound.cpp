@@ -5,7 +5,7 @@ public:
 
     static const long musici0 = -256;
     static const long maxsound = 8;
-    static const long maxmusic = 5;
+    static const long maxmusic = 7;
 
     unsigned long sSound[maxsound];
     unsigned long sMusic[maxmusic];
