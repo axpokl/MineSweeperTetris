@@ -1,59 +1,18 @@
-[2024-02-02 09:48:06]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2024-02-02 09:48:06]: Building file listing for depot 2204231 ...
-[2024-02-02 09:48:06]: Found 123 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2024-02-02 09:48:06]: Found 123 files (1 MB) for depot 2204231
-[2024-02-02 09:48:07]: Building depot 2204231, baseline manifest 8323709108076880856 (123 files)
-[2024-02-02 09:48:07]: Found 96 chunks ( 93 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2024-02-02 09:48:07]: Changes to baseline manifest 8323709108076880856 :
-[2024-02-02 09:48:07]: Changed: "lan\arabic.txt" 7 kB size, 7 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\brazilian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\bulgarian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\czech.txt" 7 kB size, 7 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\danish.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\dutch.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\english.txt" 7 kB size, 7 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\finnish.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\french.txt" 9 kB size, 9 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\german.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\greek.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\hungarian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\italian.txt" 9 kB size, 9 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\japanese.txt" 4 kB size, 4 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\koreana.txt" 4 kB size, 4 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\latam.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\norwegian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\polish.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\portuguese.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\romanian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\russian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\schinese.txt" 3 kB size, 3 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\spanish.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\swedish.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\tchinese.txt" 3 kB size, 3 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\thai.txt" 7 kB size, 7 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\turkish.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\ukrainian.txt" 8 kB size, 8 kB changed 
-[2024-02-02 09:48:07]: Changed: "lan\vietnamese.txt" 7 kB size, 7 kB changed 
-[2024-02-02 09:48:07]: Changed: "MineSweeperTetris.exe" 618 kB size, 618 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\3\digt.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\3\digt2.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\3\digt_.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\3\icon.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\arrow.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\bg.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\digt.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\digt2.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\digt_.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\face.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\icon.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\menu.png" 2 kB size, 2 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\4\ok.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\5\digt.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\5\digt2.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\5\digt_.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\5\face.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Changed: "png\5\icon.png" 1 kB size, 1 kB changed 
-[2024-02-02 09:48:07]: Summary: 0 files added, 48 files changed, 0 files removed
-[2024-02-02 09:48:07]: Uploading new manifest to 208.64.201.182:80 (handle 5360784321624259193, 12737 bytes).
-[2024-02-02 09:48:08]: Uploading 42 out of 42 missing chunks.
-[2024-02-02 09:48:12]: Success! New manifestID 4505302919397694539 created and 42 new chunks uploaded.
+[2024-02-02 11:01:29]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2024-02-02 11:01:29]: Building file listing for depot 2204231 ...
+[2024-02-02 11:01:29]: Found 125 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2024-02-02 11:01:29]: Found 125 files (1 MB) for depot 2204231
+[2024-02-02 11:01:30]: Building depot 2204231, baseline manifest 4505302919397694539 (123 files)
+[2024-02-02 11:01:31]: Found 98 chunks ( 96 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2024-02-02 11:01:31]: Changes to baseline manifest 4505302919397694539 :
+[2024-02-02 11:01:31]: Changed: "mid\music1.mid" 13 kB size, 13 kB changed 
+[2024-02-02 11:01:31]: Added  : "mid\music6.mid" 6 kB 
+[2024-02-02 11:01:31]: Added  : "mid\music7.mid" 5 kB 
+[2024-02-02 11:01:31]: Changed: "MineSweeperTetris.exe" 618 kB size, 618 kB changed 
+[2024-02-02 11:01:31]: Changed: "wav\Flag.wav" 2 kB size, 2 kB changed 
+[2024-02-02 11:01:31]: Changed: "wav\Solve.wav" 12 kB size, 12 kB changed 
+[2024-02-02 11:01:31]: Changed: "wav\Win.wav" 46 kB size, 46 kB changed 
+[2024-02-02 11:01:31]: Summary: 2 files added, 5 files changed, 0 files removed
+[2024-02-02 11:01:31]: Uploading new manifest to 208.64.201.182:80 (handle 18298320963877823857, 12937 bytes).
+[2024-02-02 11:01:32]: Uploading 7 out of 7 missing chunks.
+[2024-02-02 11:01:34]: Success! New manifestID 6498334996109061968 created and 7 new chunks uploaded.
