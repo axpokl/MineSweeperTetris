@@ -2,10 +2,10 @@ del *.exe
 del .\sdk\tools\ContentBuilder\builder\dumps\*.dmp
 rmdir release /s /q
 windres -i icon.rc -O coff -o icon.res
-::g++ -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe 
-g++ -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe -mwindows
-::g++ -Os -s main.cpp steam_api.lib disp.dll -o MineSweeperTetris.exe
-::g++ -Os -s main.cpp steam_api.lib disp.dll -o MineSweeperTetris.exe -mwindows
+::g++ -static-Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe 
+g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe -mwindows
+::g++ -static -Os -s main.cpp steam_api.lib disp.dll -o MineSweeperTetris.exe
+::g++ -static -Os -s main.cpp steam_api.lib disp.dll -o MineSweeperTetris.exe -mwindows
 mkdir release
 copy MineSweeperTetris.exe release\MineSweeperTetris.exe
 ::copy steam_appid.txt release\steam_appid.txt
