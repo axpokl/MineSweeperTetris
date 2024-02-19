@@ -103,6 +103,8 @@ public:
     bool isbmp = false;
 
     Reg reg;
+    HICON hicon_res;
+    HICON hicon_file;
     HICON hicon;
     Board bd;
     Block bl;
@@ -371,12 +373,16 @@ void Window::initmult()
 
 void Window::loadicon()
 {
-    hicon = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
-    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_BIG, (LPARAM)hicon);
-    delay(10);
-    SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
-    delay(10);
-    hicon = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    hicon_res = (HICON)LoadImage(GetModuleHandle(NULL), "MINESWEEPERTETEIS_ICON", IMAGE_ICON, 0, 0, 0);
+    hicon_file = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    if (hicon_res > 0)
+    {
+        hicon = hicon_res;
+    }
+    else
+    {
+        hicon = hicon_file;
+    }
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_BIG, (LPARAM)hicon);
     delay(10);
     SendMessage((HWND)gethwnd(), WM_SETICON, ICON_SMALL, (LPARAM)hicon);
@@ -1331,7 +1337,7 @@ void Window::painthelp()
                 paintline(piconc, piconf, picon[1], piconp, 5, 1, 1, 5, iconw * iconwr, iconh * (iconh1 + 3) + menuh);
                 drawbmp(picona, iconw * iconwm, iconh * (iconh1 + 3) + menuh, cfg);
                 drawbmp(pface[3], iconw * iconwm - (facew - iconw) / 2, iconh * (iconh1 + 3) + menuh - iconh - faceh / 2, cfg);
-                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 10), 0, iconh * (iconh1 + 4) + menuh, helpw, iconh * (iconh2 - iconh1 - 6) , ctfg, cbg);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_MENU + 10), 0, iconh * (iconh1 + 4) + menuh, helpw, iconh * (iconh2 - iconh1 - 6), ctfg, cbg);
                 for (long k = 0; k <= 2; k++)
                 {
                     paintline(picone, 2, iconw * iconwl, iconh * (k * 3 + (iconh2 + 0)) + menuh);
@@ -2358,7 +2364,7 @@ void Window::keyevent(long key)
                 mouseeventboard_(bd.mx, bd.my, k_rmouse, md + 4);
                 break;
             case k_u:
-                if (bd.tutb == 0) 
+                if (bd.tutb == 0)
                 {
                     bd.addline();
                     bd.sd.playsound(bd.sd.sLeft);
