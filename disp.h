@@ -700,344 +700,85 @@ extern "C" const char* GetPara339(unsigned long n);
 extern "C" const short int* GetParaW340();
 extern "C" const short int* GetParaW341(unsigned long n);
 
-long sgn(double x){return sgn1(x);}
-double abs(double a,double b){return abs2(a,b);}
-double abs(double a,double b,double c){return abs3(a,b,c);}
-double arcsin(double x){return arcsin4(x);}
-double arccos(double x){return arccos5(x);}
-double arctan2(double x,double y){return arctan26(x,y);}
 mystring i2s(long i){return i2s7(i);}
-unsigned long s2i(const char* s){return s2i8(s);}
-unsigned char as2i(const char* s){return as2i9(s);}
-char i2hc(unsigned char i){return i2hc10(i);}
-unsigned char hc2i(char c){return hc2i11(c);}
-mystring i2hs(unsigned char i){return i2hs12(i);}
-unsigned char hs2i(const char* s){return hs2i13(s);}
-mystring as2hs(const char* s){return as2hs14(s);}
-mystring hs2as(const char* s){return hs2as15(s);}
-mystring i2as(unsigned long i){return i2as16(i);}
-mystring i2hs(unsigned long i){return i2hs17(i);}
-unsigned long newthread(void* th){return NewThread18(th);}
-void pausethread(unsigned long thi){PauseThread19(thi);}
-void resumethread(unsigned long thi){ResumeThread20(thi);}
-void stopthread(unsigned long thi){StopThread21(thi);}
+
 unsigned long msgboxw(const short int* s,const short int* title,unsigned long i){return MsgBoxW22(s,title,i);}
 unsigned long msgbox(const char* s,const char* title,unsigned long i){return MsgBox23(s,title,i);}
-void msgboxw(const short int* s,const short int* title){MsgBoxW24(s,title);}
-void msgbox(const char* s,const char* title){MsgBox25(s,title);}
-void msgboxw(const short int* s){MsgBoxW26(s);}
-void msgbox(const char* s){MsgBox27(s);}
+
 void delay(unsigned long t){Delay28(t);}
-void delay(){Delay29();}
-void sound(unsigned long hz,unsigned long t){Sound30(hz,t);}
-void sound(unsigned long hz,double t){Sound31(hz,t);}
-void sound(unsigned long hz){Sound32(hz);}
-void freshfps(){FreshFPS33();}
-void addfps(){AddFPS34();}
-unsigned long getfpsl(){return GetFPSL35();}
-double getfpsr(){return GetFPSR36();}
-unsigned long getfps(){return GetFPS37();}
-unsigned long geterror(){return GetError38();}
+
 void createwin(unsigned long x,unsigned long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg,unsigned long style,const char* winclass){CreateWin39(x,y,w,h,cfg,cbg,style,winclass);}
-void createwin(unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg,unsigned long style,const char* winclass){CreateWin40(w,h,cfg,cbg,style,winclass);}
-void createwin(unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg,unsigned long style){CreateWin41(w,h,cfg,cbg,style);}
-void createwin(unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){CreateWin42(w,h,cfg,cbg);}
-void createwin(unsigned long w,unsigned long h,unsigned long c){CreateWin43(w,h,c);}
-void createwin(unsigned long w,unsigned long h){CreateWin44(w,h);}
-void createwin(unsigned long cbg){CreateWin45(cbg);}
-void createwin(){CreateWin46();}
 void freshwin(){FreshWin47();}
 void closewin(){CloseWin48();}
 bool iswin(){return IsWin49();}
-void setdrawprocedure(void* th){SetDrawProcedure50(th);}
+
 double gettimer(){return GetTimeR51();}
-unsigned long gettime(){return GetTime52();}
-void settitle(const char* s){SetTitle53(s);}
+
 void settitlew(const short int* s){SetTitleW54(s);}
-mystring gettitle(){return GetTitle55();}
-const short int* gettitlew(){return GetTitleW56();}
 void setsize(unsigned long x,unsigned long y,unsigned long w,unsigned long h){SetSize57(x,y,w,h);}
-void setsize(unsigned long w,unsigned long h){SetSize58(w,h);}
+
 unsigned long getwidth(){return GetWidth59();}
 unsigned long getheight(){return GetHeight60();}
 unsigned long getsize(){return GetSize61();}
 long getscrwidth(){return GetScrWidth62();}
 long getscrheight(){return GetScrHeight63();}
 unsigned long getscrsize(){return GetScrSize64();}
-double getscrcapsx(){return GetScrCapsX65();}
-double getscrcapsy(){return GetScrCapsY66();}
 long getbordertitle(){return GetBorderTitle67();}
 long getborderwidth(){return GetBorderWidth68();}
 long getborderheight(){return GetBorderHeight69();}
 unsigned long getbordersize(){return GetBorderSize70();}
-void setpos(unsigned long x,unsigned long y){SetPos71(x,y);}
+
 long getposx(){return GetPosX72();}
 long getposy(){return GetPosY73();}
-unsigned long getpos(){return GetPos74();}
 pbitmap getwin(){return GetWin75();}
-pbitmap getscr(){return GetScr76();}
-unsigned long gethwnd(pbitmap b){return GetHwnd77(b);}
 unsigned long gethwnd(){return GetHwnd78();}
-unsigned long getdraw(pbitmap b){return GetDraw79(b);}
-unsigned long getdraw(){return GetDraw80();}
-unsigned long getbgcolor(){return GetBGColor81();}
-void setbgcolor(unsigned long c){SetBGColor82(c);}
-unsigned long getfgcolor(){return GetFGColor83();}
-void setfgcolor(unsigned long c){SetFGColor84(c);}
-void setpenwidth(unsigned long pew){SetPenWidth85(pew);}
-void setpencolor(pbitmap b,unsigned long c){SetPenColor86(b,c);}
-void setpencolor(unsigned long c){SetPenColor87(c);}
-void setbrushcolor(pbitmap b,unsigned long c){SetBrushColor88(b,c);}
-void setbrushcolor(unsigned long c){SetBrushColor89(c);}
-unsigned char getalpha(unsigned long c){return GetAlpha90(c);}
-unsigned char getblue(unsigned long c){return GetBlue91(c);}
-unsigned char getgreen(unsigned long c){return GetGreen92(c);}
-unsigned char getred(unsigned long c){return GetRed93(c);}
-unsigned long getrgba(unsigned char r,unsigned char g,unsigned char b,unsigned char a){return GetRGBA94(r,g,b,a);}
-unsigned long getrgb(unsigned char r,unsigned char g,unsigned char b){return GetRGB95(r,g,b);}
-unsigned long rgb2hsl(unsigned long rgb){return RGB2HSL96(rgb);}
-unsigned long rgb2hsv(unsigned long rgb){return RGB2HSV97(rgb);}
-unsigned long rgb2hsi(unsigned long rgb){return RGB2HSI98(rgb);}
-unsigned long rgb2hsn(unsigned long rgb){return RGB2HSN99(rgb);}
-unsigned long hsl2rgb(unsigned long hsn){return HSL2RGB100(hsn);}
-unsigned long hsv2rgb(unsigned long hsn){return HSV2RGB101(hsn);}
-unsigned long hsi2rgb(unsigned long hsn){return HSI2RGB102(hsn);}
-unsigned long hsn2rgb(unsigned long hsn){return HSN2RGB103(hsn);}
-void mixcolor(unsigned long rgb1,unsigned long rgb2,unsigned long rgb3,double m){MixColor104(rgb1,rgb2,rgb3,m);}
-void mixcolor(unsigned long rgb1,unsigned long rgb2,unsigned long rgb3){MixColor105(rgb1,rgb2,rgb3);}
+
 void setfont(pbitmap b){SetFont106(b);}
-void setfont(){SetFont107();}
 void setfontwidth(unsigned long w){SetFontWidth108(w);}
 void setfontheight(unsigned long h){SetFontHeight109(h);}
-void setfontsize(unsigned long w,unsigned long h){SetFontSize110(w,h);}
 void setfontweight(unsigned long wg){SetFontWeight111(wg);}
-void setfontltalic(unsigned long lt){SetFontLtalic112(lt);}
-void setfontunderline(unsigned long ud){SetFontUnderLine113(ud);}
-void setfontstrikeout(unsigned long sk){SetFontStrikeOut114(sk);}
-void setfontcharset(unsigned long cs){SetFontCharSet115(cs);}
 void setfontname(const char* s){SetFontName116(s);}
-void getstringsize(const char* s){GetStringSize117(s);}
 unsigned long getstringwidth(const char* s){return GetStringWidth118(s);}
-unsigned long getstringheight(const char* s){return GetStringHeight119(s);}
+
 void drawtextxy(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg,unsigned long format){DrawTextXY120(b,s,x,y,w,h,cfg,cbg,format);}
 void drawtextxy(pbitmap b,const short int* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){DrawTextXY121(b,s,x,y,w,h,cfg,cbg);}
 void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long w,unsigned long h,unsigned long cfg,unsigned long cbg){DrawTextXY122(b,s,x,y,w,h,cfg,cbg);}
 void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXY123(b,s,x,y,cfg,cbg);}
-void drawtextxy(pbitmap b,const char* s,long x,long y,unsigned long cfg){DrawTextXY124(b,s,x,y,cfg);}
-void drawtextxy(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXY125(s,x,y,cfg,cbg);}
-void drawtextxy(const char* s,long x,long y,unsigned long cfg){DrawTextXY126(s,x,y,cfg);}
-void drawtextxy(const char* s,unsigned long x,unsigned long y){DrawTextXY127(s,x,y);}
-void drawtext(const char* s,unsigned long cfg,unsigned long cbg){DrawText128(s,cfg,cbg);}
-void drawtext(const char* s,unsigned long cfg){DrawText129(s,cfg);}
-void drawtext(const char* s){DrawText130(s);}
-void drawtextlnxy(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextlnXY131(s,x,y,cfg,cbg);}
-void drawtextlnxy(const char* s,long x,long y,unsigned long cfg){DrawTextlnXY132(s,x,y,cfg);}
-void drawtextlnxy(const char* s,unsigned long x,unsigned long y){DrawTextlnXY133(s,x,y);}
-void drawtextln(const char* s,unsigned long cfg,unsigned long cbg){DrawTextln134(s,cfg,cbg);}
-void drawtextln(const char* s,unsigned long cfg){DrawTextln135(s,cfg);}
-void drawtextln(const char* s){DrawTextln136(s);}
-void drawtextln(){DrawTextln137();}
-void drawtextxyw(pbitmap b,const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXYw138(b,s,x,y,cfg,cbg);}
-void drawtextxyw(pbitmap b,const char* s,long x,long y,unsigned long cfg){DrawTextXYw139(b,s,x,y,cfg);}
-void drawtextxyw(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextXYw140(s,x,y,cfg,cbg);}
-void drawtextxyw(const char* s,long x,long y,unsigned long cfg){DrawTextXYw141(s,x,y,cfg);}
-void drawtextxyw(const char* s,unsigned long x,unsigned long y){DrawTextXYw142(s,x,y);}
-void drawtextw(const char* s,unsigned long cfg,unsigned long cbg){DrawTextw143(s,cfg,cbg);}
-void drawtextw(const char* s,unsigned long cfg){DrawTextw144(s,cfg);}
-void drawtextw(const char* s){DrawTextw145(s);}
-void drawtextlnxyw(const char* s,long x,long y,unsigned long cfg,unsigned long cbg){DrawTextlnXYw146(s,x,y,cfg,cbg);}
-void drawtextlnxyw(const char* s,long x,long y,unsigned long cfg){DrawTextlnXYw147(s,x,y,cfg);}
-void drawtextlnxyw(const char* s,unsigned long x,unsigned long y){DrawTextlnXYw148(s,x,y);}
-void drawtextlnw(const char* s,unsigned long cfg,unsigned long cbg){DrawTextlnw149(s,cfg,cbg);}
-void drawtextlnw(const char* s,unsigned long cfg){DrawTextlnw150(s,cfg);}
-void drawtextlnw(const char* s){DrawTextlnw151(s);}
+
 unsigned long getpixel(pbitmap b,unsigned long x,unsigned long y){return GetPixel152(b,x,y);}
-unsigned long getpixel(unsigned long x,unsigned long y){return GetPixel153(x,y);}
-void setpixel(pbitmap b,unsigned long x,unsigned long y,unsigned long c){SetPixel154(b,x,y,c);}
-void setpixel(unsigned long x,unsigned long y,unsigned long c){SetPixel155(x,y,c);}
-void setpixel(unsigned long x,unsigned long y){SetPixel156(x,y);}
-unsigned long getbbpixel(pbitbuf bb,unsigned long x,unsigned long y){return GetBBPixel157(bb,x,y);}
-void setbbpixel(pbitbuf bb,unsigned long x,unsigned long y,unsigned long c){SetBBPixel158(bb,x,y,c);}
-void line(pbitmap b,long x,long y,long w,long h,unsigned long c){Line159(b,x,y,w,h,c);}
 void line(long x,long y,long w,long h,unsigned long c){Line160(x,y,w,h,c);}
-void line(long x,long y,long w,long h){Line161(x,y,w,h);}
-void linebb(pbitbuf bb,long x,long y,long w,long h,unsigned long c){LineBB162(bb,x,y,w,h,c);}
-void bar(pbitmap b,long x,long y,long w,long h,unsigned long cfg,unsigned long cbg){Bar163(b,x,y,w,h,cfg,cbg);}
-void bar(pbitmap b,long x,long y,long w,long h,unsigned long c){Bar164(b,x,y,w,h,c);}
 void bar(long x,long y,long w,long h,unsigned long cfg,unsigned long cbg){Bar165(x,y,w,h,cfg,cbg);}
 void bar(long x,long y,long w,long h,unsigned long c){Bar166(x,y,w,h,c);}
-void bar(long x,long y,long w,long h){Bar167(x,y,w,h);}
 void clear(pbitmap b,unsigned long c){Clear168(b,c);}
-void clear(pbitmap b){Clear169(b);}
 void clear(unsigned long c){Clear170(c);}
-void clear(){Clear171();}
-void triangle(pbitmap b,long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg){Triangle172(b,x1,y1,x2,y2,x3,y3,cfg,cbg);}
-void triangle(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long cfg,unsigned long cbg){Triangle173(x1,y1,x2,y2,x3,y3,cfg,cbg);}
-void triangle(long x1,long y1,long x2,long y2,long x3,long y3,unsigned long c){Triangle174(x1,y1,x2,y2,x3,y3,c);}
-void triangle(long x1,long y1,long x2,long y2,long x3,long y3){Triangle175(x1,y1,x2,y2,x3,y3);}
-void arc(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Arc176(b,x,y,rx,ry,sa,ea,cfg,cbg);}
-void arc(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Arc177(x,y,rx,ry,sa,ea,cfg,cbg);}
-void arc(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Arc178(x,y,rx,ry,sa,ea,c);}
-void arc(long x,long y,long rx,long ry,double sa,double ea){Arc179(x,y,rx,ry,sa,ea);}
-void pie(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Pie180(b,x,y,rx,ry,sa,ea,cfg,cbg);}
-void pie(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Pie181(x,y,rx,ry,sa,ea,cfg,cbg);}
-void pie(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Pie182(x,y,rx,ry,sa,ea,c);}
-void pie(long x,long y,long rx,long ry,double sa,double ea){Pie183(x,y,rx,ry,sa,ea);}
-void chord(pbitmap b,long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Chord184(b,x,y,rx,ry,sa,ea,cfg,cbg);}
-void chord(long x,long y,long rx,long ry,double sa,double ea,unsigned long cfg,unsigned long cbg){Chord185(x,y,rx,ry,sa,ea,cfg,cbg);}
-void chord(long x,long y,long rx,long ry,double sa,double ea,unsigned long c){Chord186(x,y,rx,ry,sa,ea,c);}
-void chord(long x,long y,long rx,long ry,double sa,double ea){Chord187(x,y,rx,ry,sa,ea);}
-void ellipse(pbitmap b,long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg){Ellipse188(b,x,y,rx,ry,cfg,cbg);}
-void ellipse(long x,long y,long rx,long ry,unsigned long cfg,unsigned long cbg){Ellipse189(x,y,rx,ry,cfg,cbg);}
-void ellipse(long x,long y,long rx,long ry,unsigned long c){Ellipse190(x,y,rx,ry,c);}
-void ellipse(long x,long y,long rx,long ry){Ellipse191(x,y,rx,ry);}
-void circle(pbitmap b,long x,long y,long r,unsigned long cfg,unsigned long cbg){Circle192(b,x,y,r,cfg,cbg);}
-void circle(long x,long y,long r,unsigned long cfg,unsigned long cbg){Circle193(x,y,r,cfg,cbg);}
-void circle(long x,long y,long r,unsigned long c){Circle194(x,y,r,c);}
-void circle(long x,long y,long r){Circle195(x,y,r);}
-pbitmap createbmp(pbitmap b,unsigned long w,unsigned long h,unsigned long c){return CreateBMP196(b,w,h,c);}
-pbitmap createbmp(pbitmap b){return CreateBMP197(b);}
+
 pbitmap createbmp(unsigned long w,unsigned long h,unsigned long c){return CreateBMP198(w,h,c);}
 pbitmap createbmp(unsigned long w,unsigned long h){return CreateBMP199(w,h);}
-pbitmap createbmp(){return CreateBMP200();}
 void releasebmp(pbitmap b){ReleaseBMP201(b);}
-void releasebmp(){ReleaseBMP202();}
-pbitmap loadbmp(const char* s,unsigned long c){return LoadBMP203(s,c);}
 pbitmap loadbmp(const char* s){return LoadBMP204(s);}
 void savebmp(pbitmap b,const char* s){SaveBMP205(b,s);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP206(bs,bd,xs,ys,ws,hs,xd,yd,wd,hd,c);}
+
 void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP207(bs,bd,xs,ys,ws,hs,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP208(bs,bd,xs,ys,xd,yd,w,h,c);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP209(bs,bd,xs,ys,xd,yd,w,h);}
 void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP210(bs,bd,xd,yd,wd,hd,c);}
 void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP211(bs,bd,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd,unsigned long c){DrawBMP212(bs,bd,xd,yd,c);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long xd,unsigned long yd){DrawBMP213(bs,bd,xd,yd);}
-void drawbmp(pbitmap bs,pbitmap bd,unsigned long c){DrawBMP214(bs,bd,c);}
-void drawbmp(pbitmap bs,pbitmap bd){DrawBMP215(bs,bd);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP216(bs,xs,ys,ws,hs,xd,yd,wd,hd,c);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP217(bs,xs,ys,ws,hs,xd,yd,wd,hd);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP218(bs,xs,ys,xd,yd,w,h,c);}
-void drawbmp(pbitmap bs,unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP219(bs,xs,ys,xd,yd,w,h);}
 void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP220(bs,xd,yd,wd,hd,c);}
 void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP221(bs,xd,yd,wd,hd);}
 void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd,unsigned long c){DrawBMP222(bs,xd,yd,c);}
-void drawbmp(pbitmap bs,unsigned long xd,unsigned long yd){DrawBMP223(bs,xd,yd);}
-void drawbmp(pbitmap bs,unsigned long c){DrawBMP224(bs,c);}
-void drawbmp(pbitmap bs){DrawBMP225(bs);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP226(xs,ys,ws,hs,xd,yd,wd,hd,c);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long ws,unsigned long hs,unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP227(xs,ys,ws,hs,xd,yd,wd,hd);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h,unsigned long c){DrawBMP228(xs,ys,xd,yd,w,h,c);}
-void drawbmp(unsigned long xs,unsigned long ys,unsigned long xd,unsigned long yd,unsigned long w,unsigned long h){DrawBMP229(xs,ys,xd,yd,w,h);}
-void drawbmp(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd,unsigned long c){DrawBMP230(xd,yd,wd,hd,c);}
-void drawbmp(unsigned long xd,unsigned long yd,unsigned long wd,unsigned long hd){DrawBMP231(xd,yd,wd,hd);}
-void drawbmp(unsigned long xd,unsigned long yd,unsigned long c){DrawBMP232(xd,yd,c);}
-void drawbmp(unsigned long xd,unsigned long yd){DrawBMP233(xd,yd);}
-void drawbmp(unsigned long c){DrawBMP234(c);}
-void drawbmp(){DrawBMP235();}
-void mixbmp(pbitmap b1,pbitmap b2,pbitmap b3){MixBMP236(b1,b2,b3);}
-void blurbmpbox(pbitmap b,unsigned long d,unsigned long n){BlurBMPBox237(b,d,n);}
-void blurbmpbox(pbitmap b,unsigned long d){BlurBMPBox238(b,d);}
-void blurbmpgau(pbitmap b,double d){BlurBMPGau239(b,d);}
-pbitbuf createbb(pbitmap b){return CreateBB240(b);}
-void releasebb(pbitbuf bb){ReleaseBB241(bb);}
-void getbb(pbitbuf bb){GetBB242(bb);}
-void setbb(pbitbuf bb){SetBB243(bb);}
-void mixbb(pbitbuf bb1,pbitbuf bb2,pbitbuf bb3){MixBB244(bb1,bb2,bb3);}
-void blurbbbox(pbitbuf bb,unsigned long d,unsigned long n){BlurBBBox245(bb,d,n);}
-void blurbbgau(pbitbuf bb,double d){BlurBBGau246(bb,d);}
-void presskey(unsigned char k,unsigned long t){PressKey247(k,t);}
-void presskey(unsigned char k){PressKey248(k);}
-void downkey(unsigned char k){DownKey249(k);}
-void upkey(unsigned char k){UpKey250(k);}
-void pressmouse(unsigned char m,unsigned long t){PressMouse251(m,t);}
-void pressmouse(unsigned char m){PressMouse252(m);}
-void downmouse(unsigned char m){DownMouse253(m);}
-void upmouse(unsigned char m){UpMouse254(m);}
-void wheelmouse(long wl){WheelMouse255(wl);}
-void movemouse(long x,long y){MoveMouse256(x,y);}
-void movemouseabs(long x,long y){MoveMouseAbs257(x,y);}
-void movemousewin(long x,long y){MoveMouseWin258(x,y);}
-void movemousepos(long x,long y){MoveMousePos259(x,y);}
-void sendmsg(){SendMsg260();}
+
 bool isnextmsg(){return IsNextMsg261();}
-unsigned long getnextmsg(){return GetNextMsg262();}
-unsigned long waitnextmsg(){return WaitNextMsg263();}
 bool ismsg(unsigned long uM){return IsMsg264(uM);}
-long long getmsg(unsigned long uM){return GetMsg265(uM);}
-long long waitmsg(unsigned long uM){return WaitMsg266(uM);}
-bool iskey(unsigned long k){return IsKey267(k);}
 bool iskey(){return IsKey268();}
 unsigned long getkey(){return GetKey269();}
-unsigned long waitkey(unsigned long k){return WaitKey270(k);}
-unsigned long waitkey(){return WaitKey271();}
-bool ismouse(unsigned long m){return IsMouse272(m);}
-bool ismouse(){return IsMouse273();}
-unsigned long getmouse(){return GetMouse274();}
-unsigned long waitmouse(unsigned long m){return WaitMouse275(m);}
-unsigned long waitmouse(){return WaitMouse276();}
 bool ismouseleft(){return IsMouseLeft277();}
-void waitmouseleft(){WaitMouseLeft278();}
-bool ismousemiddle(){return IsMouseMiddle279();}
-void waitmousemiddle(){WaitMouseMiddle280();}
 bool ismouseright(){return IsMouseRight281();}
-void waitmouseright(){WaitMouseRight282();}
-bool ismousewheel(){return IsMouseWheel283();}
-long getmousewheel(){return GetMouseWheel284();}
-void waitmousewheel(){WaitMouseWheel285();}
 bool ismousemove(){return IsMouseMove286();}
-unsigned long getmousemove(){return GetMouseMove287();}
-unsigned long waitmousemove(){return WaitMouseMove288();}
-bool isdropfile(){return IsDropFile289();}
-mystring getdropfile(){return GetDropFile290();}
-const short int* getdropfilew(){return GetDropFileW291();}
-mystring waitdropfile(){return WaitDropFile292();}
-long getmouseabsx(){return GetMouseAbsX293();}
-long getmouseabsy(){return GetMouseAbsY294();}
-long getmousewinx(){return GetMouseWinX295();}
-long getmousewiny(){return GetMouseWinY296();}
 long getmouseposx(){return GetMousePosX297();}
 long getmouseposy(){return GetMousePosY298();}
+
 unsigned long loadaudio(const char* s1,const char* s2){return LoadAudio299(s1,s2);}
 unsigned long loadaudio(const char* s){return LoadAudio300(s);}
-void playaudio(unsigned long id,const char* s,bool b){PlayAudio301(id,s,b);}
-void playaudio(unsigned long id,const char* s){PlayAudio302(id,s);}
-void playaudio(unsigned long id,bool b){PlayAudio303(id,b);}
-void playaudio(unsigned long id){PlayAudio304(id);}
 void stopaudio(unsigned long id){StopAudio305(id);}
-void pauseaudio(unsigned long id){PauseAudio306(id);}
-void resumeaudio(unsigned long id){ResumeAudio307(id);}
-void releaseaudio(unsigned long id){ReleaseAudio308(id);}
-unsigned long getaudiovol(unsigned long id){return GetAudioVol309(id);}
-void setaudiovol(unsigned long id,unsigned long v){SetAudioVol310(id,v);}
 unsigned long getaudiopos(unsigned long id){return GetAudioPos311(id);}
-void setaudiopos(unsigned long id,unsigned long pos,bool b){SetAudioPos312(id,pos,b);}
 void setaudiopos(unsigned long id,unsigned long pos){SetAudioPos313(id,pos);}
 unsigned long getaudiolen(unsigned long id){return GetAudioLen314(id);}
-bool isfile(const char* s){return IsFile315(s);}
-bool isfilew(const short int* s){return IsFileW316(s);}
-bool newfile(const char* s){return NewFile317(s);}
-bool newdir(const char* s){return NewDir318(s);}
-bool copyfile(const char* src,const char* des){return CopyFile319(src,des);}
-bool movefile(const char* src,const char* des){return MoveFile320(src,des);}
-bool deletefile(const char* s){return DeleteFile321(s);}
-mystring getfilename(const char* s){return GetFileName322(s);}
-const short int* getfilenamew(const short int* s){return GetFileNameW323(s);}
-mystring getfiledir(const char* s){return GetFileDir324(s);}
-const short int* getfiledirw(const short int* s){return GetFileDirW325(s);}
-void openfile(const char* s){OpenFile326(s);}
-void openfilew(const short int* s){OpenFileW327(s);}
-void closefile(){CloseFile328();}
-unsigned long getfilelen(){return GetFileLen329();}
-unsigned long getfilepos(){return GetFilePos330();}
-void setfilepos(unsigned long pos){SetFilePos331(pos);}
-unsigned char getbyte(){return GetByte332();}
-unsigned short getword(){return GetWord333();}
-unsigned long getlongword(){return GetLongword334();}
-unsigned long getinteger(){return GetInteger335();}
-const char* getpchar(){return GetPchar336();}
-mystring getstring(unsigned long len){return GetString337(len);}
-mystring getpara(){return GetPara338();}
-mystring getpara(unsigned long n){return GetPara339(n);}
-const short int* getparaw(){return GetParaW340();}
-const short int* getparaw(unsigned long n){return GetParaW341(n);}
+

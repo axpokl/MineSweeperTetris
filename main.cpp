@@ -1,5 +1,4 @@
 #include "disp.h"
-#include "stdio.h"
 
 #include "lan.cpp"
 #include "reg.cpp"
