@@ -66,7 +66,8 @@ void Lan::initlan(const char* lan)
     strcat(&path[0],lan);
     strcat(&path[0],".txt");
     HANDLE hFile = CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-    if (hFile != INVALID_HANDLE_VALUE) {
+    if (hFile != INVALID_HANDLE_VALUE)
+    {
         DWORD bytesRead;
         ReadFile(hFile, data, sizeof(data), &bytesRead, NULL);
         CloseHandle(hFile);

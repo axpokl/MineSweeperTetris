@@ -1,5 +1,3 @@
-#include "steam/steam_api.h"
-
 class Steam
 {
 

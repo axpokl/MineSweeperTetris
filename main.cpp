@@ -1,7 +1,8 @@
+#include "steam/steam_api.h"
 #include "disp.h"
 
-#include "lan.cpp"
 #include "reg.cpp"
+#include "lan.cpp"
 #include "steam.cpp"
 #include "sound.cpp"
 #include "block.cpp"

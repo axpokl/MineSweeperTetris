@@ -575,17 +575,29 @@ void Window::initbmp()
             releasebmp(pclick_);
             releasebmp(parrow_);
         }
-        pbg_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/bg.png");
-        pmenu_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/menu.png");
-        pface_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/face.png");
-        picon_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/icon.png");
-        pdigt_[0] = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/digt.png");
-        pdigt_[1] = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/digt2.png");
-        pdigt_[2] = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/digt_.png");
-        pok_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/ok.png");
-        pcursor_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/cursor.png");
-        pclick_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/click.png");
-        parrow_ = loadbmp((mystring)"./png/"+i2s(colori)+(mystring)"/arrow.png");
+        char pngPath[MAX_PATH];
+        sprintf(pngPath, "./png/%d/bg.png", colori);
+        pbg_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/menu.png", colori);
+        pmenu_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/face.png", colori);
+        pface_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/icon.png", colori);
+        picon_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/digt.png", colori);
+        pdigt_[0] = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/digt2.png", colori);
+        pdigt_[1] = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/digt_.png", colori);
+        pdigt_[2] = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/ok.png", colori);
+        pok_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/cursor.png", colori);
+        pcursor_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/click.png", colori);
+        pclick_ = loadbmp(pngPath);
+        sprintf(pngPath, "./png/%d/arrow.png", colori);
+        parrow_ = loadbmp(pngPath);
         for (long k = 0; k < 9; k++)
         {
             color[k] = getpixel(pbg_, 0, k);
@@ -593,7 +605,6 @@ void Window::initbmp()
         initcolor();
         for (long i = 0; i < 2; i++)
         {
-
             drawbmp(pmenu_, pmenu1[i], menuw * i, 0 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenu2[i], menuw * i, 1 * menuh, menuw, menuh, 0, 0, menuw, menuh);
             drawbmp(pmenu_, pmenu3[i], menuw * i, 2 * menuh, menuw, menuh, 0, 0, menuw, menuh);
@@ -921,6 +932,7 @@ void Window::painthelp()
             {
                 if (bd.st.steamb)
                 {
+                    char rankStr[MAX_PATH];
                     setfontheight_(fontsh - 1);
                     pbitmap pmenu__[3] = {pmenu1[0], pmenu2[0], pmenu3[0]};
                     const char* usernamec;
@@ -979,7 +991,8 @@ void Window::painthelp()
                                 usernames[2] = poss;
                                 usernames[3] = 0;
                                 usernames[4 + poss] = 0;
-                                drawtextxy_(pwint, i2s(leads.m_nGlobalRank - rank_), helpw * leadid / 3, k * fontsh + faceh + menuh + 1, ctfg, cbg);
+                                sprintf(rankStr, "%d", leads.m_nGlobalRank - rank_);
+                                drawtextxy_(pwint, rankStr, helpw * leadid / 3, k * fontsh + faceh + menuh + 1, ctfg, cbg);
                                 drawtextxy_(pwint, &usernames[4], helpw * leadid / 3 + getstringwidth_("00000"), k * fontsh + faceh + menuh + 1, helpw / 3 - getstringwidth_("00000") - digtw[1] * fontsh / digth[1] * 4, fontsh, ctfg, cbg, DT_LEFT);
                                 paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
                             }

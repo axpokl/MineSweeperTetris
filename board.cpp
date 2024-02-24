@@ -112,7 +112,7 @@ public:
 
 Board::Board()
 {
-    randomize();
+    srand((unsigned)::time(NULL) + (unsigned)clock());
 }
 
 void Board::initbd()

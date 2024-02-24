@@ -51,22 +51,26 @@ void Sound::initsound()
 
 void Sound::loadsound()
 {
+    char sPath[MAX_PATH];
     if (iswin())
     {
         for (long id = 0; id < maxsound; id++)
         {
-            sSound[id] = loadaudio((mystring)"./wav/"+sSounds[id]+(mystring)".wav");
+            sprintf(sPath, "./wav/%s.wav", sSounds[id]);
+            sSound[id] = loadaudio(sPath, "");
         }
     }
 }
 
 void Sound::loadmusic()
 {
+    char sPath[MAX_PATH];
     for (long k = 0; k < maxmusic; k++)
     {
         if (iswin())
         {
-            sMusic[k] = loadaudio((mystring)"./mid/music"+i2s(k+1)+(mystring)".mid", " type sequencer");
+            sprintf(sPath, "./mid/music%d.mid", k + 1);
+            sMusic[k] = loadaudio(sPath, " type sequencer");
         }
     }
 }

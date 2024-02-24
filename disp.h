@@ -1,5 +1,3 @@
-#define __STDC_WANT_LIB_EXT1__ 1
-#include<string.h> 
 #include<windows.h>
 #include<math.h>
 #include<time.h>
@@ -17,23 +15,6 @@ struct bitmap {
 	unsigned long color;
 };
 typedef bitmap* pbitmap;
-class mystring
-{
-public:
-	char s[256];
-	char s0[256];
-	unsigned long len;
-	mystring() { len = 0; }
-#ifdef __STDC_LIB_EXT1__
-	mystring(const char* d) { len = strlen(d); strcpy_s(s, d); }
-	mystring operator+(const char* d) { len = len+strlen(d); strcpy_s(s0, s); strcat_s(s0, d); return s0; }
-#else
-	mystring(const char* d) { len = strlen(d); strcpy(s, d); }
-	mystring operator+(const char* d) { len = len + strlen(d); strcpy(s0, s); strcat(s0, d); return s0; }
-#endif
-	operator const char*() { return s; }
-};
-void randomize(){srand(time(NULL)+(unsigned)clock());}
 
 const byte k_lmouse = 1;
 const byte k_rmouse = 2;
@@ -100,7 +81,6 @@ const byte k_f12 = 123;
 const byte k_prd = 188;
 const byte k_dot = 190;
 
-extern "C" const char* i2s7(long i);
 extern "C" unsigned long MsgBoxW22(const short int* s,const short int* title,unsigned long i);
 extern "C" unsigned long MsgBox23(const char* s,const char* title,unsigned long i);
 extern "C" void Delay28(unsigned long t);
@@ -168,7 +148,6 @@ extern "C" unsigned long GetAudioPos311(unsigned long id);
 extern "C" void SetAudioPos313(unsigned long id,unsigned long pos);
 extern "C" unsigned long GetAudioLen314(unsigned long id);
 
-mystring i2s(long i){return i2s7(i);}
 unsigned long msgboxw(const short int* s,const short int* title,unsigned long i){return MsgBoxW22(s,title,i);}
 unsigned long msgbox(const char* s,const char* title,unsigned long i){return MsgBox23(s,title,i);}
 void delay(unsigned long t){Delay28(t);}
