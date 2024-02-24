@@ -88,7 +88,15 @@ public:
     pbitmap parrowm;
     pbitmap parrowp;
 
-    long transparent_ = 0xAFAFAF;
+    const long transparent = 0x000001;
+    const long black = 0x010101;
+    const long white = 0xffffff;
+    const long silver = 0xc0c0c0;
+    const long gray = 0x808080;
+    const long blue = 0xff0000;
+    const long green = 0x008000;
+    const long red = 0x0000ff;
+
     long color[9] = {silver, 0xAFAFAF, black, silver, red, blue, green, gray, silver};
     long colori = 0;
     long cfg;
@@ -100,6 +108,8 @@ public:
     long cgreen;
     long cline;
     long cmine;
+    long transparent_ = 0xAFAFAF;
+
     bool isbmp = false;
 
     Reg reg;
