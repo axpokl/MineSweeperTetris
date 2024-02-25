@@ -354,8 +354,8 @@ void Window::loadall()
     painttitle(bd.st.lan.LAN_LOAD_WINDOW);
     if (iswin())
     {
-        sethelp(0);
         SetWindowLongPtr((HWND)gethwnd(), GWL_STYLE, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE);
+        sethelp(0);
     }
 }
 
@@ -2498,7 +2498,7 @@ void Window::doaction()
             {
                 GetWindowPlacement((HWND)gethwnd(),&wn);
                 showmax = ((wn.showCmd & SW_SHOWMAXIMIZED) == SW_SHOWMAXIMIZED);
-                if (showmax != showmax_)
+                if (showmax != showmax_ || (((w_ * mult) != getwidth() || (h_ * mult) != getheight()) && ismsg(WM_NCLBUTTONDOWN)))
                 {
                     mult_ = showmax;
                     initwindow(false);
