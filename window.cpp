@@ -918,6 +918,8 @@ void Window::painthelp()
     {
         case -1:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + 7), 0, 0, aboutw, faceh, ctfg, cbg);
                 setfontheight_(fontfh);
                 pbitmap pcheat__[2] = {piconn, piconm};
                 drawbmp(pcheat__[cheatb], (aboutw - fontfh) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
@@ -930,6 +932,9 @@ void Window::painthelp()
             }
         case -2:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + 9), 0, 0, helpw, faceh, ctfg, cbg);
+                setfontheight_(fontfh);
                 if (bd.st.steamb)
                 {
                     char rankStr[MAX_PATH];
@@ -1029,16 +1034,18 @@ void Window::painthelp()
                     long k_[5] = {3, 0, 5, 4, 6};
                     for (long k = 0; k < 5; k++)
                     {
-                        drawbmp(pmenug[k_[k]][lead_5 == k], getwin(), (helpw + okw) / 2 + facew + facew * (k), helph - (okh_ + okh) / 2 + menuh, facew, faceh);
+                        drawbmp(pmenug[k_[k]][lead_5 == k], getwin(), ((helpw + okw) / 2 + helpw) / 2+ facew * (k) - facew * 5 / 2, helph - (okh_ + okh) / 2 + menuh, facew, faceh);
                     }
                     setfontheight_(faceh);
-                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_MODE + lead_5), 0, 0, helpw, faceh, ctfg, cbg);
+                    drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_MODE + lead_5), (helpw + okw) / 2, helph - (okh_ + okh) / 2 + menuh + faceh, helpw - (helpw + okw) / 2, faceh, ctfg, cbg);
                     setfontheight_(fonth);
                     break;
                 }
             }
         case -3:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + 8), 0, 0, helpw, faceh, ctfg, cbg);
                 setfontheight_(fonth);
                 pbitmap psetting__[10] = {pmenus[bd.sd.soundb], pmenum[bd.sd.musicb], pmenug[md][0], NULL, pface[8], pface[7], NULL, picon[0], picon[0], pmenun[singleb]};
                 long settinglan[10] = {10, 11, 12, 0, 17, 14, 0, 18, 19, 13};
@@ -1085,6 +1092,9 @@ void Window::painthelp()
             }
         case 1:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + 6), 0, 0, helpw, faceh, ctfg, cbg);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_TITLE), helpw / 2, menuh, helpw / 2, (helph - okh_ - iconh * 20) / 2, ctfg, cbg);
                 setfontheight_(fonth);
                 pbitmap pmenu__[17] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], picone, pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pmenun[singleb], pface[7], pface[6], pface[5]};
                 const char* keys[17] = {"1", "2", "3", "N", "Space", "U", "H / F1", "B / F2", "E / F3", "T / F4", "S / F5", "M / F6", "G / F7", "R / F8", "K / F11", "P / F12", "Q / ESC"};
@@ -1142,6 +1152,8 @@ void Window::painthelp()
             }
         case 2:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_TITLE + 1), 0, 0, helpw, faceh, ctfg, cbg);
                 setfontheight_(fontmh);
                 for (long j = 0; j < 3; j++)
                 {
@@ -1223,6 +1235,8 @@ void Window::painthelp()
             }
         case 3:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_TITLE + 2), 0, 0, helpw, faceh, ctfg, cbg);
                 setfontheight_(fontmh);
                 for (long j = 0; j < 3; j++)
                 {
@@ -1344,6 +1358,8 @@ void Window::painthelp()
             }
         case 4:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_TITLE + 3), 0, 0, helpw, faceh, ctfg, cbg);
                 setfontheight_(fontmh);
                 long iconwl = 5;
                 long iconwm = iconwl + 13;
@@ -1384,6 +1400,8 @@ void Window::painthelp()
             }
         case 5:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_TITLE + 4), 0, 0, helpw, faceh, ctfg, cbg);
                 setfontheight_(fontmh);
                 long iconwl = 3;
                 long iconwm = iconwl + 13;
@@ -1448,6 +1466,8 @@ void Window::painthelp()
             }
         case 6:
             {
+                setfontheight_(faceh);
+                drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP_TITLE + 5), 0, 0, helpw, faceh, ctfg, cbg);
                 setfontheight_(fontmh);
                 for (long i = 0; i < 32; i++)
                 {
@@ -1988,9 +2008,9 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         }
         if (helpi == -2)
         {
-            if (isin(ex, ey, (helpw + okw) / 2 + facew, helph - (okh_ + okh) / 2 + menuh, facew * 5, faceh))
+            if (isin(ex, ey, ((helpw + okw) / 2 + helpw) / 2 - facew * 5 / 2, helph - (okh_ + okh) / 2 + menuh, facew * 5, faceh))
             {
-                lead_5 = (ex - ((helpw + okw) / 2 + facew)) / facew;
+                lead_5 = (ex - (((helpw + okw) / 2 + helpw) / 2 - facew * 5 / 2)) / facew;
                 bd.sd.playsound(bd.sd.sLeft);
             }
             if (isin(ex, ey, (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth))

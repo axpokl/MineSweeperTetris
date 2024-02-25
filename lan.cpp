@@ -32,6 +32,7 @@ public:
     long LAN_MODE = LAN_TUT + 15;
     long LAN_TUT_QUIT = LAN_MODE + 5;
     long LAN_HELP_MENU = LAN_TUT_QUIT + 3;
+    long LAN_HELP_TITLE = LAN_HELP_MENU + 20;
 
     Lan();
     const char* getsyslan();
