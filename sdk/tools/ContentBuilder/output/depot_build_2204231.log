@@ -1,41 +1,12 @@
-[2024-02-25 14:09:08]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2024-02-25 14:09:08]: Building file listing for depot 2204231 ...
-[2024-02-25 14:09:08]: Found 124 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2024-02-25 14:09:08]: Found 124 files (0 MB) for depot 2204231
-[2024-02-25 14:09:09]: Building depot 2204231, baseline manifest 8625296244068813313 (124 files)
-[2024-02-25 14:09:09]: Found 97 chunks ( 97 used previously ) for depot 2204231, took 0 minutes, 0 seconds
-[2024-02-25 14:09:09]: Changes to baseline manifest 8625296244068813313 :
-[2024-02-25 14:09:09]: Changed: "lan\arabic.txt" 7 kB size, 7 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\brazilian.txt" 9 kB size, 9 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\bulgarian.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\czech.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\danish.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\dutch.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\english.txt" 7 kB size, 7 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\finnish.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\french.txt" 9 kB size, 9 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\german.txt" 9 kB size, 9 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\greek.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\hungarian.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\italian.txt" 9 kB size, 9 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\japanese.txt" 4 kB size, 4 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\koreana.txt" 4 kB size, 4 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\latam.txt" 9 kB size, 9 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\norwegian.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\polish.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\portuguese.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\romanian.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\russian.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\schinese.txt" 3 kB size, 3 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\spanish.txt" 9 kB size, 9 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\swedish.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\tchinese.txt" 3 kB size, 3 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\thai.txt" 7 kB size, 7 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\turkish.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\ukrainian.txt" 8 kB size, 8 kB changed 
-[2024-02-25 14:09:09]: Changed: "lan\vietnamese.txt" 7 kB size, 7 kB changed 
-[2024-02-25 14:09:09]: Changed: "MineSweeperTetris.exe" 205 kB size, 205 kB changed 
-[2024-02-25 14:09:09]: Summary: 0 files added, 30 files changed, 0 files removed
-[2024-02-25 14:09:10]: Uploading new manifest to 208.64.201.182:80 (handle 10828826848397864358, 12819 bytes).
-[2024-02-25 14:09:10]: Uploading 30 out of 30 missing chunks.
-[2024-02-25 14:09:13]: Success! New manifestID 1170739451542501706 created and 30 new chunks uploaded.
+[2024-02-28 12:35:23]: Starting build for depot 2204231, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2024-02-28 12:35:23]: Building file listing for depot 2204231 ...
+[2024-02-28 12:35:23]: Found 124 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2024-02-28 12:35:23]: Found 124 files (0 MB) for depot 2204231
+[2024-02-28 12:35:25]: Building depot 2204231, baseline manifest 1170739451542501706 (124 files)
+[2024-02-28 12:35:26]: Found 97 chunks ( 97 used previously ) for depot 2204231, took 0 minutes, 0 seconds
+[2024-02-28 12:35:26]: Changes to baseline manifest 1170739451542501706 :
+[2024-02-28 12:35:26]: Changed: "MineSweeperTetris.exe" 206 kB size, 206 kB changed 
+[2024-02-28 12:35:26]: Summary: 0 files added, 1 files changed, 0 files removed
+[2024-02-28 12:35:26]: Uploading new manifest to 208.64.201.182:80 (handle 17217398547130659230, 12833 bytes).
+[2024-02-28 12:35:27]: Uploading 1 out of 1 missing chunks.
+[2024-02-28 12:35:28]: Success! New manifestID 143456045576679181 created and 1 new chunks uploaded.
