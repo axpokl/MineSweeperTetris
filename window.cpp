@@ -89,15 +89,8 @@ public:
     pbitmap parrowp;
 
     const long transparent = 0x000001;
-    const long black = 0x010101;
-    const long white = 0xffffff;
-    const long silver = 0xc0c0c0;
-    const long gray = 0x808080;
-    const long blue = 0xff0000;
-    const long green = 0x008000;
-    const long red = 0x0000ff;
 
-    long color[9] = {silver, 0xAFAFAF, black, silver, red, blue, green, gray, silver};
+    long color[9] = {0xc0c0c0, 0xAFAFAF, 0x010101, 0xc0c0c0, 0x0000ff, 0xff0000, 0x008000, 0x808080, 0xc0c0c0};
     long colori = 0;
     long cfg;
     long cbg;
@@ -865,7 +858,7 @@ void Window::paintboard(Block &b, long x, long y)
 void Window::paintboard(Block &b, long x, long y, long cx, long cy)
 {
     paintboard(b, x, y);
-    drawbmp(pcursor, cx * iconw + x + iconw / 2, cy * iconh + menuh + y + iconh / 2, cursorw, cursorh, silver);
+    drawbmp(pcursor, cx * iconw + x + iconw / 2, cy * iconh + menuh + y + iconh / 2, cursorw, cursorh, 0xc0c0c0);
 }
 
 
