@@ -73,6 +73,27 @@ void Lan::initlan(const char* lan)
         ReadFile(hFile, data, sizeof(data), &bytesRead, NULL);
         CloseHandle(hFile);
     }
+    int sequenceLength = 8;
+    for (long i = 0; data[i] != 0 && i < sizeof(data) / sizeof(data[0]) - sequenceLength; ++i)
+    {
+        bool match = true;
+        for (int j = 0; j < sequenceLength; ++j)
+        {
+            if (data[i + j] != 'x')
+            {
+                match = false;
+                break;
+            }
+        }
+        if (match)
+        {
+            for (int j = 0; j < sequenceLength; ++j)
+            {
+                data[i + j] = version[j];
+            }
+            i += sequenceLength - 1;
+        }
+    }
     long n = 0;
     short int i = 4;
     short int i_ = 4;

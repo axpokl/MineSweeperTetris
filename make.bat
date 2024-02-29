@@ -1,7 +1,12 @@
 del *.exe
 del .\sdk\tools\ContentBuilder\builder\dumps\*.dmp
 rmdir release /s /q
-windres -i icon.rc -O coff -o icon.res
+for /f "tokens=2 delims==" %%G in ('wmic os get localdatetime /value') do set datetime=%%G
+set version=%datetime:~0,8%
+echo const char* version = "%version%"; > version.h
+copy icon.rc icon_.rc
+powershell -Command "(Get-Content icon_.rc).replace('xxxxxxxx', '%version%') | Set-Content icon_.rc"
+windres -i icon_.rc -O coff -o icon.res
 ::g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe 
 g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe -mwindows
 mkdir release

@@ -1,0 +1,30 @@
+#include <winver.h>
+
+MINESWEEPERTETRIS_ICON ICON "MineSweeperTetris.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+ FILEFLAGS 0x0L
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "ax_pokl\0"
+            VALUE "FileDescription", "MineSweeper Tetris\0"
+            VALUE "FileVersion", "Version 20240229 (Steam)\0"
+            VALUE "InternalName", "MineSweeperTetris\0"
+            VALUE "LegalCopyright", "Made by ax_pokl Licensed under GPL-3.0\0"
+            VALUE "OriginalFilename", "MineSweeperTetris.exe\0"
+            VALUE "ProductName", "MineSweeper Tetris\0"
+            VALUE "ProductVersion", "Version 20240229 (Steam)\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 0x04B0
+    END
+END

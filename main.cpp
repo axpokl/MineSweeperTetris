@@ -1,5 +1,6 @@
 #include "steam/steam_api.h"
 #include "disp.h"
+#include "version.h"
 
 #include "reg.cpp"
 #include "lan.cpp"
