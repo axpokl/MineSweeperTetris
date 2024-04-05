@@ -521,11 +521,11 @@ void Window::initbmp()
             piconm = createbmp(iconw, iconh);
             picone = createbmp(iconw, iconh);
             piconn = createbmp(iconw, iconh);
-            piconp = createbmp(iconw, iconh);
             for (long i = 0; i <= 10; i++)
             {
                 picon[i] = createbmp(iconw, iconh);
             }
+            piconp = createbmp(iconw, iconh);
             picona = createbmp(iconw, iconh);
             piconu = createbmp(iconw, iconh);
             picont = createbmp(iconw, iconh);
@@ -801,14 +801,7 @@ void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h
     {
         if (b.mine[i][j])
         {
-            if (j > 0)
-            {
-                drawbmp(piconm, x, y, w, h);
-            }
-            else
-            {
-                drawbmp(piconn, x, y, w, h);
-            }
+            drawbmp(piconm, x, y, w, h);
         }
         else
         {
@@ -823,7 +816,7 @@ void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h
     {
         drawbmp(piconq, x, y, w, h);
     }
-    else if ((b.sit == 4) && b.mine[i][j])
+    else if (((b.sit == 4) || ((b.sit == 0) && (bd.mode == 0))) && b.mine[i][j])
     {
         drawbmp(piconn, x, y, w, h);
     }
