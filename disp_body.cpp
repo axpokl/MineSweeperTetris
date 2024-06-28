@@ -118,7 +118,6 @@ void WinInit()
     while (IsWin())
     {
         GetMessage(&_mst, 0, 0, 0);
-//        if (error > 0) if (_mst.message != 512 && _mst.message != 160) printf("GetMessage: %lu, _hw %d, hW: %d, uM: %d, wP: %d, lP: %d\n", error,_hw, _mst.hwnd, _mst.message, _mst.wParam, _mst.lParam);
         if (_mst.message != 0)
         {
             SendMsg();

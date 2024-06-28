@@ -2501,7 +2501,7 @@ void Window::doaction()
             {
                 GetWindowPlacement((HWND)gethwnd(),&wn);
                 showmax = ((wn.showCmd & SW_SHOWMAXIMIZED) == SW_SHOWMAXIMIZED);
-                if (showmax != showmax_ || (((w_ * mult) != getwidth() || (h_ * mult) != getheight()) && ismsg(WM_NCLBUTTONDOWN)))
+                if (showmax != showmax_ || (((w_ * mult) != getwidth() || (h_ * mult) != getheight()) && ismsg(WM_NCLBUTTONDOWN) && !IsZoomed((HWND)gethwnd()) && !IsIconic((HWND)gethwnd())))
                 {
                     mult_ = showmax;
                     initwindow(false);
