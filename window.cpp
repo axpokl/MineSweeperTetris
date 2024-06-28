@@ -38,55 +38,54 @@ public:
     const long arroww = 24;
     const long arrowh = 24;
 
-    pbitmap ptitle_;
-    pbitmap pbg_;
-    pbitmap pmenu_;
-    pbitmap pmenu1[2];
-    pbitmap pmenu2[2];
-    pbitmap pmenu3[2];
-    pbitmap pmenuq[2];
-    pbitmap pmenua[2];
-    pbitmap pmenus[2];
-    pbitmap pmenum[2];
-    pbitmap pmenut[2];
-    pbitmap pmenud[2];
-    pbitmap pmenun[2];
-    pbitmap pmenug[7][2];
-    pbitmap pface_;
-    pbitmap pface[9];
-    pbitmap picon_;
-    pbitmap picon[11];
-    pbitmap piconc;
-    pbitmap piconq;
-    pbitmap piconf;
-    pbitmap piconm;
-    pbitmap picone;
-    pbitmap piconn;
-    pbitmap piconp;
-    pbitmap picona;
-    pbitmap piconu;
-    pbitmap picont;
-    pbitmap pdigt_[3];
-    pbitmap pdigt[10][3];
-    pbitmap pdigtmin[3];
-    pbitmap pdigtnul[3];
-    pbitmap pok_;
-    pbitmap pok;
-    pbitmap pbtn;
-    pbitmap pcursor_;
-    pbitmap pcursor;
-    pbitmap pclick_;
-    pbitmap pclickl;
-    pbitmap pclickr;
-    pbitmap pclickn;
-    pbitmap pclicka;
-    pbitmap parrow_;
-    pbitmap parrowl;
-    pbitmap parrowr;
-    pbitmap parrowu;
-    pbitmap parrowd;
-    pbitmap parrowm;
-    pbitmap parrowp;
+    pbitmap ptitle_ = NULL;
+    pbitmap pbg_ = NULL;
+    pbitmap pmenu_ = NULL;
+    pbitmap pmenu1[2] = {NULL, NULL};
+    pbitmap pmenu2[2] = {NULL, NULL};
+    pbitmap pmenu3[2] = {NULL, NULL};
+    pbitmap pmenuq[2] = {NULL, NULL};
+    pbitmap pmenua[2] = {NULL, NULL};
+    pbitmap pmenus[2] = {NULL, NULL};
+    pbitmap pmenum[2] = {NULL, NULL};
+    pbitmap pmenut[2] = {NULL, NULL};
+    pbitmap pmenud[2] = {NULL, NULL};
+    pbitmap pmenun[2] = {NULL, NULL};
+    pbitmap pmenug[7][2] = {{NULL, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL}};
+    pbitmap pface_ = NULL;
+    pbitmap pface[9] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+    pbitmap picon_ = NULL;
+    pbitmap picon[11] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+    pbitmap piconc = NULL;
+    pbitmap piconq = NULL;
+    pbitmap piconf = NULL;
+    pbitmap piconm = NULL;
+    pbitmap picone = NULL;
+    pbitmap piconn = NULL;
+    pbitmap piconp = NULL;
+    pbitmap picona = NULL;
+    pbitmap piconu = NULL;
+    pbitmap pdigt_[3] = {NULL, NULL, NULL};
+    pbitmap pdigt[10][3] = {{NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}, {NULL, NULL, NULL}};
+    pbitmap pdigtmin[3] = {NULL, NULL, NULL};
+    pbitmap pdigtnul[3] = {NULL, NULL, NULL};
+    pbitmap pok_ = NULL;
+    pbitmap pok = NULL;
+    pbitmap pbtn = NULL;
+    pbitmap pcursor_ = NULL;
+    pbitmap pcursor = NULL;
+    pbitmap pclick_ = NULL;
+    pbitmap pclickl = NULL;
+    pbitmap pclickr = NULL;
+    pbitmap pclickn = NULL;
+    pbitmap pclicka = NULL;
+    pbitmap parrow_ = NULL;
+    pbitmap parrowl = NULL;
+    pbitmap parrowr = NULL;
+    pbitmap parrowu = NULL;
+    pbitmap parrowd = NULL;
+    pbitmap parrowm = NULL;
+    pbitmap parrowp = NULL;
 
     const long transparent = 0x000001;
 
@@ -116,8 +115,8 @@ public:
     bool helpb = true;
     bool cheatb = false;
     bool waitb = false;
-    pbitmap pwin;
-    pbitmap pwint;
+    pbitmap pwin = NULL;
+    pbitmap pwint = NULL;
     const long minh = 600;
     const long minw = 800;
     long mult_ = 0;
@@ -463,9 +462,9 @@ void Window::initwindow(bool b)
         releasebmp(pwint);
         pwin = createbmp(w_, h_);
         pwint = createbmp(w_ * mult, h_ * mult, transparent_);
-        paintevent(false);
         EnumDisplayMonitors(NULL, NULL, Monitorenumproc, (LPARAM)this);
         setsize(x_ + xscr, y_ + yscr, w_ * mult, h_ * mult);
+        paintevent(false);
         freshwin();
     }
 }
@@ -528,7 +527,6 @@ void Window::initbmp()
             piconp = createbmp(iconw, iconh);
             picona = createbmp(iconw, iconh);
             piconu = createbmp(iconw, iconh);
-            picont = createbmp(iconw, iconh);
             for (long k = 0; k < 3; k++)
             {
                 for (long i = 0; i < 10; i++)
@@ -633,7 +631,6 @@ void Window::initbmp()
         drawbmp(picon_, piconp, 0, iconh * 16, iconw, iconh, 0, 0, iconw, iconh);
         drawbmp(picon_, picona, 0, iconh * 17, iconw, iconh, 0, 0, iconw, iconh);
         drawbmp(picon_, piconu, 0, iconh * 18, iconw, iconh, 0, 0, iconw, iconh);
-        drawbmp(picon_, picont, 0, iconh * 19, iconw, iconh, 0, 0, iconw, iconh);
         for (long k = 0; k < 3; k++)
         {
             for (long i = 0; i < 10; i++)

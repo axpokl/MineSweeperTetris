@@ -671,7 +671,7 @@ void Board::checkline(bool delayb_)
                 {
                     for (long k = 0; k < mult; k++)
                     {
-                        Line160(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, cred);
+                        Line(0, (16 * (j - j_ + 3) + 8) * mult + k - (mult - 1) / 2, w_ * mult, 0, (unsigned long) cred);
                     }
                 }
                 j_++;

@@ -1166,23 +1166,23 @@ function SendString(s:ansistring):longword;var c:array[0..MAXCHAR-1]of char;
 begin mciSendString(pchar(s),@c,MAXCHAR,0);SendString:=s2i(pc2as(@c));end;
 
 procedure WinCreateMain();
-var pmscr,pmain:pbitmap;
 begin
-pmscr:=_pmscr;
-pmain:=_pmain;
-_dc:=GetDC(_hw);
-_mscr.Handle:=_hw;
-_mscr.DC:=_dc;
-_mscr.Width:=_w;
-_mscr.Height:=_h;
-_pmscr:=@_mscr;
-_pmain:=CreateBMP(_pmscr);
-_pmain^.Color:=Transparent;
-_main:=_pmain^;
-SetFont();
-if _draw<>nil then _draw;
-ReleaseBMP(pmscr);
-ReleaseBMP(pmain);
+if (_hw>0) then
+  begin
+  ReleaseBMP(_pmscr);
+  ReleaseBMP(_pmain);
+  _dc:=GetDC(_hw);
+  _mscr.Handle:=_hw;
+  _mscr.DC:=_dc;
+  _mscr.Width:=_w;
+  _mscr.Height:=_h;
+  _pmscr:=@_mscr;
+  _pmain:=CreateBMP(_pmscr);
+  _pmain^.Color:=Transparent;
+  _main:=_pmain^;
+  SetFont();
+  if _draw<>nil then _draw;
+  end;
 end;
 
 function WndProc(hW:HWnd;uM:Uint;wP:WParam;lP:LParam):LResult;stdcall;
@@ -2348,7 +2348,7 @@ procedure ReleaseBMP(b:pbitmap);
 begin
 if b<>nil then
   begin
-  if b^.dc<>_dc then ReleaseDC(b^.Handle,b^.DC);
+  if b^.dc=_dc then ReleaseDC(_hw,b^.DC);
   if b^.dc<>_dc then Deleteobject(b^.DC);
   if b^.Handle<>_hw then DeleteObject(b^.Handle);
   if b<>_pmscr then Freemem(b);

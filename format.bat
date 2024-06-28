@@ -8,5 +8,8 @@ astyle --style=allman --indent-cases --indent-switches steam.cpp
 astyle --style=allman --indent-cases --indent-switches reg.cpp
 astyle --style=allman --indent-cases --indent-switches utf.cpp
 astyle --style=allman --indent-cases --indent-switches mon.cpp
+astyle --style=allman --indent-cases --indent-switches disp_head.cpp
+astyle --style=allman --indent-cases --indent-switches disp_body.cpp
+astyle --style=allman --indent-cases --indent-switches disp_func.cpp
 del *.orig
 pause

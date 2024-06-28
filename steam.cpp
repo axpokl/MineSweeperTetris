@@ -528,7 +528,7 @@ void Steam::savescr(char* scrpath)
 {
     if (steamb)
     {
-        ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->width, getwin()->height);
+        ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->Width, getwin()->Height);
     }
 }
 

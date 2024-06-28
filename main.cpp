@@ -1,6 +1,9 @@
 #include "steam/steam_api.h"
-#include "disp.h"
 #include "version.h"
+
+#include "disp_head.cpp"
+#include "disp_body.cpp"
+#include "disp_func.cpp"
 
 #include "reg.cpp"
 #include "lan.cpp"
@@ -10,8 +13,9 @@
 #include "board.cpp"
 #include "window.cpp"
 
-int main()
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+    MainInstance = hInstance;
     Lan lan;
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
     {
