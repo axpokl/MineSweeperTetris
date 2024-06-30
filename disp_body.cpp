@@ -14,13 +14,12 @@ void WinCreateMain()
         _pmain->Color = TransParent;
         _main = *_pmain;
         SetFont();
-        if (_draw) _draw();
+        if (_draw != NULL) _draw();
     }
 }
 
 LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP)
 {
-    LRESULT WndProcRet = 0;
     switch (uM)
     {
         case WM_CREATE:
@@ -38,24 +37,17 @@ LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP)
             _w = lP % 0x10000;
             _h = lP / 0x10000;
             WinCreateMain();
-            if (_draw) _draw();
+            if (_draw != NULL) _draw();
             break;
         case WM_MOVE:
-            if (_draw) _draw();
+            if (_draw != NULL) _draw();
             break;
         case WM_PAINT:
-            if (_draw) _draw();
-            WndProcRet = DefWindowProcW(hW, uM, wP, lP);
+            if (_draw != NULL) _draw();
             break;
         case WM_SETCURSOR:
             if (GetMousePosX() >= 0 && GetMousePosY() >= 0 && GetMousePosX() <= _w && GetMousePosY() <= _h)
-            {
                 SetCursor(LoadCursor(0, IDC_ARROW));
-            }
-            else
-            {
-                WndProcRet = DefWindowProcW(hW, uM, wP, lP);
-            }
             break;
         case WM_USER:
             _msusr[_msusri].message = uM;
@@ -74,11 +66,9 @@ LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP)
             _winb = false;
             ExitThread(0);
             break;
-        default:
-            WndProcRet = DefWindowProcW(hW, uM, wP, lP);
-            break;
     }
-    return WndProcRet;
+    LRESULT result = DefWindowProcW(hW, uM, wP, lP);
+    return result;
 }
 
 ATOM WinRegister()
@@ -88,7 +78,7 @@ ATOM WinRegister()
     _wc.cbClsExtra = 0;
     _wc.cbWndExtra = 0;
     _wc.hInstance = MainInstance;
-    _wc.hbrBackground = CreateSolidBrush(_cbg);
+    _wc.hbrBackground = (HBRUSH)CreateSolidBrush(_cbg);
     _wc.lpszMenuName = NULL;
     _wc.lpszClassName = _class;
     return RegisterClassW(&_wc);
@@ -96,11 +86,7 @@ ATOM WinRegister()
 
 void WinCreate()
 {
-    RECT rect;
-    rect.left = _x;
-    rect.top = _y;
-    rect.right = rect.left + _w;
-    rect.bottom = rect.top + _h;
+    RECT rect = {_x, _y, _x + _w, _y + _h};
     AdjustWindowRect(&rect, _style, FALSE);
     _w = rect.right - rect.left;
     _h = rect.bottom - rect.top;

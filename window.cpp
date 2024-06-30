@@ -2499,13 +2499,18 @@ void Window::doaction()
             }
             if (ismsg(WM_PAINT) || ismsg(WM_NCLBUTTONDOWN) || ismsg(WM_SYSCOMMAND))
             {
-                GetWindowPlacement((HWND)gethwnd(),&wn);
-                showmax = ((wn.showCmd & SW_SHOWMAXIMIZED) == SW_SHOWMAXIMIZED);
-                if (showmax != showmax_ || (((w_ * mult) != getwidth() || (h_ * mult) != getheight()) && ismsg(WM_NCLBUTTONDOWN) && !IsZoomed((HWND)gethwnd()) && !IsIconic((HWND)gethwnd())))
+                showmax = IsZoomed((HWND)gethwnd());
+                if (!IsIconic((HWND)gethwnd()) &&
+                        (showmax != showmax_ ||
+                         ((fabs((w_ * mult) - getwidth()) > 1.0 ||
+                           fabs((h_ * mult) - getheight()) > 1.0) &&
+                          ismsg(WM_NCLBUTTONDOWN))))
                 {
+                    ShowWindow((HWND)GetHwnd(),SW_RESTORE);
                     mult_ = showmax;
                     initwindow(false);
                     bd.sd.playsound(bd.sd.sRight);
+                    showmax = 0;
                     showmax_ = showmax;
                 }
                 paintevent();
