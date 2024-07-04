@@ -1,9 +1,7 @@
 #include "steam/steam_api.h"
 #include "version.h"
 
-#include "disp_head.cpp"
-#include "disp_body.cpp"
-#include "disp_func.cpp"
+#include "disp.cpp"
 
 #include "reg.cpp"
 #include "lan.cpp"
@@ -19,13 +17,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     Lan lan;
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
     {
-        msgboxw(lan.getlan(lan.LAN_RUNNING), lan.getlan(lan.LAN_TITLE), MB_ICONINFORMATION);
+        MsgBoxW(lan.getlan(lan.LAN_RUNNING), lan.getlan(lan.LAN_TITLE), MB_ICONINFORMATION);
     }
     else
     {
         Window w;
         w.loadall();
-        while (iswin())
+        while (IsWin())
         {
             w.doaction();
             if (w.bd.addmask())
@@ -33,7 +31,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
                 w.paintevent();
             }
             w.bd.sd.checkmusic();
-            delay(1);
+            Delay(1);
         }
     }
     return 0;

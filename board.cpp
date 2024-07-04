@@ -294,7 +294,7 @@ void Board::resetbd(long x, long y)
         randmine(x, y);
     }
     calcnumb();
-    time = gettimer();
+    time = GetTimeR();
     time_ = time;
     sit = 1;
     st.addach(st.achgenstart);
@@ -686,10 +686,10 @@ void Board::checkline(bool delayb_)
             sd.playsound(sd.sSolve);
             if ((delayb & delayb_) || (tutb == 1))
             {
-                freshwin();
+                FreshWin();
                 long dl = 1000.0 / (1.0 + (double)level /5.0);
                 time += dl / 1000.0;
-                delay(dl);
+                Delay(dl);
                 delayb__ = 1;
             }
         }
@@ -742,9 +742,9 @@ bool Board::addmask()
     {
         if (tutb == 0)
         {
-            if (gettimer() > time + 5.0 / (level + 5.0))
+            if (GetTimeR() > time + 5.0 / (level + 5.0))
             {
-                while (gettimer() > time + 5.0 / (level + 5.0))
+                while (GetTimeR() > time + 5.0 / (level + 5.0))
                 {
                     time += 5.0 / (level + 5.0);
                     maski++;
@@ -762,7 +762,7 @@ bool Board::addmask()
     }
     else
     {
-        time = gettimer() - pausetime;
+        time = GetTimeR() - pausetime;
     }
     return false;
 }
@@ -1127,7 +1127,7 @@ void Board::pause()
 {
     if (pauseb == 0)
     {
-        pausetime = gettimer() - time;
+        pausetime = GetTimeR() - time;
     }
     pauseb = (pauseb == 0);
 }

@@ -139,18 +139,18 @@ void Steam::initsteam()
 {
     if (SteamAPI_RestartAppIfNecessary(appid))
     {
-        msgboxw(lan.getlan(lan.LAN_STEAM_LAUNCH), lan.getlan(lan.LAN_TITLE), MB_ICONINFORMATION);
+        MsgBoxW(lan.getlan(lan.LAN_STEAM_LAUNCH), lan.getlan(lan.LAN_TITLE), MB_ICONINFORMATION);
     }
     steamb = SteamAPI_Init();
     if (!steamb)
     {
-        msgboxw(lan.getlan(lan.LAN_STEAM_FAIL), lan.getlan(lan.LAN_TITLE), MB_ICONWARNING);
+        MsgBoxW(lan.getlan(lan.LAN_STEAM_FAIL), lan.getlan(lan.LAN_TITLE), MB_ICONWARNING);
     }
     if (steamb)
     {
         if (SteamUtils()->GetAppID() != appid)
         {
-            msgbox("This is the test version of MineSweeper Tetris, please download the released version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
+            MsgBox("This is the test version of MineSweeper Tetris, please download the released version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
         }
     }
 }
@@ -187,7 +187,7 @@ void Steam::loadsteam()
     {
         if (!SteamUserStats()->RequestCurrentStats())
         {
-            msgboxw(lan.getlan(lan.LAN_STEAM_Status), lan.getlan(lan.LAN_TITLE), MB_ICONWARNING);
+            MsgBoxW(lan.getlan(lan.LAN_STEAM_Status), lan.getlan(lan.LAN_TITLE), MB_ICONWARNING);
         }
         else
         {
@@ -488,12 +488,12 @@ bool Steam::waitlead()
     if (steamb)
     {
         bool waitb = true;
-        long time = gettimer();
+        long time = GetTimeR();
         for (long leadid = 0; leadid < leadn; leadid++)
         {
-            while (iswin() && !SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (gettimer() < (time + waittime)))
+            while (IsWin() && !SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed) && (GetTimeR() < (time + waittime)))
             {
-                delay(1);
+                Delay(1);
             }
             waitb = waitb && SteamUtils()->IsAPICallCompleted(lead[leadid], &leadfailed);
         }
@@ -507,14 +507,14 @@ bool Steam::waitlead_()
     if (steamb)
     {
         bool waitb = true;
-        long time = gettimer();
+        long time = GetTimeR();
         for (long n = 0; n < 3; n++)
         {
             for (long leadid = 0; leadid < leadn; leadid++)
             {
-                while (iswin() && !SteamUtils()->IsAPICallCompleted(lead_[n][leadid], &leadfailed) && (gettimer() < (time + waittime)))
+                while (IsWin() && !SteamUtils()->IsAPICallCompleted(lead_[n][leadid], &leadfailed) && (GetTimeR() < (time + waittime)))
                 {
-                    delay(1);
+                    Delay(1);
                 }
                 waitb = waitb && SteamUtils()->IsAPICallCompleted(lead_[n][leadid], &leadfailed);
             }
@@ -528,7 +528,7 @@ void Steam::savescr(char* scrpath)
 {
     if (steamb)
     {
-        ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, getwin()->Width, getwin()->Height);
+        ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, GetWin()->Width, GetWin()->Height);
     }
 }
 

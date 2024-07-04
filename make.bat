@@ -8,10 +8,7 @@ echo const char* version = "%version%"; > version.h
 copy icon.rc icon_.rc
 powershell -Command "(Get-Content icon_.rc).replace('xxxxxxxx', '%version%') | Set-Content icon_.rc"
 windres -i icon_.rc -O coff -o icon.res
-::g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe 
 ::g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe -mwindows
-::g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe -lwinmm -lgdiplus
-::g++ -static -Os -s main.cpp steam_api.lib disp.dll icon.res -o MineSweeperTetris.exe -mwindows -lwinmm -lgdiplus
 g++ -static -Os -s main.cpp icon.res -o MineSweeperTetris.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
 if not exist MineSweeperTetris.exe goto fail
 mkdir release

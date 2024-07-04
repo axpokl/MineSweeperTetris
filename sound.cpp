@@ -52,12 +52,12 @@ void Sound::initsound()
 void Sound::loadsound()
 {
     char sPath[MAX_PATH];
-    if (iswin())
+    if (IsWin())
     {
         for (long id = 0; id < maxsound; id++)
         {
             sprintf(sPath, "./wav/%s.wav", sSounds[id]);
-            sSound[id] = loadaudio(sPath, "");
+            sSound[id] = LoadAudio(sPath, "");
         }
     }
 }
@@ -67,26 +67,26 @@ void Sound::loadmusic()
     char sPath[MAX_PATH];
     for (long k = 0; k < maxmusic; k++)
     {
-        if (iswin())
+        if (IsWin())
         {
             sprintf(sPath, "./mid/music%d.mid", k + 1);
-            sMusic[k] = loadaudio(sPath, " type sequencer");
+            sMusic[k] = LoadAudio(sPath, " type sequencer");
         }
     }
 }
 
 void Sound::playsound(long id)
 {
-    if (iswin() && soundb)
+    if (IsWin() && soundb)
     {
-        setaudiopos(sSound[id], 0);
+        SetAudioPos(sSound[id], 0);
     }
 }
 
 void Sound::switchsound()
 {
     soundb = !soundb;
-    if (iswin() && soundb)
+    if (IsWin() && soundb)
     {
         playsound(sLeft);
     }
@@ -96,7 +96,7 @@ void Sound::playmusic()
 {
     if (musicb)
     {
-        if (iswin())
+        if (IsWin())
         {
             if (musici == musici0)
             {
@@ -111,14 +111,14 @@ void Sound::playmusic()
                 }
                 musici = musici_;
             }
-            musictime = gettimer();
+            musictime = GetTimeR();
         }
         else
         {
             musici = musici0;
             musictime = 0;
         }
-        setaudiopos(sMusic[musici], 0);
+        SetAudioPos(sMusic[musici], 0);
     }
 }
 
@@ -126,9 +126,9 @@ void Sound::checkmusic()
 {
     if (musicb)
     {
-        if (gettimer() > musictime)
+        if (GetTimeR() > musictime)
         {
-            if (getaudiopos(sMusic[musici]) < getaudiolen(sMusic[musici]))
+            if (GetAudioPos(sMusic[musici]) < GetAudioLen(sMusic[musici]))
             {
                 musictime += 10;
             }
@@ -149,7 +149,7 @@ void Sound::switchmusic()
     }
     else
     {
-        stopaudio(sMusic[musici]);
+        StopAudio(sMusic[musici]);
     }
     if (soundb)
     {
