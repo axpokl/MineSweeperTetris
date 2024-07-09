@@ -221,10 +221,10 @@ long GetPosY();
 unsigned long GetPos();
 pbitmap GetWin();
 pbitmap GetScr();
-unsigned long GetHwnd(pbitmap b);
-unsigned long GetHwnd();
-unsigned long GetDraw(pbitmap b);
-unsigned long GetDraw();
+HGDIOBJ GetHwnd(pbitmap b);
+HWND GetHwnd();
+HDC GetDraw(pbitmap b);
+HDC GetDraw();
 
 unsigned long GetBGColor();
 void SetBGColor(unsigned long c);
@@ -426,7 +426,7 @@ uint8_t UnicodeToUTF16(uint32_t unicode, uint16_t *utf16);
 
 void WinCreateMain()
 {
-    if (_hw > 0)
+    if (_hw)
     {
         ReleaseBMP(_pmscr);
         ReleaseBMP(_pmain);
@@ -758,21 +758,21 @@ pbitmap GetScr()
 {
     return _pmscr;
 }
-unsigned long GetHwnd(pbitmap b)
+HGDIOBJ GetHwnd(pbitmap b)
 {
-    return (unsigned long)b->Handle;
+    return b->Handle;
 }
-unsigned long GetHwnd()
+HWND GetHwnd()
 {
-    return (unsigned long)_hw;
+    return _hw;
 }
-unsigned long GetDraw(pbitmap b)
+HDC GetDraw(pbitmap b)
 {
-    return (unsigned long)b->DC;
+    return b->DC;
 }
-unsigned long GetDraw()
+HDC GetDraw()
 {
-    return (unsigned long)_dc;
+    return _dc;
 }
 
 unsigned long GetBGColor()

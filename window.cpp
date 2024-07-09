@@ -374,7 +374,7 @@ void Window::loadicon()
 {
     hicon_res = (HICON)LoadImage(MainInstance, "MINESWEEPERTETRIS_ICON", IMAGE_ICON, 0, 0, 0);
     hicon_file = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
-    if (hicon_res > 0)
+    if (hicon_res)
     {
         hicon = hicon_res;
     }
