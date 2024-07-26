@@ -27,6 +27,13 @@
 						"country_codes"		"CN"
 						"https"		"1"
 					}
+					"client-update.queniuqe.com"
+					{
+						"base_url"		"/"
+						"weight"		"100000"
+						"country_codes"		"CN"
+						"https"		"1"
+					}
 				}
 				"steamchina"
 				{
@@ -37,17 +44,24 @@
 						"country_codes"		"CN"
 						"https"		"1"
 					}
+					"client-update.steamchina.queniuam.com"
+					{
+						"base_url"		"/"
+						"weight"		"100"
+						"country_codes"		"CN"
+						"https"		"1"
+					}
 				}
 			}
 		}
 		"kvsign2"
 		{
-			"Hosts"		"c0317fad771687d2b3231656a25b683146c30d5c6ecb9324986999174bad9e94a9b842e6432369ed2eb0c66bbc810ed5bfff21c4c3931bf6b148d50c98d09b03"
+			"Hosts"		"0e7e45f646a5b32a25cdc0e0f1d89b62b4fa8d4327117739599a565e04d568614c594121024a724e41b262b99e2c5ed7820aebbd3c0e6d7ddf4b32f837c45705"
 		}
 	}
 	"ClientInfo"
 	{
-		"valid_until"		"1720160532"
+		"valid_until"		"1722186535"
 		"ip_country_code"		"JP"
 	}
 }

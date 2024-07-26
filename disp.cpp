@@ -176,7 +176,7 @@ unsigned long _cid = 0;
 
 void WinCreateMain();
 LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP);
-//BOOL CALLBACK Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdata);
+BOOL CALLBACK Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdata);
 ATOM WinRegister();
 void WinCreate();
 void WinInit();
@@ -298,9 +298,7 @@ void SetPixel(pbitmap b, unsigned long x, unsigned long y, unsigned long c);
 void SetPixel(unsigned long x, unsigned long y, unsigned long c);
 void SetPixel(unsigned long x, unsigned long y);
 void Line(pbitmap b, long x, long y, long w, long h, unsigned long c);
-void Line(pbitmap b, long x, long y, long w, long h);
 void Line(long x, long y, long w, long h, unsigned long c);
-void Line(long x, long y, long w, long h);
 void Bar(pbitmap b, long x, long y, long w, long h, unsigned long cfg, unsigned long cbg);
 void Bar(pbitmap b, long x, long y, long w, long h, unsigned long c);
 void Bar(long x, long y, long w, long h, unsigned long cfg, unsigned long cbg);
@@ -1159,17 +1157,9 @@ void Line(pbitmap b, long x, long y, long w, long h, unsigned long c)
     MoveToEx(b->DC, x, y, NULL);
     LineTo(b->DC, x + w, y + h);
 }
-void Line(pbitmap b, long x, long y, long w, long h)
-{
-    Line(b, x, y, w, h, 0);
-}
 void Line(long x, long y, long w, long h, unsigned long c)
 {
     Line(NULL, x, y, w, h, c);
-}
-void Line(long x, long y, long w, long h)
-{
-    Line(x, y, w, h, 0);
 }
 void Bar(pbitmap b, long x, long y, long w, long h, unsigned long cfg, unsigned long cbg)
 {
