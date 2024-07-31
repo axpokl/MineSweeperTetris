@@ -419,6 +419,8 @@ void SetAudioPos(unsigned long id, unsigned long pos, bool b);
 void SetAudioPos(unsigned long id, unsigned long pos);
 unsigned long GetAudioLen(unsigned long id);
 
+bool IsFile(const char* s);
+
 uint8_t UTF8ToUnicode(uint8_t *utf8, uint32_t *unicode);
 uint8_t UnicodeToUTF16(uint32_t unicode, uint16_t *utf16);
 
@@ -1790,6 +1792,18 @@ unsigned long GetAudioLen(unsigned long id)
     char command[128];
     sprintf(command, "status s%lu length", id);
     return SendString(command);
+}
+
+bool IsFile(const char* s)
+{
+    WIN32_FIND_DATA fd;
+    HANDLE fh = FindFirstFile(s, &fd);
+    bool result = fh != INVALID_HANDLE_VALUE;
+    if (result)
+    {
+        FindClose(fh);
+    }
+    return result;
 }
 
 uint8_t UTF8ToUnicode(uint8_t *utf8, uint32_t *unicode)

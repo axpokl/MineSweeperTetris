@@ -5,7 +5,7 @@ public:
 
     static const long musici0 = -256;
     static const long maxsound = 8;
-    static const long maxmusic = 7;
+    static const long maxmusic = 100;
 
     unsigned long sSound[maxsound];
     unsigned long sMusic[maxmusic];
@@ -21,6 +21,7 @@ public:
     long sNew = 6;
     long sSolve = 7;
 
+    long nummusic = 0;
     bool soundb = true;
     bool musicb = true;
     long musici = musici0;
@@ -65,12 +66,22 @@ void Sound::loadsound()
 void Sound::loadmusic()
 {
     char sPath[MAX_PATH];
+    nummusic = maxmusic;
     for (long k = 0; k < maxmusic; k++)
     {
         if (IsWin())
         {
             sprintf(sPath, "./mid/music%d.mid", k + 1);
             sMusic[k] = LoadAudio(sPath, " type sequencer");
+            if (IsFile(sPath))
+            {
+                sMusic[k] = LoadAudio(sPath, " type sequencer");
+                nummusic = k;
+            }
+            else
+            {
+                break;
+            }
         }
     }
 }
@@ -104,7 +115,7 @@ void Sound::playmusic()
             }
             else
             {
-                long musici_ = rand() % (maxmusic - 1);
+                long musici_ = rand() % (nummusic - 1);
                 if (musici_ >= musici)
                 {
                     musici_++;
