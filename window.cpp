@@ -4,7 +4,7 @@ class Window
 public:
 
     const long launchw = 320;
-    const long launchh = 352;
+    const long launchh = 368;
     const long titlew = 256;
     const long titleh = 256;
     const long menuw = 24;
@@ -152,6 +152,7 @@ public:
     void saveboard();
     void initmult();
     void loadicon();
+    void loadallpaint();
     void loadall();
     void initwindow();
     void releasewindow();
@@ -203,14 +204,23 @@ public:
 
 };
 
+static DWORD WINAPI loadallpaintstatic(LPVOID lpParam)
+{
+    Window* window = static_cast<Window*>(lpParam);
+    window->loadallpaint();
+    return 0;
+}
+
 Window::Window()
 {
+    InitializeCriticalSection(&cs);
     initwindow();
 }
 
 Window::~Window()
 {
     releasewindow();
+    DeleteCriticalSection(&cs);
 }
 
 void Window::loadsetting()
@@ -306,8 +316,23 @@ void Window::saveboard()
     reg.setreg(reg.regkey_, "solven", bd.solven);
 }
 
+void Window::loadallpaint()
+{
+    while (painttitleb > 0)
+    {
+        if (painttitleb == 2)
+        {
+            painttitle(painttitlec);
+        }
+        Sleep(1);
+    }
+    painttitles = NULL;
+}
+
 void Window::loadall()
 {
+    painttitleb = 1;
+    CreateThread(NULL, 0, loadallpaintstatic, this, 0, NULL);
     if (IsWin())
     {
         loadsetting();
@@ -346,6 +371,7 @@ void Window::loadall()
         SetWindowLongPtr((HWND)GetHwnd(), GWL_STYLE, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE);
         sethelp(0);
     }
+    painttitleb = 0;
 }
 
 void Window::initmult()
@@ -572,26 +598,47 @@ void Window::initbmp()
         }
         char pngPath[MAX_PATH];
         sprintf(pngPath, "./png/%d/bg.png", colori);
+        painttitles = pngPath;
         pbg_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/menu.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pmenu_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/face.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pface_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/icon.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         picon_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/digt.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pdigt_[0] = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/digt2.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pdigt_[1] = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/digt_.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pdigt_[2] = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/ok.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pok_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/cursor.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pcursor_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/click.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         pclick_ = LoadBMP(pngPath);
         sprintf(pngPath, "./png/%d/arrow.png", colori);
+        painttitles = pngPath;
+        painttitleb= 2;
         parrow_ = LoadBMP(pngPath);
         for (long k = 0; k < 9; k++)
         {
@@ -1634,6 +1681,8 @@ void Window::painttut()
 
 void Window::painttitle(long load)
 {
+    EnterCriticalSection(&cs);
+    painttitlec=load;
     Clear(cbg);
     Clear(pwint, transparent_);
     if (load < 0)
@@ -1645,7 +1694,13 @@ void Window::painttitle(long load)
     drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TITLE), 0, fontth - fontfh, launchw, fontfh, ctfg, cbg);
     if (load >= 0)
     {
-        drawtextxy_(pwint, bd.st.lan.getlan(load), 0, fontth + titleh - titleh / 16, launchw, fontfh, ctfg, cbg);
+        setfontheight_(fontfh);
+        drawtextxy_(pwint, bd.st.lan.getlan(load), 0, fontth + titleh - fontfh / 2, launchw, fontfh, ctfg, cbg);
+        setfontheight_(fonth);
+        if (painttitles != NULL)
+        {
+            drawtextxy_(pwint, (const char*)painttitles, 0, fontth + titleh + fontfh / 2, launchw, fontfh, ctfg, cbg);
+        }
     }
     setfontheight_(fonth);
     if (mult > 1)
@@ -1655,6 +1710,7 @@ void Window::painttitle(long load)
     }
     DrawBMP(pwint, GetWin(),0,0, w_ * mult, h_ * mult, transparent_);
     FreshWin();
+    LeaveCriticalSection(&cs);
 }
 
 void Window::paintevent(bool freshb)

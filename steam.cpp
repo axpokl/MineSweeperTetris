@@ -210,6 +210,8 @@ void Steam::loadach()
 {
     if (steamb)
     {
+        painttitles = "Load Achievement";
+        painttitleb = 2;
         for (long achid = 0; achid < achn; achid++)
         {
             SteamUserStats()->GetAchievement(achs[achid], &achb[achid]);
@@ -257,6 +259,8 @@ void Steam::loadscr()
 {
     if (steamb)
     {
+        painttitles = "Load Status";
+        painttitleb = 2;
         for (long scrid = 0; scrid < scrn; scrid++)
         {
             scr[scrid] = -1;
@@ -368,6 +372,8 @@ void Steam::loadlead()
 {
     if (steamb)
     {
+        painttitles = "Load Leaderboard";
+        painttitleb = 2;
         for (long leadid = 0; leadid < leadn; leadid++)
         {
             lead[leadid] = SteamUserStats()->FindLeaderboard(leads[leadid]);

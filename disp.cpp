@@ -174,6 +174,12 @@ WCHAR _GdiWideChar[MAXCHAR] = {0};
 
 unsigned long _cid = 0;
 
+long painttitleb = 0;
+long painttitlec = 0;
+const char* painttitles = NULL;
+
+CRITICAL_SECTION cs;
+
 void WinCreateMain();
 LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP);
 BOOL CALLBACK Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdata);
