@@ -2146,3 +2146,13 @@
 [2024-07-27 07:21:55] 	Base list: 0 ()
 [2024-07-27 07:21:55] 	No custom list
 [2024-07-27 07:21:55] 	No enabled features
+
+
+[2024-07-31 16:12:33] Client version: 1721172922
+[2024-07-31 16:12:33] Validating parental settings
+[2024-07-31 16:12:33] Settings dump:
+[2024-07-31 16:12:33] 	Account ID: 214053662
+[2024-07-31 16:12:33] 	Enabled: false
+[2024-07-31 16:12:33] 	Base list: 0 ()
+[2024-07-31 16:12:33] 	No custom list
+[2024-07-31 16:12:33] 	No enabled features
