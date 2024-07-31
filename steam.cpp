@@ -194,6 +194,7 @@ void Steam::loadsteam()
             loadach();
             loadscr();
             loadlead();
+            painttitles = NULL;
         }
     }
 }

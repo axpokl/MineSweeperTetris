@@ -48,6 +48,7 @@ void Sound::initsound()
     loadsound();
     loadmusic();
     playmusic();
+    painttitles = NULL;
 }
 
 void Sound::loadsound()
@@ -72,11 +73,10 @@ void Sound::loadmusic()
         if (IsWin())
         {
             sprintf(sPath, "./mid/music%d.mid", k + 1);
-            painttitles = sPath;
-            painttitleb = 2;
-            sMusic[k] = LoadAudio(sPath, " type sequencer");
             if (IsFile(sPath))
             {
+                painttitles = sPath;
+                painttitleb = 2;
                 sMusic[k] = LoadAudio(sPath, " type sequencer");
                 nummusic = k;
             }

@@ -322,6 +322,7 @@ void Window::loadallpaint()
     {
         if (painttitleb == 2)
         {
+            painttitleb = 1;
             painttitle(painttitlec);
         }
         Sleep(1);
