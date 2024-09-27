@@ -74,7 +74,7 @@ void Lan::initlan(const char* lan)
         CloseHandle(hFile);
     }
     int sequenceLength = 8;
-    for (long i = 0; data[i] != 0 && i < sizeof(data) / sizeof(data[0]) - sequenceLength; ++i)
+    for (unsigned long i = 0; data[i] != 0 && i < sizeof(data) / sizeof(data[0]) - sequenceLength; ++i)
     {
         bool match = true;
         for (int j = 0; j < sequenceLength; ++j)

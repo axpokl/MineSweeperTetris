@@ -208,13 +208,13 @@ void Board::randmine(long x, long y)
             mine[i][j] = mb;
         }
     }
-    for (long k = 0; k < 10; k++)
+    for (long k = 0; k < n ; k++)
     {
         for (long j = y - 1; j <= y + 1; j++)
         {
             for (long i = x - 1; i <= x + 1; i++)
             {
-                if (j >= 0 && i >= 0 & j < h & i < w)
+                if (j >= 0 && i >= 0 && j < h && i < w)
                 {
                     if (mine[i][j])
                     {
@@ -818,7 +818,6 @@ void Board::delline(long l)
                     rightrule[i][j] = false;
                     qstn[i][j] = false;
                     blck[i][j] = false;
-                    numb[i][j] = numb[i][j - 1];
                 }
                 else
                 {

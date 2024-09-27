@@ -72,7 +72,7 @@ void Sound::loadmusic()
     {
         if (IsWin())
         {
-            sprintf(sPath, "./mid/music%d.mid", k + 1);
+            sprintf(sPath, "./mid/music%ld.mid", k + 1);
             if (IsFile(sPath))
             {
                 painttitles = sPath;

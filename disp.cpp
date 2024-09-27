@@ -1675,11 +1675,11 @@ long GetMouseWinY()
 }
 long GetMousePosX()
 {
-    return GetMouseWinX() - ((_style & WS_POPUP == WS_POPUP) ? 0 : GetBorderWidth());
+    return GetMouseWinX() - (((_style & WS_POPUP) == WS_POPUP) ? 0 : GetBorderWidth());
 }
 long GetMousePosY()
 {
-    return GetMouseWinY() - ((_style & WS_POPUP == WS_POPUP) ? 0 : GetBorderHeight() + GetBorderTitle());
+    return GetMouseWinY() - (((_style & WS_POPUP) == WS_POPUP) ? 0 : GetBorderHeight() + GetBorderTitle());
 }
 
 unsigned long MsgBoxW(const short int* s, const short int* title, unsigned long i)

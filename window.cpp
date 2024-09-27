@@ -598,46 +598,46 @@ void Window::initbmp()
             ReleaseBMP(parrow_);
         }
         char pngPath[MAX_PATH];
-        sprintf(pngPath, "./png/%d/bg.png", colori);
+        sprintf(pngPath, "./png/%ld/bg.png", colori);
         painttitles = pngPath;
         pbg_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/menu.png", colori);
+        sprintf(pngPath, "./png/%ld/menu.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pmenu_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/face.png", colori);
+        sprintf(pngPath, "./png/%ld/face.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pface_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/icon.png", colori);
+        sprintf(pngPath, "./png/%ld/icon.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         picon_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/digt.png", colori);
+        sprintf(pngPath, "./png/%ld/digt.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pdigt_[0] = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/digt2.png", colori);
+        sprintf(pngPath, "./png/%ld/digt2.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pdigt_[1] = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/digt_.png", colori);
+        sprintf(pngPath, "./png/%ld/digt_.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pdigt_[2] = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/ok.png", colori);
+        sprintf(pngPath, "./png/%ld/ok.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pok_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/cursor.png", colori);
+        sprintf(pngPath, "./png/%ld/cursor.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pcursor_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/click.png", colori);
+        sprintf(pngPath, "./png/%ld/click.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pclick_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%d/arrow.png", colori);
+        sprintf(pngPath, "./png/%ld/arrow.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         parrow_ = LoadBMP(pngPath);
@@ -976,8 +976,7 @@ void Window::painthelp()
                     setfontheight_(fontsh - 1);
                     pbitmap pmenu__[3] = {pmenu1[0], pmenu2[0], pmenu3[0]};
                     const char* usernamec;
-                    short int usernames[100];
-                    long usernamel;
+                    short int usernames[MAX_PATH];
                     LeaderboardEntry_t leads;
                     for (long leadid = 0; leadid < 3; leadid++)
                     {
@@ -1031,7 +1030,7 @@ void Window::painthelp()
                                 usernames[2] = poss;
                                 usernames[3] = 0;
                                 usernames[4 + poss] = 0;
-                                sprintf(rankStr, "%d", leads.m_nGlobalRank - rank_);
+                                sprintf(rankStr, "%ld", leads.m_nGlobalRank - rank_);
                                 drawtextxy_(pwint, rankStr, helpw * leadid / 3, k * fontsh + faceh + menuh + 1, ctfg, cbg);
                                 drawtextxy_(pwint, &usernames[4], helpw * leadid / 3 + getstringwidth_("00000"), k * fontsh + faceh + menuh + 1, helpw / 3 - getstringwidth_("00000") - digtw[1] * fontsh / digth[1] * 4, fontsh, ctfg, cbg, DT_LEFT);
                                 paintnumber(leads.m_nScore, 4, helpw * (leadid + 1) / 3 - digtw[1] * fontsh / digth[1] * 4, k * fontsh + faceh + menuh, digtw[1] * fontsh / digth[1], fontsh, 1);
@@ -2074,7 +2073,6 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                 initwindow(false);
                 bd.tutb = 1;
             }
-            long helpw__ = iconw;
             double helph__ =  (double)(helph - okh_ - iconh * 2 - faceh) / (double)(10 - 1);
             for (long k = 0; k < 10; k++)
             {

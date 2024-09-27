@@ -5,7 +5,7 @@ public:
 
     Lan lan;
 
-    const long appid = 2204230;
+    const unsigned long appid = 2204230;
     bool steamb;
     bool cheatb = false;
 
@@ -291,7 +291,11 @@ void Steam::setscr(long scrid)
     {
         if (scr[scrid] > 0)
         {
-            SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+            //SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+            SteamUserStats()->SetStat(scrs[scrid], (union { long l; float f; })
+            {
+                scr[scrid]
+            } .f);
         }
         if (scrid == scrdead)
         {
@@ -535,7 +539,7 @@ void Steam::savescr(char* scrpath)
 {
     if (steamb)
     {
-        ScreenshotHandle screenshot = SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, GetWin()->Width, GetWin()->Height);
+        SteamScreenshots()->AddScreenshotToLibrary(scrpath, NULL, GetWin()->Width, GetWin()->Height);
     }
 }
 
