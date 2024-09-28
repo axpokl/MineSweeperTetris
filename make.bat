@@ -13,22 +13,25 @@ mingw32\bin\g++ -Wall -static -Os -s main.cpp icon32.res -o MineSweeperTetris_32
 mingw64\bin\g++ -Wall -static -Os -s main.cpp icon64.res -o MineSweeperTetris_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
 mingw32\bin\g++ -Wall -static -Os -g main.cpp icon32.res -o MineSweeperTetris_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
 mingw64\bin\g++ -Wall -static -Os -g main.cpp icon64.res -o MineSweeperTetris_debug_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
-copy MineSweeperTetris_32.exe MineSweeperTetris.exe
-if not exist MineSweeperTetris.exe goto fail
-mkdir release
-copy MineSweeperTetris.exe release\MineSweeperTetris.exe
-copy steam_api.dll release\steam_api.dll
-::copy steam_appid.txt release\steam_appid.txt
-::copy disp.dll release\disp.dll
-::copy MineSweeperTetris.ico release\MineSweeperTetris.ico
-xcopy png\* release\png\ /y /r /s
-xcopy wav\* release\wav\ /y /r /s
-xcopy mid\* release\mid\ /y /r /s
-xcopy lan\* release\lan\ /y /r /s
+if not exist MineSweeperTetris_32.exe goto fail
+mkdir release32
+mkdir release64
+copy MineSweeperTetris_32.exe release32\MineSweeperTetris.exe
+copy MineSweeperTetris_64.exe release64\MineSweeperTetris.exe
+copy steam_api.dll release32\steam_api.dll
+copy steam_api64.dll release64\steam_api64.dll
+xcopy png\* release32\png\ /y /r /s
+xcopy png\* release64\png\ /y /r /s
+xcopy wav\* release32\wav\ /y /r /s
+xcopy wav\* release64\wav\ /y /r /s
+xcopy mid\* release32\mid\ /y /r /s
+xcopy mid\* release64\mid\ /y /r /s
+xcopy lan\* release32\lan\ /y /r /s
+xcopy lan\* release64\lan\ /y /r /s
 rmdir sdk\tools\ContentBuilder\content /s /q
 mkdir sdk\tools\ContentBuilder\content
-xcopy release\* sdk\tools\ContentBuilder\content\ /y /r /e
-release\MineSweeperTetris.exe
+xcopy release32\* sdk\tools\ContentBuilder\content\ /y /r /e
+sdk\tools\ContentBuilder\content\MineSweeperTetris.exe
 goto end
 :fail
 pause
