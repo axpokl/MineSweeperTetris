@@ -15,12 +15,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "ax_pokl\0"
             VALUE "FileDescription", "MineSweeper Tetris\0"
-            VALUE "FileVersion", "Version 20240927 (Steam)\0"
+            VALUE "FileVersion", "Version 20240928 (Steam)\0"
             VALUE "InternalName", "MineSweeperTetris\0"
             VALUE "LegalCopyright", "Made by ax_pokl Licensed under GPL-3.0\0"
             VALUE "OriginalFilename", "MineSweeperTetris.exe\0"
             VALUE "ProductName", "MineSweeper Tetris\0"
-            VALUE "ProductVersion", "Version 20240927 (Steam)\0"
+            VALUE "ProductVersion", "Version 20240928 (Steam)\0"
         END
     END
     BLOCK "VarFileInfo"
