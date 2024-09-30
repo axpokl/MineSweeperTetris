@@ -9,6 +9,8 @@ copy icon.rc icon_.rc
 powershell -Command "(Get-Content icon_.rc).replace('xxxxxxxx', '%version%') | Set-Content icon_.rc"
 mingw32\bin\windres -F pe-i386 -i icon_.rc -O coff -o icon32.res
 mingw64\bin\windres -F pe-x86-64 -i icon_.rc -O coff -o icon64.res
+:again
+cls
 mingw32\bin\g++ -Wall -static -Os -s main.cpp icon32.res -o MineSweeperTetris_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
 mingw64\bin\g++ -Wall -static -Os -s main.cpp icon64.res -o MineSweeperTetris_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
 mingw32\bin\g++ -Wall -static -Os -g main.cpp icon32.res -o MineSweeperTetris_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -mwindows
@@ -35,4 +37,5 @@ sdk\tools\ContentBuilder\content\MineSweeperTetris.exe
 goto end
 :fail
 pause
+goto :again
 :end
