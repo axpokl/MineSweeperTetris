@@ -63,7 +63,7 @@ const char* Lan::getsyslan()
 void Lan::initlan(const char* lan)
 {
     char path[100];
-    strcpy(&path[0],"lan\\");
+    strcpy(&path[0],"./data/lan/");
     strcat(&path[0],lan);
     strcat(&path[0],".txt");
     HANDLE hFile = CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);

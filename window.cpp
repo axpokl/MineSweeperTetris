@@ -400,7 +400,7 @@ void Window::initmult()
 void Window::loadicon()
 {
     hicon_res = (HICON)LoadImage(MainInstance, "MINESWEEPERTETRIS_ICON", IMAGE_ICON, 0, 0, 0);
-    hicon_file = (HICON)LoadImage(NULL, "./MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    hicon_file = (HICON)LoadImage(NULL, "./data/MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
     if (hicon_res)
     {
         hicon = hicon_res;
@@ -598,46 +598,46 @@ void Window::initbmp()
             ReleaseBMP(parrow_);
         }
         char pngPath[MAX_PATH];
-        sprintf(pngPath, "./png/%ld/bg.png", colori);
+        sprintf(pngPath, "./data/png/%ld/bg.png", colori);
         painttitles = pngPath;
         pbg_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/menu.png", colori);
+        sprintf(pngPath, "./data/png/%ld/menu.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pmenu_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/face.png", colori);
+        sprintf(pngPath, "./data/png/%ld/face.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pface_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/icon.png", colori);
+        sprintf(pngPath, "./data/png/%ld/icon.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         picon_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/digt.png", colori);
+        sprintf(pngPath, "./data/png/%ld/digt.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pdigt_[0] = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/digt2.png", colori);
+        sprintf(pngPath, "./data/png/%ld/digt2.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pdigt_[1] = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/digt_.png", colori);
+        sprintf(pngPath, "./data/png/%ld/digt_.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pdigt_[2] = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/ok.png", colori);
+        sprintf(pngPath, "./data/png/%ld/ok.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pok_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/cursor.png", colori);
+        sprintf(pngPath, "./data/png/%ld/cursor.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pcursor_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/click.png", colori);
+        sprintf(pngPath, "./data/png/%ld/click.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         pclick_ = LoadBMP(pngPath);
-        sprintf(pngPath, "./png/%ld/arrow.png", colori);
+        sprintf(pngPath, "./data/png/%ld/arrow.png", colori);
         painttitles = pngPath;
         painttitleb= 2;
         parrow_ = LoadBMP(pngPath);
@@ -1687,7 +1687,7 @@ void Window::painttitle(long load)
     Clear(pwint, transparent_);
     if (load < 0)
     {
-        ptitle_ = LoadBMP("./png/title.png");
+        ptitle_ = LoadBMP("./data/png/title.png");
     }
     DrawBMP(ptitle_, GetWin(), (launchw - titlew) / 2, fontth, titlew, titleh, cfg);
     setfontheight_(fontfh);

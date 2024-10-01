@@ -7,5 +7,6 @@ astyle --style=allman --indent-cases --indent-switches main.cpp
 astyle --style=allman --indent-cases --indent-switches steam.cpp
 astyle --style=allman --indent-cases --indent-switches reg.cpp
 astyle --style=allman --indent-cases --indent-switches disp.cpp
+astyle --style=allman --indent-cases --indent-switches cab.cpp
 del *.orig
 pause

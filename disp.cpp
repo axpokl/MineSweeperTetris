@@ -455,7 +455,6 @@ LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP)
     switch (uM)
     {
         case WM_CREATE:
-            DragAcceptFiles(hW, TRUE);
             timeBeginPeriod(1);
             break;
         case WM_NCACTIVATE:
@@ -1635,23 +1634,6 @@ unsigned long WaitMouseMove()
 bool IsDropFile()
 {
     return IsMsg(WM_DROPFILES);
-}
-char* GetDropFile()
-{
-    char c[MAXCHAR];
-    DragQueryFileA((HDROP)_ms.wParam, 0, c, MAXCHAR);
-    return strdup(c);
-}
-wchar_t *GetDropFileW()
-{
-    wchar_t c[MAXCHAR];
-    DragQueryFileW((HDROP)_ms.wParam, 0, c, MAXCHAR);
-    return wcsdup(c);
-}
-char* WaitDropFile()
-{
-    WaitMsg(WM_DROPFILES);
-    return GetDropFile();
 }
 long GetMouseAbsX()
 {

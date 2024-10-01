@@ -2,6 +2,7 @@
 #include "version.h"
 
 #include "disp.cpp"
+#include "cab.cpp"
 
 #include "reg.cpp"
 #include "lan.cpp"
@@ -13,6 +14,7 @@
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+    CheckAndProcessCabFile();
     MainInstance = hInstance;
     Lan lan;
     if (FindWindow("MineSweeperTetrisClass", NULL) != 0)

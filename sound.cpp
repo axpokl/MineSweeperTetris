@@ -58,7 +58,7 @@ void Sound::loadsound()
     {
         for (long id = 0; id < maxsound; id++)
         {
-            sprintf(sPath, "./wav/%s.wav", sSounds[id]);
+            sprintf(sPath, "./data/wav/%s.wav", sSounds[id]);
             sSound[id] = LoadAudio(sPath, "");
         }
     }
@@ -72,7 +72,7 @@ void Sound::loadmusic()
     {
         if (IsWin())
         {
-            sprintf(sPath, "./mid/music%ld.mid", k + 1);
+            sprintf(sPath, "./data/mid/music%ld.mid", k + 1);
             if (IsFile(sPath))
             {
                 painttitles = sPath;
