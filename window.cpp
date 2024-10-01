@@ -834,14 +834,21 @@ void Window::paintlevel()
 
 void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h)
 {
-    if (b.pauseb >= 1)
-    {
-        DrawBMP(piconp, x, y, w, h);
-        Bar(x, y, w - 1, h - 1, cbg);
-    }
-    else if (b.mask[i][j])
+    if (b.mask[i][j])
     {
         if (!(i >= b.maski || j < b.maskj - 1))
+        {
+            DrawBMP(picone, x, y, w, h);
+        }
+    }
+    else if (b.pauseb >= 1)
+    {
+        if (b.blck[i][j])
+        {
+            DrawBMP(piconp, x, y, w, h);
+            Bar(x, y, w - 1, h - 1, cbg);
+        }
+        else
         {
             DrawBMP(picone, x, y, w, h);
         }
@@ -1769,7 +1776,7 @@ void Window::sethelp(long helpi_)
     {
         if (helpi == 0 && bd.sit > 0)
         {
-            if (bd.pauseb == 0)
+            if (bd.pauseb == 0 && bd.sit < 4)
             {
                 bd.pause();
                 bd.pauseb = 2;
@@ -1779,7 +1786,7 @@ void Window::sethelp(long helpi_)
     }
     else
     {
-        if (bd.pauseb == 2 && bd.sit > 0)
+        if (bd.pauseb == 2 && bd.sit > 0 && bd.sit < 4)
         {
             bd.pause();
         }
@@ -1985,7 +1992,7 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
                 }
                 else if (eb_ == k_rmouse)
                 {
-                    if (bd.sit > 0)
+                    if (bd.sit > 0 && bd.sit < 4)
                     {
                         bd.pause();
                         bd.sd.playsound(bd.sd.sSolve);
@@ -2370,7 +2377,7 @@ void Window::keyevent(long key)
                 CloseWin();
                 break;
             case k_space:
-                if (bd.sit > 0)
+                if (bd.sit > 0 && bd.sit < 4)
                 {
                     bd.pause();
                     bd.sd.playsound(bd.sd.sSolve);
