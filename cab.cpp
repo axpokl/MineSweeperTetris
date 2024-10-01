@@ -1,16 +1,19 @@
 #include <setupapi.h>
 
+void CombinePath(char* dest, const char* path1, const char* path2)
+{
+    lstrcpyA(dest, path1);
+    lstrcatA(dest, "/");
+    lstrcatA(dest, path2);
+}
+
 UINT CALLBACK CabExtractCallback(PVOID context, UINT notification, uintptr_t param1, uintptr_t param2)
 {
     if (notification == SPFILENOTIFY_FILEINCABINET)
     {
         FILE_IN_CABINET_INFO_A* fileInfo = (FILE_IN_CABINET_INFO_A*)param1;
         char* destDir = (char*)context;
-        char destFilePath[MAX_PATH];
-        lstrcpyA(destFilePath, destDir);
-        lstrcatA(destFilePath, "/");
-        lstrcatA(destFilePath, fileInfo->NameInCabinet);
-        lstrcpyA(fileInfo->FullTargetName, destFilePath);
+        CombinePath(fileInfo->FullTargetName, destDir, fileInfo->NameInCabinet);
         return FILEOP_DOIT;
     }
     return NO_ERROR;
@@ -46,17 +49,14 @@ BOOL ProcessCabFile(const char* cabFilePath)
     {
         DeleteFileA(cabFilePath);
     }
-    lstrcpyA(searchPath, destFolder);
-    lstrcatA(searchPath, "/*.cab");
+    CombinePath(searchPath, destFolder, "*.cab");
     hFind = FindFirstFileA(searchPath, &findData);
     if (hFind != INVALID_HANDLE_VALUE)
     {
         do
         {
             char nestedCabPath[MAX_PATH];
-            lstrcpyA(nestedCabPath, destFolder);
-            lstrcatA(nestedCabPath, "/");
-            lstrcatA(nestedCabPath, findData.cFileName);
+            CombinePath(nestedCabPath, destFolder, findData.cFileName);
             ProcessCabFile(nestedCabPath);
         }
         while (FindNextFileA(hFind, &findData));
@@ -65,15 +65,50 @@ BOOL ProcessCabFile(const char* cabFilePath)
     return TRUE;
 }
 
+void DeleteFolderRecursively(const char* folderPath)
+{
+    char searchPath[MAX_PATH];
+    char filePath[MAX_PATH];
+    WIN32_FIND_DATAA findData;
+    HANDLE hFind;
+
+    CombinePath(searchPath, folderPath, "*");
+    hFind = FindFirstFileA(searchPath, &findData);
+    if (hFind != INVALID_HANDLE_VALUE)
+    {
+        do
+        {
+            CombinePath(filePath, folderPath, findData.cFileName);
+            if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            {
+                if (lstrcmpA(findData.cFileName, ".") != 0 && lstrcmpA(findData.cFileName, "..") != 0)
+                {
+                    DeleteFolderRecursively(filePath);
+                }
+            }
+            else
+            {
+                DeleteFileA(filePath);
+            }
+        }
+        while (FindNextFileA(hFind, &findData));
+        FindClose(hFind);
+    }
+    RemoveDirectoryA(folderPath);
+}
+
 void CheckAndProcessCabFile()
 {
-    if (GetFileAttributesA("./data/done") == INVALID_FILE_ATTRIBUTES)
+    char versionFilePath[MAX_PATH];
+    CombinePath(versionFilePath, "./data", version);
+    if (GetFileAttributesA(versionFilePath) == INVALID_FILE_ATTRIBUTES)
     {
+        DeleteFolderRecursively("./data");
         if (GetFileAttributesA("./data.cab") != INVALID_FILE_ATTRIBUTES)
         {
             if (ProcessCabFile("./data.cab"))
             {
-                HANDLE hMarker = CreateFileA("data/done", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+                HANDLE hMarker = CreateFileA(versionFilePath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
                 if (hMarker != INVALID_HANDLE_VALUE)
                 {
                     CloseHandle(hMarker);
