@@ -11,10 +11,17 @@ mingw32\bin\windres -F pe-i386 -i icon_.rc -O coff -o icon32.res
 mingw64\bin\windres -F pe-x86-64 -i icon_.rc -O coff -o icon64.res
 :again
 cls
-mingw32\bin\g++ -Wall -static -Os -s main.cpp icon32.res -o MineSweeperTetris_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
-mingw64\bin\g++ -Wall -static -Os -s main.cpp icon64.res -o MineSweeperTetris_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi  -mwindows
-::mingw32\bin\g++ -Wall -static -Os -g main.cpp icon32.res -o MineSweeperTetris_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
-::mingw64\bin\g++ -Wall -static -Os -g main.cpp icon64.res -o MineSweeperTetris_debug_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+mingw32\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -save-temps main.cpp icon32.res -o MineSweeperTetris_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+mingw64\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -save-temps main.cpp icon64.res -o MineSweeperTetris_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi  -mwindows
+::mingw32\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -save-temps main.cpp icon32.res -o MineSweeperTetris_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+::mingw64\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -save-temps main.cpp icon64.res -o MineSweeperTetris_debug_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+del *.o
+del *.s
+del *.out
+del *.ii
+del *args*
+del main.res
+del *_64.res
 if not exist MineSweeperTetris_32.exe goto fail
 rmdir release32 /s /q
 rmdir release64 /s /q
