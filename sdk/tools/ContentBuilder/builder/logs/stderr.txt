@@ -1,1 +1,0 @@
-src\steamexe\main.cpp (1000) : Unable to access Steam files due to incompatible path
