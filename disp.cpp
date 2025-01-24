@@ -515,10 +515,10 @@ BOOL CALLBACK Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdat
         if (posX >= work.left && posX <= work.right && posY >= work.top && posY <= work.bottom)
         {
             *r= work;
-            return TRUE;
+            return FALSE;
         }
     }
-    return FALSE;
+    return TRUE;
 }
 
 ATOM WinRegister()

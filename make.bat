@@ -12,7 +12,7 @@ mingw64\bin\windres -F pe-x86-64 -i icon_.rc -O coff -o icon64.res
 :again
 cls
 mingw32\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -save-temps main.cpp icon32.res -o MineSweeperTetris_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
-mingw64\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -save-temps main.cpp icon64.res -o MineSweeperTetris_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi  -mwindows
+mingw64\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -save-temps main.cpp icon64.res -o MineSweeperTetris_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
 ::mingw32\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -save-temps main.cpp icon32.res -o MineSweeperTetris_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
 ::mingw64\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -save-temps main.cpp icon64.res -o MineSweeperTetris_debug_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
 del *.o

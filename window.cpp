@@ -487,7 +487,7 @@ void Window::initwindow(bool b)
         pwin = CreateBMP(w_, h_);
         pwint = CreateBMP(w_ * mult, h_ * mult, transparent_);
         RECT rect = { 0, 0, 0, 0 };
-        if (EnumDisplayMonitors(NULL, NULL, Monitorenumproc, (LPARAM)&rect))
+        if (!EnumDisplayMonitors(NULL, NULL, Monitorenumproc, (LPARAM)&rect))
         {
             xscr = rect.left;
             yscr = rect.top;
