@@ -1140,7 +1140,7 @@ void Window::painthelp()
                 pbitmap pmenu__[17] = {pmenu1[0], pmenu2[0], pmenu3[0], pface[4], pface[0], picone, pmenuq[0], pmenua[0], pmenud[0], pmenut[0], pmenus[0], pmenum[0], pmenug[md][0], pmenun[singleb], pface[7], pface[6], pface[5]};
                 const char* keys[17] = {"1", "2", "3", "N", "Space", "U", "H / F1", "B / F2", "E / F3", "T / F4", "S / F5", "M / F6", "G / F7", "R / F8", "K / F11", "P / F12", "Q / ESC"};
                 const char* cheatn[9] = {"4", "5", "6", "7", "8", "9", "0", "V", "C"};
-                const char* cheats[9] = {"Auto Number", "Auto Solve", "Repeat Number", "Repeat Solve", "Repeate All", "Auto Blank", "Del Line", "Up Level", "Reset Steam"};
+                const char* cheats[9] = {"Auto Number", "Auto Solve", "Repeat Number", "Repeat Solve", "Repeat All", "Auto Blank", "Del Line", "Up Level", "Reset Steam"};
                 long cheatc[9] = {cblue, cblue, cblue, cblue, cblue, cblue, cblue, cred, cred};
                 long helpw__ = iconw;
                 double helph__ =  (double)(helph - okh_ - iconh - faceh) / (double)(17 - 1);
