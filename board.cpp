@@ -19,7 +19,11 @@ public:
     bool maskjb;
     long line;
     long level;
-    bool solveb;
+    bool solvebb;
+    bool solveb0;
+    bool solveb1;
+    bool solveb2;
+    bool solveb3;
     long checkr;
     bool dieb;
     long diex;
@@ -90,6 +94,7 @@ public:
     void solve2();
     void solve2_(bool applyb);
     void solve2_();
+    void solve3_();
     bool checkerror(long i, long j);
     bool checkerror();
     void checkline(bool delayb_);
@@ -302,7 +307,7 @@ void Board::resetbd(long x, long y)
 
 void Board::solveblank()
 {
-    solveb = false;
+    solvebb = false;
     if (sit > 0 && sit < 4 && pauseb == 0)
     {
         for (long i = 0; i < w; i++)
@@ -330,8 +335,8 @@ void Board::solveblank()
 
 void Board::solveblank_()
 {
-    solveb = true;
-    while (solveb)
+    solvebb = true;
+    while (solvebb)
     {
         solveblank();
     }
@@ -339,7 +344,7 @@ void Board::solveblank_()
 
 void Board::solve0()
 {
-    solveb = false;
+    solveb0 = false;
     if (sit < 4 && pauseb == 0)
     {
         for (long i = 0; i < w; i++)
@@ -367,8 +372,8 @@ void Board::solve0()
 
 void Board::solve0_()
 {
-    solveb = true;
-    while (solveb)
+    solveb0 = true;
+    while (solveb0)
     {
         solve0();
     }
@@ -376,7 +381,7 @@ void Board::solve0_()
 
 void Board::solve1()
 {
-    solveb = false;
+    solveb1 = false;
     if (sit < 4 && pauseb == 0)
     {
         for (long i = 0; i < w; i++)
@@ -405,9 +410,10 @@ void Board::solve1()
 
 void Board::solve1_()
 {
-    solveb = true;
-    while (solveb)
+    solveb1 = true;
+    while (solveb1)
     {
+        checkline(false);
         solve1();
     }
 }
@@ -525,7 +531,11 @@ void Board::applyrule(bool applyb)
         {
             if (leftrule[i][j] && !blck[i][j] && !mask[i][j])
             {
-                solveb = true;
+                solvebb = true;
+                solveb0 = true;
+                solveb1 = true;
+                solveb2 = true;
+                solveb3 = true;
                 solven++;
                 if (applyb)
                 {
@@ -534,7 +544,11 @@ void Board::applyrule(bool applyb)
             }
             if (rightrule[i][j] && !blck[i][j] && !qstn[i][j] && !flag[i][j] && !mask[i][j])
             {
-                solveb = true;
+                solvebb = true;
+                solveb0 = true;
+                solveb1 = true;
+                solveb2 = true;
+                solveb3 = true;
                 solven++;
                 if (applyb)
                 {
@@ -547,7 +561,7 @@ void Board::applyrule(bool applyb)
 
 void Board::solve2(bool applyb)
 {
-    solveb = false;
+    solveb2 = false;
     rulemainc = 0;
     solven = 0;
     if (sit < 4 && pauseb == 0)
@@ -569,11 +583,15 @@ void Board::solve2()
 
 void Board::solve2_(bool applyb)
 {
-    solveb = true;
+    solveb2 = true;
     long solven_ = -1;
-    while (solveb && ((solven_ < solven) || applyb))
+    while (solveb2 && ((solven_ < solven) || applyb))
     {
         solven_ = solven;
+        if (applyb) 
+        {
+            checkline(false);
+        }
         solve2(applyb);
     }
 }
@@ -583,6 +601,18 @@ void Board::solve2_()
     solve2_(true);
 }
 
+void Board::solve3_()
+{
+    solveb3 = true;
+    while (solveb3)
+    {
+        checkline(false);
+        solve1();
+        checkline(false);
+        solve2();
+        solveb3 = solveb1 || solveb2;
+    }
+}
 
 bool Board::checkerror(long i, long j)
 {
@@ -999,7 +1029,11 @@ void Board::setblock(long x, long y)
                             blck[tx][ty] = true;
                             qstn[tx][ty] = false;
                             sr = true;
-                            solveb = true;
+                            solvebb = true;
+                            solveb0 = true;
+                            solveb1 = true;
+                            solveb2 = true;
+                            solveb3 = true;
                             checkerror(tx, ty);
                         }
                         else if (!mdb_ || tutb == 1)
