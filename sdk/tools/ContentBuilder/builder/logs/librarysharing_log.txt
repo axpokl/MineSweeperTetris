@@ -34,3 +34,9 @@
 [2025-02-03 17:13:21] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
 [2025-02-03 17:13:44] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
 [2025-02-03 17:13:46] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2025-02-14 18:33:23] Client version: 1726605427
+[2025-02-14 18:33:23] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+[2025-02-14 18:34:03] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+[2025-02-14 18:34:07] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)

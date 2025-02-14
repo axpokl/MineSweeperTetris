@@ -66,12 +66,25 @@ void Lan::initlan(const char* lan)
     strcpy(&path[0],"./data/lan/");
     strcat(&path[0],lan);
     strcat(&path[0],".txt");
-    HANDLE hFile = CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    DWORD startTime = GetTickCount();
+    HANDLE hFile;
+    do
+    {
+        hFile = CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+        if (hFile == INVALID_HANDLE_VALUE)
+            Sleep(100);
+    }
+    while (hFile == INVALID_HANDLE_VALUE && (GetTickCount() - startTime) < 3000);
     if (hFile != INVALID_HANDLE_VALUE)
     {
         DWORD bytesRead;
         ReadFile(hFile, data, sizeof(data), &bytesRead, NULL);
         CloseHandle(hFile);
+    }
+    else
+    {
+        MessageBoxA(NULL, "Failed to load language file", "Error", MB_ICONERROR);
+        ExitProcess(1);
     }
     int sequenceLength = 8;
     for (unsigned long i = 0; data[i] != 0 && i < sizeof(data) / sizeof(data[0]) - sequenceLength; ++i)

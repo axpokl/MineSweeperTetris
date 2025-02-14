@@ -1180,3 +1180,29 @@
 [2025-02-03 17:13:20] Verification complete
 [2025-02-03 17:13:48] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
 [2025-02-03 17:13:53] Shutdown
+
+
+[2025-02-14 18:33:05] Startup - updater built Sep 17 2024 13:02:40
+[2025-02-14 18:33:05] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperTetris_app_build.vdf +quit
+[2025-02-14 18:33:05] Windows 6.2.9200.0, 0, 2, 256, 1, 4 
+[2025-02-14 18:33:06] Using the following download hosts for Public, Realm steamglobal
+[2025-02-14 18:33:06] 1. https://media.st.dl.eccdnx.com, /client/, Realm 'steamglobal', weight was 100000, source = 'update_hosts_cached.vdf'
+[2025-02-14 18:33:06] 2. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2025-02-14 18:33:06] 3. https://client-update.queniuqe.com, /, Realm 'steamglobal', weight was 100000, source = 'update_hosts_cached.vdf'
+[2025-02-14 18:33:06] 4. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2025-02-14 18:33:06] 5. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2025-02-14 18:33:06] Checking for update on startup
+[2025-02-14 18:33:06] 正在检查可用更新...
+[2025-02-14 18:33:06] Downloading manifest: https://media.st.dl.eccdnx.com/client/steam_cmd_win32
+[2025-02-14 18:33:06] Manifest download: send request
+[2025-02-14 18:33:06] Manifest download: waiting for download to finish
+[2025-02-14 18:33:21] Manifest download: finished
+[2025-02-14 18:33:21] Downloaded new manifest: /client/steam_cmd_win32 version 1738027521, installed version 1726605427, existing pending version 0
+[2025-02-14 18:33:21] Beta changed from  to 
+[2025-02-14 18:33:21] Error: System OS version is not compatible with package manifest OS type
+[2025-02-14 18:33:21] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-02-14 18:33:21] 正在验证安装...
+[2025-02-14 18:33:21] Performing checksum verification of executable files
+[2025-02-14 18:33:23] Verification complete
+[2025-02-14 18:34:09] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-02-14 18:34:16] Shutdown

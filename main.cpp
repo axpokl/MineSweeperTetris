@@ -14,15 +14,17 @@
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-    CheckAndProcessCabFile();
     MainInstance = hInstance;
-    Lan lan;
-    if (FindWindow("MineSweeperTetrisClass", NULL) != 0)
+    HANDLE hMutex = CreateMutex(NULL, TRUE, "MineSweeperTetrisMutex");
+    if ((GetLastError() == ERROR_ALREADY_EXISTS) || (FindWindow("MineSweeperTetrisClass", NULL) != 0))
     {
+        Lan lan;
         MsgBoxW(lan.getlan(lan.LAN_RUNNING), lan.getlan(lan.LAN_TITLE), MB_ICONINFORMATION);
     }
     else
     {
+        CheckAndProcessCabFile();
+        Lan lan;
         Window w;
         w.loadall();
         while (IsWin())
@@ -35,6 +37,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             w.bd.sd.checkmusic();
             Delay(1);
         }
+        ReleaseMutex(hMutex);
     }
+    CloseHandle(hMutex);
     return 0;
 }

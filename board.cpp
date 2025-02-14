@@ -588,7 +588,7 @@ void Board::solve2_(bool applyb)
     while (solveb2 && ((solven_ < solven) || applyb))
     {
         solven_ = solven;
-        if (applyb) 
+        if (applyb)
         {
             checkline(false);
         }
