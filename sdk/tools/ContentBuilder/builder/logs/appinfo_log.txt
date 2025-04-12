@@ -3064,3 +3064,24 @@
 [2025-02-14 18:34:12] Requesting 1 apps, 0 packages (full data, 1024 prev attempts, expected 5 KB)
 [2025-02-14 18:34:12] UpdatesJob: finished OK, apps updated 1 (5 KB), packages updated 0 (0 KB)
 [2025-02-14 18:34:16] App cache write succeeded G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (1116 apps, 2771 KB) in 31 ms
+
+
+[2025-04-07 20:14:27] Client version: 1726605427
+[2025-04-07 20:14:27] CAppInfoCacheReadFromDiskThread took 28 milliseconds to initialize
+[2025-04-07 20:16:30] RequestAppInfoUpdate: AppIDs 7
+[2025-04-07 20:16:30] Packages changed: force all
+[2025-04-07 20:16:30] Apps changed: force all
+[2025-04-07 20:16:30] Change number 27477274->28345308, apps: 0/0, packages: 0/0
+[2025-04-07 20:16:31] Requesting 1116 apps, 625 packages (meta data, 1024 prev attempts, expected 81 KB)
+[2025-04-07 20:16:32] Requested 92 app access tokens, 81 received, 11 denied
+[2025-04-07 20:16:33] Updated SHAs with 81 new access tokens
+[2025-04-07 20:16:49] Downloaded 101 apps via HTTP, 1956 KB (365 KB compressed)
+[2025-04-07 20:16:49] Requesting 233 apps, 16 packages (full data, 1024 prev attempts, expected 1038 KB)
+[2025-04-07 20:16:50] UpdatesJob: finished OK, apps updated 334 (2970 KB), packages updated 16 (12 KB)
+[2025-04-07 20:16:50] Requesting 3 apps, 0 packages (meta data, 1024 prev attempts, expected 0 KB)
+[2025-04-07 20:16:51] Requested 2 app access tokens, 1 received, 1 denied
+[2025-04-07 20:16:52] Updated SHAs with 1 new access tokens
+[2025-04-07 20:16:53] Downloaded 1 apps via HTTP, 9 KB (2 KB compressed)
+[2025-04-07 20:16:53] Requesting 1 apps, 0 packages (full data, 1024 prev attempts, expected 0 KB)
+[2025-04-07 20:16:53] UpdatesJob: finished OK, apps updated 2 (10 KB), packages updated 0 (0 KB)
+[2025-04-07 20:16:55] App cache write succeeded G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (1118 apps, 2809 KB) in 31 ms
