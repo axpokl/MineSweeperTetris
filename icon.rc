@@ -1,6 +1,6 @@
 #include <winver.h>
 
-MINESWEEPERTETRIS_ICON ICON "MineSweeperTetris.ico"
+MINESWEEPERRUSH_ICON ICON "MineSweeperRush.ico"
 
 VS_VERSION_INFO VERSIONINFO
  FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
@@ -14,12 +14,12 @@ BEGIN
         BLOCK "040904B0"
         BEGIN
             VALUE "CompanyName", "ax_pokl\0"
-            VALUE "FileDescription", "MineSweeper Tetris\0"
+            VALUE "FileDescription", "MineSweeper Rush\0"
             VALUE "FileVersion", "Version xxxxxxxx (Steam)\0"
-            VALUE "InternalName", "MineSweeperTetris\0"
+            VALUE "InternalName", "MineSweeperRush\0"
             VALUE "LegalCopyright", "Made by ax_pokl Licensed under GPL-3.0\0"
-            VALUE "OriginalFilename", "MineSweeperTetris.exe\0"
-            VALUE "ProductName", "MineSweeper Tetris\0"
+            VALUE "OriginalFilename", "MineSweeperRush.exe\0"
+            VALUE "ProductName", "MineSweeper Rush\0"
             VALUE "ProductVersion", "Version xxxxxxxx (Steam)\0"
         END
     END

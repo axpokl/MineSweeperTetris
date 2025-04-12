@@ -150,7 +150,7 @@ void Steam::initsteam()
     {
         if (SteamUtils()->GetAppID() != appid)
         {
-            MsgBox("This is the test version of MineSweeper Tetris, please download the released version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Tetris", MB_ICONINFORMATION);
+            MsgBox("This is the test version of MineSweeper Rush, please download the released version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Rush", MB_ICONINFORMATION);
         }
     }
 }

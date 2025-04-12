@@ -3,8 +3,8 @@ class Lan
 
 public:
 
-    const char* lanshort[29] = {"arabic", "bulgarian", "czech", "danish", "german", "greek", "english", "spanish", "latam", "finnish", "french", "hungarian", "italian", "japanese", "koreana", "dutch", "norwegian", "polish", "portuguese", "brazilian", "romanian", "russian", "swedish", "thai", "turkish", "ukrainian", "vietnamese", "schinese", "tchinese"};
-    const long lanshortid[29] = {1, 2, 5, 6, 7, 8, 9, 10, 22538, 11, 12, 14, 16, 17, 18, 19, 20, 21, 22, 1046, 24, 25, 29, 30, 31, 34, 1066, 2052, 1028};
+    const char* lanshort[30] = {"arabic", "bulgarian", "czech", "danish", "german", "greek", "english", "spanish", "latam", "finnish", "french", "hungarian", "indonesian", "italian", "japanese", "koreana", "dutch", "norwegian", "polish", "portuguese", "brazilian", "romanian", "russian", "swedish", "thai", "turkish", "ukrainian", "vietnamese", "schinese", "tchinese"};
+    const long lanshortid[30] = {1, 2, 5, 6, 7, 8, 9, 10, 22538, 11, 12, 14, 33, 16, 17, 18, 19, 20, 21, 22, 1046, 24, 25, 29, 30, 31, 34, 1066, 2052, 1028};
 
     short int data[10000];
     short int landata[10000];
@@ -50,7 +50,7 @@ const char* Lan::getsyslan()
 {
     const char* lansys = lanshort[6];
     long lansysid = GetUserDefaultUILanguage();
-    for (long k = 0; k < 29; k++)
+    for (long k = 0; k < 30; k++)
     {
         if (lanshortid[k] == lansysid)
         {

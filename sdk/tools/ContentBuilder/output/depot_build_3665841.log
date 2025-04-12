@@ -1,0 +1,13 @@
+[2025-04-12 15:09:56]: Starting build for depot 3665841, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2025-04-12 15:09:56]: Building file listing for depot 3665841 ...
+[2025-04-12 15:09:56]: Found 3 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2025-04-12 15:09:56]: Found 3 files (0 MB) for depot 3665841
+[2025-04-12 15:09:57]: Building depot 3665841, baseline manifest 7538882586309432433 (3 files)
+[2025-04-12 15:09:57]: Found 3 chunks ( 3 used previously ) for depot 3665841, took 0 minutes, 0 seconds
+[2025-04-12 15:09:57]: Changes to baseline manifest 7538882586309432433 :
+[2025-04-12 15:09:57]: Changed: "data.cab" 151 kB size, 151 kB changed 
+[2025-04-12 15:09:57]: Changed: "MineSweeperRush.exe" 135 kB size, 135 kB changed 
+[2025-04-12 15:09:57]: Summary: 0 files added, 2 files changed, 0 files removed
+[2025-04-12 15:09:57]: Uploading new manifest to 208.78.164.214:80 (handle 3491549285914790384, 697 bytes).
+[2025-04-12 15:09:58]: Uploading 2 out of 2 missing chunks.
+[2025-04-12 15:10:02]: Success! New manifestID 6216959842514229883 created and 2 new chunks uploaded.

@@ -15,8 +15,8 @@
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     MainInstance = hInstance;
-    HANDLE hMutex = CreateMutex(NULL, TRUE, "MineSweeperTetrisMutex");
-    if ((GetLastError() == ERROR_ALREADY_EXISTS) || (FindWindow("MineSweeperTetrisClass", NULL) != 0))
+    HANDLE hMutex = CreateMutex(NULL, TRUE, "MineSweeperRushMutex");
+    if ((GetLastError() == ERROR_ALREADY_EXISTS) || (FindWindow("MineSweeperRushClass", NULL) != 0))
     {
         Lan lan;
         MsgBoxW(lan.getlan(lan.LAN_RUNNING), lan.getlan(lan.LAN_TITLE), MB_ICONINFORMATION);

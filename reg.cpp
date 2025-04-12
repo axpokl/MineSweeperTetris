@@ -33,8 +33,8 @@ Reg::~Reg()
 
 void Reg::openreg()
 {
-    RegCreateKeyEx(HKEY_CURRENT_USER, "SoftWare\\MineSweeperTetris\\20221219", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &regkey, NULL);
-    RegCreateKeyEx(HKEY_CURRENT_USER, "SoftWare\\MineSweeperTetris\\20221219\\board", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &regkey_, NULL);
+    RegCreateKeyEx(HKEY_CURRENT_USER, "SoftWare\\MineSweeperRush\\20250412", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &regkey, NULL);
+    RegCreateKeyEx(HKEY_CURRENT_USER, "SoftWare\\MineSweeperRush\\20250412\\board", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &regkey_, NULL);
 }
 
 void Reg::closereg()

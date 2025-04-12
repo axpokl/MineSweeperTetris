@@ -1,22 +1,29 @@
-代码中的硬编码 
+已更新：
+
+代码中的硬编码
 main.cpp
 reg.cpp
 steam.cpp 
 window.cpp
-steambuild.bat
-make.bat
 icon.rc
-语言文件（重新翻译）
+steam_appid.txt
+make.bat
+steambuild.bat
+MineSweeperRush_app_build.vdf
 App名称
+所有语言文件（重新翻译）
+cab文件
+
+尚需修改：
+
 商店页面（介绍）description.txt
-成就
+成就 achievement.txt
 指南 guide.txt
 License
 说明文件 readme.txt
 各种图片更新
-视频更新
+视频更新（重新制作）
 
-steambuild
 
 
 

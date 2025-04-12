@@ -399,8 +399,8 @@ void Window::initmult()
 
 void Window::loadicon()
 {
-    hicon_res = (HICON)LoadImage(MainInstance, "MINESWEEPERTETRIS_ICON", IMAGE_ICON, 0, 0, 0);
-    hicon_file = (HICON)LoadImage(NULL, "./data/MineSweeperTetris.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
+    hicon_res = (HICON)LoadImage(MainInstance, "MINESWEEPERRUSH_ICON", IMAGE_ICON, 0, 0, 0);
+    hicon_file = (HICON)LoadImage(NULL, "./data/MineSweeperRush.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE| LR_DEFAULTSIZE | LR_SHARED);
     if (hicon_res)
     {
         hicon = hicon_res;
@@ -427,7 +427,7 @@ void Window::initwindow()
     initmult();
     x_ = rect.left + max(0, (wscr - w_ * mult - GetBorderWidth() * 2) / 2);
     y_ = rect.top + max(0, (hscr - h_ * mult - GetBorderHeight() * 2 - GetBorderTitle()) / 2);
-    CreateWin(x_, y_, w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperTetrisClass");
+    CreateWin(x_, y_, w_ * mult, h_ * mult, cbg, cbg, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, "MineSweeperRushClass");
     pwin = CreateBMP(w_, h_);
     pwint = CreateBMP(w_ * mult, h_ * mult, transparent_);
     loadicon();

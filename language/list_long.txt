@@ -10,6 +10,7 @@ latam
 finnish
 french
 hungarian
+indonesian
 italian
 japanese
 koreana
