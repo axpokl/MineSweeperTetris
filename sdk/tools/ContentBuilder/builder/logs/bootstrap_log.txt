@@ -1284,3 +1284,27 @@
 [2025-04-12 15:09:16] Verification complete
 [2025-04-12 15:09:51] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
 [2025-04-12 15:10:02] Shutdown
+
+
+[2025-04-12 15:26:38] Startup - updater built Sep 17 2024 13:02:40
+[2025-04-12 15:26:38] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2025-04-12 15:26:38] Windows 6.2.9200.0, 0, 2, 256, 1, 4 
+[2025-04-12 15:26:38] Using the following download hosts for Public, Realm steamglobal
+[2025-04-12 15:26:38] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2025-04-12 15:26:38] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2025-04-12 15:26:38] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2025-04-12 15:26:38] Checking for update on startup
+[2025-04-12 15:26:38] 正在检查可用更新...
+[2025-04-12 15:26:38] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2025-04-12 15:26:38] Manifest download: send request
+[2025-04-12 15:26:38] Manifest download: waiting for download to finish
+[2025-04-12 15:26:40] Manifest download: finished
+[2025-04-12 15:26:40] Downloaded new manifest: /steam_cmd_win32 version 1743712175, installed version 1726605427, existing pending version 0
+[2025-04-12 15:26:40] Beta changed from  to 
+[2025-04-12 15:26:40] Error: System OS version is not compatible with package manifest OS type
+[2025-04-12 15:26:40] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-04-12 15:26:40] 正在验证安装...
+[2025-04-12 15:26:40] Performing checksum verification of executable files
+[2025-04-12 15:26:42] Verification complete
+[2025-04-12 15:27:07] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-04-12 15:27:14] Shutdown

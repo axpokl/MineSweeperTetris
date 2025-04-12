@@ -5,7 +5,7 @@ public:
 
     Lan lan;
 
-    const unsigned long appid = 2204230;
+    const unsigned long appid = 3665840;
     bool steamb;
     bool cheatb = false;
 
@@ -150,7 +150,7 @@ void Steam::initsteam()
     {
         if (SteamUtils()->GetAppID() != appid)
         {
-            MsgBox("This is the test version of MineSweeper Rush, please download the released version from Steam Store! \nhttps://store.steampowered.com/app/2204230", "MineSweeper Rush", MB_ICONINFORMATION);
+            MsgBox("The old game MineSweeper Tetris is retired, please download the new MineSweeper Rush from Steam Store! \nhttps://store.steampowered.com/app/3665840", "MineSweeper Rush", MB_ICONINFORMATION);
         }
     }
 }

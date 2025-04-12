@@ -13,6 +13,7 @@ MineSweeperRush_app_build.vdf
 App名称
 所有语言文件（重新翻译）
 cab文件
+移除测试版代码
 
 尚需修改：
 
