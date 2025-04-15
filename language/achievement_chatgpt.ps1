@@ -1,4 +1,4 @@
-cd "G:\!temp\MineSweeperTetris\language"
+cd "C:\Github_ax\MineSweeperTetris\language"
 $lan_short = cat ".\list_short.txt"
 $lan_long = cat ".\list_long.txt"
 rd "achievement_chatgpt_" -force -recurse
@@ -22,9 +22,9 @@ $out+=@"
 "@
 for ($j=0; $j -lt 26; $j++)
 {
-$out = $out +"`t`t"+'"NEW_ACHIEVEMENT_6_'+$j+'_NAME"'+"`t"+'"'+($text[$k])+'"'+"`n"
+$out = $out +"`t`t"+'"NEW_ACHIEVEMENT_20_'+$j+'_NAME"'+"`t"+'"'+($text[$k])+'"'+"`n"
 $k++
-$out = $out +"`t`t"+'"NEW_ACHIEVEMENT_6_'+$j+'_DESC"'+"`t"+'"'+($text[$k])+'"'+"`n"
+$out = $out +"`t`t"+'"NEW_ACHIEVEMENT_20_'+$j+'_DESC"'+"`t"+'"'+($text[$k])+'"'+"`n"
 $k++
 }
 $out += @"
