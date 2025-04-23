@@ -6,25 +6,11 @@
 		{
 			"Steam"
 			{
+				"SurveyDate"		"2017-12-13"
+				"SurveyDateVersion"		"-6925544597404049260"
 				"StartMenuShortcutCheck"		"1"
 				"DesktopShortcutCheck"		"1"
-				"SurveyDate"		"2024-11-04"
-				"Tools"
-				{
-					"1493710"
-					{
-						"Registered"		"1"
-					}
-				}
 			}
-		}
-	}
-	"JSClientStorage"
-	{
-		"timeline_intro"
-		{
-			"rtSeen"		"0"
-			"rtLinkDismissed"		"1731634048"
 		}
 	}
 }
