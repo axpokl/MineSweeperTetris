@@ -1,12 +1,12 @@
-[2025-04-23 08:07:31]: Starting build for depot 3665841, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2025-04-23 08:07:31]: Building file listing for depot 3665841 ...
-[2025-04-23 08:07:31]: Found 3 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2025-04-23 08:07:31]: Found 3 files (0 MB) for depot 3665841
-[2025-04-23 08:07:33]: Building depot 3665841, baseline manifest 3557372154300786431 (3 files)
-[2025-04-23 08:07:33]: Found 3 chunks ( 3 used previously ) for depot 3665841, took 0 minutes, 0 seconds
-[2025-04-23 08:07:33]: Changes to baseline manifest 3557372154300786431 :
-[2025-04-23 08:07:33]: Changed: "MineSweeperRush.exe" 136 kB size, 136 kB changed 
-[2025-04-23 08:07:33]: Summary: 0 files added, 1 files changed, 0 files removed
-[2025-04-23 08:07:33]: Uploading new manifest to 208.78.164.214:80 (handle 16754319482359952931, 699 bytes).
-[2025-04-23 08:07:34]: Uploading 1 out of 1 missing chunks.
-[2025-04-23 08:07:54]: Success! New manifestID 1104438481492041093 created and 1 new chunks uploaded.
+[2025-04-23 10:10:39]: Starting build for depot 3665841, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2025-04-23 10:10:39]: Building file listing for depot 3665841 ...
+[2025-04-23 10:10:39]: Found 3 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2025-04-23 10:10:39]: Found 3 files (0 MB) for depot 3665841
+[2025-04-23 10:10:40]: Building depot 3665841, baseline manifest 3557372154300786431 (3 files)
+[2025-04-23 10:10:40]: Found 3 chunks ( 3 used previously ) for depot 3665841, took 0 minutes, 0 seconds
+[2025-04-23 10:10:40]: Changes to baseline manifest 3557372154300786431 :
+[2025-04-23 10:10:40]: Changed: "MineSweeperRush.exe" 137 kB size, 137 kB changed 
+[2025-04-23 10:10:40]: Summary: 0 files added, 1 files changed, 0 files removed
+[2025-04-23 10:10:40]: Uploading new manifest to 208.78.164.214:80 (handle 8207597671274380614, 699 bytes).
+[2025-04-23 10:10:41]: Uploading 1 out of 1 missing chunks.
+[2025-04-23 10:10:43]: Success! New manifestID 8985054419894057536 created and 1 new chunks uploaded.
