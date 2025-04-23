@@ -110,6 +110,7 @@ public:
     void addscr(long scrid, long val, long mode);
     void maxscr(long val, long scrline__);
     void compscr(long val, long mode, long index);
+    void resetscr();
 
     void loadlead();
     void getlead();
@@ -121,6 +122,8 @@ public:
     void savescr(char* scrpath);
 
     bool ischeat(long line, long tetris);
+    bool ischeat();
+    void checkcheat();
 
 };
 
@@ -277,10 +280,6 @@ void Steam::loadscr()
             }
             //printf("%d %s %d\n",scrid,scrs[scrid],scr[scrid]);
         }
-        if (ischeat(scr[4], scr[13]))
-        {
-            resetach();
-        }
         setlead();
     }
 }
@@ -373,6 +372,17 @@ void Steam::compscr(long val, long mode, long index)
     }
 }
 
+void Steam::resetscr()
+{
+    if (steamb)
+    {
+        for (long scrid = 0; scrid < scrn; scrid++)
+        {
+            scr[scrid] = 0;
+        }
+    }
+}
+
 void Steam::loadlead()
 {
     if (steamb)
@@ -434,6 +444,7 @@ void Steam::setlead()
 {
     if (steamb)
     {
+        checkcheat();
         long leadid;
         for (leadid = 0; leadid < 3; leadid++)
         {
@@ -470,6 +481,7 @@ void Steam::setlead(long mode)
 {
     if (steamb)
     {
+        checkcheat();
         if (mode > 0 && newrecord)
         {
             newrecord = false;
@@ -554,4 +566,18 @@ bool Steam::ischeat(long line, long tetris)
         return true;
     }
     return false;
+}
+
+bool Steam::ischeat()
+{
+    return ischeat(scr[4], scr[13]);
+}
+
+void Steam::checkcheat()
+{
+    if (ischeat())
+    {
+        resetscr();
+        resetach();
+    }
 }
