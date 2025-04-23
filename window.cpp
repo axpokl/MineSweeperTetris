@@ -146,8 +146,12 @@ public:
 
     Window();
     ~Window();
+    void loadsettingcloud();
+    void savesettingcloud();
     void loadsetting();
     void savesetting();
+    void loadboardcloud();
+    void saveboardcloud();
     void loadboard();
     void saveboard();
     void initmult();
@@ -223,6 +227,42 @@ Window::~Window()
     DeleteCriticalSection(&cs);
 }
 
+void Window::loadsettingcloud()
+{
+    if (!SteamRemoteStorage()) return;
+    if (!SteamRemoteStorage()->FileExists("reg.dat")) return;
+    long buf[9] = {0};
+    if (SteamRemoteStorage()->GetFileSize("reg.dat") != sizeof(buf)) return;
+    SteamRemoteStorage()->FileRead("reg.dat", buf, sizeof(buf));
+    int pos = 0;
+    helpb         = buf[pos++];
+    colori        = buf[pos++];
+    md            = buf[pos++];
+    bd.sd.soundb  = buf[pos++];
+    bd.sd.musicb  = buf[pos++];
+    mult_         = buf[pos++];
+    bd.delayb     = buf[pos++];
+    barb          = buf[pos++];
+    singleb       = buf[pos++];
+}
+
+void Window::savesettingcloud()
+{
+    if (!SteamRemoteStorage()) return;
+    long buf[9];
+    int pos = 0;
+    buf[pos++] = helpb;
+    buf[pos++] = colori;
+    buf[pos++] = md;
+    buf[pos++] = bd.sd.soundb;
+    buf[pos++] = bd.sd.musicb;
+    buf[pos++] = mult_;
+    buf[pos++] = bd.delayb;
+    buf[pos++] = barb;
+    buf[pos++] = singleb;
+    SteamRemoteStorage()->FileWrite("reg.dat", buf, sizeof(buf));
+}
+
 void Window::loadsetting()
 {
     reg.getreg(reg.regkey, "helpb", (long*)&helpb);
@@ -234,6 +274,7 @@ void Window::loadsetting()
     reg.getreg(reg.regkey, "delayb", (long*)&bd.delayb);
     reg.getreg(reg.regkey, "barb", (long*)&barb);
     reg.getreg(reg.regkey, "singleb", (long*)&singleb);
+    loadsettingcloud();
 }
 
 void Window::savesetting()
@@ -247,15 +288,104 @@ void Window::savesetting()
     reg.setreg(reg.regkey, "delayb", bd.delayb);
     reg.setreg(reg.regkey, "barb", barb);
     reg.setreg(reg.regkey, "singleb", singleb);
+    savesettingcloud();
+}
+
+void Window::loadboardcloud()
+{
+    if (!SteamRemoteStorage()) return;
+    if (!SteamRemoteStorage()->FileExists("board.dat")) return;
+    struct
+    {
+        long val[25];
+        char flag[0x4000];
+        char qstn[0x4000];
+        char mine[0x4000];
+        char blck[0x4000];
+        char mask[0x4000];
+    } buf;
+    if (SteamRemoteStorage()->GetFileSize("board.dat") != sizeof(buf)) return;
+    SteamRemoteStorage()->FileRead("board.dat", &buf, sizeof(buf));
+    int pos = 0;
+    bd.mode     = buf.val[pos++];
+    bd.w        = buf.val[pos++];
+    bd.h        = buf.val[pos++];
+    bd.n        = buf.val[pos++];
+    bd.maskj0   = buf.val[pos++];
+    bd.sit      = buf.val[pos++];
+    bd.line     = buf.val[pos++];
+    bd.level    = buf.val[pos++];
+    bd.tetrisi  = buf.val[pos++];
+    bd.missi    = buf.val[pos++];
+    bd.missline = buf.val[pos++];
+    bd.sum      = buf.val[pos++];
+    bd.maskj    = buf.val[pos++];
+    bd.maski    = buf.val[pos++];
+    bd.rightb   = buf.val[pos++];
+    bd.tuti     = buf.val[pos++];
+    bd.tutb     = buf.val[pos++];
+    bd.checkr   = buf.val[pos++];
+    bd.pauseb   = buf.val[pos++];
+    bd.mx       = buf.val[pos++];
+    bd.my       = buf.val[pos++];
+    bd.bouns    = buf.val[pos++];
+    bd.mdb      = buf.val[pos++];
+    bd.solven   = buf.val[pos++];
+    memcpy(bd.flag, buf.flag, 0x4000);
+    memcpy(bd.qstn, buf.qstn, 0x4000);
+    memcpy(bd.mine, buf.mine, 0x4000);
+    memcpy(bd.blck, buf.blck, 0x4000);
+    memcpy(bd.mask, buf.mask, 0x4000);
+    bd.calcnumb();
+}
+
+void Window::saveboardcloud()
+{
+    if (!SteamRemoteStorage()) return;
+    struct
+    {
+        long val[25];
+        char flag[0x4000];
+        char qstn[0x4000];
+        char mine[0x4000];
+        char blck[0x4000];
+        char mask[0x4000];
+    } buf;
+    int pos = 0;
+    buf.val[pos++] = bd.mode;
+    buf.val[pos++] = bd.w;
+    buf.val[pos++] = bd.h;
+    buf.val[pos++] = bd.n;
+    buf.val[pos++] = bd.maskj0;
+    buf.val[pos++] = bd.sit;
+    buf.val[pos++] = bd.line;
+    buf.val[pos++] = bd.level;
+    buf.val[pos++] = bd.tetrisi;
+    buf.val[pos++] = bd.missi;
+    buf.val[pos++] = bd.missline;
+    buf.val[pos++] = bd.sum;
+    buf.val[pos++] = bd.maskj;
+    buf.val[pos++] = bd.maski;
+    buf.val[pos++] = bd.rightb;
+    buf.val[pos++] = bd.tuti;
+    buf.val[pos++] = bd.tutb;
+    buf.val[pos++] = bd.checkr;
+    buf.val[pos++] = bd.pauseb;
+    buf.val[pos++] = bd.mx;
+    buf.val[pos++] = bd.my;
+    buf.val[pos++] = bd.bouns;
+    buf.val[pos++] = bd.mdb;
+    buf.val[pos++] = bd.solven;
+    memcpy(buf.flag, bd.flag, 0x4000);
+    memcpy(buf.qstn, bd.qstn, 0x4000);
+    memcpy(buf.mine, bd.mine, 0x4000);
+    memcpy(buf.blck, bd.blck, 0x4000);
+    memcpy(buf.mask, bd.mask, 0x4000);
+    SteamRemoteStorage()->FileWrite("board.dat", &buf, sizeof(buf));
 }
 
 void Window::loadboard()
 {
-    reg.getreg_(reg.regkey_, "flag", (char*)&bd.flag[0][0]);
-    reg.getreg_(reg.regkey_, "qstn", (char*)&bd.qstn[0][0]);
-    reg.getreg_(reg.regkey_, "mine", (char*)&bd.mine[0][0]);
-    reg.getreg_(reg.regkey_, "blck", (char*)&bd.blck[0][0]);
-    reg.getreg_(reg.regkey_, "mask", (char*)&bd.mask[0][0]);
     reg.getreg(reg.regkey_, "mode", (long*)&bd.mode);
     reg.getreg(reg.regkey_, "w", (long*)&bd.w);
     reg.getreg(reg.regkey_, "h", (long*)&bd.h);
@@ -280,16 +410,17 @@ void Window::loadboard()
     reg.getreg(reg.regkey_, "bouns", (long*)&bd.bouns);
     reg.getreg(reg.regkey_, "mdb", (long*)&bd.mdb);
     reg.getreg(reg.regkey_, "solven", (long*)&bd.solven);
+    reg.getreg_(reg.regkey_, "flag", (char*)&bd.flag[0][0]);
+    reg.getreg_(reg.regkey_, "qstn", (char*)&bd.qstn[0][0]);
+    reg.getreg_(reg.regkey_, "mine", (char*)&bd.mine[0][0]);
+    reg.getreg_(reg.regkey_, "blck", (char*)&bd.blck[0][0]);
+    reg.getreg_(reg.regkey_, "mask", (char*)&bd.mask[0][0]);
+    loadboardcloud();
     bd.calcnumb();
 }
 
 void Window::saveboard()
 {
-    reg.setreg_(reg.regkey_, "flag", (char*)&bd.flag[0][0]);
-    reg.setreg_(reg.regkey_, "qstn", (char*)&bd.qstn[0][0]);
-    reg.setreg_(reg.regkey_, "mine", (char*)&bd.mine[0][0]);
-    reg.setreg_(reg.regkey_, "blck", (char*)&bd.blck[0][0]);
-    reg.setreg_(reg.regkey_, "mask", (char*)&bd.mask[0][0]);
     reg.setreg(reg.regkey_, "mode", bd.mode);
     reg.setreg(reg.regkey_, "w", bd.w);
     reg.setreg(reg.regkey_, "h", bd.h);
@@ -314,6 +445,12 @@ void Window::saveboard()
     reg.setreg(reg.regkey_, "bouns", bd.bouns);
     reg.setreg(reg.regkey_, "mdb", bd.mdb);
     reg.setreg(reg.regkey_, "solven", bd.solven);
+    reg.setreg_(reg.regkey_, "flag", (char*)&bd.flag[0][0]);
+    reg.setreg_(reg.regkey_, "qstn", (char*)&bd.qstn[0][0]);
+    reg.setreg_(reg.regkey_, "mine", (char*)&bd.mine[0][0]);
+    reg.setreg_(reg.regkey_, "blck", (char*)&bd.blck[0][0]);
+    reg.setreg_(reg.regkey_, "mask", (char*)&bd.mask[0][0]);
+    saveboardcloud();
 }
 
 void Window::loadallpaint()
