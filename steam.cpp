@@ -32,10 +32,10 @@ public:
     long achcumline300 = 19;
     long achcumline600 = 20;
     long achcumline1000 = 21;
-    long achcumtotal10 = 22;
-    long achcumtotal100 = 23;
-    long achcumtotal1000 = 24;
-    long achcumtotal10000 = 25;
+    long achcumtotal100 = 22;
+    long achcumtotal1000 = 23;
+    long achcumtotal10000 = 24;
+    long achcumtotal100000 = 25;
     const char* achs[achn] =
     {
         "GEN_START", "GEN_CUSTOM", "GEN_MODE", "GEN_PAUSE", "GEN_HELP",
@@ -43,7 +43,7 @@ public:
         "CUM_DEAD_1", "CUM_DEAD_10", "CUM_DEAD_100", "CUM_DEAD_1000",
         "CUM_FOUR_1", "CUM_FOUR_10", "CUM_FOUR_100", "CUM_FOUR_1000",
         "CUM_LINE_100", "CUM_LINE_300", "CUM_LINE_600", "CUM_LINE_1000",
-        "CUM_TOTAL_10", "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000"
+        "CUM_TOTAL_100", "CUM_TOTAL_1000", "CUM_TOTAL_10000", "CUM_TOTAL_100000"
     };
     bool achb[achn];
 
@@ -306,7 +306,7 @@ void Steam::setscr(long scrid)
         }
         else if (scrid == scrtotal)
         {
-            checkach(scrtotal, 10000, 1000, 100, 10, achcumtotal10000, achcumtotal1000, achcumtotal100, achcumtotal10);
+            checkach(scrtotal, 100000, 10000, 1000, 100, achcumtotal100000, achcumtotal10000, achcumtotal1000, achcumtotal100);
         }
         else if (scrid == scrline)
         {

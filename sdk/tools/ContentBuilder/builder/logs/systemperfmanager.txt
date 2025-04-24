@@ -1323,9 +1323,3 @@
 [2025-04-24 14:58:07] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
 [2025-04-24 14:58:07] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
 [2025-04-24 14:58:07] Initialized system perf manager
-
-
-[2025-04-24 23:11:08] Client version: 1726605427
-[2025-04-24 23:11:08] CSystemPerfManager::UpdateCurrentGame: setting current gameid: 769
-[2025-04-24 23:11:08] CSystemPerfManager::MaybeUpdateActiveGame: loading profile for gameid: 769
-[2025-04-24 23:11:08] Initialized system perf manager

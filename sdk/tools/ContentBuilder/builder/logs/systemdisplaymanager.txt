@@ -697,7 +697,3 @@
 
 [2025-04-24 14:58:07] Client version: 1726605427
 [2025-04-24 14:58:07] Initialized system displaymanager: default
-
-
-[2025-04-24 23:11:08] Client version: 1726605427
-[2025-04-24 23:11:08] Initialized system displaymanager: default
