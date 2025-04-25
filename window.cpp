@@ -215,6 +215,18 @@ static DWORD WINAPI loadallpaintstatic(LPVOID lpParam)
     return 0;
 }
 
+static DWORD WINAPI getlead(LPVOID p)
+{
+    Window* win = (Window*)p;
+    if (win->waitb) return 0;
+    win->waitb = true;
+    win->paintevent();
+    win->bd.st.getlead();
+    win->paintevent();
+    win->waitb = false;
+    return 0;
+}
+
 Window::Window()
 {
     InitializeCriticalSection(&cs);
@@ -1009,7 +1021,7 @@ void Window::paintblock(Block &b, long i, long j, long x, long y, long w, long h
     {
         DrawBMP(piconq, x, y, w, h);
     }
-    else if (((b.sit == 4) || ((b.sit == 0) && (bd.mode == 0))) && b.mine[i][j])
+    else if (((b.sit == 4) || ((b.sit == 0) && (bd.mode == 0))) && b.mine[i][j] && (helpi == 0))
     {
         DrawBMP(piconn, x, y, w, h);
     }
@@ -1694,14 +1706,7 @@ void Window::painthelp()
     {
         setfontheight_(fonth);
         DrawBMP(pok, GetWin(), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh);
-        if (waitb)
-        {
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, cline, ctbg);
-        }
-        else
-        {
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, ctfg, ctbg);
-        }
+        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_OK), (helpw - okw) / 2, helph - (okh_ + okh) / 2 + menuh, okw, okh, ctfg, ctbg);
         if (helpi > 1 && helpi <= maxhelp)
         {
             DrawBMP(pbtn, GetWin(), (helpw - okw) / 2 - btnw * 2, helph - (okh_ + okh) / 2 + menuh, btnw, btnh);
@@ -1713,14 +1718,7 @@ void Window::painthelp()
             drawtextxy_(pwint, ">", (helpw + okw) / 2 + btnw, helph - (okh_ + okh) / 2 + menuh, btnw, btnh, ctfg, ctbg);
         }
         DrawBMP(pok, GetWin(), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth);
-        if (waitb)
-        {
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, cline, ctbg);
-        }
-        else
-        {
-            drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
-        }
+        drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_TUT_), (helpw - okw) / 2 - btnw * 3 - tutw, helph - (okh_ + okh) / 2 + menuh, tutw, tuth, ctfg, ctbg);
         Line(0, menuh, helpw, 0, cline);
         Line(0, menuh + helph - okh_, helpw, 0, cline);
     }
@@ -1859,6 +1857,7 @@ void Window::painttitle(long load)
 
 void Window::paintevent(bool freshb)
 {
+    EnterCriticalSection(&cs);
     Clear(cbg);
     Clear(pwint, transparent_);
     paintmenu();
@@ -1886,6 +1885,7 @@ void Window::paintevent(bool freshb)
     {
         FreshWin();
     }
+    LeaveCriticalSection(&cs);
 }
 
 void Window::paintevent()
@@ -1930,12 +1930,9 @@ void Window::sethelp(long helpi_)
         helpi = 0;
     }
     initwindow(false);
-    if (helpi == -2)
+    if (helpi == -2  && !waitb)
     {
-        waitb = true;
-        paintevent();
-        bd.st.getlead();
-        waitb = false;
+        CreateThread(NULL, 0, getlead, this, 0, NULL);
     }
 }
 
