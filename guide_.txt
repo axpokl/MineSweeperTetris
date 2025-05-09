@@ -1,0 +1,77 @@
+Minesweeper Rush Full Achievement Guide (Including Hidden and Accumulated Achievements)
+All achievements in Minesweeper Rush, including hidden and accumulated. Simple, fun, and to the point.
+General
+
+This guide includes the following 3 categories of achievements:
+
+[b]🟩 A. Common Achievements[/b]
+[b]🟥 B. Hidden Achievements[/b]
+[b]🟨 C. Accumulated Achievements[/b]
+
+🔧 Once Debug Mode (also known as Cheat Mode) is enabled, you will [b]no longer be able to earn any achievements[/b]. Please close and reopen the game to restore progress.
+
+📊 All accumulated achievements only count in [b]standard modes (Easy, Medium, Hard)[/b]. Custom mode will not count.
+
+🟩 A. Common Achievements
+
+[previewimg=40711693;sizeThumb,floatLeft;0_achgenstart.png][/previewimg]
+[b]1. Enter Minefield[/b]
+   [b]Click any tile[/b] to officially begin your minesweeping journey.
+
+
+[previewimg=40711694;sizeThumb,floatLeft;1_achgencustom.png][/previewimg]
+[b]2. Exclusive Minefield[/b]
+   Customize the board size ([b]arrow keys[/b]) and the number of mines ([b]plus/minus keys[/b]) — become a minesweeping architect!
+
+[previewimg=40711695;sizeThumb,floatLeft;2_aachgenmode.png][/previewimg]
+[b]3. Classic Minefields[/b]
+   Try all three standard difficulties: [b]Easy, Medium, and Hard[/b]. Use keys [b]1, 2, 3[/b] to quickly switch.
+
+[previewimg=40711696;sizeThumb,floatLeft;3_achgenpause.png][/previewimg]
+[b]4. Mines and Peace[/b]
+   During the game, press the [b]space bar[/b] or click the top smiley face button to pause the game and enjoy temporary peace.
+
+[previewimg=40711697;sizeThumb,floatLeft;4_achgenhelp.png][/previewimg]
+[b]5. Minesweeper Manual[/b]
+   Click the [b]question mark[/b] in the [b]top right corner[/b], then browse and read through [b]all help pages[/b].
+
+🟥 B. Hidden Achievements
+
+[previewimg=40711698;sizeThumb,floatLeft;5_achhidcheat.png][/previewimg]
+1. A scarlet mine awaits
+   Enter [b]Debug Mode (Cheat Mode) [/b]by clicking the [b]top-right exclamation mark[/b], then the [b]mine icon[/b]. No other achievements can be earned until you restart the game.
+
+[previewimg=40711699;sizeThumb,floatLeft;6_achhidedge.png][/previewimg]
+2. Reaching the pinnacle of score
+   Reach [b]9999 [/b]in a single game. Tip: use a [b]large board[/b] with [b]few mines (minus key[/b]) and [b]drag mode[/b] for fast sweeping and line clears.
+
+[previewimg=40711700;sizeThumb,floatLeft;7_achhidmark.png][/previewimg]
+3. My mind is filled with questions
+   Mark [b]every single tile[/b] on the board with a question mark (?). Recommended: [b]shrink the board[/b] size and use “[b]Drag All[/b]” mode to mark quickly.
+
+[previewimg=40711701;sizeThumb,floatLeft;8_achhidright.png][/previewimg]
+4. I don't know what the number means
+   Lose the game [b]without clicking any numbered tile[/b]. [b]Increase mine density (plus key)[/b] and click randomly to achieve it.
+
+[previewimg=40711702;sizeThumb,floatLeft;9_achhidalive.png][/previewimg]
+5. Struggling on the line of death
+   When the board is [b]nearly full, survive[/b] by clearing a line at the last second. Tip: flag all but one mine in a line, mark the last with a question mark, and trigger it just before failure. Best done [b]early [/b]when mine growth is slower.
+
+🟨 C. Accumulated Achievements
+Note: These achievements must be completed in [b]standard modes (Easy, Medium, Hard)[/b]. Custom mode is not valid.
+
+[previewimg=40711703;sizeThumb,floatLeft;10_achcumdead1.png][/previewimg]
+1. Mine Clicking
+   Includes [b]clicking mines[/b] with the left button [b]directly [/b]or [b]misclicking[/b] number tiles due to [b]wrong question marks[/b]. Flagging correctly does not count.
+
+[previewimg=40711707;sizeThumb,floatLeft;14_achcumfour1.png][/previewimg]
+2. Rush Line Clear
+   Rush is triggered when the [b]number of lines is less than 4[/b]. A “new world” sound plays and the sunglasses emoji appears on top.
+
+[previewimg=40711711;sizeThumb,floatLeft;18_achcumline100.png][/previewimg]
+3. Single-Game Score
+   This is a [b]single-session[/b] achievement. Scores from multiple games do not accumulate. If your score does not exceed the requirement in one session, it does not count.
+
+[previewimg=40711715;sizeThumb,floatLeft;22_achcumtotal10.png][/previewimg]
+4. Total Mine Flagging
+   Counts when [b]a single line is eliminated[/b]: Easy: 2 mines, Medium: 3 mines, Hard: 6 mines.
