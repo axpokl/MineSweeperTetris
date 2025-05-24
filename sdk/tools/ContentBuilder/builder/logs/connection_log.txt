@@ -3889,3 +3889,243 @@
 [2025-04-25 09:02:23] [Logged On, 4, 7] [U:1:214053662] LogOff()
 [2025-04-25 09:02:23] [Logging Off, 4, 7] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: true )
 [2025-04-25 09:02:23] [Logging Off, 0, 7] [U:1:214053662] Log session ended
+
+
+[2025-05-24 12:02:08] Client version: 1726605427
+[2025-05-24 12:02:08] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2025-05-24 12:02:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2025-05-24 12:02:08] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2025-05-24 12:02:08] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:02:08] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:02:08] [Logged Off, 4, 0] [U:1:214053662] EConnect called - scheduling connection for 50ms from now
+[2025-05-24 12:02:08] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 22
+[2025-05-24 12:02:08] [Logged Off, 4, 0] [U:1:214053662] EConnect called - scheduling connection for 50ms from now
+[2025-05-24 12:02:09] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2025-05-24 12:02:09] Connectivity test (184.26.127.9:80 (127.0.0.1:10809)): OK!
+[2025-05-24 12:02:09] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2025-05-24 12:02:09] GetCMListForConnect -- got 17 Netfilter CMs and 343 WebSocket CMs
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'ord1' count: 32
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'iad1' count: 31
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'atl3' count: 30
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'dfw2' count: 31
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'sea1' count: 30
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'lax1' count: 30
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'lhr1' count: 32
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'par1' count: 30
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'ams1' count: 30
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'fra2' count: 32
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'fra1' count: 33
+[2025-05-24 12:02:09] GetCMListForConnect -- DC 'sto2' count: 19
+[2025-05-24 12:02:09] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 100% of connections should be websockets, we rolled 39 - using WebSockets as default.
+[2025-05-24 12:02:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27020) starting...
+[2025-05-24 12:02:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27019) starting...
+[2025-05-24 12:02:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27019) starting...
+[2025-05-24 12:02:09] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:443) starting...
+[2025-05-24 12:02:09] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:a:100::7]:80 (127.0.0.1:10809)) - FAILURE (Service Unavailable)
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27020) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:27019) starting...
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-atl3.steamserver.net:27018) starting...
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-atl3.steamserver.net:443) starting...
+[2025-05-24 12:02:10] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-atl3.steamserver.net:27018) starting...
+[2025-05-24 12:02:11] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / 2404:3fc0:2:100::671c:3688) - TIMEOUT
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:443) starting...
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-atl3.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:443) starting...
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-atl3.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-atl3.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-fra2.steamserver.net:443) starting...
+[2025-05-24 12:02:12] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-lhr1.steamserver.net:27018) starting...
+[2025-05-24 12:02:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-fra2.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:13] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-lhr1.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:13] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, cmp2-ord1.steamserver.net:27020, WebSocket)
+[2025-05-24 12:02:17] [Connecting, 4, 3] [U:1:214053662] ConnectionCompleted() (162.254.193.75:27020, WebSocket) local address (127.0.0.1:59736)
+[2025-05-24 12:02:17] [Connecting, 4, 3] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2025-05-24 12:02:17] [Connected, 4, 3] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-24 12:02:17] cannot call UpdateAuthSessionWithSteamGuardCode because we do not have a code available
+[2025-05-24 12:02:17] [Connected, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2025-05-24 12:02:19] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected('Disconnected By Remote Host') : 'Account logon denied, need two-factor code' (127.0.0.1:10809, WebSocket)
+[2025-05-24 12:02:19] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2025-05-24 12:02:19] [Logged Off, 0, 0] [U:1:214053662] Sending SteamServerConnectFailure_t Account logon denied, need two-factor code Do not reconnect
+[2025-05-24 12:02:24] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:02:24] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2025-05-24 12:02:24] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2025-05-24 12:02:24] GetCMListForConnect -- got 16 Netfilter CMs and 344 WebSocket CMs
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'dfw2' count: 30
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'ord1' count: 32
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'iad1' count: 32
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'sea1' count: 30
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'lax1' count: 31
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'atl3' count: 30
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'lhr1' count: 32
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'par1' count: 30
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'ams1' count: 30
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'fra2' count: 33
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'fra1' count: 31
+[2025-05-24 12:02:24] GetCMListForConnect -- DC 'sto2' count: 19
+[2025-05-24 12:02:24] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 100% of connections should be websockets, we rolled 84 - using WebSockets as default.
+[2025-05-24 12:02:24] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:443) starting...
+[2025-05-24 12:02:24] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27020) starting...
+[2025-05-24 12:02:24] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:27018) starting...
+[2025-05-24 12:02:24] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27019) starting...
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27019) results: 228.2963ms + load 14.0000
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:27018) starting...
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27020) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27019) starting...
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27018) starting...
+[2025-05-24 12:02:25] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:443) starting...
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-sea1.steamserver.net:443) starting...
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-lax1.steamserver.net:443) starting...
+[2025-05-24 12:02:26] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-lax1.steamserver.net:443) starting...
+[2025-05-24 12:02:27] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-sea1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:27] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-lax1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:27] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-lax1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:02:27] [Connecting, 4, 7] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, cmp1-ord1.steamserver.net:27019, WebSocket)
+[2025-05-24 12:02:29] [Connecting, 4, 7] [U:1:214053662] ConnectionCompleted() (162.254.193.103:27019, WebSocket) local address (127.0.0.1:59778)
+[2025-05-24 12:02:29] [Connecting, 4, 7] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2025-05-24 12:02:29] [Connected, 4, 7] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-24 12:02:31] [Connected, 4, 7] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:02:31] [Connected, 4, 7] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:02:31] [Connected, 4, 7] [U:1:214053662] LogOn() called; already connected, sending credentials.
+[2025-05-24 12:02:31] [Connected, 4, 7] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-24 12:02:31] [Logging On, 4, 7] [U:1:214053662] Using JWT
+[2025-05-24 12:02:31] Successfully generated token via password authentication
+[2025-05-24 12:02:31] [Logging On, 4, 7] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2025-05-24 12:02:31] [Logged On, 4, 7] [U:1:214053662] RecvMsgClientLogOnResponse() : processing complete
+[2025-05-24 12:02:32] CClientJobGetClientUpdateHosts: cached copy new expiration: Tue May 27 04:17:14 2025
+[2025-05-24 12:03:35] [Logged On, 4, 7] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1748059415 seconds ago)
+[2025-05-24 12:03:35] [Logged On, 4, 7] [U:1:214053662] LogOff()
+[2025-05-24 12:03:35] [Logging Off, 4, 7] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: true )
+[2025-05-24 12:03:35] [Logging Off, 0, 7] [U:1:214053662] Log session ended
+
+
+[2025-05-24 12:21:35] Client version: 1726605427
+[2025-05-24 12:21:35] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2025-05-24 12:21:35] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2025-05-24 12:21:36] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2025-05-24 12:21:36] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:21:36] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:21:36] [Logged Off, 4, 0] [U:1:214053662] EConnect called - scheduling connection for 50ms from now
+[2025-05-24 12:21:36] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 22
+[2025-05-24 12:21:36] [Logged Off, 4, 0] [U:1:214053662] EConnect called - scheduling connection for 50ms from now
+[2025-05-24 12:21:36] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2025-05-24 12:21:37] Connectivity test (184.26.127.9:80 (127.0.0.1:10809)): OK!
+[2025-05-24 12:21:37] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2025-05-24 12:21:37] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:a:100::11]:80 (127.0.0.1:10809)) - FAILURE (Service Unavailable)
+[2025-05-24 12:21:37] GetCMListForConnect -- got 13 Netfilter CMs and 347 WebSocket CMs
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'ord1' count: 32
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'dfw2' count: 31
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'iad1' count: 34
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'sea1' count: 30
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'atl3' count: 30
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'lax1' count: 30
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'lhr1' count: 33
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'par1' count: 30
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'ams1' count: 31
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'fra2' count: 33
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'fra1' count: 32
+[2025-05-24 12:21:37] GetCMListForConnect -- DC 'sto2' count: 14
+[2025-05-24 12:21:37] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 100% of connections should be websockets, we rolled 73 - using WebSockets as default.
+[2025-05-24 12:21:37] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27019) starting...
+[2025-05-24 12:21:37] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27019) starting...
+[2025-05-24 12:21:37] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:443) starting...
+[2025-05-24 12:21:37] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:443) starting...
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:443) results: 227.1225ms + load 14.0000
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27019) starting...
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:27018) starting...
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:27018) starting...
+[2025-05-24 12:21:38] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:27020) starting...
+[2025-05-24 12:21:39] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / 2404:3fc0:2:100::671c:3688) - TIMEOUT
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:443) starting...
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-sea1.steamserver.net:443) starting...
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:27020) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-lhr1.steamserver.net:27020) starting...
+[2025-05-24 12:21:39] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-sea1.steamserver.net:443) starting...
+[2025-05-24 12:21:40] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:40] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-sea1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:40] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-lhr1.steamserver.net:27020) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:40] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-sea1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:21:40] [Connecting, 4, 3] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, cmp2-ord1.steamserver.net:443, WebSocket)
+[2025-05-24 12:21:42] [Connecting, 4, 3] [U:1:214053662] ConnectionCompleted() (162.254.193.75:443, WebSocket) local address (127.0.0.1:62213)
+[2025-05-24 12:21:42] [Connecting, 4, 3] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2025-05-24 12:21:42] [Connected, 4, 3] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-24 12:21:43] cannot call UpdateAuthSessionWithSteamGuardCode because we do not have a code available
+[2025-05-24 12:21:43] [Connected, 4, 3] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2025-05-24 12:21:45] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected('Disconnected By Remote Host') : 'Account logon denied, need two-factor code' (127.0.0.1:10809, WebSocket)
+[2025-05-24 12:21:45] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2025-05-24 12:21:45] [Logged Off, 0, 0] [U:1:214053662] Sending SteamServerConnectFailure_t Account logon denied, need two-factor code Do not reconnect
+[2025-05-24 12:24:03] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:24:03] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2025-05-24 12:24:03] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2025-05-24 12:24:05] GetCMListForConnect -- got 16 Netfilter CMs and 344 WebSocket CMs
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'ord1' count: 32
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'dfw2' count: 30
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'iad1' count: 31
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'atl3' count: 31
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'sea1' count: 30
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'lax1' count: 30
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'lhr1' count: 32
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'par1' count: 31
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'ams1' count: 30
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'fra2' count: 33
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'fra1' count: 33
+[2025-05-24 12:24:05] GetCMListForConnect -- DC 'sto2' count: 17
+[2025-05-24 12:24:05] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 100% of connections should be websockets, we rolled 5 - using WebSockets as default.
+[2025-05-24 12:24:05] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27019) starting...
+[2025-05-24 12:24:05] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27019) starting...
+[2025-05-24 12:24:05] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:443) starting...
+[2025-05-24 12:24:05] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:443) starting...
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-ord1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-ord1.steamserver.net:27019) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:27018) starting...
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:27018) starting...
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:27018) starting...
+[2025-05-24 12:24:06] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27020) starting...
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-dfw2.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-iad1.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-dfw2.steamserver.net:27018) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:27020) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:443) starting...
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-atl3.steamserver.net:443) starting...
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-fra1.steamserver.net:27021) starting...
+[2025-05-24 12:24:07] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-sea1.steamserver.net:443) starting...
+[2025-05-24 12:24:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-atl3.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp1-fra1.steamserver.net:27021) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-sea1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:08] [Connecting, 4, 0] [U:1:214053662] PingWebSocketCM() (cmp2-iad1.steamserver.net:443) failed talking to cm (timeout/neterror - OK)
+[2025-05-24 12:24:08] [Connecting, 4, 7] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, cmp1-ord1.steamserver.net:27019, WebSocket)
+[2025-05-24 12:24:09] [Connecting, 4, 7] [U:1:214053662] ConnectionCompleted() (162.254.193.103:27019, WebSocket) local address (127.0.0.1:62339)
+[2025-05-24 12:24:09] [Connecting, 4, 7] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2025-05-24 12:24:09] [Connected, 4, 7] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-24 12:24:11] [Connected, 4, 7] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:24:11] [Connected, 4, 7] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-24 12:24:11] [Connected, 4, 7] [U:1:214053662] LogOn() called; already connected, sending credentials.
+[2025-05-24 12:24:11] [Connected, 4, 7] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-24 12:24:11] [Logging On, 4, 7] [U:1:214053662] Using JWT
+[2025-05-24 12:24:11] Successfully generated token via password authentication
+[2025-05-24 12:24:11] [Logging On, 4, 7] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2025-05-24 12:24:11] [Logged On, 4, 7] [U:1:214053662] RecvMsgClientLogOnResponse() : processing complete
+[2025-05-24 12:24:11] CClientJobGetClientUpdateHosts: cached version not expired
+[2025-05-24 12:24:19] [Logged On, 4, 7] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1748060659 seconds ago)
+[2025-05-24 12:24:19] [Logged On, 4, 7] [U:1:214053662] LogOff()
+[2025-05-24 12:24:19] [Logging Off, 4, 7] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: true )
+[2025-05-24 12:24:19] [Logging Off, 0, 7] [U:1:214053662] Log session ended

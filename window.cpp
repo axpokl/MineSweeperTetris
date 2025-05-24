@@ -1213,7 +1213,7 @@ void Window::painthelp()
                             }
                         }
                         DrawBMP(pface__[k], helpw * (k * 2 + 1) / 6 - 2 * digtw[0] - facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, facew, faceh, cfg);
-                        paintnumber(score, 4 + n__[k] * 2 + (bd.st.scr[scr__[k]] >= 10000) * (k < 2), helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, singleb * (k < 2) * 2);
+                        paintnumber(score, 4 + n__[k] * 1 + (bd.st.scr[scr__[k]] >= 10000) * (k < 2), helpw * (k * 2 + 1) / 6 - 2 * digtw[0] + facew - digtw[0] * n__[k], menuh + (fontsh * 20 + helph - okh_) / 2 + 1, singleb * (k < 2) * 2);
                     }
                     Line(helpw / 3 * 1, menuh, 0, helph - okh_, cline);
                     Line(helpw / 3 * 2, menuh, 0, helph - okh_, cline);

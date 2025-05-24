@@ -1404,3 +1404,51 @@
 [2025-04-25 09:01:20] Verification complete
 [2025-04-25 09:01:57] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
 [2025-04-25 09:02:24] Shutdown
+
+
+[2025-05-24 12:02:01] Startup - updater built Sep 17 2024 13:02:40
+[2025-05-24 12:02:01] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2025-05-24 12:02:01] Windows 6.2.9200.0, 0, 2, 256, 1, 4 
+[2025-05-24 12:02:02] Using the following download hosts for Public, Realm steamglobal
+[2025-05-24 12:02:02] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2025-05-24 12:02:02] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2025-05-24 12:02:02] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2025-05-24 12:02:02] Checking for update on startup
+[2025-05-24 12:02:02] 正在检查可用更新...
+[2025-05-24 12:02:02] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2025-05-24 12:02:02] Manifest download: send request
+[2025-05-24 12:02:02] Manifest download: waiting for download to finish
+[2025-05-24 12:02:04] Manifest download: finished
+[2025-05-24 12:02:04] Downloaded new manifest: /steam_cmd_win32 version 1747702063, installed version 1726605427, existing pending version 0
+[2025-05-24 12:02:04] Beta changed from  to 
+[2025-05-24 12:02:04] Error: System OS version is not compatible with package manifest OS type
+[2025-05-24 12:02:04] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-05-24 12:02:04] 正在验证安装...
+[2025-05-24 12:02:04] Performing checksum verification of executable files
+[2025-05-24 12:02:08] Verification complete
+[2025-05-24 12:02:32] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-05-24 12:03:36] Shutdown
+
+
+[2025-05-24 12:21:31] Startup - updater built Sep 17 2024 13:02:40
+[2025-05-24 12:21:31] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2025-05-24 12:21:31] Windows 6.2.9200.0, 0, 2, 256, 1, 4 
+[2025-05-24 12:21:31] Using the following download hosts for Public, Realm steamglobal
+[2025-05-24 12:21:31] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2025-05-24 12:21:31] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2025-05-24 12:21:31] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2025-05-24 12:21:31] Checking for update on startup
+[2025-05-24 12:21:31] 正在检查可用更新...
+[2025-05-24 12:21:31] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2025-05-24 12:21:31] Manifest download: send request
+[2025-05-24 12:21:31] Manifest download: waiting for download to finish
+[2025-05-24 12:21:33] Manifest download: finished
+[2025-05-24 12:21:33] Downloaded new manifest: /steam_cmd_win32 version 1747702063, installed version 1726605427, existing pending version 0
+[2025-05-24 12:21:33] Beta changed from  to 
+[2025-05-24 12:21:33] Error: System OS version is not compatible with package manifest OS type
+[2025-05-24 12:21:33] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-05-24 12:21:33] 正在验证安装...
+[2025-05-24 12:21:33] Performing checksum verification of executable files
+[2025-05-24 12:21:35] Verification complete
+[2025-05-24 12:24:12] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2025-05-24 12:24:19] Shutdown
