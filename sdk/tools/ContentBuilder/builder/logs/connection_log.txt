@@ -4129,3 +4129,51 @@
 [2025-05-24 12:24:19] [Logged On, 4, 7] [U:1:214053662] LogOff()
 [2025-05-24 12:24:19] [Logging Off, 4, 7] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: true )
 [2025-05-24 12:24:19] [Logging Off, 0, 7] [U:1:214053662] Log session ended
+
+
+[2025-05-25 23:39:02] Client version: 1726605427
+[2025-05-25 23:39:02] Connectivity test: Starting test, fetching 'http://test.steampowered.com/204'
+[2025-05-25 23:39:02] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+[2025-05-25 23:39:02] Clearing in-memory token - 1 (OK): SetLoginInformation
+[2025-05-25 23:39:02] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-25 23:39:02] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-25 23:39:02] [Logged Off, 4, 0] [U:1:214053662] EConnect called - scheduling connection for 50ms from now
+[2025-05-25 23:39:02] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 22
+[2025-05-25 23:39:02] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2025-05-25 23:39:03] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:2:101::671c:3697]:80 (127.0.0.1:10809)) - FAILURE (Service Unavailable)
+[2025-05-25 23:39:04] Connectivity test (184.26.127.9:80 (127.0.0.1:10809)): OK!
+[2025-05-25 23:39:04] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2025-05-25 23:39:05] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / 2404:3fc0:a:100::b) - TIMEOUT
+[2025-05-25 23:39:06] GetCMListForConnect -- web API call failed (status = 0)
+[2025-05-25 23:39:06] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 59% of connections should be websockets, we rolled 88 - using UDP as default.
+[2025-05-25 23:39:06] [Connecting, 4, 2] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, 103.10.124.122:27018, UDP)
+[2025-05-25 23:39:07] [Connecting, 4, 2] [U:1:214053662] ConnectionCompleted() (103.28.54.181:27017, UDP) local address (0.0.0.0:54881)
+[2025-05-25 23:39:07] [Connecting, 4, 2] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2025-05-25 23:39:07] [Connected, 4, 2] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-25 23:39:08] cannot call UpdateAuthSessionWithSteamGuardCode because we do not have a code available
+[2025-05-25 23:39:08] [Connected, 4, 2] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2025-05-25 23:39:08] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected('OK') : 'Account logon denied, need two-factor code' (103.28.54.181:27017, UDP)
+[2025-05-25 23:39:08] [Logged Off, 4, 0] [U:1:214053662] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2025-05-25 23:39:08] [Logged Off, 0, 0] [U:1:214053662] Sending SteamServerConnectFailure_t Account logon denied, need two-factor code Do not reconnect
+[2025-05-25 23:39:38] [Logged Off, 0, 0] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-25 23:39:38] [Logged Off, 4, 0] [U:1:214053662] LogOn() called; not connected yet, scheduling connection. Schedule init returned 1
+[2025-05-25 23:39:38] CCMInterface::YieldingConnect -- calling ISteamDirectory/GetCMListForConnect web api
+[2025-05-25 23:39:40] GetCMListForConnect -- web API call failed (status = 0)
+[2025-05-25 23:39:40] [Connecting, 4, 0] [U:1:214053662] CM Directory list says 59% of connections should be websockets, we rolled 82 - using UDP as default.
+[2025-05-25 23:39:40] [Connecting, 4, 10] [U:1:214053662] Connect() starting connection (eNetQOSLevelHigh, 103.10.124.122:27018, UDP)
+[2025-05-25 23:39:41] [Connecting, 4, 10] [U:1:214053662] ConnectionCompleted() (103.28.54.162:27017, UDP) local address (0.0.0.0:54881)
+[2025-05-25 23:39:41] [Connecting, 4, 10] [U:1:214053662] Client thinks it can connect via: UDP - yes, TCP - yes, WebSocket:443 - yes, WebSocket:Non443 - yes
+[2025-05-25 23:39:41] [Connected, 4, 10] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-25 23:39:43] [Connected, 4, 10] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-25 23:39:43] [Connected, 4, 10] [U:1:214053662] CCMInterface::SetSteamID( [U:1:214053662] )
+[2025-05-25 23:39:43] [Connected, 4, 10] [U:1:214053662] LogOn() called; already connected, sending credentials.
+[2025-05-25 23:39:43] [Connected, 4, 10] [U:1:214053662] Logging on [U:1:214053662]
+[2025-05-25 23:39:43] [Logging On, 4, 10] [U:1:214053662] Using JWT
+[2025-05-25 23:39:43] Successfully generated token via password authentication
+[2025-05-25 23:39:43] [Logging On, 4, 10] [U:1:214053662] RecvMsgClientLogOnResponse() : [U:1:214053662] 'OK'
+[2025-05-25 23:39:43] [Logged On, 4, 10] [U:1:214053662] RecvMsgClientLogOnResponse() : processing complete
+[2025-05-25 23:39:43] CClientJobGetClientUpdateHosts: cached version not expired
+[2025-05-25 23:39:55] [Logged On, 4, 10] [U:1:214053662] ResetVoiceRecording() (was recording: 0) (last get voice time: 1748187595 seconds ago)
+[2025-05-25 23:39:55] [Logged On, 4, 10] [U:1:214053662] LogOff()
+[2025-05-25 23:39:55] [Logging Off, 4, 10] [U:1:214053662] AsyncDisconnect( bDontWaitOnTCPShutdown: true )
+[2025-05-25 23:39:55] [Logging Off, 0, 10] [U:1:214053662] Log session ended

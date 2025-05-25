@@ -33,6 +33,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             if (w.bd.addmask())
             {
                 w.paintevent();
+                w.paintrefresh();
             }
             w.bd.sd.checkmusic();
             Delay(1);

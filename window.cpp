@@ -143,6 +143,7 @@ public:
     long lead_5 = 0;
     bool singleb = false;
     long boardb = 0;
+    double timerefresh = 0;
 
     Window();
     ~Window();
@@ -183,6 +184,7 @@ public:
     void painttitle(long load);
     void paintevent(bool freshb);
     void paintevent();
+    void paintrefresh();
     bool isin(long ex, long ey, long x, long y, long w, long h);
     void sethelp(long helpi_);
     void savescr();
@@ -1891,6 +1893,16 @@ void Window::paintevent(bool freshb)
 void Window::paintevent()
 {
     paintevent(true);
+}
+
+void Window::paintrefresh()
+{
+    if (GetTimeR() > timerefresh + 0.1)
+    {
+        InvalidateRect((HWND)GetHwnd(), NULL, FALSE);
+        UpdateWindow((HWND)GetHwnd());
+        timerefresh = GetTimeR();
+    }
 }
 
 bool Window::isin(long ex, long ey, long x, long y, long w, long h)
