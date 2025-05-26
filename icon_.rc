@@ -15,12 +15,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "ax_pokl\0"
             VALUE "FileDescription", "MineSweeper Rush\0"
-            VALUE "FileVersion", "Version 20250525 (Steam)\0"
+            VALUE "FileVersion", "Version 20250526 (Steam)\0"
             VALUE "InternalName", "MineSweeperRush\0"
             VALUE "LegalCopyright", "Made by ax_pokl Licensed under GPL-3.0\0"
             VALUE "OriginalFilename", "MineSweeperRush.exe\0"
             VALUE "ProductName", "MineSweeper Rush\0"
-            VALUE "ProductVersion", "Version 20250525 (Steam)\0"
+            VALUE "ProductVersion", "Version 20250526 (Steam)\0"
         END
     END
     BLOCK "VarFileInfo"

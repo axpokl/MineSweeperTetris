@@ -180,6 +180,9 @@ const char* painttitles = NULL;
 
 CRITICAL_SECTION cs;
 
+char command_in[MAXCHAR];
+char command_out[MAXCHAR];
+
 void WinCreateMain();
 LRESULT CALLBACK WndProc(HWND hW, UINT uM, WPARAM wP, LPARAM lP);
 BOOL CALLBACK Monitorenumproc(HMONITOR hmon, HDC hdc, LPRECT lprect, LPARAM pdata);
@@ -409,20 +412,16 @@ void MsgBox(const char* s);
 void Delay(unsigned long t);
 void Delay();
 
-unsigned long SendString(const char* s);
+unsigned long SendString();
 unsigned long LoadAudio(const char* s1, const char* s2);
 unsigned long LoadAudio(const char* s);
-void PlayAudio(unsigned long id, const char* s, bool b);
-void PlayAudioDefaultString(unsigned long id, const char* s);
-void PlayAudioDefaultBool(unsigned long id, bool b);
-void PlayAudioDefault(unsigned long id);
+void PlayAudio(unsigned long id, const char* s = "", bool b = false);
 void StopAudio(unsigned long id);
 void PauseAudio(unsigned long id);
 void ResumeAudio(unsigned long id);
 void ReleaseAudio(unsigned long id);
 unsigned long GetAudioPos(unsigned long id);
-void SetAudioPos(unsigned long id, unsigned long pos, bool b);
-void SetAudioPos(unsigned long id, unsigned long pos);
+void SetAudioPos(unsigned long id, unsigned long pos = 0, bool b = false);
 unsigned long GetAudioLen(unsigned long id);
 
 bool IsFile(const char* s);
@@ -1697,18 +1696,16 @@ void Delay()
     Delay((unsigned long)DELAYTIMEDEFAULT);
 }
 
-unsigned long SendString(const char* s)
+unsigned long SendString()
 {
-    char c[MAXCHAR];
-    mciSendString(s, c, MAXCHAR, (HWND)NULL);
-    return strtoul(c, NULL, 10);
+    mciSendString(command_in, command_out, MAXCHAR, NULL);
+    return strtoul(command_out, NULL, 10);
 }
 unsigned long LoadAudio(const char* s1, const char* s2)
 {
-    char command[256];
     _cid++;
-    sprintf(command, "open \"%s\"%s alias s%lu", s1, s2, _cid);
-    SendString(command);
+    sprintf(command_in, "open \"%s\"%s alias s%lu", s1, s2, _cid);
+    SendString();
     return _cid;
 }
 unsigned long LoadAudio(const char* s)
@@ -1717,69 +1714,45 @@ unsigned long LoadAudio(const char* s)
 }
 void PlayAudio(unsigned long id, const char* s, bool b)
 {
-    char command[256];
-    sprintf(command, b ? "play s%lu%s wait repeat" : "play s%lu%s", id, s);
-    SendString(command);
-}
-void PlayAudio(unsigned long id, const char* s)
-{
-    PlayAudio(id, s, false);
-}
-void PlayAudio(unsigned long id, bool b)
-{
-    PlayAudio(id, "", b);
-}
-void PlayAudio(unsigned long id)
-{
-    PlayAudio(id, "", false);
+    sprintf(command_in, b ? "play s%lu%s wait repeat" : "play s%lu%s", id, s);
+    SendString();
 }
 void StopAudio(unsigned long id)
 {
-    char command[256];
     SetAudioPos(id, 0, false);
-    sprintf(command, "stop s%lu", id);
-    SendString(command);
+    sprintf(command_in, "stop s%lu", id);
+    SendString();
 }
 void PauseAudio(unsigned long id)
 {
-    char command[128];
-    sprintf(command, "pause s%lu", id);
-    SendString(command);
+    sprintf(command_in, "pause s%lu", id);
+    SendString();
 }
 void ResumeAudio(unsigned long id)
 {
-    char command[128];
-    sprintf(command, "resume s%lu", id);
-    SendString(command);
+    sprintf(command_in, "resume s%lu", id);
+    SendString();
 }
 void ReleaseAudio(unsigned long id)
 {
-    char command[128];
-    sprintf(command, "close s%lu", id);
-    SendString(command);
+    sprintf(command_in, "close s%lu", id);
+    SendString();
 }
 unsigned long GetAudioPos(unsigned long id)
 {
-    char command[128];
-    sprintf(command, "status s%lu position", id);
-    return SendString(command);
+    sprintf(command_in, "status s%lu position", id);
+    return SendString();
 }
 void SetAudioPos(unsigned long id, unsigned long pos, bool b)
 {
-    char command[256];
-    unsigned long len = GetAudioLen(id);
-    sprintf(command, " from %lu to %lu", pos, len);
-    PlayAudio(id, command, b);
-}
-void SetAudioPos(unsigned long id, unsigned long pos)
-{
-    SetAudioPos(id, pos, false);
+    sprintf(command_in, "seek s%lu to %lu", id, pos);
+    SendString();
+    PlayAudio(id, "", b);
 }
 unsigned long GetAudioLen(unsigned long id)
 {
-    char command[128];
-    sprintf(command, "status s%lu length", id);
-    return SendString(command);
+    sprintf(command_in, "status s%lu length", id);
+    return SendString();
 }
 
 bool IsFile(const char* s)

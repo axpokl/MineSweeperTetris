@@ -66,23 +66,28 @@ void Sound::loadsound()
 
 void Sound::loadmusic()
 {
-    char sPath[MAX_PATH];
-    nummusic = maxmusic;
-    for (long k = 0; k < maxmusic; k++)
+    MCIERROR ret = mciSendString("open new type sequencer alias miditest", NULL, 0, NULL);
+    mciSendString("close miditest", NULL, 0, NULL);
+    if (ret != 0)
     {
-        if (IsWin())
+        char sPath[MAX_PATH];
+        nummusic = maxmusic;
+        for (long k = 0; k < maxmusic; k++)
         {
-            sprintf(sPath, "./data/mid/music%ld.mid", k + 1);
-            if (IsFile(sPath))
+            if (IsWin())
             {
-                painttitles = sPath;
-                painttitleb = 2;
-                sMusic[k] = LoadAudio(sPath, " type sequencer");
-                nummusic = k;
-            }
-            else
-            {
-                break;
+                sprintf(sPath, "./data/mid/music%ld.mid", k + 1);
+                if (IsFile(sPath))
+                {
+                    painttitles = sPath;
+                    painttitleb = 2;
+                    sMusic[k] = LoadAudio(sPath, " type sequencer");
+                    nummusic = k;
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
