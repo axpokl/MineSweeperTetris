@@ -58,6 +58,8 @@ public:
     long tuty[13] = {16, 17, 17, 17, 17, 18, 18, 18, 17, 16, 17, 19, 19};
     long tutm[13] = {1, 1, 3, 2, 3, 3, 3, 3, 1, 2, 3, 3, 3};
 
+    bool relaxb = false;
+
     struct rule
     {
         long x;
@@ -134,6 +136,7 @@ void Board::initbd()
     h = min(max(h, 8), min(maxh, maxbdh));
     n = max(1, min(n, w - 1));
     maskj = min(h - 4, maskj0);
+    if (relaxb == true) maskj = 1;
     maski = 0;
     maskjb = false;
     for (long i = 0; i < w; i++)
@@ -312,7 +315,7 @@ void Board::solveblank()
     {
         for (long i = 0; i < w; i++)
         {
-            for (long j = 0; j < h; j++)
+            for (long j = 2; j < h; j++)
             {
                 if (!mask[i][j] && !mine[i][j] && (numb[i][j] == 0))
                 {
@@ -322,7 +325,7 @@ void Board::solveblank()
         }
         for (long i = w - 1; i >= 0; i--)
         {
-            for (long j = h - 1; j >= 0; j--)
+            for (long j = h - 1; j >= 2; j--)
             {
                 if (!mask[i][j] && !mine[i][j] && (numb[i][j] == 0))
                 {
@@ -349,7 +352,7 @@ void Board::solve0()
     {
         for (long i = 0; i < w; i++)
         {
-            for (long j = 0; j < h; j++)
+            for (long j = 2; j < h; j++)
             {
                 if (blck[i][j] && (numb[i][j] == 0))
                 {
@@ -359,7 +362,7 @@ void Board::solve0()
         }
         for (long i = w - 1; i >= 0; i--)
         {
-            for (long j = h - 1; j >= 0; j--)
+            for (long j = h - 1; j >= 2; j--)
             {
                 if (blck[i][j] && (numb[i][j] == 0))
                 {
@@ -386,7 +389,7 @@ void Board::solve1()
     {
         for (long i = 0; i < w; i++)
         {
-            for (long j = 0; j < h; j++)
+            for (long j = 2; j < h; j++)
             {
                 if (blck[i][j] && (numb[i][j] >= 0))
                 {
@@ -396,7 +399,7 @@ void Board::solve1()
         }
         for (long i = w - 1; i >= 0; i--)
         {
-            for (long j = h - 1; j >= 0; j--)
+            for (long j = h - 1; j >= 2; j--)
             {
                 if (blck[i][j] && (numb[i][j] >= 0))
                 {
@@ -527,7 +530,7 @@ void Board::applyrule(bool applyb)
 {
     for (long i = 0; i < w; i++)
     {
-        for (long j = 0; j < h; j++)
+        for (long j = 2; j < h; j++)
         {
             if (leftrule[i][j] && !blck[i][j] && !mask[i][j])
             {
@@ -734,6 +737,17 @@ void Board::addline()
     {
         bouns--;
         maskj--;
+        if (relaxb == true)
+        {
+            if ((maskj < 1))
+            {
+                line--;
+                sum--;
+                line = max(line, 0);
+                sum = max(sum, 0);
+                maskj++;
+            }
+        }
         long j = maskj;
         if (maskj < 0)
         {
@@ -799,7 +813,7 @@ bool Board::addmask()
 
 void Board::checkdie()
 {
-    if (((maskj == 0 && maski > 0) || maskj < 0) && sit < 4)
+    if ((((maskj == 0 && maski > 0) || maskj < 0) && sit < 4) && (relaxb == false))
     {
         st.compscr(line - missline, mode, st.scrindexnomiss);
         missline = line;
@@ -834,7 +848,17 @@ void Board::delline(long l)
     if (sit > 0 && sit < 4 && pauseb == 0)
     {
         checkr = 0;
-        maskj++;
+        if (relaxb == true)
+        {
+            line++;
+            sum++;
+            line = min(line, 999999);
+            addline();
+        }
+        else
+        {
+            maskj++;
+        }
         for (long i = 0; i < w; i++)
         {
             for (long j = l; j >= 0; j--)
@@ -852,7 +876,7 @@ void Board::delline(long l)
                 else
                 {
                     mine[i][j] = mine[i][j - 1];
-                    mask[i][j] = mask[i][j - 1];
+                    mask[i][j] = mask[i][j - 1] && !relaxb;
                     flag[i][j] = flag[i][j - 1];
                     leftrule[i][j] = leftrule[i][j - 1];
                     rightrule[i][j] = rightrule[i][j - 1];

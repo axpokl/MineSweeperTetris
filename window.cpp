@@ -594,7 +594,7 @@ void Window::initwindow()
 void Window::releasewindow()
 {
     savesetting();
-    if (!cheatb && bd.sit > 0  && bd.sit < 4)
+    if (!cheatb && !bd.relaxb && bd.sit > 0  && bd.sit < 4)
     {
         if (bd.tutb == 0)
         {
@@ -1115,7 +1115,9 @@ void Window::painthelp()
                 drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_HELP + 7), 0, 0, aboutw, faceh, ctfg, cbg);
                 setfontheight_(fontfh);
                 pbitmap pcheat__[2] = {piconn, piconm};
-                DrawBMP(pcheat__[cheatb], (aboutw - fontfh) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
+                pbitmap prelax__[2] = {pface[5], picone};
+                DrawBMP(pcheat__[cheatb], (aboutw - fontfh) / 2 - fontfh / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
+                DrawBMP(prelax__[bd.relaxb], (aboutw - fontfh) / 2 + fontfh / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh, cbg);
                 setfontheight_(fonth);
                 drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_NAME), 0, menuh + fontth, aboutw, fonth, ctfg, cbg);
                 drawtextxy_(pwint, bd.st.lan.getlan(bd.st.lan.LAN_ABOUT_VERSION), 0, menuh + fontth + fonth, aboutw, fonth, ctfg, cbg);
@@ -2158,12 +2160,22 @@ void Window::mouseevent(long ex_, long ey_, long eb_)
         {
             sethelp(0);
         }
-        if (isin(ex, ey, (aboutw - fontfh) / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh))
+        if (isin(ex, ey, (aboutw - fontfh) / 2 - fontfh / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh))
         {
             if (!cheatb)
             {
                 bd.sd.playsound(bd.sd.sSolve);
                 cheatb = true;
+                bd.st.cheatb = true;
+                bd.st.addach(bd.st.achhidcheat);
+            }
+        }
+        if (isin(ex, ey, (aboutw - fontfh) / 2 + fontfh / 2, (fontth - fontfh) / 2 + menuh, fontfh, fontfh))
+        {
+            if (!bd.relaxb)
+            {
+                bd.sd.playsound(bd.sd.sSolve);
+                bd.relaxb = true;
                 bd.st.cheatb = true;
                 bd.st.addach(bd.st.achhidcheat);
             }
