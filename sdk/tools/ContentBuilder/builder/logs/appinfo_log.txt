@@ -3254,3 +3254,35 @@
 [2025-05-26 14:24:05] Requesting 9 apps, 0 packages (full data, 1024 prev attempts, expected 50 KB)
 [2025-05-26 14:24:06] UpdatesJob: finished OK, apps updated 15 (143 KB), packages updated 0 (0 KB)
 [2025-05-26 14:24:11] App cache write succeeded G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (1131 apps, 2953 KB) in 48 ms
+
+
+[2025-06-21 10:36:58] Client version: 1726605427
+[2025-06-21 10:36:58] CAppInfoCacheReadFromDiskThread took 31 milliseconds to initialize
+
+
+[2025-06-21 10:37:28] Client version: 1726605427
+[2025-06-21 10:37:28] CAppInfoCacheReadFromDiskThread took 23 milliseconds to initialize
+[2025-06-21 10:38:20] RequestAppInfoUpdate: AppIDs 7
+[2025-06-21 10:38:21] Packages changed: force all
+[2025-06-21 10:38:21] Apps changed: force all
+[2025-06-21 10:38:21] Change number 29185413->29678473, apps: 0/0, packages: 0/0
+[2025-06-21 10:38:21] Requesting 1131 apps, 651 packages (meta data, 1024 prev attempts, expected 83 KB)
+[2025-06-21 10:38:22] Requested 94 app access tokens, 83 received, 11 denied
+[2025-06-21 10:38:22] Updated SHAs with 83 new access tokens
+[2025-06-21 10:38:30] Downloaded 93 apps via HTTP, 1991 KB (363 KB compressed)
+[2025-06-21 10:38:30] Requesting 147 apps, 17 packages (full data, 1024 prev attempts, expected 741 KB)
+[2025-06-21 10:38:31] UpdatesJob: finished OK, apps updated 240 (2722 KB), packages updated 17 (3 KB)
+[2025-06-21 10:38:31] Requesting 15 apps, 0 packages (meta data, 1024 prev attempts, expected 0 KB)
+[2025-06-21 10:38:32] Downloaded 1 apps via HTTP, 8 KB (2 KB compressed)
+[2025-06-21 10:38:32] Requesting 14 apps, 0 packages (full data, 1024 prev attempts, expected 64 KB)
+[2025-06-21 10:38:32] UpdatesJob: finished OK, apps updated 15 (72 KB), packages updated 0 (0 KB)
+[2025-06-21 10:38:47] App cache write succeeded G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (1146 apps, 3012 KB) in 33 ms
+
+
+[2025-06-21 10:41:14] Client version: 1726605427
+[2025-06-21 10:41:14] CAppInfoCacheReadFromDiskThread took 24 milliseconds to initialize
+[2025-06-21 10:41:41] RequestAppInfoUpdate: AppIDs 7
+[2025-06-21 10:41:41] Change number 29678473->29678493, apps: 0/106, packages: 0/1
+[2025-06-21 10:41:41] Requesting 12 apps, 0 packages (meta data, 1024 prev attempts, expected 0 KB)
+[2025-06-21 10:41:42] Requested 11 app access tokens, 0 received, 11 denied
+[2025-06-21 10:41:42] UpdatesJob: finished OK, apps updated 0 (0 KB), packages updated 0 (0 KB)

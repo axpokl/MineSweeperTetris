@@ -925,3 +925,21 @@
 [2025-05-26 14:22:35] Loaded Steam library folders configuration: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\libraryfolders.vdf
 [2025-05-26 14:22:35] Loaded 0 apps from install folder "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
 [2025-05-26 14:22:35] Triggered async write of Steam library folders configuration (1 libraries).
+
+
+[2025-06-21 10:36:58] Client version: 1726605427
+[2025-06-21 10:36:58] Loaded Steam library folders configuration: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\libraryfolders.vdf
+[2025-06-21 10:36:58] Loaded 0 apps from install folder "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+[2025-06-21 10:36:58] Triggered async write of Steam library folders configuration (1 libraries).
+
+
+[2025-06-21 10:37:28] Client version: 1726605427
+[2025-06-21 10:37:28] Loaded Steam library folders configuration: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\libraryfolders.vdf
+[2025-06-21 10:37:28] Loaded 0 apps from install folder "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+[2025-06-21 10:37:28] Triggered async write of Steam library folders configuration (1 libraries).
+
+
+[2025-06-21 10:41:14] Client version: 1726605427
+[2025-06-21 10:41:14] Loaded Steam library folders configuration: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\libraryfolders.vdf
+[2025-06-21 10:41:14] Loaded 0 apps from install folder "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+[2025-06-21 10:41:14] Triggered async write of Steam library folders configuration (1 libraries).
