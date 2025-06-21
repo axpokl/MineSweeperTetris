@@ -110,6 +110,7 @@ public:
     void clickleft(long x, long y, bool sb_, long md_);
     void clickright(long x, long y, bool sb_, long md_);
     void addline();
+    void addline(bool misslineb);
     void delline(long l);
     bool addmask();
     void checkdie();
@@ -631,12 +632,12 @@ bool Board::checkerror(long i, long j)
         sit = 2;
         if (solven > 0 || tutb > 0)
         {
+            addline();
+            addline();
             st.compscr(line - missline, mode, st.scrindexnomiss);
             missline = line;
             missi++;
             st.compscr(missi, mode, st.scrindexmiss);
-            addline();
-            addline();
             checkline(true);
             checkdie();
         }
@@ -731,7 +732,7 @@ void Board::checkline(bool delayb_)
     }
 }
 
-void Board::addline()
+void Board::addline(bool misslineb)
 {
     if (sit > 0 && sit < 4 && pauseb == 0)
     {
@@ -744,6 +745,11 @@ void Board::addline()
                 line--;
                 sum--;
                 line = max(line, 0);
+                if (misslineb == true)
+                {
+                    missline--;
+                    missline = max(missline, 0);
+                }
                 sum = max(sum, 0);
                 maskj++;
             }
@@ -779,6 +785,12 @@ void Board::addline()
         }
     }
 }
+
+void Board::addline()
+{
+    addline(true);
+}
+
 
 bool Board::addmask()
 {
@@ -853,7 +865,7 @@ void Board::delline(long l)
             line++;
             sum++;
             line = min(line, 999999);
-            addline();
+            addline(false);
         }
         else
         {
