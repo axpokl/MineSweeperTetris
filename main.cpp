@@ -1,5 +1,9 @@
 #include "steam/steam_api.h"
+#ifdef VERSION_STR
+const char* version = VERSION_STR;
+#else
 #include "version.h"
+#endif
 
 #include "disp.cpp"
 #include "cab.cpp"
@@ -25,6 +29,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     {
         CheckAndProcessCabFile();
         Lan lan;
+#if defined(VERSION_STR)
+        static
+#endif
         Window w;
         w.loadall();
         while (IsWin())

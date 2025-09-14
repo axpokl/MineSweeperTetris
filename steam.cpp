@@ -290,11 +290,8 @@ void Steam::setscr(long scrid)
     {
         if (scr[scrid] > 0)
         {
-            //SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
-            SteamUserStats()->SetStat(scrs[scrid], (union { long l; float f; })
-            {
-                scr[scrid]
-            } .f);
+            SteamUserStats()->SetStat(scrs[scrid], *(float*)&scr[scrid]);
+            //SteamUserStats()->SetStat(scrs[scrid], (union { long l; float f; }){scr[scrid]}.f);
         }
         if (scrid == scrdead)
         {
