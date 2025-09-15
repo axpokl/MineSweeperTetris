@@ -11,7 +11,7 @@
 					"client-update.akamai.steamstatic.com"
 					{
 						"base_url"		"/"
-						"weight"		"100"
+						"weight"		"400"
 						"https"		"1"
 					}
 					"client-update.fastly.steamstatic.com"
@@ -56,12 +56,12 @@
 		}
 		"kvsign2"
 		{
-			"Hosts"		"b1963afd47e23fa6a3012bcfdfcd3f0d5b4708fd2a500803462f66b31e44474473b3e16a1ccdb3274f24b78c44f0b70cc0d3d038b8a66e92d3542c2243eeaf02"
+			"Hosts"		"265f5318b8df1f9fd5b214cfdf4562b3f767727b191a5b0d3e9551aa1151f90aa51909ace48fa041303760cc8c9af9da8cf94bdee4fe129ce62c53502504ef0a"
 		}
 	}
 	"ClientInfo"
 	{
-		"valid_until"		"1750577843"
+		"valid_until"		"1757989761"
 		"ip_country_code"		"US"
 	}
 }

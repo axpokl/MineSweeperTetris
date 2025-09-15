@@ -18,6 +18,13 @@
 					}
 				}
 				"CloudEnabled"		"0"
+				"apps"
+				{
+					"1804000"
+					{
+						"CloudEnabled"		"1"
+					}
+				}
 			}
 		}
 	}
@@ -27,6 +34,11 @@
 		{
 			"rtSeen"		"0"
 			"rtLinkDismissed"		"1750121728"
+		}
+		"spotlight.review.570"
+		{
+			"rgPromptDismissals"		"4"
+			"bWasAskedToRevise"		"0"
 		}
 	}
 }
