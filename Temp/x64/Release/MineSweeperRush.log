@@ -57,25 +57,25 @@ G:\!temp\MineSweeperTetris\disp.cpp(1297,76): warning C4244: “参数”: 从�
 G:\!temp\MineSweeperTetris\disp.cpp(1297,72): warning C4244: “参数”: 从“UINT”转换到“Gdiplus::REAL”，可能丢失数据
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\steam.cpp(511,19): warning C4244: “初始化”: 从“double”转换到“long”，可能丢失数据
+G:\!temp\MineSweeperTetris\steam.cpp(513,19): warning C4244: “初始化”: 从“double”转换到“long”，可能丢失数据
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\steam.cpp(530,19): warning C4244: “初始化”: 从“double”转换到“long”，可能丢失数据
+G:\!temp\MineSweeperTetris\steam.cpp(532,19): warning C4244: “初始化”: 从“double”转换到“long”，可能丢失数据
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\board.cpp(704,31): warning C4805: “&”: 在操作中将类型“long”与类型“bool”混合不安全
+G:\!temp\MineSweeperTetris\board.cpp(706,31): warning C4805: “&”: 在操作中将类型“long”与类型“bool”混合不安全
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\board.cpp(708,89): warning C4244: “参数”: 从“double”转换到“long”，可能丢失数据
+G:\!temp\MineSweeperTetris\board.cpp(710,89): warning C4244: “参数”: 从“double”转换到“long”，可能丢失数据
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\board.cpp(708,68): warning C4244: “参数”: 从“double”转换到“long”，可能丢失数据
+G:\!temp\MineSweeperTetris\board.cpp(710,68): warning C4244: “参数”: 从“double”转换到“long”，可能丢失数据
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\board.cpp(721,27): warning C4805: “&”: 在操作中将类型“long”与类型“bool”混合不安全
+G:\!temp\MineSweeperTetris\board.cpp(723,27): warning C4805: “&”: 在操作中将类型“long”与类型“bool”混合不安全
   (编译源文件“main.cpp”)
   
-G:\!temp\MineSweeperTetris\board.cpp(724,25): warning C4244: “初始化”: 从“double”转换到“long”，可能丢失数据
+G:\!temp\MineSweeperTetris\board.cpp(726,25): warning C4244: “初始化”: 从“double”转换到“long”，可能丢失数据
   (编译源文件“main.cpp”)
   
 G:\!temp\MineSweeperTetris\window.cpp(579,20): warning C4244: “=”: 从“double”转换到“long”，可能丢失数据

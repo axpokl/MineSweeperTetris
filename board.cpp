@@ -70,9 +70,9 @@ public:
         long blcky[8];
     };
     rule ruletemp;
-    rule rulemain[maxw*maxh];
+    rule* rulemain = nullptr;
     long rulemainc;
-    long blckrule[maxw][maxh];
+    long (*blckrule)[maxh] = nullptr;
     long solven;
 
     Board();
@@ -120,6 +120,8 @@ public:
 
 Board::Board()
 {
+    rulemain = (rule*)calloc((size_t)maxw * (size_t)maxh, sizeof(*rulemain));
+    blckrule = (long (*)[maxh])calloc(maxw, sizeof(*blckrule));
     srand((unsigned)::time(NULL) + (unsigned)clock());
 }
 

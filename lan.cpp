@@ -3,12 +3,15 @@ class Lan
 
 public:
 
+    static const int maxcap = 10000;
+    static const int maxcapp = 1000;
+
     const char* lanshort[30] = {"arabic", "bulgarian", "czech", "danish", "german", "greek", "english", "spanish", "latam", "finnish", "french", "hungarian", "indonesian", "italian", "japanese", "koreana", "dutch", "norwegian", "polish", "portuguese", "brazilian", "romanian", "russian", "swedish", "thai", "turkish", "ukrainian", "vietnamese", "schinese", "tchinese"};
     const long lanshortid[30] = {1, 2, 5, 6, 7, 8, 9, 10, 22538, 11, 12, 14, 33, 16, 17, 18, 19, 20, 21, 22, 1046, 24, 25, 29, 30, 31, 34, 1066, 2052, 1028};
 
-    short int data[10000];
-    short int landata[10000];
-    short int* landatap[1000];
+    short int* data = nullptr;
+    short int* landata = nullptr;
+    short int** landatap= nullptr;
 
     long LAN_TITLE = 0;
     long LAN_RUNNING = 1;
@@ -43,6 +46,9 @@ public:
 
 Lan::Lan()
 {
+    data = (short int*)calloc(maxcap, sizeof(*data));
+    landata = (short int*)calloc(maxcap, sizeof(*landata));
+    landatap = (short int**)calloc(maxcapp, sizeof(*landatap));
     initlan(getsyslan());
 }
 
@@ -78,7 +84,7 @@ void Lan::initlan(const char* lan)
     if (hFile != INVALID_HANDLE_VALUE)
     {
         DWORD bytesRead;
-        ReadFile(hFile, data, sizeof(data), &bytesRead, NULL);
+        ReadFile(hFile, data, maxcap * sizeof(short), &bytesRead, NULL);
         CloseHandle(hFile);
     }
     else
@@ -87,7 +93,7 @@ void Lan::initlan(const char* lan)
         ExitProcess(1);
     }
     int sequenceLength = 8;
-    for (unsigned long i = 0; data[i] != 0 && i < sizeof(data) / sizeof(data[0]) - sequenceLength; ++i)
+    for (unsigned long i = 0; data[i] != 0 && i < (maxcap * sizeof(short)) / sizeof(short) - sequenceLength; ++i) 
     {
         bool match = true;
         for (int j = 0; j < sequenceLength; ++j)

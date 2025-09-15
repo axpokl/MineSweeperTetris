@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "G:\\!temp\\MineSweeperTetris\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\lan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:lan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\main.cpp",
-              "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "G:\\!temp\\MineSweeperTetris\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAARAAAAAAAAAA==",
+              "Title": "lan.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\lan.cpp",
+              "RelativeDocumentMoniker": "lan.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\lan.cpp",
+              "RelativeToolTip": "lan.cpp",
+              "ViewState": "AgIAAEUAAAAAAAAAAADwv1YAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-14T07:47:07.697Z",
+              "WhenOpened": "2025-09-15T06:24:43.209Z",
               "EditorCaption": ""
             }
           ]

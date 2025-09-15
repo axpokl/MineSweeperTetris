@@ -18,14 +18,14 @@ public:
     long tx;
     long ty;
 
-    bool flag[maxw][maxh];
-    bool qstn[maxw][maxh];
-    bool mine[maxw][maxh];
-    bool blck[maxw][maxh];
-    bool mask[maxw][maxh];
-    long numb[maxw][maxh];
-    bool leftrule[maxw][maxh];
-    bool rightrule[maxw][maxh];
+    bool (*flag)[maxh];
+    bool (*qstn)[maxh];
+    bool (*mine)[maxh];
+    bool (*blck)[maxh];
+    bool (*mask)[maxh];
+    long (*numb)[maxh];
+    bool (*leftrule)[maxh];
+    bool (*rightrule)[maxh];
 
     Block();
     void initbl();
@@ -37,6 +37,14 @@ public:
 
 Block::Block()
 {
+    flag     = (bool (*)[maxh])calloc(maxw, sizeof(*flag));
+    qstn     = (bool (*)[maxh])calloc(maxw, sizeof(*qstn));
+    mine     = (bool (*)[maxh])calloc(maxw, sizeof(*mine));
+    blck     = (bool (*)[maxh])calloc(maxw, sizeof(*blck));
+    mask     = (bool (*)[maxh])calloc(maxw, sizeof(*mask));
+    leftrule = (bool (*)[maxh])calloc(maxw, sizeof(*leftrule));
+    rightrule= (bool (*)[maxh])calloc(maxw, sizeof(*rightrule));
+    numb     = (long (*)[maxh])calloc(maxw, sizeof(*numb));
     initbl();
 }
 

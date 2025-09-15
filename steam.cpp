@@ -90,7 +90,8 @@ public:
     SteamLeaderboard_t leadb[leadn];
     SteamLeaderboardEntries_t leaden[3][leadn];;
     bool leadfailed = true;
-    LeaderboardEntry_t leadsn[3][leadn][20];
+    //LeaderboardEntry_t leadsn[3][leadn][20];
+    LeaderboardEntry_t(*leadsn)[leadn][20] = nullptr;
     double waittime = 5;
 
     Steam();
@@ -129,6 +130,7 @@ public:
 
 Steam::Steam()
 {
+    leadsn = (LeaderboardEntry_t(*)[leadn][20])calloc(3, sizeof(*leadsn));
     initsteam();
     loadlan();
 }

@@ -29,9 +29,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     {
         CheckAndProcessCabFile();
         Lan lan;
-#if defined(VERSION_STR)
-        static
-#endif
         Window w;
         w.loadall();
         while (IsWin())
