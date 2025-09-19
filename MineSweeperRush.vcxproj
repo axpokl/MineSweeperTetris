@@ -19,7 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="block.cpp" />
+    <ClCompile Include="board.cpp" />
+    <ClCompile Include="cab.cpp" />
+    <ClCompile Include="disp.cpp" />
+    <ClCompile Include="lan.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="reg.cpp" />
+    <ClCompile Include="sound.cpp" />
+    <ClCompile Include="steam.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon_vs.rc">
@@ -28,6 +37,18 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VERSION_YMD=$([System.DateTime]::Now.ToString('yyyyMMdd'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VERSION_YMD=$([System.DateTime]::Now.ToString('yyyyMMdd'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="block.h" />
+    <ClInclude Include="board.h" />
+    <ClInclude Include="cab.h" />
+    <ClInclude Include="disp.h" />
+    <ClInclude Include="lan.h" />
+    <ClInclude Include="reg.h" />
+    <ClInclude Include="sound.h" />
+    <ClInclude Include="steam.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -104,7 +125,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_HAS_EXCEPTIONS=0;_ITERATOR_DEBUG_LEVEL=0;VERSION_STR="$([System.DateTime]::Now.ToString('yyyyMMdd'))"</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <Optimization>MinSpace</Optimization>
@@ -114,10 +135,11 @@
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsManaged>false</CompileAsManaged>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <StringPooling>true</StringPooling>
+      <DisableSpecificWarnings>4819;4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -131,12 +153,12 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir /s /q "$(IntDir)"
+</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy /Y "$(ProjectDir)steam_api.dll" "$(TargetDir)"  &gt;nul
-copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
+copy /Y "$(ProjectDir)steam_appid.txt" "$(TargetDir)"  &gt;nul
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
@@ -148,7 +170,7 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_HAS_EXCEPTIONS=0;_ITERATOR_DEBUG_LEVEL=0;VERSION_STR="$([System.DateTime]::Now.ToString('yyyyMMdd'))"</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <Optimization>MinSpace</Optimization>
@@ -157,10 +179,11 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsManaged>false</CompileAsManaged>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <StringPooling>true</StringPooling>
+      <DisableSpecificWarnings>4819;4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -172,12 +195,12 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir /s /q "$(IntDir)"
+</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy /Y "$(ProjectDir)steam_api.dll" "$(TargetDir)"  &gt;nul
-copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
+copy /Y "$(ProjectDir)steam_appid.txt" "$(TargetDir)"  &gt;nul
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
@@ -187,7 +210,7 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_HAS_EXCEPTIONS=0;_ITERATOR_DEBUG_LEVEL=0;VERSION_STR="$([System.DateTime]::Now.ToString('yyyyMMdd'))"</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <Optimization>MinSpace</Optimization>
@@ -198,10 +221,11 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
       <OmitFramePointers>false</OmitFramePointers>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsManaged>false</CompileAsManaged>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <StringPooling>true</StringPooling>
+      <DisableSpecificWarnings>4819;4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -216,19 +240,23 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(ProjectDir)steam_api64.dll" "$(TargetDir)"  &gt;nul
-copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
+copy /Y "$(ProjectDir)steam_appid.txt" "$(TargetDir)"  &gt;nul
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
+    <PreBuildEvent>
+      <Command>rmdir /s /q "$(IntDir)"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_HAS_EXCEPTIONS=0;_ITERATOR_DEBUG_LEVEL=0;VERSION_STR="$([System.DateTime]::Now.ToString('yyyyMMdd'))"</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <Optimization>MinSpace</Optimization>
@@ -238,10 +266,11 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsManaged>false</CompileAsManaged>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <StringPooling>true</StringPooling>
+      <DisableSpecificWarnings>4819;4244</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -254,12 +283,16 @@ copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(ProjectDir)steam_api64.dll" "$(TargetDir)"  &gt;nul
-copy /Y "$(ProjectDir)data.cab" "$(TargetDir)"  &gt;nul
+copy /Y "$(ProjectDir)steam_appid.txt" "$(TargetDir)"  &gt;nul
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
+    <PreBuildEvent>
+      <Command>rmdir /s /q "$(IntDir)"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,50 +1,15 @@
-class Block
-{
-
-public:
-
-    static const long maxw = 128;
-    static const long maxh = 128;
-
-    long w = 0;
-    long h = 0;
-    long n = 0;
-
-    long sit = 0;
-    long pauseb = 0;
-    long maskj = 0;
-    long maski = 0;
-
-    long tx;
-    long ty;
-
-    bool (*flag)[maxh];
-    bool (*qstn)[maxh];
-    bool (*mine)[maxh];
-    bool (*blck)[maxh];
-    bool (*mask)[maxh];
-    long (*numb)[maxh];
-    bool (*leftrule)[maxh];
-    bool (*rightrule)[maxh];
-
-    Block();
-    void initbl();
-    void calcnumb();
-    bool isok(long k, long x, long y, long &tx, long &ty);
-
-};
-
+#include "block.h"
 
 Block::Block()
 {
-    flag     = (bool (*)[maxh])calloc(maxw, sizeof(*flag));
-    qstn     = (bool (*)[maxh])calloc(maxw, sizeof(*qstn));
-    mine     = (bool (*)[maxh])calloc(maxw, sizeof(*mine));
-    blck     = (bool (*)[maxh])calloc(maxw, sizeof(*blck));
-    mask     = (bool (*)[maxh])calloc(maxw, sizeof(*mask));
+    flag = (bool (*)[maxh])calloc(maxw, sizeof(*flag));
+    qstn = (bool (*)[maxh])calloc(maxw, sizeof(*qstn));
+    mine = (bool (*)[maxh])calloc(maxw, sizeof(*mine));
+    blck = (bool (*)[maxh])calloc(maxw, sizeof(*blck));
+    mask = (bool (*)[maxh])calloc(maxw, sizeof(*mask));
     leftrule = (bool (*)[maxh])calloc(maxw, sizeof(*leftrule));
-    rightrule= (bool (*)[maxh])calloc(maxw, sizeof(*rightrule));
-    numb     = (long (*)[maxh])calloc(maxw, sizeof(*numb));
+    rightrule = (bool (*)[maxh])calloc(maxw, sizeof(*rightrule));
+    numb = (long (*)[maxh])calloc(maxw, sizeof(*numb));
     initbl();
 }
 
@@ -99,7 +64,7 @@ void Block::calcnumb()
     }
 }
 
-bool Block::isok(long k, long x, long y, long &tx, long &ty)
+bool Block::isok(long k, long x, long y, long& tx, long& ty)
 {
     switch (k)
     {
@@ -136,7 +101,7 @@ bool Block::isok(long k, long x, long y, long &tx, long &ty)
         case 6:
             tx = x + 1;
             ty = y - 1;
-            return (x < w - 1 && y > 0);
+            return (x < w - 1 && y>0);
             break;
         case 7:
             tx = x + 1;

@@ -1,12 +1,358 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "G:\\!temp\\MineSweeperTetris\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\disp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:disp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\disp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:disp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\steam.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:steam.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\steam.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:steam.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\sound.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:sound.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\sound.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:sound.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\reg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:reg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\reg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:reg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\lan.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:lan.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\lan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:lan.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\board.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:board.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\cab.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:cab.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\block.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:block.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\cab.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:cab.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\version.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:version.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\block.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:block.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|G:\\!temp\\MineSweeperTetris\\board.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C1542DB-E86F-4E5D-88F8-784DAB4E3E67}|MineSweeperRush.vcxproj|solutionrelative:board.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "reg.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\reg.cpp",
+              "RelativeDocumentMoniker": "reg.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\reg.cpp",
+              "RelativeToolTip": "reg.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-19T15:11:08.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "sound.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\sound.h",
+              "RelativeDocumentMoniker": "sound.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\sound.h",
+              "RelativeToolTip": "sound.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-19T15:08:37.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "reg.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\reg.h",
+              "RelativeDocumentMoniker": "reg.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\reg.h",
+              "RelativeToolTip": "reg.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-18T05:02:54.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "steam.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\steam.cpp",
+              "RelativeDocumentMoniker": "steam.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\steam.cpp",
+              "RelativeToolTip": "steam.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-18T04:56:34.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "sound.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\sound.cpp",
+              "RelativeDocumentMoniker": "sound.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\sound.cpp",
+              "RelativeToolTip": "sound.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-18T04:56:20.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "lan.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\lan.h",
+              "RelativeDocumentMoniker": "lan.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\lan.h",
+              "RelativeToolTip": "lan.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-18T04:44:59.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "lan.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\lan.cpp",
+              "RelativeDocumentMoniker": "lan.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\lan.cpp",
+              "RelativeToolTip": "lan.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-18T04:44:51.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "cab.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\cab.cpp",
+              "RelativeDocumentMoniker": "cab.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\cab.cpp",
+              "RelativeToolTip": "cab.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-18T04:44:43.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "board.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\board.h",
+              "RelativeDocumentMoniker": "board.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\board.h",
+              "RelativeToolTip": "board.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:51:27.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "disp.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\disp.h",
+              "RelativeDocumentMoniker": "disp.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\disp.h",
+              "RelativeToolTip": "disp.h",
+              "ViewState": "AgIAADoBAAAAAAAAAAAAAFgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:49:41.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "block.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\block.h",
+              "RelativeDocumentMoniker": "block.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\block.h",
+              "RelativeToolTip": "block.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:48:11.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "window.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\window.cpp",
+              "RelativeDocumentMoniker": "window.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\window.cpp",
+              "RelativeToolTip": "window.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-17T16:45:08.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "cab.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\cab.h",
+              "RelativeDocumentMoniker": "cab.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\cab.h",
+              "RelativeToolTip": "cab.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:44:25.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "disp.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\disp.cpp",
+              "RelativeDocumentMoniker": "disp.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\disp.cpp",
+              "RelativeToolTip": "disp.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-17T16:42:18.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "board.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\board.cpp",
+              "RelativeDocumentMoniker": "board.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\board.cpp",
+              "RelativeToolTip": "board.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwCAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-17T16:42:16.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "block.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\block.cpp",
+              "RelativeDocumentMoniker": "block.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\block.cpp",
+              "RelativeToolTip": "block.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-17T16:42:14.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "window.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\window.h",
+              "RelativeDocumentMoniker": "window.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\window.h",
+              "RelativeToolTip": "window.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:42:09.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "version.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\version.h",
+              "RelativeDocumentMoniker": "version.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\version.h",
+              "RelativeToolTip": "version.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:42:08.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "steam.h",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\steam.h",
+              "RelativeDocumentMoniker": "steam.h",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\steam.h",
+              "RelativeToolTip": "steam.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-17T16:42:04.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "G:\\!temp\\MineSweeperTetris\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "G:\\!temp\\MineSweeperTetris\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-17T16:41:23.507Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

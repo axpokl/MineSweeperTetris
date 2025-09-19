@@ -11,10 +11,10 @@ mingw32\bin\windres -F pe-i386 -i icon_.rc -O coff -o icon32.res
 mingw64\bin\windres -F pe-x86-64 -i icon_.rc -O coff -o icon64.res
 :again
 cls
-mingw32\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps main.cpp icon32.res -o MineSweeperRush_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
-mingw64\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps main.cpp icon64.res -o MineSweeperRush_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
-::mingw32\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps main.cpp icon32.res -o MineSweeperRush_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
-::mingw64\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps main.cpp icon64.res -o MineSweeperRush_debug_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+mingw32\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps block.cpp board.cpp cab.cpp disp.cpp lan.cpp reg.cpp sound.cpp steam.cpp window.cpp main.cpp icon32.res -o MineSweeperRush_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+mingw64\bin\g++ -Wall -static -Os -s -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps block.cpp board.cpp cab.cpp disp.cpp lan.cpp reg.cpp sound.cpp steam.cpp window.cpp main.cpp icon64.res -o MineSweeperRush_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+::mingw32\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps block.cpp board.cpp cab.cpp disp.cpp lan.cpp reg.cpp sound.cpp steam.cpp window.cpp main.cpp icon32.res -o MineSweeperRush_debug_32.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
+::mingw64\bin\g++ -Wall -static -Os -g -flto=auto -fno-exceptions -fno-strict-aliasing -save-temps block.cpp board.cpp cab.cpp disp.cpp lan.cpp reg.cpp sound.cpp steam.cpp window.cpp main.cpp icon64.res -o MineSweeperRush_debug_64.exe -lwinmm -lgdiplus -lgdi32 -lmsimg32 -lsteam_api -lsetupapi -mwindows
 del *.o
 del *.s
 del *.out

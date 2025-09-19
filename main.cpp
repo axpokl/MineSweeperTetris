@@ -1,20 +1,5 @@
-#include "steam/steam_api.h"
-#ifdef VERSION_STR
-const char* version = VERSION_STR;
-#else
-#include "version.h"
-#endif
-
-#include "disp.cpp"
-#include "cab.cpp"
-
-#include "reg.cpp"
-#include "lan.cpp"
-#include "steam.cpp"
-#include "sound.cpp"
-#include "block.cpp"
-#include "board.cpp"
-#include "window.cpp"
+#include "cab.h"
+#include "window.h"
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {

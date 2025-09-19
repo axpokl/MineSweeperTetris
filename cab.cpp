@@ -1,4 +1,4 @@
-#include <setupapi.h>
+#include "cab.h"
 
 void CombinePath(char* dest, const char* path1, const char* path2)
 {
