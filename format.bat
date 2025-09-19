@@ -15,6 +15,7 @@ astyle --style=allman --indent-cases --indent-switches reg.h
 astyle --style=allman --indent-cases --indent-switches cab.cpp
 astyle --style=allman --indent-cases --indent-switches cab.h
 astyle --style=allman --indent-cases --indent-switches disp.cpp
+astyle --style=allman --indent-cases --indent-switches disp.h
 astyle --style=allman --indent-cases --indent-switches main.cpp
 del *.orig
 pause
