@@ -8,10 +8,8 @@ public:
 
     static const long musici0 = -256;
     static const long maxsound = 8;
-    static const long maxmusic = 100;
-
     unsigned long sSound[maxsound];
-    unsigned long sMusic[maxmusic];
+    unsigned long* sMusic = nullptr;
 
     const char* sSounds[maxsound] = {"Win", "Lose", "Error", "Left", "Right", "Flag", "New", "Solve"};
 

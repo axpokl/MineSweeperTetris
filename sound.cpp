@@ -1,4 +1,5 @@
 #include "sound.h"
+#include <stdlib.h>
 
 Sound::Sound()
 {
@@ -32,23 +33,33 @@ void Sound::loadmusic()
     if (ret != 0)
     {
         char sPath[MAX_PATH];
-        nummusic = maxmusic;
-        for (long k = 0; k < maxmusic; k++)
+        nummusic = 0;
+        for (long k = 0; ; k++)
         {
             if (IsWin())
             {
                 sprintf(sPath, "./data/mid/music%ld.mid", k + 1);
                 if (IsFile(sPath))
                 {
+                    unsigned long* sMusic_ = (unsigned long*)realloc(sMusic, (nummusic + 1) * sizeof(*sMusic));
+                    if (sMusic_ == NULL)
+                    {
+                        break;
+                    }
+                    sMusic = sMusic_;
                     painttitles = sPath;
                     painttitleb = 2;
-                    sMusic[k] = LoadAudio(sPath, " type sequencer");
-                    nummusic = k;
+                    sMusic[nummusic] = LoadAudio(sPath, " type sequencer");
+                    nummusic++;
                 }
                 else
                 {
                     break;
                 }
+            }
+            else
+            {
+                break;
             }
         }
     }
@@ -75,9 +86,9 @@ void Sound::playmusic()
 {
     if (musicb)
     {
-        if (IsWin())
+        if (IsWin() && nummusic > 0)
         {
-            if (musici == musici0)
+            if (musici == musici0 || nummusic == 1)
             {
                 musici = 0;
             }
@@ -91,19 +102,19 @@ void Sound::playmusic()
                 musici = musici_;
             }
             musictime = GetTimeR();
+            SetAudioPos(sMusic[musici], 0);
         }
         else
         {
             musici = musici0;
             musictime = 0;
         }
-        SetAudioPos(sMusic[musici], 0);
     }
 }
 
 void Sound::checkmusic()
 {
-    if (musicb)
+    if (musicb && musici >= 0 && musici < nummusic)
     {
         if (GetTimeR() > musictime)
         {
@@ -126,7 +137,7 @@ void Sound::switchmusic()
     {
         playmusic();
     }
-    else
+    else if (musici >= 0 && musici < nummusic)
     {
         StopAudio(sMusic[musici]);
     }
