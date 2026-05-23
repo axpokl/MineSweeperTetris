@@ -642,6 +642,7 @@ void Board::addline(bool misslineb)
         if (maskj < 0)
         {
             maskjb = true;
+            return;
         }
         else
         {

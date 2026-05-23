@@ -2,6 +2,13 @@
 
 Steam::Steam()
 {
+    ZeroMemory(lead, sizeof(lead));
+    ZeroMemory(lead_, sizeof(lead_));
+    ZeroMemory(&leadr, sizeof(leadr));
+    ZeroMemory(&leadu, sizeof(leadu));
+    ZeroMemory(&leadd, sizeof(leadd));
+    ZeroMemory(leadb, sizeof(leadb));
+    ZeroMemory(leaden, sizeof(leaden));
     leadsn = (LeaderboardEntry_t(*)[leadn][20])calloc(3, sizeof(*leadsn));
     initsteam();
     loadlan();
@@ -173,7 +180,7 @@ void Steam::setscr(long scrid)
         }
         else if (scrid == scrfour)
         {
-            checkach(scrfour, 1000, 100, 10, 1, achcumdead1000, achcumfour100, achcumfour10, achcumfour1);
+            checkach(scrfour, 1000, 100, 10, 1, achcumfour1000, achcumfour100, achcumfour10, achcumfour1);
         }
         else if (scrid == scrtotal)
         {

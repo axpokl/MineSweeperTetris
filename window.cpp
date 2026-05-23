@@ -1521,10 +1521,13 @@ void Window::painthelp()
 void Window::painttut()
 {
     setfontheight_(fonth);
-    long i = bd.tutx[bd.tuti];
-    long j = bd.tuty[bd.tuti];
-    Bar(i * iconw, j * iconh + menuh + faceh, iconw - 1, iconh - 1, cred, transparent);
-    Bar(i * iconw + 1, j * iconh + menuh + faceh + 1, iconw - 3, iconh - 3, cred, transparent);
+    if (bd.tuti < 13)
+    {
+        long i = bd.tutx[bd.tuti];
+        long j = bd.tuty[bd.tuti];
+        Bar(i * iconw, j * iconh + menuh + faceh, iconw - 1, iconh - 1, cred, transparent);
+        Bar(i * iconw + 1, j * iconh + menuh + faceh + 1, iconw - 3, iconh - 3, cred, transparent);
+    }
     switch (bd.tuti)
     {
         case 1:
@@ -1826,7 +1829,7 @@ void Window::tutevent(long ex, long ey, bool tutkb)
 
 void Window::mouseeventboard_(long x, long y, long eb_, long md_)
 {
-    bool tutmb = (bd.tutb == 0) || (bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
+    bool tutmb = (bd.tutb == 0) || (bd.tuti < 13 && bd.tutx[bd.tuti] == x && bd.tuty[bd.tuti] == y && ((bd.tutm[bd.tuti] & eb_) > 0));
     if ((x != mx || y != my) && tutmb && (bd.tutb < 2))
     {
         bd.mx = x;
@@ -1859,11 +1862,14 @@ void Window::mouseeventboard(long ex_, long ey_, long eb_, long md_)
 {
     long ex = ex_ / mult;
     long ey = ey_ / mult;
-    if ((ey - menuh >= faceh) && (helpi == 0) && (bd.sit < 4 && bd.pauseb == 0))
+    if (ex >= 0 && (ey - menuh >= faceh) && (helpi == 0) && (bd.sit < 4 && bd.pauseb == 0))
     {
         long x = ex / iconw;
         long y = (ey - faceh - menuh) / iconh;
-        mouseeventboard_(x, y, eb_, md_);
+        if (x >= 0 && x < bd.w && y >= 0 && y < bd.h)
+        {
+            mouseeventboard_(x, y, eb_, md_);
+        }
         tutevent(ex, ey, false);
     }
 }

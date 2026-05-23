@@ -938,7 +938,7 @@ void ReleaseBMP(pbitmap b)
         }
         if (b->DC != _dc)
         {
-            DeleteObject(b->DC);
+            DeleteDC(b->DC);
         }
         if (b->Handle != _hw)
         {
