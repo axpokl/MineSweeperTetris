@@ -140,3 +140,43 @@
 [2025-09-15 15:07:36] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
 [2025-09-15 15:08:06] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
 [2025-09-15 15:08:12] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:41:36] Client version: 1726605427
+[2026-05-24 04:41:36] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+[2026-05-24 04:42:21] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+[2026-05-24 04:42:26] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:43:27] Client version: 1726605427
+[2026-05-24 04:43:27] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+[2026-05-24 04:44:09] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+[2026-05-24 04:44:18] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:45:27] Client version: 1726605427
+[2026-05-24 04:45:27] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:45:41] Client version: 1726605427
+[2026-05-24 04:45:41] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:46:32] Client version: 1726605427
+[2026-05-24 04:46:32] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:48:27] Client version: 1726605427
+[2026-05-24 04:48:27] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:49:58] Client version: 1726605427
+[2026-05-24 04:49:58] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:51:31] Client version: 1726605427
+[2026-05-24 04:51:31] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)
+
+
+[2026-05-24 04:58:23] Client version: 1726605427
+[2026-05-24 04:58:23] Loaded cached family info for account 214053662 ( groupID=5752318, name="ax家庭', role=1)

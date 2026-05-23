@@ -37,7 +37,6 @@ void Error( const char *fmt, ... )
 static const char *g_szVecZeros[] = { NULL, "0.0", "vec2( 0.0, 0.0 )", "vec3( 0.0, 0.0, 0.0 )", "vec4( 0.0, 0.0, 0.0, 0.0 )" };
 static const char *g_szVecOnes[] = { NULL, "1.0", "vec2( 1.0, 1.0 )", "vec3( 1.0, 1.0, 1.0 )", "vec4( 1.0, 1.0, 1.0, 1.0 )" };
 static const char *g_szDefaultSwizzle = "xyzw";
-static const char *g_szDefaultSwizzleStrings[] = { "x", "y", "z", "w" };
 static const char *g_szSamplerStrings[] = { "2D", "CUBE", "3D" };
 
 static const char *g_pAtomicTempVarName = "atomic_temp_var";
@@ -77,6 +76,8 @@ void PrintToBuf( CUtlBuffer &buf, const char *pFormat, ... )
 
 void PrintToBuf( char *pOut, int nOutSize, const char *pFormat, ... )
 {
+	(void)nOutSize;
+
 	int nStrlen = V_strlen( pOut );
 	pOut += nStrlen;
 	nOutSize -= nStrlen;
@@ -1339,6 +1340,8 @@ void D3DToGL::PrintParameterToString ( uint32 dwToken, uint32 dwSourceOrDest, ch
 
 			// Optionally put on the x, y, z or w
 			int nMasksWritten = 0;
+			(void)nMasksWritten;
+
 			if ( dwToken & D3DSP_WRITEMASK_0 )
 			{
 				strcat_s( pRegisterName, nBufLen, "x" );
@@ -2644,6 +2647,7 @@ void D3DToGL::InsertMoveInstruction( CUtlBuffer *pCode, int nARLComponent )
 void D3DToGL::InsertMoveFromAddressRegister( CUtlBuffer *pCode, int nARLComp0, int nARLComp1, int nARLComp2 /* = ARL_DEST_NONE */ )
 {
 	int nNumSwizzles = 0;
+	(void)nNumSwizzles;
 
 	if ( nARLComp0 != ARL_DEST_NONE )
 		nNumSwizzles++;
@@ -2686,7 +2690,7 @@ static int g_translationCounter = 0;
 int D3DToGL::TranslateShader( uint32* code, CUtlBuffer *pBufDisassembledCode, bool *bVertexShader, uint32 options, int32 nShadowDepthSampler, uint32 nCentroidMask, char *debugLabel )
 {
 	CUtlString sLine, sParamName;
-	uint32 i, dwToken, nInstruction, nNumTokensToSkip;
+	uint32 dwToken, nInstruction, nNumTokensToSkip;
 	char buff[256];
 
 	// obey options
@@ -2724,7 +2728,7 @@ int D3DToGL::TranslateShader( uint32* code, CUtlBuffer *pBufDisassembledCode, bo
 	((char*)m_pBufALUCode->Base())[0] = 0;
 
 
-	for ( i=0; i<MAX_SHADER_CONSTANTS; i++ )
+	for ( int i = 0; i < MAX_SHADER_CONSTANTS; i++ )
 	{
 		m_bConstantRegisterDefined[i] = false;
 	}
@@ -2756,11 +2760,11 @@ int D3DToGL::TranslateShader( uint32* code, CUtlBuffer *pBufDisassembledCode, bo
 	m_nHighestRegister = 0;
 
 	m_bUsedAtomicTempVar = false;
-	for ( int i=0; i < ARRAYSIZE( m_dwSamplerTypes ); i++ )
+	for ( int i = 0; i < ARRAYSIZE( m_dwSamplerTypes ); i++ )
 	{
 		m_dwSamplerTypes[i] = SAMPLER_TYPE_UNUSED;
 	}
-	for ( int i=0; i < ARRAYSIZE( m_DeclaredOutputs ); i++ )
+	for ( int i = 0; i < ARRAYSIZE( m_DeclaredOutputs ); i++ )
 	{
 		m_DeclaredOutputs[i] = UNDECLARED_OUTPUT;
 	}

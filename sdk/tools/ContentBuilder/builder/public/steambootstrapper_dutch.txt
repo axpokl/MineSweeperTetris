@@ -11,6 +11,7 @@
 "SteamBootstrapper_InsufficientDiskSpace"		"%appname% heeft %nMegaBytes% MB vrije schijfruimte nodig om te kunnen updaten."
 "SteamBootstrapper_FailedManifestLoad"		"Laden van manifestbestand mislukt."
 "SteamBootstrapper_FailedManifestVerify"		"Verifiëren van manifestbestand mislukt."
+"SteamBootstrapper_FailedManifestOSType"		"Deze versie van het besturingssysteem is niet compatibel met het type besturingssysteem van het manifestpakket."
 "SteamBootstrapper_FailedManifestSave"		"Opslaan van manifestbestand mislukt."
 "SteamBootstrapper_FailedPackageRead"			"Lezen van pakket (%pkgName%) mislukt."
 "SteamBootstrapper_CorruptPackageFile"		"Corrupt pakketbestand (%pkgName%)."
@@ -42,4 +43,7 @@
 "SteamBootstrapper_Error_Title"			"%appname% - Fatale fout"
 "SteamBootstrapper_Warning_Title"			"%appname% - Waarschuwing"
 "SteamBootstrapper_OperatingSystemNoLongerSupported" "%appname% wordt niet meer door de versie van je besturingssysteem ondersteund."
+"SteamCmd_OperatingSystemNoLongerSupported" "%appname% wordt niet meer ondersteund door de huidige versie van je besturingssysteem.\nJe kunt deze controle overslaan met behulp van -overrideminos.\n%appname% werkt mogelijk niet naar behoren en het kan zijn dat je deze controle in de toekomst niet meer kunt overslaan.\nWerk je systeem bij naar een ondersteunde versie van het besturingssysteem om deze app te blijven gebruiken."
+"SteamBootstrapper_OperatingSystemNoLongerSupportedOnBeta" "%appname% wordt niet meer ondersteund door de huidige versie van je besturingssysteem.\n\nKlik op OK om de geselecteerde bètaversie van %appname% af te sluiten."
+"SteamBootstrapper_Starting"                  "Starten ..."
 }

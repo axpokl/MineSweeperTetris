@@ -1619,3 +1619,353 @@
 [2025-09-15 15:07:36] Verification complete
 [2025-09-15 15:08:14] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
 [2025-09-15 15:09:01] Shutdown
+
+
+[2026-05-24 04:40:43] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:40:43] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:40:43] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:40:44] Shutdown
+
+
+[2026-05-24 04:40:58] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:40:58] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:40:58] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:40:59] Shutdown
+
+
+[2026-05-24 04:41:34] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:41:34] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:41:34] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:41:35] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:41:35] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:41:35] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:41:35] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:41:35] Checking for update on startup
+[2026-05-24 04:41:35] 正在检查可用更新...
+[2026-05-24 04:41:35] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:41:35] Manifest download: send request
+[2026-05-24 04:41:35] Manifest download: waiting for download to finish
+[2026-05-24 04:41:36] Manifest download: finished
+[2026-05-24 04:41:36] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:41:36] Beta changed from  to 
+[2026-05-24 04:41:36] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:41:36] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:41:36] 正在验证安装...
+[2026-05-24 04:41:36] Performing checksum verification of executable files
+[2026-05-24 04:41:36] Verification complete
+[2026-05-24 04:42:27] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:42:49] Shutdown
+
+
+[2026-05-24 04:43:25] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:43:25] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe  +login ax_pokl The9bx_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:43:25] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:43:26] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:43:26] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:43:26] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:43:26] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:43:26] Checking for update on startup
+[2026-05-24 04:43:26] 正在检查可用更新...
+[2026-05-24 04:43:26] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:43:26] Manifest download: send request
+[2026-05-24 04:43:26] Manifest download: waiting for download to finish
+[2026-05-24 04:43:27] Manifest download: finished
+[2026-05-24 04:43:27] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:43:27] Beta changed from  to 
+[2026-05-24 04:43:27] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:43:27] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:43:27] 正在验证安装...
+[2026-05-24 04:43:27] Performing checksum verification of executable files
+[2026-05-24 04:43:27] Verification complete
+[2026-05-24 04:44:19] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:44:21] Shutdown
+
+
+[2026-05-24 04:45:25] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:45:25] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +quit
+[2026-05-24 04:45:25] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:45:25] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:45:25] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:45:25] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:45:25] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:45:25] Checking for update on startup
+[2026-05-24 04:45:25] 正在检查可用更新...
+[2026-05-24 04:45:25] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:45:25] Manifest download: send request
+[2026-05-24 04:45:26] Manifest download: waiting for download to finish
+[2026-05-24 04:45:27] Manifest download: finished
+[2026-05-24 04:45:27] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:45:27] Beta changed from  to 
+[2026-05-24 04:45:27] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:45:27] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:45:27] 正在验证安装...
+[2026-05-24 04:45:27] Performing checksum verification of executable files
+[2026-05-24 04:45:27] Verification complete
+[2026-05-24 04:45:34] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:45:36] Shutdown
+
+
+[2026-05-24 04:45:39] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:45:39] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:45:39] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:45:39] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:45:39] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:45:39] 2. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:45:39] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:45:39] Checking for update on startup
+[2026-05-24 04:45:39] 正在检查可用更新...
+[2026-05-24 04:45:39] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:45:39] Manifest download: send request
+[2026-05-24 04:45:40] Manifest download: waiting for download to finish
+[2026-05-24 04:45:41] Manifest download: finished
+[2026-05-24 04:45:41] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:45:41] Beta changed from  to 
+[2026-05-24 04:45:41] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:45:41] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:45:41] 正在验证安装...
+[2026-05-24 04:45:41] Performing checksum verification of executable files
+[2026-05-24 04:45:41] Verification complete
+[2026-05-24 04:45:48] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:45:50] Shutdown
+
+
+[2026-05-24 04:46:29] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:46:29] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:46:29] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:46:29] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:46:29] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:46:29] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:46:29] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:46:29] Checking for update on startup
+[2026-05-24 04:46:29] 正在检查可用更新...
+[2026-05-24 04:46:29] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:46:29] Manifest download: send request
+[2026-05-24 04:46:30] Manifest download: waiting for download to finish
+[2026-05-24 04:46:31] Manifest download: finished
+[2026-05-24 04:46:31] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:46:31] Beta changed from  to 
+[2026-05-24 04:46:31] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:46:31] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:46:31] 正在验证安装...
+[2026-05-24 04:46:31] Performing checksum verification of executable files
+[2026-05-24 04:46:31] Verification complete
+[2026-05-24 04:46:38] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:46:41] Shutdown
+
+
+[2026-05-24 04:48:25] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:48:25] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:48:25] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:48:25] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:48:25] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:48:25] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:48:25] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:48:25] Checking for update on startup
+[2026-05-24 04:48:25] 正在检查可用更新...
+[2026-05-24 04:48:25] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:48:25] Manifest download: send request
+[2026-05-24 04:48:25] Manifest download: waiting for download to finish
+[2026-05-24 04:48:27] Manifest download: finished
+[2026-05-24 04:48:27] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:48:27] Beta changed from  to 
+[2026-05-24 04:48:27] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:48:27] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:48:27] 正在验证安装...
+[2026-05-24 04:48:27] Performing checksum verification of executable files
+[2026-05-24 04:48:27] Verification complete
+[2026-05-24 04:48:34] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:48:35] Shutdown
+
+
+[2026-05-24 04:49:56] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:49:56] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:49:56] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:49:56] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:49:56] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:49:56] 2. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:49:56] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:49:56] Checking for update on startup
+[2026-05-24 04:49:56] 正在检查可用更新...
+[2026-05-24 04:49:56] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:49:57] Manifest download: send request
+[2026-05-24 04:49:57] Manifest download: waiting for download to finish
+[2026-05-24 04:49:58] Manifest download: finished
+[2026-05-24 04:49:58] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:49:58] Beta changed from  to 
+[2026-05-24 04:49:58] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:49:58] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:49:58] 正在验证安装...
+[2026-05-24 04:49:58] Performing checksum verification of executable files
+[2026-05-24 04:49:58] Verification complete
+[2026-05-24 04:50:04] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:50:06] Shutdown
+
+
+[2026-05-24 04:51:29] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:51:29] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:51:29] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:51:29] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:51:29] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:51:29] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:51:29] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:51:29] Checking for update on startup
+[2026-05-24 04:51:29] 正在检查可用更新...
+[2026-05-24 04:51:29] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:51:29] Manifest download: send request
+[2026-05-24 04:51:29] Manifest download: waiting for download to finish
+[2026-05-24 04:51:30] Manifest download: finished
+[2026-05-24 04:51:30] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:51:30] Beta changed from  to 
+[2026-05-24 04:51:30] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:51:30] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:51:30] 正在验证安装...
+[2026-05-24 04:51:30] Performing checksum verification of executable files
+[2026-05-24 04:51:30] Verification complete
+[2026-05-24 04:51:38] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:51:41] Shutdown
+
+
+[2026-05-24 04:58:21] Startup - updater built Sep 17 2024 13:02:40
+[2026-05-24 04:58:21] Startup - Steam Client launched with: steamcmd.exe  +login ax_pokl +run_app_build ..\scripts\MineSweeperRush_app_build.vdf +quit
+[2026-05-24 04:58:21] Windows 6.2.9200.0, 0, 2, 256, 1, 48 
+[2026-05-24 04:58:21] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 04:58:21] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:58:21] 2. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 04:58:21] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 04:58:21] Checking for update on startup
+[2026-05-24 04:58:21] 正在检查可用更新...
+[2026-05-24 04:58:21] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win32
+[2026-05-24 04:58:21] Manifest download: send request
+[2026-05-24 04:58:21] Manifest download: waiting for download to finish
+[2026-05-24 04:58:22] Manifest download: finished
+[2026-05-24 04:58:22] Downloaded new manifest: /steam_cmd_win32 version 1769731548, installed version 1726605427, existing pending version 0
+[2026-05-24 04:58:22] Beta changed from  to 
+[2026-05-24 04:58:22] Error: System OS version is not compatible with package manifest OS type
+[2026-05-24 04:58:22] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:58:22] 正在验证安装...
+[2026-05-24 04:58:22] Performing checksum verification of executable files
+[2026-05-24 04:58:22] Verification complete
+[2026-05-24 04:58:29] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 04:58:31] Shutdown
+
+
+[2026-05-24 05:01:19] Startup - updater built Nov 20 2025 15:46:04
+[2026-05-24 05:01:19] Startup - Steam Client launched with: steamcmd.exe   <+76 truncated>
+[2026-05-24 05:01:19] Windows 10.0.26100.0, 0, 2, 256, 1, 48 
+[2026-05-24 05:01:19] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 05:01:19] 1. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 05:01:19] 2. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 05:01:19] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 05:01:19] Checking for update on startup
+[2026-05-24 05:01:19] 正在检查可用更新...
+[2026-05-24 05:01:19] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_cmd_win64
+[2026-05-24 05:01:19] Manifest download: send request
+[2026-05-24 05:01:19] Manifest download: waiting for download to finish
+[2026-05-24 05:01:20] Manifest download: finished
+[2026-05-24 05:01:20] Downloaded new manifest: /steam_cmd_win64 version 1779493321, installed version 0, existing pending version 0
+[2026-05-24 05:01:20] Package file steamcmd_public_all.zip.ea97f8fd711e4ae492274da96e83bf31eb804528 missing or incorrect size
+[2026-05-24 05:01:20] Package file steamcmd_bins_win64.zip.vz.0b397caaf1972d6d9ea99e708a29fe7b7245af80_14897604 missing or incorrect size
+[2026-05-24 05:01:20] Package file steamcmd_steamservice_win64.zip.vz.1dc64a3f0db9072730e8c66121cb09afb96f0636_2036744 missing or incorrect size
+[2026-05-24 05:01:20] Package file steamcmd_steamerrorreporter_win64.zip.9034ac18b09b24cd4d70b4afa240e471fc3e8cae missing or incorrect size
+[2026-05-24 05:01:20] Package file steamcmd_siteserverui_win64.zip.vz.ae76ac5cd77df1c21b7e744cc74616e3798c5acc_10791814 missing or incorrect size
+[2026-05-24 05:01:20] Package file steamcmd_win64.zip.vz.aed03666054561a199a7de0726bfd16dbd8a8b9e_2028363 missing or incorrect size
+[2026-05-24 05:01:20] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_public_all.zip.ea97f8fd711e4ae492274da96e83bf31eb804528
+[2026-05-24 05:01:20] Manifest download: send request
+[2026-05-24 05:01:20] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_bins_win64.zip.vz.0b397caaf1972d6d9ea99e708a29fe7b7245af80_14897604
+[2026-05-24 05:01:20] Manifest download: send request
+[2026-05-24 05:01:20] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_steamservice_win64.zip.vz.1dc64a3f0db9072730e8c66121cb09afb96f0636_2036744
+[2026-05-24 05:01:21] Manifest download: send request
+[2026-05-24 05:01:21] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_steamerrorreporter_win64.zip.9034ac18b09b24cd4d70b4afa240e471fc3e8cae
+[2026-05-24 05:01:21] Manifest download: send request
+[2026-05-24 05:01:21] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_siteserverui_win64.zip.vz.ae76ac5cd77df1c21b7e744cc74616e3798c5acc_10791814
+[2026-05-24 05:01:21] Manifest download: send request
+[2026-05-24 05:01:21] Add pending download: https://client-update.akamai.steamstatic.com/steamcmd_win64.zip.vz.aed03666054561a199a7de0726bfd16dbd8a8b9e_2028363
+[2026-05-24 05:01:21] Manifest download: send request
+[2026-05-24 05:01:21] 正在下载更新 (已下载 0，共 29,346 KB)...
+[2026-05-24 05:01:21] 正在下载更新 (已下载 37，共 29,346 KB)...
+[2026-05-24 05:01:21] 正在下载更新 (已下载 57，共 29,346 KB)...
+[2026-05-24 05:01:21] 正在下载更新 (已下载 150，共 29,346 KB)...
+[2026-05-24 05:01:22] 正在下载更新 (已下载 321，共 29,346 KB)...
+[2026-05-24 05:01:22] 正在下载更新 (已下载 557，共 29,346 KB)...
+[2026-05-24 05:01:22] 正在下载更新 (已下载 1,096，共 29,346 KB)...
+[2026-05-24 05:01:22] 正在下载更新 (已下载 1,536，共 29,346 KB)...
+[2026-05-24 05:01:23] 正在下载更新 (已下载 2,027，共 29,346 KB)...
+[2026-05-24 05:01:23] 正在下载更新 (已下载 2,704，共 29,346 KB)...
+[2026-05-24 05:01:23] 正在下载更新 (已下载 3,028，共 29,346 KB)...
+[2026-05-24 05:01:24] 正在下载更新 (已下载 3,290，共 29,346 KB)...
+[2026-05-24 05:01:24] 正在下载更新 (已下载 4,417，共 29,346 KB)...
+[2026-05-24 05:01:24] 正在下载更新 (已下载 5,072，共 29,346 KB)...
+[2026-05-24 05:01:24] 正在下载更新 (已下载 5,677，共 29,346 KB)...
+[2026-05-24 05:01:25] 正在下载更新 (已下载 6,240，共 29,346 KB)...
+[2026-05-24 05:01:25] 正在下载更新 (已下载 6,884，共 29,346 KB)...
+[2026-05-24 05:01:25] 正在下载更新 (已下载 7,543，共 29,346 KB)...
+[2026-05-24 05:01:25] 正在下载更新 (已下载 8,028，共 29,346 KB)...
+[2026-05-24 05:01:26] 正在下载更新 (已下载 8,458，共 29,346 KB)...
+[2026-05-24 05:01:26] 正在下载更新 (已下载 8,879，共 29,346 KB)...
+[2026-05-24 05:01:26] 正在下载更新 (已下载 9,650，共 29,346 KB)...
+[2026-05-24 05:01:26] 正在下载更新 (已下载 10,597，共 29,346 KB)...
+[2026-05-24 05:01:27] 正在下载更新 (已下载 11,193，共 29,346 KB)...
+[2026-05-24 05:01:27] 正在下载更新 (已下载 11,822，共 29,346 KB)...
+[2026-05-24 05:01:27] 正在下载更新 (已下载 12,402，共 29,346 KB)...
+[2026-05-24 05:01:27] 正在下载更新 (已下载 13,060，共 29,346 KB)...
+[2026-05-24 05:01:28] 正在下载更新 (已下载 13,633，共 29,346 KB)...
+[2026-05-24 05:01:28] 正在下载更新 (已下载 14,222，共 29,346 KB)...
+[2026-05-24 05:01:28] 正在下载更新 (已下载 14,870，共 29,346 KB)...
+[2026-05-24 05:01:29] 正在下载更新 (已下载 15,410，共 29,346 KB)...
+[2026-05-24 05:01:29] 正在下载更新 (已下载 16,099，共 29,346 KB)...
+[2026-05-24 05:01:29] 正在下载更新 (已下载 16,675，共 29,346 KB)...
+[2026-05-24 05:01:29] 正在下载更新 (已下载 17,315，共 29,346 KB)...
+[2026-05-24 05:01:30] 正在下载更新 (已下载 17,955，共 29,346 KB)...
+[2026-05-24 05:01:30] 正在下载更新 (已下载 18,552，共 29,346 KB)...
+[2026-05-24 05:01:30] 正在下载更新 (已下载 19,129，共 29,346 KB)...
+[2026-05-24 05:01:30] 正在下载更新 (已下载 19,781，共 29,346 KB)...
+[2026-05-24 05:01:31] 正在下载更新 (已下载 20,349，共 29,346 KB)...
+[2026-05-24 05:01:31] 正在下载更新 (已下载 21,006，共 29,346 KB)...
+[2026-05-24 05:01:31] 正在下载更新 (已下载 21,586，共 29,346 KB)...
+[2026-05-24 05:01:31] 正在下载更新 (已下载 22,234，共 29,346 KB)...
+[2026-05-24 05:01:32] 正在下载更新 (已下载 22,883，共 29,346 KB)...
+[2026-05-24 05:01:32] 正在下载更新 (已下载 23,375，共 29,346 KB)...
+[2026-05-24 05:01:32] 正在下载更新 (已下载 24,040，共 29,346 KB)...
+[2026-05-24 05:01:32] 正在下载更新 (已下载 24,688，共 29,346 KB)...
+[2026-05-24 05:01:33] 正在下载更新 (已下载 25,336，共 29,346 KB)...
+[2026-05-24 05:01:33] 正在下载更新 (已下载 25,920，共 29,346 KB)...
+[2026-05-24 05:01:33] 正在下载更新 (已下载 26,519，共 29,346 KB)...
+[2026-05-24 05:01:34] 正在下载更新 (已下载 27,139，共 29,346 KB)...
+[2026-05-24 05:01:34] 正在下载更新 (已下载 27,780，共 29,346 KB)...
+[2026-05-24 05:01:34] 正在下载更新 (已下载 28,356，共 29,346 KB)...
+[2026-05-24 05:01:34] 正在下载更新 (已下载 28,822，共 29,346 KB)...
+[2026-05-24 05:01:35] 正在下载更新 (已下载 29,346，共 29,346 KB)...
+[2026-05-24 05:01:35] 下载完成。
+[2026-05-24 05:01:35] Saving metrics to disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 05:01:35] uninstalled manifest found in G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_win64 (1).
+[2026-05-24 05:01:35] Found pending update
+[2026-05-24 05:01:35] 正在安装更新...
+[2026-05-24 05:01:35] 正在展开安装包...
+[2026-05-24 05:01:35] 正在安装更新...
+[2026-05-24 05:01:36] Committing NTFS transaction (0 non-transactional backup files)
+[2026-05-24 05:01:36] 正在清理...
+[2026-05-24 05:01:36] 更新完成，正在启动 Steamcmd...
+[2026-05-24 05:01:36] Shutdown
+
+
+[2026-05-24 05:01:36] Startup - updater built May  8 2026 15:40:36
+[2026-05-24 05:01:36] Startup - Steam Client launched with: "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\steamcmd.exe"  <+76 truncated>
+[2026-05-24 05:01:36] Windows 10.0.26100.0, 0, 2, 256, 1, 48 
+[2026-05-24 05:01:36] Loading cached metrics from disk (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 05:01:36] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 05:01:36] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 05:01:36] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 05:01:36] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 05:01:36] Checking for update on startup
+[2026-05-24 05:01:36] 正在检查可用更新...
+[2026-05-24 05:01:36] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win64
+[2026-05-24 05:01:36] Manifest download: send request
+[2026-05-24 05:01:36] Manifest download: waiting for download to finish
+[2026-05-24 05:01:37] Manifest download: finished
+[2026-05-24 05:01:37] Download skipped: /steam_cmd_win64 version 1779493321, installed version 1779493321, existing pending version 0
+[2026-05-24 05:01:37] Nothing to do
+[2026-05-24 05:01:37] 正在验证安装...
+[2026-05-24 05:01:37] Verifying all executable checksums
+[2026-05-24 05:01:37] Verification complete
+[2026-05-24 05:01:45] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2026-05-24 05:01:52] Shutdown

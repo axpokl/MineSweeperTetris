@@ -39,6 +39,7 @@ class CHTMLSurface;
 class CRemotePlayList;
 class CItemStore;
 class COverlayExamples;
+class CTimeline;
 
 // Height of the HUD font
 #define HUD_FONT_HEIGHT 18
@@ -140,9 +141,16 @@ struct OverlayExample_t
 		k_EOverlayExampleItem_ActivateGameOverlay,
 		k_EOverlayExampleItem_ActivateGameOverlayToUser,
 		k_EOverlayExampleItem_ActivateGameOverlayToWebPage,
+		k_EOverlayExampleItem_ActivateGameOverlayToWebPageModal,
 		k_EOverlayExampleItem_ActivateGameOverlayToStore,
 		// k_EOverlayExampleItem_ActivateGameOverlayRemotePlayTogetherInviteDialog,
-		k_EOverlayExampleItem_ActivateGameOverlayInviteDialogConnectString
+		k_EOverlayExampleItem_ActivateGameOverlayInviteDialogConnectString,
+		k_EOverlayExampleItem_HookScreenshots,
+		k_EOverlayExampleItem_RequestKeyboard,
+		k_EOverlayExampleItem_Notification_SetInset,
+		k_EOverlayExampleItem_Notification_SetPosition,
+		k_EOverlayExampleItem_Timeline_OpenOverlayToTimelineEvent,
+		k_EOverlayExampleItem_Timeline_OpenOverlayToGamePhase,
 	};
 
 	EOverlayExampleItem m_eItem;
@@ -164,6 +172,8 @@ public:
 
 	// Run a game frame
 	void RunFrame();
+
+	void RenderTimer();
 
 	// Service calls that need to happen less frequently than every frame (e.g. every second)
 	void RunOccasionally();
@@ -246,6 +256,10 @@ public:
 
 	void ExecCommandLineConnect( const char *pchServerAddress, const char *pchLobbyID );
 
+	void SetShowTimer( bool bShowTimer ) { m_bShowTimer = bShowTimer; }
+
+	uint32 GetLastGamePhaseID() const { return m_unLastGamePhaseID; }
+	uint64 GetLastCrashIntoSunEvent() const { return m_ulLastCrashIntoSunEvent;  }
 private:
 
 	// Receive a response from the server for a connection attempt
@@ -295,10 +309,14 @@ private:
 
 	// load subscribed workshop items
 	void LoadWorkshopItems();
+	void QueryWorkshopItems();
 
 	// Set appropriate rich presence keys for a player who is currently in-game and
 	// return the value that should go in steam_display
 	const char *SetInGameRichPresence() const;
+
+	// Sets the player scores in the game phase
+	void UpdateScoreInGamePhase( bool bFinal );
 
 	// load a workshop item from file
 	bool LoadWorkshopItem( PublishedFileId_t workshopItemID );
@@ -360,6 +378,7 @@ private:
 
 	// Server address data
 	CSteamID m_steamIDGameServer;
+	CSteamID m_steamIDGameServerFromBrowser;
 	uint32 m_unServerIP;
 	uint16 m_usServerPort;
 	HAuthTicket m_hAuthTicket;
@@ -367,6 +386,11 @@ private:
 
 	// keep track of if we opened the overlay for a gamewebcallback
 	bool m_bSentWebOpen;
+
+	// true if we want to show an on-screen timer in our main menu
+	bool m_bShowTimer;
+	uint32 m_unTicksAtLaunch;
+	HGAMEFONT m_hTimerFont;
 
 	// simple class to marshal callbacks from pinging a game server
 	class CGameServerPing : public ISteamMatchmakingPingResponse
@@ -424,7 +448,7 @@ private:
 
 	// Steam Workshop items
 	CWorkshopItem *m_rgpWorkshopItems[ MAX_WORKSHOP_ITEMS ];
-	int m_nNumWorkshopItems; // items in m_rgpWorkshopItems
+	int m_nNumWorkshopItems; // items in m_rgpWorkshopItem
 
 	// Main menu instance
 	CMainMenu *m_pMainMenu;
@@ -442,6 +466,10 @@ private:
 	std::map<int, HGAMETEXTURE> m_MapSteamImagesToTextures;
 
 	CStatsAndAchievements *m_pStatsAndAchievements;
+	CTimeline *m_pTimeline;
+	uint32 m_unGamePhaseID = 0;
+	uint32 m_unLastGamePhaseID = 0;
+	uint64 m_ulLastCrashIntoSunEvent = 0;
 
 	CLeaderboards *m_pLeaderboards;
 	CFriendsList *m_pFriendsList;
@@ -469,11 +497,6 @@ private:
 	STEAM_CALLBACK( CSpaceWarClient, OnGameJoinRequested, GameRichPresenceJoinRequested_t );
 	STEAM_CALLBACK( CSpaceWarClient, OnAvatarImageLoaded, AvatarImageLoaded_t );
 	STEAM_CALLBACK( CSpaceWarClient, OnNewUrlLaunchParameters, NewUrlLaunchParameters_t );
-
-	// callbacks for Steam connection state
-	STEAM_CALLBACK( CSpaceWarClient, OnSteamServersConnected, SteamServersConnected_t );
-	STEAM_CALLBACK( CSpaceWarClient, OnSteamServersDisconnected, SteamServersDisconnected_t );
-	STEAM_CALLBACK( CSpaceWarClient, OnSteamServerConnectFailure, SteamServerConnectFailure_t );
 	STEAM_CALLBACK( CSpaceWarClient, OnGameOverlayActivated, GameOverlayActivated_t );
 	
 	// callback when getting the results of a web call
@@ -481,6 +504,11 @@ private:
 
 	// callback when new Workshop item was installed
 	STEAM_CALLBACK(CSpaceWarClient, OnWorkshopItemInstalled, ItemInstalled_t);
+	void OnUGCQueryCompleted( SteamUGCQueryCompleted_t *pParam, bool bIOFailure );
+	CCallResult<CSpaceWarClient, SteamUGCQueryCompleted_t> m_SteamCallResultUGCQueryCompleted;
+
+	// callback when a Remote Play Together guest invite has been created
+	STEAM_CALLBACK( CSpaceWarClient, OnSteamRemotePlayTogetherGuestInvite, SteamRemotePlayTogetherGuestInvite_t );
 
 	// Steam China support. duration control callback can be posted asynchronously, but we also
 	// call it directly.
@@ -494,7 +522,7 @@ private:
 			OnDurationControl( pParam );
 		}
 	}
-	CCallResult<CSpaceWarClient, DurationControl_t> m_SteamCallResultDurationControl;
+	CCallResult< CSpaceWarClient, DurationControl_t > m_SteamCallResultDurationControl;
 
 	// lobby browser menu
 	CLobbyBrowser *m_pLobbyBrowser;

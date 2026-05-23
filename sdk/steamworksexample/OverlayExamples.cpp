@@ -52,11 +52,30 @@ public:
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToUser - friendrequestaccept", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToUser, "friendrequestaccept" } ) );
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToUser - friendrequestignore", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToUser, "friendrequestignore" } ) );
 
-		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToWebPage", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToWebPage, "https://steamcommunity.com" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToWebPage", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToWebPage, "https://steamcommunity.com/" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToWebPageModal", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToWebPageModal, "https://steamcommunity.com/" } ) );
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToStore", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToStore, "" } ) );
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToStore - Add to Cart", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToStore, "addtocart" } ) );
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayToStore - Add to Cart & Show", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToStore, "addtocartandshow" } ) );
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "ActivateGameOverlayInviteDialogConnectString", { OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayInviteDialogConnectString, NULL } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( SteamScreenshots()->IsScreenshotsHooked() ? "Screenshots Hooked!" : "Hook Screenshots", { OverlayExample_t::k_EOverlayExampleItem_HookScreenshots, NULL } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Request Keyboard", { OverlayExample_t::k_EOverlayExampleItem_RequestKeyboard, NULL } ) );
+
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Set Notification Inset", { OverlayExample_t::k_EOverlayExampleItem_Notification_SetInset, "100" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Reset Notification Inset", { OverlayExample_t::k_EOverlayExampleItem_Notification_SetInset, "0" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Set Notification Position: Top Left", { OverlayExample_t::k_EOverlayExampleItem_Notification_SetPosition, "0" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Set Notification Position: Top Right", { OverlayExample_t::k_EOverlayExampleItem_Notification_SetPosition, "1" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Set Notification Position: Bottom Left", { OverlayExample_t::k_EOverlayExampleItem_Notification_SetPosition, "2" } ) );
+		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Set Notification Position: Bottom Right", { OverlayExample_t::k_EOverlayExampleItem_Notification_SetPosition, "3" } ) );
+
+		if ( m_pOverlayExamples->BHasLastGamePhase() )
+		{
+			AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Show last match", { OverlayExample_t::k_EOverlayExampleItem_Timeline_OpenOverlayToGamePhase } ) );
+		}
+		if ( m_pOverlayExamples->BHasLastTimelineEvent() )
+		{
+			AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Show last crash into sun", { OverlayExample_t::k_EOverlayExampleItem_Timeline_OpenOverlayToTimelineEvent } ) );
+		}
 
 		AddMenuItem( COverlayExamplesMenu::MenuItem_t( "Return to main menu", { OverlayExample_t::k_EOverlayExampleItem_BackToMenu, NULL } ) );
 		
@@ -122,6 +141,12 @@ void COverlayExamples::RunFrame()
 			}
 			break;
 
+			case OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToWebPageModal:
+			{
+				SteamFriends()->ActivateGameOverlayToWebPage( m_delayedCommand.m_pchExtraCommandData, k_EActivateGameOverlayToWebPageMode_Modal );
+			}
+			break;
+
 			case OverlayExample_t::k_EOverlayExampleItem_ActivateGameOverlayToStore:
 			{
 				if ( !strcmp( m_delayedCommand.m_pchExtraCommandData, "addtocart" ) )
@@ -154,8 +179,40 @@ void COverlayExamples::RunFrame()
 			}
 			break;
 
+			case OverlayExample_t::k_EOverlayExampleItem_HookScreenshots:
+			{
+				SteamScreenshots()->HookScreenshots( !SteamScreenshots()->IsScreenshotsHooked() );
+				m_pMenu->Rebuild();
+			}
+			break;
+
+			case OverlayExample_t::k_EOverlayExampleItem_RequestKeyboard:
+			{
+				EGamepadTextInputMode eInputMode = k_EGamepadTextInputModeNormal;
+				EGamepadTextInputLineMode eLineInputMode = k_EGamepadTextInputLineModeSingleLine;
+				const char *pchDescription = "Enter Text Here";
+				uint32 unCharMax = 20;
+				const char *pchExistingText = "Placeholder";
+				SteamUtils()->ShowGamepadTextInput( eInputMode , eLineInputMode, pchDescription, unCharMax, pchExistingText );
+			}
+			break;
+
+			case OverlayExample_t::k_EOverlayExampleItem_Notification_SetInset:
+				SteamUtils()->SetOverlayNotificationInset( atoi( m_delayedCommand.m_pchExtraCommandData ), atoi( m_delayedCommand.m_pchExtraCommandData ) );
+				break;
+			case OverlayExample_t::k_EOverlayExampleItem_Notification_SetPosition:
+				SteamUtils()->SetOverlayNotificationPosition( (ENotificationPosition)atoi( m_delayedCommand.m_pchExtraCommandData ) );
+				break;
+
+			case OverlayExample_t::k_EOverlayExampleItem_Timeline_OpenOverlayToGamePhase:
+				SteamTimeline()->OpenOverlayToGamePhase( m_strLastGamePhaseIDToShow.c_str() );
+				break;
+			case OverlayExample_t::k_EOverlayExampleItem_Timeline_OpenOverlayToTimelineEvent:
+				SteamTimeline()->OpenOverlayToTimelineEvent( m_ulLastCrashIntoSunEventIDToShow );
+				break;
+
 			default:
-			OutputDebugString( "wat" );
+				break;
 		}
 
 		m_delayedCommand.m_eItem = OverlayExample_t::k_EOverlayExampleItem_Invalid;
@@ -177,6 +234,56 @@ void COverlayExamples::OnMenuSelection( OverlayExample_t selection )
 //-----------------------------------------------------------------------------
 void COverlayExamples::Show()
 {
+
+	if ( SpaceWarClient()->GetLastGamePhaseID() )
+	{
+		SteamAPICall_t hSteamAPICall = SteamTimeline()->DoesGamePhaseRecordingExist( std::to_string( SpaceWarClient()->GetLastGamePhaseID() ).c_str() );
+		m_SteamCallResultDoesGamePhaseRecordingExist.Set( hSteamAPICall, this, &COverlayExamples::OnDoesGamePhaseRecordingExist );
+	}
+	m_strLastGamePhaseIDToShow.erase();
+
+	if ( SpaceWarClient()->GetLastCrashIntoSunEvent() )
+	{
+		SteamAPICall_t hSteamAPICall = SteamTimeline()->DoesEventRecordingExist( SpaceWarClient()->GetLastCrashIntoSunEvent() );
+		m_SteamCallResultDoesEventRecordingExist.Set( hSteamAPICall, this, &COverlayExamples::OnDoesEventRecordingExist );
+	}
+
 	m_pMenu->Rebuild();
 }
+
+void COverlayExamples::OnScreenshotRequested( ScreenshotRequested_t *pCallback )
+{
+	SteamFriends()->ActivateGameOverlayToWebPage( "google.com" );
+}
+
+void COverlayExamples::OnSteamScreenshotReady( ScreenshotReady_t *pCallback )
+{
+
+}
+
+void COverlayExamples::OnDoesEventRecordingExist( SteamTimelineEventRecordingExists_t *pCallback, bool bIOFailure )
+{
+	if ( bIOFailure || !pCallback->m_bRecordingExists )
+	{
+		// nothing to do here. We didn't show these items when showing the menu
+		return;
+	}
+
+	m_ulLastCrashIntoSunEventIDToShow = pCallback->m_ulEventID;
+	m_pMenu->Rebuild();
+}
+
+
+void COverlayExamples::OnDoesGamePhaseRecordingExist( SteamTimelineGamePhaseRecordingExists_t *pCallback, bool bIOFailure )
+{
+	if ( bIOFailure || ( pCallback->m_ulRecordingMS == 0 && pCallback->m_unClipCount == 0 ) )
+	{
+		// nothing to do here. We didn't show these items when showing the menu
+		return;
+	}
+
+	m_strLastGamePhaseIDToShow = pCallback->m_rgchPhaseID;
+	m_pMenu->Rebuild();
+}
+
 

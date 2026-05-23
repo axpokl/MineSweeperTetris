@@ -2652,7 +2652,6 @@ int		s_glmStrCursor = 0;
 const char *	GLMDecode( GLMThing_t thingtype, unsigned long value )
 {
 	GLMValueEntry_t *table = NULL;
-	char			isflags = 0;
 
 	switch( thingtype )
 	{
@@ -2806,6 +2805,7 @@ bool	GLMDetectGDB( void )			// aka AmIBeingDebugged()
   
     size = sizeof(info);  
     junk = sysctl(mib, sizeof(mib) / sizeof(*mib), &info, &size, NULL, 0);  
+    (void)junk;
   
     assert(junk == 0);  
   
@@ -2817,9 +2817,6 @@ bool	GLMDetectGDB( void )			// aka AmIBeingDebugged()
 	return result;
 }
 
-
-static uint		g_glmDebugChannelMask = 0;		// which output channels are available (can be more than one)
-static uint		g_glmDebugFlavorMask = 0;		// which message flavors are enabled for output (can be more than one)
 
 uint	GLMDetectAvailableChannels( void )
 {
@@ -2846,9 +2843,11 @@ uint	GLMDetectAvailableChannels( void )
 }
 
 
-static bool	g_debugInitDone	= false;
-
 #if GLMDEBUG
+
+static bool		g_debugInitDone	= false;
+static uint		g_glmDebugChannelMask = 0;		// which output channels are available (can be more than one)
+static uint		g_glmDebugFlavorMask = 0;		// which message flavors are enabled for output (can be more than one)
 
 	// following funcs vanish if GLMDEBUG not set
 
@@ -2860,7 +2859,7 @@ void	GLMDebugInitialize( bool forceReinit )
 		uint channelMask = GLMDetectAvailableChannels();
 		
 		// finally, disable all of them if commandline did not say "enable spew"
-		if (0 /* !CommandLine()->FindParm("-glmspew") */)	//FIXME change back to 1 later
+		if ( ( 0 ) /* !CommandLine()->FindParm("-glmspew") */)	//FIXME change back to 1 later
 		{
 			channelMask = 0;
 		}
@@ -2872,7 +2871,7 @@ void	GLMDebugInitialize( bool forceReinit )
 		if ( channelMask )
 		{
 			// start mostly quiet unless the -glmbootspew option is there
-			if ( 0 /*CommandLine()->FindParm( "-glmbootspew" )*/ )
+			if ( ( 0 ) /*CommandLine()->FindParm( "-glmbootspew" )*/ )
 			{
 				g_glmDebugFlavorMask = 0xFFFFFFFF;
 			}
@@ -3203,8 +3202,7 @@ void GLMPrintText( const char *str, EGLMDebugFlavor flavor, uint options )
 	// walk the text and treat each newline as an indentation opportunity..
 	const char *mark = buf;
 	const char *end = mark + strlen(buf);
-	const char *next = NULL;
-	
+
 	while(mark < end)
 	{
 		// starting at mark, see if there is a newline between there and end
@@ -3404,6 +3402,8 @@ bool CGLMFileMirror::PollForChanges( void )
 	// snapshot old stat
 	bool		old_exists = m_exists;
 	struct stat	old_stat = m_stat;
+
+	(void)old_exists;
 	
 	UpdateStatInfo();
 	
@@ -3676,11 +3676,11 @@ void	CGLMEditableTextItem::GenHashOfOrigText( void )
 
 void	CGLMEditableTextItem::GenBaseNameAndFullPath(  char *prefix, char *suffix  )
 {
-	// base name is hash digest in hex, plus the suffix.
-	char	temp[5000];
-
 	// bring this code back if you need the live shader edit/debug mode.
-	#if 0	
+	#if 0
+		// base name is hash digest in hex, plus the suffix.
+		char	temp[5000];
+
 		V_binarytohex( m_origDigest, sizeof(m_origDigest), temp, sizeof( temp ) );
 		if (suffix)
 		{

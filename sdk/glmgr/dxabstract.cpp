@@ -24,6 +24,10 @@
 
 #endif
 
+#ifdef __clang__
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
 #ifdef USE_ACTUAL_DX
 
 #pragma comment( lib, "../../dx9sdk/lib/d3d9.lib" )
@@ -3469,7 +3473,8 @@ HRESULT IDirect3DDevice9::CreateVertexDeclaration(CONST D3DVERTEXELEMENT9* pVert
 	//	each one is a cursor that gets bumped by decls.
 	uint	streamOffsets[ D3D_MAX_STREAMS ];
 	uint	streamCount = 0;
-	
+	(void)streamCount;
+
 	uint	attribMap[16];
 	uint	attribMapIndex = 0;
 	memset( attribMap, 0xFF, sizeof( attribMap ) );
@@ -4667,7 +4672,7 @@ HRESULT IDirect3DDevice9::FlushStates( uint mask )
 				temp1 = temp2 = gl.m_ClipPlaneEquation[x];
 			}
 
-			if (1)	//GLMKnob("caps-key",NULL)==0.0)
+			if ( ( 1 ) )	//GLMKnob("caps-key",NULL)==0.0)
 			{
 				m_ctx->WriteClipPlaneEquation( &temp1, x );		// no caps lock = Antonio or classic
 				
@@ -4816,14 +4821,14 @@ HRESULT IDirect3DDevice9::FlushSamplers( uint mask )
 	uint samplerHitMask = gl.m_samplerDirtyMask & mask;
 	for( int index = 0; (index < 16) && (samplerHitMask !=0); index++)
 	{
-		uint mask = 1<<index;
-		
+		uint bitMask = 1<<index;
+
 		// only push a sampler to GLM if the sampler is dirty *and* there is a live texture on that TMU
 		// else the values will sit quietly in the d3d sampler side until conditions permit pushing them
-		if ( (samplerHitMask & mask) && (m_textures[index] != NULL) )
+		if ( (samplerHitMask & bitMask) && (m_textures[index] != NULL) )
 		{
 			// clear that dirty bit before you forget...
-			gl.m_samplerDirtyMask &= (~mask);
+			gl.m_samplerDirtyMask &= (~bitMask);
 			
 			// translate from D3D sampler desc
 			D3DSamplerDesc			*dxsamp = &m_samplers[ index ];
@@ -5545,7 +5550,8 @@ void IDirect3DDevice9::SetGammaRamp(UINT iSwapChain,DWORD Flags,CONST D3DGAMMARA
 	// just slam it directly for the time being
 	// this code is OS X specific
 
-    CGDisplayErr cgErr;
+	CGDisplayErr cgErr;
+	(void)cgErr;
 
 	CGGammaValue	redt[256];
 	CGGammaValue	grnt[256];

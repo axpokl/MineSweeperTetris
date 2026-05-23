@@ -1,12 +1,164 @@
 ================================================================
 
-Copyright © 1996-2022, Valve Corporation, All rights reserved.
+Copyright © 1996-2025, Valve Corporation, All rights reserved.
 
 ================================================================
 
 
 Welcome to the Steamworks SDK.  For documentation please see our partner 
 website at: http://partner.steamgames.com
+
+
+----------------------------------------------------------------
+v1.64 11th March 2026
+----------------------------------------------------------------
+
+General:
+* androidarm64 libs now statically link libc++
+* androidarm64 libs now use 16KB max page size (from 4KB)
+* linuxarm64 libs now use 4KB max page size (from 64KB)
+
+ISteamApps:
+* Added last update timestamp to GetBetaInfo()
+
+ISteamUGC:
+* Added MarkDownloadedItemAsUnused()
+* Added GetDownloadedItems(), GetNumDownloadedItems()
+
+ISteamRemotePlay:
+* Added BSessionRemotePlayTogether()
+* Added GetSessionGuestID()
+* Added GetSmallSessionAvatar(), GetMediumSessionAvatar(), GetLargeSessionAvatar()
+* Added SteamRemotePlaySessionAvatarLoaded_t callback
+
+
+----------------------------------------------------------------
+v1.63 18th November 2025
+----------------------------------------------------------------
+
+General:
+* Added libs for linuxarm64 and androidarm64.
+* ISteamMusicRemote has been removed.
+
+ISteamController:
+* Added controller action origins for Lenovo Legion Go.
+* Added controller action origins for generic controller.
+
+ISteamInput:
+* Added input action origins for Lenovo Legion Go.
+* Added input action origins for generic controller.
+
+ISteamRemotePlay:
+* Added keypad scancode values.
+
+ISteamUser:
+* GetMarketEligibility may now return new k_EMarketNotAllowedReason_TradeCooldown status code in MarketEligibilityResponse_t.
+
+
+----------------------------------------------------------------
+v1.62 14th March 2025
+----------------------------------------------------------------
+
+ISteamFriends:
+* Removed SetPersonaName() and GetUserRestrictions().
+
+ISteamHTMLSurface:
+* Renamed EMouseCursor to EHTMLMouseCursor, and renamed values to match.
+
+ISteamRemotePlay:
+* Removed BStartRemotePlayTogether() since it's always available when a supported game launches.
+* Added ShowRemotePlayTogetherUI() to show the Remote Play Together UI in the game overlay.
+* Added functions to get remote keyboard and mouse input directly instead of simulating local input: BEnableRemotePlayTogetherDirectInput(), DisableRemotePlayTogetherDirectInput(), GetInput(), SetMouseVisibility(), SetMousePosition(), CreateMouseCursor(), SetMouseCursor().
+
+ISteamUGC:
+* Added SetSubscriptionsLoadOrder() to allow changing the load order.
+* Added SetItemsDisabledLocally() set an item as locally disabled or not.
+* GetNumSubscribedItems() and GetSubscribedItems() also takes an optional boolean to return locally disabled items as well.
+
+
+----------------------------------------------------------------
+v1.61 8th November 2024
+----------------------------------------------------------------
+
+ISteamTimeline:
+* Renamed Set/ClearTimelineStateDescription to Set/ClearTimelineTooltip to make it more clear where the text will appear.
+* Renamed AddTimelineEvent to AddInstantaneousTimelineEvent and removed the duration parameter.
+* Added AddRangeTimelineEvent for adding a a timeline event that happens over a period of time.
+* Added Start/Update/EndRangeTimelineEvent calls for situations where the caller doesn't know when the event will end before creating it.
+* Added RemoveTimelineEvent to let the game remove an event it previously added
+* Added DoesEventRecordingExist/OpenOverlayToTimelineEvent, which allow the game to show an event in the Steam overlay
+* Added Start/EndGamePhase, along with some supporting functions, to let the game identify meaningful time ranges like multiplayer matches or chapters in a single player game. See the Timeline documentation for more information.
+
+ISteamUserStats:
+* RequestCurrentStats is no longer necessary and has been removed. The Steam Client will synchronize this data before your game launches.
+
+ISteamInput:
+* Added glyph support for the Wireless HORIPAD for Steam
+
+
+----------------------------------------------------------------
+v1.60 19th June 2024
+----------------------------------------------------------------
+
+General
+* CSteamAPIContext has been removed. Please switch to using the Steam<interface> accessors where appropriate.
+
+ISteamTimeline
+* Added this new interface to allow games to provide information that supports the new Game Recording feature. See the [url=https://partner.steamgames.com/doc/features/timeline]Timeline[/url] documentation for more information.
+
+ISteamUGC
+* Added 64 bit m_ulTotalFilesSize to SteamUGCDetails_t which is the correct size of the content for Workshop items are larger than 2,147,483,647 bytes.
+* Added GetNumSupportedGameVersions() and GetSupportedGameVersionData() which can be used to determine what game beta branches a Workshop item supports/is valid for.
+* Added SetAdminQuery() to allow ISteamUGC to be used in a tools like environment for users who have the appropriate privileges for the calling appid.
+
+ISteamApps
+* Added API to allow the game to manage active beta branches. 
+
+
+----------------------------------------------------------------
+v1.59 9th February 2024
+----------------------------------------------------------------
+General
+* Added new initialization method, SteamAPI_InitFlat
+
+ISteamUtils
+* Added DismissGamepadTextInput
+
+ISteamAppList
+* This interface has been removed from the SDK
+
+----------------------------------------------------------------
+v1.58a 26th October 2023
+----------------------------------------------------------------
+Fixes to steam_api_flat.h
+
+----------------------------------------------------------------
+v1.58 15th September 2023
+----------------------------------------------------------------
+ISteamRemotePlay
+* Added BStartRemotePlayTogether to start Remote Play Together and optionally show the UI in the overlay
+
+ISteamUGC
+* The function SetItemTags now takes in a parameter to allow the modification of admin tags through the SDK if the logged-in user has the appropriate permissions
+* Added GetUserContentDescriptorPreferences, which can be used to show the user their current set of preferences and then direct them to Steam to modify them at https://store.steampowered.com/account/preferences/
+
+Misc.
+* Added SteamAPI_InitEx and SteamGameServer_InitEx, which will return k_ESteamAPIInitResult_OK upon success or an error code specified in in ESteamAPIInitResult. An optional, non-localized error message can also be returned.
+* SteamAPI_Init() will now return false if the installed Steam client needs to be updated to support the game’s version of the SDK
+* Improved handling of corrupted tickets via updated sdkencryptedappticket.lib
+
+----------------------------------------------------------------
+v1.57 28th April 2022
+----------------------------------------------------------------
+User
+* Updated ISteamUser::GetAuthTicketForWebApi(), To create a ticket for use by the AuthenticateUserTicket Web API
+* Updated ISteamUser::GetAuthSessionTicket(), No longer to be used to create a ticket for use by the AuthenticateUserTicket Web API
+
+----------------------------------------------------------------
+v1.56 30th March 2023
+----------------------------------------------------------------
+User
+* Updated ISteamUser::GetAuthSessionTicket(), Add parameter SteamNetworkingIdentity 
 
 ----------------------------------------------------------------
 v1.55 29th July 2022

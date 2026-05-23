@@ -11,6 +11,7 @@
 "SteamBootstrapper_InsufficientDiskSpace"		"%appname% се нуждае от %nMegaBytes% MB свободно дисково пространство, за да бъде обновено."
 "SteamBootstrapper_FailedManifestLoad"		"Неуспешно зареждане на манифеста за пакета."
 "SteamBootstrapper_FailedManifestVerify"		"Неуспешно потвърждаване на манифеста за пакета."
+"SteamBootstrapper_FailedManifestOSType"		"Версията на системната ОС не е съвместима с типа ОС на манифеста за пакета."
 "SteamBootstrapper_FailedManifestSave"		"Неуспешно запазване на манифеста за пакета."
 "SteamBootstrapper_FailedPackageRead"			"Неуспешно прочитане на пакета (%pkgName%)."
 "SteamBootstrapper_CorruptPackageFile"		"Повреден файл на пакета (%pkgName%)."
@@ -42,4 +43,7 @@
 "SteamBootstrapper_Error_Title"			"%appname% — Фатална грешка"
 "SteamBootstrapper_Warning_Title"			"%appname% — Предупреждение"
 "SteamBootstrapper_OperatingSystemNoLongerSupported" "%appname% вече не се поддържа за версията на операционната Ви система."
+"SteamCmd_OperatingSystemNoLongerSupported" "%appname% вече не се поддържа за версията на операционната Ви система.\nВъзможно е да отмените тази проверка, като предадете -overrideminos.\nВъзможно е %appname% да не работи правилно, а поддръжката за тази отмяна може да бъде премахната в бъдеще.\nМоля, обновете до поддържана версия на ОС за продължителна употреба."
+"SteamBootstrapper_OperatingSystemNoLongerSupportedOnBeta" "%appname% вече не се поддържа за версията на операционната Ви система.\n\nКликнете върху „Добре“, за да излезете от избраната %appname% бета."
+"SteamBootstrapper_Starting"                  "Стартиране…"
 }

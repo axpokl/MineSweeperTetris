@@ -8,7 +8,6 @@
 #include "stdafx.h"
 #include "SpaceWarClient.h"
 #include "SpaceWarServer.h"
-#include "connectingmenu.h"
 #include "MainMenu.h"
 #include "QuitMenu.h"
 #include "stdlib.h"
@@ -27,12 +26,19 @@
 #include "RemotePlay.h"
 #include "ItemStore.h"
 #include "OverlayExamples.h"
+#include "timeline.h"
 #ifdef WIN32
 #include <direct.h>
 #else
 #define MAX_PATH PATH_MAX
 #include <unistd.h>
 #define _getcwd getcwd
+#define _snprintf snprintf
+#endif
+#if defined(USE_SDL2)
+#include <SDL2/SDL.h>
+#elif defined(SDL)
+#include <SDL3/SDL.h>
 #endif
 
 
@@ -47,6 +53,21 @@ extern bool ParseCommandLine( const char *pchCmdLine, const char **ppchServerAdd
 
 
 //-----------------------------------------------------------------------------
+// Purpose: OS-flexible function to get milliseconds of clock time
+//-----------------------------------------------------------------------------
+uint32 Plat_GetTicks()
+{
+#if defined(USE_SDL2)
+	return SDL_GetTicks64();
+#elif defined(SDL)
+	return SDL_GetTicks();
+#else
+	return GetTickCount();
+#endif
+}
+
+
+//-----------------------------------------------------------------------------
 // Purpose: Constructor
 //-----------------------------------------------------------------------------
 CSpaceWarClient::CSpaceWarClient( IGameEngine *pGameEngine )
@@ -55,28 +76,13 @@ CSpaceWarClient::CSpaceWarClient( IGameEngine *pGameEngine )
 }
 
 
-
 //-----------------------------------------------------------------------------
 // Purpose: initialize our client for use
 //-----------------------------------------------------------------------------
 void CSpaceWarClient::Init( IGameEngine *pGameEngine )
 {
-	// On PC/OSX we always know the user has a SteamID and is logged in already,
-	// as Steam enforces this before game launch.  On PS3 however the game must
-	// initiate the logon and we need to check the state here and block the user
-	// while Steam connects.
-	if ( SteamUser()->BLoggedOn() )
-	{
-		m_SteamIDLocalUser = SteamUser()->GetSteamID();
-		m_eGameState = k_EClientGameMenu;
-	}
-#ifdef _PS3
-	else
-	{
-		m_eGameState = k_EClientConnectingToSteam;
-		SteamUser()->LogOn( true );
-	}
-#endif
+	m_SteamIDLocalUser = SteamUser()->GetSteamID();
+	m_eGameState = k_EClientGameMenu;
 
 	g_pSpaceWarClient = this;
 	m_pGameEngine = pGameEngine;
@@ -92,7 +98,11 @@ void CSpaceWarClient::Init( IGameEngine *pGameEngine )
 	m_usServerPort = 0;
 	m_ulPingSentTime = 0;
 	m_bSentWebOpen = false;
+	m_bShowTimer = false;
+	m_unTicksAtLaunch = 0;
+	m_hTimerFont = 0;
 	m_hConnServer = k_HSteamNetConnection_Invalid;
+	m_unTicksAtLaunch = Plat_GetTicks();
 
 	// Initialize the peer to peer connection process
 	SteamNetworkingUtils()->InitRelayNetworkAccess();
@@ -124,9 +134,6 @@ void CSpaceWarClient::Init( IGameEngine *pGameEngine )
 	// Initialize main menu
 	m_pMainMenu = new CMainMenu( pGameEngine );
 
-	// Initialize connecting menu
-	m_pConnectingMenu = new CConnectingMenu( pGameEngine );
-
 	// Initialize pause menu
 	m_pQuitMenu = new CQuitMenu( pGameEngine );
 
@@ -150,6 +157,7 @@ void CSpaceWarClient::Init( IGameEngine *pGameEngine )
 
 	// Init stats
 	m_pStatsAndAchievements = new CStatsAndAchievements( pGameEngine );
+	m_pTimeline = new CTimeline( pGameEngine );
 	m_pLeaderboards = new CLeaderboards( pGameEngine );
 	m_pFriendsList = new CFriendsList( pGameEngine );
 	m_pMusicPlayer = new CMusicPlayer( pGameEngine );
@@ -203,9 +211,6 @@ CSpaceWarClient::~CSpaceWarClient()
 	if ( m_pMainMenu )
 		delete m_pMainMenu;
 
-	if ( m_pConnectingMenu )
-		delete m_pConnectingMenu;
-
 	if ( m_pQuitMenu ) 
 		delete m_pQuitMenu;
 
@@ -214,6 +219,9 @@ CSpaceWarClient::~CSpaceWarClient()
 
 	if ( m_pStatsAndAchievements )
 		delete m_pStatsAndAchievements;
+
+	if ( m_pTimeline )
+		delete m_pTimeline;
 
 	if ( m_pServerBrowser )
 		delete m_pServerBrowser; 
@@ -263,6 +271,12 @@ void CSpaceWarClient::DisconnectFromServer()
 		SteamUser()->BSetDurationControlOnlineState( k_EDurationControlOnlineState_Offline );
 
 		m_eConnectedStatus = k_EClientNotConnected;
+
+		UpdateScoreInGamePhase( true );
+		SteamTimeline()->EndGamePhase();
+
+		m_unLastGamePhaseID = m_unGamePhaseID;
+		m_unGamePhaseID = 0;
 	}
 	if ( m_pP2PAuthedGame )
 	{
@@ -277,6 +291,7 @@ void CSpaceWarClient::DisconnectFromServer()
 	if ( m_hConnServer != k_HSteamNetConnection_Invalid )
 		SteamNetworkingSockets()->CloseConnection( m_hConnServer, k_EDRClientDisconnect, nullptr, false );
 	m_steamIDGameServer = CSteamID();
+	m_steamIDGameServerFromBrowser = CSteamID();
 	m_hConnServer = k_HSteamNetConnection_Invalid;
 }
 
@@ -301,9 +316,17 @@ void CSpaceWarClient::OnReceiveServerInfo( CSteamID steamIDGameServer, bool bVAC
 
 	MsgClientBeginAuthentication_t msg;
 #ifdef USE_GS_AUTH_API
+	SteamNetworkingIdentity snid;
+	// if the server Steam ID was aquired from another source ( m_steamIDGameServerFromBrowser )
+	// then use it as the identity
+	// if it only came from the server itself, then use the IP address
+	if ( m_steamIDGameServer == m_steamIDGameServerFromBrowser )
+		snid.SetSteamID( m_steamIDGameServer );
+	else
+		snid.SetIPv4Addr( m_unServerIP, m_usServerPort );
 	char rgchToken[1024];
 	uint32 unTokenLen = 0;
-	m_hAuthTicket = SteamUser()->GetAuthSessionTicket( rgchToken, sizeof( rgchToken ), &unTokenLen );
+	m_hAuthTicket = SteamUser()->GetAuthSessionTicket( rgchToken, sizeof( rgchToken ), &unTokenLen, &snid );
 	msg.SetToken( rgchToken, unTokenLen );
 
 #else
@@ -416,9 +439,15 @@ void CSpaceWarClient::OnReceiveServerUpdate( ServerSpaceWarUpdateData_t *pUpdate
 	}
 
 	// Update scores
+	bool bScoresChanged = false;
 	for( int i=0; i < MAX_PLAYERS_PER_SERVER; ++i )
 	{
 		m_rguPlayerScores[i] = pUpdateData->GetPlayerScore(i);
+		bScoresChanged = bScoresChanged || m_rguPlayerScores[ i ] != pUpdateData->GetPlayerScore( i );
+	}
+	if ( bScoresChanged )
+	{
+		UpdateScoreInGamePhase( false );
 	}
 
 	// Update who won last
@@ -539,6 +568,7 @@ void CSpaceWarClient::SetGameState( EClientGameState eState )
 
 	// Let the stats handler check the state (so it can detect wins, losses, etc...)
 	m_pStatsAndAchievements->OnGameStateChange( eState );
+	m_pTimeline->OnGameStateChange( eState );
 
 	// update any rich presence state
 	UpdateRichPresenceConnectionInfo();
@@ -625,7 +655,7 @@ void CSpaceWarClient::InitiateServerConnection( CSteamID steamIDGameServer )
 
 	SetGameState( k_EClientGameConnecting );
 
-	m_steamIDGameServer = steamIDGameServer;
+	m_steamIDGameServerFromBrowser = m_steamIDGameServer = steamIDGameServer;
 
 	SteamNetworkingIdentity identity;
 	identity.SetSteamID(steamIDGameServer);
@@ -639,6 +669,12 @@ void CSpaceWarClient::InitiateServerConnection( CSteamID steamIDGameServer )
 	// Update when we last retried the connection, as well as the last packet received time so we won't timeout too soon,
 	// and so we will retry at appropriate intervals if packets drop
 	m_ulLastNetworkDataReceivedTime = m_ulLastConnectionAttemptRetryTime = m_pGameEngine->GetGameTickCount();
+
+	SteamTimeline()->StartGamePhase();
+
+	// When you call this function for real, you should use an ID that you'll refer back to
+	m_unGamePhaseID = Plat_GetTicks();
+	//SteamTimeline()->SetGamePhaseID( std::to_string( m_unGamePhaseID ).c_str() );
 }
 
 
@@ -800,6 +836,15 @@ void CSpaceWarClient::ReceiveNetworkData()
 			m_pP2PAuthedGame->HandleP2PSendingTicket( message->GetData() );
 			break;
 			
+		case k_EMsgServerPlayerHitSun:
+		{
+			TimelineEventHandle_t ulEvent = SteamTimeline()->StartRangeTimelineEvent( "Hit Sun", "This description will be replaced", "steam_8", 8, 0, k_ETimelineEventClipPriority_None );
+			SteamTimeline()->UpdateRangeTimelineEvent( ulEvent, nullptr, "It was too hot to handle", "steam_starburst", 10, k_ETimelineEventClipPriority_Standard );
+			SteamTimeline()->EndRangeTimelineEvent( ulEvent, 3.f );
+			m_ulLastCrashIntoSunEvent = 0;
+		}
+		break;
+
 		default:
 			OutputDebugString("Unhandled message from server\n");
 			break;
@@ -1185,6 +1230,7 @@ void CSpaceWarClient::OnGameStateChanged( EClientGameState eGameStateNew )
 
 		pchSteamRichPresenceDisplay = SetInGameRichPresence();
 		bDisplayScoreInRichPresence = true;
+		UpdateScoreInGamePhase( true );
 	}
 	else if ( m_eGameState == k_EClientLeaderboards )
 	{
@@ -1216,7 +1262,12 @@ void CSpaceWarClient::OnGameStateChanged( EClientGameState eGameStateNew )
 		pchSteamRichPresenceDisplay = SetInGameRichPresence();
 		bDisplayScoreInRichPresence = true;
 	}
-	else if ( m_eGameState == k_EClientRemotePlay )
+	else if ( m_eGameState == k_EClientRemotePlayInvite )
+	{
+		SteamRemotePlay()->BSendRemotePlayTogetherInvite( CSteamID() );
+		SetGameState( k_EClientGameMenu );
+	}
+	else if ( m_eGameState == k_EClientRemotePlaySessions )
 	{
 		// we've switched to the remote play menu
 		m_pRemotePlayList->Show();
@@ -1255,8 +1306,8 @@ void CSpaceWarClient::OnGameStateChanged( EClientGameState eGameStateNew )
 
 	if ( pchSteamRichPresenceDisplay != NULL )
 	{
-		SteamFriends()->SetRichPresence( "steam_display", bDisplayScoreInRichPresence ? "#StatusWithScore" : "#StatusWithoutScore" );
 		SteamFriends()->SetRichPresence( "gamestatus", pchSteamRichPresenceDisplay );
+		SteamFriends()->SetRichPresence( "steam_display", bDisplayScoreInRichPresence ? "#StatusWithScore" : "#StatusWithoutScore" );
 	}
 
 	// steam_player_group defines who the user is playing with.  Set it to the steam ID
@@ -1273,6 +1324,7 @@ void CSpaceWarClient::OnGameStateChanged( EClientGameState eGameStateNew )
 	}
 
 }
+
 
 //-----------------------------------------------------------------------------
 // Purpose: Handles notification of a steam ipc failure
@@ -1311,31 +1363,6 @@ void CSpaceWarClient::OnSteamShutdown( SteamShutdown_t *callback )
 
 
 //-----------------------------------------------------------------------------
-// Purpose: Handles notification that we are now connected to Steam
-//-----------------------------------------------------------------------------
-void CSpaceWarClient::OnSteamServersConnected( SteamServersConnected_t *callback )
-{
-	if ( SteamUser()->BLoggedOn() )
-		m_eGameState = k_EClientGameMenu;
-	else
-	{
-		OutputDebugString( "Got SteamServersConnected_t, but not logged on?\n" );
-	}
-}
-
-
-//-----------------------------------------------------------------------------
-// Purpose: Handles notification that we are now connected to Steam
-//-----------------------------------------------------------------------------
-void CSpaceWarClient::OnSteamServersDisconnected( SteamServersDisconnected_t *callback )
-{
-	SetGameState( k_EClientConnectingToSteam );
-	m_pConnectingMenu->OnConnectFailure();
-	OutputDebugString( "Got SteamServersDisconnected_t\n" );
-}
-
-
-//-----------------------------------------------------------------------------
 // Purpose: Handles notification that the Steam overlay is shown/hidden, note, this
 // doesn't mean the overlay will or will not draw, it may still draw when not active.
 // This does mean the time when the overlay takes over input focus from the game.
@@ -1364,18 +1391,6 @@ void CSpaceWarClient::OnGameWebCallback( GameWebCallback_t *callback )
 
 
 //-----------------------------------------------------------------------------
-// Purpose: Handles notification that we are failed to connected to Steam
-//-----------------------------------------------------------------------------
-void CSpaceWarClient::OnSteamServerConnectFailure( SteamServerConnectFailure_t *callback )
-{
-	char rgchString[256];
-	sprintf_safe( rgchString, "SteamServerConnectFailure_t: %d\n", callback->m_eResult );
-
-	m_pConnectingMenu->OnConnectFailure();
-}
-
-
-//-----------------------------------------------------------------------------
 // Purpose: Do work that doesn't need to happen every frame
 //-----------------------------------------------------------------------------
 void CSpaceWarClient::RunOccasionally()
@@ -1392,6 +1407,7 @@ void CSpaceWarClient::RunOccasionally()
 
 	// Service stats and achievements
 	m_pStatsAndAchievements->RunFrame();
+	m_pTimeline->RunFrame();
 }
 
 
@@ -1402,6 +1418,8 @@ void CSpaceWarClient::RunFrame()
 {
 	// Get any new data off the network to begin with
 	ReceiveNetworkData();
+
+	RenderTimer();
 
 	if ( m_eConnectedStatus != k_EClientNotConnected && m_pGameEngine->GetGameTickCount() - m_ulLastNetworkDataReceivedTime > MILLISECONDS_CONNECTION_TIMEOUT )
 	{
@@ -1447,42 +1465,6 @@ void CSpaceWarClient::RunFrame()
 	// Update state for everything
 	switch ( m_eGameState )
 	{
-	case k_EClientConnectingToSteam:
-		m_pStarField->Render();
-		m_pConnectingMenu->RunFrame();
-		// Make sure the Steam Controller is in the correct mode.
-		m_pGameEngine->SetSteamControllerActionSet( eControllerActionSet_MenuControls );
-		break;
-	case k_EClientRetrySteamConnection:
-#ifdef _PS3
-		m_pStarField->Render();
-		SteamUser()->LogOn( true );
-		m_pConnectingMenu->Reset();
-		SetGameState( k_EClientConnectingToSteam );
-#else
-		OutputDebugString( "Invalidate state k_EClientRetrySteamConnection hit on non-PS3 platform" );
-#endif
-		break;
-	case k_EClientLinkSteamAccount:
-#ifdef _PS3
-		m_pStarField->Render();
-		SteamUser()->LogOnAndLinkSteamAccountToPSN( true, "jmccaskeybeta", "test123" );
-		m_pConnectingMenu->Reset();
-		SetGameState( k_EClientConnectingToSteam );
-#else
-		OutputDebugString( "Invalidate state k_EClientLinkSteamAccount hit on non-PS3 platform" );
-#endif
-		break;
-	case k_EClientAutoCreateAccount:
-#ifdef _PS3
-		m_pStarField->Render();
-		m_pConnectingMenu->Reset();
-		SteamUser()->LogOnAndCreateNewSteamAccountIfNeeded( true );
-		SetGameState( k_EClientConnectingToSteam );
-#else
-		OutputDebugString( "Invalidate state k_EClientAutoCreateAccount hit on non-PS3 platform" );
-#endif
-		break;
 	case k_EClientGameMenu:
 		m_pStarField->Render();
 		m_pMainMenu->RunFrame();
@@ -1631,7 +1613,7 @@ void CSpaceWarClient::RunFrame()
 			SetGameState( k_EClientGameMenu );
 		break;
 
-	case k_EClientRemotePlay:
+	case k_EClientRemotePlaySessions:
 		m_pStarField->Render();
 		m_pRemotePlayList->RunFrame();
 
@@ -1740,7 +1722,7 @@ void CSpaceWarClient::RunFrame()
 		if ( !m_bSentWebOpen )
 		{
 			m_bSentWebOpen = true;
-#ifndef _PS3
+
 			char szCurDir[MAX_PATH];
 			if ( !_getcwd( szCurDir, sizeof(szCurDir) ) )
             {
@@ -1751,7 +1733,6 @@ void CSpaceWarClient::RunFrame()
 			// load the test html page, it just has a steam://gamewebcallback link in it
 			SteamFriends()->ActivateGameOverlayToWebPage( szURL );
 			SetGameState( k_EClientGameMenu );
-#endif
 		}
 
 		break;
@@ -1873,21 +1854,42 @@ void CSpaceWarClient::RunFrame()
 
 
 //-----------------------------------------------------------------------------
+// Purpose: Draws the timer, if -timer was present on the command line
+//-----------------------------------------------------------------------------
+void CSpaceWarClient::RenderTimer()
+{
+	if ( !m_bShowTimer )
+		return;
+
+	static const uint32 k_unTimerFontHeight = 48;
+	if ( !m_hTimerFont )
+	{
+		m_hTimerFont = m_pGameEngine->HCreateFont( k_unTimerFontHeight, FW_BOLD, false, "Arial" );
+		if ( !m_hTimerFont )
+			OutputDebugString( "Timer font was not created properly, text won't draw\n" );
+	}
+	uint32 unSecondsSinceLaunch = ( Plat_GetTicks() - m_unTicksAtLaunch ) / 1000;
+	char buf[ 128 ];
+	sprintf_safe( buf, "%u:%02u", unSecondsSinceLaunch / 60, unSecondsSinceLaunch % 60 );
+
+	DWORD dwColor = D3DCOLOR_ARGB( 255, 255, 200, 200 );
+	RECT rectHeader;
+	rectHeader.top = 5;
+	rectHeader.bottom = rectHeader.top + k_unTimerFontHeight;
+	rectHeader.left = 0;
+	rectHeader.right = m_pGameEngine->GetViewportWidth() - 5;
+	m_pGameEngine->BDrawString( m_hTimerFont, rectHeader, dwColor, TEXTPOS_RIGHT | TEXTPOS_TOP, buf );
+}
+
+
+//-----------------------------------------------------------------------------
 // Purpose: Draws some HUD text indicating game status
 //-----------------------------------------------------------------------------
 void CSpaceWarClient::DrawHUDText()
 {
 	// Padding from the edge of the screen for hud elements
-#ifdef _PS3
-	// Larger padding on PS3, since many of our test HDTVs truncate 
-	// edges of the screen and can't be calibrated properly.
-	const int32 nHudPaddingVertical = 20;
-	const int32 nHudPaddingHorizontal = 35;
-#else
 	const int32 nHudPaddingVertical = 15;
 	const int32 nHudPaddingHorizontal = 15;
-#endif
-
 
 	const int32 width = m_pGameEngine->GetViewportWidth();
 	const int32 height = m_pGameEngine->GetViewportHeight();
@@ -2052,14 +2054,8 @@ void CSpaceWarClient::DrawInstructions()
 	rect.right = width;
 
 	char rgchBuffer[256];
-#ifdef _PS3
-	sprintf_safe( rgchBuffer, "Turn Ship Left: 'Left'\nTurn Ship Right: 'Right'\nForward Thrusters: 'R2'\nReverse Thrusters: 'L2'\nFire Photon Beams: 'Cross'" );
-#else
 	sprintf_safe( rgchBuffer, "Turn Ship Left: 'A'\nTurn Ship Right: 'D'\nForward Thrusters: 'W'\nReverse Thrusters: 'S'\nFire Photon Beams: 'Space'" );
-#endif
-
 	m_pGameEngine->BDrawString( m_hInstructionsFont, rect, D3DCOLOR_ARGB( 255, 25, 200, 25 ), TEXTPOS_CENTER|TEXTPOS_VCENTER, rgchBuffer );
-
 	
 	rect.left = 0;
 	rect.right = width;
@@ -2334,7 +2330,7 @@ void CSpaceWarClient::OnRequestEncryptedAppTicket( EncryptedAppTicketResponse_t 
 
 	if ( pEncryptedAppTicketResponse->m_eResult == k_EResultOK )
 	{
-		uint8 rgubTicket[1024];
+		uint8 rgubTicket[4096];
 		uint32 cubTicket;		
 		SteamUser()->GetEncryptedAppTicket( rgubTicket, sizeof( rgubTicket), &cubTicket );
 
@@ -2346,7 +2342,7 @@ void CSpaceWarClient::OnRequestEncryptedAppTicket( EncryptedAppTicketResponse_t 
 		// included is the "secret" key for spacewar. normally this is secret
 		const uint8 rgubKey[k_nSteamEncryptedAppTicketSymmetricKeyLen] = { 0xed, 0x93, 0x86, 0x07, 0x36, 0x47, 0xce, 0xa5, 0x8b, 0x77, 0x21, 0x49, 0x0d, 0x59, 0xed, 0x44, 0x57, 0x23, 0xf0, 0xf6, 0x6e, 0x74, 0x14, 0xe1, 0x53, 0x3b, 0xa3, 0x3c, 0xd8, 0x03, 0xbd, 0xbd };		
 
-		uint8 rgubDecrypted[1024];
+		uint8 rgubDecrypted[4096];
 		uint32 cubDecrypted = sizeof( rgubDecrypted );
 		if ( !SteamEncryptedAppTicket_BDecryptTicket( rgubTicket, cubTicket, rgubDecrypted, &cubDecrypted, rgubKey, sizeof( rgubKey ) ) )
 		{
@@ -2588,6 +2584,18 @@ void CSpaceWarClient::OnWorkshopItemInstalled( ItemInstalled_t *pParam )
 
 
 //-----------------------------------------------------------------------------
+// Purpose: Remote Play Together guest invite was created
+//-----------------------------------------------------------------------------
+void CSpaceWarClient::OnSteamRemotePlayTogetherGuestInvite( SteamRemotePlayTogetherGuestInvite_t *pParam )
+{
+	char rgch[ 1024 ];
+	sprintf_safe( rgch, "Remote Play Together guest invite URL: %s\n",
+		pParam->m_szConnectURL );
+	OutputDebugString( rgch );
+}
+
+
+//-----------------------------------------------------------------------------
 // Purpose: duration control / anti indulgence callback notification for Steam China
 // (this can run from an API call, or from an asynchronous callback. see OnDurationControlCallResult)
 //-----------------------------------------------------------------------------
@@ -2689,4 +2697,50 @@ void CSpaceWarClient::DrawWorkshopItems()
 		sprintf_safe( rgchBuffer, "Press ESC to return to the Main Menu" );
 	}
 	m_pGameEngine->BDrawString(m_hInstructionsFont, rect, D3DCOLOR_ARGB(255, 25, 200, 25), TEXTPOS_CENTER | TEXTPOS_TOP, rgchBuffer);
+}
+
+
+//-----------------------------------------------------------------------------
+// Purpose: Draws PublishFileID, title & description for each subscribed Workshop item
+//-----------------------------------------------------------------------------
+void CSpaceWarClient::UpdateScoreInGamePhase( bool bFinal )
+{
+	std::string strScores;
+	uint32 unHighScore = 0;
+	for ( int i = 0; i < MAX_PLAYERS_PER_SERVER; i++ )
+	{
+		if ( !strScores.empty() )
+			strScores += " / ";
+		strScores += std::to_string( m_rguPlayerScores[ i ] );
+		unHighScore = unHighScore < m_rguPlayerScores[ i ] ? m_rguPlayerScores[ i ] : unHighScore;
+	}
+
+	uint32 unCountAtHighScore = 0;
+	for ( int i = 0; i < MAX_PLAYERS_PER_SERVER; i++ )
+	{
+		if ( m_rguPlayerScores[ i ] == unHighScore )
+			unCountAtHighScore++;
+	}
+
+	std::string strPlayerScore = "0";
+
+	SteamTimeline()->SetGamePhaseAttribute( "Scores", strScores.c_str(), 1 );
+	SteamTimeline()->SetGamePhaseAttribute( "Player Score", strPlayerScore.c_str(), 2 );
+
+	if ( BLocalPlayerWonLastGame() )
+	{
+		SteamTimeline()->AddGamePhaseTag( "Won", "steam_ribbon", "Game Outcome", 3 );
+	}
+	else if ( unCountAtHighScore == 1 && unHighScore > 0 )
+	{
+		SteamTimeline()->AddGamePhaseTag( "Lost", "steam_death", "Game Outcome", 3 );
+	}
+	else if ( unCountAtHighScore > 1 && unHighScore > 0 )
+	{
+		SteamTimeline()->AddGamePhaseTag( "Tied", "steam_triangle", "Game Outcome", 3 );
+	}
+	else
+	{
+		SteamTimeline()->AddGamePhaseTag( "Stalemate", "steam_minus", "Game Outcome", 3 );
+	}
 }

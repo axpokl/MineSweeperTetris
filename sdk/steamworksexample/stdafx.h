@@ -13,7 +13,6 @@
 
 #pragma once
 
-#include <assert.h>
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -86,15 +85,9 @@ typedef unsigned __int64 uint64;
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-	#if defined(_PS3)
-
-	#include "stdafx_ps3.h"
-
-	#elif defined(OSX)
-	
+#if defined(OSX)	
 	#include <OpenGL/OpenGL.h>
-
-	#endif
+#endif
 
 #define ARRAYSIZE(A) ( sizeof(A)/sizeof(A[0]) )
 // Need to define some types on POSIX
@@ -189,6 +182,10 @@ extern void OutputDebugString( const char *pchMsg );
 extern int Alert( const char *lpCaption, const char *lpText );
 extern const char *GetUserSaveDataPath();
 
+#ifdef OSX
+extern uint64_t GetTickCount();
+#endif // OSX
+
 #define V_ARRAYSIZE(a) sizeof(a)/sizeof(a[0]) 
 
 #endif	// POSIX
@@ -239,7 +236,7 @@ inline void strncpy_safe( char *pDest, char const *pSrc, size_t maxLen )
 // Steam DRM header file
 #include "cegclient.h"
 #else
-#define Steamworks_InitCEGLibrary() (true)
+#define Steamworks_InitCEGLibrary() true
 #define Steamworks_TermCEGLibrary()
 #define Steamworks_TestSecret()
 #define Steamworks_SelfCheck()

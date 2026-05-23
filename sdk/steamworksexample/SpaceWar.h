@@ -116,26 +116,12 @@ inline T QWordSwap( T dw )
 	return *((T*)&temp);
 }
 
-#ifndef _PS3
-
 #define LittleInt16( val )	( val )
 #define LittleWord( val )	( val )
 #define LittleInt32( val )	( val )
 #define LittleDWord( val )	( val )
 #define LittleQWord( val )	( val )
 #define LittleFloat( val )	( val )
-
-#else
-
-#define LittleInt16( val )	WordSwap( val )
-#define LittleWord( val )	WordSwap( val )
-#define LittleInt32( val )	DWordSwap( val )
-#define LittleDWord( val )	DWordSwap( val )
-#define LittleQWord( val )	QWordSwap( val )
-#define LittleFloat( val )	DWordSwap( val )
-
-#endif
-
 
 // Leaderboard names
 #define LEADERBOARD_QUICKEST_WIN "Quickest Win"
@@ -177,17 +163,14 @@ enum EClientGameState
 	k_EClientLeaderboards,
 	k_EClientFriendsList,
 	k_EClientMinidump,
-	k_EClientConnectingToSteam,
-	k_EClientLinkSteamAccount,
-	k_EClientAutoCreateAccount,
-	k_EClientRetrySteamConnection,
 	k_EClientClanChatRoom,
 	k_EClientWebCallback,
 	k_EClientMusic,
 	k_EClientWorkshop,
 	k_EClientHTMLSurface,
 	k_EClientInGameStore,
-	k_EClientRemotePlay,
+	k_EClientRemotePlayInvite,
+	k_EClientRemotePlaySessions,
 	k_EClientOverlayAPI,
 };
 

@@ -8,6 +8,10 @@
 #include "cglmtex.h"
 #include "dxabstract.h"
 
+#ifdef __clang__
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
 #ifdef OSX
 // Debugger - 10.8
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -1237,7 +1241,7 @@ void CGLMTex::WriteTexels( GLMTexLockDesc *desc, bool writeWholeSlice, bool noDa
 	// (mechanism not policy)
 	
 	GLenum intformat = (m_layout->m_key.m_texFlags & kGLMTexSRGB) ? format->m_glIntFormatSRGB : format->m_glIntFormat;
-	if (0 /* CommandLine()->FindParm("-disable_srgbtex") */)
+	if ( ( 0 ) /* CommandLine()->FindParm("-disable_srgbtex") */)
 	{
 		// force non srgb flavor - experiment to make ATI r600 happy on 10.5.8 (maybe x1600 too!)
 		intformat = format->m_glIntFormat;

@@ -12,6 +12,7 @@
 #define MAX_PATH PATH_MAX
 #include <unistd.h>
 #define _getcwd getcwd
+#define _snprintf snprintf
 #endif
 
 #if defined(WIN32)
@@ -22,7 +23,7 @@
 	extern IGameEngine *CreateGameEngineOSX();
 #elif defined(SDL)
 	#include "GameEngine.h"
-	extern IGameEngine *CreateGameEngineSDL( );
+	extern IGameEngine *CreateGameEngineSDL();
 #endif
 
 #include "SpaceWarClient.h"
@@ -114,13 +115,15 @@ bool ParseCommandLine( const char *pchCmdLine, const char **ppchServerAddress, c
 //-----------------------------------------------------------------------------
 // Purpose: Main loop code shared between all platforms
 //-----------------------------------------------------------------------------
-void RunGameLoop( IGameEngine *pGameEngine, const char *pchServerAddress, const char *pchLobbyID )
+void RunGameLoop( IGameEngine *pGameEngine, const char *pchServerAddress, const char *pchLobbyID, bool bShowTimer )
 {
 	// Make sure it initialized ok
 	if ( pGameEngine->BReadyForUse() )
 	{
 		// Initialize the game
 		CSpaceWarClient *pGameClient = new CSpaceWarClient( pGameEngine );
+
+		pGameClient->SetShowTimer( bShowTimer );
 
 		// Black background
 		pGameEngine->SetBackgroundColor( 0, 0, 0, 0 );
@@ -163,11 +166,8 @@ void RunGameLoop( IGameEngine *pGameEngine, const char *pchServerAddress, const 
 //-----------------------------------------------------------------------------
 // Purpose: Real main entry point for the program
 //-----------------------------------------------------------------------------
-#ifndef _PS3
-
 static int RealMain( const char *pchCmdLine, HINSTANCE hInstance, int nCmdShow )
-{
-	
+{	
 	if ( SteamAPI_RestartAppIfNecessary( k_uAppIdInvalid ) )
 	{
 		// if Steam is not running or the game wasn't started through Steam, SteamAPI_RestartAppIfNecessary starts the 
@@ -177,11 +177,10 @@ static int RealMain( const char *pchCmdLine, HINSTANCE hInstance, int nCmdShow )
 		// removed steam_appid.txt from the game depot.
 
 		return EXIT_FAILURE;
-	}
-	
+	}	
 
 	// Init Steam CEG
-	if ( !Steamworks_InitCEGLibrary() )
+	if ( ( !Steamworks_InitCEGLibrary() ) )
 	{
 		OutputDebugString( "Steamworks_InitCEGLibrary() failed\n" );
 		Alert( "Fatal Error", "Steam must be running to play this game (InitDrmLibrary() failed).\n" );
@@ -195,9 +194,13 @@ static int RealMain( const char *pchCmdLine, HINSTANCE hInstance, int nCmdShow )
 	// This will also load the in-game steam overlay dll into your process.  That dll is normally
 	// injected by steam when it launches games, but by calling this you cause it to always load,
 	// even when not launched via steam.
-	if ( !SteamAPI_Init() )
+	SteamErrMsg errMsg = { 0 };
+	if ( SteamAPI_InitEx( &errMsg ) != k_ESteamAPIInitResult_OK )
 	{
-		OutputDebugString( "SteamAPI_Init() failed\n" );
+		OutputDebugString( "SteamAPI_Init() failed: " );
+		OutputDebugString( errMsg );
+		OutputDebugString( "\n" );
+
 		Alert( "Fatal Error", "Steam must be running to play this game (SteamAPI_Init() failed).\n" );
 		return EXIT_FAILURE;
 	}
@@ -230,6 +233,8 @@ static int RealMain( const char *pchCmdLine, HINSTANCE hInstance, int nCmdShow )
 		}
 	}
 
+	bool bShowTimer = !!strstr( pchCmdLine, "-timer" );
+
 	// do a DRM self check
 	Steamworks_SelfCheck();
 
@@ -259,20 +264,18 @@ static int RealMain( const char *pchCmdLine, HINSTANCE hInstance, int nCmdShow )
 	}
 
 	char rgchFullPath[1024];
-#if defined(_WIN32)
-	_snprintf( rgchFullPath, sizeof( rgchFullPath ), "%s\\%s", rgchCWD, "steam_input_manifest.vdf" );
-#elif defined(OSX)
+#if defined(OSX)
 	// hack for now, because we do not have utility functions available for finding the resource path
 	// alternatively we could disable the SteamController init on OS X
 	_snprintf( rgchFullPath, sizeof( rgchFullPath ), "%s/steamworksexample.app/Contents/Resources/%s", rgchCWD, "steam_input_manifest.vdf" );
 #else
-	_snprintf( rgchFullPath, sizeof( rgchFullPath ), "%s/%s", rgchCWD, "steam_input_manifest.vdf" );
+	_snprintf( rgchFullPath, sizeof( rgchFullPath ), "%s\\%s", rgchCWD, "steam_input_manifest.vdf" );
 #endif
 
 	SteamInput()->SetInputActionManifestFilePath( rgchFullPath );
 
 	// This call will block and run until the game exits
-	RunGameLoop( pGameEngine, pchServerAddress, pchLobbyID );
+	RunGameLoop( pGameEngine, pchServerAddress, pchLobbyID, bShowTimer );
 
 	// Shutdown the SteamAPI
 	SteamAPI_Shutdown();
@@ -283,7 +286,7 @@ static int RealMain( const char *pchCmdLine, HINSTANCE hInstance, int nCmdShow )
 	// exit
 	return EXIT_SUCCESS;	
 }
-#endif
+
 
 //-----------------------------------------------------------------------------
 // Purpose: Main entry point for the program -- win32
