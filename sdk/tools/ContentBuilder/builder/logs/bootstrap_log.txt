@@ -1969,3 +1969,24 @@
 [2026-05-24 05:01:37] Verification complete
 [2026-05-24 05:01:45] Clearing cached metrics (G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
 [2026-05-24 05:01:52] Shutdown
+
+
+[2026-05-24 09:45:03] Startup - updater built May  8 2026 15:40:36
+[2026-05-24 09:45:03] Startup - Steam Client launched with: sdk\tools\ContentBuilder\builder\steamcmd.exe   <+88 truncated>
+[2026-05-24 09:45:03] Windows 10.0.26100.0, 0, 2, 256, 1, 48 
+[2026-05-24 09:45:03] Using the following download hosts for Public, Realm steamglobal
+[2026-05-24 09:45:03] 1. https://client-update.fastly.steamstatic.com, /, Realm 'steamglobal', weight was 900, source = 'update_hosts_cached.vdf'
+[2026-05-24 09:45:03] 2. https://client-update.akamai.steamstatic.com, /, Realm 'steamglobal', weight was 400, source = 'update_hosts_cached.vdf'
+[2026-05-24 09:45:03] 3. https://client-update.steamstatic.com, /, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2026-05-24 09:45:03] Checking for update on startup
+[2026-05-24 09:45:03] 正在检查可用更新...
+[2026-05-24 09:45:03] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_cmd_win64
+[2026-05-24 09:45:03] Manifest download: send request
+[2026-05-24 09:45:03] Manifest download: waiting for download to finish
+[2026-05-24 09:45:06] Manifest download: finished
+[2026-05-24 09:45:06] Download skipped: /steam_cmd_win64 version 1779493321, installed version 1779493321, existing pending version 0
+[2026-05-24 09:45:06] Nothing to do
+[2026-05-24 09:45:06] 正在验证安装...
+[2026-05-24 09:45:06] Verifying all executable checksums
+[2026-05-24 09:45:06] Verification complete
+[2026-05-24 09:46:25] Shutdown

@@ -1,13 +1,13 @@
-[2026-05-24 05:01:46]: Starting build for depot 3665841, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
-[2026-05-24 05:01:46]: Building file listing for depot 3665841 ...
-[2026-05-24 05:01:46]: Found 4 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
-[2026-05-24 05:01:46]: Found 4 files (0 MB) for depot 3665841
-[2026-05-24 05:01:47]: Building depot 3665841, baseline manifest 2071847740544892580 (3 files)
-[2026-05-24 05:01:47]: Found 3 new chunks ( 3 used previously ) for depot 3665841, took 0 minutes, 0 seconds
-[2026-05-24 05:01:47]: Changes to baseline manifest 2071847740544892580 :
-[2026-05-24 05:01:47]: Changed: "MineSweeperRush.exe" 139 KB size, 139 KB changed 
-[2026-05-24 05:01:47]: Added  : "your game content lives here.txt" 0 KB 
-[2026-05-24 05:01:47]: Summary: 1 files added (0 bytes), 1 files changed (139 KB), 0 files removed (0 bytes)
-[2026-05-24 05:01:48]: Uploading new manifest to depot_ingest.discovery.steamserver.net (handle 133476430351978442, 814 bytes).
-[2026-05-24 05:01:50]: Uploading 1 out of 1 missing chunks.
-[2026-05-24 05:01:52]: Success! New manifestID 4454438580588618711 created and 1 new chunks uploaded.
+[2026-05-24 09:46:18]: Starting build for depot 3665841, content path is "G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content\", build flags 0x0
+[2026-05-24 09:46:18]: Building file listing for depot 3665841 ...
+[2026-05-24 09:46:18]: Found 3 files for mapping: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\content * -> .
+[2026-05-24 09:46:18]: Found 3 files (0 MB) for depot 3665841
+[2026-05-24 09:46:19]: Building depot 3665841, baseline manifest 4454438580588618711 (4 files)
+[2026-05-24 09:46:19]: Found 3 new chunks ( 3 used previously ) for depot 3665841, took 0 minutes, 0 seconds
+[2026-05-24 09:46:19]: Changes to baseline manifest 4454438580588618711 :
+[2026-05-24 09:46:19]: Changed: "MineSweeperRush.exe" 139 KB size, 139 KB changed 
+[2026-05-24 09:46:19]: Removed: your game content lives here.txt (0 KB)
+[2026-05-24 09:46:19]: Summary: 0 files added (0 bytes), 1 files changed (139 KB), 1 files removed (0 bytes)
+[2026-05-24 09:46:20]: Uploading new manifest to depot_ingest.discovery.steamserver.net (handle 2637877555812123885, 703 bytes).
+[2026-05-24 09:46:22]: Uploading 1 out of 1 missing chunks.
+[2026-05-24 09:46:24]: Success! New manifestID 2771526657513390941 created and 1 new chunks uploaded.

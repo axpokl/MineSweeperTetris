@@ -3424,3 +3424,20 @@
 [2026-05-24 05:01:45] Requesting 14 apps, 0 packages (meta data, 1024 prev attempts, expected 0 KB)
 [2026-05-24 05:01:46] Requested 13 app access tokens, 0 received, 13 denied
 [2026-05-24 05:01:46] UpdatesJob: finished OK, apps updated 0 (0 KB), packages updated 0 (0 KB)
+
+
+[2026-05-24 09:45:06] Client version: 1779493321
+[2026-05-24 09:45:06] ThreadedReadFromDisk: loading appinfo cache from: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf
+[2026-05-24 09:45:06] ThreadedReadFromDisk: header version: 0x7564429
+[2026-05-24 09:45:06] ThreadedReadFromDisk: apps updated: 1211
+[2026-05-24 09:45:06] CAppInfoCacheReadFromDiskThread took 23 milliseconds to initialize
+[2026-05-24 09:46:11] RequestAppInfoUpdate: AppIDs 7
+[2026-05-24 09:46:12] Apps changed: 431960=36069073,1422450=36068857,443030=36068750,264710=36068027,1127400=36067666,3665840=36066740,
+[2026-05-24 09:46:12] Change number 36066732->36069100, apps: 6/1656, packages: 0/232
+[2026-05-24 09:46:12] Requesting 20 apps, 0 packages (meta data, 1024 prev attempts, expected 0 KB)
+[2026-05-24 09:46:13] Requested 13 app access tokens, 0 received, 13 denied
+[2026-05-24 09:46:17] Downloaded 3 apps via HTTP, 33 KB (9 KB compressed)
+[2026-05-24 09:46:17] Requesting 2 apps, 0 packages (full data, 1024 prev attempts, expected 12 KB)
+[2026-05-24 09:46:18] UpdatesJob: finished OK, apps updated 5 (45 KB), packages updated 0 (0 KB)
+[2026-05-24 09:46:23] ThreadedWriteToDisk: writing appinfo cache to: G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf
+[2026-05-24 09:46:23] App cache write succeeded G:\!temp\MineSweeperTetris\sdk\tools\ContentBuilder\builder/appcache/appinfo.vdf (1211 apps, 3303 KB) in 38 ms

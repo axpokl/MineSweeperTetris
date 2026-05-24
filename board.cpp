@@ -566,7 +566,8 @@ void Board::checkline(bool delayb_)
         long flagc;
         j = h - 1;
         long j_ = 0;
-        while (j >= maskj)
+        long maskj_ = max(maskj, 0);
+        while (j >= maskj_)
         {
             blckc = 0;
             flagc = 0;
@@ -795,7 +796,7 @@ void Board::delline(long l)
         }
         for (long i = 0; i < w; i++)
         {
-            for (long j = l + 1; j >= l; j--)
+            for (long j = min(l + 1, h - 1); j >= l; j--)
             {
                 numb[i][j] = 0;
                 for (long k = 0; k < 8; k++)
